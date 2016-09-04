@@ -1,0 +1,687 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		03D6D433279D47763087A38E614FCB52 /* Pods-SwiftChess_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = D6213410A61B8A1E4E618A31C997CDCF /* Pods-SwiftChess_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		066B05420B4A516CE7EBF89C0F7C946D /* SwiftChess-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AEE9919397F4E0CCD2EB505535FC875 /* SwiftChess-dummy.m */; };
+		2908A246A10E222D260CBACCE0B32022 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
+		35A573D5510DEDD26C9399E6C438ECB1 /* ReplaceMe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552A1BBBEDCE416EB48B54D8F51B1778 /* ReplaceMe.swift */; };
+		8236AE53A32A4F878EA4AC2EB9278751 /* SwiftChess-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = B6D5B5849ACD747ED7EAF5B0117D151D /* SwiftChess-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		880570CCE7FB7D78F7FE4AD0D9D7E94A /* Pods-SwiftChess_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F760CE1F8973A5B1F36EA40F6E50F00C /* Pods-SwiftChess_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		92A1AF7D7F88DC9FB6BA94E94210DA84 /* Pods-SwiftChess_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AD4D396D62848052AA00E86CBEAEC51 /* Pods-SwiftChess_Tests-dummy.m */; };
+		A69163803B220CF58FED7B01C4AE4BA1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
+		C8D7E90D79073D4578CC178C8D696B4D /* Pods-SwiftChess_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 072CB51FF0EA9B42A571A504D0272933 /* Pods-SwiftChess_Example-dummy.m */; };
+		FFF70AB91DD043BB0CA11EBBA7D819B8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A2986FC9283DEED40C4D303AC24630D5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FD170832041C353909EEBE6B4419CB75;
+			remoteInfo = SwiftChess;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		072CB51FF0EA9B42A571A504D0272933 /* Pods-SwiftChess_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-SwiftChess_Example-dummy.m"; sourceTree = "<group>"; };
+		08FBF9F37DD2CC9FB07E02DB9336F4A0 /* Pods-SwiftChess_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SwiftChess_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		0D63D4231407D2798B7AACBC1E4CB4E4 /* Pods-SwiftChess_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SwiftChess_Example-acknowledgements.plist"; sourceTree = "<group>"; };
+		292A3E0C0B708E1E49469AA3B8D2C9C6 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		29D6CDCAA869332637CE25E2830A5EE4 /* Pods-SwiftChess_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-SwiftChess_Tests.modulemap"; sourceTree = "<group>"; };
+		2E8FB79C4C0D1F780D878E0FA48E11D4 /* Pods-SwiftChess_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SwiftChess_Tests-resources.sh"; sourceTree = "<group>"; };
+		4453F88E93F62D5FD34A08155A1B283C /* SwiftChess-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftChess-prefix.pch"; sourceTree = "<group>"; };
+		552A1BBBEDCE416EB48B54D8F51B1778 /* ReplaceMe.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ReplaceMe.swift; sourceTree = "<group>"; };
+		5CA6FD1E01D539D6501A592E7A33ECBB /* SwiftChess.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = SwiftChess.modulemap; sourceTree = "<group>"; };
+		6AEE9919397F4E0CCD2EB505535FC875 /* SwiftChess-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwiftChess-dummy.m"; sourceTree = "<group>"; };
+		7621ADDA34D1AD6BF10E931AF77E1D88 /* Pods_SwiftChess_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftChess_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7AD4D396D62848052AA00E86CBEAEC51 /* Pods-SwiftChess_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-SwiftChess_Tests-dummy.m"; sourceTree = "<group>"; };
+		7FC5F1FEFED8A2431C8465C9B80AB566 /* Pods_SwiftChess_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftChess_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8FCE366EF8E45E4CB736F7A27D3AA717 /* Pods-SwiftChess_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-SwiftChess_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		8FE8131919D3C10B60140F58E6248BE5 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		95232251964711073B3CAC1B25E4E84E /* SwiftChess.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftChess.xcconfig; sourceTree = "<group>"; };
+		95CB7C721DA8C346448BC7C41F8D1A8D /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		98A70D131EA36F8890D030F880EA9629 /* Pods-SwiftChess_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SwiftChess_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		A53EC55804536A355802F1186FC9AE18 /* Pods-SwiftChess_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-SwiftChess_Example.modulemap"; sourceTree = "<group>"; };
+		AD1C92FB4050D0AF78242E5C28E52155 /* Pods-SwiftChess_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SwiftChess_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		B66ABEFC892E6A28F2DB7CA27FE2DF34 /* Pods-SwiftChess_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SwiftChess_Example-frameworks.sh"; sourceTree = "<group>"; };
+		B6D5B5849ACD747ED7EAF5B0117D151D /* SwiftChess-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftChess-umbrella.h"; sourceTree = "<group>"; };
+		BB995B1E9037FBC84A986F6D8627ADE1 /* SwiftChess.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftChess.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C0640D7C3A9507A50490B36B146D4536 /* Pods-SwiftChess_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SwiftChess_Example.release.xcconfig"; sourceTree = "<group>"; };
+		CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		D6213410A61B8A1E4E618A31C997CDCF /* Pods-SwiftChess_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-SwiftChess_Tests-umbrella.h"; sourceTree = "<group>"; };
+		D6E78B80DCBE2AC6F963A1C2BC818456 /* Pods-SwiftChess_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SwiftChess_Tests-frameworks.sh"; sourceTree = "<group>"; };
+		E8A5E3F4D156E74AEAAF78AD000C729A /* Pods-SwiftChess_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-SwiftChess_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
+		EB9D8CD8F971C7BCA355F24D18442023 /* Pods-SwiftChess_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SwiftChess_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
+		F662DF21A665A678303E37489D17188F /* Pods-SwiftChess_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SwiftChess_Example-resources.sh"; sourceTree = "<group>"; };
+		F760CE1F8973A5B1F36EA40F6E50F00C /* Pods-SwiftChess_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-SwiftChess_Example-umbrella.h"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1CC6CBF6C623ACBB32E472BA4D05EB4E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2908A246A10E222D260CBACCE0B32022 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		479FECA9BA0626A774CFAE65D4E669DA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FFF70AB91DD043BB0CA11EBBA7D819B8 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C90A2A1B4A1ED05ED39AF9CE0AB9D361 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A69163803B220CF58FED7B01C4AE4BA1 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0EDF239CA95B1BBD72998716DA72E768 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				95CB7C721DA8C346448BC7C41F8D1A8D /* Info.plist */,
+				5CA6FD1E01D539D6501A592E7A33ECBB /* SwiftChess.modulemap */,
+				95232251964711073B3CAC1B25E4E84E /* SwiftChess.xcconfig */,
+				6AEE9919397F4E0CCD2EB505535FC875 /* SwiftChess-dummy.m */,
+				4453F88E93F62D5FD34A08155A1B283C /* SwiftChess-prefix.pch */,
+				B6D5B5849ACD747ED7EAF5B0117D151D /* SwiftChess-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "Example/Pods/Target Support Files/SwiftChess";
+			sourceTree = "<group>";
+		};
+		1B2047D5885E6664765BD1412D6FBE5F /* Pods-SwiftChess_Tests */ = {
+			isa = PBXGroup;
+			children = (
+				8FE8131919D3C10B60140F58E6248BE5 /* Info.plist */,
+				29D6CDCAA869332637CE25E2830A5EE4 /* Pods-SwiftChess_Tests.modulemap */,
+				8FCE366EF8E45E4CB736F7A27D3AA717 /* Pods-SwiftChess_Tests-acknowledgements.markdown */,
+				EB9D8CD8F971C7BCA355F24D18442023 /* Pods-SwiftChess_Tests-acknowledgements.plist */,
+				7AD4D396D62848052AA00E86CBEAEC51 /* Pods-SwiftChess_Tests-dummy.m */,
+				D6E78B80DCBE2AC6F963A1C2BC818456 /* Pods-SwiftChess_Tests-frameworks.sh */,
+				2E8FB79C4C0D1F780D878E0FA48E11D4 /* Pods-SwiftChess_Tests-resources.sh */,
+				D6213410A61B8A1E4E618A31C997CDCF /* Pods-SwiftChess_Tests-umbrella.h */,
+				98A70D131EA36F8890D030F880EA9629 /* Pods-SwiftChess_Tests.debug.xcconfig */,
+				AD1C92FB4050D0AF78242E5C28E52155 /* Pods-SwiftChess_Tests.release.xcconfig */,
+			);
+			name = "Pods-SwiftChess_Tests";
+			path = "Target Support Files/Pods-SwiftChess_Tests";
+			sourceTree = "<group>";
+		};
+		3DCAB2B7CDE207B3958B6CB957FCC758 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		58A4FC4B3E6CA254F05C375BC3EBC2DF /* Development Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6B57EBD2BF5FD5A68E79E7C6D3E3C1EB /* SwiftChess */,
+			);
+			name = "Development Pods";
+			sourceTree = "<group>";
+		};
+		6695423A7F28960856CC278EB3D4D2B4 /* SwiftChess */ = {
+			isa = PBXGroup;
+			children = (
+				92F734C0E04A114CF37CDD07142B02E8 /* Classes */,
+			);
+			path = SwiftChess;
+			sourceTree = "<group>";
+		};
+		6B57EBD2BF5FD5A68E79E7C6D3E3C1EB /* SwiftChess */ = {
+			isa = PBXGroup;
+			children = (
+				0EDF239CA95B1BBD72998716DA72E768 /* Support Files */,
+				6695423A7F28960856CC278EB3D4D2B4 /* SwiftChess */,
+			);
+			name = SwiftChess;
+			path = ../..;
+			sourceTree = "<group>";
+		};
+		7DB346D0F39D3F0E887471402A8071AB = {
+			isa = PBXGroup;
+			children = (
+				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
+				58A4FC4B3E6CA254F05C375BC3EBC2DF /* Development Pods */,
+				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
+				F34825EA8632B4A4334BB5FB2FDFE8EF /* Products */,
+				8DF2EFF0670BF658FEE75EE8EF24B433 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		8DF2EFF0670BF658FEE75EE8EF24B433 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				A252659068BF06BF2CFBD28F80C8A03A /* Pods-SwiftChess_Example */,
+				1B2047D5885E6664765BD1412D6FBE5F /* Pods-SwiftChess_Tests */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		92F734C0E04A114CF37CDD07142B02E8 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				552A1BBBEDCE416EB48B54D8F51B1778 /* ReplaceMe.swift */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		A252659068BF06BF2CFBD28F80C8A03A /* Pods-SwiftChess_Example */ = {
+			isa = PBXGroup;
+			children = (
+				292A3E0C0B708E1E49469AA3B8D2C9C6 /* Info.plist */,
+				A53EC55804536A355802F1186FC9AE18 /* Pods-SwiftChess_Example.modulemap */,
+				E8A5E3F4D156E74AEAAF78AD000C729A /* Pods-SwiftChess_Example-acknowledgements.markdown */,
+				0D63D4231407D2798B7AACBC1E4CB4E4 /* Pods-SwiftChess_Example-acknowledgements.plist */,
+				072CB51FF0EA9B42A571A504D0272933 /* Pods-SwiftChess_Example-dummy.m */,
+				B66ABEFC892E6A28F2DB7CA27FE2DF34 /* Pods-SwiftChess_Example-frameworks.sh */,
+				F662DF21A665A678303E37489D17188F /* Pods-SwiftChess_Example-resources.sh */,
+				F760CE1F8973A5B1F36EA40F6E50F00C /* Pods-SwiftChess_Example-umbrella.h */,
+				08FBF9F37DD2CC9FB07E02DB9336F4A0 /* Pods-SwiftChess_Example.debug.xcconfig */,
+				C0640D7C3A9507A50490B36B146D4536 /* Pods-SwiftChess_Example.release.xcconfig */,
+			);
+			name = "Pods-SwiftChess_Example";
+			path = "Target Support Files/Pods-SwiftChess_Example";
+			sourceTree = "<group>";
+		};
+		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3DCAB2B7CDE207B3958B6CB957FCC758 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F34825EA8632B4A4334BB5FB2FDFE8EF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7621ADDA34D1AD6BF10E931AF77E1D88 /* Pods_SwiftChess_Example.framework */,
+				7FC5F1FEFED8A2431C8465C9B80AB566 /* Pods_SwiftChess_Tests.framework */,
+				BB995B1E9037FBC84A986F6D8627ADE1 /* SwiftChess.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		7367262644B731ED3CEEB7D58C5DFFFA /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8236AE53A32A4F878EA4AC2EB9278751 /* SwiftChess-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AE8EB7A5D9FBB221A71EC4E5A5834303 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				03D6D433279D47763087A38E614FCB52 /* Pods-SwiftChess_Tests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D8C5E29B0793BCE6F80BAD3F4FA28508 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				880570CCE7FB7D78F7FE4AD0D9D7E94A /* Pods-SwiftChess_Example-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		741AD5434B0AC2BD7EFC473199C6CEFA /* Pods-SwiftChess_Example */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E16622FEA6ACD2BD46E0CB5BFB9C114B /* Build configuration list for PBXNativeTarget "Pods-SwiftChess_Example" */;
+			buildPhases = (
+				BFDE2545C1AEF47FD9A782F5A14B9A71 /* Sources */,
+				C90A2A1B4A1ED05ED39AF9CE0AB9D361 /* Frameworks */,
+				D8C5E29B0793BCE6F80BAD3F4FA28508 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5ACCDEA94687B23117FA2BE2B31EA78E /* PBXTargetDependency */,
+			);
+			name = "Pods-SwiftChess_Example";
+			productName = "Pods-SwiftChess_Example";
+			productReference = 7621ADDA34D1AD6BF10E931AF77E1D88 /* Pods_SwiftChess_Example.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		DB600368B2E55827E06D2C9D3875BF68 /* Pods-SwiftChess_Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8C81EE1373648A22D6CD01AA03FA02C8 /* Build configuration list for PBXNativeTarget "Pods-SwiftChess_Tests" */;
+			buildPhases = (
+				0D019712D0E87E0CB53165E522DFDD39 /* Sources */,
+				479FECA9BA0626A774CFAE65D4E669DA /* Frameworks */,
+				AE8EB7A5D9FBB221A71EC4E5A5834303 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-SwiftChess_Tests";
+			productName = "Pods-SwiftChess_Tests";
+			productReference = 7FC5F1FEFED8A2431C8465C9B80AB566 /* Pods_SwiftChess_Tests.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		FD170832041C353909EEBE6B4419CB75 /* SwiftChess */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D706D2E0BA577C2EC265DD50F675667A /* Build configuration list for PBXNativeTarget "SwiftChess" */;
+			buildPhases = (
+				6FBBE0A1779DD5803D2B7C2F35D53243 /* Sources */,
+				1CC6CBF6C623ACBB32E472BA4D05EB4E /* Frameworks */,
+				7367262644B731ED3CEEB7D58C5DFFFA /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SwiftChess;
+			productName = SwiftChess;
+			productReference = BB995B1E9037FBC84A986F6D8627ADE1 /* SwiftChess.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0700;
+			};
+			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
+			productRefGroup = F34825EA8632B4A4334BB5FB2FDFE8EF /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				741AD5434B0AC2BD7EFC473199C6CEFA /* Pods-SwiftChess_Example */,
+				DB600368B2E55827E06D2C9D3875BF68 /* Pods-SwiftChess_Tests */,
+				FD170832041C353909EEBE6B4419CB75 /* SwiftChess */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0D019712D0E87E0CB53165E522DFDD39 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				92A1AF7D7F88DC9FB6BA94E94210DA84 /* Pods-SwiftChess_Tests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6FBBE0A1779DD5803D2B7C2F35D53243 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				35A573D5510DEDD26C9399E6C438ECB1 /* ReplaceMe.swift in Sources */,
+				066B05420B4A516CE7EBF89C0F7C946D /* SwiftChess-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BFDE2545C1AEF47FD9A782F5A14B9A71 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C8D7E90D79073D4578CC178C8D696B4D /* Pods-SwiftChess_Example-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		5ACCDEA94687B23117FA2BE2B31EA78E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SwiftChess;
+			target = FD170832041C353909EEBE6B4419CB75 /* SwiftChess */;
+			targetProxy = A2986FC9283DEED40C4D303AC24630D5 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		0ACDCBCB0B6796575F46FFA2F5410C6B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		0B8B036184B700D1CAC041A91E6559AF /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 95232251964711073B3CAC1B25E4E84E /* SwiftChess.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/SwiftChess/SwiftChess-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SwiftChess/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/SwiftChess/SwiftChess.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = SwiftChess;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		0E65D105D71BBD5BF0AA06F6648153F1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 08FBF9F37DD2CC9FB07E02DB9336F4A0 /* Pods-SwiftChess_Example.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-SwiftChess_Example/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-SwiftChess_Example/Pods-SwiftChess_Example.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_SwiftChess_Example;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		30C7F79A6BA5BF64D38050171BC5E58D /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = AD1C92FB4050D0AF78242E5C28E52155 /* Pods-SwiftChess_Tests.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-SwiftChess_Tests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-SwiftChess_Tests/Pods-SwiftChess_Tests.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_SwiftChess_Tests;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		7D678C10B2618713D77524308F1E6A78 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 95232251964711073B3CAC1B25E4E84E /* SwiftChess.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/SwiftChess/SwiftChess-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SwiftChess/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/SwiftChess/SwiftChess.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = SwiftChess;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		AC11B4E30FBCD697B284E1437A38E57B /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C0640D7C3A9507A50490B36B146D4536 /* Pods-SwiftChess_Example.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-SwiftChess_Example/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-SwiftChess_Example/Pods-SwiftChess_Example.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_SwiftChess_Example;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		D3E3D092A3FF7311A98E44BBA36FFD12 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				ONLY_ACTIVE_ARCH = YES;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		DAED9B9F81BC475BE25E7CB568BEC072 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 98A70D131EA36F8890D030F880EA9629 /* Pods-SwiftChess_Tests.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-SwiftChess_Tests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-SwiftChess_Tests/Pods-SwiftChess_Tests.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_SwiftChess_Tests;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D3E3D092A3FF7311A98E44BBA36FFD12 /* Debug */,
+				0ACDCBCB0B6796575F46FFA2F5410C6B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8C81EE1373648A22D6CD01AA03FA02C8 /* Build configuration list for PBXNativeTarget "Pods-SwiftChess_Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DAED9B9F81BC475BE25E7CB568BEC072 /* Debug */,
+				30C7F79A6BA5BF64D38050171BC5E58D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D706D2E0BA577C2EC265DD50F675667A /* Build configuration list for PBXNativeTarget "SwiftChess" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7D678C10B2618713D77524308F1E6A78 /* Debug */,
+				0B8B036184B700D1CAC041A91E6559AF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E16622FEA6ACD2BD46E0CB5BFB9C114B /* Build configuration list for PBXNativeTarget "Pods-SwiftChess_Example" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0E65D105D71BBD5BF0AA06F6648153F1 /* Debug */,
+				AC11B4E30FBCD697B284E1437A38E57B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+}

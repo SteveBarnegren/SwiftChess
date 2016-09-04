@@ -1,0 +1,6 @@
+framework module Pods_SwiftChess_Tests {
+  umbrella header "Pods-SwiftChess_Tests-umbrella.h"
+
+  export *
+  module * { export * }
+}

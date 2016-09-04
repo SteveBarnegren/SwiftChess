@@ -1,0 +1,16 @@
+PODS:
+  - SwiftChess (0.1.0)
+
+DEPENDENCIES:
+  - SwiftChess (from `../`)
+
+EXTERNAL SOURCES:
+  SwiftChess:
+    :path: ../
+
+SPEC CHECKSUMS:
+  SwiftChess: 7ec2077f755647df70261575a0546c0486930cf3
+
+PODFILE CHECKSUM: cab9331c5b63c7d8bee66c5f0cc79263b96adb2d
+
+COCOAPODS: 1.0.1
