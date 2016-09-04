@@ -8,14 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		03D6D433279D47763087A38E614FCB52 /* Pods-SwiftChess_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = D6213410A61B8A1E4E618A31C997CDCF /* Pods-SwiftChess_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		066B05420B4A516CE7EBF89C0F7C946D /* SwiftChess-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AEE9919397F4E0CCD2EB505535FC875 /* SwiftChess-dummy.m */; };
 		2908A246A10E222D260CBACCE0B32022 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
-		35A573D5510DEDD26C9399E6C438ECB1 /* ReplaceMe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552A1BBBEDCE416EB48B54D8F51B1778 /* ReplaceMe.swift */; };
+		331EF701972BBC65C3346799C41BA8DA /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36ED42BEE43E0E97D2AFDD9E629FEE98 /* Game.swift */; };
+		57F1E43E89107CCF8D0BA2190C599AB8 /* Piece.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55D1423A08724384E5A2A388B3992B1 /* Piece.swift */; };
+		786B22A79070742A21594BE84ADF18E9 /* ReplaceMe.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FD65DA28FFD5E059C00012ACF375D5 /* ReplaceMe.swift */; };
 		8236AE53A32A4F878EA4AC2EB9278751 /* SwiftChess-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = B6D5B5849ACD747ED7EAF5B0117D151D /* SwiftChess-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		880570CCE7FB7D78F7FE4AD0D9D7E94A /* Pods-SwiftChess_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F760CE1F8973A5B1F36EA40F6E50F00C /* Pods-SwiftChess_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		92A1AF7D7F88DC9FB6BA94E94210DA84 /* Pods-SwiftChess_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AD4D396D62848052AA00E86CBEAEC51 /* Pods-SwiftChess_Tests-dummy.m */; };
+		A68D25C707DDFBF0E0C1CFD92985E360 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92689982455349B9109F39E6A074F681 /* Board.swift */; };
 		A69163803B220CF58FED7B01C4AE4BA1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
 		C8D7E90D79073D4578CC178C8D696B4D /* Pods-SwiftChess_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 072CB51FF0EA9B42A571A504D0272933 /* Pods-SwiftChess_Example-dummy.m */; };
+		D54F64649300FB38C8E2864B684DDFA2 /* SwiftChess-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AEE9919397F4E0CCD2EB505535FC875 /* SwiftChess-dummy.m */; };
 		FFF70AB91DD043BB0CA11EBBA7D819B8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
 /* End PBXBuildFile section */
 
@@ -36,8 +39,8 @@
 		292A3E0C0B708E1E49469AA3B8D2C9C6 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		29D6CDCAA869332637CE25E2830A5EE4 /* Pods-SwiftChess_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-SwiftChess_Tests.modulemap"; sourceTree = "<group>"; };
 		2E8FB79C4C0D1F780D878E0FA48E11D4 /* Pods-SwiftChess_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SwiftChess_Tests-resources.sh"; sourceTree = "<group>"; };
+		36ED42BEE43E0E97D2AFDD9E629FEE98 /* Game.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		4453F88E93F62D5FD34A08155A1B283C /* SwiftChess-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftChess-prefix.pch"; sourceTree = "<group>"; };
-		552A1BBBEDCE416EB48B54D8F51B1778 /* ReplaceMe.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ReplaceMe.swift; sourceTree = "<group>"; };
 		5CA6FD1E01D539D6501A592E7A33ECBB /* SwiftChess.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = SwiftChess.modulemap; sourceTree = "<group>"; };
 		6AEE9919397F4E0CCD2EB505535FC875 /* SwiftChess-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwiftChess-dummy.m"; sourceTree = "<group>"; };
 		7621ADDA34D1AD6BF10E931AF77E1D88 /* Pods_SwiftChess_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftChess_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -45,6 +48,7 @@
 		7FC5F1FEFED8A2431C8465C9B80AB566 /* Pods_SwiftChess_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftChess_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8FCE366EF8E45E4CB736F7A27D3AA717 /* Pods-SwiftChess_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-SwiftChess_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		8FE8131919D3C10B60140F58E6248BE5 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		92689982455349B9109F39E6A074F681 /* Board.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		95232251964711073B3CAC1B25E4E84E /* SwiftChess.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftChess.xcconfig; sourceTree = "<group>"; };
 		95CB7C721DA8C346448BC7C41F8D1A8D /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -58,6 +62,8 @@
 		CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		D6213410A61B8A1E4E618A31C997CDCF /* Pods-SwiftChess_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-SwiftChess_Tests-umbrella.h"; sourceTree = "<group>"; };
 		D6E78B80DCBE2AC6F963A1C2BC818456 /* Pods-SwiftChess_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SwiftChess_Tests-frameworks.sh"; sourceTree = "<group>"; };
+		D7FD65DA28FFD5E059C00012ACF375D5 /* ReplaceMe.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ReplaceMe.swift; sourceTree = "<group>"; };
+		E55D1423A08724384E5A2A388B3992B1 /* Piece.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Piece.swift; sourceTree = "<group>"; };
 		E8A5E3F4D156E74AEAAF78AD000C729A /* Pods-SwiftChess_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-SwiftChess_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
 		EB9D8CD8F971C7BCA355F24D18442023 /* Pods-SwiftChess_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SwiftChess_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
 		F662DF21A665A678303E37489D17188F /* Pods-SwiftChess_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SwiftChess_Example-resources.sh"; sourceTree = "<group>"; };
@@ -124,6 +130,17 @@
 			path = "Target Support Files/Pods-SwiftChess_Tests";
 			sourceTree = "<group>";
 		};
+		3AF95547B05BDB23DE55393D78972497 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				92689982455349B9109F39E6A074F681 /* Board.swift */,
+				36ED42BEE43E0E97D2AFDD9E629FEE98 /* Game.swift */,
+				E55D1423A08724384E5A2A388B3992B1 /* Piece.swift */,
+				D7FD65DA28FFD5E059C00012ACF375D5 /* ReplaceMe.swift */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
 		3DCAB2B7CDE207B3958B6CB957FCC758 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
@@ -140,10 +157,10 @@
 			name = "Development Pods";
 			sourceTree = "<group>";
 		};
-		6695423A7F28960856CC278EB3D4D2B4 /* SwiftChess */ = {
+		5F8F1DE5AB1D1309CF211C0FF0F82F73 /* SwiftChess */ = {
 			isa = PBXGroup;
 			children = (
-				92F734C0E04A114CF37CDD07142B02E8 /* Classes */,
+				3AF95547B05BDB23DE55393D78972497 /* Classes */,
 			);
 			path = SwiftChess;
 			sourceTree = "<group>";
@@ -152,7 +169,7 @@
 			isa = PBXGroup;
 			children = (
 				0EDF239CA95B1BBD72998716DA72E768 /* Support Files */,
-				6695423A7F28960856CC278EB3D4D2B4 /* SwiftChess */,
+				5F8F1DE5AB1D1309CF211C0FF0F82F73 /* SwiftChess */,
 			);
 			name = SwiftChess;
 			path = ../..;
@@ -176,14 +193,6 @@
 				1B2047D5885E6664765BD1412D6FBE5F /* Pods-SwiftChess_Tests */,
 			);
 			name = "Targets Support Files";
-			sourceTree = "<group>";
-		};
-		92F734C0E04A114CF37CDD07142B02E8 /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-				552A1BBBEDCE416EB48B54D8F51B1778 /* ReplaceMe.swift */,
-			);
-			path = Classes;
 			sourceTree = "<group>";
 		};
 		A252659068BF06BF2CFBD28F80C8A03A /* Pods-SwiftChess_Example */ = {
@@ -291,7 +300,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D706D2E0BA577C2EC265DD50F675667A /* Build configuration list for PBXNativeTarget "SwiftChess" */;
 			buildPhases = (
-				6FBBE0A1779DD5803D2B7C2F35D53243 /* Sources */,
+				FBDE6707916D680593FC2E5534BED733 /* Sources */,
 				1CC6CBF6C623ACBB32E472BA4D05EB4E /* Frameworks */,
 				7367262644B731ED3CEEB7D58C5DFFFA /* Headers */,
 			);
@@ -341,20 +350,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		6FBBE0A1779DD5803D2B7C2F35D53243 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				35A573D5510DEDD26C9399E6C438ECB1 /* ReplaceMe.swift in Sources */,
-				066B05420B4A516CE7EBF89C0F7C946D /* SwiftChess-dummy.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		BFDE2545C1AEF47FD9A782F5A14B9A71 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				C8D7E90D79073D4578CC178C8D696B4D /* Pods-SwiftChess_Example-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FBDE6707916D680593FC2E5534BED733 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A68D25C707DDFBF0E0C1CFD92985E360 /* Board.swift in Sources */,
+				331EF701972BBC65C3346799C41BA8DA /* Game.swift in Sources */,
+				57F1E43E89107CCF8D0BA2190C599AB8 /* Piece.swift in Sources */,
+				786B22A79070742A21594BE84ADF18E9 /* ReplaceMe.swift in Sources */,
+				D54F64649300FB38C8E2864B684DDFA2 /* SwiftChess-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
