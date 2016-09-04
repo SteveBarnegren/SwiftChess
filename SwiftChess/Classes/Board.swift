@@ -20,7 +20,7 @@ public struct Square {
 
 public struct Board {
 
-    var squares = [Square]()
+    public var squares = [Square]()
     
     // MARK - Init
     init(){
@@ -62,7 +62,18 @@ public struct Board {
         
     }
     
+    // MARK - Pieces
     
+    public func pieceAtIndex(index: Int) -> Piece? {
+        return squares[index].piece
+    }
+    
+    public mutating func movePiece(fromIndex: Int, toIndex: Int){
+        
+        squares[toIndex].piece = self.squares[fromIndex].piece
+        squares[fromIndex].piece = nil
+        
+    }
     
     // MARK - Print
     

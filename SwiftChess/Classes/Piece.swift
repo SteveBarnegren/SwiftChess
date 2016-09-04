@@ -24,8 +24,8 @@ public enum Color {
 
 public class Piece {
     
-    let type: PieceType
-    let color: Color
+    public let type: PieceType
+    public let color: Color
     
     public init(type: PieceType, color: Color){
         self.type = type

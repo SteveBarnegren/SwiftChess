@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 protocol BoardViewDelegate {
     func touchedSquareAtIndex(boardView: BoardView, index: Int)
 }
@@ -16,7 +15,7 @@ protocol BoardViewDelegate {
 class BoardView: UIView {
     
     // Mark - Properties
-    public var delegate: BoardViewDelegate?
+    internal var delegate: BoardViewDelegate?
     
     // MARK - init
     
@@ -39,8 +38,8 @@ class BoardView: UIView {
     
     override func drawRect(rect: CGRect) {
         
-        let whiteColor = UIColor.whiteColor()
-        let blackColor = UIColor.blackColor()
+        let whiteColor = UIColor(red: 0.937, green: 0.851, blue: 0.718, alpha: 1)
+        let blackColor = UIColor(red: 0.706, green: 0.533, blue: 0.400, alpha: 1)
         
         for i in 0..<64 {
             
