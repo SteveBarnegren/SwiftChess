@@ -11,13 +11,17 @@ import Foundation
 public class Player {
    
     let color: Color!
+    weak var game: Game!
     
-    init(color: Color){
+    init(color: Color, game: Game){
         self.color = color
+        self.game = game;
     }
     
-    
-    
+    func movePiece(fromIndex: Int, toIndex: Int){
+        
+    }
+
     
 }
 

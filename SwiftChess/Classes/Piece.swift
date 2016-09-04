@@ -20,6 +20,10 @@ public enum PieceType {
 public enum Color {
     case white
     case black
+    
+    func opposite() -> Color {
+        return (self == .white) ? .black : .white
+    }
 }
 
 public class Piece {
@@ -31,5 +35,7 @@ public class Piece {
         self.type = type
         self.color = color
     }
+    
+    
     
 }
