@@ -12,7 +12,7 @@ import Foundation
 
 public struct Square {
     
-    var piece: Piece?
+    public var piece: Piece?
     
 }
 
@@ -23,7 +23,7 @@ public struct Board {
     public var squares = [Square]()
     
     // MARK - Init
-    init(){
+    public init(){
         
         // Setup squares
         for i in 0..<64 {

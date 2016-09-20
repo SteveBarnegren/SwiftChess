@@ -3,9 +3,14 @@ use_frameworks!
 target 'SwiftChess_Example' do
   pod 'SwiftChess', :path => '../'
 
-  target 'SwiftChess_Tests' do
-    inherit! :search_paths
+ # target 'SwiftChess_Tests' do
+  #  inherit! :search_paths
 
     
-  end
+  #end
 end
+
+target 'SwiftChess_Tests' do
+  pod 'SwiftChess', :path => '../'
+end
+

@@ -13,6 +13,7 @@
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
+		678585401D91A13A007B0BDF /* PieceMovementTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6785853F1D91A13A007B0BDF /* PieceMovementTests.swift */; };
 		67AD33A71D7C67BF002730DF /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AD33A61D7C67BF002730DF /* GameViewController.swift */; };
 		67AD33A91D7C67DF002730DF /* BoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AD33A81D7C67DF002730DF /* BoardView.swift */; };
 		7E19CBAD2CD922F6CA022B64 /* Pods_SwiftChess_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B1F650BFBDE8F9480B99336 /* Pods_SwiftChess_Example.framework */; };
@@ -43,6 +44,7 @@
 		607FACE51AFB9204008FA782 /* SwiftChess_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftChess_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
+		6785853F1D91A13A007B0BDF /* PieceMovementTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PieceMovementTests.swift; path = ../PieceMovementTests.swift; sourceTree = "<group>"; };
 		67AD33A61D7C67BF002730DF /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		67AD33A81D7C67DF002730DF /* BoardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardView.swift; sourceTree = "<group>"; };
 		778A567046C746CEF4932461 /* SwiftChess.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = SwiftChess.podspec; path = ../SwiftChess.podspec; sourceTree = "<group>"; };
@@ -141,6 +143,7 @@
 		607FACE81AFB9204008FA782 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				6785853F1D91A13A007B0BDF /* PieceMovementTests.swift */,
 				607FACEB1AFB9204008FA782 /* Tests.swift */,
 				607FACE91AFB9204008FA782 /* Supporting Files */,
 			);
@@ -377,6 +380,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				607FACEC1AFB9204008FA782 /* Tests.swift in Sources */,
+				678585401D91A13A007B0BDF /* PieceMovementTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

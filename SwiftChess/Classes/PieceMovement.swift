@@ -11,8 +11,12 @@ import Foundation
 // MARK - PieceMovement (Base Class)
 
 public class PieceMovement {
+    
+    public init(){
+        
+    }
    
-    func canPieceMove(fromIndex: Int, toIndex: Int, board: Board) -> Bool {
+    public func canPieceMove(fromIndex: Int, toIndex: Int, board: Board) -> Bool {
         return false
     }
     
@@ -20,7 +24,9 @@ public class PieceMovement {
         return (index < 64 && index >= 0)
     }
     
-    func canPieceMoveWithStride(fromIndex fromIndex: Int, toIndex: Int, board: Board, stride: Int) -> Bool {
+    func canPieceMoveWithStride(fromIndex fromIndex: Int, toIndex: Int, board: Board, stride: Int, allowWrapping: Bool = false) -> Bool {
+        
+        let startRowIndex = fromIndex / 8
         
         var movingPiece = board.pieceAtIndex(fromIndex)
         
@@ -43,14 +49,22 @@ public class PieceMovement {
                 if piece.color == movingPiece!.color.opposite() && index == toIndex {
                     return true
                 }
+                
+                if piece.color == movingPiece!.color.opposite() && index != toIndex {
+                    return false
+                }
             }
             // if the square is empty
-            
             if index == toIndex {
                 return true
             }
             
             index += stride
+            
+            // If we're moving horizontally, make sure we watch out for row wrapping!
+            if !allowWrapping && (index / 8 != startRowIndex) {
+                return false
+            }
         }
         
         return false
@@ -83,17 +97,17 @@ public class PieceMovement {
 
 // MARK - PieceMovementStraightLine
 
-class PieceMovementStraightLine: PieceMovement {
+public class PieceMovementStraightLine: PieceMovement {
     
-    override func canPieceMove(fromIndex: Int, toIndex: Int, board: Board) -> Bool {
+    override public func canPieceMove(fromIndex: Int, toIndex: Int, board: Board) -> Bool {
         
         // Check downwards
-        if canPieceMoveWithStride(fromIndex: fromIndex, toIndex: toIndex, board: board, stride: -8){
+        if canPieceMoveWithStride(fromIndex: fromIndex, toIndex: toIndex, board: board, stride: -8, allowWrapping: true){
             return true
         }
         
         // Check upwards
-        if canPieceMoveWithStride(fromIndex: fromIndex, toIndex: toIndex, board: board, stride: 8){
+        if canPieceMoveWithStride(fromIndex: fromIndex, toIndex: toIndex, board: board, stride: 8, allowWrapping: true){
             return true
         }
         
@@ -115,27 +129,27 @@ class PieceMovementStraightLine: PieceMovement {
 
 // MARK - PieceMovementDiagonal
 
-class PieceMovementDiagonal: PieceMovement {
+public class PieceMovementDiagonal: PieceMovement {
     
-    override func canPieceMove(fromIndex: Int, toIndex: Int, board: Board) -> Bool {
+    override public func canPieceMove(fromIndex: Int, toIndex: Int, board: Board) -> Bool {
         
         // Check South East
-        if canPieceMoveWithStride(fromIndex: fromIndex, toIndex: toIndex, board: board, stride: -7){
+        if canPieceMoveWithStride(fromIndex: fromIndex, toIndex: toIndex, board: board, stride: -7, allowWrapping: true){
             return true
         }
         
         // Check South West
-        if canPieceMoveWithStride(fromIndex: fromIndex, toIndex: toIndex, board: board, stride: -9){
+        if canPieceMoveWithStride(fromIndex: fromIndex, toIndex: toIndex, board: board, stride: -9, allowWrapping: true){
             return true
         }
         
         // Check North East
-        if canPieceMoveWithStride(fromIndex: fromIndex, toIndex: toIndex, board: board, stride: 9){
+        if canPieceMoveWithStride(fromIndex: fromIndex, toIndex: toIndex, board: board, stride: 9, allowWrapping: true){
             return true
         }
         
         // Check North West
-        if canPieceMoveWithStride(fromIndex: fromIndex, toIndex: toIndex, board: board, stride: 7){
+        if canPieceMoveWithStride(fromIndex: fromIndex, toIndex: toIndex, board: board, stride: 7, allowWrapping: true){
             return true
         }
         
@@ -147,9 +161,9 @@ class PieceMovementDiagonal: PieceMovement {
 
 // MARK - PieceMovementKnight
 
-class PieceMovementKnight: PieceMovement {
+public class PieceMovementKnight: PieceMovement {
     
-    override func canPieceMove(fromIndex: Int, toIndex: Int, board: Board) -> Bool {
+    override public func canPieceMove(fromIndex: Int, toIndex: Int, board: Board) -> Bool {
         
         let offsets = [-17, -15, -10, -6, 6, 10, 15, 17]
         
@@ -168,9 +182,9 @@ class PieceMovementKnight: PieceMovement {
 
 // MARK - PieceMovementPawn
 
-class PieceMovementPawn: PieceMovement {
+public class PieceMovementPawn: PieceMovement {
     
-    override func canPieceMove(fromIndex: Int, toIndex: Int, board: Board) -> Bool {
+    override public func canPieceMove(fromIndex: Int, toIndex: Int, board: Board) -> Bool {
         
         var movingPiece = board.pieceAtIndex(fromIndex)
         
@@ -192,9 +206,9 @@ class PieceMovementPawn: PieceMovement {
 
 // MARK - PieceMovementKing
 
-class PieceMovementKing: PieceMovement {
+public class PieceMovementKing: PieceMovement {
     
-    override func canPieceMove(fromIndex: Int, toIndex: Int, board: Board) -> Bool {
+    override public func canPieceMove(fromIndex: Int, toIndex: Int, board: Board) -> Bool {
         
         let offsets = [-9, -8, -7, -1, 1, 7, 8, 9]
         
