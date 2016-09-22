@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class Player {
+open class Player {
    
     let color: Color!
     weak var game: Game!
@@ -18,7 +18,7 @@ public class Player {
         self.game = game;
     }
     
-    func movePiece(fromIndex: Int, toIndex: Int){
+    func movePiece(_ fromIndex: Int, toIndex: Int){
         
     }
 

@@ -8,11 +8,11 @@
 
 import Foundation
 
-public class Game {
+open class Game {
     
-    public var board = Board()
-    public var playerOne: Player!
-    public var playerTwo: Player!
+    open var board = Board()
+    open var playerOne: Player!
+    open var playerTwo: Player!
     
     public init(){
         

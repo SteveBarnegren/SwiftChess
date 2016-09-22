@@ -9,7 +9,7 @@
 import UIKit
 
 protocol BoardViewDelegate {
-    func touchedSquareAtIndex(boardView: BoardView, index: Int)
+    func touchedSquareAtIndex(_ boardView: BoardView, index: Int)
 }
 
 class BoardView: UIView {
@@ -30,13 +30,13 @@ class BoardView: UIView {
     }
     
     func setupBoardView(){
-        layer.borderColor = UIColor.blackColor().CGColor
+        layer.borderColor = UIColor.black.cgColor
         layer.borderWidth = 1
     }
 
     // MARK - Drawing
     
-    override func drawRect(rect: CGRect) {
+    override func draw(_ rect: CGRect) {
         
         let whiteColor = UIColor(red: 0.937, green: 0.851, blue: 0.718, alpha: 1)
         let blackColor = UIColor(red: 0.706, green: 0.533, blue: 0.400, alpha: 1)
@@ -69,18 +69,18 @@ class BoardView: UIView {
     
     // MARK - Touch Handling
     
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
     }
     
-    override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         
     }
     
-    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         
         // Get touch location
-        let location = touches.first!.locationInView(self)
+        let location = touches.first!.location(in: self)
         print("Touch at x: \(location.x) y: \(location.y)")
         
         let boardIndex = boardIndexForLocation(location)
@@ -90,11 +90,11 @@ class BoardView: UIView {
         
     }
     
-    override func touchesCancelled(touches: Set<UITouch>?, withEvent event: UIEvent?) {
+    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
         
     }
     
-    func boardIndexForLocation(location: CGPoint) -> Int{
+    func boardIndexForLocation(_ location: CGPoint) -> Int{
 
         // Flip y (0 at bottom)
         var location = location

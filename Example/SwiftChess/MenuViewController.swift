@@ -22,12 +22,12 @@ class MenuViewController: UIViewController {
     
     // MARK - Actions
     
-    @IBAction func playerVsAIButtonPressed(sender: UIButton){
+    @IBAction func playerVsAIButtonPressed(_ sender: UIButton){
         print("Player vs AI button pressed")
         
     }
     
-    @IBAction func playerVsPlayerButtonPressed(sender: UIButton){
+    @IBAction func playerVsPlayerButtonPressed(_ sender: UIButton){
         print("Player vs Player button pressed")
         
         let gameViewController = GameViewController.gameViewController()
@@ -35,7 +35,7 @@ class MenuViewController: UIViewController {
         
     }
     
-    @IBAction func AIvsAIButtonPressed(sender: UIButton){
+    @IBAction func AIvsAIButtonPressed(_ sender: UIButton){
         print("AI vs AI button pressed")
     }
 

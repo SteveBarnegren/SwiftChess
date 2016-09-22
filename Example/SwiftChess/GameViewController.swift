@@ -20,8 +20,8 @@ class GameViewController: UIViewController {
     class func gameViewController() -> GameViewController{
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let className = String(GameViewController)
-        let gameViewController: GameViewController = storyboard.instantiateViewControllerWithIdentifier(className) as! GameViewController
+        let className = "GameViewController"
+        let gameViewController: GameViewController = storyboard.instantiateViewController(withIdentifier: className) as! GameViewController
         return gameViewController
     }
 
@@ -38,8 +38,8 @@ class GameViewController: UIViewController {
         // Piece labels
         for _ in 0..<64 {
             let label = UILabel()
-            label.textAlignment = .Center
-            label.font = UIFont.boldSystemFontOfSize(30)
+            label.textAlignment = .center
+            label.font = UIFont.boldSystemFont(ofSize: 30)
             self.boardView.addSubview(label)
             self.pieceLabels.append(label)
         }
@@ -51,7 +51,7 @@ class GameViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         
-        for (index, label) in pieceLabels.enumerate() {
+        for (index, label) in pieceLabels.enumerated() {
             
             let gridX = index % 8
             let gridY = (63 - index) / 8
@@ -68,9 +68,9 @@ class GameViewController: UIViewController {
         
     }
     
-    func update(board: Board){
+    func update(_ board: Board){
         
-        for (index, label) in pieceLabels.enumerate() {
+        for (index, label) in pieceLabels.enumerated() {
             
             let piece = board.pieceAtIndex(index)
             
@@ -97,7 +97,7 @@ class GameViewController: UIViewController {
             label.text = string
             
             if let piece = piece{
-                label.textColor = piece.color == .white ? UIColor.whiteColor() : UIColor.blackColor()
+                label.textColor = piece.color == .white ? UIColor.white : UIColor.black
             }
         }
     }
@@ -109,7 +109,7 @@ class GameViewController: UIViewController {
 
 extension GameViewController: BoardViewDelegate{
     
-    func touchedSquareAtIndex(boardView: BoardView, index: Int) {
+    func touchedSquareAtIndex(_ boardView: BoardView, index: Int) {
         print("GVC touched square at index \(index)")
         
         

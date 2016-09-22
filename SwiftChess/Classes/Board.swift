@@ -8,6 +8,29 @@
 
 import Foundation
 
+// MARK - ****** Coordinate ******
+
+public struct BoardLocation {
+    
+    public var index: Int
+    
+    public var x: Int {
+        return index % 8
+    }
+    
+    public var y: Int {
+        return index / 8
+    }
+    
+    init(index: Int) {
+        self.index = index
+    }
+    
+    init(x: Int, y: Int) {
+        self.index = x + (y*8)
+    }
+}
+
 // MARK - ****** Square ******
 
 public struct Square {
@@ -64,11 +87,11 @@ public struct Board {
     
     // MARK - Pieces
     
-    public func pieceAtIndex(index: Int) -> Piece? {
+    public func pieceAtIndex(_ index: Int) -> Piece? {
         return squares[index].piece
     }
     
-    public mutating func movePiece(fromIndex: Int, toIndex: Int){
+    public mutating func movePiece(_ fromIndex: Int, toIndex: Int){
         
         squares[toIndex].piece = self.squares[fromIndex].piece
         squares[fromIndex].piece = nil
@@ -143,11 +166,11 @@ public struct Board {
 
 
     
-    public func printBoard( squarePrinter: (Square) -> Character? ){
+    public func printBoard( _ squarePrinter: (Square) -> Character? ){
         
         var printString = String()
         
-        for y in  (0...7).reverse(){
+        for y in  (0...7).reversed(){
             for x in 0...7 {
                 
                 let index = y*8 + x

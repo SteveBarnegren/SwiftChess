@@ -26,10 +26,10 @@ public enum Color {
     }
 }
 
-public class Piece {
+open class Piece {
     
-    public let type: PieceType
-    public let color: Color
+    open let type: PieceType
+    open let color: Color
     
     public init(type: PieceType, color: Color){
         self.type = type
