@@ -856,5 +856,81 @@ class PieceMovementTests: XCTestCase {
         
     }
     
+    // Rook Movement
     
+    func testRookCannotMoveToInvalidPositionFromCentre(){
+        
+        let board = ASCIIBoard( "! ! ! * ! ! ! !" +
+                                "! ! ! * ! ! ! !" +
+                                "! ! ! * ! ! ! !" +
+                                "! ! ! * ! ! ! !" +
+                                "* * * W * * * *" +
+                                "! ! ! * ! ! ! !" +
+                                "! ! ! * ! ! ! !" +
+                                "! ! ! * ! ! ! !" )
+        
+        testBoard(board: board, movingPiece: "W", movement: PieceMovementRook())
+        
+    }
+    
+    func testRookCannotMoveToInvalidPositionFromTopLeft(){
+        
+        let board = ASCIIBoard( "W * * * * * * *" +
+                                "* ! ! ! ! ! ! !" +
+                                "* ! ! ! ! ! ! !" +
+                                "* ! ! ! ! ! ! !" +
+                                "* ! ! ! ! ! ! !" +
+                                "* ! ! ! ! ! ! !" +
+                                "* ! ! ! ! ! ! !" +
+                                "* ! ! ! ! ! ! !" )
+        
+        testBoard(board: board, movingPiece: "W", movement: PieceMovementRook())
+        
+    }
+    
+    func testRookCannotMoveToInvalidPositionFromTopRight(){
+        
+        let board = ASCIIBoard( "* * * * * * * W" +
+                                "! ! ! ! ! ! ! *" +
+                                "! ! ! ! ! ! ! *" +
+                                "! ! ! ! ! ! ! *" +
+                                "! ! ! ! ! ! ! *" +
+                                "! ! ! ! ! ! ! *" +
+                                "! ! ! ! ! ! ! *" +
+                                "! ! ! ! ! ! ! *" )
+        
+        testBoard(board: board, movingPiece: "W", movement: PieceMovementRook())
+        
+    }
+    
+    func testRookCannotMoveToInvalidPositionFromBottomLeft(){
+        
+        let board = ASCIIBoard( "* ! ! ! ! ! ! !" +
+                                "* ! ! ! ! ! ! !" +
+                                "* ! ! ! ! ! ! !" +
+                                "* ! ! ! ! ! ! !" +
+                                "* ! ! ! ! ! ! !" +
+                                "* ! ! ! ! ! ! !" +
+                                "* ! ! ! ! ! ! !" +
+                                "W * * * * * * *" )
+        
+        testBoard(board: board, movingPiece: "W", movement: PieceMovementRook())
+        
+    }
+    
+    func testRookCannotMoveToInvalidPositionFromBottomRight(){
+        
+        let board = ASCIIBoard( "! ! ! ! ! ! ! *" +
+                                "! ! ! ! ! ! ! *" +
+                                "! ! ! ! ! ! ! *" +
+                                "! ! ! ! ! ! ! *" +
+                                "! ! ! ! ! ! ! *" +
+                                "! ! ! ! ! ! ! *" +
+                                "! ! ! ! ! ! ! *" +
+                                "* * * * * * * W" )
+        
+        testBoard(board: board, movingPiece: "W", movement: PieceMovementRook())
+        
+    }
+
 }

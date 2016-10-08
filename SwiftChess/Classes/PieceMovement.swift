@@ -173,6 +173,21 @@ open class PieceMovementQueen: PieceMovement {
     }
 }
 
+// MARK: - PieceMovementRook
+
+open class PieceMovementRook: PieceMovement {
+    
+    let straightLineMovement = PieceMovementStraightLine()
+    
+    override open func canPieceMove(fromLocation: BoardLocation, toLocation: BoardLocation, board: Board) -> Bool {
+        
+        return straightLineMovement.canPieceMove(fromLocation: fromLocation, toLocation: toLocation, board: board)
+        
+        return false
+        
+    }
+}
+
 // MARK: - PieceMovementKnight
 
 open class PieceMovementKnight: PieceMovement {
