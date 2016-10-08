@@ -19,10 +19,7 @@ public struct BoardStride {
         self.x = x;
         self.y = y;
     }
-    
-    
-    
-    
+
 }
 
 // MARK - ****** BoardLocation ******

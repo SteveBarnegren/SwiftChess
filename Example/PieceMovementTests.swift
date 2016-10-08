@@ -546,5 +546,86 @@ class PieceMovementTests: XCTestCase {
         testBoard(board: board, movingPiece: "W", movement: PieceMovementKnight())
         
     }
+    
+    // MARK - King Movement
+    
+    func testKingMovementCannotMoveToInvalidPositionFromCenter() {
+        
+        let board = ASCIIBoard( "! ! ! ! ! ! ! !" +
+                                "! ! ! ! ! ! ! !" +
+                                "! ! ! ! ! ! ! !" +
+                                "! ! * * * ! ! !" +
+                                "! ! * W * ! ! !" +
+                                "! ! * * * ! ! !" +
+                                "! ! ! ! ! ! ! !" +
+                                "! ! ! ! ! ! ! !" )
+        
+        testBoard(board: board, movingPiece: "W", movement: PieceMovementKing())
+        
+    }
+    
+    func testKingMovementCannotMoveToInvalidPositionFromTopLeft() {
+        
+        let board = ASCIIBoard( "W * ! ! ! ! ! !" +
+                                "* * ! ! ! ! ! !" +
+                                "! ! ! ! ! ! ! !" +
+                                "! ! ! ! ! ! ! !" +
+                                "! ! ! ! ! ! ! !" +
+                                "! ! ! ! ! ! ! !" +
+                                "! ! ! ! ! ! ! !" +
+                                "! ! ! ! ! ! ! !" )
+        
+        testBoard(board: board, movingPiece: "W", movement: PieceMovementKing())
+        
+    }
+    
+    func testKingMovementCannotMoveToInvalidPositionFromTopRight() {
+        
+        let board = ASCIIBoard( "! ! ! ! ! ! * W" +
+                                "! ! ! ! ! ! * *" +
+                                "! ! ! ! ! ! ! !" +
+                                "! ! ! ! ! ! ! !" +
+                                "! ! ! ! ! ! ! !" +
+                                "! ! ! ! ! ! ! !" +
+                                "! ! ! ! ! ! ! !" +
+                                "! ! ! ! ! ! ! !" )
+        
+        testBoard(board: board, movingPiece: "W", movement: PieceMovementKing())
+        
+    }
+    
+    func testKingMovementCannotMoveToInvalidPositionFromBottomLeft() {
+        
+        let board = ASCIIBoard( "! ! ! ! ! ! ! !" +
+                                "! ! ! ! ! ! ! !" +
+                                "! ! ! ! ! ! ! !" +
+                                "! ! ! ! ! ! ! !" +
+                                "! ! ! ! ! ! ! !" +
+                                "! ! ! ! ! ! ! !" +
+                                "* * ! ! ! ! ! !" +
+                                "W * ! ! ! ! ! !" )
+                            
+        testBoard(board: board, movingPiece: "W", movement: PieceMovementKing())
+        
+    }
+    
+    func testKingMovementCannotMoveToInvalidPositionFromBottomRight() {
+        
+        let board = ASCIIBoard( "! ! ! ! ! ! ! !" +
+                                "! ! ! ! ! ! ! !" +
+                                "! ! ! ! ! ! ! !" +
+                                "! ! ! ! ! ! ! !" +
+                                "! ! ! ! ! ! ! !" +
+                                "! ! ! ! ! ! ! !" +
+                                "! ! ! ! ! ! * *" +
+                                "! ! ! ! ! ! * W" )
+        
+        testBoard(board: board, movingPiece: "W", movement: PieceMovementKing())
+        
+    }
+
+
+
+
 
 }

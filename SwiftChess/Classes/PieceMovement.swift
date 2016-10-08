@@ -185,6 +185,7 @@ open class PieceMovementKnight: PieceMovement {
 }
 
 // MARK - PieceMovementPawn
+
 /*
 open class PieceMovementPawn: PieceMovement {
     
@@ -207,27 +208,40 @@ open class PieceMovementPawn: PieceMovement {
         return false
     }
 }
+ */
 
 // MARK - PieceMovementKing
 
 open class PieceMovementKing: PieceMovement {
     
-    override open func canPieceMove(_ fromIndex: Int, toIndex: Int, board: Board) -> Bool {
+    override open func canPieceMove(fromLocation: BoardLocation, toLocation: BoardLocation, board: Board) -> Bool {
         
-        let offsets = [-9, -8, -7, -1, 1, 7, 8, 9]
+        
+        let offsets: [(x: Int, y: Int)] = [
+            (0,1), // North
+            (1,1), // North-East
+            (1,0), // East
+            (1,-1), // South-East
+            (0,-1), // South
+            (-1,-1), // South-West
+            (-1,0), // West
+            (-1,1) // North- West
+        ]
         
         for offset in offsets {
             
-            let target = fromIndex + offset
-            if target == toIndex && canPieceOccupySquareAtOffset(fromIndex, offset: offset, board: board) {
+            let offsetLocation = fromLocation.incrementedBy(x: offset.x, y: offset.y)
+            
+            if toLocation == offsetLocation && canPieceOccupySquare(pieceLocation: fromLocation, xOffset: offset.x, yOffset: offset.y, board: board) {
                 return true
             }
         }
         
         return false
     }
+
 }
- */
+
 
 
 
