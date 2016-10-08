@@ -14,10 +14,10 @@ protocol BoardViewDelegate {
 
 class BoardView: UIView {
     
-    // Mark - Properties
+    // MARK: - Properties
     internal var delegate: BoardViewDelegate?
     
-    // MARK - init
+    // MARK: - init
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -34,7 +34,7 @@ class BoardView: UIView {
         layer.borderWidth = 1
     }
 
-    // MARK - Drawing
+    // MARK: - Drawing
     
     override func draw(_ rect: CGRect) {
         
@@ -67,7 +67,7 @@ class BoardView: UIView {
         
     }
     
-    // MARK - Touch Handling
+    // MARK: - Touch Handling
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         

@@ -8,7 +8,7 @@
 
 import Foundation
 
-// MARK - PieceMovement (Base Class)
+// MARK: - PieceMovement (Base Class)
 
 open class PieceMovement {
     
@@ -103,7 +103,7 @@ open class PieceMovement {
 
 }
 
-// MARK - PieceMovementStraightLine
+// MARK: - PieceMovementStraightLine
 
 open class PieceMovementStraightLine: PieceMovement {
     
@@ -127,7 +127,7 @@ open class PieceMovementStraightLine: PieceMovement {
     
 }
 
-// MARK - PieceMovementDiagonal
+// MARK: - PieceMovementDiagonal
 
 open class PieceMovementDiagonal: PieceMovement {
     
@@ -153,7 +153,7 @@ open class PieceMovementDiagonal: PieceMovement {
     
 }
 
-// MARK - PieceMovementKnight
+// MARK: - PieceMovementKnight
 
 open class PieceMovementKnight: PieceMovement {
     
@@ -184,7 +184,7 @@ open class PieceMovementKnight: PieceMovement {
     
 }
 
-// MARK - PieceMovementPawn
+// MARK: - PieceMovementPawn
 
 open class PieceMovementPawn: PieceMovement {
     
@@ -232,7 +232,7 @@ open class PieceMovementPawn: PieceMovement {
 }
 
 
-// MARK - PieceMovementKing
+// MARK: - PieceMovementKing
 
 open class PieceMovementKing: PieceMovement {
     
@@ -263,11 +263,3 @@ open class PieceMovementKing: PieceMovement {
     }
 
 }
-
-
-
-
-
-
-
-

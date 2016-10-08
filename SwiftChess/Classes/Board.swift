@@ -8,7 +8,7 @@
 
 import Foundation
 
-// MARK - ****** BoardStride ******
+// MARK: - ****** BoardStride ******
 
 public struct BoardStride {
     
@@ -22,7 +22,7 @@ public struct BoardStride {
 
 }
 
-// MARK - ****** BoardLocation ******
+// MARK: - ****** BoardLocation ******
 
 public struct BoardLocation : Equatable {
     
@@ -101,7 +101,7 @@ public func +(left: BoardLocation, right: BoardLocation) -> BoardLocation {
     return BoardLocation(index: left.index + right.index)
 }
 
-// MARK - ****** Square ******
+// MARK: - ****** Square ******
 
 public struct Square {
     
@@ -109,13 +109,13 @@ public struct Square {
     
 }
 
-// MARK - ****** Board ******
+// MARK: - ****** Board ******
 
 public struct Board {
 
     public var squares = [Square]()
     
-    // MARK - Init
+    // MARK: - Init
     public init(){
         
         // Setup squares
@@ -155,7 +155,7 @@ public struct Board {
         
     }
     
-    // MARK - Pieces
+    // MARK: - Pieces
     
     public func getPiece(at location: BoardLocation) -> Piece? {
         return squares[location.index].piece
@@ -168,7 +168,7 @@ public struct Board {
         
     }
     
-    // MARK - Print
+    // MARK: - Print
     
     public func printBoardColors() {
         printBoard { (square: Square) -> Character? in

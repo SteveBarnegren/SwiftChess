@@ -18,10 +18,17 @@ open class Player {
         self.game = game;
     }
     
-    func movePiece(_ fromIndex: Int, toIndex: Int){
+    func movePiece(fromLocation: BoardLocation, toLocation: BoardLocation){
+        
+        
+        
+        
+        
+        
+        
+        
         
     }
-
     
 }
 

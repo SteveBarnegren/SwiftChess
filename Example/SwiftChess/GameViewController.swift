@@ -15,7 +15,7 @@ class GameViewController: UIViewController {
     var pieceLabels = [UILabel]()
     var game: Game!
     
-    // MARK - Creation
+    // MARK: - Creation
     
     class func gameViewController() -> GameViewController{
         
@@ -106,7 +106,7 @@ class GameViewController: UIViewController {
     
 }
 
-// MARK - Board view delegate
+// MARK: - Board view delegate
 
 extension GameViewController: BoardViewDelegate{
     

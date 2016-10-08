@@ -12,7 +12,7 @@ import SwiftChess
 class PieceMovementTests: XCTestCase {
 
     
-    // MARK - Setup / Tear down
+    // MARK: - Setup / Tear down
     
     override func setUp() {
         super.setUp()
@@ -24,7 +24,7 @@ class PieceMovementTests: XCTestCase {
         super.tearDown()
     }
     
-    // MARK - Board Testing
+    // MARK: - Board Testing
     
     func testBoard(board: ASCIIBoard, movingPiece: Character, movement: PieceMovement) {
         
@@ -59,7 +59,7 @@ class PieceMovementTests: XCTestCase {
 
     }
     
-    // MARK - Straight Line Movement
+    // MARK: - Straight Line Movement
     
     func testStraightLineMovementCanMoveUp() {
         
@@ -351,6 +351,7 @@ class PieceMovementTests: XCTestCase {
         
     }
 
+    // MARK: - Knight Movement
     
     func testKnightMovementCanMoveToClockwisePosition1() {
         
@@ -547,7 +548,7 @@ class PieceMovementTests: XCTestCase {
         
     }
     
-    // MARK - King Movement
+    // MARK: - King Movement
     
     func testKingMovementCannotMoveToInvalidPositionFromCenter() {
         
@@ -624,7 +625,7 @@ class PieceMovementTests: XCTestCase {
         
     }
     
-    // MARK - Pawn Movement
+    // MARK: - Pawn Movement
     
     func testWhitePawnCanMoveAheadOneSpace() {
         
@@ -777,16 +778,5 @@ class PieceMovementTests: XCTestCase {
         testBoard(board: board, movingPiece: "p", movement: PieceMovementPawn())
         
     }
-
-
-
-
-
-
-
-
-
-
-
 
 }

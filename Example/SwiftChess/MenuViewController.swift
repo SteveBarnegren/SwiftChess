@@ -20,7 +20,7 @@ class MenuViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    // MARK - Actions
+    // MARK: - Actions
     
     @IBAction func playerVsAIButtonPressed(_ sender: UIButton){
         print("Player vs AI button pressed")
