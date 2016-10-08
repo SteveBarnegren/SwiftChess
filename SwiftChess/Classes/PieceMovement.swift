@@ -188,6 +188,21 @@ open class PieceMovementRook: PieceMovement {
     }
 }
 
+// MARK: - PieceMovementBishop
+
+open class PieceMovementBishop: PieceMovement {
+    
+    let diagonalMovement = PieceMovementDiagonal()
+    
+    override open func canPieceMove(fromLocation: BoardLocation, toLocation: BoardLocation, board: Board) -> Bool {
+        
+        return diagonalMovement.canPieceMove(fromLocation: fromLocation, toLocation: toLocation, board: board)
+        
+        return false
+        
+    }
+}
+
 // MARK: - PieceMovementKnight
 
 open class PieceMovementKnight: PieceMovement {
