@@ -153,6 +153,26 @@ open class PieceMovementDiagonal: PieceMovement {
     
 }
 
+// MARK: - PieceMovementQueen
+
+open class PieceMovementQueen: PieceMovement {
+    
+    let movements : [PieceMovement] = [PieceMovementStraightLine(), PieceMovementDiagonal()]
+
+    override open func canPieceMove(fromLocation: BoardLocation, toLocation: BoardLocation, board: Board) -> Bool {
+        
+        for pieceMovement in movements {
+            
+            if pieceMovement.canPieceMove(fromLocation: fromLocation, toLocation: toLocation, board: board) {
+                return true
+            }
+        }
+        
+        return false
+        
+    }
+}
+
 // MARK: - PieceMovementKnight
 
 open class PieceMovementKnight: PieceMovement {
