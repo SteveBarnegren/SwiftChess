@@ -932,5 +932,83 @@ class PieceMovementTests: XCTestCase {
         testBoard(board: board, movingPiece: "W", movement: PieceMovementRook())
         
     }
+    
+    // MARK - Bishop movement
+    
+    func testBishopCannotMoveToInvalidPositionFromCentre(){
+        
+        let board = ASCIIBoard( "! ! ! ! ! ! ! *" +
+                                "* ! ! ! ! ! * !" +
+                                "! * ! ! ! * ! !" +
+                                "! ! * ! * ! ! !" +
+                                "! ! ! W ! ! ! !" +
+                                "! ! * ! * ! ! !" +
+                                "! * ! ! ! * ! !" +
+                                "* ! ! ! ! ! * !" )
+        
+        testBoard(board: board, movingPiece: "W", movement: PieceMovementBishop())
+        
+    }
+    
+    func testBishopCannotMoveToInvalidPositionFromTopLeft(){
+        
+        let board = ASCIIBoard( "W ! ! ! ! ! ! !" +
+                                "! * ! ! ! ! ! !" +
+                                "! ! * ! ! ! ! !" +
+                                "! ! ! * ! ! ! !" +
+                                "! ! ! ! * ! ! !" +
+                                "! ! ! ! ! * ! !" +
+                                "! ! ! ! ! ! * !" +
+                                "! ! ! ! ! ! ! *" )
+        
+        testBoard(board: board, movingPiece: "W", movement: PieceMovementBishop())
+        
+    }
+    
+    func testBishopCannotMoveToInvalidPositionFromTopRight(){
+        
+        let board = ASCIIBoard( "! ! ! ! ! ! ! W" +
+                                "! ! ! ! ! ! * !" +
+                                "! ! ! ! ! * ! !" +
+                                "! ! ! ! * ! ! !" +
+                                "! ! ! * ! ! ! !" +
+                                "! ! * ! ! ! ! !" +
+                                "! * ! ! ! ! ! !" +
+                                "* ! ! ! ! ! ! !" )
+        
+        testBoard(board: board, movingPiece: "W", movement: PieceMovementBishop())
+        
+    }
+    
+    func testBishopCannotMoveToInvalidPositionFromBottomLeft(){
+        
+        let board = ASCIIBoard( "! ! ! ! ! ! ! *" +
+                                "! ! ! ! ! ! * !" +
+                                "! ! ! ! ! * ! !" +
+                                "! ! ! ! * ! ! !" +
+                                "! ! ! * ! ! ! !" +
+                                "! ! * ! ! ! ! !" +
+                                "! * ! ! ! ! ! !" +
+                                "W ! ! ! ! ! ! !" )
+        
+        testBoard(board: board, movingPiece: "W", movement: PieceMovementBishop())
+        
+    }
+    
+    func testBishopCannotMoveToInvalidPositionFromBottomRight(){
+        
+        let board = ASCIIBoard( "* ! ! ! ! ! ! !" +
+                                "! * ! ! ! ! ! !" +
+                                "! ! * ! ! ! ! !" +
+                                "! ! ! * ! ! ! !" +
+                                "! ! ! ! * ! ! !" +
+                                "! ! ! ! ! * ! !" +
+                                "! ! ! ! ! ! * !" +
+                                "! ! ! ! ! ! ! W" )
+        
+        testBoard(board: board, movingPiece: "W", movement: PieceMovementBishop())
+        
+    }
+
 
 }
