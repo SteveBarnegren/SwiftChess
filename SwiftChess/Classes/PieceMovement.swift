@@ -20,8 +20,9 @@ open class PieceMovement {
         return false
     }
     
-    func canPieceMove(fromLocation: BoardLocation, toLocation: BoardLocation, board: Board, stride: Int, allowWrapping: Bool = false) -> Bool {
+    func canPieceMove(fromLocation: BoardLocation, toLocation: BoardLocation, board: Board, stride: BoardStride) -> Bool {
         
+        // Get the moving piece
         var movingPiece = board.getPiece(at: fromLocation)
         
         if movingPiece == nil {
@@ -29,7 +30,11 @@ open class PieceMovement {
             return false
         }
         
-        var testLocation = fromLocation.incremented(by: stride)
+        // Increment by stride
+        if !fromLocation.canIncrementBy(stride: stride) {
+            return false
+        }
+        var testLocation = fromLocation.incrementedBy(stride: stride)
         
         while testLocation.isInBounds() {
             
@@ -53,12 +58,12 @@ open class PieceMovement {
                 return true
             }
             
-            testLocation = testLocation.incremented(by: stride)
-            
-            // If we're moving horizontally, make sure we watch out for row wrapping!
-            if !allowWrapping && testLocation.y != fromLocation.y {
+            // Increment by stride
+            if !testLocation.canIncrementBy(stride: stride) {
                 return false
             }
+            testLocation = testLocation.incrementedBy(stride: stride)
+            
         }
         
         return false
@@ -104,28 +109,20 @@ open class PieceMovementStraightLine: PieceMovement {
     
     override open func canPieceMove(fromLocation: BoardLocation, toLocation: BoardLocation, board: Board) -> Bool {
         
-        // Check downwards (-8, true)
-        if canPieceMove(fromLocation: fromLocation, toLocation: toLocation, board: board, stride: -8, allowWrapping: true){
-            return true
+        let strides = [
+            BoardStride(x: 0, y: -1 ), // Down
+            BoardStride(x: 0, y: 1 ), // Up
+            BoardStride(x: -1, y: 0 ), // Left
+            BoardStride(x: 1, y: 0 )  // Right
+        ]
+        
+        for stride in strides {
+            if canPieceMove(fromLocation: fromLocation, toLocation: toLocation, board: board, stride: stride) {
+                return true
+            }
         }
         
-        // Check upwards (8, true)
-        if canPieceMove(fromLocation: fromLocation, toLocation: toLocation, board: board, stride: 8, allowWrapping: true){
-            return true
-        }
-        
-        // Check to right (1)
-        if canPieceMove(fromLocation: fromLocation, toLocation: toLocation, board: board, stride: 1){
-            return true
-        }
-        
-        // Check to left (-1)
-        if canPieceMove(fromLocation: fromLocation, toLocation: toLocation, board: board, stride: -1){
-            return true
-        }
-   
         return false
-        
     }
     
 }
@@ -136,26 +133,20 @@ open class PieceMovementDiagonal: PieceMovement {
     
     override open func canPieceMove(fromLocation: BoardLocation, toLocation: BoardLocation, board: Board) -> Bool {
         
-        // Check South East (-7, true)
-        if canPieceMove(fromLocation: fromLocation, toLocation: toLocation, board: board, stride: -7, allowWrapping: true){
-            return true
-        }
         
-        // Check South West (-9, true)
-        if canPieceMove(fromLocation: fromLocation, toLocation: toLocation, board: board, stride: -9, allowWrapping: true){
-            return true
-        }
+        let strides = [
+            BoardStride(x: 1, y: -1 ), // South East
+            BoardStride(x: -1, y: -1 ), // South West
+            BoardStride(x: 1, y: 1 ), // North East
+            BoardStride(x: -1, y: 1 )  // North West
+        ]
         
-        // Check North East (9)
-        if canPieceMove(fromLocation: fromLocation, toLocation: toLocation, board: board, stride: 9){
-            return true
+        for stride in strides {
+            if canPieceMove(fromLocation: fromLocation, toLocation: toLocation, board: board, stride: stride) {
+                return true
+            }
         }
-        
-        // Check North West (7)
-        if canPieceMove(fromLocation: fromLocation, toLocation: toLocation, board: board, stride: 7){
-            return true
-        }
-        
+
         return false
         
     }

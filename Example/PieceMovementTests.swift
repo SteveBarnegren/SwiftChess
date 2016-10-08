@@ -380,11 +380,12 @@ class PieceMovementTests: XCTestCase {
         let movement = PieceMovementDiagonal()
         
         for targetIndex in targetIndexes {
+                      
             XCTAssertTrue(
                 movement.canPieceMove(fromLocation: BoardLocation(index: startIndex),
-                                      toLocation: BoardLocation(index: targetIndex),
-                                      board: board)
-            )
+                                                toLocation: BoardLocation(index: targetIndex),
+                                                board: board),
+                "failed index: \(targetIndex)")
         }
 
     }

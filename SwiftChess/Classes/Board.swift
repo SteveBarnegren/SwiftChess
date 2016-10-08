@@ -78,7 +78,7 @@ public struct BoardLocation : Equatable {
         }
         
         // Check will not wrap to left
-        if x - stride.x < 0  {
+        if x + stride.x < 0  {
             return false
         }
         
@@ -88,7 +88,7 @@ public struct BoardLocation : Equatable {
         }
         
         // Check will not wrap bottom
-        if y - stride.y < 0  {
+        if y + stride.y < 0  {
             return false
         }
         
