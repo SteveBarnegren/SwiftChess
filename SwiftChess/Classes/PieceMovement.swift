@@ -186,29 +186,51 @@ open class PieceMovementKnight: PieceMovement {
 
 // MARK - PieceMovementPawn
 
-/*
 open class PieceMovementPawn: PieceMovement {
     
-    override open func canPieceMove(_ fromIndex: Int, toIndex: Int, board: Board) -> Bool {
+    override open func canPieceMove(fromLocation: BoardLocation, toLocation: BoardLocation, board: Board) -> Bool {
         
-        var movingPiece = board.pieceAtIndex(fromIndex)
+        let movingPiece = board.getPiece(at: fromLocation)
         
         if movingPiece == nil {
-            print("Cannot from an index that does not contain a piece")
-            return false
+            return false;
         }
-
-        var offset = (movingPiece!.color == .white) ? 1 : -1
         
-        var target = fromIndex + offset
-        if target == toIndex && canPieceOccupySquareAtOffset(fromIndex, offset: offset, board: board) {
-            return true
+        var offsets = [(x: Int, y: Int)]()
+        
+        let color = movingPiece!.color
+        
+        // Add one ahead offset
+        if color == .white {
+            offsets.append((0,1))
+        }
+        else{
+            offsets.append((0,-1))
+        }
+        
+        // Add the two ahead offset
+        if color == .white && fromLocation.y == 1 {
+            offsets.append((0,2))
+        }
+        else if color == .black && fromLocation.y == 6 {
+            offsets.append((0,-2))
+        }
+        
+        // TODO: Need to implement the en-passent rule
+        
+        for offset in offsets {
+            
+            let offsetLocation = fromLocation.incrementedBy(x: offset.x, y: offset.y)
+            
+            if toLocation == offsetLocation && canPieceOccupySquare(pieceLocation: fromLocation, xOffset: offset.x, yOffset: offset.y, board: board) {
+                return true
+            }
         }
         
         return false
     }
 }
- */
+
 
 // MARK - PieceMovementKing
 

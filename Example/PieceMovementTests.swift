@@ -623,6 +623,167 @@ class PieceMovementTests: XCTestCase {
         testBoard(board: board, movingPiece: "W", movement: PieceMovementKing())
         
     }
+    
+    // MARK - Pawn Movement
+    
+    func testWhitePawnCanMoveAheadOneSpace() {
+        
+        let board = ASCIIBoard( "- - - - - - - -" +
+                                "- - - - - - - -" +
+                                "- - - - - - - -" +
+                                "- - - - - - - -" +
+                                "- - - - - - - -" +
+                                "- - - * - - - -" +
+                                "- - - P - - - -" +
+                                "- - - - - - - -" )
+        
+        testBoard(board: board, movingPiece: "P", movement: PieceMovementPawn())
+        
+    }
+    
+    func testBlackPawnCanMoveAheadOneSpace() {
+        
+        let board = ASCIIBoard( "- - - - - - - -" +
+                                "- - - p - - - -" +
+                                "- - - * - - - -" +
+                                "- - - - - - - -" +
+                                "- - - - - - - -" +
+                                "- - - - - - - -" +
+                                "- - - - - - - -" +
+                                "- - - - - - - -" )
+        
+        testBoard(board: board, movingPiece: "p", movement: PieceMovementPawn())
+        
+    }
+
+    
+    func testWhitePawnCanMoveAheadTwoSpaces() {
+        
+        let board = ASCIIBoard( "- - - - - - - -" +
+                                "- - - - - - - -" +
+                                "- - - - - - - -" +
+                                "- - - - - - - -" +
+                                "- - - * - - - -" +
+                                "- - - - - - - -" +
+                                "- - - P - - - -" +
+                                "- - - - - - - -" )
+        
+        testBoard(board: board, movingPiece: "P", movement: PieceMovementPawn())
+        
+    }
+    
+    func testBlackPawnCanMoveAheadTwoSpaces() {
+        
+        let board = ASCIIBoard( "- - - - - - - -" +
+                                "- - - p - - - -" +
+                                "- - - - - - - -" +
+                                "- - - * - - - -" +
+                                "- - - - - - - -" +
+                                "- - - - - - - -" +
+                                "- - - - - - - -" +
+                                "- - - - - - - -" )
+        
+        testBoard(board: board, movingPiece: "p", movement: PieceMovementPawn())
+        
+    }
+    
+    func testNonStartingRowWhitePawnCannotMoveAheadTwoSpaces() {
+        
+        let board = ASCIIBoard( "- - - - - - - -" +
+                                "- - - - - - - -" +
+                                "- - - - - - - -" +
+                                "- - - ! - - - -" +
+                                "- - - - - - - -" +
+                                "- - - P - - - -" +
+                                "- - - - - - - -" +
+                                "- - - - - - - -" )
+        
+        testBoard(board: board, movingPiece: "P", movement: PieceMovementPawn())
+        
+    }
+    
+    func testNonStartingRowBlackPawnCannotMoveAheadTwoSpaces() {
+        
+        let board = ASCIIBoard( "- - - - - - - -" +
+                                "- - - - - - - -" +
+                                "- - - p - - - -" +
+                                "- - - - - - - -" +
+                                "- - - ! - - - -" +
+                                "- - - - - - - -" +
+                                "- - - - - - - -" +
+                                "- - - - - - - -" )
+        
+        testBoard(board: board, movingPiece: "p", movement: PieceMovementPawn())
+        
+    }
+    
+    func testStartingRowWhitePawnCannotMoveToInvalidPosition() {
+        
+        let board = ASCIIBoard( "! ! ! ! ! ! ! !" +
+                                "! ! ! ! ! ! ! !" +
+                                "! ! ! ! ! ! ! !" +
+                                "! ! ! ! ! ! ! !" +
+                                "! ! ! * ! ! ! !" +
+                                "! ! ! * ! ! ! !" +
+                                "! ! ! P ! ! ! !" +
+                                "! ! ! ! ! ! ! !" )
+        
+        testBoard(board: board, movingPiece: "P", movement: PieceMovementPawn())
+        
+    }
+    
+    func testStartingRowBlackPawnCannotMoveToInvalidPosition() {
+        
+        let board = ASCIIBoard( "! ! ! ! ! ! ! !" +
+                                "! ! ! p ! ! ! !" +
+                                "! ! ! * ! ! ! !" +
+                                "! ! ! * ! ! ! !" +
+                                "! ! ! ! ! ! ! !" +
+                                "! ! ! ! ! ! ! !" +
+                                "! ! ! ! ! ! ! !" +
+                                "! ! ! ! ! ! ! !" )
+        
+        testBoard(board: board, movingPiece: "p", movement: PieceMovementPawn())
+        
+    }
+
+    
+    func testNonStartingRowWhitePawnCannotMoveToInvalidPosition() {
+        
+        let board = ASCIIBoard( "! ! ! ! ! ! ! !" +
+                                "! ! ! ! ! ! ! !" +
+                                "! ! ! ! ! ! ! !" +
+                                "! ! ! ! ! ! ! !" +
+                                "! ! ! * ! ! ! !" +
+                                "! ! ! P ! ! ! !" +
+                                "! ! ! ! ! ! ! !" +
+                                "! ! ! ! ! ! ! !" )
+        
+        testBoard(board: board, movingPiece: "P", movement: PieceMovementPawn())
+        
+    }
+    
+    func testNonStartingRowBlackPawnCannotMoveToInvalidPosition() {
+        
+        let board = ASCIIBoard( "! ! ! ! ! ! ! !" +
+                                "! ! ! ! ! ! ! !" +
+                                "! ! ! p ! ! ! !" +
+                                "! ! ! * ! ! ! !" +
+                                "! ! ! ! ! ! ! !" +
+                                "! ! ! ! ! ! ! !" +
+                                "! ! ! ! ! ! ! !" +
+                                "! ! ! ! ! ! ! !" )
+        
+        testBoard(board: board, movingPiece: "p", movement: PieceMovementPawn())
+        
+    }
+
+
+
+
+
+
+
 
 
 
