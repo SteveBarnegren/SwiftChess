@@ -276,7 +276,7 @@ class PieceMovementTests: XCTestCase {
 
     }
     
-    func testDiagonalMovementCannotMoveToInvalidPosition() {
+    func testDiagonalMovementCannotMoveToInvalidPositionFromCenter() {
         
         let board = ASCIIBoard( "! ! ! ! ! ! ! *" +
                                 "* ! ! ! ! ! * !" +
@@ -284,12 +284,73 @@ class PieceMovementTests: XCTestCase {
                                 "! ! * ! * ! ! !" +
                                 "! ! ! W ! ! ! !" +
                                 "! ! * ! * ! ! !" +
-                                "! * ! ! - * ! !" +
+                                "! * ! ! ! * ! !" +
                                 "* ! ! ! ! ! * !" )
         
         testBoard(board: board, movingPiece: "W", movement: PieceMovementDiagonal())
 
      }
+    
+    func testDiagonalMovementCannotMoveToInvalidPositionFromTopLeft() {
+        
+        let board = ASCIIBoard( "W ! ! ! ! ! ! !" +
+                                "! * ! ! ! ! ! !" +
+                                "! ! * ! ! ! ! !" +
+                                "! ! ! * ! ! ! !" +
+                                "! ! ! ! * ! ! !" +
+                                "! ! ! ! ! * ! !" +
+                                "! ! ! ! ! ! * !" +
+                                "! ! ! ! ! ! ! *" )
+        
+        testBoard(board: board, movingPiece: "W", movement: PieceMovementDiagonal())
+        
+    }
+    
+    func testDiagonalMovementCannotMoveToInvalidPositionFromTopRight() {
+        
+        let board = ASCIIBoard( "! ! ! ! ! ! ! W" +
+                                "! ! ! ! ! ! * !" +
+                                "! ! ! ! ! * ! !" +
+                                "! ! ! ! * ! ! !" +
+                                "! ! ! * ! ! ! !" +
+                                "! ! * ! ! ! ! !" +
+                                "! * ! ! ! ! ! !" +
+                                "* ! ! ! ! ! ! !" )
+        
+        testBoard(board: board, movingPiece: "W", movement: PieceMovementDiagonal())
+        
+    }
+    
+    func testDiagonalMovementCannotMoveToInvalidPositionFromBottomLeft() {
+        
+        let board = ASCIIBoard( "! ! ! ! ! ! ! *" +
+                                "! ! ! ! ! ! * !" +
+                                "! ! ! ! ! * ! !" +
+                                "! ! ! ! * ! ! !" +
+                                "! ! ! * ! ! ! !" +
+                                "! ! * ! ! ! ! !" +
+                                "! * ! ! ! ! ! !" +
+                                "W ! ! ! ! ! ! !" )
+        
+        testBoard(board: board, movingPiece: "W", movement: PieceMovementDiagonal())
+        
+    }
+    
+    func testDiagonalMovementCannotMoveToInvalidPositionFromBottomRight() {
+        
+        let board = ASCIIBoard( "* ! ! ! ! ! ! !" +
+                                "! * ! ! ! ! ! !" +
+                                "! ! * ! ! ! ! !" +
+                                "! ! ! * ! ! ! !" +
+                                "! ! ! ! * ! ! !" +
+                                "! ! ! ! ! * ! !" +
+                                "! ! ! ! ! ! * !" +
+                                "! ! ! ! ! ! ! W" )
+        
+        testBoard(board: board, movingPiece: "W", movement: PieceMovementDiagonal())
+        
+    }
+
     
     func testKnightMovementCanMoveToClockwisePosition1() {
         
@@ -487,14 +548,3 @@ class PieceMovementTests: XCTestCase {
     }
 
 }
-
-
-
-
-
-
-
-
-
-
-
