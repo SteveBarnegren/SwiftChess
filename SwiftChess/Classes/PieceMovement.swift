@@ -16,53 +16,47 @@ open class PieceMovement {
         
     }
    
-    open func canPieceMove(_ fromIndex: Int, toIndex: Int, board: Board) -> Bool {
+    open func canPieceMove(fromLocation: BoardLocation, toLocation: BoardLocation, board: Board) -> Bool {
         return false
     }
     
-    func isIndexInBounds(_ index: Int) -> Bool {
-        return (index < 64 && index >= 0)
-    }
-    
-    func canPieceMoveWithStride(fromIndex: Int, toIndex: Int, board: Board, stride: Int, allowWrapping: Bool = false) -> Bool {
+    func canPieceMove(fromLocation: BoardLocation, toLocation: BoardLocation, board: Board, stride: Int, allowWrapping: Bool = false) -> Bool {
         
-        let startRowIndex = fromIndex / 8
-        
-        var movingPiece = board.pieceAtIndex(fromIndex)
+        var movingPiece = board.getPiece(at: fromLocation)
         
         if movingPiece == nil {
             print("Cannot from an index that does not contain a piece")
             return false
         }
         
-        var index = fromIndex + stride
+        var testLocation = fromLocation.incremented(by: stride)
         
-        while isIndexInBounds(index) {
+        while testLocation.isInBounds() {
             
             // If there is a piece on the square
-            if let piece = board.pieceAtIndex(index) {
+            if let piece = board.getPiece(at: testLocation) {
                 
                 if piece.color == movingPiece!.color {
                     return false
                 }
                 
-                if piece.color == movingPiece!.color.opposite() && index == toIndex {
+                if piece.color == movingPiece!.color.opposite() && testLocation == toLocation {
                     return true
                 }
                 
-                if piece.color == movingPiece!.color.opposite() && index != toIndex {
+                if piece.color == movingPiece!.color.opposite() && testLocation != toLocation {
                     return false
                 }
             }
             // if the square is empty
-            if index == toIndex {
+            if testLocation == toLocation {
                 return true
             }
             
-            index += stride
+            testLocation = testLocation.incremented(by: stride)
             
             // If we're moving horizontally, make sure we watch out for row wrapping!
-            if !allowWrapping && (index / 8 != startRowIndex) {
+            if !allowWrapping && testLocation.y != fromLocation.y {
                 return false
             }
         }
@@ -70,34 +64,29 @@ open class PieceMovement {
         return false
     }
     
-    func canPieceOccupySquareAtOffset(pieceIndex: Int, xOffset: Int, yOffset: Int, board: Board) -> Bool{
+    func canPieceOccupySquare(pieceLocation: BoardLocation, xOffset: Int, yOffset: Int, board: Board) -> Bool{
         
-        let targetIndex = pieceIndex + (yOffset * 8) + xOffset
+        let targetLocation = pieceLocation.incrementedBy(x: xOffset, y: yOffset)
         
         // Check if in bounds
-        guard isIndexInBounds(targetIndex) else{
+        guard targetLocation.isInBounds() else{
             return false
         }
         
         // Check if wrapped
-        let currentY = Int(pieceIndex / 8)
-        let currentX = pieceIndex % 8
-        let targetY = Int(targetIndex / 8)
-        let targetX = targetIndex % 8
-        
-        if targetX - currentX != xOffset || targetY - currentY != yOffset {
+        if targetLocation.x - pieceLocation.x != xOffset || targetLocation.y - pieceLocation.y != yOffset {
             return false
         }
         
         // Check if space is occupied
-        var movingPiece = board.pieceAtIndex(pieceIndex)
+        var movingPiece = board.getPiece(at: pieceLocation)
         
         if movingPiece == nil {
             print("Cannot from an index that does not contain a piece")
             return false
         }
         
-        if let otherPiece = board.pieceAtIndex(targetIndex) {
+        if let otherPiece = board.getPiece(at: targetLocation) {
             
             if otherPiece.color == movingPiece!.color {
                 return false
@@ -113,25 +102,25 @@ open class PieceMovement {
 
 open class PieceMovementStraightLine: PieceMovement {
     
-    override open func canPieceMove(_ fromIndex: Int, toIndex: Int, board: Board) -> Bool {
+    override open func canPieceMove(fromLocation: BoardLocation, toLocation: BoardLocation, board: Board) -> Bool {
         
-        // Check downwards
-        if canPieceMoveWithStride(fromIndex: fromIndex, toIndex: toIndex, board: board, stride: -8, allowWrapping: true){
+        // Check downwards (-8, true)
+        if canPieceMove(fromLocation: fromLocation, toLocation: toLocation, board: board, stride: -8, allowWrapping: true){
             return true
         }
         
-        // Check upwards
-        if canPieceMoveWithStride(fromIndex: fromIndex, toIndex: toIndex, board: board, stride: 8, allowWrapping: true){
+        // Check upwards (8, true)
+        if canPieceMove(fromLocation: fromLocation, toLocation: toLocation, board: board, stride: 8, allowWrapping: true){
             return true
         }
         
-        // Check to right
-        if canPieceMoveWithStride(fromIndex: fromIndex, toIndex: toIndex, board: board, stride: 1){
+        // Check to right (1)
+        if canPieceMove(fromLocation: fromLocation, toLocation: toLocation, board: board, stride: 1){
             return true
         }
         
-        // Check to left
-        if canPieceMoveWithStride(fromIndex: fromIndex, toIndex: toIndex, board: board, stride: -1){
+        // Check to left (-1)
+        if canPieceMove(fromLocation: fromLocation, toLocation: toLocation, board: board, stride: -1){
             return true
         }
    
@@ -145,25 +134,25 @@ open class PieceMovementStraightLine: PieceMovement {
 
 open class PieceMovementDiagonal: PieceMovement {
     
-    override open func canPieceMove(_ fromIndex: Int, toIndex: Int, board: Board) -> Bool {
+    override open func canPieceMove(fromLocation: BoardLocation, toLocation: BoardLocation, board: Board) -> Bool {
         
-        // Check South East
-        if canPieceMoveWithStride(fromIndex: fromIndex, toIndex: toIndex, board: board, stride: -7, allowWrapping: true){
+        // Check South East (-7, true)
+        if canPieceMove(fromLocation: fromLocation, toLocation: toLocation, board: board, stride: -7, allowWrapping: true){
             return true
         }
         
-        // Check South West
-        if canPieceMoveWithStride(fromIndex: fromIndex, toIndex: toIndex, board: board, stride: -9, allowWrapping: true){
+        // Check South West (-9, true)
+        if canPieceMove(fromLocation: fromLocation, toLocation: toLocation, board: board, stride: -9, allowWrapping: true){
             return true
         }
         
-        // Check North East
-        if canPieceMoveWithStride(fromIndex: fromIndex, toIndex: toIndex, board: board, stride: 9, allowWrapping: true){
+        // Check North East (9)
+        if canPieceMove(fromLocation: fromLocation, toLocation: toLocation, board: board, stride: 9){
             return true
         }
         
-        // Check North West
-        if canPieceMoveWithStride(fromIndex: fromIndex, toIndex: toIndex, board: board, stride: 7, allowWrapping: true){
+        // Check North West (7)
+        if canPieceMove(fromLocation: fromLocation, toLocation: toLocation, board: board, stride: 7){
             return true
         }
         
@@ -177,7 +166,7 @@ open class PieceMovementDiagonal: PieceMovement {
 
 open class PieceMovementKnight: PieceMovement {
     
-    override open func canPieceMove(_ fromIndex: Int, toIndex: Int, board: Board) -> Bool {
+    override open func canPieceMove(fromLocation: BoardLocation, toLocation: BoardLocation, board: Board) -> Bool {
         
         let offsets: [(x: Int, y: Int)] = [
             (1,2),
@@ -192,9 +181,9 @@ open class PieceMovementKnight: PieceMovement {
         
         for offset in offsets {
             
-            let offsetTarget = fromIndex + (offset.x) + (offset.y * 8)
+            let offsetLocation = fromLocation.incrementedBy(x: offset.x, y: offset.y)
             
-            if toIndex == offsetTarget && canPieceOccupySquareAtOffset(pieceIndex: fromIndex, xOffset: offset.x, yOffset: offset.y, board: board) {
+            if toLocation == offsetLocation && canPieceOccupySquare(pieceLocation: fromLocation, xOffset: offset.x, yOffset: offset.y, board: board) {
                 return true
             }
         }

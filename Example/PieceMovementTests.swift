@@ -24,6 +24,8 @@ class PieceMovementTests: XCTestCase {
         super.tearDown()
     }
     
+    // MARK - Straight Line Movement
+    
     func testStraightLineMovementCanMoveUp() {
     
         let boardArt = ("* - - - - - - -" +
@@ -43,7 +45,11 @@ class PieceMovementTests: XCTestCase {
         let movement = PieceMovementStraightLine()
         
         for targetIndex in targetIndexes {
-            XCTAssertTrue(movement.canPieceMove(startIndex, toIndex: targetIndex, board: board))
+            XCTAssertTrue(
+                movement.canPieceMove(fromLocation: BoardLocation(index: startIndex),
+                                      toLocation: BoardLocation(index: targetIndex),
+                                      board: board)
+            )
         }
     }
     
@@ -66,7 +72,11 @@ class PieceMovementTests: XCTestCase {
         let movement = PieceMovementStraightLine()
         
         for targetIndex in targetIndexes {
-            XCTAssertTrue(movement.canPieceMove(startIndex, toIndex: targetIndex, board: board))
+            XCTAssertTrue(
+                movement.canPieceMove(fromLocation: BoardLocation(index: startIndex),
+                                      toLocation: BoardLocation(index: targetIndex),
+                                      board: board)
+            )
         }
         
     }
@@ -90,7 +100,11 @@ class PieceMovementTests: XCTestCase {
         let movement = PieceMovementStraightLine()
         
         for targetIndex in targetIndexes {
-            XCTAssertTrue(movement.canPieceMove(startIndex, toIndex: targetIndex, board: board))
+            XCTAssertTrue(
+                movement.canPieceMove(fromLocation: BoardLocation(index: startIndex),
+                                      toLocation: BoardLocation(index: targetIndex),
+                                      board: board)
+            )
         }
 
     }
@@ -114,12 +128,17 @@ class PieceMovementTests: XCTestCase {
         let movement = PieceMovementStraightLine()
         
         for targetIndex in targetIndexes {
-            XCTAssertTrue(movement.canPieceMove(startIndex, toIndex: targetIndex, board: board))
+            XCTAssertTrue(
+                movement.canPieceMove(fromLocation: BoardLocation(index: startIndex),
+                                      toLocation: BoardLocation(index: targetIndex),
+                                      board: board)
+            )
         }
+
     }
  
     
-    func testStraightLineMovementCannotMoveToInValidPosition() {
+    func testStraightLineMovementCannotMoveToInvalidPositionFromCenter() {
         
         let boardArt = ("- - - * - - - -" +
                         "- - - * - - - -" +
@@ -138,8 +157,125 @@ class PieceMovementTests: XCTestCase {
         let movement = PieceMovementStraightLine()
         
         for targetIndex in targetIndexes {
-            XCTAssertFalse(movement.canPieceMove(startIndex, toIndex: targetIndex, board: board))
+            XCTAssertFalse(
+                movement.canPieceMove(fromLocation: BoardLocation(index: startIndex),
+                                      toLocation: BoardLocation(index: targetIndex),
+                                      board: board)
+            )
         }
+
+    }
+    
+    func testStraightLineMovementCannotMoveToInvalidPositionFromTopLeft() {
+        
+        let boardArt = ("W * * * * * * *" +
+                        "* - - - - - - -" +
+                        "* - - - - - - -" +
+                        "* - - - - - - -" +
+                        "* - - - - - - -" +
+                        "* - - - - - - -" +
+                        "* - - - - - - -" +
+                        "* - - - - - - -")
+        
+        let board = makeASCIIArtBoardWithPieceColors(boardArt)
+        
+        let startIndex = indexOfCharacter("W", boardArt: boardArt)
+        let targetIndexes = indexesWithCharacter("-", boardArt: boardArt)
+        
+        let movement = PieceMovementStraightLine()
+        
+        for targetIndex in targetIndexes {
+            XCTAssertFalse(
+                movement.canPieceMove(fromLocation: BoardLocation(index: startIndex),
+                                      toLocation: BoardLocation(index: targetIndex),
+                                      board: board)
+            )
+        }
+        
+    }
+    
+    func testStraightLineMovementCannotMoveToInvalidPositionFromTopRight() {
+        
+        let boardArt = ("* * * * * * * W" +
+                        "- - - - - - - *" +
+                        "- - - - - - - *" +
+                        "- - - - - - - *" +
+                        "- - - - - - - *" +
+                        "- - - - - - - *" +
+                        "- - - - - - - *" +
+                        "- - - - - - - *")
+        
+        let board = makeASCIIArtBoardWithPieceColors(boardArt)
+        
+        let startIndex = indexOfCharacter("W", boardArt: boardArt)
+        let targetIndexes = indexesWithCharacter("-", boardArt: boardArt)
+        
+        let movement = PieceMovementStraightLine()
+        
+        for targetIndex in targetIndexes {
+            XCTAssertFalse(
+                movement.canPieceMove(fromLocation: BoardLocation(index: startIndex),
+                                      toLocation: BoardLocation(index: targetIndex),
+                                      board: board)
+            )
+        }
+        
+    }
+    
+    func testStraightLineMovementCannotMoveToInvalidPositionFromBottomLeft() {
+        
+        let boardArt = ("* - - - - - - -" +
+                        "* - - - - - - -" +
+                        "* - - - - - - -" +
+                        "* - - - - - - -" +
+                        "* - - - - - - -" +
+                        "* - - - - - - -" +
+                        "* - - - - - - -" +
+                        "W * * * * * * *")
+        
+        let board = makeASCIIArtBoardWithPieceColors(boardArt)
+        
+        let startIndex = indexOfCharacter("W", boardArt: boardArt)
+        let targetIndexes = indexesWithCharacter("-", boardArt: boardArt)
+        
+        let movement = PieceMovementStraightLine()
+        
+        for targetIndex in targetIndexes {
+            XCTAssertFalse(
+                movement.canPieceMove(fromLocation: BoardLocation(index: startIndex),
+                                      toLocation: BoardLocation(index: targetIndex),
+                                      board: board)
+            )
+        }
+        
+    }
+    
+    func testStraightLineMovementCannotMoveToInvalidPositionFromBottomRight() {
+        
+        let boardArt = ("- - - - - - - *" +
+                        "- - - - - - - *" +
+                        "- - - - - - - *" +
+                        "- - - - - - - *" +
+                        "- - - - - - - *" +
+                        "- - - - - - - *" +
+                        "- - - - - - - *" +
+                        "* * * * * * * W")
+        
+        let board = makeASCIIArtBoardWithPieceColors(boardArt)
+        
+        let startIndex = indexOfCharacter("W", boardArt: boardArt)
+        let targetIndexes = indexesWithCharacter("-", boardArt: boardArt)
+        
+        let movement = PieceMovementStraightLine()
+        
+        for targetIndex in targetIndexes {
+            XCTAssertFalse(
+                movement.canPieceMove(fromLocation: BoardLocation(index: startIndex),
+                                      toLocation: BoardLocation(index: targetIndex),
+                                      board: board)
+            )
+        }
+        
     }
     
     func testStraightLineMovementCannotMoveThroughOpponent() {
@@ -161,7 +297,11 @@ class PieceMovementTests: XCTestCase {
         let movement = PieceMovementStraightLine()
         
         for targetIndex in targetIndexes {
-            XCTAssertFalse(movement.canPieceMove(startIndex, toIndex: targetIndex, board: board))
+            XCTAssertFalse(
+                movement.canPieceMove(fromLocation: BoardLocation(index: startIndex),
+                                      toLocation: BoardLocation(index: targetIndex),
+                                      board: board)
+            )
         }
     }
     
@@ -184,7 +324,11 @@ class PieceMovementTests: XCTestCase {
         let movement = PieceMovementDiagonal()
         
         for targetIndex in targetIndexes {
-            XCTAssertTrue(movement.canPieceMove(startIndex, toIndex: targetIndex, board: board))
+            XCTAssertTrue(
+                movement.canPieceMove(fromLocation: BoardLocation(index: startIndex),
+                                      toLocation: BoardLocation(index: targetIndex),
+                                      board: board)
+            )
         }
     }
     
@@ -207,8 +351,13 @@ class PieceMovementTests: XCTestCase {
         let movement = PieceMovementDiagonal()
         
         for targetIndex in targetIndexes {
-            XCTAssertTrue(movement.canPieceMove(startIndex, toIndex: targetIndex, board: board))
+            XCTAssertTrue(
+                movement.canPieceMove(fromLocation: BoardLocation(index: startIndex),
+                                      toLocation: BoardLocation(index: targetIndex),
+                                      board: board)
+            )
         }
+
 
     }
     
@@ -231,8 +380,13 @@ class PieceMovementTests: XCTestCase {
         let movement = PieceMovementDiagonal()
         
         for targetIndex in targetIndexes {
-            XCTAssertTrue(movement.canPieceMove(startIndex, toIndex: targetIndex, board: board))
+            XCTAssertTrue(
+                movement.canPieceMove(fromLocation: BoardLocation(index: startIndex),
+                                      toLocation: BoardLocation(index: targetIndex),
+                                      board: board)
+            )
         }
+
     }
     
     func testDiagonalMovementCanMoveNW() {
@@ -254,8 +408,13 @@ class PieceMovementTests: XCTestCase {
         let movement = PieceMovementDiagonal()
         
         for targetIndex in targetIndexes {
-            XCTAssertTrue(movement.canPieceMove(startIndex, toIndex: targetIndex, board: board))
+            XCTAssertTrue(
+                movement.canPieceMove(fromLocation: BoardLocation(index: startIndex),
+                                      toLocation: BoardLocation(index: targetIndex),
+                                      board: board)
+            )
         }
+
     }
     
     func testDiagonalMovementCannotMoveToInvalidPosition() {
@@ -276,10 +435,14 @@ class PieceMovementTests: XCTestCase {
         
         let movement = PieceMovementDiagonal()
         
-        for targetIndex in targetIndexes {            
-            XCTAssertFalse(movement.canPieceMove(startIndex, toIndex: targetIndex, board: board),
-                           "Should not be able to move to index \(targetIndex)")
+        for targetIndex in targetIndexes {
+            XCTAssertFalse(
+                movement.canPieceMove(fromLocation: BoardLocation(index: startIndex),
+                                      toLocation: BoardLocation(index: targetIndex),
+                                      board: board)
+            )
         }
+
     }
     
     func testKnightMovementCanMoveToClockwisePosition1() {
@@ -300,7 +463,12 @@ class PieceMovementTests: XCTestCase {
         
         let movement = PieceMovementKnight()
         
-        XCTAssertTrue(movement.canPieceMove(startIndex, toIndex: targetIndex, board: board))
+        XCTAssertTrue(
+            movement.canPieceMove(fromLocation: BoardLocation(index: startIndex),
+                                  toLocation: BoardLocation(index: targetIndex),
+                                  board: board)
+        )
+        
     }
     
     func testKnightMovementCanMoveToClockwisePosition2() {
@@ -321,7 +489,11 @@ class PieceMovementTests: XCTestCase {
         
         let movement = PieceMovementKnight()
         
-        XCTAssertTrue(movement.canPieceMove(startIndex, toIndex: targetIndex, board: board))
+        XCTAssertTrue(
+            movement.canPieceMove(fromLocation: BoardLocation(index: startIndex),
+                                  toLocation: BoardLocation(index: targetIndex),
+                                  board: board)
+        )
     }
     
     func testKnightMovementCanMoveToClockwisePosition3() {
@@ -342,7 +514,11 @@ class PieceMovementTests: XCTestCase {
         
         let movement = PieceMovementKnight()
         
-        XCTAssertTrue(movement.canPieceMove(startIndex, toIndex: targetIndex, board: board))
+        XCTAssertTrue(
+            movement.canPieceMove(fromLocation: BoardLocation(index: startIndex),
+                                  toLocation: BoardLocation(index: targetIndex),
+                                  board: board)
+        )
     }
     
     func testKnightMovementCanMoveToClockwisePosition4() {
@@ -363,7 +539,11 @@ class PieceMovementTests: XCTestCase {
         
         let movement = PieceMovementKnight()
         
-        XCTAssertTrue(movement.canPieceMove(startIndex, toIndex: targetIndex, board: board))
+        XCTAssertTrue(
+            movement.canPieceMove(fromLocation: BoardLocation(index: startIndex),
+                                  toLocation: BoardLocation(index: targetIndex),
+                                  board: board)
+        )
     }
 
     func testKnightMovementCanMoveToClockwisePosition5() {
@@ -384,7 +564,11 @@ class PieceMovementTests: XCTestCase {
         
         let movement = PieceMovementKnight()
         
-        XCTAssertTrue(movement.canPieceMove(startIndex, toIndex: targetIndex, board: board))
+        XCTAssertTrue(
+            movement.canPieceMove(fromLocation: BoardLocation(index: startIndex),
+                                  toLocation: BoardLocation(index: targetIndex),
+                                  board: board)
+        )
     }
     
     func testKnightMovementCanMoveToClockwisePosition6() {
@@ -405,7 +589,11 @@ class PieceMovementTests: XCTestCase {
         
         let movement = PieceMovementKnight()
         
-        XCTAssertTrue(movement.canPieceMove(startIndex, toIndex: targetIndex, board: board))
+        XCTAssertTrue(
+            movement.canPieceMove(fromLocation: BoardLocation(index: startIndex),
+                                  toLocation: BoardLocation(index: targetIndex),
+                                  board: board)
+        )
     }
 
     func testKnightMovementCanMoveToClockwisePosition7() {
@@ -426,7 +614,11 @@ class PieceMovementTests: XCTestCase {
         
         let movement = PieceMovementKnight()
         
-        XCTAssertTrue(movement.canPieceMove(startIndex, toIndex: targetIndex, board: board))
+        XCTAssertTrue(
+            movement.canPieceMove(fromLocation: BoardLocation(index: startIndex),
+                                  toLocation: BoardLocation(index: targetIndex),
+                                  board: board)
+        )
     }
 
     func testKnightMovementCanMoveToClockwisePosition8() {
@@ -447,7 +639,11 @@ class PieceMovementTests: XCTestCase {
         
         let movement = PieceMovementKnight()
         
-        XCTAssertTrue(movement.canPieceMove(startIndex, toIndex: targetIndex, board: board))
+        XCTAssertTrue(
+            movement.canPieceMove(fromLocation: BoardLocation(index: startIndex),
+                                  toLocation: BoardLocation(index: targetIndex),
+                                  board: board)
+        )
     }
     
     func testKnightMovementCannotMoveToInvalidPosition() {
@@ -468,7 +664,11 @@ class PieceMovementTests: XCTestCase {
         
         let movement = PieceMovementKnight()
         
-        XCTAssertFalse(movement.canPieceMove(startIndex, toIndex: targetIndex, board: board))
+        XCTAssertFalse(
+            movement.canPieceMove(fromLocation: BoardLocation(index: startIndex),
+                                  toLocation: BoardLocation(index: targetIndex),
+                                  board: board)
+        )
     }
     
     func testKnightMovementCannotWrapToPosition1() {
@@ -489,7 +689,11 @@ class PieceMovementTests: XCTestCase {
         
         let movement = PieceMovementKnight()
         
-        XCTAssertFalse(movement.canPieceMove(startIndex, toIndex: targetIndex, board: board))
+        XCTAssertFalse(
+            movement.canPieceMove(fromLocation: BoardLocation(index: startIndex),
+                                  toLocation: BoardLocation(index: targetIndex),
+                                  board: board)
+        )
     }
 
     
@@ -511,7 +715,11 @@ class PieceMovementTests: XCTestCase {
         
         let movement = PieceMovementKnight()
         
-        XCTAssertFalse(movement.canPieceMove(startIndex, toIndex: targetIndex, board: board))
+        XCTAssertFalse(
+            movement.canPieceMove(fromLocation: BoardLocation(index: startIndex),
+                                  toLocation: BoardLocation(index: targetIndex),
+                                  board: board)
+        )
     }
     
     func testKnightMovementCannotWrapDownAndRight() {
@@ -532,7 +740,11 @@ class PieceMovementTests: XCTestCase {
         
         let movement = PieceMovementKnight()
         
-        XCTAssertFalse(movement.canPieceMove(startIndex, toIndex: targetIndex, board: board))
+        XCTAssertFalse(
+            movement.canPieceMove(fromLocation: BoardLocation(index: startIndex),
+                                  toLocation: BoardLocation(index: targetIndex),
+                                  board: board)
+        )
     }
     
     func testKnightMovementCannotWrapUpAndLeft() {
@@ -553,7 +765,11 @@ class PieceMovementTests: XCTestCase {
         
         let movement = PieceMovementKnight()
         
-        XCTAssertFalse(movement.canPieceMove(startIndex, toIndex: targetIndex, board: board))
+        XCTAssertFalse(
+            movement.canPieceMove(fromLocation: BoardLocation(index: startIndex),
+                                  toLocation: BoardLocation(index: targetIndex),
+                                  board: board)
+        )
     }
     
     func testKnightMovementCannotWrapDownAndLeft() {
@@ -574,7 +790,11 @@ class PieceMovementTests: XCTestCase {
         
         let movement = PieceMovementKnight()
         
-        XCTAssertFalse(movement.canPieceMove(startIndex, toIndex: targetIndex, board: board))
+        XCTAssertFalse(
+            movement.canPieceMove(fromLocation: BoardLocation(index: startIndex),
+                                  toLocation: BoardLocation(index: targetIndex),
+                                  board: board)
+        )
     }
 
     // MARK - Board Creation Helpers

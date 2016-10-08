@@ -69,7 +69,7 @@ class GameViewController: UIViewController {
     }
     
     func update(_ board: Board){
-        
+        /*
         for (index, label) in pieceLabels.enumerated() {
             
             let piece = board.pieceAtIndex(index)
@@ -100,6 +100,7 @@ class GameViewController: UIViewController {
                 label.textColor = piece.color == .white ? UIColor.white : UIColor.black
             }
         }
+ */
     }
     
     

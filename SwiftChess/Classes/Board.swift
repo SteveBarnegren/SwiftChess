@@ -8,9 +8,9 @@
 
 import Foundation
 
-// MARK - ****** Coordinate ******
+// MARK - ****** BoardLocation ******
 
-public struct BoardLocation {
+public struct BoardLocation : Equatable {
     
     public var index: Int
     
@@ -22,13 +22,33 @@ public struct BoardLocation {
         return index / 8
     }
     
-    init(index: Int) {
+    public init(index: Int) {
         self.index = index
     }
     
     init(x: Int, y: Int) {
         self.index = x + (y*8)
     }
+    
+    func isInBounds() -> Bool {
+        return (index < 64 && index >= 0)
+    }
+    
+    func incremented(by offset: Int) -> BoardLocation {
+        return BoardLocation(index: index + offset)
+    }
+    
+    func incrementedBy(x: Int, y: Int) -> BoardLocation {
+        return self + BoardLocation(x: x, y: y)
+    }
+}
+
+public func ==(lhs: BoardLocation, rhs: BoardLocation) -> Bool {
+    return lhs.index == rhs.index
+}
+
+public func +(left: BoardLocation, right: BoardLocation) -> BoardLocation {
+    return BoardLocation(index: left.index + right.index)
 }
 
 // MARK - ****** Square ******
@@ -87,8 +107,8 @@ public struct Board {
     
     // MARK - Pieces
     
-    public func pieceAtIndex(_ index: Int) -> Piece? {
-        return squares[index].piece
+    public func getPiece(at location: BoardLocation) -> Piece? {
+        return squares[location.index].piece
     }
     
     public mutating func movePiece(_ fromIndex: Int, toIndex: Int){
