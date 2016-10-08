@@ -8,6 +8,23 @@
 
 import Foundation
 
+// MARK - ****** BoardStride ******
+
+public struct BoardStride {
+    
+    public var x: Int;
+    public var y: Int;
+    
+    public init(x: Int, y: Int){
+        self.x = x;
+        self.y = y;
+    }
+    
+    
+    
+    
+}
+
 // MARK - ****** BoardLocation ******
 
 public struct BoardLocation : Equatable {
@@ -40,6 +57,42 @@ public struct BoardLocation : Equatable {
     
     func incrementedBy(x: Int, y: Int) -> BoardLocation {
         return self + BoardLocation(x: x, y: y)
+    }
+    
+    func incrementedBy(stride: BoardStride) -> BoardLocation {
+        
+        // TODO: for performance, we should probably only check this if we're in debug mode
+        if !canIncrementBy(stride: stride) {
+            print("WARNING! BoardLocation is being incremented by a stride that will result in wrapping! call canIncrementBy(stride: BoardStride) first")
+        }
+        
+        return BoardLocation(x: x + stride.x,
+                             y: y + stride.y)
+    }
+    
+    func canIncrementBy(stride: BoardStride) -> Bool {
+        
+        // Check will not wrap to right
+        if x + stride.x > 7  {
+            return false
+        }
+        
+        // Check will not wrap to left
+        if x - stride.x < 0  {
+            return false
+        }
+        
+        // Check will not wrap top
+        if y + stride.y > 7  {
+            return false
+        }
+        
+        // Check will not wrap bottom
+        if y - stride.y < 0  {
+            return false
+        }
+        
+        return true
     }
 }
 
