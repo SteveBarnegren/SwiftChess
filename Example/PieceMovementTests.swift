@@ -778,5 +778,83 @@ class PieceMovementTests: XCTestCase {
         testBoard(board: board, movingPiece: "p", movement: PieceMovementPawn())
         
     }
-
+    
+    // MARK - Queen movement
+    
+    func testQueenCannotMoveToInvalidPositionFromCentre(){
+        
+        let board = ASCIIBoard( "! ! ! * ! ! ! *" +
+                                "* ! ! * ! ! * !" +
+                                "! * ! * ! * ! !" +
+                                "! ! * * * ! ! !" +
+                                "* * * W * * * *" +
+                                "! ! * * * ! ! !" +
+                                "! * ! * ! * ! !" +
+                                "* ! ! * ! ! * !" )
+        
+        testBoard(board: board, movingPiece: "W", movement: PieceMovementQueen())
+        
+    }
+    
+    func testQueenCannotMoveToInvalidPositionFromTopLeft(){
+        
+        let board = ASCIIBoard( "W * * * * * * *" +
+                                "* * ! ! ! ! ! !" +
+                                "* ! * ! ! ! ! !" +
+                                "* ! ! * ! ! ! !" +
+                                "* ! ! ! * ! ! !" +
+                                "* ! ! ! ! * ! !" +
+                                "* ! ! ! ! ! * !" +
+                                "* ! ! ! ! ! ! *" )
+        
+        testBoard(board: board, movingPiece: "W", movement: PieceMovementQueen())
+        
+    }
+    
+    func testQueenCannotMoveToInvalidPositionFromTopRight(){
+        
+        let board = ASCIIBoard( "* * * * * * * W" +
+                                "! ! ! ! ! ! * *" +
+                                "! ! ! ! ! * ! *" +
+                                "! ! ! ! * ! ! *" +
+                                "! ! ! * ! ! ! *" +
+                                "! ! * ! ! ! ! *" +
+                                "! * ! ! ! ! ! *" +
+                                "* ! ! ! ! ! ! *" )
+        
+        testBoard(board: board, movingPiece: "W", movement: PieceMovementQueen())
+        
+    }
+    
+    func testQueenCannotMoveToInvalidPositionFromBottomLeft(){
+        
+        let board = ASCIIBoard( "* ! ! ! ! ! ! *" +
+                                "* ! ! ! ! ! * !" +
+                                "* ! ! ! ! * ! !" +
+                                "* ! ! ! * ! ! !" +
+                                "* ! ! * ! ! ! !" +
+                                "* ! * ! ! ! ! !" +
+                                "* * ! ! ! ! ! !" +
+                                "W * * * * * * *" )
+        
+        testBoard(board: board, movingPiece: "W", movement: PieceMovementQueen())
+        
+    }
+    
+    func testQueenCannotMoveToInvalidPositionFromBottomRight(){
+        
+        let board = ASCIIBoard( "* ! ! ! ! ! ! *" +
+                                "! * ! ! ! ! ! *" +
+                                "! ! * ! ! ! ! *" +
+                                "! ! ! * ! ! ! *" +
+                                "! ! ! ! * ! ! *" +
+                                "! ! ! ! ! * ! *" +
+                                "! ! ! ! ! ! * *" +
+                                "* * * * * * * W" )
+        
+        testBoard(board: board, movingPiece: "W", movement: PieceMovementQueen())
+        
+    }
+    
+    
 }
