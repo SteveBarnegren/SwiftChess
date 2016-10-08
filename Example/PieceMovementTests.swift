@@ -24,904 +24,467 @@ class PieceMovementTests: XCTestCase {
         super.tearDown()
     }
     
+    // MARK - Board Testing
+    
+    func testBoard(board: ASCIIBoard, movingPiece: Character, movement: PieceMovement) {
+        
+        // Get the index of the moving piece
+        let movingIndex = board.indexOfCharacter(movingPiece)
+        
+        // Test allowed locations
+        let allowedIndexes = board.indexesWithCharacter("*")
+        if allowedIndexes.count > 0 {
+            
+            for allowedIndex in allowedIndexes {
+                XCTAssertTrue(
+                    movement.canPieceMove(fromLocation: BoardLocation(index: movingIndex),
+                                          toLocation: BoardLocation(index: allowedIndex),
+                                          board: board.board),
+                    "Allowed Index was invalid: \(allowedIndex)")
+            }
+        }
+        
+        // Test invalid locations
+        let invalidIndexes = board.indexesWithCharacter("!")
+        if invalidIndexes.count > 0 {
+            
+            for invalidIndex in invalidIndexes {
+                XCTAssertFalse(
+                    movement.canPieceMove(fromLocation: BoardLocation(index: movingIndex),
+                                          toLocation: BoardLocation(index: invalidIndex),
+                                          board: board.board),
+                    "Invalid index was valid: \(invalidIndex)")
+            }
+        }
+
+    }
+    
     // MARK - Straight Line Movement
     
     func testStraightLineMovementCanMoveUp() {
-    
-        let boardArt = ("* - - - - - - -" +
-                        "* - - - - - - -" +
-                        "* - - - - - - -" +
-                        "* - - - - - - -" +
-                        "* - - - - - - -" +
-                        "* - - - - - - -" +
-                        "* - - - - - - -" +
-                        "W - - - - - - -")
         
-        let board = makeASCIIArtBoardWithPieceColors(boardArt)
+        let board = ASCIIBoard( "* - - - - - - -" +
+                                "* - - - - - - -" +
+                                "* - - - - - - -" +
+                                "* - - - - - - -" +
+                                "* - - - - - - -" +
+                                "* - - - - - - -" +
+                                "* - - - - - - -" +
+                                "W - - - - - - -" )
         
-        let startIndex = indexOfCharacter("W", boardArt: boardArt)
-        let targetIndexes = indexesWithCharacter("*", boardArt: boardArt)
+        testBoard(board: board, movingPiece: "W", movement: PieceMovementStraightLine())
         
-        let movement = PieceMovementStraightLine()
-        
-        for targetIndex in targetIndexes {
-            XCTAssertTrue(
-                movement.canPieceMove(fromLocation: BoardLocation(index: startIndex),
-                                      toLocation: BoardLocation(index: targetIndex),
-                                      board: board)
-            )
-        }
     }
     
     func testStraightLineMovementCanMoveDown() {
         
-        let boardArt = ("W - - - - - - -" +
-                        "* - - - - - - -" +
-                        "* - - - - - - -" +
-                        "* - - - - - - -" +
-                        "* - - - - - - -" +
-                        "* - - - - - - -" +
-                        "* - - - - - - -" +
-                        "* - - - - - - -")
+        let board = ASCIIBoard( "W - - - - - - -" +
+                                "* - - - - - - -" +
+                                "* - - - - - - -" +
+                                "* - - - - - - -" +
+                                "* - - - - - - -" +
+                                "* - - - - - - -" +
+                                "* - - - - - - -" +
+                                "* - - - - - - -" )
         
-        let board = makeASCIIArtBoardWithPieceColors(boardArt)
-        
-        let startIndex = indexOfCharacter("W", boardArt: boardArt)
-        let targetIndexes = indexesWithCharacter("*", boardArt: boardArt)
-        
-        let movement = PieceMovementStraightLine()
-        
-        for targetIndex in targetIndexes {
-            XCTAssertTrue(
-                movement.canPieceMove(fromLocation: BoardLocation(index: startIndex),
-                                      toLocation: BoardLocation(index: targetIndex),
-                                      board: board)
-            )
-        }
+        testBoard(board: board, movingPiece: "W", movement: PieceMovementStraightLine())
         
     }
     
+    
+    
     func testStraightLineMovementCanMoveRight() {
+     
+        let board = ASCIIBoard( "- - - - - - - -" +
+                                "- - - - - - - -" +
+                                "- - - - - - - -" +
+                                "- - - - - - - -" +
+                                "- - - - - - - -" +
+                                "- - - - - - - -" +
+                                "- - - - - - - -" +
+                                "W * * * * * * *" )
         
-        let boardArt = ("- - - - - - - -" +
-                        "- - - - - - - -" +
-                        "- - - - - - - -" +
-                        "- - - - - - - -" +
-                        "- - - - - - - -" +
-                        "- - - - - - - -" +
-                        "- - - - - - - -" +
-                        "W * * * * * * *")
-        
-        let board = makeASCIIArtBoardWithPieceColors(boardArt)
-        
-        let startIndex = indexOfCharacter("W", boardArt: boardArt)
-        let targetIndexes = indexesWithCharacter("*", boardArt: boardArt)
-        
-        let movement = PieceMovementStraightLine()
-        
-        for targetIndex in targetIndexes {
-            XCTAssertTrue(
-                movement.canPieceMove(fromLocation: BoardLocation(index: startIndex),
-                                      toLocation: BoardLocation(index: targetIndex),
-                                      board: board)
-            )
-        }
+        testBoard(board: board, movingPiece: "W", movement: PieceMovementStraightLine())
 
     }
     
     func testStraightLineMovementCanMoveLeft() {
         
-        let boardArt = ("- - - - - - - -" +
-                        "- - - - - - - -" +
-                        "- - - - - - - -" +
-                        "- - - - - - - -" +
-                        "- - - - - - - -" +
-                        "- - - - - - - -" +
-                        "- - - - - - - -" +
-                        "* * * * * * * W")
+        let board = ASCIIBoard( "- - - - - - - -" +
+                                "- - - - - - - -" +
+                                "- - - - - - - -" +
+                                "- - - - - - - -" +
+                                "- - - - - - - -" +
+                                "- - - - - - - -" +
+                                "- - - - - - - -" +
+                                "* * * * * * * W" )
         
-        let board = makeASCIIArtBoardWithPieceColors(boardArt)
-        
-        let startIndex = indexOfCharacter("W", boardArt: boardArt)
-        let targetIndexes = indexesWithCharacter("*", boardArt: boardArt)
-        
-        let movement = PieceMovementStraightLine()
-        
-        for targetIndex in targetIndexes {
-            XCTAssertTrue(
-                movement.canPieceMove(fromLocation: BoardLocation(index: startIndex),
-                                      toLocation: BoardLocation(index: targetIndex),
-                                      board: board)
-            )
-        }
+        testBoard(board: board, movingPiece: "W", movement: PieceMovementStraightLine())
 
     }
- 
     
+ 
+ 
     func testStraightLineMovementCannotMoveToInvalidPositionFromCenter() {
+     
+        let board = ASCIIBoard( "! ! ! * ! ! ! !" +
+                                "! ! ! * ! ! ! !" +
+                                "! ! ! * ! ! ! !" +
+                                "* * * W * * * *" +
+                                "! ! ! * ! ! ! !" +
+                                "! ! ! * ! ! ! !" +
+                                "! ! ! * ! ! ! !" +
+                                "! ! ! * ! ! ! !" )
         
-        let boardArt = ("- - - * - - - -" +
-                        "- - - * - - - -" +
-                        "- - - * - - - -" +
-                        "* * * W * * * *" +
-                        "- - - * - - - -" +
-                        "- - - * - - - -" +
-                        "- - - * - - - -" +
-                        "- - - * - - - -")
+        testBoard(board: board, movingPiece: "W", movement: PieceMovementStraightLine())
         
-        let board = makeASCIIArtBoardWithPieceColors(boardArt)
-        
-        let startIndex = indexOfCharacter("W", boardArt: boardArt)
-        let targetIndexes = indexesWithCharacter("-", boardArt: boardArt)
-        
-        let movement = PieceMovementStraightLine()
-        
-        for targetIndex in targetIndexes {
-            XCTAssertFalse(
-                movement.canPieceMove(fromLocation: BoardLocation(index: startIndex),
-                                      toLocation: BoardLocation(index: targetIndex),
-                                      board: board)
-            )
-        }
-
     }
     
     func testStraightLineMovementCannotMoveToInvalidPositionFromTopLeft() {
         
-        let boardArt = ("W * * * * * * *" +
-                        "* - - - - - - -" +
-                        "* - - - - - - -" +
-                        "* - - - - - - -" +
-                        "* - - - - - - -" +
-                        "* - - - - - - -" +
-                        "* - - - - - - -" +
-                        "* - - - - - - -")
+        let board = ASCIIBoard( "W * * * * * * *" +
+                                "* ! ! ! ! ! ! !" +
+                                "* ! ! ! ! ! ! !" +
+                                "* ! ! ! ! ! ! !" +
+                                "* ! ! ! ! ! ! !" +
+                                "* ! ! ! ! ! ! !" +
+                                "* ! ! ! ! ! ! !" +
+                                "* ! ! ! ! ! ! !" )
         
-        let board = makeASCIIArtBoardWithPieceColors(boardArt)
-        
-        let startIndex = indexOfCharacter("W", boardArt: boardArt)
-        let targetIndexes = indexesWithCharacter("-", boardArt: boardArt)
-        
-        let movement = PieceMovementStraightLine()
-        
-        for targetIndex in targetIndexes {
-            XCTAssertFalse(
-                movement.canPieceMove(fromLocation: BoardLocation(index: startIndex),
-                                      toLocation: BoardLocation(index: targetIndex),
-                                      board: board)
-            )
-        }
+        testBoard(board: board, movingPiece: "W", movement: PieceMovementStraightLine())
         
     }
     
     func testStraightLineMovementCannotMoveToInvalidPositionFromTopRight() {
         
-        let boardArt = ("* * * * * * * W" +
-                        "- - - - - - - *" +
-                        "- - - - - - - *" +
-                        "- - - - - - - *" +
-                        "- - - - - - - *" +
-                        "- - - - - - - *" +
-                        "- - - - - - - *" +
-                        "- - - - - - - *")
+        let board = ASCIIBoard( "* * * * * * * W" +
+                                "! ! ! ! ! ! ! *" +
+                                "! ! ! ! ! ! ! *" +
+                                "! ! ! ! ! ! ! *" +
+                                "! ! ! ! ! ! ! *" +
+                                "! ! ! ! ! ! ! *" +
+                                "! ! ! ! ! ! ! *" +
+                                "! ! ! ! ! ! ! *" )
         
-        let board = makeASCIIArtBoardWithPieceColors(boardArt)
-        
-        let startIndex = indexOfCharacter("W", boardArt: boardArt)
-        let targetIndexes = indexesWithCharacter("-", boardArt: boardArt)
-        
-        let movement = PieceMovementStraightLine()
-        
-        for targetIndex in targetIndexes {
-            XCTAssertFalse(
-                movement.canPieceMove(fromLocation: BoardLocation(index: startIndex),
-                                      toLocation: BoardLocation(index: targetIndex),
-                                      board: board)
-            )
-        }
+        testBoard(board: board, movingPiece: "W", movement: PieceMovementStraightLine())
         
     }
     
     func testStraightLineMovementCannotMoveToInvalidPositionFromBottomLeft() {
         
-        let boardArt = ("* - - - - - - -" +
-                        "* - - - - - - -" +
-                        "* - - - - - - -" +
-                        "* - - - - - - -" +
-                        "* - - - - - - -" +
-                        "* - - - - - - -" +
-                        "* - - - - - - -" +
-                        "W * * * * * * *")
+        let board = ASCIIBoard( "* ! ! ! ! ! ! !" +
+                                "* ! ! ! ! ! ! !" +
+                                "* ! ! ! ! ! ! !" +
+                                "* ! ! ! ! ! ! !" +
+                                "* ! ! ! ! ! ! !" +
+                                "* ! ! ! ! ! ! !" +
+                                "* ! ! ! ! ! ! !" +
+                                "W * * * * * * *" )
         
-        let board = makeASCIIArtBoardWithPieceColors(boardArt)
-        
-        let startIndex = indexOfCharacter("W", boardArt: boardArt)
-        let targetIndexes = indexesWithCharacter("-", boardArt: boardArt)
-        
-        let movement = PieceMovementStraightLine()
-        
-        for targetIndex in targetIndexes {
-            XCTAssertFalse(
-                movement.canPieceMove(fromLocation: BoardLocation(index: startIndex),
-                                      toLocation: BoardLocation(index: targetIndex),
-                                      board: board)
-            )
-        }
-        
+        testBoard(board: board, movingPiece: "W", movement: PieceMovementStraightLine())
     }
     
     func testStraightLineMovementCannotMoveToInvalidPositionFromBottomRight() {
         
-        let boardArt = ("- - - - - - - *" +
-                        "- - - - - - - *" +
-                        "- - - - - - - *" +
-                        "- - - - - - - *" +
-                        "- - - - - - - *" +
-                        "- - - - - - - *" +
-                        "- - - - - - - *" +
-                        "* * * * * * * W")
+        let board = ASCIIBoard( "! ! ! ! ! ! ! *" +
+                                "! ! ! ! ! ! ! *" +
+                                "! ! ! ! ! ! ! *" +
+                                "! ! ! ! ! ! ! *" +
+                                "! ! ! ! ! ! ! *" +
+                                "! ! ! ! ! ! ! *" +
+                                "! ! ! ! ! ! ! *" +
+                                "* * * * * * * W" )
         
-        let board = makeASCIIArtBoardWithPieceColors(boardArt)
-        
-        let startIndex = indexOfCharacter("W", boardArt: boardArt)
-        let targetIndexes = indexesWithCharacter("-", boardArt: boardArt)
-        
-        let movement = PieceMovementStraightLine()
-        
-        for targetIndex in targetIndexes {
-            XCTAssertFalse(
-                movement.canPieceMove(fromLocation: BoardLocation(index: startIndex),
-                                      toLocation: BoardLocation(index: targetIndex),
-                                      board: board)
-            )
-        }
+        testBoard(board: board, movingPiece: "W", movement: PieceMovementStraightLine())
         
     }
+    
+    
     
     func testStraightLineMovementCannotMoveThroughOpponent() {
         
-        let boardArt = ("- - - * - - - -" +
-                        "- - - * - - - -" +
-                        "- - - B - - - -" +
-                        "- - - - - - - -" +
-                        "* B - W - B * *" +
-                        "- - - - - - - -" +
-                        "- - - B - - - -" +
-                        "- - - * - - - -")
+        let board = ASCIIBoard( "- - - ! - - - -" +
+                                "- - - ! - - - -" +
+                                "- - - B - - - -" +
+                                "- - - * - - - -" +
+                                "! B * W * B ! !" +
+                                "- - - * - - - -" +
+                                "- - - B - - - -" +
+                                "- - - ! - - - -" )
         
-        let board = makeASCIIArtBoardWithPieceColors(boardArt)
-        
-        let startIndex = indexOfCharacter("W", boardArt: boardArt)
-        let targetIndexes = indexesWithCharacter("*", boardArt: boardArt)
-        
-        let movement = PieceMovementStraightLine()
-        
-        for targetIndex in targetIndexes {
-            XCTAssertFalse(
-                movement.canPieceMove(fromLocation: BoardLocation(index: startIndex),
-                                      toLocation: BoardLocation(index: targetIndex),
-                                      board: board)
-            )
-        }
-    }
+        testBoard(board: board, movingPiece: "W", movement: PieceMovementStraightLine())
+
+     }
     
     func testDiagonalMovementCanMoveNE() {
         
-        let boardArt = ("- - - - - - - *" +
-                        "- - - - - - * -" +
-                        "- - - - - * - -" +
-                        "- - - - * - - -" +
-                        "- - - * - - - -" +
-                        "- - * - - - - -" +
-                        "- * - - - - - -" +
-                        "W - - - - - - -")
+        let board = ASCIIBoard( "- - - - - - - *" +
+                                "- - - - - - * -" +
+                                "- - - - - * - -" +
+                                "- - - - * - - -" +
+                                "- - - * - - - -" +
+                                "- - * - - - - -" +
+                                "- * - - - - - -" +
+                                "W - - - - - - -" )
         
-        let board = makeASCIIArtBoardWithPieceColors(boardArt)
-        
-        let startIndex = indexOfCharacter("W", boardArt: boardArt)
-        let targetIndexes = indexesWithCharacter("*", boardArt: boardArt)
-        
-        let movement = PieceMovementDiagonal()
-        
-        for targetIndex in targetIndexes {
-            XCTAssertTrue(
-                movement.canPieceMove(fromLocation: BoardLocation(index: startIndex),
-                                      toLocation: BoardLocation(index: targetIndex),
-                                      board: board)
-            )
-        }
+        testBoard(board: board, movingPiece: "W", movement: PieceMovementDiagonal())
+
     }
     
     func testDiagonalMovementCanMoveSE() {
         
-        let boardArt = ("W - - - - - - -" +
-                        "- * - - - - - -" +
-                        "- - * - - - - -" +
-                        "- - - * - - - -" +
-                        "- - - - * - - -" +
-                        "- - - - - * - -" +
-                        "- - - - - - * -" +
-                        "- - - - - - - *")
+        let board = ASCIIBoard( "W - - - - - - -" +
+                                "- * - - - - - -" +
+                                "- - * - - - - -" +
+                                "- - - * - - - -" +
+                                "- - - - * - - -" +
+                                "- - - - - * - -" +
+                                "- - - - - - * -" +
+                                "- - - - - - - *" )
         
-        let board = makeASCIIArtBoardWithPieceColors(boardArt)
-        
-        let startIndex = indexOfCharacter("W", boardArt: boardArt)
-        let targetIndexes = indexesWithCharacter("*", boardArt: boardArt)
-        
-        let movement = PieceMovementDiagonal()
-        
-        for targetIndex in targetIndexes {
-            XCTAssertTrue(
-                movement.canPieceMove(fromLocation: BoardLocation(index: startIndex),
-                                      toLocation: BoardLocation(index: targetIndex),
-                                      board: board)
-            )
-        }
-
+        testBoard(board: board, movingPiece: "W", movement: PieceMovementDiagonal())
 
     }
     
     func testDiagonalMovementCanMoveSW() {
         
-        let boardArt = ("- - - - - - - W" +
-                        "- - - - - - * -" +
-                        "- - - - - * - -" +
-                        "- - - - * - - -" +
-                        "- - - * - - - -" +
-                        "- - * - - - - -" +
-                        "- * - - - - - -" +
-                        "* - - - - - - -")
+        let board = ASCIIBoard( "- - - - - - - W" +
+                                "- - - - - - * -" +
+                                "- - - - - * - -" +
+                                "- - - - * - - -" +
+                                "- - - * - - - -" +
+                                "- - * - - - - -" +
+                                "- * - - - - - -" +
+                                "* - - - - - - -" )
         
-        let board = makeASCIIArtBoardWithPieceColors(boardArt)
-        
-        let startIndex = indexOfCharacter("W", boardArt: boardArt)
-        let targetIndexes = indexesWithCharacter("*", boardArt: boardArt)
-        
-        let movement = PieceMovementDiagonal()
-        
-        for targetIndex in targetIndexes {
-                      
-            XCTAssertTrue(
-                movement.canPieceMove(fromLocation: BoardLocation(index: startIndex),
-                                                toLocation: BoardLocation(index: targetIndex),
-                                                board: board),
-                "failed index: \(targetIndex)")
-        }
+        testBoard(board: board, movingPiece: "W", movement: PieceMovementDiagonal())
 
     }
     
     func testDiagonalMovementCanMoveNW() {
         
-        let boardArt = ("* - - - - - - -" +
-                        "- * - - - - - -" +
-                        "- - * - - - - -" +
-                        "- - - * - - - -" +
-                        "- - - - * - - -" +
-                        "- - - - - * - -" +
-                        "- - - - - - * -" +
-                        "- - - - - - - W")
+        let board = ASCIIBoard( "* - - - - - - -" +
+                                "- * - - - - - -" +
+                                "- - * - - - - -" +
+                                "- - - * - - - -" +
+                                "- - - - * - - -" +
+                                "- - - - - * - -" +
+                                "- - - - - - * -" +
+                                "- - - - - - - W" )
         
-        let board = makeASCIIArtBoardWithPieceColors(boardArt)
-        
-        let startIndex = indexOfCharacter("W", boardArt: boardArt)
-        let targetIndexes = indexesWithCharacter("*", boardArt: boardArt)
-        
-        let movement = PieceMovementDiagonal()
-        
-        for targetIndex in targetIndexes {
-            XCTAssertTrue(
-                movement.canPieceMove(fromLocation: BoardLocation(index: startIndex),
-                                      toLocation: BoardLocation(index: targetIndex),
-                                      board: board)
-            )
-        }
+        testBoard(board: board, movingPiece: "W", movement: PieceMovementDiagonal())
 
     }
     
     func testDiagonalMovementCannotMoveToInvalidPosition() {
         
-        let boardArt = ("- - - - - - - *" +
-                        "* - - - - - * -" +
-                        "- * - - - * - -" +
-                        "- - * - * - - -" +
-                        "- - - W - - - -" +
-                        "- - * - * - - -" +
-                        "- * - - - * - -" +
-                        "* - - - - - * -")
+        let board = ASCIIBoard( "! ! ! ! ! ! ! *" +
+                                "* ! ! ! ! ! * !" +
+                                "! * ! ! ! * ! !" +
+                                "! ! * ! * ! ! !" +
+                                "! ! ! W ! ! ! !" +
+                                "! ! * ! * ! ! !" +
+                                "! * ! ! - * ! !" +
+                                "* ! ! ! ! ! * !" )
         
-        let board = makeASCIIArtBoardWithPieceColors(boardArt)
-        
-        let startIndex = indexOfCharacter("W", boardArt: boardArt)
-        let targetIndexes = indexesWithCharacter("-", boardArt: boardArt)
-        
-        let movement = PieceMovementDiagonal()
-        
-        for targetIndex in targetIndexes {
-            XCTAssertFalse(
-                movement.canPieceMove(fromLocation: BoardLocation(index: startIndex),
-                                      toLocation: BoardLocation(index: targetIndex),
-                                      board: board)
-            )
-        }
+        testBoard(board: board, movingPiece: "W", movement: PieceMovementDiagonal())
 
-    }
+     }
     
     func testKnightMovementCanMoveToClockwisePosition1() {
         
-        let boardArt = ("- - - - - - - -" +
-                        "- - - - - - - -" +
-                        "- - - - * - - -" +
-                        "- - - - - - - -" +
-                        "- - - W - - - -" +
-                        "- - - - - - - -" +
-                        "- - - - - - - -" +
-                        "- - - - - - - -")
+        let board = ASCIIBoard( "- - - - - - - -" +
+                                "- - - - - - - -" +
+                                "- - - - * - - -" +
+                                "- - - - - - - -" +
+                                "- - - W - - - -" +
+                                "- - - - - - - -" +
+                                "- - - - - - - -" +
+                                "- - - - - - - -" )
         
-        let board = makeASCIIArtBoardWithPieceColors(boardArt)
-        
-        let startIndex = indexOfCharacter("W", boardArt: boardArt)
-        let targetIndex = indexOfCharacter("*", boardArt: boardArt)
-        
-        let movement = PieceMovementKnight()
-        
-        XCTAssertTrue(
-            movement.canPieceMove(fromLocation: BoardLocation(index: startIndex),
-                                  toLocation: BoardLocation(index: targetIndex),
-                                  board: board)
-        )
-        
+        testBoard(board: board, movingPiece: "W", movement: PieceMovementKnight())
+
     }
     
     func testKnightMovementCanMoveToClockwisePosition2() {
         
-        let boardArt = ("- - - - - - - -" +
-                        "- - - - - - - -" +
-                        "- - - - - - - -" +
-                        "- - - - - * - -" +
-                        "- - - W - - - -" +
-                        "- - - - - - - -" +
-                        "- - - - - - - -" +
-                        "- - - - - - - -")
+        let board = ASCIIBoard( "- - - - - - - -" +
+                                "- - - - - - - -" +
+                                "- - - - - - - -" +
+                                "- - - - - * - -" +
+                                "- - - W - - - -" +
+                                "- - - - - - - -" +
+                                "- - - - - - - -" +
+                                "- - - - - - - -" )
         
-        let board = makeASCIIArtBoardWithPieceColors(boardArt)
-        
-        let startIndex = indexOfCharacter("W", boardArt: boardArt)
-        let targetIndex = indexOfCharacter("*", boardArt: boardArt)
-        
-        let movement = PieceMovementKnight()
-        
-        XCTAssertTrue(
-            movement.canPieceMove(fromLocation: BoardLocation(index: startIndex),
-                                  toLocation: BoardLocation(index: targetIndex),
-                                  board: board)
-        )
+        testBoard(board: board, movingPiece: "W", movement: PieceMovementKnight())
+
     }
     
     func testKnightMovementCanMoveToClockwisePosition3() {
         
-        let boardArt = ("- - - - - - - -" +
-                        "- - - - - - - -" +
-                        "- - - - - - - -" +
-                        "- - - - - - - -" +
-                        "- - - W - - - -" +
-                        "- - - - - * - -" +
-                        "- - - - - - - -" +
-                        "- - - - - - - -")
+        let board = ASCIIBoard( "- - - - - - - -" +
+                                "- - - - - - - -" +
+                                "- - - - - - - -" +
+                                "- - - - - - - -" +
+                                "- - - W - - - -" +
+                                "- - - - - * - -" +
+                                "- - - - - - - -" +
+                                "- - - - - - - -" )
         
-        let board = makeASCIIArtBoardWithPieceColors(boardArt)
+        testBoard(board: board, movingPiece: "W", movement: PieceMovementKnight())
         
-        let startIndex = indexOfCharacter("W", boardArt: boardArt)
-        let targetIndex = indexOfCharacter("*", boardArt: boardArt)
-        
-        let movement = PieceMovementKnight()
-        
-        XCTAssertTrue(
-            movement.canPieceMove(fromLocation: BoardLocation(index: startIndex),
-                                  toLocation: BoardLocation(index: targetIndex),
-                                  board: board)
-        )
     }
     
     func testKnightMovementCanMoveToClockwisePosition4() {
         
-        let boardArt = ("- - - - - - - -" +
-                        "- - - - - - - -" +
-                        "- - - - - - - -" +
-                        "- - - - - - - -" +
-                        "- - - W - - - -" +
-                        "- - - - - - - -" +
-                        "- - - - * - - -" +
-                        "- - - - - - - -")
+        let board = ASCIIBoard( "- - - - - - - -" +
+                                "- - - - - - - -" +
+                                "- - - - - - - -" +
+                                "- - - - - - - -" +
+                                "- - - W - - - -" +
+                                "- - - - - - - -" +
+                                "- - - - * - - -" +
+                                "- - - - - - - -" )
         
-        let board = makeASCIIArtBoardWithPieceColors(boardArt)
-        
-        let startIndex = indexOfCharacter("W", boardArt: boardArt)
-        let targetIndex = indexOfCharacter("*", boardArt: boardArt)
-        
-        let movement = PieceMovementKnight()
-        
-        XCTAssertTrue(
-            movement.canPieceMove(fromLocation: BoardLocation(index: startIndex),
-                                  toLocation: BoardLocation(index: targetIndex),
-                                  board: board)
-        )
+        testBoard(board: board, movingPiece: "W", movement: PieceMovementKnight())
+
     }
 
     func testKnightMovementCanMoveToClockwisePosition5() {
         
-        let boardArt = ("- - - - - - - -" +
-                        "- - - - - - - -" +
-                        "- - - - - - - -" +
-                        "- - - - - - - -" +
-                        "- - - W - - - -" +
-                        "- - - - - - - -" +
-                        "- - * - - - - -" +
-                        "- - - - - - - -")
+        let board = ASCIIBoard( "- - - - - - - -" +
+                                "- - - - - - - -" +
+                                "- - - - - - - -" +
+                                "- - - - - - - -" +
+                                "- - - W - - - -" +
+                                "- - - - - - - -" +
+                                "- - * - - - - -" +
+                                "- - - - - - - -" )
         
-        let board = makeASCIIArtBoardWithPieceColors(boardArt)
-        
-        let startIndex = indexOfCharacter("W", boardArt: boardArt)
-        let targetIndex = indexOfCharacter("*", boardArt: boardArt)
-        
-        let movement = PieceMovementKnight()
-        
-        XCTAssertTrue(
-            movement.canPieceMove(fromLocation: BoardLocation(index: startIndex),
-                                  toLocation: BoardLocation(index: targetIndex),
-                                  board: board)
-        )
+        testBoard(board: board, movingPiece: "W", movement: PieceMovementKnight())
+
     }
     
     func testKnightMovementCanMoveToClockwisePosition6() {
         
-        let boardArt = ("- - - - - - - -" +
-                        "- - - - - - - -" +
-                        "- - - - - - - -" +
-                        "- - - - - - - -" +
-                        "- - - W - - - -" +
-                        "- * - - - - - -" +
-                        "- - - - - - - -" +
-                        "- - - - - - - -")
+        let board = ASCIIBoard( "- - - - - - - -" +
+                                "- - - - - - - -" +
+                                "- - - - - - - -" +
+                                "- - - - - - - -" +
+                                "- - - W - - - -" +
+                                "- * - - - - - -" +
+                                "- - - - - - - -" +
+                                "- - - - - - - -" )
         
-        let board = makeASCIIArtBoardWithPieceColors(boardArt)
-        
-        let startIndex = indexOfCharacter("W", boardArt: boardArt)
-        let targetIndex = indexOfCharacter("*", boardArt: boardArt)
-        
-        let movement = PieceMovementKnight()
-        
-        XCTAssertTrue(
-            movement.canPieceMove(fromLocation: BoardLocation(index: startIndex),
-                                  toLocation: BoardLocation(index: targetIndex),
-                                  board: board)
-        )
+        testBoard(board: board, movingPiece: "W", movement: PieceMovementKnight())
+
     }
 
     func testKnightMovementCanMoveToClockwisePosition7() {
         
-        let boardArt = ("- - - - - - - -" +
-                        "- - - - - - - -" +
-                        "- - - - - - - -" +
-                        "- * - - - - - -" +
-                        "- - - W - - - -" +
-                        "- - - - - - - -" +
-                        "- - - - - - - -" +
-                        "- - - - - - - -")
+        let board = ASCIIBoard( "- - - - - - - -" +
+                                "- - - - - - - -" +
+                                "- - - - - - - -" +
+                                "- * - - - - - -" +
+                                "- - - W - - - -" +
+                                "- - - - - - - -" +
+                                "- - - - - - - -" +
+                                "- - - - - - - -" )
         
-        let board = makeASCIIArtBoardWithPieceColors(boardArt)
-        
-        let startIndex = indexOfCharacter("W", boardArt: boardArt)
-        let targetIndex = indexOfCharacter("*", boardArt: boardArt)
-        
-        let movement = PieceMovementKnight()
-        
-        XCTAssertTrue(
-            movement.canPieceMove(fromLocation: BoardLocation(index: startIndex),
-                                  toLocation: BoardLocation(index: targetIndex),
-                                  board: board)
-        )
+        testBoard(board: board, movingPiece: "W", movement: PieceMovementKnight())
+
     }
 
     func testKnightMovementCanMoveToClockwisePosition8() {
         
-        let boardArt = ("- - - - - - - -" +
-                        "- - - - - - - -" +
-                        "- - * - - - - -" +
-                        "- - - - - - - -" +
-                        "- - - W - - - -" +
-                        "- - - - - - - -" +
-                        "- - - - - - - -" +
-                        "- - - - - - - -")
+        let board = ASCIIBoard( "- - - - - - - -" +
+                                "- - - - - - - -" +
+                                "- - * - - - - -" +
+                                "- - - - - - - -" +
+                                "- - - W - - - -" +
+                                "- - - - - - - -" +
+                                "- - - - - - - -" +
+                                "- - - - - - - -" )
         
-        let board = makeASCIIArtBoardWithPieceColors(boardArt)
-        
-        let startIndex = indexOfCharacter("W", boardArt: boardArt)
-        let targetIndex = indexOfCharacter("*", boardArt: boardArt)
-        
-        let movement = PieceMovementKnight()
-        
-        XCTAssertTrue(
-            movement.canPieceMove(fromLocation: BoardLocation(index: startIndex),
-                                  toLocation: BoardLocation(index: targetIndex),
-                                  board: board)
-        )
-    }
-    
-    func testKnightMovementCannotMoveToInvalidPosition() {
-        
-        let boardArt = ("- - - - - - - -" +
-                        "- - - - - - - *" +
-                        "- - - - - - - -" +
-                        "- - - - - - - -" +
-                        "- - - W - - - -" +
-                        "- - - - - - - -" +
-                        "- - - - - - - -" +
-                        "- - - - - - - -")
-        
-        let board = makeASCIIArtBoardWithPieceColors(boardArt)
-        
-        let startIndex = indexOfCharacter("W", boardArt: boardArt)
-        let targetIndex = indexOfCharacter("*", boardArt: boardArt)
-        
-        let movement = PieceMovementKnight()
-        
-        XCTAssertFalse(
-            movement.canPieceMove(fromLocation: BoardLocation(index: startIndex),
-                                  toLocation: BoardLocation(index: targetIndex),
-                                  board: board)
-        )
-    }
-    
-    func testKnightMovementCannotWrapToPosition1() {
-        
-        let boardArt = ("- - - - - - - -" +
-                        "- - - - - - - -" +
-                        "- - - - - - - -" +
-                        "- - - - - - - *" +
-                        "W - - - - - - -" +
-                        "- - - - - - - -" +
-                        "- - - - - - - -" +
-                        "- - - - - - - -")
-        
-        let board = makeASCIIArtBoardWithPieceColors(boardArt)
-        
-        let startIndex = indexOfCharacter("W", boardArt: boardArt)
-        let targetIndex = indexOfCharacter("*", boardArt: boardArt)
-        
-        let movement = PieceMovementKnight()
-        
-        XCTAssertFalse(
-            movement.canPieceMove(fromLocation: BoardLocation(index: startIndex),
-                                  toLocation: BoardLocation(index: targetIndex),
-                                  board: board)
-        )
-    }
-
-    
-    func testKnightMovementCannotWrapUpAndRight() {
-        
-        let boardArt = ("- - - - - - - -" +
-                        "- - - - - - - -" +
-                        "- - - - - - - -" +
-                        "* - - - - - - -" +
-                        "- - - - - - W -" +
-                        "- - - - - - - -" +
-                        "- - - - - - - -" +
-                        "- - - - - - - -")
-        
-        let board = makeASCIIArtBoardWithPieceColors(boardArt)
-        
-        let startIndex = indexOfCharacter("W", boardArt: boardArt)
-        let targetIndex = indexOfCharacter("*", boardArt: boardArt)
-        
-        let movement = PieceMovementKnight()
-        
-        XCTAssertFalse(
-            movement.canPieceMove(fromLocation: BoardLocation(index: startIndex),
-                                  toLocation: BoardLocation(index: targetIndex),
-                                  board: board)
-        )
-    }
-    
-    func testKnightMovementCannotWrapDownAndRight() {
-        
-        let boardArt = ("- - - - - - - -" +
-                        "- - - - - - - -" +
-                        "- - - - - - - -" +
-                        "- - - - - - - -" +
-                        "- - - - - - W -" +
-                        "* - - - - - - -" +
-                        "- - - - - - - -" +
-                        "- - - - - - - -")
-        
-        let board = makeASCIIArtBoardWithPieceColors(boardArt)
-        
-        let startIndex = indexOfCharacter("W", boardArt: boardArt)
-        let targetIndex = indexOfCharacter("*", boardArt: boardArt)
-        
-        let movement = PieceMovementKnight()
-        
-        XCTAssertFalse(
-            movement.canPieceMove(fromLocation: BoardLocation(index: startIndex),
-                                  toLocation: BoardLocation(index: targetIndex),
-                                  board: board)
-        )
-    }
-    
-    func testKnightMovementCannotWrapUpAndLeft() {
-        
-        let boardArt = ("- - - - - - - -" +
-                        "- - - - - - - -" +
-                        "- - - - - - - -" +
-                        "- - - - - - - *" +
-                        "- W - - - - - -" +
-                        "- - - - - - - -" +
-                        "- - - - - - - -" +
-                        "- - - - - - - -")
-        
-        let board = makeASCIIArtBoardWithPieceColors(boardArt)
-        
-        let startIndex = indexOfCharacter("W", boardArt: boardArt)
-        let targetIndex = indexOfCharacter("*", boardArt: boardArt)
-        
-        let movement = PieceMovementKnight()
-        
-        XCTAssertFalse(
-            movement.canPieceMove(fromLocation: BoardLocation(index: startIndex),
-                                  toLocation: BoardLocation(index: targetIndex),
-                                  board: board)
-        )
-    }
-    
-    func testKnightMovementCannotWrapDownAndLeft() {
-        
-        let boardArt = ("- - - - - - - -" +
-                        "- - - - - - - -" +
-                        "- - - - - - - -" +
-                        "- - - - - - - -" +
-                        "- W - - - - - -" +
-                        "- - - - - - - *" +
-                        "- - - - - - - -" +
-                        "- - - - - - - -")
-        
-        let board = makeASCIIArtBoardWithPieceColors(boardArt)
-        
-        let startIndex = indexOfCharacter("W", boardArt: boardArt)
-        let targetIndex = indexOfCharacter("*", boardArt: boardArt)
-        
-        let movement = PieceMovementKnight()
-        
-        XCTAssertFalse(
-            movement.canPieceMove(fromLocation: BoardLocation(index: startIndex),
-                                  toLocation: BoardLocation(index: targetIndex),
-                                  board: board)
-        )
-    }
-
-    // MARK - Board Creation Helpers
-    
-    func makeASCIIArtBoardWithPieceColors(_ boardArt: String) -> Board {
-        
-        // We only care about colors, not piece type, so just make pawns
-        
-        var boardArt = boardArt
-        boardArt = boardArt.replacingOccurrences(of: "B", with: "p")
-        boardArt = boardArt.replacingOccurrences(of: "W", with: "P")
-
-        return makeASCIIArtBoardWithPieceTypes(boardArt)
-    }
-    
-    func makeASCIIArtBoardWithPieceTypes(_ boardArt: String) -> Board {
-        
-        let boardArt = transformASCIIBoardInput(boardArt)
-        
-        // Check string format
-        XCTAssertEqual(boardArt.characters.count, 64, "ASCII board art must be 128 characters long")
-    
-        var board = Board();
-        
-        // Clear all pieces on the board
-        for i in 0..<64 {
-            board.squares[i].piece = nil;
-        }
-        
-        // Setup pieces from ascii art
-        for i in 0..<64 {
-            
-            let character = boardArt[boardArt.characters.index(boardArt.startIndex, offsetBy: i)]
-            board.squares[i].piece = pieceFromCharacter(character)
-        }
-        
-        return board;
-    }
-    
-    func pieceFromCharacter(_ character: Character) -> Piece? {
-        
-        var piece: Piece?
-        
-        switch character {
-        case "R":
-            piece = Piece(type: .rook, color: .white)
-        case "K":
-            piece = Piece(type: .knight, color: .white)
-        case "B":
-            piece = Piece(type: .bishop, color: .white)
-        case "Q":
-            piece = Piece(type: .queen, color: .white)
-        case "G":
-            piece = Piece(type: .king, color: .white)
-        case "P":
-            piece = Piece(type: .pawn, color: .white)
-        case "r":
-            piece = Piece(type: .rook, color: .black)
-        case "k":
-            piece = Piece(type: .knight, color: .black)
-        case "b":
-            piece = Piece(type: .bishop, color: .black)
-        case "q":
-            piece = Piece(type: .queen, color: .black)
-        case "g":
-            piece = Piece(type: .king, color: .black)
-        case "p":
-            piece = Piece(type: .pawn, color: .black)
-        default:
-            piece = nil
-        }
-        
-        return piece
-    }
-    
-    func transformASCIIBoardInput(_ input: String) -> String{
-        
-        let boardArt = input.replacingOccurrences(of: " ", with: "")
-        
-        var transformedArt = String()
-        
-        for y in  (0...7).reversed(){
-            for x in 0...7 {
-                
-                let index = y*8 + x
-                transformedArt.append(boardArt[boardArt.characters.index(boardArt.startIndex, offsetBy: index)])
-            }
-        }
- 
-        return transformedArt
+        testBoard(board: board, movingPiece: "W", movement: PieceMovementKnight())
 
     }
     
-    func indexOfCharacter(_ character: Character, boardArt: String) -> Int{
+    func testKnightMovementCannotMoveToInvalidPositionFromCenter() {
         
-        let boardArt = transformASCIIBoardInput(boardArt)
+        let board = ASCIIBoard( "! ! ! ! ! ! ! !" +
+                                "! ! ! ! ! ! ! !" +
+                                "! ! * ! * ! ! !" +
+                                "! * ! ! ! * ! !" +
+                                "! ! ! W ! ! ! !" +
+                                "! * ! ! ! * ! !" +
+                                "! ! * ! * ! ! !" +
+                                "! ! ! ! ! ! ! !" )
+
+        testBoard(board: board, movingPiece: "W", movement: PieceMovementKnight())
         
-        var index: Int?
-        
-        if let idx = boardArt.characters.index(of: character) {
-            index = boardArt.characters.distance(from: boardArt.startIndex, to: idx)
-        }
-        
-        XCTAssertNotNil(index)
-        return index!
     }
     
-    func indexesWithCharacter(_ character: Character, boardArt: String) -> [Int]{
+    func testKnightMovementCannotMoveToInvalidPositionFromTopLeft() {
         
-        let boardArt = transformASCIIBoardInput(boardArt)
+        let board = ASCIIBoard( "W ! ! ! ! ! ! !" +
+                                "! ! * ! ! ! ! !" +
+                                "! * ! ! ! ! ! !" +
+                                "! ! ! ! ! ! ! !" +
+                                "! ! ! ! ! ! ! !" +
+                                "! ! ! ! ! ! ! !" +
+                                "! ! ! ! ! ! ! !" +
+                                "! ! ! ! ! ! ! !" )
         
-        var indexes = [Int]()
+        testBoard(board: board, movingPiece: "W", movement: PieceMovementKnight())
         
-        for i in 0..<64 {
-            
-            let aCharacter = boardArt[boardArt.characters.index(boardArt.startIndex, offsetBy: i)]
-            if character == aCharacter {
-                indexes.append(i)
-            }
-        }
-        
-        // If this assert triggers, then the bug is in the test that called this function
-        XCTAssertGreaterThan(indexes.count, 0)
-        return indexes
     }
-
+    
+    func testKnightMovementCannotMoveToInvalidPositionFromTopRight() {
+        
+        let board = ASCIIBoard( "! ! ! ! ! ! ! W" +
+                                "! ! ! ! ! * ! !" +
+                                "! ! ! ! ! ! * !" +
+                                "! ! ! ! ! ! ! !" +
+                                "! ! ! ! ! ! ! !" +
+                                "! ! ! ! ! ! ! !" +
+                                "! ! ! ! ! ! ! !" +
+                                "! ! ! ! ! ! ! !" )
+        
+        testBoard(board: board, movingPiece: "W", movement: PieceMovementKnight())
+        
+    }
+    
+    func testKnightMovementCannotMoveToInvalidPositionFromBottomLeft() {
+        
+        let board = ASCIIBoard( "! ! ! ! ! ! ! !" +
+                                "! ! ! ! ! ! ! !" +
+                                "! ! ! ! ! ! ! !" +
+                                "! ! ! ! ! ! ! !" +
+                                "! ! ! ! ! ! ! !" +
+                                "! * ! ! ! ! ! !" +
+                                "! ! * ! ! ! ! !" +
+                                "W ! ! ! ! ! ! !" )
+        
+        testBoard(board: board, movingPiece: "W", movement: PieceMovementKnight())
+        
+    }
+    
+    func testKnightMovementCannotMoveToInvalidPositionFromBottomRight() {
+        
+        let board = ASCIIBoard( "! ! ! ! ! ! ! !" +
+                                "! ! ! ! ! ! ! !" +
+                                "! ! ! ! ! ! ! !" +
+                                "! ! ! ! ! ! ! !" +
+                                "! ! ! ! ! ! ! !" +
+                                "! ! ! ! ! ! * !" +
+                                "! ! ! ! ! * ! !" +
+                                "! ! ! ! ! ! ! W" )
+        
+        testBoard(board: board, movingPiece: "W", movement: PieceMovementKnight())
+        
+    }
 
 }
 
