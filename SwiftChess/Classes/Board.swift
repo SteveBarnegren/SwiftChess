@@ -112,47 +112,61 @@ public struct Square {
 // MARK: - ****** Board ******
 
 public struct Board {
+    
+    public enum InitialState {
+        case empty
+        case newGame
+    }
 
     public var squares = [Square]()
     
     // MARK: - Init
-    public init(){
+    public init(state: InitialState) {
         
         // Setup squares
         for i in 0..<64 {
             squares.append(Square())
         }
+        
+        // Setup for new game?
+        if state == .newGame {
+            setupForNewGame()
+        }
      
+    }
+    
+    mutating func setupForNewGame() {
+        
         // Setup white bottom row
-        self.squares[0].piece = Piece(type: .rook, color: .white)
-        self.squares[1].piece = Piece(type: .knight, color: .white)
-        self.squares[2].piece = Piece(type: .bishop, color: .white)
-        self.squares[3].piece = Piece(type: .queen, color: .white)
-        self.squares[4].piece = Piece(type: .king, color: .white)
-        self.squares[5].piece = Piece(type: .bishop, color: .white)
-        self.squares[6].piece = Piece(type: .knight, color: .white)
-        self.squares[7].piece = Piece(type: .rook, color: .white)
+        squares[0].piece = Piece(type: .rook, color: .white)
+        squares[1].piece = Piece(type: .knight, color: .white)
+        squares[2].piece = Piece(type: .bishop, color: .white)
+        squares[3].piece = Piece(type: .queen, color: .white)
+        squares[4].piece = Piece(type: .king, color: .white)
+        squares[5].piece = Piece(type: .bishop, color: .white)
+        squares[6].piece = Piece(type: .knight, color: .white)
+        squares[7].piece = Piece(type: .rook, color: .white)
         
         // Setup white pawn row
         for i in 8...15 {
-            self.squares[i].piece = Piece(type: .pawn, color: .white)
+            squares[i].piece = Piece(type: .pawn, color: .white)
         }
         
         // Setup black bottom row
-        self.squares[63].piece = Piece(type: .rook, color: .black)
-        self.squares[62].piece = Piece(type: .knight, color: .black)
-        self.squares[61].piece = Piece(type: .bishop, color: .black)
-        self.squares[60].piece = Piece(type: .queen, color: .black)
-        self.squares[59].piece = Piece(type: .king, color: .black)
-        self.squares[58].piece = Piece(type: .bishop, color: .black)
-        self.squares[57].piece = Piece(type: .knight, color: .black)
-        self.squares[56].piece = Piece(type: .rook, color: .black)
-
+        squares[63].piece = Piece(type: .rook, color: .black)
+        squares[62].piece = Piece(type: .knight, color: .black)
+        squares[61].piece = Piece(type: .bishop, color: .black)
+        squares[60].piece = Piece(type: .queen, color: .black)
+        squares[59].piece = Piece(type: .king, color: .black)
+        squares[58].piece = Piece(type: .bishop, color: .black)
+        squares[57].piece = Piece(type: .knight, color: .black)
+        squares[56].piece = Piece(type: .rook, color: .black)
+        
         // Setup black pawn row
         for i in 48...55 {
-            self.squares[i].piece = Piece(type: .pawn, color: .black)
+            squares[i].piece = Piece(type: .pawn, color: .black)
         }
-        
+
     }
     
     // MARK: - Pieces
@@ -161,10 +175,10 @@ public struct Board {
         return squares[location.index].piece
     }
     
-    public mutating func movePiece(_ fromIndex: Int, toIndex: Int){
+    public mutating func movePiece(fromLocation: BoardLocation, toLocation: BoardLocation){
         
-        squares[toIndex].piece = self.squares[fromIndex].piece
-        squares[fromIndex].piece = nil
+        squares[fromLocation.index].piece = self.squares[toLocation.index].piece
+        squares[fromLocation.index].piece = nil
         
     }
     

@@ -3,7 +3,7 @@
 //  SwiftChess
 //
 //  Created by Steve Barnegren on 20/09/2016.
-//  Copyright © 2016 CocoaPods. All rights reserved.
+//  Copyright © 2016 Steve Barnegren. All rights reserved.
 //
 
 import XCTest

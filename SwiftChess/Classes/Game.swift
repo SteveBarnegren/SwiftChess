@@ -10,7 +10,7 @@ import Foundation
 
 open class Game {
     
-    open var board = Board()
+    open var board = Board(state: .newGame)
     open var playerOne: Player!
     open var playerTwo: Player!
     

@@ -3,7 +3,7 @@
 //  SwiftChess
 //
 //  Created by Steve Barnegren on 08/10/2016.
-//  Copyright © 2016 CocoaPods. All rights reserved.
+//  Copyright © 2016 Steve Barnegren. All rights reserved.
 //
 
 import Foundation
@@ -54,7 +54,7 @@ public struct ASCIIBoard {
         boardArt = boardArt.replacingOccurrences(of: "B", with: "p")
         boardArt = boardArt.replacingOccurrences(of: "W", with: "P")
         
-        var board = Board();
+        var board = Board(state: .empty)
         
         // Clear all pieces on the board
         for i in 0..<64 {

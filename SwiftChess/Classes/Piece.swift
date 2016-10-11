@@ -31,11 +31,11 @@ open class Piece {
     open let type: PieceType
     open let color: Color
     
+    lazy var movement : PieceMovement = PieceMovement.pieceMovementForPieceType(pieceType: self.type)
+
     public init(type: PieceType, color: Color){
         self.type = type
         self.color = color
     }
-    
-    
     
 }

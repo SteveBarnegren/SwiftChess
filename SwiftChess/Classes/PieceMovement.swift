@@ -12,6 +12,24 @@ import Foundation
 
 open class PieceMovement {
     
+    public class func pieceMovementForPieceType(pieceType: PieceType) -> PieceMovement {
+        
+        switch pieceType {
+        case .pawn:
+            return PieceMovementPawn()
+        case .rook:
+            return PieceMovementRook()
+        case .knight:
+            return PieceMovementKnight()
+        case .bishop:
+            return PieceMovementBishop()
+        case .queen:
+            return PieceMovementQueen()
+        case .king:
+            return PieceMovementKing()
+        }   
+    }
+    
     public init(){
         
     }
