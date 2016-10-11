@@ -8,15 +8,6 @@
 
 import Foundation
 
-public enum PieceType {
-    case pawn
-    case rook
-    case knight
-    case bishop
-    case queen
-    case king
-}
-
 public enum Color {
     case white
     case black
@@ -27,6 +18,15 @@ public enum Color {
 }
 
 open class Piece {
+    
+    public enum PieceType {
+        case pawn
+        case rook
+        case knight
+        case bishop
+        case queen
+        case king
+    }
     
     open let type: PieceType
     open let color: Color

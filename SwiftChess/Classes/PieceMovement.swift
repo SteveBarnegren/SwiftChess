@@ -12,7 +12,7 @@ import Foundation
 
 open class PieceMovement {
     
-    public class func pieceMovementForPieceType(pieceType: PieceType) -> PieceMovement {
+    public class func pieceMovementForPieceType(pieceType: Piece.PieceType) -> PieceMovement {
         
         switch pieceType {
         case .pawn:

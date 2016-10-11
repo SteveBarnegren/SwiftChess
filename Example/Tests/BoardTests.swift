@@ -38,7 +38,7 @@ class BoardTests: XCTestCase {
     
     func testNewGameBoardContainsCorrectGamePieces() {
         
-        let expectedPieces: [(index: Int, type: PieceType, color: Color)] = [
+        let expectedPieces: [(index: Int, type: Piece.PieceType, color: Color)] = [
             
             // white back row
             (0, .rook, .white),
