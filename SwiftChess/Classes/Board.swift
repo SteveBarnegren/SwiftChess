@@ -169,7 +169,11 @@ public struct Board {
 
     }
     
-    // MARK: - Pieces
+    // MARK: - Manipulate Pieces
+    
+    public mutating func setPiece(_ piece: Piece, at location: BoardLocation) {
+        squares[location.index].piece = piece
+    }
     
     public func getPiece(at location: BoardLocation) -> Piece? {
         return squares[location.index].piece
@@ -177,7 +181,7 @@ public struct Board {
     
     public mutating func movePiece(fromLocation: BoardLocation, toLocation: BoardLocation){
         
-        squares[fromLocation.index].piece = self.squares[toLocation.index].piece
+        squares[toLocation.index].piece = self.squares[fromLocation.index].piece
         squares[fromLocation.index].piece = nil
         
     }
@@ -250,7 +254,7 @@ public struct Board {
 
 
     
-    public func printBoard( _ squarePrinter: (Square) -> Character? ){
+    func printBoard( _ squarePrinter: (Square) -> Character? ){
         
         var printString = String()
         

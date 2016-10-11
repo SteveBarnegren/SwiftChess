@@ -39,3 +39,13 @@ open class Piece {
     }
     
 }
+
+public func == (left: Piece, right: Piece) -> Bool {
+    
+    if left.type == right.type && left.color == right.color {
+        return true
+    }
+    else{
+        return false
+    }
+}

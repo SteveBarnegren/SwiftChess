@@ -96,4 +96,45 @@ class BoardTests: XCTestCase {
         }
     }
     
+    // MARK: - Piece Manipulation
+    
+    func testSetAndGetPiece() {
+        
+        var board = Board(state: .empty)
+        
+        let piece = Piece(type: .king, color: .black)
+        let location = BoardLocation(index: 5)
+        
+        board.setPiece(piece, at: location)
+        
+        guard let returnedPiece = board.getPiece(at: location) else {
+            print("Expected piece to exist at location")
+            return
+        }
+        
+        XCTAssert(returnedPiece == piece, "Expected pieces to be the same");
+        
+    }
+    
+    func testMovePieceResultsInPieceMoved() {
+        
+        var board = Board(state: .empty);
+        
+        let piece = Piece(type: .king, color: .black)
+        
+        let startLocation = BoardLocation(index: 10)
+        let endLocation = BoardLocation(index: 20)
+        
+        board.setPiece(piece, at: startLocation)
+        board.movePiece(fromLocation: startLocation, toLocation: endLocation)
+        
+        guard let returnedPiece = board.getPiece(at: endLocation) else {
+            XCTFail("Expected piece to exist at location")
+            return
+        }
+        
+        XCTAssert(returnedPiece == piece, "Expected pieces to be the same")
+
+    }
+    
 }
