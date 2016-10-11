@@ -11,13 +11,13 @@ import Foundation
 open class Game {
     
     open var board = Board(state: .newGame)
-    open var playerOne: Player!
-    open var playerTwo: Player!
+    open var whitePlayer: Player!
+    open var blackPlayer: Player!
     
     public init(){
         
-        self.playerOne = Player(color: .white, game: self)
-        self.playerTwo = Player(color: .black, game: self)
+        self.whitePlayer = Player(color: .white, game: self)
+        self.blackPlayer = Player(color: .black, game: self)
         
     }
     
