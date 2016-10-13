@@ -12,6 +12,7 @@ open class Player {
    
     let color: Color!
     weak var game: Game!
+    weak var delegate: PlayerDelegate?
     
     init(color: Color, game: Game){
         self.color = color
@@ -31,7 +32,17 @@ open class Player {
         return false
     }
     
+    public func canMovePiece(fromLocation: BoardLocation, toLocation: BoardLocation) -> Bool {
+        return canMovePieceWithError(fromLocation: fromLocation, toLocation: toLocation).result
+    }
+    
     public func movePiece(fromLocation: BoardLocation, toLocation: BoardLocation) {
+        
+        // Check that we're the current player
+        if game.currentPlayer !== self {
+            print("Cannot move piece, is not \(color) player's turn")
+            return
+        }
         
         // Check if move is allowed
         let canMove = canMovePieceWithError(fromLocation: fromLocation, toLocation: toLocation)
@@ -44,12 +55,12 @@ open class Player {
         
         // Move the piece
         game.board.movePiece(fromLocation: fromLocation, toLocation: toLocation)
+        
+        // Inform the delegate that we made a move
+        delegate?.playerDidMakeMove(player: self)
     }
     
-    public func canMovePiece(fromLocation: BoardLocation, toLocation: BoardLocation) -> Bool {
-        return canMovePieceWithError(fromLocation: fromLocation, toLocation: toLocation).result
-    }
-
+   
     // MARK: - Private
     
     enum PieceMoveError : Error {
@@ -98,5 +109,9 @@ open class Player {
         return (true, nil)
     }
 
+}
+
+protocol PlayerDelegate: class {
+    func playerDidMakeMove(player: Player)
 }
 

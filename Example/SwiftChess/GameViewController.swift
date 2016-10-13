@@ -112,15 +112,16 @@ class GameViewController: UIViewController {
 
 // MARK: - Board view delegate
 
-extension GameViewController: BoardViewDelegate{
+extension GameViewController: BoardViewDelegate {
     
     func touchedSquareAtIndex(_ boardView: BoardView, index: Int) {
-        print("GVC touched square at index \(index)")
         
+        // Update once we're done
         defer {
             update()
         }
         
+        print("GVC touched square at index \(index)")
         let location = BoardLocation(index: index)
         
         // If there is a selected piece, see if it can move to the new location
@@ -131,8 +132,8 @@ extension GameViewController: BoardViewDelegate{
             let canMove = self.game.currentPlayer.canMovePiece(fromLocation: selectedLocation,
                                                                toLocation: location)
             if canMove {
-                self.game.currentPlayer .movePiece(fromLocation: selectedLocation,
-                                                   toLocation: location)
+                self.game.currentPlayer.movePiece(fromLocation: selectedLocation,
+                                                  toLocation: location)
                 self.selectedIndex = nil
                 return
             }
@@ -148,5 +149,13 @@ extension GameViewController: BoardViewDelegate{
         
     }
     
+}
+
+extension GameViewController: GameDelegate {
+    
+    func gameDidChangeCurrentPlayer(game: Game) {
+        // Do nothing for now
+        print("GameViewController - game did change current player")
+    }
 }
 
