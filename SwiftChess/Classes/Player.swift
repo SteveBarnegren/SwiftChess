@@ -20,6 +20,17 @@ open class Player {
     
     // MARK: - Public
     
+    public func occupiesSquareAt(location: BoardLocation) -> Bool{
+        
+        if let piece = self.game.board.getPiece(at: location){
+            if piece.color == self.color {
+                return true
+            }
+        }
+        
+        return false
+    }
+    
     public func movePiece(fromLocation: BoardLocation, toLocation: BoardLocation) {
         
         // Check if move is allowed

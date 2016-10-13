@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftChess
 
 class MenuViewController: UIViewController {
     
@@ -30,7 +31,9 @@ class MenuViewController: UIViewController {
     @IBAction func playerVsPlayerButtonPressed(_ sender: UIButton){
         print("Player vs Player button pressed")
         
-        let gameViewController = GameViewController.gameViewController()
+        let game = Game()
+        
+        let gameViewController = GameViewController.gameViewController(game: game)
         self.navigationController?.pushViewController(gameViewController, animated: true)
         
     }

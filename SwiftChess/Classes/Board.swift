@@ -40,7 +40,7 @@ public struct BoardLocation : Equatable {
         self.index = index
     }
     
-    init(x: Int, y: Int) {
+    public init(x: Int, y: Int) {
         self.index = x + (y*8)
     }
     

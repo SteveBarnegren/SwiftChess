@@ -14,14 +14,16 @@ class GameViewController: UIViewController {
     @IBOutlet weak var boardView: BoardView!
     var pieceLabels = [UILabel]()
     var game: Game!
+    var selectedIndex: Int?
     
     // MARK: - Creation
     
-    class func gameViewController() -> GameViewController{
+    class func gameViewController(game: Game) -> GameViewController{
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let className = "GameViewController"
         let gameViewController: GameViewController = storyboard.instantiateViewController(withIdentifier: className) as! GameViewController
+        gameViewController.game = game;
         return gameViewController
     }
 
@@ -32,7 +34,6 @@ class GameViewController: UIViewController {
         boardView.delegate = self
         
         // Game
-        self.game = Game()
         self.game.board.printBoardState()
         
         // Piece labels
@@ -45,7 +46,7 @@ class GameViewController: UIViewController {
         }
         
         // Update
-        self.update(self.game.board)
+        self.update()
 
     }
     
@@ -68,11 +69,11 @@ class GameViewController: UIViewController {
         
     }
     
-    func update(_ board: Board){
-        /*
+    func update(){
+        
         for (index, label) in pieceLabels.enumerated() {
             
-            let piece = board.pieceAtIndex(index)
+            let piece = self.game.board.getPiece(at: BoardLocation(index: index))
             
             var string = ""
             
@@ -98,9 +99,12 @@ class GameViewController: UIViewController {
             
             if let piece = piece{
                 label.textColor = piece.color == .white ? UIColor.white : UIColor.black
+                
+                if selectedIndex == index {
+                    label.textColor = UIColor.magenta
+                }
             }
         }
- */
     }
     
     
@@ -113,8 +117,34 @@ extension GameViewController: BoardViewDelegate{
     func touchedSquareAtIndex(_ boardView: BoardView, index: Int) {
         print("GVC touched square at index \(index)")
         
+        defer {
+            update()
+        }
         
+        let location = BoardLocation(index: index)
         
+        // If there is a selected piece, see if it can move to the new location
+        if let selectedIndex = selectedIndex {
+            
+            let selectedLocation = BoardLocation(index: selectedIndex)
+            
+            let canMove = self.game.currentPlayer.canMovePiece(fromLocation: selectedLocation,
+                                                               toLocation: location)
+            if canMove {
+                self.game.currentPlayer .movePiece(fromLocation: selectedLocation,
+                                                   toLocation: location)
+                self.selectedIndex = nil
+                return
+            }
+        }
+        
+        // Clear selected index
+        selectedIndex = nil;
+        
+        // Select new piece if possible
+        if self.game.currentPlayer.occupiesSquareAt(location: location) {
+            selectedIndex = index
+        }
         
     }
     
