@@ -267,25 +267,33 @@ open class PieceMovementPawn: PieceMovement {
 
 
         // ****** Test forward locations ******
-        var forwardLocations = [BoardLocation]()
+        var forwardStrides = [BoardStride]()
         
         // Add one ahead offset
         if color == .white {
-            forwardLocations.append( fromLocation.incrementedBy(x: 0, y: 1) )
+            forwardStrides.append( BoardStride(x: 0, y: 1) )
         }
         else{
-            forwardLocations.append( fromLocation.incrementedBy(x: 0, y: -1) )
+            forwardStrides.append( BoardStride(x: 0, y: -1) )
         }
         
         // Add the two ahead offset
         if color == .white && fromLocation.y == 1 {
-            forwardLocations.append( fromLocation.incrementedBy(x: 0, y: 2) )
+            
+            forwardStrides.append( BoardStride(x: 0, y: 2) )
         }
         else if color == .black && fromLocation.y == 6 {
-            forwardLocations.append( fromLocation.incrementedBy(x: 0, y: -2) )
+            
+            forwardStrides.append( BoardStride(x: 0, y: -2) )
         }
         
-        for location in forwardLocations {
+        for stride in forwardStrides {
+            
+            guard fromLocation.canIncrementBy(stride: stride) else {
+                continue
+            }
+            
+            let location = fromLocation.incrementedBy(stride: stride)
             
             if let piece = board.getPiece(at: location) {
                 continue
@@ -297,18 +305,24 @@ open class PieceMovementPawn: PieceMovement {
         }
         
         // ****** Test Diagonal locations ******
-        var diagonalLocations = [BoardLocation]()
+        var diagonalStrides = [BoardStride]()
         
         if color == .white {
-            diagonalLocations.append( fromLocation.incrementedBy(x: -1, y: 1) )
-            diagonalLocations.append( fromLocation.incrementedBy(x: 1, y: 1) )
+            diagonalStrides.append( BoardStride(x: -1, y: 1) )
+            diagonalStrides.append( BoardStride(x: 1, y: 1) )
         }
         else{
-            diagonalLocations.append( fromLocation.incrementedBy(x: -1, y: -1) )
-            diagonalLocations.append( fromLocation.incrementedBy(x: 1, y: -1) )
+            diagonalStrides.append( BoardStride(x: -1, y: -1) )
+            diagonalStrides.append( BoardStride(x: 1, y: -1) )
         }
 
-        for location in diagonalLocations {
+        for stride in diagonalStrides {
+            
+            guard fromLocation.canIncrementBy(stride: stride) else {
+                continue
+            }
+            
+            let location = fromLocation.incrementedBy(stride: stride)
             
             if location != toLocation {
                 continue
@@ -323,19 +337,6 @@ open class PieceMovementPawn: PieceMovement {
         
         return false
         
-        // TODO: Need to implement the en-passent rule
-        /*
-        for offset in offsets {
-            
-            let offsetLocation = fromLocation.incrementedBy(x: offset.x, y: offset.y)
-            
-            if toLocation == offsetLocation && canPieceOccupySquare(pieceLocation: fromLocation, xOffset: offset.x, yOffset: offset.y, board: board) {
-                return true
-            }
-        }
-        
-        return false
- */
     }
 }
 
