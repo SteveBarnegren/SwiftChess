@@ -258,34 +258,73 @@ open class PieceMovementPawn: PieceMovement {
     
     override open func canPieceMove(fromLocation: BoardLocation, toLocation: BoardLocation, board: Board) -> Bool {
         
-        let movingPiece = board.getPiece(at: fromLocation)
-        
-        if movingPiece == nil {
-            return false;
+        // Get the moving piece
+        guard let movingPiece = board.getPiece(at: fromLocation) else{
+            return false
         }
         
-        var offsets = [(x: Int, y: Int)]()
-        
-        let color = movingPiece!.color
+        let color = movingPiece.color
+
+
+        // ****** Test forward locations ******
+        var forwardLocations = [BoardLocation]()
         
         // Add one ahead offset
         if color == .white {
-            offsets.append((0,1))
+            forwardLocations.append( fromLocation.incrementedBy(x: 0, y: 1) )
         }
         else{
-            offsets.append((0,-1))
+            forwardLocations.append( fromLocation.incrementedBy(x: 0, y: -1) )
         }
         
         // Add the two ahead offset
         if color == .white && fromLocation.y == 1 {
-            offsets.append((0,2))
+            forwardLocations.append( fromLocation.incrementedBy(x: 0, y: 2) )
         }
         else if color == .black && fromLocation.y == 6 {
-            offsets.append((0,-2))
+            forwardLocations.append( fromLocation.incrementedBy(x: 0, y: -2) )
         }
         
-        // TODO: Need to implement the en-passent rule
+        for location in forwardLocations {
+            
+            if let piece = board.getPiece(at: location) {
+                continue
+            }
+            
+            if location == toLocation {
+                return true
+            }
+        }
         
+        // ****** Test Diagonal locations ******
+        var diagonalLocations = [BoardLocation]()
+        
+        if color == .white {
+            diagonalLocations.append( fromLocation.incrementedBy(x: -1, y: 1) )
+            diagonalLocations.append( fromLocation.incrementedBy(x: 1, y: 1) )
+        }
+        else{
+            diagonalLocations.append( fromLocation.incrementedBy(x: -1, y: -1) )
+            diagonalLocations.append( fromLocation.incrementedBy(x: 1, y: -1) )
+        }
+
+        for location in diagonalLocations {
+            
+            if location != toLocation {
+                continue
+            }
+            
+            if let piece = board.getPiece(at: location) {
+                if piece.color == color.opposite() {
+                    return true
+                }
+            }
+        }
+        
+        return false
+        
+        // TODO: Need to implement the en-passent rule
+        /*
         for offset in offsets {
             
             let offsetLocation = fromLocation.incrementedBy(x: offset.x, y: offset.y)
@@ -296,6 +335,7 @@ open class PieceMovementPawn: PieceMovement {
         }
         
         return false
+ */
     }
 }
 

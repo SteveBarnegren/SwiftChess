@@ -59,6 +59,16 @@ class PieceMovementTests: XCTestCase {
 
     }
     
+    func canMakeMove(board: ASCIIBoard, from: Character, to: Character, movement: PieceMovement) -> Bool {
+        
+        let movingIndex = board.indexOfCharacter(from)
+        let targetIndex = board.indexOfCharacter(to)
+        
+        return movement.canPieceMove(fromLocation: BoardLocation(index: movingIndex),
+                                     toLocation: BoardLocation(index: targetIndex),
+                                     board: board.board)
+    }
+    
     // MARK: - Straight Line Movement
     
     func testStraightLineMovementCanMoveUp() {
@@ -779,7 +789,130 @@ class PieceMovementTests: XCTestCase {
         
     }
     
-    // MARK - Queen movement
+    func testWhitePawnCannotTakePieceByMovingForwardOneSpace() {
+        
+        let board = ASCIIBoard( "- - - - - - - -" +
+                                "- - - - - - - -" +
+                                "- - - - - - - -" +
+                                "- - - - - - - -" +
+                                "- - - - - - - -" +
+                                "- p - - - - - -" +
+                                "- P - - - - - -" +
+                                "- - - - - - - -" )
+        
+        XCTAssert(canMakeMove(board: board, from: "P", to: "p", movement: PieceMovementPawn()) == false)
+        
+    }
+    
+    func testBlackPawnCannotTakePieceByMovingForwardOneSpace() {
+        
+        let board = ASCIIBoard( "- - - - - - - -" +
+                                "- p - - - - - -" +
+                                "- P - - - - - -" +
+                                "- - - - - - - -" +
+                                "- - - - - - - -" +
+                                "- - - - - - - -" +
+                                "- - - - - - - -" +
+                                "- - - - - - - -" )
+        
+        XCTAssert(canMakeMove(board: board, from: "p", to: "P", movement: PieceMovementPawn()) == false)
+        
+    }
+    
+    func testWhitePawnCannotTakePieceByMovingForwardTwoSpaces() {
+        
+        let board = ASCIIBoard( "- - - - - - - -" +
+                                "- - - - - - - -" +
+                                "- - - - - - - -" +
+                                "- - - - - - - -" +
+                                "- p - - - - - -" +
+                                "- - - - - - - -" +
+                                "- P - - - - - -" +
+                                "- - - - - - - -" )
+        
+        XCTAssert(canMakeMove(board: board, from: "P", to: "p", movement: PieceMovementPawn()) == false)
+        
+    }
+    
+    func testBlackPawnCannotTakePieceByMovingForwardTwoSpaces() {
+        
+        let board = ASCIIBoard( "- - - - - - - -" +
+                                "- p - - - - - -" +
+                                "- - - - - - - -" +
+                                "- P - - - - - -" +
+                                "- - - - - - - -" +
+                                "- - - - - - - -" +
+                                "- - - - - - - -" +
+                                "- - - - - - - -" )
+        
+        XCTAssert(canMakeMove(board: board, from: "p", to: "P", movement: PieceMovementPawn()) == false)
+        
+    }
+    
+    func testWhitePawnCanTakePieceDiagonallyToLeft() {
+        
+        let board = ASCIIBoard( "- - - - - - - -" +
+                                "- - - - - - - -" +
+                                "- - - - - - - -" +
+                                "- - - - - - - -" +
+                                "- - - - - - - -" +
+                                "- - p - - - - -" +
+                                "- - - P - - - -" +
+                                "- - - - - - - -" )
+        
+        XCTAssert(canMakeMove(board: board, from: "P", to: "p", movement: PieceMovementPawn()))
+        
+    }
+    
+    func testWhitePawnCanTakePieceDiagonallyToRight() {
+        
+        let board = ASCIIBoard( "- - - - - - - -" +
+                                "- - - - - - - -" +
+                                "- - - - - - - -" +
+                                "- - - - - - - -" +
+                                "- - - - - - - -" +
+                                "- - - - p - - -" +
+                                "- - - P - - - -" +
+                                "- - - - - - - -" )
+        
+        XCTAssert(canMakeMove(board: board, from: "P", to: "p", movement: PieceMovementPawn()))
+        
+    }
+
+    
+    func testBlackPawnCanTakePieceDiagonallyToLeft() {
+        
+        let board = ASCIIBoard( "- - - - - - - -" +
+                                "- - - p - - - -" +
+                                "- - P - - - - -" +
+                                "- - - - - - - -" +
+                                "- - - - - - - -" +
+                                "- - - - - - - -" +
+                                "- - - - - - - -" +
+                                "- - - - - - - -" )
+        
+        XCTAssert(canMakeMove(board: board, from: "p", to: "P", movement: PieceMovementPawn()))
+        
+    }
+    
+    func testBlackPawnCanTakePieceDiagonallyToRight() {
+        
+        let board = ASCIIBoard( "- - - - - - - -" +
+                                "- - - p - - - -" +
+                                "- - - - P - - -" +
+                                "- - - - - - - -" +
+                                "- - - - - - - -" +
+                                "- - - - - - - -" +
+                                "- - - - - - - -" +
+                                "- - - - - - - -" )
+        
+        XCTAssert(canMakeMove(board: board, from: "p", to: "P", movement: PieceMovementPawn()))
+        
+    }
+
+
+    
+    // MARK: - Queen movement
     
     func testQueenCannotMoveToInvalidPositionFromCentre(){
         
@@ -856,7 +989,7 @@ class PieceMovementTests: XCTestCase {
         
     }
     
-    // Rook Movement
+    // MARK: - Rook Movement
     
     func testRookCannotMoveToInvalidPositionFromCentre(){
         
@@ -933,7 +1066,7 @@ class PieceMovementTests: XCTestCase {
         
     }
     
-    // MARK - Bishop movement
+    // MARK: - Bishop movement
     
     func testBishopCannotMoveToInvalidPositionFromCentre(){
         

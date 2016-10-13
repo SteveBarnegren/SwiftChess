@@ -11,11 +11,12 @@ import Foundation
 open class Game {
     
     open var board = Board(state: .newGame)
-    open var currentPlayer: Player!
-    open weak var delegate: GameDelegate?
     
-    internal var whitePlayer: Player!
-    internal var blackPlayer: Player!
+    open var whitePlayer: Player!
+    open var blackPlayer: Player!
+    open var currentPlayer: Player!
+    
+    open weak var delegate: GameDelegate?
 
     public init(){
         
