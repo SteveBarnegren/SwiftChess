@@ -193,6 +193,7 @@
 				607FACCE1AFB9204008FA782 /* Resources */,
 				BD8EB38CABC31060595083E6 /* [CP] Embed Pods Frameworks */,
 				29EFC6C312B9D466146FB08E /* [CP] Copy Pods Resources */,
+				67687E451DB6C9A700636D8B /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -329,6 +330,19 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SwiftChess_Tests/Pods-SwiftChess_Tests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		67687E451DB6C9A700636D8B /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "TAGS=\"TODO:|FIXME:\"\necho \"searching ${SRCROOT} for ${TAGS}\"\nfind \"${SRCROOT}\" \\( -name \"*.swift\" \\) -print0 | xargs -0 egrep --with-filename --line-number --only-matching \"($TAGS).*\\$\" | perl -p -e \"s/($TAGS)/ warning: \\$1/\"";
 		};
 		81DD32C1C4D73520ED852282 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;

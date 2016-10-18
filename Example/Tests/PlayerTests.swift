@@ -55,4 +55,6 @@ class PlayerTests: XCTestCase {
         XCTAssert(game.whitePlayer.canMovePiece(fromLocation: location, toLocation: location) == false)
     }
     
+    // TODO: Add tests for move error throw values
+    
 }
