@@ -202,4 +202,80 @@ class BoardTests: XCTestCase {
 
     }
     
+    func testGetLocationsOfColorReturnsCorrectLocations() {
+        
+        let whiteLocations = [BoardLocation(index: 1), BoardLocation(index: 2), BoardLocation(index: 3)]
+        let blackLocations = [BoardLocation(index: 11), BoardLocation(index: 12), BoardLocation(index: 13)]
+
+        var board = Board(state: .empty)
+        
+        for location in whiteLocations {
+            board.setPiece(Piece(type: .pawn, color: .white), at: location)
+        }
+        
+        for location in blackLocations {
+            board.setPiece(Piece(type: .pawn, color: .black), at: location)
+        }
+        
+        let returnedWhitelocations = board.getLocationsOfColor(.white)
+        XCTAssert(returnedWhitelocations.count == whiteLocations.count,
+                  "Expected white count to be \(whiteLocations.count), was \(returnedWhitelocations.count)")
+        
+        let returnedBlacklocations = board.getLocationsOfColor(.black)
+        XCTAssert(returnedBlacklocations.count == blackLocations.count,
+                  "Expected white count to be \(blackLocations.count), was \(returnedBlacklocations.count)")
+        
+        
+        for location in whiteLocations {
+            
+            XCTAssert(
+                returnedWhitelocations.filter({ (returnedLocation: BoardLocation) -> Bool in
+                    return location == returnedLocation
+                }).count == 1,
+                "Expected only one location to exist"
+            )
+        }
+        
+        
+        for location in blackLocations {
+            
+            XCTAssert(
+                returnedBlacklocations.filter({ (returnedLocation: BoardLocation) -> Bool in
+                    return location == returnedLocation
+                }).count == 1,
+                "Expected only one location to exist"
+            )
+        }
+        
+    }
+    
+    func testIsColorInCheckReturnsTrueWhenInCheck() {
+        
+        let board = ASCIIBoard(pieces:  "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- Q - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - g - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" )
+
+        XCTAssert(board.board.isColorInCheck(color: .black), "Expected king to be in check")
+    }
+    
+    func testIsColorInCheckReturnsFalseWhenNotInCheck() {
+        
+        let board = ASCIIBoard(pieces:  "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - Q - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - g - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" )
+        
+        XCTAssert(board.board.isColorInCheck(color: .black) == false, "Expected king to not be in check")
+    }
+
+    
 }

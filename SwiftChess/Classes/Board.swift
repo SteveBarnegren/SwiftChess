@@ -224,6 +224,24 @@ public struct Board {
         fatalError("Couldn't find \(color) king. Kings should always exist")
     }
     
+    public func getLocationsOfColor(_ color: Color) -> [BoardLocation] {
+        
+        var locations = [BoardLocation]()
+        
+        for (index, square) in squares.enumerated() {
+            
+            guard let piece = square.piece else {
+                continue
+            }
+            
+            if piece.color == color {
+                locations.append(BoardLocation(index: index))
+            }
+        }
+        
+        return locations
+    }
+    
     public func getPieces(color: Color) -> [Piece] {
         
         var pieces = [Piece]()
@@ -244,33 +262,25 @@ public struct Board {
     }
     
     // MARK: - Check / Check mate state
-    /*
-    func isColorInCheck(color: Color) -> Bool {
+    
+    public func isColorInCheck(color: Color) -> Bool {
         
-        let king = getKing(color: color)
+        let kingLocation = getKingLocation(color: color)
+        let oppositionLocations = getLocationsOfColor( color.opposite() )
         
-        
-        
-        
-        
-        
-        let oppositionPieces = getPieces(color: color.opposite())
-        
-        for piece in oppositionPieces {
+        for location in oppositionLocations {
             
-            if piece.movement.can {
-                <#code#>
+            guard let piece = getPiece(at: location) else {
+                continue
             }
-            
-            
-            
+
+            if piece.movement.canPieceMove(fromLocation: location, toLocation: kingLocation, board: self) {
+                return true
+            }
         }
         
-        
+        return false
     }
- */
-    
-
     
     // MARK: - Print
     
