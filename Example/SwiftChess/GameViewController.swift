@@ -107,6 +107,18 @@ class GameViewController: UIViewController {
         }
     }
     
+    func showAlert(title: String, message: String) {
+        
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        alertController.addAction(okAction)
+        alertController.addAction(cancelAction)
+        
+        present(alertController, animated: true, completion: nil)
+    }
     
 }
 
@@ -116,35 +128,51 @@ extension GameViewController: BoardViewDelegate {
     
     func touchedSquareAtIndex(_ boardView: BoardView, index: Int) {
         
+        print("GVC touched square at index \(index)")
+        
         // Update once we're done
         defer {
             update()
         }
         
-        print("GVC touched square at index \(index)")
         let location = BoardLocation(index: index)
         
-        // If there is a selected piece, see if it can move to the new location
+        // If has tapped the same piece again, deselect it
         if let selectedIndex = selectedIndex {
-            
-            let selectedLocation = BoardLocation(index: selectedIndex)
-            
-            let canMove = self.game.currentPlayer.canMovePiece(fromLocation: selectedLocation,
-                                                               toLocation: location)
-            if canMove {
-                self.game.currentPlayer.movePiece(fromLocation: selectedLocation,
-                                                  toLocation: location)
+            if location == BoardLocation(index: selectedIndex) {
                 self.selectedIndex = nil
                 return
             }
         }
         
-        // Clear selected index
-        selectedIndex = nil;
-        
         // Select new piece if possible
         if self.game.currentPlayer.occupiesSquareAt(location: location) {
             selectedIndex = index
+        }
+        
+        // If there is a selected piece, see if it can move to the new location
+        if let selectedIndex = selectedIndex {
+            
+            do {
+                try self.game.currentPlayer.movePiece(fromLocation: BoardLocation(index: selectedIndex),
+                                                      toLocation: location)
+                
+            } catch Player.MoveError.pieceUnableToMoveToLocation {
+                print("Piece is unable to move to this location")
+                
+            } catch Player.MoveError.cannotMoveInToCheck{
+                print("Player cannot move in to check")
+                showAlert(title: "😜", message: "Player cannot move in to check")
+                
+            } catch Player.MoveError.playerMustMoveOutOfCheck{
+                print("Player must move out of check")
+                showAlert(title: "🙃", message: "Player must move out of check")
+                
+            } catch {
+                print("Something went wrong!")
+                return
+            }
+            
         }
         
     }

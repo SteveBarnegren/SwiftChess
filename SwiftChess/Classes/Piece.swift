@@ -37,7 +37,6 @@ open class Piece {
         self.type = type
         self.color = color
     }
-    
 }
 
 public func == (left: Piece, right: Piece) -> Bool {

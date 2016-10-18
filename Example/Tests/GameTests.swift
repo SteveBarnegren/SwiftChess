@@ -30,8 +30,8 @@ class GameTests: XCTestCase {
         let firstPlayer = game.currentPlayer
         
         // White player move leftmost pawn
-        game.currentPlayer.movePiece(fromLocation: BoardLocation(x: 0, y: 1),
-                                     toLocation: BoardLocation(x: 0, y: 2))
+        try! game.currentPlayer.movePiece(fromLocation: BoardLocation(x: 0, y: 1),
+                                          toLocation: BoardLocation(x: 0, y: 2))
         
         XCTAssert(game.currentPlayer !== firstPlayer)
         
