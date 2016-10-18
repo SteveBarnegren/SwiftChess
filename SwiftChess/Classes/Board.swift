@@ -186,6 +186,92 @@ public struct Board {
         
     }
     
+    // MARK: - Get Specific pieces
+    
+    func getKing(color: Color) -> Piece {
+    
+        var king: Piece?
+    
+        for square in squares {
+            
+            guard let piece = square.piece else{
+                continue
+            }
+            
+            if piece == Piece(type: .king, color: color) {
+                king = piece
+                break
+            }
+        }
+        
+        // We'll implitly unwrap this, because there should always be a king for each color on the board. If there isn't, it's an error
+        return king!
+    }
+    
+    public func getKingLocation(color: Color) -> BoardLocation {
+        
+        for (index, square) in squares.enumerated() {
+            
+            guard let piece = square.piece else{
+                continue
+            }
+            
+            if piece.color == color && piece.type == .king {
+                return BoardLocation(index: index)
+            }
+        }
+        
+        fatalError("Couldn't find \(color) king. Kings should always exist")
+    }
+    
+    public func getPieces(color: Color) -> [Piece] {
+        
+        var pieces = [Piece]()
+        
+        for square in squares {
+            
+            guard let piece = square.piece else{
+                continue
+            }
+            
+            if piece.color == color {
+                pieces.append(piece)
+            }
+        }
+        
+        return pieces
+        
+    }
+    
+    // MARK: - Check / Check mate state
+    /*
+    func isColorInCheck(color: Color) -> Bool {
+        
+        let king = getKing(color: color)
+        
+        
+        
+        
+        
+        
+        let oppositionPieces = getPieces(color: color.opposite())
+        
+        for piece in oppositionPieces {
+            
+            if piece.movement.can {
+                <#code#>
+            }
+            
+            
+            
+        }
+        
+        
+    }
+ */
+    
+
+    
     // MARK: - Print
     
     public func printBoardColors() {

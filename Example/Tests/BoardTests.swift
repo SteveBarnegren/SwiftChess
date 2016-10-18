@@ -7,7 +7,7 @@
 //
 
 import XCTest
-import SwiftChess
+@testable import SwiftChess
 
 class BoardTests: XCTestCase {
     
@@ -134,6 +134,71 @@ class BoardTests: XCTestCase {
         }
         
         XCTAssert(returnedPiece == piece, "Expected pieces to be the same")
+
+    }
+    
+    func testGetPiecesReturnsCorrectPieces() {
+        
+        let board = ASCIIBoard(pieces:  "- - - - - - - -" +
+                                        "- R P Q G B K -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" )
+
+        let pieces = board.board.getPieces(color: .white)
+        
+        board.board.printBoardPieces()
+        
+        func verifyPieceExistance(piece: Piece) -> () {
+            
+            let matchingPieces = pieces.filter{
+                return $0 == piece
+            }
+            
+            XCTAssert(matchingPieces.count != 0, "No instances of piece with type \(piece.type) and color \(piece.color) found")
+            XCTAssert(matchingPieces.count == 1, "Multiple instances of piece with type \(piece.type) and color \(piece.color) found")
+        }
+        
+        verifyPieceExistance(piece: Piece(type: .king, color: .white))
+        verifyPieceExistance(piece: Piece(type: .queen, color: .white))
+        verifyPieceExistance(piece: Piece(type: .rook, color: .white))
+        verifyPieceExistance(piece: Piece(type: .bishop, color: .white))
+        verifyPieceExistance(piece: Piece(type: .pawn, color: .white))
+        verifyPieceExistance(piece: Piece(type: .knight, color: .white))
+    }
+    
+    func testGetKingLocationReturnsCorrectLocation() {
+        
+        var board = Board(state: .empty)
+        
+        let whiteLocation = BoardLocation(index: 5)
+        let blackLocation = BoardLocation(index: 10)
+        
+        board.setPiece( Piece(type: .king, color: .white), at: whiteLocation)
+        board.setPiece( Piece(type: .king, color: .black), at: blackLocation)
+        
+        XCTAssert( board.getKingLocation(color: .white) == whiteLocation,
+                   "Expected white king to be at location \(whiteLocation)")
+        
+        XCTAssert( board.getKingLocation(color: .black) == blackLocation,
+                   "Expected black king to be at location \(blackLocation)")
+
+    }
+    
+    func testGetKingReturnsKing() {
+        
+        let whiteKing = Piece(type: .king, color: .white)
+        let blackKing = Piece(type: .king, color: .black)
+
+        var board = Board(state: .empty)
+        board.setPiece(whiteKing, at: BoardLocation(index: 0))
+        board.setPiece(blackKing, at: BoardLocation(index: 1))
+        
+        XCTAssert(board.getKing(color: .white) == whiteKing, "Unable to find white king")
+        XCTAssert(board.getKing(color: .black) == blackKing, "Unable to find black king")
 
     }
     

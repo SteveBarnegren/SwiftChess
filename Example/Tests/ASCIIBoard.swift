@@ -31,8 +31,9 @@ func transformASCIIBoardInput(_ input: String) -> String{
 public struct ASCIIBoard {
     
     let artString: String
+    var stringContainsColors: Bool!
     
-    init(_ artString: String) {
+    init(pieces artString: String) {
 
         var artString = artString
         
@@ -43,7 +44,14 @@ public struct ASCIIBoard {
         XCTAssertEqual(artString.characters.count, 64, "ASCII board art must be 128 characters long")
         
         self.artString = artString
+        self.stringContainsColors = false
         
+    }
+    
+    init(colors artString: String) {
+        
+        self.init(pieces: artString)
+        self.stringContainsColors = true
     }
     
     var board: Board {
@@ -51,8 +59,10 @@ public struct ASCIIBoard {
         var boardArt = artString
         
         // We only care about colours, not piece types, so just make pawns
-        boardArt = boardArt.replacingOccurrences(of: "B", with: "p")
-        boardArt = boardArt.replacingOccurrences(of: "W", with: "P")
+        if stringContainsColors == true {
+            boardArt = boardArt.replacingOccurrences(of: "B", with: "p")
+            boardArt = boardArt.replacingOccurrences(of: "W", with: "P")
+        }
         
         var board = Board(state: .empty)
         
@@ -116,7 +126,7 @@ public struct ASCIIBoard {
             index = artString.characters.distance(from: artString.startIndex, to: idx)
         }
         
-        XCTAssertNotNil(index)
+        XCTAssert(index != nil, "Unable to find index of character: \(character)")
         return index!
     }
     

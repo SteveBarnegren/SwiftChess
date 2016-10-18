@@ -73,14 +73,14 @@ class PieceMovementTests: XCTestCase {
     
     func testStraightLineMovementCanMoveUp() {
         
-        let board = ASCIIBoard( "* - - - - - - -" +
-                                "* - - - - - - -" +
-                                "* - - - - - - -" +
-                                "* - - - - - - -" +
-                                "* - - - - - - -" +
-                                "* - - - - - - -" +
-                                "* - - - - - - -" +
-                                "W - - - - - - -" )
+        let board = ASCIIBoard(colors:  "* - - - - - - -" +
+                                        "* - - - - - - -" +
+                                        "* - - - - - - -" +
+                                        "* - - - - - - -" +
+                                        "* - - - - - - -" +
+                                        "* - - - - - - -" +
+                                        "* - - - - - - -" +
+                                        "W - - - - - - -" )
         
         testBoard(board: board, movingPiece: "W", movement: PieceMovementStraightLine())
         
@@ -88,14 +88,14 @@ class PieceMovementTests: XCTestCase {
     
     func testStraightLineMovementCanMoveDown() {
         
-        let board = ASCIIBoard( "W - - - - - - -" +
-                                "* - - - - - - -" +
-                                "* - - - - - - -" +
-                                "* - - - - - - -" +
-                                "* - - - - - - -" +
-                                "* - - - - - - -" +
-                                "* - - - - - - -" +
-                                "* - - - - - - -" )
+        let board = ASCIIBoard(colors:  "W - - - - - - -" +
+                                        "* - - - - - - -" +
+                                        "* - - - - - - -" +
+                                        "* - - - - - - -" +
+                                        "* - - - - - - -" +
+                                        "* - - - - - - -" +
+                                        "* - - - - - - -" +
+                                        "* - - - - - - -" )
         
         testBoard(board: board, movingPiece: "W", movement: PieceMovementStraightLine())
         
@@ -105,14 +105,14 @@ class PieceMovementTests: XCTestCase {
     
     func testStraightLineMovementCanMoveRight() {
      
-        let board = ASCIIBoard( "- - - - - - - -" +
-                                "- - - - - - - -" +
-                                "- - - - - - - -" +
-                                "- - - - - - - -" +
-                                "- - - - - - - -" +
-                                "- - - - - - - -" +
-                                "- - - - - - - -" +
-                                "W * * * * * * *" )
+        let board = ASCIIBoard(colors:  "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "W * * * * * * *" )
         
         testBoard(board: board, movingPiece: "W", movement: PieceMovementStraightLine())
 
@@ -120,14 +120,14 @@ class PieceMovementTests: XCTestCase {
     
     func testStraightLineMovementCanMoveLeft() {
         
-        let board = ASCIIBoard( "- - - - - - - -" +
-                                "- - - - - - - -" +
-                                "- - - - - - - -" +
-                                "- - - - - - - -" +
-                                "- - - - - - - -" +
-                                "- - - - - - - -" +
-                                "- - - - - - - -" +
-                                "* * * * * * * W" )
+        let board = ASCIIBoard(colors:  "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "* * * * * * * W" )
         
         testBoard(board: board, movingPiece: "W", movement: PieceMovementStraightLine())
 
@@ -137,14 +137,14 @@ class PieceMovementTests: XCTestCase {
  
     func testStraightLineMovementCannotMoveToInvalidPositionFromCenter() {
      
-        let board = ASCIIBoard( "! ! ! * ! ! ! !" +
-                                "! ! ! * ! ! ! !" +
-                                "! ! ! * ! ! ! !" +
-                                "* * * W * * * *" +
-                                "! ! ! * ! ! ! !" +
-                                "! ! ! * ! ! ! !" +
-                                "! ! ! * ! ! ! !" +
-                                "! ! ! * ! ! ! !" )
+        let board = ASCIIBoard(colors:  "! ! ! * ! ! ! !" +
+                                        "! ! ! * ! ! ! !" +
+                                        "! ! ! * ! ! ! !" +
+                                        "* * * W * * * *" +
+                                        "! ! ! * ! ! ! !" +
+                                        "! ! ! * ! ! ! !" +
+                                        "! ! ! * ! ! ! !" +
+                                        "! ! ! * ! ! ! !" )
         
         testBoard(board: board, movingPiece: "W", movement: PieceMovementStraightLine())
         
@@ -152,14 +152,14 @@ class PieceMovementTests: XCTestCase {
     
     func testStraightLineMovementCannotMoveToInvalidPositionFromTopLeft() {
         
-        let board = ASCIIBoard( "W * * * * * * *" +
-                                "* ! ! ! ! ! ! !" +
-                                "* ! ! ! ! ! ! !" +
-                                "* ! ! ! ! ! ! !" +
-                                "* ! ! ! ! ! ! !" +
-                                "* ! ! ! ! ! ! !" +
-                                "* ! ! ! ! ! ! !" +
-                                "* ! ! ! ! ! ! !" )
+        let board = ASCIIBoard(colors:  "W * * * * * * *" +
+                                        "* ! ! ! ! ! ! !" +
+                                        "* ! ! ! ! ! ! !" +
+                                        "* ! ! ! ! ! ! !" +
+                                        "* ! ! ! ! ! ! !" +
+                                        "* ! ! ! ! ! ! !" +
+                                        "* ! ! ! ! ! ! !" +
+                                        "* ! ! ! ! ! ! !" )
         
         testBoard(board: board, movingPiece: "W", movement: PieceMovementStraightLine())
         
@@ -167,14 +167,14 @@ class PieceMovementTests: XCTestCase {
     
     func testStraightLineMovementCannotMoveToInvalidPositionFromTopRight() {
         
-        let board = ASCIIBoard( "* * * * * * * W" +
-                                "! ! ! ! ! ! ! *" +
-                                "! ! ! ! ! ! ! *" +
-                                "! ! ! ! ! ! ! *" +
-                                "! ! ! ! ! ! ! *" +
-                                "! ! ! ! ! ! ! *" +
-                                "! ! ! ! ! ! ! *" +
-                                "! ! ! ! ! ! ! *" )
+        let board = ASCIIBoard(colors:  "* * * * * * * W" +
+                                        "! ! ! ! ! ! ! *" +
+                                        "! ! ! ! ! ! ! *" +
+                                        "! ! ! ! ! ! ! *" +
+                                        "! ! ! ! ! ! ! *" +
+                                        "! ! ! ! ! ! ! *" +
+                                        "! ! ! ! ! ! ! *" +
+                                        "! ! ! ! ! ! ! *" )
         
         testBoard(board: board, movingPiece: "W", movement: PieceMovementStraightLine())
         
@@ -182,28 +182,28 @@ class PieceMovementTests: XCTestCase {
     
     func testStraightLineMovementCannotMoveToInvalidPositionFromBottomLeft() {
         
-        let board = ASCIIBoard( "* ! ! ! ! ! ! !" +
-                                "* ! ! ! ! ! ! !" +
-                                "* ! ! ! ! ! ! !" +
-                                "* ! ! ! ! ! ! !" +
-                                "* ! ! ! ! ! ! !" +
-                                "* ! ! ! ! ! ! !" +
-                                "* ! ! ! ! ! ! !" +
-                                "W * * * * * * *" )
+        let board = ASCIIBoard(colors:  "* ! ! ! ! ! ! !" +
+                                        "* ! ! ! ! ! ! !" +
+                                        "* ! ! ! ! ! ! !" +
+                                        "* ! ! ! ! ! ! !" +
+                                        "* ! ! ! ! ! ! !" +
+                                        "* ! ! ! ! ! ! !" +
+                                        "* ! ! ! ! ! ! !" +
+                                        "W * * * * * * *" )
         
         testBoard(board: board, movingPiece: "W", movement: PieceMovementStraightLine())
     }
     
     func testStraightLineMovementCannotMoveToInvalidPositionFromBottomRight() {
         
-        let board = ASCIIBoard( "! ! ! ! ! ! ! *" +
-                                "! ! ! ! ! ! ! *" +
-                                "! ! ! ! ! ! ! *" +
-                                "! ! ! ! ! ! ! *" +
-                                "! ! ! ! ! ! ! *" +
-                                "! ! ! ! ! ! ! *" +
-                                "! ! ! ! ! ! ! *" +
-                                "* * * * * * * W" )
+        let board = ASCIIBoard(colors:  "! ! ! ! ! ! ! *" +
+                                        "! ! ! ! ! ! ! *" +
+                                        "! ! ! ! ! ! ! *" +
+                                        "! ! ! ! ! ! ! *" +
+                                        "! ! ! ! ! ! ! *" +
+                                        "! ! ! ! ! ! ! *" +
+                                        "! ! ! ! ! ! ! *" +
+                                        "* * * * * * * W" )
         
         testBoard(board: board, movingPiece: "W", movement: PieceMovementStraightLine())
         
@@ -213,14 +213,14 @@ class PieceMovementTests: XCTestCase {
     
     func testStraightLineMovementCannotMoveThroughOpponent() {
         
-        let board = ASCIIBoard( "- - - ! - - - -" +
-                                "- - - ! - - - -" +
-                                "- - - B - - - -" +
-                                "- - - * - - - -" +
-                                "! B * W * B ! !" +
-                                "- - - * - - - -" +
-                                "- - - B - - - -" +
-                                "- - - ! - - - -" )
+        let board = ASCIIBoard(colors:  "- - - ! - - - -" +
+                                        "- - - ! - - - -" +
+                                        "- - - B - - - -" +
+                                        "- - - * - - - -" +
+                                        "! B * W * B ! !" +
+                                        "- - - * - - - -" +
+                                        "- - - B - - - -" +
+                                        "- - - ! - - - -" )
         
         testBoard(board: board, movingPiece: "W", movement: PieceMovementStraightLine())
 
@@ -228,14 +228,14 @@ class PieceMovementTests: XCTestCase {
     
     func testDiagonalMovementCanMoveNE() {
         
-        let board = ASCIIBoard( "- - - - - - - *" +
-                                "- - - - - - * -" +
-                                "- - - - - * - -" +
-                                "- - - - * - - -" +
-                                "- - - * - - - -" +
-                                "- - * - - - - -" +
-                                "- * - - - - - -" +
-                                "W - - - - - - -" )
+        let board = ASCIIBoard(colors:  "- - - - - - - *" +
+                                        "- - - - - - * -" +
+                                        "- - - - - * - -" +
+                                        "- - - - * - - -" +
+                                        "- - - * - - - -" +
+                                        "- - * - - - - -" +
+                                        "- * - - - - - -" +
+                                        "W - - - - - - -" )
         
         testBoard(board: board, movingPiece: "W", movement: PieceMovementDiagonal())
 
@@ -243,14 +243,14 @@ class PieceMovementTests: XCTestCase {
     
     func testDiagonalMovementCanMoveSE() {
         
-        let board = ASCIIBoard( "W - - - - - - -" +
-                                "- * - - - - - -" +
-                                "- - * - - - - -" +
-                                "- - - * - - - -" +
-                                "- - - - * - - -" +
-                                "- - - - - * - -" +
-                                "- - - - - - * -" +
-                                "- - - - - - - *" )
+        let board = ASCIIBoard(colors:  "W - - - - - - -" +
+                                        "- * - - - - - -" +
+                                        "- - * - - - - -" +
+                                        "- - - * - - - -" +
+                                        "- - - - * - - -" +
+                                        "- - - - - * - -" +
+                                        "- - - - - - * -" +
+                                        "- - - - - - - *" )
         
         testBoard(board: board, movingPiece: "W", movement: PieceMovementDiagonal())
 
@@ -258,14 +258,14 @@ class PieceMovementTests: XCTestCase {
     
     func testDiagonalMovementCanMoveSW() {
         
-        let board = ASCIIBoard( "- - - - - - - W" +
-                                "- - - - - - * -" +
-                                "- - - - - * - -" +
-                                "- - - - * - - -" +
-                                "- - - * - - - -" +
-                                "- - * - - - - -" +
-                                "- * - - - - - -" +
-                                "* - - - - - - -" )
+        let board = ASCIIBoard(colors:  "- - - - - - - W" +
+                                        "- - - - - - * -" +
+                                        "- - - - - * - -" +
+                                        "- - - - * - - -" +
+                                        "- - - * - - - -" +
+                                        "- - * - - - - -" +
+                                        "- * - - - - - -" +
+                                        "* - - - - - - -" )
         
         testBoard(board: board, movingPiece: "W", movement: PieceMovementDiagonal())
 
@@ -273,14 +273,14 @@ class PieceMovementTests: XCTestCase {
     
     func testDiagonalMovementCanMoveNW() {
         
-        let board = ASCIIBoard( "* - - - - - - -" +
-                                "- * - - - - - -" +
-                                "- - * - - - - -" +
-                                "- - - * - - - -" +
-                                "- - - - * - - -" +
-                                "- - - - - * - -" +
-                                "- - - - - - * -" +
-                                "- - - - - - - W" )
+        let board = ASCIIBoard(colors:  "* - - - - - - -" +
+                                        "- * - - - - - -" +
+                                        "- - * - - - - -" +
+                                        "- - - * - - - -" +
+                                        "- - - - * - - -" +
+                                        "- - - - - * - -" +
+                                        "- - - - - - * -" +
+                                        "- - - - - - - W" )
         
         testBoard(board: board, movingPiece: "W", movement: PieceMovementDiagonal())
 
@@ -288,14 +288,14 @@ class PieceMovementTests: XCTestCase {
     
     func testDiagonalMovementCannotMoveToInvalidPositionFromCenter() {
         
-        let board = ASCIIBoard( "! ! ! ! ! ! ! *" +
-                                "* ! ! ! ! ! * !" +
-                                "! * ! ! ! * ! !" +
-                                "! ! * ! * ! ! !" +
-                                "! ! ! W ! ! ! !" +
-                                "! ! * ! * ! ! !" +
-                                "! * ! ! ! * ! !" +
-                                "* ! ! ! ! ! * !" )
+        let board = ASCIIBoard(colors:  "! ! ! ! ! ! ! *" +
+                                        "* ! ! ! ! ! * !" +
+                                        "! * ! ! ! * ! !" +
+                                        "! ! * ! * ! ! !" +
+                                        "! ! ! W ! ! ! !" +
+                                        "! ! * ! * ! ! !" +
+                                        "! * ! ! ! * ! !" +
+                                        "* ! ! ! ! ! * !" )
         
         testBoard(board: board, movingPiece: "W", movement: PieceMovementDiagonal())
 
@@ -303,14 +303,14 @@ class PieceMovementTests: XCTestCase {
     
     func testDiagonalMovementCannotMoveToInvalidPositionFromTopLeft() {
         
-        let board = ASCIIBoard( "W ! ! ! ! ! ! !" +
-                                "! * ! ! ! ! ! !" +
-                                "! ! * ! ! ! ! !" +
-                                "! ! ! * ! ! ! !" +
-                                "! ! ! ! * ! ! !" +
-                                "! ! ! ! ! * ! !" +
-                                "! ! ! ! ! ! * !" +
-                                "! ! ! ! ! ! ! *" )
+        let board = ASCIIBoard(colors:  "W ! ! ! ! ! ! !" +
+                                        "! * ! ! ! ! ! !" +
+                                        "! ! * ! ! ! ! !" +
+                                        "! ! ! * ! ! ! !" +
+                                        "! ! ! ! * ! ! !" +
+                                        "! ! ! ! ! * ! !" +
+                                        "! ! ! ! ! ! * !" +
+                                        "! ! ! ! ! ! ! *" )
         
         testBoard(board: board, movingPiece: "W", movement: PieceMovementDiagonal())
         
@@ -318,14 +318,14 @@ class PieceMovementTests: XCTestCase {
     
     func testDiagonalMovementCannotMoveToInvalidPositionFromTopRight() {
         
-        let board = ASCIIBoard( "! ! ! ! ! ! ! W" +
-                                "! ! ! ! ! ! * !" +
-                                "! ! ! ! ! * ! !" +
-                                "! ! ! ! * ! ! !" +
-                                "! ! ! * ! ! ! !" +
-                                "! ! * ! ! ! ! !" +
-                                "! * ! ! ! ! ! !" +
-                                "* ! ! ! ! ! ! !" )
+        let board = ASCIIBoard(colors:  "! ! ! ! ! ! ! W" +
+                                        "! ! ! ! ! ! * !" +
+                                        "! ! ! ! ! * ! !" +
+                                        "! ! ! ! * ! ! !" +
+                                        "! ! ! * ! ! ! !" +
+                                        "! ! * ! ! ! ! !" +
+                                        "! * ! ! ! ! ! !" +
+                                        "* ! ! ! ! ! ! !" )
         
         testBoard(board: board, movingPiece: "W", movement: PieceMovementDiagonal())
         
@@ -333,14 +333,14 @@ class PieceMovementTests: XCTestCase {
     
     func testDiagonalMovementCannotMoveToInvalidPositionFromBottomLeft() {
         
-        let board = ASCIIBoard( "! ! ! ! ! ! ! *" +
-                                "! ! ! ! ! ! * !" +
-                                "! ! ! ! ! * ! !" +
-                                "! ! ! ! * ! ! !" +
-                                "! ! ! * ! ! ! !" +
-                                "! ! * ! ! ! ! !" +
-                                "! * ! ! ! ! ! !" +
-                                "W ! ! ! ! ! ! !" )
+        let board = ASCIIBoard(colors:  "! ! ! ! ! ! ! *" +
+                                        "! ! ! ! ! ! * !" +
+                                        "! ! ! ! ! * ! !" +
+                                        "! ! ! ! * ! ! !" +
+                                        "! ! ! * ! ! ! !" +
+                                        "! ! * ! ! ! ! !" +
+                                        "! * ! ! ! ! ! !" +
+                                        "W ! ! ! ! ! ! !" )
         
         testBoard(board: board, movingPiece: "W", movement: PieceMovementDiagonal())
         
@@ -348,14 +348,14 @@ class PieceMovementTests: XCTestCase {
     
     func testDiagonalMovementCannotMoveToInvalidPositionFromBottomRight() {
         
-        let board = ASCIIBoard( "* ! ! ! ! ! ! !" +
-                                "! * ! ! ! ! ! !" +
-                                "! ! * ! ! ! ! !" +
-                                "! ! ! * ! ! ! !" +
-                                "! ! ! ! * ! ! !" +
-                                "! ! ! ! ! * ! !" +
-                                "! ! ! ! ! ! * !" +
-                                "! ! ! ! ! ! ! W" )
+        let board = ASCIIBoard(colors:  "* ! ! ! ! ! ! !" +
+                                        "! * ! ! ! ! ! !" +
+                                        "! ! * ! ! ! ! !" +
+                                        "! ! ! * ! ! ! !" +
+                                        "! ! ! ! * ! ! !" +
+                                        "! ! ! ! ! * ! !" +
+                                        "! ! ! ! ! ! * !" +
+                                        "! ! ! ! ! ! ! W" )
         
         testBoard(board: board, movingPiece: "W", movement: PieceMovementDiagonal())
         
@@ -365,14 +365,14 @@ class PieceMovementTests: XCTestCase {
     
     func testKnightMovementCanMoveToClockwisePosition1() {
         
-        let board = ASCIIBoard( "- - - - - - - -" +
-                                "- - - - - - - -" +
-                                "- - - - * - - -" +
-                                "- - - - - - - -" +
-                                "- - - W - - - -" +
-                                "- - - - - - - -" +
-                                "- - - - - - - -" +
-                                "- - - - - - - -" )
+        let board = ASCIIBoard(colors:  "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - * - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - W - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" )
         
         testBoard(board: board, movingPiece: "W", movement: PieceMovementKnight())
 
@@ -380,14 +380,14 @@ class PieceMovementTests: XCTestCase {
     
     func testKnightMovementCanMoveToClockwisePosition2() {
         
-        let board = ASCIIBoard( "- - - - - - - -" +
-                                "- - - - - - - -" +
-                                "- - - - - - - -" +
-                                "- - - - - * - -" +
-                                "- - - W - - - -" +
-                                "- - - - - - - -" +
-                                "- - - - - - - -" +
-                                "- - - - - - - -" )
+        let board = ASCIIBoard(colors:  "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - * - -" +
+                                        "- - - W - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" )
         
         testBoard(board: board, movingPiece: "W", movement: PieceMovementKnight())
 
@@ -395,14 +395,14 @@ class PieceMovementTests: XCTestCase {
     
     func testKnightMovementCanMoveToClockwisePosition3() {
         
-        let board = ASCIIBoard( "- - - - - - - -" +
-                                "- - - - - - - -" +
-                                "- - - - - - - -" +
-                                "- - - - - - - -" +
-                                "- - - W - - - -" +
-                                "- - - - - * - -" +
-                                "- - - - - - - -" +
-                                "- - - - - - - -" )
+        let board = ASCIIBoard(colors:  "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - W - - - -" +
+                                        "- - - - - * - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" )
         
         testBoard(board: board, movingPiece: "W", movement: PieceMovementKnight())
         
@@ -410,14 +410,14 @@ class PieceMovementTests: XCTestCase {
     
     func testKnightMovementCanMoveToClockwisePosition4() {
         
-        let board = ASCIIBoard( "- - - - - - - -" +
-                                "- - - - - - - -" +
-                                "- - - - - - - -" +
-                                "- - - - - - - -" +
-                                "- - - W - - - -" +
-                                "- - - - - - - -" +
-                                "- - - - * - - -" +
-                                "- - - - - - - -" )
+        let board = ASCIIBoard(colors:  "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - W - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - * - - -" +
+                                        "- - - - - - - -" )
         
         testBoard(board: board, movingPiece: "W", movement: PieceMovementKnight())
 
@@ -425,14 +425,14 @@ class PieceMovementTests: XCTestCase {
 
     func testKnightMovementCanMoveToClockwisePosition5() {
         
-        let board = ASCIIBoard( "- - - - - - - -" +
-                                "- - - - - - - -" +
-                                "- - - - - - - -" +
-                                "- - - - - - - -" +
-                                "- - - W - - - -" +
-                                "- - - - - - - -" +
-                                "- - * - - - - -" +
-                                "- - - - - - - -" )
+        let board = ASCIIBoard(colors:  "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - W - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - * - - - - -" +
+                                        "- - - - - - - -" )
         
         testBoard(board: board, movingPiece: "W", movement: PieceMovementKnight())
 
@@ -440,14 +440,14 @@ class PieceMovementTests: XCTestCase {
     
     func testKnightMovementCanMoveToClockwisePosition6() {
         
-        let board = ASCIIBoard( "- - - - - - - -" +
-                                "- - - - - - - -" +
-                                "- - - - - - - -" +
-                                "- - - - - - - -" +
-                                "- - - W - - - -" +
-                                "- * - - - - - -" +
-                                "- - - - - - - -" +
-                                "- - - - - - - -" )
+        let board = ASCIIBoard(colors:  "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - W - - - -" +
+                                        "- * - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" )
         
         testBoard(board: board, movingPiece: "W", movement: PieceMovementKnight())
 
@@ -455,14 +455,14 @@ class PieceMovementTests: XCTestCase {
 
     func testKnightMovementCanMoveToClockwisePosition7() {
         
-        let board = ASCIIBoard( "- - - - - - - -" +
-                                "- - - - - - - -" +
-                                "- - - - - - - -" +
-                                "- * - - - - - -" +
-                                "- - - W - - - -" +
-                                "- - - - - - - -" +
-                                "- - - - - - - -" +
-                                "- - - - - - - -" )
+        let board = ASCIIBoard(colors:  "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- * - - - - - -" +
+                                        "- - - W - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" )
         
         testBoard(board: board, movingPiece: "W", movement: PieceMovementKnight())
 
@@ -470,14 +470,14 @@ class PieceMovementTests: XCTestCase {
 
     func testKnightMovementCanMoveToClockwisePosition8() {
         
-        let board = ASCIIBoard( "- - - - - - - -" +
-                                "- - - - - - - -" +
-                                "- - * - - - - -" +
-                                "- - - - - - - -" +
-                                "- - - W - - - -" +
-                                "- - - - - - - -" +
-                                "- - - - - - - -" +
-                                "- - - - - - - -" )
+        let board = ASCIIBoard(colors:  "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - * - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - W - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" )
         
         testBoard(board: board, movingPiece: "W", movement: PieceMovementKnight())
 
@@ -485,14 +485,14 @@ class PieceMovementTests: XCTestCase {
     
     func testKnightMovementCannotMoveToInvalidPositionFromCenter() {
         
-        let board = ASCIIBoard( "! ! ! ! ! ! ! !" +
-                                "! ! ! ! ! ! ! !" +
-                                "! ! * ! * ! ! !" +
-                                "! * ! ! ! * ! !" +
-                                "! ! ! W ! ! ! !" +
-                                "! * ! ! ! * ! !" +
-                                "! ! * ! * ! ! !" +
-                                "! ! ! ! ! ! ! !" )
+        let board = ASCIIBoard(colors:  "! ! ! ! ! ! ! !" +
+                                        "! ! ! ! ! ! ! !" +
+                                        "! ! * ! * ! ! !" +
+                                        "! * ! ! ! * ! !" +
+                                        "! ! ! W ! ! ! !" +
+                                        "! * ! ! ! * ! !" +
+                                        "! ! * ! * ! ! !" +
+                                        "! ! ! ! ! ! ! !" )
 
         testBoard(board: board, movingPiece: "W", movement: PieceMovementKnight())
         
@@ -500,14 +500,14 @@ class PieceMovementTests: XCTestCase {
     
     func testKnightMovementCannotMoveToInvalidPositionFromTopLeft() {
         
-        let board = ASCIIBoard( "W ! ! ! ! ! ! !" +
-                                "! ! * ! ! ! ! !" +
-                                "! * ! ! ! ! ! !" +
-                                "! ! ! ! ! ! ! !" +
-                                "! ! ! ! ! ! ! !" +
-                                "! ! ! ! ! ! ! !" +
-                                "! ! ! ! ! ! ! !" +
-                                "! ! ! ! ! ! ! !" )
+        let board = ASCIIBoard(colors:  "W ! ! ! ! ! ! !" +
+                                        "! ! * ! ! ! ! !" +
+                                        "! * ! ! ! ! ! !" +
+                                        "! ! ! ! ! ! ! !" +
+                                        "! ! ! ! ! ! ! !" +
+                                        "! ! ! ! ! ! ! !" +
+                                        "! ! ! ! ! ! ! !" +
+                                        "! ! ! ! ! ! ! !" )
         
         testBoard(board: board, movingPiece: "W", movement: PieceMovementKnight())
         
@@ -515,14 +515,14 @@ class PieceMovementTests: XCTestCase {
     
     func testKnightMovementCannotMoveToInvalidPositionFromTopRight() {
         
-        let board = ASCIIBoard( "! ! ! ! ! ! ! W" +
-                                "! ! ! ! ! * ! !" +
-                                "! ! ! ! ! ! * !" +
-                                "! ! ! ! ! ! ! !" +
-                                "! ! ! ! ! ! ! !" +
-                                "! ! ! ! ! ! ! !" +
-                                "! ! ! ! ! ! ! !" +
-                                "! ! ! ! ! ! ! !" )
+        let board = ASCIIBoard(colors:  "! ! ! ! ! ! ! W" +
+                                        "! ! ! ! ! * ! !" +
+                                        "! ! ! ! ! ! * !" +
+                                        "! ! ! ! ! ! ! !" +
+                                        "! ! ! ! ! ! ! !" +
+                                        "! ! ! ! ! ! ! !" +
+                                        "! ! ! ! ! ! ! !" +
+                                        "! ! ! ! ! ! ! !" )
         
         testBoard(board: board, movingPiece: "W", movement: PieceMovementKnight())
         
@@ -530,14 +530,14 @@ class PieceMovementTests: XCTestCase {
     
     func testKnightMovementCannotMoveToInvalidPositionFromBottomLeft() {
         
-        let board = ASCIIBoard( "! ! ! ! ! ! ! !" +
-                                "! ! ! ! ! ! ! !" +
-                                "! ! ! ! ! ! ! !" +
-                                "! ! ! ! ! ! ! !" +
-                                "! ! ! ! ! ! ! !" +
-                                "! * ! ! ! ! ! !" +
-                                "! ! * ! ! ! ! !" +
-                                "W ! ! ! ! ! ! !" )
+        let board = ASCIIBoard(colors:  "! ! ! ! ! ! ! !" +
+                                        "! ! ! ! ! ! ! !" +
+                                        "! ! ! ! ! ! ! !" +
+                                        "! ! ! ! ! ! ! !" +
+                                        "! ! ! ! ! ! ! !" +
+                                        "! * ! ! ! ! ! !" +
+                                        "! ! * ! ! ! ! !" +
+                                        "W ! ! ! ! ! ! !" )
         
         testBoard(board: board, movingPiece: "W", movement: PieceMovementKnight())
         
@@ -545,14 +545,14 @@ class PieceMovementTests: XCTestCase {
     
     func testKnightMovementCannotMoveToInvalidPositionFromBottomRight() {
         
-        let board = ASCIIBoard( "! ! ! ! ! ! ! !" +
-                                "! ! ! ! ! ! ! !" +
-                                "! ! ! ! ! ! ! !" +
-                                "! ! ! ! ! ! ! !" +
-                                "! ! ! ! ! ! ! !" +
-                                "! ! ! ! ! ! * !" +
-                                "! ! ! ! ! * ! !" +
-                                "! ! ! ! ! ! ! W" )
+        let board = ASCIIBoard(colors:  "! ! ! ! ! ! ! !" +
+                                        "! ! ! ! ! ! ! !" +
+                                        "! ! ! ! ! ! ! !" +
+                                        "! ! ! ! ! ! ! !" +
+                                        "! ! ! ! ! ! ! !" +
+                                        "! ! ! ! ! ! * !" +
+                                        "! ! ! ! ! * ! !" +
+                                        "! ! ! ! ! ! ! W" )
         
         testBoard(board: board, movingPiece: "W", movement: PieceMovementKnight())
         
@@ -562,14 +562,14 @@ class PieceMovementTests: XCTestCase {
     
     func testKingMovementCannotMoveToInvalidPositionFromCenter() {
         
-        let board = ASCIIBoard( "! ! ! ! ! ! ! !" +
-                                "! ! ! ! ! ! ! !" +
-                                "! ! ! ! ! ! ! !" +
-                                "! ! * * * ! ! !" +
-                                "! ! * W * ! ! !" +
-                                "! ! * * * ! ! !" +
-                                "! ! ! ! ! ! ! !" +
-                                "! ! ! ! ! ! ! !" )
+        let board = ASCIIBoard(colors:  "! ! ! ! ! ! ! !" +
+                                        "! ! ! ! ! ! ! !" +
+                                        "! ! ! ! ! ! ! !" +
+                                        "! ! * * * ! ! !" +
+                                        "! ! * W * ! ! !" +
+                                        "! ! * * * ! ! !" +
+                                        "! ! ! ! ! ! ! !" +
+                                        "! ! ! ! ! ! ! !" )
         
         testBoard(board: board, movingPiece: "W", movement: PieceMovementKing())
         
@@ -577,14 +577,14 @@ class PieceMovementTests: XCTestCase {
     
     func testKingMovementCannotMoveToInvalidPositionFromTopLeft() {
         
-        let board = ASCIIBoard( "W * ! ! ! ! ! !" +
-                                "* * ! ! ! ! ! !" +
-                                "! ! ! ! ! ! ! !" +
-                                "! ! ! ! ! ! ! !" +
-                                "! ! ! ! ! ! ! !" +
-                                "! ! ! ! ! ! ! !" +
-                                "! ! ! ! ! ! ! !" +
-                                "! ! ! ! ! ! ! !" )
+        let board = ASCIIBoard(colors:  "W * ! ! ! ! ! !" +
+                                        "* * ! ! ! ! ! !" +
+                                        "! ! ! ! ! ! ! !" +
+                                        "! ! ! ! ! ! ! !" +
+                                        "! ! ! ! ! ! ! !" +
+                                        "! ! ! ! ! ! ! !" +
+                                        "! ! ! ! ! ! ! !" +
+                                        "! ! ! ! ! ! ! !" )
         
         testBoard(board: board, movingPiece: "W", movement: PieceMovementKing())
         
@@ -592,14 +592,14 @@ class PieceMovementTests: XCTestCase {
     
     func testKingMovementCannotMoveToInvalidPositionFromTopRight() {
         
-        let board = ASCIIBoard( "! ! ! ! ! ! * W" +
-                                "! ! ! ! ! ! * *" +
-                                "! ! ! ! ! ! ! !" +
-                                "! ! ! ! ! ! ! !" +
-                                "! ! ! ! ! ! ! !" +
-                                "! ! ! ! ! ! ! !" +
-                                "! ! ! ! ! ! ! !" +
-                                "! ! ! ! ! ! ! !" )
+        let board = ASCIIBoard(colors:  "! ! ! ! ! ! * W" +
+                                        "! ! ! ! ! ! * *" +
+                                        "! ! ! ! ! ! ! !" +
+                                        "! ! ! ! ! ! ! !" +
+                                        "! ! ! ! ! ! ! !" +
+                                        "! ! ! ! ! ! ! !" +
+                                        "! ! ! ! ! ! ! !" +
+                                        "! ! ! ! ! ! ! !" )
         
         testBoard(board: board, movingPiece: "W", movement: PieceMovementKing())
         
@@ -607,29 +607,29 @@ class PieceMovementTests: XCTestCase {
     
     func testKingMovementCannotMoveToInvalidPositionFromBottomLeft() {
         
-        let board = ASCIIBoard( "! ! ! ! ! ! ! !" +
-                                "! ! ! ! ! ! ! !" +
-                                "! ! ! ! ! ! ! !" +
-                                "! ! ! ! ! ! ! !" +
-                                "! ! ! ! ! ! ! !" +
-                                "! ! ! ! ! ! ! !" +
-                                "* * ! ! ! ! ! !" +
-                                "W * ! ! ! ! ! !" )
-                            
+        let board = ASCIIBoard(colors:  "! ! ! ! ! ! ! !" +
+                                        "! ! ! ! ! ! ! !" +
+                                        "! ! ! ! ! ! ! !" +
+                                        "! ! ! ! ! ! ! !" +
+                                        "! ! ! ! ! ! ! !" +
+                                        "! ! ! ! ! ! ! !" +
+                                        "* * ! ! ! ! ! !" +
+                                        "W * ! ! ! ! ! !" )
+        
         testBoard(board: board, movingPiece: "W", movement: PieceMovementKing())
         
     }
     
     func testKingMovementCannotMoveToInvalidPositionFromBottomRight() {
         
-        let board = ASCIIBoard( "! ! ! ! ! ! ! !" +
-                                "! ! ! ! ! ! ! !" +
-                                "! ! ! ! ! ! ! !" +
-                                "! ! ! ! ! ! ! !" +
-                                "! ! ! ! ! ! ! !" +
-                                "! ! ! ! ! ! ! !" +
-                                "! ! ! ! ! ! * *" +
-                                "! ! ! ! ! ! * W" )
+        let board = ASCIIBoard(colors:  "! ! ! ! ! ! ! !" +
+                                        "! ! ! ! ! ! ! !" +
+                                        "! ! ! ! ! ! ! !" +
+                                        "! ! ! ! ! ! ! !" +
+                                        "! ! ! ! ! ! ! !" +
+                                        "! ! ! ! ! ! ! !" +
+                                        "! ! ! ! ! ! * *" +
+                                        "! ! ! ! ! ! * W" )
         
         testBoard(board: board, movingPiece: "W", movement: PieceMovementKing())
         
@@ -639,14 +639,14 @@ class PieceMovementTests: XCTestCase {
     
     func testWhitePawnCanMoveAheadOneSpace() {
         
-        let board = ASCIIBoard( "- - - - - - - -" +
-                                "- - - - - - - -" +
-                                "- - - - - - - -" +
-                                "- - - - - - - -" +
-                                "- - - - - - - -" +
-                                "- - - * - - - -" +
-                                "- - - P - - - -" +
-                                "- - - - - - - -" )
+        let board = ASCIIBoard(colors:  "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - * - - - -" +
+                                        "- - - P - - - -" +
+                                        "- - - - - - - -" )
         
         testBoard(board: board, movingPiece: "P", movement: PieceMovementPawn())
         
@@ -654,14 +654,14 @@ class PieceMovementTests: XCTestCase {
     
     func testBlackPawnCanMoveAheadOneSpace() {
         
-        let board = ASCIIBoard( "- - - - - - - -" +
-                                "- - - p - - - -" +
-                                "- - - * - - - -" +
-                                "- - - - - - - -" +
-                                "- - - - - - - -" +
-                                "- - - - - - - -" +
-                                "- - - - - - - -" +
-                                "- - - - - - - -" )
+        let board = ASCIIBoard(colors:  "- - - - - - - -" +
+                                        "- - - p - - - -" +
+                                        "- - - * - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" )
         
         testBoard(board: board, movingPiece: "p", movement: PieceMovementPawn())
         
@@ -670,14 +670,14 @@ class PieceMovementTests: XCTestCase {
     
     func testWhitePawnCanMoveAheadTwoSpaces() {
         
-        let board = ASCIIBoard( "- - - - - - - -" +
-                                "- - - - - - - -" +
-                                "- - - - - - - -" +
-                                "- - - - - - - -" +
-                                "- - - * - - - -" +
-                                "- - - - - - - -" +
-                                "- - - P - - - -" +
-                                "- - - - - - - -" )
+        let board = ASCIIBoard(colors:  "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - * - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - P - - - -" +
+                                        "- - - - - - - -" )
         
         testBoard(board: board, movingPiece: "P", movement: PieceMovementPawn())
         
@@ -685,14 +685,14 @@ class PieceMovementTests: XCTestCase {
     
     func testBlackPawnCanMoveAheadTwoSpaces() {
         
-        let board = ASCIIBoard( "- - - - - - - -" +
-                                "- - - p - - - -" +
-                                "- - - - - - - -" +
-                                "- - - * - - - -" +
-                                "- - - - - - - -" +
-                                "- - - - - - - -" +
-                                "- - - - - - - -" +
-                                "- - - - - - - -" )
+        let board = ASCIIBoard(colors:  "- - - - - - - -" +
+                                        "- - - p - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - * - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" )
         
         testBoard(board: board, movingPiece: "p", movement: PieceMovementPawn())
         
@@ -700,14 +700,14 @@ class PieceMovementTests: XCTestCase {
     
     func testNonStartingRowWhitePawnCannotMoveAheadTwoSpaces() {
         
-        let board = ASCIIBoard( "- - - - - - - -" +
-                                "- - - - - - - -" +
-                                "- - - - - - - -" +
-                                "- - - ! - - - -" +
-                                "- - - - - - - -" +
-                                "- - - P - - - -" +
-                                "- - - - - - - -" +
-                                "- - - - - - - -" )
+        let board = ASCIIBoard(colors:  "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - ! - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - P - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" )
         
         testBoard(board: board, movingPiece: "P", movement: PieceMovementPawn())
         
@@ -715,14 +715,14 @@ class PieceMovementTests: XCTestCase {
     
     func testNonStartingRowBlackPawnCannotMoveAheadTwoSpaces() {
         
-        let board = ASCIIBoard( "- - - - - - - -" +
-                                "- - - - - - - -" +
-                                "- - - p - - - -" +
-                                "- - - - - - - -" +
-                                "- - - ! - - - -" +
-                                "- - - - - - - -" +
-                                "- - - - - - - -" +
-                                "- - - - - - - -" )
+        let board = ASCIIBoard(colors:  "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - p - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - ! - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" )
         
         testBoard(board: board, movingPiece: "p", movement: PieceMovementPawn())
         
@@ -730,14 +730,14 @@ class PieceMovementTests: XCTestCase {
     
     func testStartingRowWhitePawnCannotMoveToInvalidPosition() {
         
-        let board = ASCIIBoard( "! ! ! ! ! ! ! !" +
-                                "! ! ! ! ! ! ! !" +
-                                "! ! ! ! ! ! ! !" +
-                                "! ! ! ! ! ! ! !" +
-                                "! ! ! * ! ! ! !" +
-                                "! ! ! * ! ! ! !" +
-                                "! ! ! P ! ! ! !" +
-                                "! ! ! ! ! ! ! !" )
+        let board = ASCIIBoard(colors:  "! ! ! ! ! ! ! !" +
+                                        "! ! ! ! ! ! ! !" +
+                                        "! ! ! ! ! ! ! !" +
+                                        "! ! ! ! ! ! ! !" +
+                                        "! ! ! * ! ! ! !" +
+                                        "! ! ! * ! ! ! !" +
+                                        "! ! ! P ! ! ! !" +
+                                        "! ! ! ! ! ! ! !" )
         
         testBoard(board: board, movingPiece: "P", movement: PieceMovementPawn())
         
@@ -745,14 +745,14 @@ class PieceMovementTests: XCTestCase {
     
     func testStartingRowBlackPawnCannotMoveToInvalidPosition() {
         
-        let board = ASCIIBoard( "! ! ! ! ! ! ! !" +
-                                "! ! ! p ! ! ! !" +
-                                "! ! ! * ! ! ! !" +
-                                "! ! ! * ! ! ! !" +
-                                "! ! ! ! ! ! ! !" +
-                                "! ! ! ! ! ! ! !" +
-                                "! ! ! ! ! ! ! !" +
-                                "! ! ! ! ! ! ! !" )
+        let board = ASCIIBoard(colors:  "! ! ! ! ! ! ! !" +
+                                        "! ! ! p ! ! ! !" +
+                                        "! ! ! * ! ! ! !" +
+                                        "! ! ! * ! ! ! !" +
+                                        "! ! ! ! ! ! ! !" +
+                                        "! ! ! ! ! ! ! !" +
+                                        "! ! ! ! ! ! ! !" +
+                                        "! ! ! ! ! ! ! !" )
         
         testBoard(board: board, movingPiece: "p", movement: PieceMovementPawn())
         
@@ -761,14 +761,14 @@ class PieceMovementTests: XCTestCase {
     
     func testNonStartingRowWhitePawnCannotMoveToInvalidPosition() {
         
-        let board = ASCIIBoard( "! ! ! ! ! ! ! !" +
-                                "! ! ! ! ! ! ! !" +
-                                "! ! ! ! ! ! ! !" +
-                                "! ! ! ! ! ! ! !" +
-                                "! ! ! * ! ! ! !" +
-                                "! ! ! P ! ! ! !" +
-                                "! ! ! ! ! ! ! !" +
-                                "! ! ! ! ! ! ! !" )
+        let board = ASCIIBoard(colors:  "! ! ! ! ! ! ! !" +
+                                        "! ! ! ! ! ! ! !" +
+                                        "! ! ! ! ! ! ! !" +
+                                        "! ! ! ! ! ! ! !" +
+                                        "! ! ! * ! ! ! !" +
+                                        "! ! ! P ! ! ! !" +
+                                        "! ! ! ! ! ! ! !" +
+                                        "! ! ! ! ! ! ! !" )
         
         testBoard(board: board, movingPiece: "P", movement: PieceMovementPawn())
         
@@ -776,14 +776,14 @@ class PieceMovementTests: XCTestCase {
     
     func testNonStartingRowBlackPawnCannotMoveToInvalidPosition() {
         
-        let board = ASCIIBoard( "! ! ! ! ! ! ! !" +
-                                "! ! ! ! ! ! ! !" +
-                                "! ! ! p ! ! ! !" +
-                                "! ! ! * ! ! ! !" +
-                                "! ! ! ! ! ! ! !" +
-                                "! ! ! ! ! ! ! !" +
-                                "! ! ! ! ! ! ! !" +
-                                "! ! ! ! ! ! ! !" )
+        let board = ASCIIBoard(colors:  "! ! ! ! ! ! ! !" +
+                                        "! ! ! ! ! ! ! !" +
+                                        "! ! ! p ! ! ! !" +
+                                        "! ! ! * ! ! ! !" +
+                                        "! ! ! ! ! ! ! !" +
+                                        "! ! ! ! ! ! ! !" +
+                                        "! ! ! ! ! ! ! !" +
+                                        "! ! ! ! ! ! ! !" )
         
         testBoard(board: board, movingPiece: "p", movement: PieceMovementPawn())
         
@@ -791,14 +791,14 @@ class PieceMovementTests: XCTestCase {
     
     func testWhitePawnCannotTakePieceByMovingForwardOneSpace() {
         
-        let board = ASCIIBoard( "- - - - - - - -" +
-                                "- - - - - - - -" +
-                                "- - - - - - - -" +
-                                "- - - - - - - -" +
-                                "- - - - - - - -" +
-                                "- p - - - - - -" +
-                                "- P - - - - - -" +
-                                "- - - - - - - -" )
+        let board = ASCIIBoard(colors:  "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- p - - - - - -" +
+                                        "- P - - - - - -" +
+                                        "- - - - - - - -" )
         
         XCTAssert(canMakeMove(board: board, from: "P", to: "p", movement: PieceMovementPawn()) == false)
         
@@ -806,14 +806,14 @@ class PieceMovementTests: XCTestCase {
     
     func testBlackPawnCannotTakePieceByMovingForwardOneSpace() {
         
-        let board = ASCIIBoard( "- - - - - - - -" +
-                                "- p - - - - - -" +
-                                "- P - - - - - -" +
-                                "- - - - - - - -" +
-                                "- - - - - - - -" +
-                                "- - - - - - - -" +
-                                "- - - - - - - -" +
-                                "- - - - - - - -" )
+        let board = ASCIIBoard(colors:  "- - - - - - - -" +
+                                        "- p - - - - - -" +
+                                        "- P - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" )
         
         XCTAssert(canMakeMove(board: board, from: "p", to: "P", movement: PieceMovementPawn()) == false)
         
@@ -821,14 +821,14 @@ class PieceMovementTests: XCTestCase {
     
     func testWhitePawnCannotTakePieceByMovingForwardTwoSpaces() {
         
-        let board = ASCIIBoard( "- - - - - - - -" +
-                                "- - - - - - - -" +
-                                "- - - - - - - -" +
-                                "- - - - - - - -" +
-                                "- p - - - - - -" +
-                                "- - - - - - - -" +
-                                "- P - - - - - -" +
-                                "- - - - - - - -" )
+        let board = ASCIIBoard(colors:  "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- p - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- P - - - - - -" +
+                                        "- - - - - - - -" )
         
         XCTAssert(canMakeMove(board: board, from: "P", to: "p", movement: PieceMovementPawn()) == false)
         
@@ -836,14 +836,14 @@ class PieceMovementTests: XCTestCase {
     
     func testBlackPawnCannotTakePieceByMovingForwardTwoSpaces() {
         
-        let board = ASCIIBoard( "- - - - - - - -" +
-                                "- p - - - - - -" +
-                                "- - - - - - - -" +
-                                "- P - - - - - -" +
-                                "- - - - - - - -" +
-                                "- - - - - - - -" +
-                                "- - - - - - - -" +
-                                "- - - - - - - -" )
+        let board = ASCIIBoard(colors:  "- - - - - - - -" +
+                                        "- p - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- P - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" )
         
         XCTAssert(canMakeMove(board: board, from: "p", to: "P", movement: PieceMovementPawn()) == false)
         
@@ -851,14 +851,14 @@ class PieceMovementTests: XCTestCase {
     
     func testWhitePawnCanTakePieceDiagonallyToLeft() {
         
-        let board = ASCIIBoard( "- - - - - - - -" +
-                                "- - - - - - - -" +
-                                "- - - - - - - -" +
-                                "- - - - - - - -" +
-                                "- - - - - - - -" +
-                                "- - p - - - - -" +
-                                "- - - P - - - -" +
-                                "- - - - - - - -" )
+        let board = ASCIIBoard(colors:  "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - p - - - - -" +
+                                        "- - - P - - - -" +
+                                        "- - - - - - - -" )
         
         XCTAssert(canMakeMove(board: board, from: "P", to: "p", movement: PieceMovementPawn()))
         
@@ -866,14 +866,14 @@ class PieceMovementTests: XCTestCase {
     
     func testWhitePawnCanTakePieceDiagonallyToRight() {
         
-        let board = ASCIIBoard( "- - - - - - - -" +
-                                "- - - - - - - -" +
-                                "- - - - - - - -" +
-                                "- - - - - - - -" +
-                                "- - - - - - - -" +
-                                "- - - - p - - -" +
-                                "- - - P - - - -" +
-                                "- - - - - - - -" )
+        let board = ASCIIBoard(colors:  "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - p - - -" +
+                                        "- - - P - - - -" +
+                                        "- - - - - - - -" )
         
         XCTAssert(canMakeMove(board: board, from: "P", to: "p", movement: PieceMovementPawn()))
         
@@ -882,14 +882,14 @@ class PieceMovementTests: XCTestCase {
     
     func testBlackPawnCanTakePieceDiagonallyToLeft() {
         
-        let board = ASCIIBoard( "- - - - - - - -" +
-                                "- - - p - - - -" +
-                                "- - P - - - - -" +
-                                "- - - - - - - -" +
-                                "- - - - - - - -" +
-                                "- - - - - - - -" +
-                                "- - - - - - - -" +
-                                "- - - - - - - -" )
+        let board = ASCIIBoard(colors:  "- - - - - - - -" +
+                                        "- - - p - - - -" +
+                                        "- - P - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" )
         
         XCTAssert(canMakeMove(board: board, from: "p", to: "P", movement: PieceMovementPawn()))
         
@@ -897,14 +897,14 @@ class PieceMovementTests: XCTestCase {
     
     func testBlackPawnCanTakePieceDiagonallyToRight() {
         
-        let board = ASCIIBoard( "- - - - - - - -" +
-                                "- - - p - - - -" +
-                                "- - - - P - - -" +
-                                "- - - - - - - -" +
-                                "- - - - - - - -" +
-                                "- - - - - - - -" +
-                                "- - - - - - - -" +
-                                "- - - - - - - -" )
+        let board = ASCIIBoard(colors:  "- - - - - - - -" +
+                                        "- - - p - - - -" +
+                                        "- - - - P - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" )
         
         XCTAssert(canMakeMove(board: board, from: "p", to: "P", movement: PieceMovementPawn()))
         
@@ -916,14 +916,14 @@ class PieceMovementTests: XCTestCase {
     
     func testQueenCannotMoveToInvalidPositionFromCentre(){
         
-        let board = ASCIIBoard( "! ! ! * ! ! ! *" +
-                                "* ! ! * ! ! * !" +
-                                "! * ! * ! * ! !" +
-                                "! ! * * * ! ! !" +
-                                "* * * W * * * *" +
-                                "! ! * * * ! ! !" +
-                                "! * ! * ! * ! !" +
-                                "* ! ! * ! ! * !" )
+        let board = ASCIIBoard(colors:  "! ! ! * ! ! ! *" +
+                                        "* ! ! * ! ! * !" +
+                                        "! * ! * ! * ! !" +
+                                        "! ! * * * ! ! !" +
+                                        "* * * W * * * *" +
+                                        "! ! * * * ! ! !" +
+                                        "! * ! * ! * ! !" +
+                                        "* ! ! * ! ! * !" )
         
         testBoard(board: board, movingPiece: "W", movement: PieceMovementQueen())
         
@@ -931,14 +931,14 @@ class PieceMovementTests: XCTestCase {
     
     func testQueenCannotMoveToInvalidPositionFromTopLeft(){
         
-        let board = ASCIIBoard( "W * * * * * * *" +
-                                "* * ! ! ! ! ! !" +
-                                "* ! * ! ! ! ! !" +
-                                "* ! ! * ! ! ! !" +
-                                "* ! ! ! * ! ! !" +
-                                "* ! ! ! ! * ! !" +
-                                "* ! ! ! ! ! * !" +
-                                "* ! ! ! ! ! ! *" )
+        let board = ASCIIBoard(colors:  "W * * * * * * *" +
+                                        "* * ! ! ! ! ! !" +
+                                        "* ! * ! ! ! ! !" +
+                                        "* ! ! * ! ! ! !" +
+                                        "* ! ! ! * ! ! !" +
+                                        "* ! ! ! ! * ! !" +
+                                        "* ! ! ! ! ! * !" +
+                                        "* ! ! ! ! ! ! *" )
         
         testBoard(board: board, movingPiece: "W", movement: PieceMovementQueen())
         
@@ -946,14 +946,14 @@ class PieceMovementTests: XCTestCase {
     
     func testQueenCannotMoveToInvalidPositionFromTopRight(){
         
-        let board = ASCIIBoard( "* * * * * * * W" +
-                                "! ! ! ! ! ! * *" +
-                                "! ! ! ! ! * ! *" +
-                                "! ! ! ! * ! ! *" +
-                                "! ! ! * ! ! ! *" +
-                                "! ! * ! ! ! ! *" +
-                                "! * ! ! ! ! ! *" +
-                                "* ! ! ! ! ! ! *" )
+        let board = ASCIIBoard(colors:  "* * * * * * * W" +
+                                        "! ! ! ! ! ! * *" +
+                                        "! ! ! ! ! * ! *" +
+                                        "! ! ! ! * ! ! *" +
+                                        "! ! ! * ! ! ! *" +
+                                        "! ! * ! ! ! ! *" +
+                                        "! * ! ! ! ! ! *" +
+                                        "* ! ! ! ! ! ! *" )
         
         testBoard(board: board, movingPiece: "W", movement: PieceMovementQueen())
         
@@ -961,14 +961,14 @@ class PieceMovementTests: XCTestCase {
     
     func testQueenCannotMoveToInvalidPositionFromBottomLeft(){
         
-        let board = ASCIIBoard( "* ! ! ! ! ! ! *" +
-                                "* ! ! ! ! ! * !" +
-                                "* ! ! ! ! * ! !" +
-                                "* ! ! ! * ! ! !" +
-                                "* ! ! * ! ! ! !" +
-                                "* ! * ! ! ! ! !" +
-                                "* * ! ! ! ! ! !" +
-                                "W * * * * * * *" )
+        let board = ASCIIBoard(colors:  "* ! ! ! ! ! ! *" +
+                                        "* ! ! ! ! ! * !" +
+                                        "* ! ! ! ! * ! !" +
+                                        "* ! ! ! * ! ! !" +
+                                        "* ! ! * ! ! ! !" +
+                                        "* ! * ! ! ! ! !" +
+                                        "* * ! ! ! ! ! !" +
+                                        "W * * * * * * *" )
         
         testBoard(board: board, movingPiece: "W", movement: PieceMovementQueen())
         
@@ -976,14 +976,14 @@ class PieceMovementTests: XCTestCase {
     
     func testQueenCannotMoveToInvalidPositionFromBottomRight(){
         
-        let board = ASCIIBoard( "* ! ! ! ! ! ! *" +
-                                "! * ! ! ! ! ! *" +
-                                "! ! * ! ! ! ! *" +
-                                "! ! ! * ! ! ! *" +
-                                "! ! ! ! * ! ! *" +
-                                "! ! ! ! ! * ! *" +
-                                "! ! ! ! ! ! * *" +
-                                "* * * * * * * W" )
+        let board = ASCIIBoard(colors:  "* ! ! ! ! ! ! *" +
+                                        "! * ! ! ! ! ! *" +
+                                        "! ! * ! ! ! ! *" +
+                                        "! ! ! * ! ! ! *" +
+                                        "! ! ! ! * ! ! *" +
+                                        "! ! ! ! ! * ! *" +
+                                        "! ! ! ! ! ! * *" +
+                                        "* * * * * * * W" )
         
         testBoard(board: board, movingPiece: "W", movement: PieceMovementQueen())
         
@@ -993,14 +993,14 @@ class PieceMovementTests: XCTestCase {
     
     func testRookCannotMoveToInvalidPositionFromCentre(){
         
-        let board = ASCIIBoard( "! ! ! * ! ! ! !" +
-                                "! ! ! * ! ! ! !" +
-                                "! ! ! * ! ! ! !" +
-                                "! ! ! * ! ! ! !" +
-                                "* * * W * * * *" +
-                                "! ! ! * ! ! ! !" +
-                                "! ! ! * ! ! ! !" +
-                                "! ! ! * ! ! ! !" )
+        let board = ASCIIBoard(colors:  "! ! ! * ! ! ! !" +
+                                        "! ! ! * ! ! ! !" +
+                                        "! ! ! * ! ! ! !" +
+                                        "! ! ! * ! ! ! !" +
+                                        "* * * W * * * *" +
+                                        "! ! ! * ! ! ! !" +
+                                        "! ! ! * ! ! ! !" +
+                                        "! ! ! * ! ! ! !" )
         
         testBoard(board: board, movingPiece: "W", movement: PieceMovementRook())
         
@@ -1008,14 +1008,14 @@ class PieceMovementTests: XCTestCase {
     
     func testRookCannotMoveToInvalidPositionFromTopLeft(){
         
-        let board = ASCIIBoard( "W * * * * * * *" +
-                                "* ! ! ! ! ! ! !" +
-                                "* ! ! ! ! ! ! !" +
-                                "* ! ! ! ! ! ! !" +
-                                "* ! ! ! ! ! ! !" +
-                                "* ! ! ! ! ! ! !" +
-                                "* ! ! ! ! ! ! !" +
-                                "* ! ! ! ! ! ! !" )
+        let board = ASCIIBoard(colors:  "W * * * * * * *" +
+                                        "* ! ! ! ! ! ! !" +
+                                        "* ! ! ! ! ! ! !" +
+                                        "* ! ! ! ! ! ! !" +
+                                        "* ! ! ! ! ! ! !" +
+                                        "* ! ! ! ! ! ! !" +
+                                        "* ! ! ! ! ! ! !" +
+                                        "* ! ! ! ! ! ! !" )
         
         testBoard(board: board, movingPiece: "W", movement: PieceMovementRook())
         
@@ -1023,14 +1023,14 @@ class PieceMovementTests: XCTestCase {
     
     func testRookCannotMoveToInvalidPositionFromTopRight(){
         
-        let board = ASCIIBoard( "* * * * * * * W" +
-                                "! ! ! ! ! ! ! *" +
-                                "! ! ! ! ! ! ! *" +
-                                "! ! ! ! ! ! ! *" +
-                                "! ! ! ! ! ! ! *" +
-                                "! ! ! ! ! ! ! *" +
-                                "! ! ! ! ! ! ! *" +
-                                "! ! ! ! ! ! ! *" )
+        let board = ASCIIBoard(colors:  "* * * * * * * W" +
+                                        "! ! ! ! ! ! ! *" +
+                                        "! ! ! ! ! ! ! *" +
+                                        "! ! ! ! ! ! ! *" +
+                                        "! ! ! ! ! ! ! *" +
+                                        "! ! ! ! ! ! ! *" +
+                                        "! ! ! ! ! ! ! *" +
+                                        "! ! ! ! ! ! ! *" )
         
         testBoard(board: board, movingPiece: "W", movement: PieceMovementRook())
         
@@ -1038,14 +1038,14 @@ class PieceMovementTests: XCTestCase {
     
     func testRookCannotMoveToInvalidPositionFromBottomLeft(){
         
-        let board = ASCIIBoard( "* ! ! ! ! ! ! !" +
-                                "* ! ! ! ! ! ! !" +
-                                "* ! ! ! ! ! ! !" +
-                                "* ! ! ! ! ! ! !" +
-                                "* ! ! ! ! ! ! !" +
-                                "* ! ! ! ! ! ! !" +
-                                "* ! ! ! ! ! ! !" +
-                                "W * * * * * * *" )
+        let board = ASCIIBoard(colors:  "* ! ! ! ! ! ! !" +
+                                        "* ! ! ! ! ! ! !" +
+                                        "* ! ! ! ! ! ! !" +
+                                        "* ! ! ! ! ! ! !" +
+                                        "* ! ! ! ! ! ! !" +
+                                        "* ! ! ! ! ! ! !" +
+                                        "* ! ! ! ! ! ! !" +
+                                        "W * * * * * * *" )
         
         testBoard(board: board, movingPiece: "W", movement: PieceMovementRook())
         
@@ -1053,14 +1053,14 @@ class PieceMovementTests: XCTestCase {
     
     func testRookCannotMoveToInvalidPositionFromBottomRight(){
         
-        let board = ASCIIBoard( "! ! ! ! ! ! ! *" +
-                                "! ! ! ! ! ! ! *" +
-                                "! ! ! ! ! ! ! *" +
-                                "! ! ! ! ! ! ! *" +
-                                "! ! ! ! ! ! ! *" +
-                                "! ! ! ! ! ! ! *" +
-                                "! ! ! ! ! ! ! *" +
-                                "* * * * * * * W" )
+        let board = ASCIIBoard(colors:  "! ! ! ! ! ! ! *" +
+                                        "! ! ! ! ! ! ! *" +
+                                        "! ! ! ! ! ! ! *" +
+                                        "! ! ! ! ! ! ! *" +
+                                        "! ! ! ! ! ! ! *" +
+                                        "! ! ! ! ! ! ! *" +
+                                        "! ! ! ! ! ! ! *" +
+                                        "* * * * * * * W" )
         
         testBoard(board: board, movingPiece: "W", movement: PieceMovementRook())
         
@@ -1070,14 +1070,14 @@ class PieceMovementTests: XCTestCase {
     
     func testBishopCannotMoveToInvalidPositionFromCentre(){
         
-        let board = ASCIIBoard( "! ! ! ! ! ! ! *" +
-                                "* ! ! ! ! ! * !" +
-                                "! * ! ! ! * ! !" +
-                                "! ! * ! * ! ! !" +
-                                "! ! ! W ! ! ! !" +
-                                "! ! * ! * ! ! !" +
-                                "! * ! ! ! * ! !" +
-                                "* ! ! ! ! ! * !" )
+        let board = ASCIIBoard(colors:  "! ! ! ! ! ! ! *" +
+                                        "* ! ! ! ! ! * !" +
+                                        "! * ! ! ! * ! !" +
+                                        "! ! * ! * ! ! !" +
+                                        "! ! ! W ! ! ! !" +
+                                        "! ! * ! * ! ! !" +
+                                        "! * ! ! ! * ! !" +
+                                        "* ! ! ! ! ! * !" )
         
         testBoard(board: board, movingPiece: "W", movement: PieceMovementBishop())
         
@@ -1085,14 +1085,14 @@ class PieceMovementTests: XCTestCase {
     
     func testBishopCannotMoveToInvalidPositionFromTopLeft(){
         
-        let board = ASCIIBoard( "W ! ! ! ! ! ! !" +
-                                "! * ! ! ! ! ! !" +
-                                "! ! * ! ! ! ! !" +
-                                "! ! ! * ! ! ! !" +
-                                "! ! ! ! * ! ! !" +
-                                "! ! ! ! ! * ! !" +
-                                "! ! ! ! ! ! * !" +
-                                "! ! ! ! ! ! ! *" )
+        let board = ASCIIBoard(colors:  "W ! ! ! ! ! ! !" +
+                                        "! * ! ! ! ! ! !" +
+                                        "! ! * ! ! ! ! !" +
+                                        "! ! ! * ! ! ! !" +
+                                        "! ! ! ! * ! ! !" +
+                                        "! ! ! ! ! * ! !" +
+                                        "! ! ! ! ! ! * !" +
+                                        "! ! ! ! ! ! ! *" )
         
         testBoard(board: board, movingPiece: "W", movement: PieceMovementBishop())
         
@@ -1100,14 +1100,14 @@ class PieceMovementTests: XCTestCase {
     
     func testBishopCannotMoveToInvalidPositionFromTopRight(){
         
-        let board = ASCIIBoard( "! ! ! ! ! ! ! W" +
-                                "! ! ! ! ! ! * !" +
-                                "! ! ! ! ! * ! !" +
-                                "! ! ! ! * ! ! !" +
-                                "! ! ! * ! ! ! !" +
-                                "! ! * ! ! ! ! !" +
-                                "! * ! ! ! ! ! !" +
-                                "* ! ! ! ! ! ! !" )
+        let board = ASCIIBoard(colors:  "! ! ! ! ! ! ! W" +
+                                        "! ! ! ! ! ! * !" +
+                                        "! ! ! ! ! * ! !" +
+                                        "! ! ! ! * ! ! !" +
+                                        "! ! ! * ! ! ! !" +
+                                        "! ! * ! ! ! ! !" +
+                                        "! * ! ! ! ! ! !" +
+                                        "* ! ! ! ! ! ! !" )
         
         testBoard(board: board, movingPiece: "W", movement: PieceMovementBishop())
         
@@ -1115,14 +1115,14 @@ class PieceMovementTests: XCTestCase {
     
     func testBishopCannotMoveToInvalidPositionFromBottomLeft(){
         
-        let board = ASCIIBoard( "! ! ! ! ! ! ! *" +
-                                "! ! ! ! ! ! * !" +
-                                "! ! ! ! ! * ! !" +
-                                "! ! ! ! * ! ! !" +
-                                "! ! ! * ! ! ! !" +
-                                "! ! * ! ! ! ! !" +
-                                "! * ! ! ! ! ! !" +
-                                "W ! ! ! ! ! ! !" )
+        let board = ASCIIBoard(colors:  "! ! ! ! ! ! ! *" +
+                                        "! ! ! ! ! ! * !" +
+                                        "! ! ! ! ! * ! !" +
+                                        "! ! ! ! * ! ! !" +
+                                        "! ! ! * ! ! ! !" +
+                                        "! ! * ! ! ! ! !" +
+                                        "! * ! ! ! ! ! !" +
+                                        "W ! ! ! ! ! ! !" )
         
         testBoard(board: board, movingPiece: "W", movement: PieceMovementBishop())
         
@@ -1130,14 +1130,14 @@ class PieceMovementTests: XCTestCase {
     
     func testBishopCannotMoveToInvalidPositionFromBottomRight(){
         
-        let board = ASCIIBoard( "* ! ! ! ! ! ! !" +
-                                "! * ! ! ! ! ! !" +
-                                "! ! * ! ! ! ! !" +
-                                "! ! ! * ! ! ! !" +
-                                "! ! ! ! * ! ! !" +
-                                "! ! ! ! ! * ! !" +
-                                "! ! ! ! ! ! * !" +
-                                "! ! ! ! ! ! ! W" )
+        let board = ASCIIBoard(colors:  "* ! ! ! ! ! ! !" +
+                                        "! * ! ! ! ! ! !" +
+                                        "! ! * ! ! ! ! !" +
+                                        "! ! ! * ! ! ! !" +
+                                        "! ! ! ! * ! ! !" +
+                                        "! ! ! ! ! * ! !" +
+                                        "! ! ! ! ! ! * !" +
+                                        "! ! ! ! ! ! ! W" )
         
         testBoard(board: board, movingPiece: "W", movement: PieceMovementBishop())
         
