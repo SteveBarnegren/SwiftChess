@@ -276,6 +276,47 @@ class BoardTests: XCTestCase {
         
         XCTAssert(board.board.isColorInCheck(color: .black) == false, "Expected king to not be in check")
     }
-
     
+    func testIsColorInCheckMateReturnsTrueWhenInCheckMate() {
+        
+        let board = ASCIIBoard(pieces:  "- p - - - - - K" +
+                                        "- - - - - P - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "r - - - - - - -" +
+                                        "r - - G - - - -" )
+                                    
+        XCTAssert(board.board.isColorInCheckMate(color: .white) == true, "Expected white to be in check mate")
+    }
+    
+    func testIsColorInCheckMateReturnsFalseWhenNotInCheckMate() {
+        
+        let board = ASCIIBoard(pieces:  "- p - - - - - K" +
+                                        "- - - - - P - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - G - - - -" )
+        
+        XCTAssert(board.board.isColorInCheckMate(color: .white) == false, "Expected white to not be in check mate")
+    }
+    
+    func testIsColorInCheckMateReturnsFalseWhenInCheckButNotCheckMate() {
+        
+        let board = ASCIIBoard(pieces:  "- p - - - - - K" +
+                                        "- - - - - P - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "r - - G - - - -" )
+        
+        XCTAssert(board.board.isColorInCheck(color: .white) == true, "Expected white to not be in check - test may be set up incorrectly")
+        XCTAssert(board.board.isColorInCheckMate(color: .white) == false, "Expected white to not be in check mate")
+    }
 }

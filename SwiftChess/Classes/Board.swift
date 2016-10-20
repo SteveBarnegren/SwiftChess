@@ -28,6 +28,18 @@ public struct BoardLocation : Equatable {
     
     public var index: Int
     
+    static var all: [BoardLocation] {
+        
+        // TODO: using a computed property could be expensive, can we store this so it doesn't need to be computed each time?
+        var locations = [BoardLocation]()
+        
+        for i in 0..<64 {
+            locations.append(BoardLocation(index: i))
+        }
+        
+        return locations
+    }
+    
     public var x: Int {
         return index % 8
     }
@@ -280,6 +292,33 @@ public struct Board {
         }
         
         return false
+    }
+    
+    public func isColorInCheckMate(color: Color) -> Bool {
+        
+        for pieceLocation in getLocationsOfColor( color ) {
+            
+            guard let piece = getPiece(at: pieceLocation) else {
+                continue
+            }
+            
+            for targetLocation in BoardLocation.all {
+                
+                let canMove = piece.movement.canPieceMove(fromLocation: pieceLocation,
+                                                          toLocation: targetLocation,
+                                                          board: self)
+                
+                if canMove {
+                    var resultBoard = self
+                    resultBoard.movePiece(fromLocation: pieceLocation, toLocation: targetLocation)
+                    if resultBoard.isColorInCheck(color: color) == false {
+                        return false
+                    }
+                }
+            }
+        }
+        
+        return true
     }
     
     // MARK: - Print

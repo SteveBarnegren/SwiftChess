@@ -558,6 +558,20 @@ class PieceMovementTests: XCTestCase {
         
     }
     
+    func testKnightMovementCannotMoveToCurrentPosition() {
+        
+        let location = BoardLocation(x: 3, y: 3)
+        
+        var board = Board(state: .empty)
+        board.setPiece(Piece(type: .knight, color: .white), at: location)
+        
+        let movement = PieceMovementKnight()
+        
+        XCTAssert(movement.canPieceMove(fromLocation: location, toLocation: location, board: board) == false,
+                  "Expected piece could not move to its current position")
+        
+    }
+    
     // MARK: - King Movement
     
     func testKingMovementCannotMoveToInvalidPositionFromCenter() {
@@ -632,6 +646,20 @@ class PieceMovementTests: XCTestCase {
                                         "! ! ! ! ! ! * W" )
         
         testBoard(board: board, movingPiece: "W", movement: PieceMovementKing())
+        
+    }
+    
+    func testKingMovementCannotMoveToCurrentPosition() {
+        
+        let location = BoardLocation(x: 3, y: 3)
+        
+        var board = Board(state: .empty)
+        board.setPiece(Piece(type: .king, color: .white), at: location)
+        
+        let movement = PieceMovementKing()
+        
+        XCTAssert(movement.canPieceMove(fromLocation: location, toLocation: location, board: board) == false,
+                  "Expected piece could not move to its current position")
         
     }
     
@@ -755,6 +783,20 @@ class PieceMovementTests: XCTestCase {
                                         "! ! ! ! ! ! ! !" )
         
         testBoard(board: board, movingPiece: "p", movement: PieceMovementPawn())
+        
+    }
+    
+    func testPawnMovementCannotMoveToCurrentPosition() {
+        
+        let location = BoardLocation(x: 3, y: 3)
+        
+        var board = Board(state: .empty)
+        board.setPiece(Piece(type: .pawn, color: .white), at: location)
+        
+        let movement = PieceMovementPawn()
+        
+        XCTAssert(movement.canPieceMove(fromLocation: location, toLocation: location, board: board) == false,
+                  "Expected piece could not move to its current position")
         
     }
 
@@ -989,6 +1031,21 @@ class PieceMovementTests: XCTestCase {
         
     }
     
+    func testQueenMovementCannotMoveToCurrentPosition() {
+        
+        let location = BoardLocation(x: 3, y: 3)
+        
+        var board = Board(state: .empty)
+        board.setPiece(Piece(type: .queen, color: .white), at: location)
+        
+        let movement = PieceMovementQueen()
+        
+        XCTAssert(movement.canPieceMove(fromLocation: location, toLocation: location, board: board) == false,
+                  "Expected piece could not move to its current position")
+        
+    }
+
+    
     // MARK: - Rook Movement
     
     func testRookCannotMoveToInvalidPositionFromCentre(){
@@ -1066,6 +1123,21 @@ class PieceMovementTests: XCTestCase {
         
     }
     
+    func testRookMovementCannotMoveToCurrentPosition() {
+        
+        let location = BoardLocation(x: 3, y: 3)
+        
+        var board = Board(state: .empty)
+        board.setPiece(Piece(type: .rook, color: .white), at: location)
+        
+        let movement = PieceMovementRook()
+        
+        XCTAssert(movement.canPieceMove(fromLocation: location, toLocation: location, board: board) == false,
+                  "Expected piece could not move to its current position")
+        
+    }
+
+    
     // MARK: - Bishop movement
     
     func testBishopCannotMoveToInvalidPositionFromCentre(){
@@ -1140,6 +1212,20 @@ class PieceMovementTests: XCTestCase {
                                         "! ! ! ! ! ! ! W" )
         
         testBoard(board: board, movingPiece: "W", movement: PieceMovementBishop())
+        
+    }
+    
+    func testBishopMovementCannotMoveToCurrentPosition() {
+        
+        let location = BoardLocation(x: 3, y: 3)
+        
+        var board = Board(state: .empty)
+        board.setPiece(Piece(type: .bishop, color: .white), at: location)
+        
+        let movement = PieceMovementBishop()
+        
+        XCTAssert(movement.canPieceMove(fromLocation: location, toLocation: location, board: board) == false,
+                  "Expected piece could not move to its current position")
         
     }
 
