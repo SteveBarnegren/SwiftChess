@@ -1,735 +1,1715 @@
-// !$*UTF8*$!
-{
-	archiveVersion = 1;
-	classes = {
-	};
-	objectVersion = 46;
-	objects = {
-
-/* Begin PBXBuildFile section */
-		17E3196D966A7B676922CD2EC9972F4E /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A044BD11AA17ACF5C4404C5279E27E0 /* Board.swift */; };
-		1B681733B0CB7D56616BDEBA3D5A8B44 /* SwiftChess-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AEE9919397F4E0CCD2EB505535FC875 /* SwiftChess-dummy.m */; };
-		1DA527BE8BB9DA950DBDF4B8243A3305 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
-		2908A246A10E222D260CBACCE0B32022 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
-		32E475B09A9E8DB24C39AB333E54EAFC /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B13D354F9E381BD5FBAE42C931A5AC /* Player.swift */; };
-		396AC16ABA1B0B9AAF2BEB9B7ACD28BC /* Pods-SwiftChess_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = D6213410A61B8A1E4E618A31C997CDCF /* Pods-SwiftChess_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7B970796C01709744186055E93206DB6 /* Pods-SwiftChess_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AD4D396D62848052AA00E86CBEAEC51 /* Pods-SwiftChess_Tests-dummy.m */; };
-		8236AE53A32A4F878EA4AC2EB9278751 /* SwiftChess-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = B6D5B5849ACD747ED7EAF5B0117D151D /* SwiftChess-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		880570CCE7FB7D78F7FE4AD0D9D7E94A /* Pods-SwiftChess_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F760CE1F8973A5B1F36EA40F6E50F00C /* Pods-SwiftChess_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A69163803B220CF58FED7B01C4AE4BA1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
-		B2FCC9FC700C54679BE93E1E9E8834B4 /* Piece.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FA6620A9E7B58FE001116A3ECA2708 /* Piece.swift */; };
-		B9A3BD89AB18860B269D0580E667CEBE /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF9612A57B154A113C346B182F22DFD /* Game.swift */; };
-		C8D7E90D79073D4578CC178C8D696B4D /* Pods-SwiftChess_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 072CB51FF0EA9B42A571A504D0272933 /* Pods-SwiftChess_Example-dummy.m */; };
-		E1B1B4F2842107EDE7DEA63952EE123A /* PieceMovement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A6434041DB69445A3EA8E88FC3AC62 /* PieceMovement.swift */; };
-/* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		A2217860535575A9C77F6DAC8E430E3F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = FD170832041C353909EEBE6B4419CB75;
-			remoteInfo = SwiftChess;
-		};
-		A2986FC9283DEED40C4D303AC24630D5 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = FD170832041C353909EEBE6B4419CB75;
-			remoteInfo = SwiftChess;
-		};
-/* End PBXContainerItemProxy section */
-
-/* Begin PBXFileReference section */
-		072CB51FF0EA9B42A571A504D0272933 /* Pods-SwiftChess_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-SwiftChess_Example-dummy.m"; sourceTree = "<group>"; };
-		08FBF9F37DD2CC9FB07E02DB9336F4A0 /* Pods-SwiftChess_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SwiftChess_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		0D63D4231407D2798B7AACBC1E4CB4E4 /* Pods-SwiftChess_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SwiftChess_Example-acknowledgements.plist"; sourceTree = "<group>"; };
-		292A3E0C0B708E1E49469AA3B8D2C9C6 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		29D6CDCAA869332637CE25E2830A5EE4 /* Pods-SwiftChess_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-SwiftChess_Tests.modulemap"; sourceTree = "<group>"; };
-		2E8FB79C4C0D1F780D878E0FA48E11D4 /* Pods-SwiftChess_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SwiftChess_Tests-resources.sh"; sourceTree = "<group>"; };
-		4453F88E93F62D5FD34A08155A1B283C /* SwiftChess-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftChess-prefix.pch"; sourceTree = "<group>"; };
-		5CA6FD1E01D539D6501A592E7A33ECBB /* SwiftChess.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = SwiftChess.modulemap; sourceTree = "<group>"; };
-		6AEE9919397F4E0CCD2EB505535FC875 /* SwiftChess-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwiftChess-dummy.m"; sourceTree = "<group>"; };
-		7621ADDA34D1AD6BF10E931AF77E1D88 /* Pods_SwiftChess_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftChess_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		7A044BD11AA17ACF5C4404C5279E27E0 /* Board.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
-		7AD4D396D62848052AA00E86CBEAEC51 /* Pods-SwiftChess_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-SwiftChess_Tests-dummy.m"; sourceTree = "<group>"; };
-		7FC5F1FEFED8A2431C8465C9B80AB566 /* Pods_SwiftChess_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftChess_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		84A6434041DB69445A3EA8E88FC3AC62 /* PieceMovement.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PieceMovement.swift; sourceTree = "<group>"; };
-		86B13D354F9E381BD5FBAE42C931A5AC /* Player.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
-		8FCE366EF8E45E4CB736F7A27D3AA717 /* Pods-SwiftChess_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-SwiftChess_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		8FE8131919D3C10B60140F58E6248BE5 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		95232251964711073B3CAC1B25E4E84E /* SwiftChess.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftChess.xcconfig; sourceTree = "<group>"; };
-		95CB7C721DA8C346448BC7C41F8D1A8D /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		98A70D131EA36F8890D030F880EA9629 /* Pods-SwiftChess_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SwiftChess_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		9AF9612A57B154A113C346B182F22DFD /* Game.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
-		A1FA6620A9E7B58FE001116A3ECA2708 /* Piece.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Piece.swift; sourceTree = "<group>"; };
-		A53EC55804536A355802F1186FC9AE18 /* Pods-SwiftChess_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-SwiftChess_Example.modulemap"; sourceTree = "<group>"; };
-		AD1C92FB4050D0AF78242E5C28E52155 /* Pods-SwiftChess_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SwiftChess_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		B66ABEFC892E6A28F2DB7CA27FE2DF34 /* Pods-SwiftChess_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SwiftChess_Example-frameworks.sh"; sourceTree = "<group>"; };
-		B6D5B5849ACD747ED7EAF5B0117D151D /* SwiftChess-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftChess-umbrella.h"; sourceTree = "<group>"; };
-		BB995B1E9037FBC84A986F6D8627ADE1 /* SwiftChess.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftChess.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		C0640D7C3A9507A50490B36B146D4536 /* Pods-SwiftChess_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SwiftChess_Example.release.xcconfig"; sourceTree = "<group>"; };
-		CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		D6213410A61B8A1E4E618A31C997CDCF /* Pods-SwiftChess_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-SwiftChess_Tests-umbrella.h"; sourceTree = "<group>"; };
-		D6E78B80DCBE2AC6F963A1C2BC818456 /* Pods-SwiftChess_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SwiftChess_Tests-frameworks.sh"; sourceTree = "<group>"; };
-		E8A5E3F4D156E74AEAAF78AD000C729A /* Pods-SwiftChess_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-SwiftChess_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
-		EB9D8CD8F971C7BCA355F24D18442023 /* Pods-SwiftChess_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SwiftChess_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
-		F662DF21A665A678303E37489D17188F /* Pods-SwiftChess_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SwiftChess_Example-resources.sh"; sourceTree = "<group>"; };
-		F760CE1F8973A5B1F36EA40F6E50F00C /* Pods-SwiftChess_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-SwiftChess_Example-umbrella.h"; sourceTree = "<group>"; };
-/* End PBXFileReference section */
-
-/* Begin PBXFrameworksBuildPhase section */
-		1CC6CBF6C623ACBB32E472BA4D05EB4E /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				2908A246A10E222D260CBACCE0B32022 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		5BB51FAC91BD51EE07C8CB7B9355740A /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				1DA527BE8BB9DA950DBDF4B8243A3305 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		C90A2A1B4A1ED05ED39AF9CE0AB9D361 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A69163803B220CF58FED7B01C4AE4BA1 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXFrameworksBuildPhase section */
-
-/* Begin PBXGroup section */
-		0EDF239CA95B1BBD72998716DA72E768 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				95CB7C721DA8C346448BC7C41F8D1A8D /* Info.plist */,
-				5CA6FD1E01D539D6501A592E7A33ECBB /* SwiftChess.modulemap */,
-				95232251964711073B3CAC1B25E4E84E /* SwiftChess.xcconfig */,
-				6AEE9919397F4E0CCD2EB505535FC875 /* SwiftChess-dummy.m */,
-				4453F88E93F62D5FD34A08155A1B283C /* SwiftChess-prefix.pch */,
-				B6D5B5849ACD747ED7EAF5B0117D151D /* SwiftChess-umbrella.h */,
-			);
-			name = "Support Files";
-			path = "Example/Pods/Target Support Files/SwiftChess";
-			sourceTree = "<group>";
-		};
-		151CA55B1C718C0D498C1640AC2169F5 /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-				7A044BD11AA17ACF5C4404C5279E27E0 /* Board.swift */,
-				9AF9612A57B154A113C346B182F22DFD /* Game.swift */,
-				A1FA6620A9E7B58FE001116A3ECA2708 /* Piece.swift */,
-				84A6434041DB69445A3EA8E88FC3AC62 /* PieceMovement.swift */,
-				86B13D354F9E381BD5FBAE42C931A5AC /* Player.swift */,
-			);
-			path = Classes;
-			sourceTree = "<group>";
-		};
-		1B2047D5885E6664765BD1412D6FBE5F /* Pods-SwiftChess_Tests */ = {
-			isa = PBXGroup;
-			children = (
-				8FE8131919D3C10B60140F58E6248BE5 /* Info.plist */,
-				29D6CDCAA869332637CE25E2830A5EE4 /* Pods-SwiftChess_Tests.modulemap */,
-				8FCE366EF8E45E4CB736F7A27D3AA717 /* Pods-SwiftChess_Tests-acknowledgements.markdown */,
-				EB9D8CD8F971C7BCA355F24D18442023 /* Pods-SwiftChess_Tests-acknowledgements.plist */,
-				7AD4D396D62848052AA00E86CBEAEC51 /* Pods-SwiftChess_Tests-dummy.m */,
-				D6E78B80DCBE2AC6F963A1C2BC818456 /* Pods-SwiftChess_Tests-frameworks.sh */,
-				2E8FB79C4C0D1F780D878E0FA48E11D4 /* Pods-SwiftChess_Tests-resources.sh */,
-				D6213410A61B8A1E4E618A31C997CDCF /* Pods-SwiftChess_Tests-umbrella.h */,
-				98A70D131EA36F8890D030F880EA9629 /* Pods-SwiftChess_Tests.debug.xcconfig */,
-				AD1C92FB4050D0AF78242E5C28E52155 /* Pods-SwiftChess_Tests.release.xcconfig */,
-			);
-			name = "Pods-SwiftChess_Tests";
-			path = "Target Support Files/Pods-SwiftChess_Tests";
-			sourceTree = "<group>";
-		};
-		2084C98C3BC02FFAC399223C118B6C38 /* SwiftChess */ = {
-			isa = PBXGroup;
-			children = (
-				151CA55B1C718C0D498C1640AC2169F5 /* Classes */,
-			);
-			path = SwiftChess;
-			sourceTree = "<group>";
-		};
-		3DCAB2B7CDE207B3958B6CB957FCC758 /* iOS */ = {
-			isa = PBXGroup;
-			children = (
-				CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */,
-			);
-			name = iOS;
-			sourceTree = "<group>";
-		};
-		58A4FC4B3E6CA254F05C375BC3EBC2DF /* Development Pods */ = {
-			isa = PBXGroup;
-			children = (
-				6B57EBD2BF5FD5A68E79E7C6D3E3C1EB /* SwiftChess */,
-			);
-			name = "Development Pods";
-			sourceTree = "<group>";
-		};
-		6B57EBD2BF5FD5A68E79E7C6D3E3C1EB /* SwiftChess */ = {
-			isa = PBXGroup;
-			children = (
-				0EDF239CA95B1BBD72998716DA72E768 /* Support Files */,
-				2084C98C3BC02FFAC399223C118B6C38 /* SwiftChess */,
-			);
-			name = SwiftChess;
-			path = ../..;
-			sourceTree = "<group>";
-		};
-		7DB346D0F39D3F0E887471402A8071AB = {
-			isa = PBXGroup;
-			children = (
-				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
-				58A4FC4B3E6CA254F05C375BC3EBC2DF /* Development Pods */,
-				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
-				F34825EA8632B4A4334BB5FB2FDFE8EF /* Products */,
-				8DF2EFF0670BF658FEE75EE8EF24B433 /* Targets Support Files */,
-			);
-			sourceTree = "<group>";
-		};
-		8DF2EFF0670BF658FEE75EE8EF24B433 /* Targets Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				A252659068BF06BF2CFBD28F80C8A03A /* Pods-SwiftChess_Example */,
-				1B2047D5885E6664765BD1412D6FBE5F /* Pods-SwiftChess_Tests */,
-			);
-			name = "Targets Support Files";
-			sourceTree = "<group>";
-		};
-		A252659068BF06BF2CFBD28F80C8A03A /* Pods-SwiftChess_Example */ = {
-			isa = PBXGroup;
-			children = (
-				292A3E0C0B708E1E49469AA3B8D2C9C6 /* Info.plist */,
-				A53EC55804536A355802F1186FC9AE18 /* Pods-SwiftChess_Example.modulemap */,
-				E8A5E3F4D156E74AEAAF78AD000C729A /* Pods-SwiftChess_Example-acknowledgements.markdown */,
-				0D63D4231407D2798B7AACBC1E4CB4E4 /* Pods-SwiftChess_Example-acknowledgements.plist */,
-				072CB51FF0EA9B42A571A504D0272933 /* Pods-SwiftChess_Example-dummy.m */,
-				B66ABEFC892E6A28F2DB7CA27FE2DF34 /* Pods-SwiftChess_Example-frameworks.sh */,
-				F662DF21A665A678303E37489D17188F /* Pods-SwiftChess_Example-resources.sh */,
-				F760CE1F8973A5B1F36EA40F6E50F00C /* Pods-SwiftChess_Example-umbrella.h */,
-				08FBF9F37DD2CC9FB07E02DB9336F4A0 /* Pods-SwiftChess_Example.debug.xcconfig */,
-				C0640D7C3A9507A50490B36B146D4536 /* Pods-SwiftChess_Example.release.xcconfig */,
-			);
-			name = "Pods-SwiftChess_Example";
-			path = "Target Support Files/Pods-SwiftChess_Example";
-			sourceTree = "<group>";
-		};
-		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				3DCAB2B7CDE207B3958B6CB957FCC758 /* iOS */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		F34825EA8632B4A4334BB5FB2FDFE8EF /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				7621ADDA34D1AD6BF10E931AF77E1D88 /* Pods_SwiftChess_Example.framework */,
-				7FC5F1FEFED8A2431C8465C9B80AB566 /* Pods_SwiftChess_Tests.framework */,
-				BB995B1E9037FBC84A986F6D8627ADE1 /* SwiftChess.framework */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-/* End PBXGroup section */
-
-/* Begin PBXHeadersBuildPhase section */
-		7367262644B731ED3CEEB7D58C5DFFFA /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				8236AE53A32A4F878EA4AC2EB9278751 /* SwiftChess-umbrella.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D8C5E29B0793BCE6F80BAD3F4FA28508 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				880570CCE7FB7D78F7FE4AD0D9D7E94A /* Pods-SwiftChess_Example-umbrella.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		FF9651CD58EB06240725DFC30F69B07E /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				396AC16ABA1B0B9AAF2BEB9B7ACD28BC /* Pods-SwiftChess_Tests-umbrella.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXHeadersBuildPhase section */
-
-/* Begin PBXNativeTarget section */
-		2DFAA67F31B357A41B67331969B8642B /* Pods-SwiftChess_Tests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 945A027ABAEC92BFBFC47433AE352743 /* Build configuration list for PBXNativeTarget "Pods-SwiftChess_Tests" */;
-			buildPhases = (
-				F12F726D9DAA4DBEE210BE9326C11117 /* Sources */,
-				5BB51FAC91BD51EE07C8CB7B9355740A /* Frameworks */,
-				FF9651CD58EB06240725DFC30F69B07E /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				84D6008C8BBFCC23E5E5C80B029E0F48 /* PBXTargetDependency */,
-			);
-			name = "Pods-SwiftChess_Tests";
-			productName = "Pods-SwiftChess_Tests";
-			productReference = 7FC5F1FEFED8A2431C8465C9B80AB566 /* Pods_SwiftChess_Tests.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		741AD5434B0AC2BD7EFC473199C6CEFA /* Pods-SwiftChess_Example */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = E16622FEA6ACD2BD46E0CB5BFB9C114B /* Build configuration list for PBXNativeTarget "Pods-SwiftChess_Example" */;
-			buildPhases = (
-				BFDE2545C1AEF47FD9A782F5A14B9A71 /* Sources */,
-				C90A2A1B4A1ED05ED39AF9CE0AB9D361 /* Frameworks */,
-				D8C5E29B0793BCE6F80BAD3F4FA28508 /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				5ACCDEA94687B23117FA2BE2B31EA78E /* PBXTargetDependency */,
-			);
-			name = "Pods-SwiftChess_Example";
-			productName = "Pods-SwiftChess_Example";
-			productReference = 7621ADDA34D1AD6BF10E931AF77E1D88 /* Pods_SwiftChess_Example.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		FD170832041C353909EEBE6B4419CB75 /* SwiftChess */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = D706D2E0BA577C2EC265DD50F675667A /* Build configuration list for PBXNativeTarget "SwiftChess" */;
-			buildPhases = (
-				88FE2B59BC75DF4DDA1DF42DF2858F9E /* Sources */,
-				1CC6CBF6C623ACBB32E472BA4D05EB4E /* Frameworks */,
-				7367262644B731ED3CEEB7D58C5DFFFA /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = SwiftChess;
-			productName = SwiftChess;
-			productReference = BB995B1E9037FBC84A986F6D8627ADE1 /* SwiftChess.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-/* End PBXNativeTarget section */
-
-/* Begin PBXProject section */
-		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
-			isa = PBXProject;
-			attributes = {
-				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0700;
-				TargetAttributes = {
-					2DFAA67F31B357A41B67331969B8642B = {
-						LastSwiftMigration = 0800;
-					};
-					741AD5434B0AC2BD7EFC473199C6CEFA = {
-						LastSwiftMigration = 0800;
-					};
-					FD170832041C353909EEBE6B4419CB75 = {
-						LastSwiftMigration = 0800;
-					};
-				};
-			};
-			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
-			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
-			hasScannedForEncodings = 0;
-			knownRegions = (
-				en,
-			);
-			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = F34825EA8632B4A4334BB5FB2FDFE8EF /* Products */;
-			projectDirPath = "";
-			projectRoot = "";
-			targets = (
-				741AD5434B0AC2BD7EFC473199C6CEFA /* Pods-SwiftChess_Example */,
-				2DFAA67F31B357A41B67331969B8642B /* Pods-SwiftChess_Tests */,
-				FD170832041C353909EEBE6B4419CB75 /* SwiftChess */,
-			);
-		};
-/* End PBXProject section */
-
-/* Begin PBXSourcesBuildPhase section */
-		88FE2B59BC75DF4DDA1DF42DF2858F9E /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				17E3196D966A7B676922CD2EC9972F4E /* Board.swift in Sources */,
-				B9A3BD89AB18860B269D0580E667CEBE /* Game.swift in Sources */,
-				B2FCC9FC700C54679BE93E1E9E8834B4 /* Piece.swift in Sources */,
-				E1B1B4F2842107EDE7DEA63952EE123A /* PieceMovement.swift in Sources */,
-				32E475B09A9E8DB24C39AB333E54EAFC /* Player.swift in Sources */,
-				1B681733B0CB7D56616BDEBA3D5A8B44 /* SwiftChess-dummy.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		BFDE2545C1AEF47FD9A782F5A14B9A71 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				C8D7E90D79073D4578CC178C8D696B4D /* Pods-SwiftChess_Example-dummy.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		F12F726D9DAA4DBEE210BE9326C11117 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				7B970796C01709744186055E93206DB6 /* Pods-SwiftChess_Tests-dummy.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		5ACCDEA94687B23117FA2BE2B31EA78E /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = SwiftChess;
-			target = FD170832041C353909EEBE6B4419CB75 /* SwiftChess */;
-			targetProxy = A2986FC9283DEED40C4D303AC24630D5 /* PBXContainerItemProxy */;
-		};
-		84D6008C8BBFCC23E5E5C80B029E0F48 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = SwiftChess;
-			target = FD170832041C353909EEBE6B4419CB75 /* SwiftChess */;
-			targetProxy = A2217860535575A9C77F6DAC8E430E3F /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
-
-/* Begin XCBuildConfiguration section */
-		0ACDCBCB0B6796575F46FFA2F5410C6B /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				COPY_PHASE_STRIP = YES;
-				ENABLE_NS_ASSERTIONS = NO;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"POD_CONFIGURATION_RELEASE=1",
-					"$(inherited)",
-				);
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
-				STRIP_INSTALLED_PRODUCT = NO;
-				SYMROOT = "${SRCROOT}/../build";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		0B8B036184B700D1CAC041A91E6559AF /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 95232251964711073B3CAC1B25E4E84E /* SwiftChess.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/SwiftChess/SwiftChess-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/SwiftChess/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/SwiftChess/SwiftChess.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = SwiftChess;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		0E65D105D71BBD5BF0AA06F6648153F1 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 08FBF9F37DD2CC9FB07E02DB9336F4A0 /* Pods-SwiftChess_Example.debug.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-SwiftChess_Example/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-SwiftChess_Example/Pods-SwiftChess_Example.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_SwiftChess_Example;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		7D678C10B2618713D77524308F1E6A78 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 95232251964711073B3CAC1B25E4E84E /* SwiftChess.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/SwiftChess/SwiftChess-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/SwiftChess/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/SwiftChess/SwiftChess.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = SwiftChess;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		AC11B4E30FBCD697B284E1437A38E57B /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = C0640D7C3A9507A50490B36B146D4536 /* Pods-SwiftChess_Example.release.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-SwiftChess_Example/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-SwiftChess_Example/Pods-SwiftChess_Example.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_SwiftChess_Example;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		D3E3D092A3FF7311A98E44BBA36FFD12 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				COPY_PHASE_STRIP = NO;
-				ENABLE_TESTABILITY = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"POD_CONFIGURATION_DEBUG=1",
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
-				ONLY_ACTIVE_ARCH = YES;
-				STRIP_INSTALLED_PRODUCT = NO;
-				SYMROOT = "${SRCROOT}/../build";
-			};
-			name = Debug;
-		};
-		F2A62965F12DF01384154A89E5D2968A /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = AD1C92FB4050D0AF78242E5C28E52155 /* Pods-SwiftChess_Tests.release.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-SwiftChess_Tests/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-SwiftChess_Tests/Pods-SwiftChess_Tests.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_SwiftChess_Tests;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		FD30E4D9966B07B73748C18453221FD9 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 98A70D131EA36F8890D030F880EA9629 /* Pods-SwiftChess_Tests.debug.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-SwiftChess_Tests/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-SwiftChess_Tests/Pods-SwiftChess_Tests.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_SwiftChess_Tests;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-/* End XCBuildConfiguration section */
-
-/* Begin XCConfigurationList section */
-		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				D3E3D092A3FF7311A98E44BBA36FFD12 /* Debug */,
-				0ACDCBCB0B6796575F46FFA2F5410C6B /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		945A027ABAEC92BFBFC47433AE352743 /* Build configuration list for PBXNativeTarget "Pods-SwiftChess_Tests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				FD30E4D9966B07B73748C18453221FD9 /* Debug */,
-				F2A62965F12DF01384154A89E5D2968A /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		D706D2E0BA577C2EC265DD50F675667A /* Build configuration list for PBXNativeTarget "SwiftChess" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				7D678C10B2618713D77524308F1E6A78 /* Debug */,
-				0B8B036184B700D1CAC041A91E6559AF /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		E16622FEA6ACD2BD46E0CB5BFB9C114B /* Build configuration list for PBXNativeTarget "Pods-SwiftChess_Example" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				0E65D105D71BBD5BF0AA06F6648153F1 /* Debug */,
-				AC11B4E30FBCD697B284E1437A38E57B /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-/* End XCConfigurationList section */
-	};
-	rootObject = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-}
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>archiveVersion</key>
+	<string>1</string>
+	<key>classes</key>
+	<dict/>
+	<key>objectVersion</key>
+	<string>46</string>
+	<key>objects</key>
+	<dict>
+		<key>072CB51FF0EA9B42A571A504D0272933</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>Pods-SwiftChess_Example-dummy.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>08FBF9F37DD2CC9FB07E02DB9336F4A0</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xcconfig</string>
+			<key>path</key>
+			<string>Pods-SwiftChess_Example.debug.xcconfig</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>0ACDCBCB0B6796575F46FFA2F5410C6B</key>
+		<dict>
+			<key>buildSettings</key>
+			<dict>
+				<key>ALWAYS_SEARCH_USER_PATHS</key>
+				<string>NO</string>
+				<key>CLANG_ANALYZER_NONNULL</key>
+				<string>YES</string>
+				<key>CLANG_CXX_LANGUAGE_STANDARD</key>
+				<string>gnu++0x</string>
+				<key>CLANG_CXX_LIBRARY</key>
+				<string>libc++</string>
+				<key>CLANG_ENABLE_MODULES</key>
+				<string>YES</string>
+				<key>CLANG_ENABLE_OBJC_ARC</key>
+				<string>YES</string>
+				<key>CLANG_WARN_BOOL_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_CONSTANT_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_DIRECT_OBJC_ISA_USAGE</key>
+				<string>YES</string>
+				<key>CLANG_WARN_EMPTY_BODY</key>
+				<string>YES</string>
+				<key>CLANG_WARN_ENUM_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_INT_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_OBJC_ROOT_CLASS</key>
+				<string>YES</string>
+				<key>CLANG_WARN_UNREACHABLE_CODE</key>
+				<string>YES</string>
+				<key>CLANG_WARN__DUPLICATE_METHOD_MATCH</key>
+				<string>YES</string>
+				<key>COPY_PHASE_STRIP</key>
+				<string>YES</string>
+				<key>ENABLE_NS_ASSERTIONS</key>
+				<string>NO</string>
+				<key>GCC_C_LANGUAGE_STANDARD</key>
+				<string>gnu99</string>
+				<key>GCC_PREPROCESSOR_DEFINITIONS</key>
+				<array>
+					<string>POD_CONFIGURATION_RELEASE=1</string>
+					<string>$(inherited)</string>
+				</array>
+				<key>GCC_WARN_64_TO_32_BIT_CONVERSION</key>
+				<string>YES</string>
+				<key>GCC_WARN_ABOUT_RETURN_TYPE</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNDECLARED_SELECTOR</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNINITIALIZED_AUTOS</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNUSED_FUNCTION</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNUSED_VARIABLE</key>
+				<string>YES</string>
+				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
+				<string>8.3</string>
+				<key>STRIP_INSTALLED_PRODUCT</key>
+				<string>NO</string>
+				<key>SYMROOT</key>
+				<string>${SRCROOT}/../build</string>
+				<key>VALIDATE_PRODUCT</key>
+				<string>YES</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Release</string>
+		</dict>
+		<key>0D63D4231407D2798B7AACBC1E4CB4E4</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.plist.xml</string>
+			<key>path</key>
+			<string>Pods-SwiftChess_Example-acknowledgements.plist</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>0EDF239CA95B1BBD72998716DA72E768</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>95CB7C721DA8C346448BC7C41F8D1A8D</string>
+				<string>5CA6FD1E01D539D6501A592E7A33ECBB</string>
+				<string>95232251964711073B3CAC1B25E4E84E</string>
+				<string>6AEE9919397F4E0CCD2EB505535FC875</string>
+				<string>4453F88E93F62D5FD34A08155A1B283C</string>
+				<string>B6D5B5849ACD747ED7EAF5B0117D151D</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Support Files</string>
+			<key>path</key>
+			<string>Example/Pods/Target Support Files/SwiftChess</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>151CA55B1C718C0D498C1640AC2169F5</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>7A044BD11AA17ACF5C4404C5279E27E0</string>
+				<string>9AF9612A57B154A113C346B182F22DFD</string>
+				<string>A1FA6620A9E7B58FE001116A3ECA2708</string>
+				<string>84A6434041DB69445A3EA8E88FC3AC62</string>
+				<string>86B13D354F9E381BD5FBAE42C931A5AC</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Classes</string>
+			<key>path</key>
+			<string>Classes</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>17E3196D966A7B676922CD2EC9972F4E</key>
+		<dict>
+			<key>fileRef</key>
+			<string>7A044BD11AA17ACF5C4404C5279E27E0</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>1B2047D5885E6664765BD1412D6FBE5F</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>8FE8131919D3C10B60140F58E6248BE5</string>
+				<string>29D6CDCAA869332637CE25E2830A5EE4</string>
+				<string>8FCE366EF8E45E4CB736F7A27D3AA717</string>
+				<string>EB9D8CD8F971C7BCA355F24D18442023</string>
+				<string>7AD4D396D62848052AA00E86CBEAEC51</string>
+				<string>D6E78B80DCBE2AC6F963A1C2BC818456</string>
+				<string>2E8FB79C4C0D1F780D878E0FA48E11D4</string>
+				<string>D6213410A61B8A1E4E618A31C997CDCF</string>
+				<string>98A70D131EA36F8890D030F880EA9629</string>
+				<string>AD1C92FB4050D0AF78242E5C28E52155</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Pods-SwiftChess_Tests</string>
+			<key>path</key>
+			<string>Target Support Files/Pods-SwiftChess_Tests</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>1B681733B0CB7D56616BDEBA3D5A8B44</key>
+		<dict>
+			<key>fileRef</key>
+			<string>6AEE9919397F4E0CCD2EB505535FC875</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>1CC6CBF6C623ACBB32E472BA4D05EB4E</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>2908A246A10E222D260CBACCE0B32022</string>
+			</array>
+			<key>isa</key>
+			<string>PBXFrameworksBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>1DA527BE8BB9DA950DBDF4B8243A3305</key>
+		<dict>
+			<key>fileRef</key>
+			<string>CEC22C73C1608DFA5D5D78BDCB218219</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>2084C98C3BC02FFAC399223C118B6C38</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>151CA55B1C718C0D498C1640AC2169F5</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>SwiftChess</string>
+			<key>path</key>
+			<string>SwiftChess</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>2457303192C3A20F05A0AF9EB998DAE1</key>
+		<dict>
+			<key>baseConfigurationReference</key>
+			<string>95232251964711073B3CAC1B25E4E84E</string>
+			<key>buildSettings</key>
+			<dict>
+				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
+				<string>iPhone Developer</string>
+				<key>CURRENT_PROJECT_VERSION</key>
+				<string>1</string>
+				<key>DEBUG_INFORMATION_FORMAT</key>
+				<string>dwarf-with-dsym</string>
+				<key>DEFINES_MODULE</key>
+				<string>YES</string>
+				<key>DYLIB_COMPATIBILITY_VERSION</key>
+				<string>1</string>
+				<key>DYLIB_CURRENT_VERSION</key>
+				<string>1</string>
+				<key>DYLIB_INSTALL_NAME_BASE</key>
+				<string>@rpath</string>
+				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
+				<string>YES</string>
+				<key>GCC_NO_COMMON_BLOCKS</key>
+				<string>YES</string>
+				<key>GCC_PREFIX_HEADER</key>
+				<string>Target Support Files/SwiftChess/SwiftChess-prefix.pch</string>
+				<key>INFOPLIST_FILE</key>
+				<string>Target Support Files/SwiftChess/Info.plist</string>
+				<key>INSTALL_PATH</key>
+				<string>$(LOCAL_LIBRARY_DIR)/Frameworks</string>
+				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
+				<string>8.0</string>
+				<key>LD_RUNPATH_SEARCH_PATHS</key>
+				<array>
+					<string>$(inherited)</string>
+					<string>@executable_path/Frameworks</string>
+					<string>@loader_path/Frameworks</string>
+				</array>
+				<key>MODULEMAP_FILE</key>
+				<string>Target Support Files/SwiftChess/SwiftChess.modulemap</string>
+				<key>MTL_ENABLE_DEBUG_INFO</key>
+				<string>NO</string>
+				<key>PRODUCT_NAME</key>
+				<string>SwiftChess</string>
+				<key>SDKROOT</key>
+				<string>iphoneos</string>
+				<key>SKIP_INSTALL</key>
+				<string>YES</string>
+				<key>SWIFT_VERSION</key>
+				<string>3.0</string>
+				<key>TARGETED_DEVICE_FAMILY</key>
+				<string>1,2</string>
+				<key>VERSIONING_SYSTEM</key>
+				<string>apple-generic</string>
+				<key>VERSION_INFO_PREFIX</key>
+				<string></string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Release</string>
+		</dict>
+		<key>2908A246A10E222D260CBACCE0B32022</key>
+		<dict>
+			<key>fileRef</key>
+			<string>CEC22C73C1608DFA5D5D78BDCB218219</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>292A3E0C0B708E1E49469AA3B8D2C9C6</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.plist.xml</string>
+			<key>path</key>
+			<string>Info.plist</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>29D6CDCAA869332637CE25E2830A5EE4</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>Pods-SwiftChess_Tests.modulemap</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>2D8E8EC45A3A1A1D94AE762CB5028504</key>
+		<dict>
+			<key>buildConfigurations</key>
+			<array>
+				<string>D3E3D092A3FF7311A98E44BBA36FFD12</string>
+				<string>0ACDCBCB0B6796575F46FFA2F5410C6B</string>
+			</array>
+			<key>defaultConfigurationIsVisible</key>
+			<string>0</string>
+			<key>defaultConfigurationName</key>
+			<string>Release</string>
+			<key>isa</key>
+			<string>XCConfigurationList</string>
+		</dict>
+		<key>2DFAA67F31B357A41B67331969B8642B</key>
+		<dict>
+			<key>buildConfigurationList</key>
+			<string>945A027ABAEC92BFBFC47433AE352743</string>
+			<key>buildPhases</key>
+			<array>
+				<string>F12F726D9DAA4DBEE210BE9326C11117</string>
+				<string>5BB51FAC91BD51EE07C8CB7B9355740A</string>
+				<string>FF9651CD58EB06240725DFC30F69B07E</string>
+			</array>
+			<key>buildRules</key>
+			<array/>
+			<key>dependencies</key>
+			<array>
+				<string>84D6008C8BBFCC23E5E5C80B029E0F48</string>
+			</array>
+			<key>isa</key>
+			<string>PBXNativeTarget</string>
+			<key>name</key>
+			<string>Pods-SwiftChess_Tests</string>
+			<key>productName</key>
+			<string>Pods-SwiftChess_Tests</string>
+			<key>productReference</key>
+			<string>7FC5F1FEFED8A2431C8465C9B80AB566</string>
+			<key>productType</key>
+			<string>com.apple.product-type.framework</string>
+		</dict>
+		<key>2E8FB79C4C0D1F780D878E0FA48E11D4</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.script.sh</string>
+			<key>path</key>
+			<string>Pods-SwiftChess_Tests-resources.sh</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>32E475B09A9E8DB24C39AB333E54EAFC</key>
+		<dict>
+			<key>fileRef</key>
+			<string>86B13D354F9E381BD5FBAE42C931A5AC</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>396AC16ABA1B0B9AAF2BEB9B7ACD28BC</key>
+		<dict>
+			<key>fileRef</key>
+			<string>D6213410A61B8A1E4E618A31C997CDCF</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>3DCAB2B7CDE207B3958B6CB957FCC758</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>CEC22C73C1608DFA5D5D78BDCB218219</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>iOS</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>4453F88E93F62D5FD34A08155A1B283C</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>SwiftChess-prefix.pch</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>58A4FC4B3E6CA254F05C375BC3EBC2DF</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>6B57EBD2BF5FD5A68E79E7C6D3E3C1EB</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Development Pods</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>5ACCDEA94687B23117FA2BE2B31EA78E</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXTargetDependency</string>
+			<key>name</key>
+			<string>SwiftChess</string>
+			<key>target</key>
+			<string>FD170832041C353909EEBE6B4419CB75</string>
+			<key>targetProxy</key>
+			<string>A2986FC9283DEED40C4D303AC24630D5</string>
+		</dict>
+		<key>5BB51FAC91BD51EE07C8CB7B9355740A</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>1DA527BE8BB9DA950DBDF4B8243A3305</string>
+			</array>
+			<key>isa</key>
+			<string>PBXFrameworksBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>5CA6FD1E01D539D6501A592E7A33ECBB</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>SwiftChess.modulemap</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>6AEE9919397F4E0CCD2EB505535FC875</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>SwiftChess-dummy.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>6B57EBD2BF5FD5A68E79E7C6D3E3C1EB</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>0EDF239CA95B1BBD72998716DA72E768</string>
+				<string>2084C98C3BC02FFAC399223C118B6C38</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>SwiftChess</string>
+			<key>path</key>
+			<string>../..</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>7367262644B731ED3CEEB7D58C5DFFFA</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>8236AE53A32A4F878EA4AC2EB9278751</string>
+			</array>
+			<key>isa</key>
+			<string>PBXHeadersBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>741AD5434B0AC2BD7EFC473199C6CEFA</key>
+		<dict>
+			<key>buildConfigurationList</key>
+			<string>E16622FEA6ACD2BD46E0CB5BFB9C114B</string>
+			<key>buildPhases</key>
+			<array>
+				<string>BFDE2545C1AEF47FD9A782F5A14B9A71</string>
+				<string>C90A2A1B4A1ED05ED39AF9CE0AB9D361</string>
+				<string>D8C5E29B0793BCE6F80BAD3F4FA28508</string>
+			</array>
+			<key>buildRules</key>
+			<array/>
+			<key>dependencies</key>
+			<array>
+				<string>5ACCDEA94687B23117FA2BE2B31EA78E</string>
+			</array>
+			<key>isa</key>
+			<string>PBXNativeTarget</string>
+			<key>name</key>
+			<string>Pods-SwiftChess_Example</string>
+			<key>productName</key>
+			<string>Pods-SwiftChess_Example</string>
+			<key>productReference</key>
+			<string>7621ADDA34D1AD6BF10E931AF77E1D88</string>
+			<key>productType</key>
+			<string>com.apple.product-type.framework</string>
+		</dict>
+		<key>7621ADDA34D1AD6BF10E931AF77E1D88</key>
+		<dict>
+			<key>explicitFileType</key>
+			<string>wrapper.framework</string>
+			<key>includeInIndex</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>name</key>
+			<string>Pods_SwiftChess_Example.framework</string>
+			<key>path</key>
+			<string>Pods-SwiftChess_Example.framework</string>
+			<key>sourceTree</key>
+			<string>BUILT_PRODUCTS_DIR</string>
+		</dict>
+		<key>7A044BD11AA17ACF5C4404C5279E27E0</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>Board.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>7AD4D396D62848052AA00E86CBEAEC51</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>Pods-SwiftChess_Tests-dummy.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>7B970796C01709744186055E93206DB6</key>
+		<dict>
+			<key>fileRef</key>
+			<string>7AD4D396D62848052AA00E86CBEAEC51</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>7D1FE4E4B0F96CBDB9CB26D1BEE0878D</key>
+		<dict>
+			<key>baseConfigurationReference</key>
+			<string>95232251964711073B3CAC1B25E4E84E</string>
+			<key>buildSettings</key>
+			<dict>
+				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
+				<string>iPhone Developer</string>
+				<key>CURRENT_PROJECT_VERSION</key>
+				<string>1</string>
+				<key>DEBUG_INFORMATION_FORMAT</key>
+				<string>dwarf</string>
+				<key>DEFINES_MODULE</key>
+				<string>YES</string>
+				<key>DYLIB_COMPATIBILITY_VERSION</key>
+				<string>1</string>
+				<key>DYLIB_CURRENT_VERSION</key>
+				<string>1</string>
+				<key>DYLIB_INSTALL_NAME_BASE</key>
+				<string>@rpath</string>
+				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
+				<string>YES</string>
+				<key>GCC_NO_COMMON_BLOCKS</key>
+				<string>YES</string>
+				<key>GCC_PREFIX_HEADER</key>
+				<string>Target Support Files/SwiftChess/SwiftChess-prefix.pch</string>
+				<key>INFOPLIST_FILE</key>
+				<string>Target Support Files/SwiftChess/Info.plist</string>
+				<key>INSTALL_PATH</key>
+				<string>$(LOCAL_LIBRARY_DIR)/Frameworks</string>
+				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
+				<string>8.0</string>
+				<key>LD_RUNPATH_SEARCH_PATHS</key>
+				<array>
+					<string>$(inherited)</string>
+					<string>@executable_path/Frameworks</string>
+					<string>@loader_path/Frameworks</string>
+				</array>
+				<key>MODULEMAP_FILE</key>
+				<string>Target Support Files/SwiftChess/SwiftChess.modulemap</string>
+				<key>MTL_ENABLE_DEBUG_INFO</key>
+				<string>YES</string>
+				<key>PRODUCT_NAME</key>
+				<string>SwiftChess</string>
+				<key>SDKROOT</key>
+				<string>iphoneos</string>
+				<key>SKIP_INSTALL</key>
+				<string>YES</string>
+				<key>SWIFT_OPTIMIZATION_LEVEL</key>
+				<string>-Onone</string>
+				<key>SWIFT_VERSION</key>
+				<string>3.0</string>
+				<key>TARGETED_DEVICE_FAMILY</key>
+				<string>1,2</string>
+				<key>VERSIONING_SYSTEM</key>
+				<string>apple-generic</string>
+				<key>VERSION_INFO_PREFIX</key>
+				<string></string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Debug</string>
+		</dict>
+		<key>7DB346D0F39D3F0E887471402A8071AB</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>93A4A3777CF96A4AAC1D13BA6DCCEA73</string>
+				<string>58A4FC4B3E6CA254F05C375BC3EBC2DF</string>
+				<string>BC3CA7F9E30CC8F7E2DD044DD34432FC</string>
+				<string>F34825EA8632B4A4334BB5FB2FDFE8EF</string>
+				<string>8DF2EFF0670BF658FEE75EE8EF24B433</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>7FC5F1FEFED8A2431C8465C9B80AB566</key>
+		<dict>
+			<key>explicitFileType</key>
+			<string>wrapper.framework</string>
+			<key>includeInIndex</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>name</key>
+			<string>Pods_SwiftChess_Tests.framework</string>
+			<key>path</key>
+			<string>Pods-SwiftChess_Tests.framework</string>
+			<key>sourceTree</key>
+			<string>BUILT_PRODUCTS_DIR</string>
+		</dict>
+		<key>8236AE53A32A4F878EA4AC2EB9278751</key>
+		<dict>
+			<key>fileRef</key>
+			<string>B6D5B5849ACD747ED7EAF5B0117D151D</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>84A6434041DB69445A3EA8E88FC3AC62</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>PieceMovement.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>84D6008C8BBFCC23E5E5C80B029E0F48</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXTargetDependency</string>
+			<key>name</key>
+			<string>SwiftChess</string>
+			<key>target</key>
+			<string>FD170832041C353909EEBE6B4419CB75</string>
+			<key>targetProxy</key>
+			<string>A2217860535575A9C77F6DAC8E430E3F</string>
+		</dict>
+		<key>86B13D354F9E381BD5FBAE42C931A5AC</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>Player.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>870388489BD19DC1E3C6B0ED183DD3C8</key>
+		<dict>
+			<key>baseConfigurationReference</key>
+			<string>98A70D131EA36F8890D030F880EA9629</string>
+			<key>buildSettings</key>
+			<dict>
+				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
+				<string>iPhone Developer</string>
+				<key>CURRENT_PROJECT_VERSION</key>
+				<string>1</string>
+				<key>DEBUG_INFORMATION_FORMAT</key>
+				<string>dwarf</string>
+				<key>DEFINES_MODULE</key>
+				<string>YES</string>
+				<key>DYLIB_COMPATIBILITY_VERSION</key>
+				<string>1</string>
+				<key>DYLIB_CURRENT_VERSION</key>
+				<string>1</string>
+				<key>DYLIB_INSTALL_NAME_BASE</key>
+				<string>@rpath</string>
+				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
+				<string>YES</string>
+				<key>GCC_NO_COMMON_BLOCKS</key>
+				<string>YES</string>
+				<key>INFOPLIST_FILE</key>
+				<string>Target Support Files/Pods-SwiftChess_Tests/Info.plist</string>
+				<key>INSTALL_PATH</key>
+				<string>$(LOCAL_LIBRARY_DIR)/Frameworks</string>
+				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
+				<string>8.3</string>
+				<key>LD_RUNPATH_SEARCH_PATHS</key>
+				<array>
+					<string>$(inherited)</string>
+					<string>@executable_path/Frameworks</string>
+					<string>@loader_path/Frameworks</string>
+				</array>
+				<key>MACH_O_TYPE</key>
+				<string>staticlib</string>
+				<key>MODULEMAP_FILE</key>
+				<string>Target Support Files/Pods-SwiftChess_Tests/Pods-SwiftChess_Tests.modulemap</string>
+				<key>MTL_ENABLE_DEBUG_INFO</key>
+				<string>YES</string>
+				<key>OTHER_LDFLAGS</key>
+				<string></string>
+				<key>OTHER_LIBTOOLFLAGS</key>
+				<string></string>
+				<key>PODS_ROOT</key>
+				<string>$(SRCROOT)</string>
+				<key>PRODUCT_BUNDLE_IDENTIFIER</key>
+				<string>org.cocoapods.${PRODUCT_NAME:rfc1034identifier}</string>
+				<key>PRODUCT_NAME</key>
+				<string>Pods_SwiftChess_Tests</string>
+				<key>SDKROOT</key>
+				<string>iphoneos</string>
+				<key>SKIP_INSTALL</key>
+				<string>YES</string>
+				<key>SWIFT_OPTIMIZATION_LEVEL</key>
+				<string>-Onone</string>
+				<key>SWIFT_VERSION</key>
+				<string>3.0</string>
+				<key>TARGETED_DEVICE_FAMILY</key>
+				<string>1,2</string>
+				<key>VERSIONING_SYSTEM</key>
+				<string>apple-generic</string>
+				<key>VERSION_INFO_PREFIX</key>
+				<string></string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Debug</string>
+		</dict>
+		<key>880570CCE7FB7D78F7FE4AD0D9D7E94A</key>
+		<dict>
+			<key>fileRef</key>
+			<string>F760CE1F8973A5B1F36EA40F6E50F00C</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>88DA8EEED0A022E2796758BBB48DF945</key>
+		<dict>
+			<key>baseConfigurationReference</key>
+			<string>C0640D7C3A9507A50490B36B146D4536</string>
+			<key>buildSettings</key>
+			<dict>
+				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
+				<string>iPhone Developer</string>
+				<key>CURRENT_PROJECT_VERSION</key>
+				<string>1</string>
+				<key>DEBUG_INFORMATION_FORMAT</key>
+				<string>dwarf-with-dsym</string>
+				<key>DEFINES_MODULE</key>
+				<string>YES</string>
+				<key>DYLIB_COMPATIBILITY_VERSION</key>
+				<string>1</string>
+				<key>DYLIB_CURRENT_VERSION</key>
+				<string>1</string>
+				<key>DYLIB_INSTALL_NAME_BASE</key>
+				<string>@rpath</string>
+				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
+				<string>YES</string>
+				<key>GCC_NO_COMMON_BLOCKS</key>
+				<string>YES</string>
+				<key>INFOPLIST_FILE</key>
+				<string>Target Support Files/Pods-SwiftChess_Example/Info.plist</string>
+				<key>INSTALL_PATH</key>
+				<string>$(LOCAL_LIBRARY_DIR)/Frameworks</string>
+				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
+				<string>8.3</string>
+				<key>LD_RUNPATH_SEARCH_PATHS</key>
+				<array>
+					<string>$(inherited)</string>
+					<string>@executable_path/Frameworks</string>
+					<string>@loader_path/Frameworks</string>
+				</array>
+				<key>MACH_O_TYPE</key>
+				<string>staticlib</string>
+				<key>MODULEMAP_FILE</key>
+				<string>Target Support Files/Pods-SwiftChess_Example/Pods-SwiftChess_Example.modulemap</string>
+				<key>MTL_ENABLE_DEBUG_INFO</key>
+				<string>NO</string>
+				<key>OTHER_LDFLAGS</key>
+				<string></string>
+				<key>OTHER_LIBTOOLFLAGS</key>
+				<string></string>
+				<key>PODS_ROOT</key>
+				<string>$(SRCROOT)</string>
+				<key>PRODUCT_BUNDLE_IDENTIFIER</key>
+				<string>org.cocoapods.${PRODUCT_NAME:rfc1034identifier}</string>
+				<key>PRODUCT_NAME</key>
+				<string>Pods_SwiftChess_Example</string>
+				<key>SDKROOT</key>
+				<string>iphoneos</string>
+				<key>SKIP_INSTALL</key>
+				<string>YES</string>
+				<key>SWIFT_VERSION</key>
+				<string>3.0</string>
+				<key>TARGETED_DEVICE_FAMILY</key>
+				<string>1,2</string>
+				<key>VERSIONING_SYSTEM</key>
+				<string>apple-generic</string>
+				<key>VERSION_INFO_PREFIX</key>
+				<string></string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Release</string>
+		</dict>
+		<key>88FE2B59BC75DF4DDA1DF42DF2858F9E</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>17E3196D966A7B676922CD2EC9972F4E</string>
+				<string>B9A3BD89AB18860B269D0580E667CEBE</string>
+				<string>B2FCC9FC700C54679BE93E1E9E8834B4</string>
+				<string>E1B1B4F2842107EDE7DEA63952EE123A</string>
+				<string>32E475B09A9E8DB24C39AB333E54EAFC</string>
+				<string>1B681733B0CB7D56616BDEBA3D5A8B44</string>
+			</array>
+			<key>isa</key>
+			<string>PBXSourcesBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>8DF2EFF0670BF658FEE75EE8EF24B433</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>A252659068BF06BF2CFBD28F80C8A03A</string>
+				<string>1B2047D5885E6664765BD1412D6FBE5F</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Targets Support Files</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8FCE366EF8E45E4CB736F7A27D3AA717</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text</string>
+			<key>path</key>
+			<string>Pods-SwiftChess_Tests-acknowledgements.markdown</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8FE8131919D3C10B60140F58E6248BE5</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.plist.xml</string>
+			<key>path</key>
+			<string>Info.plist</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>93A4A3777CF96A4AAC1D13BA6DCCEA73</key>
+		<dict>
+			<key>explicitFileType</key>
+			<string>text.script.ruby</string>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text</string>
+			<key>name</key>
+			<string>Podfile</string>
+			<key>path</key>
+			<string>../Podfile</string>
+			<key>sourceTree</key>
+			<string>SOURCE_ROOT</string>
+			<key>xcLanguageSpecificationIdentifier</key>
+			<string>xcode.lang.ruby</string>
+		</dict>
+		<key>945A027ABAEC92BFBFC47433AE352743</key>
+		<dict>
+			<key>buildConfigurations</key>
+			<array>
+				<string>870388489BD19DC1E3C6B0ED183DD3C8</string>
+				<string>DFDA0C25DF29C9857F855191BE1E2C5D</string>
+			</array>
+			<key>defaultConfigurationIsVisible</key>
+			<string>0</string>
+			<key>defaultConfigurationName</key>
+			<string>Release</string>
+			<key>isa</key>
+			<string>XCConfigurationList</string>
+		</dict>
+		<key>95232251964711073B3CAC1B25E4E84E</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xcconfig</string>
+			<key>path</key>
+			<string>SwiftChess.xcconfig</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>95CB7C721DA8C346448BC7C41F8D1A8D</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.plist.xml</string>
+			<key>path</key>
+			<string>Info.plist</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>98A70D131EA36F8890D030F880EA9629</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xcconfig</string>
+			<key>path</key>
+			<string>Pods-SwiftChess_Tests.debug.xcconfig</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9AF9612A57B154A113C346B182F22DFD</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>Game.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>A1FA6620A9E7B58FE001116A3ECA2708</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>Piece.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>A2217860535575A9C77F6DAC8E430E3F</key>
+		<dict>
+			<key>containerPortal</key>
+			<string>D41D8CD98F00B204E9800998ECF8427E</string>
+			<key>isa</key>
+			<string>PBXContainerItemProxy</string>
+			<key>proxyType</key>
+			<string>1</string>
+			<key>remoteGlobalIDString</key>
+			<string>FD170832041C353909EEBE6B4419CB75</string>
+			<key>remoteInfo</key>
+			<string>SwiftChess</string>
+		</dict>
+		<key>A252659068BF06BF2CFBD28F80C8A03A</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>292A3E0C0B708E1E49469AA3B8D2C9C6</string>
+				<string>A53EC55804536A355802F1186FC9AE18</string>
+				<string>E8A5E3F4D156E74AEAAF78AD000C729A</string>
+				<string>0D63D4231407D2798B7AACBC1E4CB4E4</string>
+				<string>072CB51FF0EA9B42A571A504D0272933</string>
+				<string>B66ABEFC892E6A28F2DB7CA27FE2DF34</string>
+				<string>F662DF21A665A678303E37489D17188F</string>
+				<string>F760CE1F8973A5B1F36EA40F6E50F00C</string>
+				<string>08FBF9F37DD2CC9FB07E02DB9336F4A0</string>
+				<string>C0640D7C3A9507A50490B36B146D4536</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Pods-SwiftChess_Example</string>
+			<key>path</key>
+			<string>Target Support Files/Pods-SwiftChess_Example</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>A2986FC9283DEED40C4D303AC24630D5</key>
+		<dict>
+			<key>containerPortal</key>
+			<string>D41D8CD98F00B204E9800998ECF8427E</string>
+			<key>isa</key>
+			<string>PBXContainerItemProxy</string>
+			<key>proxyType</key>
+			<string>1</string>
+			<key>remoteGlobalIDString</key>
+			<string>FD170832041C353909EEBE6B4419CB75</string>
+			<key>remoteInfo</key>
+			<string>SwiftChess</string>
+		</dict>
+		<key>A53EC55804536A355802F1186FC9AE18</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>Pods-SwiftChess_Example.modulemap</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>A69163803B220CF58FED7B01C4AE4BA1</key>
+		<dict>
+			<key>fileRef</key>
+			<string>CEC22C73C1608DFA5D5D78BDCB218219</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>AD1C92FB4050D0AF78242E5C28E52155</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xcconfig</string>
+			<key>path</key>
+			<string>Pods-SwiftChess_Tests.release.xcconfig</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>B2FCC9FC700C54679BE93E1E9E8834B4</key>
+		<dict>
+			<key>fileRef</key>
+			<string>A1FA6620A9E7B58FE001116A3ECA2708</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>B61B6608DB157AD11DFD17654E640544</key>
+		<dict>
+			<key>baseConfigurationReference</key>
+			<string>08FBF9F37DD2CC9FB07E02DB9336F4A0</string>
+			<key>buildSettings</key>
+			<dict>
+				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
+				<string>iPhone Developer</string>
+				<key>CURRENT_PROJECT_VERSION</key>
+				<string>1</string>
+				<key>DEBUG_INFORMATION_FORMAT</key>
+				<string>dwarf</string>
+				<key>DEFINES_MODULE</key>
+				<string>YES</string>
+				<key>DYLIB_COMPATIBILITY_VERSION</key>
+				<string>1</string>
+				<key>DYLIB_CURRENT_VERSION</key>
+				<string>1</string>
+				<key>DYLIB_INSTALL_NAME_BASE</key>
+				<string>@rpath</string>
+				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
+				<string>YES</string>
+				<key>GCC_NO_COMMON_BLOCKS</key>
+				<string>YES</string>
+				<key>INFOPLIST_FILE</key>
+				<string>Target Support Files/Pods-SwiftChess_Example/Info.plist</string>
+				<key>INSTALL_PATH</key>
+				<string>$(LOCAL_LIBRARY_DIR)/Frameworks</string>
+				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
+				<string>8.3</string>
+				<key>LD_RUNPATH_SEARCH_PATHS</key>
+				<array>
+					<string>$(inherited)</string>
+					<string>@executable_path/Frameworks</string>
+					<string>@loader_path/Frameworks</string>
+				</array>
+				<key>MACH_O_TYPE</key>
+				<string>staticlib</string>
+				<key>MODULEMAP_FILE</key>
+				<string>Target Support Files/Pods-SwiftChess_Example/Pods-SwiftChess_Example.modulemap</string>
+				<key>MTL_ENABLE_DEBUG_INFO</key>
+				<string>YES</string>
+				<key>OTHER_LDFLAGS</key>
+				<string></string>
+				<key>OTHER_LIBTOOLFLAGS</key>
+				<string></string>
+				<key>PODS_ROOT</key>
+				<string>$(SRCROOT)</string>
+				<key>PRODUCT_BUNDLE_IDENTIFIER</key>
+				<string>org.cocoapods.${PRODUCT_NAME:rfc1034identifier}</string>
+				<key>PRODUCT_NAME</key>
+				<string>Pods_SwiftChess_Example</string>
+				<key>SDKROOT</key>
+				<string>iphoneos</string>
+				<key>SKIP_INSTALL</key>
+				<string>YES</string>
+				<key>SWIFT_OPTIMIZATION_LEVEL</key>
+				<string>-Onone</string>
+				<key>SWIFT_VERSION</key>
+				<string>3.0</string>
+				<key>TARGETED_DEVICE_FAMILY</key>
+				<string>1,2</string>
+				<key>VERSIONING_SYSTEM</key>
+				<string>apple-generic</string>
+				<key>VERSION_INFO_PREFIX</key>
+				<string></string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Debug</string>
+		</dict>
+		<key>B66ABEFC892E6A28F2DB7CA27FE2DF34</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.script.sh</string>
+			<key>path</key>
+			<string>Pods-SwiftChess_Example-frameworks.sh</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>B6D5B5849ACD747ED7EAF5B0117D151D</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>SwiftChess-umbrella.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>B9A3BD89AB18860B269D0580E667CEBE</key>
+		<dict>
+			<key>fileRef</key>
+			<string>9AF9612A57B154A113C346B182F22DFD</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>BB995B1E9037FBC84A986F6D8627ADE1</key>
+		<dict>
+			<key>explicitFileType</key>
+			<string>wrapper.framework</string>
+			<key>includeInIndex</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>name</key>
+			<string>SwiftChess.framework</string>
+			<key>path</key>
+			<string>SwiftChess.framework</string>
+			<key>sourceTree</key>
+			<string>BUILT_PRODUCTS_DIR</string>
+		</dict>
+		<key>BC3CA7F9E30CC8F7E2DD044DD34432FC</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>3DCAB2B7CDE207B3958B6CB957FCC758</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Frameworks</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>BFDE2545C1AEF47FD9A782F5A14B9A71</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>C8D7E90D79073D4578CC178C8D696B4D</string>
+			</array>
+			<key>isa</key>
+			<string>PBXSourcesBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>C0640D7C3A9507A50490B36B146D4536</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xcconfig</string>
+			<key>path</key>
+			<string>Pods-SwiftChess_Example.release.xcconfig</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>C8D7E90D79073D4578CC178C8D696B4D</key>
+		<dict>
+			<key>fileRef</key>
+			<string>072CB51FF0EA9B42A571A504D0272933</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>C90A2A1B4A1ED05ED39AF9CE0AB9D361</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>A69163803B220CF58FED7B01C4AE4BA1</string>
+			</array>
+			<key>isa</key>
+			<string>PBXFrameworksBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>CEC22C73C1608DFA5D5D78BDCB218219</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>wrapper.framework</string>
+			<key>name</key>
+			<string>Foundation.framework</string>
+			<key>path</key>
+			<string>Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/Foundation.framework</string>
+			<key>sourceTree</key>
+			<string>DEVELOPER_DIR</string>
+		</dict>
+		<key>D3E3D092A3FF7311A98E44BBA36FFD12</key>
+		<dict>
+			<key>buildSettings</key>
+			<dict>
+				<key>ALWAYS_SEARCH_USER_PATHS</key>
+				<string>NO</string>
+				<key>CLANG_ANALYZER_NONNULL</key>
+				<string>YES</string>
+				<key>CLANG_CXX_LANGUAGE_STANDARD</key>
+				<string>gnu++0x</string>
+				<key>CLANG_CXX_LIBRARY</key>
+				<string>libc++</string>
+				<key>CLANG_ENABLE_MODULES</key>
+				<string>YES</string>
+				<key>CLANG_ENABLE_OBJC_ARC</key>
+				<string>YES</string>
+				<key>CLANG_WARN_BOOL_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_CONSTANT_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_DIRECT_OBJC_ISA_USAGE</key>
+				<string>YES</string>
+				<key>CLANG_WARN_EMPTY_BODY</key>
+				<string>YES</string>
+				<key>CLANG_WARN_ENUM_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_INT_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_OBJC_ROOT_CLASS</key>
+				<string>YES</string>
+				<key>CLANG_WARN_UNREACHABLE_CODE</key>
+				<string>YES</string>
+				<key>CLANG_WARN__DUPLICATE_METHOD_MATCH</key>
+				<string>YES</string>
+				<key>COPY_PHASE_STRIP</key>
+				<string>NO</string>
+				<key>ENABLE_TESTABILITY</key>
+				<string>YES</string>
+				<key>GCC_C_LANGUAGE_STANDARD</key>
+				<string>gnu99</string>
+				<key>GCC_DYNAMIC_NO_PIC</key>
+				<string>NO</string>
+				<key>GCC_OPTIMIZATION_LEVEL</key>
+				<string>0</string>
+				<key>GCC_PREPROCESSOR_DEFINITIONS</key>
+				<array>
+					<string>POD_CONFIGURATION_DEBUG=1</string>
+					<string>DEBUG=1</string>
+					<string>$(inherited)</string>
+				</array>
+				<key>GCC_SYMBOLS_PRIVATE_EXTERN</key>
+				<string>NO</string>
+				<key>GCC_WARN_64_TO_32_BIT_CONVERSION</key>
+				<string>YES</string>
+				<key>GCC_WARN_ABOUT_RETURN_TYPE</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNDECLARED_SELECTOR</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNINITIALIZED_AUTOS</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNUSED_FUNCTION</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNUSED_VARIABLE</key>
+				<string>YES</string>
+				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
+				<string>8.3</string>
+				<key>ONLY_ACTIVE_ARCH</key>
+				<string>YES</string>
+				<key>STRIP_INSTALLED_PRODUCT</key>
+				<string>NO</string>
+				<key>SYMROOT</key>
+				<string>${SRCROOT}/../build</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Debug</string>
+		</dict>
+		<key>D41D8CD98F00B204E9800998ECF8427E</key>
+		<dict>
+			<key>attributes</key>
+			<dict>
+				<key>LastSwiftUpdateCheck</key>
+				<string>0730</string>
+				<key>LastUpgradeCheck</key>
+				<string>0700</string>
+			</dict>
+			<key>buildConfigurationList</key>
+			<string>2D8E8EC45A3A1A1D94AE762CB5028504</string>
+			<key>compatibilityVersion</key>
+			<string>Xcode 3.2</string>
+			<key>developmentRegion</key>
+			<string>English</string>
+			<key>hasScannedForEncodings</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXProject</string>
+			<key>knownRegions</key>
+			<array>
+				<string>en</string>
+			</array>
+			<key>mainGroup</key>
+			<string>7DB346D0F39D3F0E887471402A8071AB</string>
+			<key>productRefGroup</key>
+			<string>F34825EA8632B4A4334BB5FB2FDFE8EF</string>
+			<key>projectDirPath</key>
+			<string></string>
+			<key>projectReferences</key>
+			<array/>
+			<key>projectRoot</key>
+			<string></string>
+			<key>targets</key>
+			<array>
+				<string>741AD5434B0AC2BD7EFC473199C6CEFA</string>
+				<string>2DFAA67F31B357A41B67331969B8642B</string>
+				<string>FD170832041C353909EEBE6B4419CB75</string>
+			</array>
+		</dict>
+		<key>D6213410A61B8A1E4E618A31C997CDCF</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>Pods-SwiftChess_Tests-umbrella.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D6E78B80DCBE2AC6F963A1C2BC818456</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.script.sh</string>
+			<key>path</key>
+			<string>Pods-SwiftChess_Tests-frameworks.sh</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D706D2E0BA577C2EC265DD50F675667A</key>
+		<dict>
+			<key>buildConfigurations</key>
+			<array>
+				<string>7D1FE4E4B0F96CBDB9CB26D1BEE0878D</string>
+				<string>2457303192C3A20F05A0AF9EB998DAE1</string>
+			</array>
+			<key>defaultConfigurationIsVisible</key>
+			<string>0</string>
+			<key>defaultConfigurationName</key>
+			<string>Release</string>
+			<key>isa</key>
+			<string>XCConfigurationList</string>
+		</dict>
+		<key>D8C5E29B0793BCE6F80BAD3F4FA28508</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>880570CCE7FB7D78F7FE4AD0D9D7E94A</string>
+			</array>
+			<key>isa</key>
+			<string>PBXHeadersBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>DFDA0C25DF29C9857F855191BE1E2C5D</key>
+		<dict>
+			<key>baseConfigurationReference</key>
+			<string>AD1C92FB4050D0AF78242E5C28E52155</string>
+			<key>buildSettings</key>
+			<dict>
+				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
+				<string>iPhone Developer</string>
+				<key>CURRENT_PROJECT_VERSION</key>
+				<string>1</string>
+				<key>DEBUG_INFORMATION_FORMAT</key>
+				<string>dwarf-with-dsym</string>
+				<key>DEFINES_MODULE</key>
+				<string>YES</string>
+				<key>DYLIB_COMPATIBILITY_VERSION</key>
+				<string>1</string>
+				<key>DYLIB_CURRENT_VERSION</key>
+				<string>1</string>
+				<key>DYLIB_INSTALL_NAME_BASE</key>
+				<string>@rpath</string>
+				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
+				<string>YES</string>
+				<key>GCC_NO_COMMON_BLOCKS</key>
+				<string>YES</string>
+				<key>INFOPLIST_FILE</key>
+				<string>Target Support Files/Pods-SwiftChess_Tests/Info.plist</string>
+				<key>INSTALL_PATH</key>
+				<string>$(LOCAL_LIBRARY_DIR)/Frameworks</string>
+				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
+				<string>8.3</string>
+				<key>LD_RUNPATH_SEARCH_PATHS</key>
+				<array>
+					<string>$(inherited)</string>
+					<string>@executable_path/Frameworks</string>
+					<string>@loader_path/Frameworks</string>
+				</array>
+				<key>MACH_O_TYPE</key>
+				<string>staticlib</string>
+				<key>MODULEMAP_FILE</key>
+				<string>Target Support Files/Pods-SwiftChess_Tests/Pods-SwiftChess_Tests.modulemap</string>
+				<key>MTL_ENABLE_DEBUG_INFO</key>
+				<string>NO</string>
+				<key>OTHER_LDFLAGS</key>
+				<string></string>
+				<key>OTHER_LIBTOOLFLAGS</key>
+				<string></string>
+				<key>PODS_ROOT</key>
+				<string>$(SRCROOT)</string>
+				<key>PRODUCT_BUNDLE_IDENTIFIER</key>
+				<string>org.cocoapods.${PRODUCT_NAME:rfc1034identifier}</string>
+				<key>PRODUCT_NAME</key>
+				<string>Pods_SwiftChess_Tests</string>
+				<key>SDKROOT</key>
+				<string>iphoneos</string>
+				<key>SKIP_INSTALL</key>
+				<string>YES</string>
+				<key>SWIFT_VERSION</key>
+				<string>3.0</string>
+				<key>TARGETED_DEVICE_FAMILY</key>
+				<string>1,2</string>
+				<key>VERSIONING_SYSTEM</key>
+				<string>apple-generic</string>
+				<key>VERSION_INFO_PREFIX</key>
+				<string></string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Release</string>
+		</dict>
+		<key>E16622FEA6ACD2BD46E0CB5BFB9C114B</key>
+		<dict>
+			<key>buildConfigurations</key>
+			<array>
+				<string>B61B6608DB157AD11DFD17654E640544</string>
+				<string>88DA8EEED0A022E2796758BBB48DF945</string>
+			</array>
+			<key>defaultConfigurationIsVisible</key>
+			<string>0</string>
+			<key>defaultConfigurationName</key>
+			<string>Release</string>
+			<key>isa</key>
+			<string>XCConfigurationList</string>
+		</dict>
+		<key>E1B1B4F2842107EDE7DEA63952EE123A</key>
+		<dict>
+			<key>fileRef</key>
+			<string>84A6434041DB69445A3EA8E88FC3AC62</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>E8A5E3F4D156E74AEAAF78AD000C729A</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text</string>
+			<key>path</key>
+			<string>Pods-SwiftChess_Example-acknowledgements.markdown</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>EB9D8CD8F971C7BCA355F24D18442023</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.plist.xml</string>
+			<key>path</key>
+			<string>Pods-SwiftChess_Tests-acknowledgements.plist</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>F12F726D9DAA4DBEE210BE9326C11117</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>7B970796C01709744186055E93206DB6</string>
+			</array>
+			<key>isa</key>
+			<string>PBXSourcesBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>F34825EA8632B4A4334BB5FB2FDFE8EF</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>7621ADDA34D1AD6BF10E931AF77E1D88</string>
+				<string>7FC5F1FEFED8A2431C8465C9B80AB566</string>
+				<string>BB995B1E9037FBC84A986F6D8627ADE1</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Products</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>F662DF21A665A678303E37489D17188F</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.script.sh</string>
+			<key>path</key>
+			<string>Pods-SwiftChess_Example-resources.sh</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>F760CE1F8973A5B1F36EA40F6E50F00C</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>Pods-SwiftChess_Example-umbrella.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FD170832041C353909EEBE6B4419CB75</key>
+		<dict>
+			<key>buildConfigurationList</key>
+			<string>D706D2E0BA577C2EC265DD50F675667A</string>
+			<key>buildPhases</key>
+			<array>
+				<string>88FE2B59BC75DF4DDA1DF42DF2858F9E</string>
+				<string>1CC6CBF6C623ACBB32E472BA4D05EB4E</string>
+				<string>7367262644B731ED3CEEB7D58C5DFFFA</string>
+			</array>
+			<key>buildRules</key>
+			<array/>
+			<key>dependencies</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXNativeTarget</string>
+			<key>name</key>
+			<string>SwiftChess</string>
+			<key>productName</key>
+			<string>SwiftChess</string>
+			<key>productReference</key>
+			<string>BB995B1E9037FBC84A986F6D8627ADE1</string>
+			<key>productType</key>
+			<string>com.apple.product-type.framework</string>
+		</dict>
+		<key>FF9651CD58EB06240725DFC30F69B07E</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>396AC16ABA1B0B9AAF2BEB9B7ACD28BC</string>
+			</array>
+			<key>isa</key>
+			<string>PBXHeadersBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+	</dict>
+	<key>rootObject</key>
+	<string>D41D8CD98F00B204E9800998ECF8427E</string>
+</dict>
+</plist>

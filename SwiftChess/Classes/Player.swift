@@ -68,8 +68,6 @@ open class Player {
     
    
     // MARK: - Private
-    
-    
     private func canMovePieceWithError(fromLocation: BoardLocation, toLocation: BoardLocation) -> (result: Bool, error: MoveError?) {
         
         // We can't move to our current location

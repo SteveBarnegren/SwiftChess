@@ -216,7 +216,7 @@ public struct Board {
             }
         }
         
-        // We'll implitly unwrap this, because there should always be a king for each color on the board. If there isn't, it's an error
+        // We'll implicitly unwrap this, because there should always be a king for each color on the board. If there isn't, it's an error
         return king!
     }
     
