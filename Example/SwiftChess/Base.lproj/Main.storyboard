@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="o9i-0S-2Up">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1108" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="o9i-0S-2Up">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -38,31 +39,27 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KRf-s7-H9a">
-                                <rect key="frame" x="133" y="265" width="108" height="138"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fGu-y2-Qxm">
-                                        <rect key="frame" x="0.0" y="92" width="108" height="30"/>
                                         <state key="normal" title="AI vs AI"/>
                                         <connections>
                                             <action selector="AIvsAIButtonPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="mrX-sU-WvD"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kEX-Ea-5Xq">
-                                        <rect key="frame" x="0.0" y="46" width="108" height="30"/>
                                         <state key="normal" title="Player vs Player"/>
                                         <connections>
                                             <action selector="playerVsPlayerButtonPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="xIZ-0U-CNW"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gcM-Gf-hHc">
-                                        <rect key="frame" x="0.0" y="0.0" width="108" height="30"/>
                                         <state key="normal" title="Player vs AI"/>
                                         <connections>
                                             <action selector="playerVsAIButtonPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="QvL-y5-tdf"/>
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="0.46274509800000002" green="0.71372549019999998" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.46274509800000002" green="0.71372549019999998" blue="0.97254901959999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="gcM-Gf-hHc" firstAttribute="top" secondItem="KRf-s7-H9a" secondAttribute="top" id="36I-AX-c0g"/>
                                     <constraint firstItem="fGu-y2-Qxm" firstAttribute="leading" secondItem="KRf-s7-H9a" secondAttribute="leading" id="6Ry-Rm-aC6"/>
@@ -77,14 +74,13 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="KRf-s7-H9a" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="o13-GQ-mG5"/>
                             <constraint firstItem="KRf-s7-H9a" firstAttribute="centerY" secondItem="kh9-bI-dsS" secondAttribute="centerY" id="z0j-3I-4xh"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="kRs-c6-0Sc"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
@@ -103,21 +99,20 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NnZ-Ew-a2B" customClass="BoardView" customModule="SwiftChess_Example" customModuleProvider="target">
-                                <rect key="frame" x="8" y="155" width="359" height="359"/>
-                                <color key="backgroundColor" red="0.46274509800000002" green="0.71372549019999998" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <frame key="frameInset" minX="8" minY="155" width="359" height="359"/>
+                                <color key="backgroundColor" red="0.46274509800000002" green="0.71372549019999998" blue="0.97254901959999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="NnZ-Ew-a2B" secondAttribute="height" multiplier="1:1" id="GNF-YV-5Vh"/>
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="NnZ-Ew-a2B" firstAttribute="centerY" secondItem="0i2-vi-BZ9" secondAttribute="centerY" id="DzP-fd-RxD"/>
                             <constraint firstAttribute="trailing" secondItem="NnZ-Ew-a2B" secondAttribute="trailing" constant="8" id="QWG-QI-Bkn"/>
                             <constraint firstItem="NnZ-Ew-a2B" firstAttribute="leading" secondItem="0i2-vi-BZ9" secondAttribute="leading" constant="8" id="Ve9-Wz-Mmx"/>
                         </constraints>
                     </view>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="boardView" destination="NnZ-Ew-a2B" id="qeo-BV-9YO"/>
                     </connections>
