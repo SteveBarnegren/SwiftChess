@@ -43,9 +43,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0478CFE26789C0D4EFA51C49 /* Pods-SwiftChess_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftChess_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftChess_Example/Pods-SwiftChess_Example.release.xcconfig"; sourceTree = "<group>"; };
-		0AB190A2A6D408A7D3A8EA86 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
-		5B1F650BFBDE8F9480B99336 /* Pods_SwiftChess_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftChess_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		607FACD71AFB9204008FA782 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
@@ -58,12 +55,6 @@
 		67A9CA271DE64DAA00510FB8 /* SwiftChessExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftChessExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		67AD33A61D7C67BF002730DF /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		67AD33A81D7C67DF002730DF /* BoardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardView.swift; sourceTree = "<group>"; };
-		778A567046C746CEF4932461 /* SwiftChess.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = SwiftChess.podspec; path = ../SwiftChess.podspec; sourceTree = "<group>"; };
-		7B114764012F876187697A46 /* Pods_SwiftChess_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftChess_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		91EE7997ADF72B9F2FD48A7B /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
-		D6938AC98AB6D2BD49EE5290 /* Pods-SwiftChess_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftChess_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftChess_Example/Pods-SwiftChess_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		E3E25D3C66218FF9E044C263 /* Pods-SwiftChess_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftChess_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftChess_Tests/Pods-SwiftChess_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		F3C9D0036EEF1A48A20F1BCC /* Pods-SwiftChess_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftChess_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftChess_Tests/Pods-SwiftChess_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,32 +79,17 @@
 		213C5ED44C8A439D8EF10443 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				5B1F650BFBDE8F9480B99336 /* Pods_SwiftChess_Example.framework */,
-				7B114764012F876187697A46 /* Pods_SwiftChess_Tests.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		3DEE5B8030CCDCA4EDE13E03 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				D6938AC98AB6D2BD49EE5290 /* Pods-SwiftChess_Example.debug.xcconfig */,
-				0478CFE26789C0D4EFA51C49 /* Pods-SwiftChess_Example.release.xcconfig */,
-				F3C9D0036EEF1A48A20F1BCC /* Pods-SwiftChess_Tests.debug.xcconfig */,
-				E3E25D3C66218FF9E044C263 /* Pods-SwiftChess_Tests.release.xcconfig */,
-			);
-			name = Pods;
 			sourceTree = "<group>";
 		};
 		607FACC71AFB9204008FA782 = {
 			isa = PBXGroup;
 			children = (
 				67A9CA071DE64D6500510FB8 /* SwiftChess.xcodeproj */,
-				607FACF51AFB993E008FA782 /* Podspec Metadata */,
 				607FACD21AFB9204008FA782 /* Example for SwiftChess */,
 				607FACE81AFB9204008FA782 /* Tests */,
 				607FACD11AFB9204008FA782 /* Products */,
-				3DEE5B8030CCDCA4EDE13E03 /* Pods */,
 				213C5ED44C8A439D8EF10443 /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -165,16 +141,6 @@
 				607FACEA1AFB9204008FA782 /* Info.plist */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		607FACF51AFB993E008FA782 /* Podspec Metadata */ = {
-			isa = PBXGroup;
-			children = (
-				778A567046C746CEF4932461 /* SwiftChess.podspec */,
-				0AB190A2A6D408A7D3A8EA86 /* README.md */,
-				91EE7997ADF72B9F2FD48A7B /* LICENSE */,
-			);
-			name = "Podspec Metadata";
 			sourceTree = "<group>";
 		};
 		67A9CA081DE64D6500510FB8 /* Products */ = {
