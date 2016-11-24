@@ -130,6 +130,11 @@ extension GameViewController: BoardViewDelegate {
         
         print("GVC touched square at index \(index)")
         
+        // Get the player (must be human)
+        guard let player = game.currentPlayer as? Human else {
+            return;
+        }
+        
         // Update once we're done
         defer {
             update()
@@ -146,7 +151,7 @@ extension GameViewController: BoardViewDelegate {
         }
         
         // Select new piece if possible
-        if self.game.currentPlayer.occupiesSquareAt(location: location) {
+        if player.occupiesSquareAt(location: location) {
             selectedIndex = index
         }
         
@@ -154,8 +159,8 @@ extension GameViewController: BoardViewDelegate {
         if let selectedIndex = selectedIndex {
             
             do {
-                try self.game.currentPlayer.movePiece(fromLocation: BoardLocation(index: selectedIndex),
-                                                      toLocation: location)
+                try player.movePiece(fromLocation: BoardLocation(index: selectedIndex),
+                                     toLocation: location)
                 
             } catch Player.MoveError.pieceUnableToMoveToLocation {
                 print("Piece is unable to move to this location")
