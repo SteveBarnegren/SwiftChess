@@ -25,6 +25,7 @@ class GameTests: XCTestCase {
         super.tearDown()
     }
     
+    /*
     func testCurrentPlayerChangesAfterMoveTaken() {
         
         let firstPlayer = game.currentPlayer
@@ -36,6 +37,7 @@ class GameTests: XCTestCase {
         XCTAssert(game.currentPlayer !== firstPlayer)
         
     }
+ */
     
   
     
