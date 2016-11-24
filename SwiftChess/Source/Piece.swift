@@ -37,6 +37,18 @@ open class Piece {
         self.type = type
         self.color = color
     }
+    
+    func value() -> Double {
+        
+        switch type {
+        case .pawn: return 1
+        case .rook: return 2
+        case .knight: return 3
+        case .bishop: return 4
+        case .queen: return 5
+        case .king: return 6
+        }
+    }
 }
 
 public func == (left: Piece, right: Piece) -> Bool {

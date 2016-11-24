@@ -23,10 +23,9 @@ open class Game {
         // Setup Players
         self.whitePlayer = Human(color: .white, game: self)
         self.whitePlayer.delegate = self
-        self.blackPlayer = Human(color: .black, game: self)
+        self.blackPlayer = AIPlayer(color: .black, game: self)
         self.blackPlayer.delegate = self
         self.currentPlayer = self.whitePlayer
-        
     }
 
     

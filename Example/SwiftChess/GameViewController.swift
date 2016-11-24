@@ -35,6 +35,7 @@ class GameViewController: UIViewController {
         
         // Game
         self.game.board.printBoardState()
+        game.delegate = self
         
         // Piece labels
         for _ in 0..<64 {
@@ -189,6 +190,22 @@ extension GameViewController: GameDelegate {
     func gameDidChangeCurrentPlayer(game: Game) {
         // Do nothing for now
         print("GameViewController - game did change current player")
+        
+        if let _ = game.currentPlayer as? AIPlayer {
+            perform(#selector(tellAIToTakeGo), with: nil, afterDelay: 3)
+        }
     }
+    
+    func tellAIToTakeGo() {
+        
+        if let player =  game.currentPlayer as? AIPlayer {
+            player.makeMove()
+            self.update()
+        }
+    }
+    
+    
 }
+
+
 

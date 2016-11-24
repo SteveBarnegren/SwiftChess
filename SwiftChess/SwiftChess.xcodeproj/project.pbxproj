@@ -22,6 +22,7 @@
 		67D54A411DE653DF00C12258 /* PlayerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67D54A3B1DE653DF00C12258 /* PlayerTests.swift */; };
 		67D54A421DE653DF00C12258 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67D54A3C1DE653DF00C12258 /* Tests.swift */; };
 		67D54A481DE6D34100C12258 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67D54A471DE6D34100C12258 /* Player.swift */; };
+		67D54A4D1DE6DE1400C12258 /* BoardRaterCountPieces.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67D54A4C1DE6DE1400C12258 /* BoardRaterCountPieces.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		67D54A3B1DE653DF00C12258 /* PlayerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerTests.swift; sourceTree = "<group>"; };
 		67D54A3C1DE653DF00C12258 /* Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		67D54A471DE6D34100C12258 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		67D54A4C1DE6DE1400C12258 /* BoardRaterCountPieces.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardRaterCountPieces.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,8 +144,17 @@
 			isa = PBXGroup;
 			children = (
 				67A9C9FA1DE64D2500510FB8 /* AIPlayer.swift */,
+				67D54A4B1DE6D8D200C12258 /* BoardRaters */,
 			);
 			name = AIPlayer;
+			sourceTree = "<group>";
+		};
+		67D54A4B1DE6D8D200C12258 /* BoardRaters */ = {
+			isa = PBXGroup;
+			children = (
+				67D54A4C1DE6DE1400C12258 /* BoardRaterCountPieces.swift */,
+			);
+			name = BoardRaters;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -262,6 +273,7 @@
 				67A9CA051DE64D2500510FB8 /* PieceMovement.swift in Sources */,
 				67D54A481DE6D34100C12258 /* Player.swift in Sources */,
 				67A9CA061DE64D2500510FB8 /* Human.swift in Sources */,
+				67D54A4D1DE6DE1400C12258 /* BoardRaterCountPieces.swift in Sources */,
 				67A9CA011DE64D2500510FB8 /* AIPlayer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
