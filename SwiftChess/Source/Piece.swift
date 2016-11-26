@@ -19,6 +19,8 @@ public enum Color {
 
 open class Piece {
     
+    static private var lastAssignedTag = 0
+    
     public enum PieceType {
         case pawn
         case rook
@@ -30,12 +32,17 @@ open class Piece {
     
     open let type: PieceType
     open let color: Color
+    open let tag: Int!
     
     lazy var movement : PieceMovement = PieceMovement.pieceMovementForPieceType(pieceType: self.type)
 
     public init(type: PieceType, color: Color){
         self.type = type
         self.color = color
+        
+        // assign the next tag
+        Piece.lastAssignedTag += 1
+        self.tag = Piece.lastAssignedTag
     }
     
     func value() -> Double {

@@ -23,6 +23,7 @@
 		67D54A601DE7683800C12258 /* PlayerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67D54A541DE7680E00C12258 /* PlayerTests.swift */; };
 		67D54A611DE7683A00C12258 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67D54A551DE7680E00C12258 /* Tests.swift */; };
 		67D54A641DE976A900C12258 /* BoardRaterCountPiecesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67D54A631DE976A900C12258 /* BoardRaterCountPiecesTests.swift */; };
+		67D54A661DE986F700C12258 /* PieceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67D54A651DE986F700C12258 /* PieceTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +70,7 @@
 		67D54A541DE7680E00C12258 /* PlayerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerTests.swift; sourceTree = "<group>"; };
 		67D54A551DE7680E00C12258 /* Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		67D54A631DE976A900C12258 /* BoardRaterCountPiecesTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardRaterCountPiecesTests.swift; sourceTree = "<group>"; };
+		67D54A651DE986F700C12258 /* PieceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PieceTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +147,7 @@
 			isa = PBXGroup;
 			children = (
 				607FACE91AFB9204008FA782 /* Supporting Files */,
+				67D54A651DE986F700C12258 /* PieceTests.swift */,
 				67D54A511DE7680E00C12258 /* BoardTests.swift */,
 				67D54A521DE7680E00C12258 /* GameTests.swift */,
 				67D54A531DE7680E00C12258 /* PieceMovementTests.swift */,
@@ -323,6 +326,7 @@
 				67D54A611DE7683A00C12258 /* Tests.swift in Sources */,
 				67D54A5D1DE7682D00C12258 /* BoardTests.swift in Sources */,
 				67D54A5E1DE7683000C12258 /* GameTests.swift in Sources */,
+				67D54A661DE986F700C12258 /* PieceTests.swift in Sources */,
 				67D54A5C1DE7682900C12258 /* ASCIIBoard.swift in Sources */,
 				67D54A641DE976A900C12258 /* BoardRaterCountPiecesTests.swift in Sources */,
 				67D54A5F1DE7683300C12258 /* PieceMovementTests.swift in Sources */,

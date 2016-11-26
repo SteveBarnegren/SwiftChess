@@ -124,7 +124,7 @@ public struct Square {
 // MARK: - ****** Board ******
 
 public struct Board {
-    
+        
     public enum InitialState {
         case empty
         case newGame
