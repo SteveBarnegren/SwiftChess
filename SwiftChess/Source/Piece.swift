@@ -42,11 +42,11 @@ open class Piece {
         
         switch type {
         case .pawn: return 1
-        case .rook: return 2
+        case .rook: return 5
         case .knight: return 3
-        case .bishop: return 4
-        case .queen: return 5
-        case .king: return 6
+        case .bishop: return 3
+        case .queen: return 9
+        case .king: return 0 // King is always treated as a unique case
         }
     }
 }
