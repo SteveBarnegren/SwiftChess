@@ -22,6 +22,7 @@
 		67D54A5F1DE7683300C12258 /* PieceMovementTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67D54A531DE7680E00C12258 /* PieceMovementTests.swift */; };
 		67D54A601DE7683800C12258 /* PlayerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67D54A541DE7680E00C12258 /* PlayerTests.swift */; };
 		67D54A611DE7683A00C12258 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67D54A551DE7680E00C12258 /* Tests.swift */; };
+		67D54A641DE976A900C12258 /* BoardRaterCountPiecesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67D54A631DE976A900C12258 /* BoardRaterCountPiecesTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,7 @@
 		67D54A531DE7680E00C12258 /* PieceMovementTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PieceMovementTests.swift; sourceTree = "<group>"; };
 		67D54A541DE7680E00C12258 /* PlayerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerTests.swift; sourceTree = "<group>"; };
 		67D54A551DE7680E00C12258 /* Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
+		67D54A631DE976A900C12258 /* BoardRaterCountPiecesTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardRaterCountPiecesTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,13 +144,13 @@
 		607FACE81AFB9204008FA782 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				67D54A501DE7680E00C12258 /* ASCIIBoard.swift */,
+				607FACE91AFB9204008FA782 /* Supporting Files */,
 				67D54A511DE7680E00C12258 /* BoardTests.swift */,
 				67D54A521DE7680E00C12258 /* GameTests.swift */,
 				67D54A531DE7680E00C12258 /* PieceMovementTests.swift */,
 				67D54A541DE7680E00C12258 /* PlayerTests.swift */,
+				67D54A621DE9768200C12258 /* BoardRaters */,
 				67D54A551DE7680E00C12258 /* Tests.swift */,
-				607FACE91AFB9204008FA782 /* Supporting Files */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -156,6 +158,7 @@
 		607FACE91AFB9204008FA782 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				67D54A501DE7680E00C12258 /* ASCIIBoard.swift */,
 				607FACEA1AFB9204008FA782 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -168,6 +171,14 @@
 				67A9CA0F1DE64D6500510FB8 /* SwiftChessTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		67D54A621DE9768200C12258 /* BoardRaters */ = {
+			isa = PBXGroup;
+			children = (
+				67D54A631DE976A900C12258 /* BoardRaterCountPiecesTests.swift */,
+			);
+			name = BoardRaters;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -313,6 +324,7 @@
 				67D54A5D1DE7682D00C12258 /* BoardTests.swift in Sources */,
 				67D54A5E1DE7683000C12258 /* GameTests.swift in Sources */,
 				67D54A5C1DE7682900C12258 /* ASCIIBoard.swift in Sources */,
+				67D54A641DE976A900C12258 /* BoardRaterCountPiecesTests.swift in Sources */,
 				67D54A5F1DE7683300C12258 /* PieceMovementTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

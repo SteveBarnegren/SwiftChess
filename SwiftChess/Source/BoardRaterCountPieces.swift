@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct BoardRaterCountPieces : BoardRater {
+public struct BoardRaterCountPieces : BoardRater {
         
     func ratingfor(board: Board, color: Color) -> Double {
         

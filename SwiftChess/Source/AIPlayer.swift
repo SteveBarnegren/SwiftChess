@@ -104,7 +104,7 @@ struct Move {
 
 // MARK - BoardRater
 
-protocol BoardRater {
+internal protocol BoardRater {
     func ratingfor(board: Board, color: Color) -> Double;
 }
 
