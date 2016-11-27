@@ -8,6 +8,10 @@
 
 import Foundation
 
+protocol PlayerDelegate: class {
+    func playerDidMakeMove(player: Player, boardOperations: [BoardOperation])
+}
+
 open class Player {
     
     var color: Color!

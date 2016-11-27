@@ -33,17 +33,14 @@ open class Human : Player {
         }
         
         // Move the piece
-        game.board.movePiece(fromLocation: fromLocation, toLocation: toLocation)
+        let operations = game.board.movePiece(fromLocation: fromLocation, toLocation: toLocation)
         
         // Inform the delegate that we made a move
-        delegate?.playerDidMakeMove(player: self)
+        delegate?.playerDidMakeMove(player: self, boardOperations: operations)
     }
     
    
     
 }
 
-protocol PlayerDelegate: class {
-    func playerDidMakeMove(player: Player)
-}
 

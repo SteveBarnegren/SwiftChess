@@ -24,6 +24,7 @@
 		67D54A611DE7683A00C12258 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67D54A551DE7680E00C12258 /* Tests.swift */; };
 		67D54A641DE976A900C12258 /* BoardRaterCountPiecesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67D54A631DE976A900C12258 /* BoardRaterCountPiecesTests.swift */; };
 		67D54A661DE986F700C12258 /* PieceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67D54A651DE986F700C12258 /* PieceTests.swift */; };
+		67D54A681DE9A2DD00C12258 /* PieceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67D54A671DE9A2DD00C12258 /* PieceView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +72,7 @@
 		67D54A551DE7680E00C12258 /* Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		67D54A631DE976A900C12258 /* BoardRaterCountPiecesTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardRaterCountPiecesTests.swift; sourceTree = "<group>"; };
 		67D54A651DE986F700C12258 /* PieceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PieceTests.swift; sourceTree = "<group>"; };
+		67D54A671DE9A2DD00C12258 /* PieceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PieceView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,8 +126,7 @@
 			children = (
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
 				607FACD71AFB9204008FA782 /* MenuViewController.swift */,
-				67AD33A61D7C67BF002730DF /* GameViewController.swift */,
-				67AD33A81D7C67DF002730DF /* BoardView.swift */,
+				67D54A691DE9A3C500C12258 /* Game */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
@@ -182,6 +183,16 @@
 				67D54A631DE976A900C12258 /* BoardRaterCountPiecesTests.swift */,
 			);
 			name = BoardRaters;
+			sourceTree = "<group>";
+		};
+		67D54A691DE9A3C500C12258 /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				67AD33A61D7C67BF002730DF /* GameViewController.swift */,
+				67AD33A81D7C67DF002730DF /* BoardView.swift */,
+				67D54A671DE9A2DD00C12258 /* PieceView.swift */,
+			);
+			name = Game;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -311,6 +322,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				67D54A681DE9A2DD00C12258 /* PieceView.swift in Sources */,
 				67A9CA361DE64DDA00510FB8 /* GameViewController.swift in Sources */,
 				67A9CA341DE64DD600510FB8 /* AppDelegate.swift in Sources */,
 				67A9CA371DE64DDD00510FB8 /* BoardView.swift in Sources */,

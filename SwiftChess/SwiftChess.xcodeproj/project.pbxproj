@@ -17,6 +17,7 @@
 		67A9CA061DE64D2500510FB8 /* Human.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A9C9FF1DE64D2500510FB8 /* Human.swift */; };
 		67D54A481DE6D34100C12258 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67D54A471DE6D34100C12258 /* Player.swift */; };
 		67D54A4D1DE6DE1400C12258 /* BoardRaterCountPieces.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67D54A4C1DE6DE1400C12258 /* BoardRaterCountPieces.swift */; };
+		67D54A6B1DEAF16200C12258 /* BoardOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67D54A6A1DEAF16200C12258 /* BoardOperation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +44,7 @@
 		67A9C9FF1DE64D2500510FB8 /* Human.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Human.swift; sourceTree = "<group>"; };
 		67D54A471DE6D34100C12258 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		67D54A4C1DE6DE1400C12258 /* BoardRaterCountPieces.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardRaterCountPieces.swift; sourceTree = "<group>"; };
+		67D54A6A1DEAF16200C12258 /* BoardOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardOperation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +109,7 @@
 				67A9C9FD1DE64D2500510FB8 /* Piece.swift */,
 				67A9C9FE1DE64D2500510FB8 /* PieceMovement.swift */,
 				67A9C9FC1DE64D2500510FB8 /* Game.swift */,
+				67D54A6A1DEAF16200C12258 /* BoardOperation.swift */,
 				67D54A461DE6D2B300C12258 /* Players */,
 			);
 			path = Source;
@@ -256,6 +259,7 @@
 				67D54A481DE6D34100C12258 /* Player.swift in Sources */,
 				67A9CA061DE64D2500510FB8 /* Human.swift in Sources */,
 				67D54A4D1DE6DE1400C12258 /* BoardRaterCountPieces.swift in Sources */,
+				67D54A6B1DEAF16200C12258 /* BoardOperation.swift in Sources */,
 				67A9CA011DE64D2500510FB8 /* AIPlayer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

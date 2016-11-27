@@ -33,7 +33,7 @@ open class Game {
 
 extension Game : PlayerDelegate {
 
-    func playerDidMakeMove(player: Player) {
+    func playerDidMakeMove(player: Player, boardOperations: [BoardOperation]) {
         
         // This shouldn't happen, but we'll print a message in case it does
         if player !== currentPlayer {
@@ -48,13 +48,45 @@ extension Game : PlayerDelegate {
             currentPlayer = whitePlayer
         }
         
+        // Process board operations
+        processBoardOperations(boardOperations: boardOperations)
+        
         // Inform the delegate
         self.delegate?.gameDidChangeCurrentPlayer(game: self)
     }
+    
+    func processBoardOperations(boardOperations: [BoardOperation]) {
+        
+        for boardOperation in boardOperations {
+            
+            switch boardOperation.type! {
+            case .movePiece:
+                self.delegate?.gameDidMovePiece(game: self, piece: boardOperation.piece, toLocation: boardOperation.location)
+            case .removePiece:
+                self.delegate?.gameDidRemovePiece(game: self, piece: boardOperation.piece, location: boardOperation.location)
+            case .transformPiece:
+                fatalError()
+                //self.delegate?.gameDidMovePiece(game: self, piece: boardOperation.piece, toLocation: boardOperation.location)
+            }
+            
+        }
+        
+        
+        
+        
+    }
+    
+    
 
 }
 
 public protocol GameDelegate: class {
     func gameDidChangeCurrentPlayer(game: Game)
+    
+    func gameWillBeginUpdates(game: Game) // Updates will begin
+    func gameDidAddPiece(game: Game) // A new piece was added to the board (do we catually need to include this functionality?)
+    func gameDidRemovePiece(game: Game, piece: Piece, location: BoardLocation) // A piece was removed from the board
+    func gameDidMovePiece(game: Game, piece: Piece, toLocation: BoardLocation) // A piece was moved on the board
+    func gameDidTransformPiece(game: Game) // A piece was transformed (eg. pawn was promoted to another piece)
+    func gameDidEndUpdates(game: Game) // Updates will end
 }
-

@@ -78,8 +78,8 @@ open class AIPlayer : Player {
         print("HIGHEST MOVE RATING: \(highestRating)")
         
         // Make move
-        game.board .movePiece(fromLocation: highestRatedMove.sourceLocation, toLocation: highestRatedMove.targetLocation)
-        self.game.playerDidMakeMove(player: self)
+        let operations = game.board.movePiece(fromLocation: highestRatedMove.sourceLocation, toLocation: highestRatedMove.targetLocation)
+        self.game.playerDidMakeMove(player: self, boardOperations: operations)
     }
     
     func ratingForBoard(_ board: Board) -> Double {

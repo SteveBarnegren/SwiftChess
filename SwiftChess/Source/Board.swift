@@ -28,7 +28,7 @@ public struct BoardLocation : Equatable {
     
     public var index: Int
     
-    static var all: [BoardLocation] {
+    public static var all: [BoardLocation] {
         
         // TODO: using a computed property could be expensive, can we store this so it doesn't need to be computed each time?
         var locations = [BoardLocation]()
@@ -191,11 +191,24 @@ public struct Board {
         return squares[location.index].piece
     }
     
-    public mutating func movePiece(fromLocation: BoardLocation, toLocation: BoardLocation){
+    internal mutating func movePiece(fromLocation: BoardLocation, toLocation: BoardLocation) -> [BoardOperation] {
+    
+        var operations = [BoardOperation]()
+        
+        if let piece = getPiece(at: fromLocation) {
+            let operation = BoardOperation(type: .movePiece, piece: piece, location: toLocation)
+            operations.append(operation)
+        }
+
+        if let piece = getPiece(at: toLocation) {
+            let operation = BoardOperation(type: .removePiece, piece: piece, location: toLocation)
+            operations.append(operation)
+        }
         
         squares[toLocation.index].piece = self.squares[fromLocation.index].piece
         squares[fromLocation.index].piece = nil
         
+        return operations
     }
     
     // MARK: - Get Specific pieces

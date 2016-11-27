@@ -12,9 +12,13 @@ import SwiftChess
 class GameViewController: UIViewController {
     
     @IBOutlet weak var boardView: BoardView!
-    var pieceLabels = [UILabel]()
+    var pieceViews = [PieceView]()
     var game: Game!
-    var selectedIndex: Int?
+    var selectedIndex: Int? {
+        didSet{
+            updatePieceViewSelectedStates()
+        }
+    }
     
     // MARK: - Creation
     
@@ -37,76 +41,86 @@ class GameViewController: UIViewController {
         self.game.board.printBoardState()
         game.delegate = self
         
-        // Piece labels
-        for _ in 0..<64 {
-            let label = UILabel()
-            label.textAlignment = .center
-            label.font = UIFont.boldSystemFont(ofSize: 30)
-            self.boardView.addSubview(label)
-            self.pieceLabels.append(label)
+        // Add initial piece views
+        for location in BoardLocation.all {
+            
+            guard let piece = game.board.getPiece(at: location) else {
+                continue
+            }
+            
+            addPieceView(at: location.x, y: location.y, piece: piece)
         }
         
-        // Update
-        self.update()
-
     }
+    
+    // MARK: - Manage Piece Views
+    
+    func addPieceView(at x: Int, y: Int, piece: Piece) {
+        
+        let location = BoardLocation(x: x, y: y)
+        
+        let pieceView = PieceView(piece: piece, location: location)
+        boardView.addSubview(pieceView)
+        pieceViews.append(pieceView)
+    }
+    
+    func removePieceView(withTag tag: Int) {
+        
+        if let pieceView = pieceViewWithTag(tag) {
+            removePieceView(pieceView: pieceView)
+        }
+    }
+    
+    func removePieceView(pieceView: PieceView) {
+        
+        if let index = pieceViews.index(of: pieceView) {
+            pieceViews.remove(at: index)
+        }
+        
+        if pieceView.superview != nil {
+            pieceView.removeFromSuperview()
+        }
+    }
+    
+    func updatePieceViewSelectedStates() {
+        
+        for pieceView in pieceViews {
+            pieceView.selected = (pieceView.location.index == selectedIndex)
+        }
+    }
+    
+    func pieceViewWithTag(_ tag: Int) -> PieceView? {
+        
+        for pieceView in pieceViews {
+            
+            if pieceView.piece.tag == tag {
+                return pieceView
+            }
+        }
+        
+        return nil;
+    }
+    
+    // MARK: - Layout
     
     override func viewDidLayoutSubviews() {
         
-        for (index, label) in pieceLabels.enumerated() {
+        for pieceView in pieceViews {
             
-            let gridX = index % 8
-            let gridY = (63 - index) / 8
+            let gridX = pieceView.location.x
+            let gridY = 7 - pieceView.location.y
             
-            let labelWidth = boardView.bounds.size.width / 8
-            let labelHeight = boardView.bounds.size.height / 8
+            let width = boardView.bounds.size.width / 8
+            let height = boardView.bounds.size.height / 8
             
-            label.frame = CGRect(x: CGFloat(gridX) * labelWidth,
-                                 y: CGFloat(gridY) * labelHeight,
-                                 width: labelWidth,
-                                 height: labelHeight)
-            
+            pieceView.frame = CGRect(x: CGFloat(gridX) * width,
+                                     y: CGFloat(gridY) * height,
+                                     width: width,
+                                     height: height)
         }
-        
     }
     
-    func update(){
-        
-        for (index, label) in pieceLabels.enumerated() {
-            
-            let piece = self.game.board.getPiece(at: BoardLocation(index: index))
-            
-            var string = ""
-            
-            if let piece = piece{
-                
-                switch piece.type {
-                case .rook:
-                    string = "R"
-                case .knight:
-                    string = "K"
-                case .bishop:
-                    string = "B"
-                case .queen:
-                    string = "Q"
-                case .king:
-                    string = "K"
-                case .pawn:
-                    string = "P"
-                }
-            }
-            
-            label.text = string
-            
-            if let piece = piece{
-                label.textColor = piece.color == .white ? UIColor.white : UIColor.black
-                
-                if selectedIndex == index {
-                    label.textColor = UIColor.magenta
-                }
-            }
-        }
-    }
+    // MARK: - Alerts
     
     func showAlert(title: String, message: String) {
         
@@ -134,11 +148,6 @@ extension GameViewController: BoardViewDelegate {
         // Get the player (must be human)
         guard let player = game.currentPlayer as? Human else {
             return;
-        }
-        
-        // Update once we're done
-        defer {
-            update()
         }
         
         let location = BoardLocation(index: index)
@@ -185,12 +194,65 @@ extension GameViewController: BoardViewDelegate {
     
 }
 
+// MARK - GameDelegate
+
 extension GameViewController: GameDelegate {
     
-    func gameDidChangeCurrentPlayer(game: Game) {
-        // Do nothing for now
-        print("GameViewController - game did change current player")
+    public func gameWillBeginUpdates(game: Game) {
+        // Do nothing
+    }
+    
+    func gameDidAddPiece(game: Game) {
+        // do nothing
+    }
+
+    func gameDidMovePiece(game: Game, piece: Piece, toLocation: BoardLocation) {
         
+        guard let pieceView = pieceViewWithTag(piece.tag) else {
+            return
+        }
+        
+        pieceView.location = toLocation
+        
+        // Animage
+        view.setNeedsLayout()
+        
+        UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseInOut, animations: {
+            self.view.layoutIfNeeded()
+        }, completion: nil)
+        
+    }
+    
+    func gameDidRemovePiece(game: Game, piece: Piece, location: BoardLocation) {
+        
+        guard let pieceView = pieceViewWithTag(piece.tag) else {
+            return
+        }
+        
+        // Fade out and remove
+        UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut, animations: {
+            pieceView.alpha = 0
+        }, completion: {
+            (finished: Bool) in
+            self.removePieceView(withTag: piece.tag)
+        })
+        
+    }
+    
+    func gameDidTransformPiece(game: Game) {
+        // do nothing
+    }
+    
+    func gameDidEndUpdates(game: Game) {
+        // do nothing
+    }
+    
+    func gameDidChangeCurrentPlayer(game: Game) {
+        
+        // Deselect selected piece
+        self.selectedIndex = nil;
+        
+        // Tell AI to take go
         if let _ = game.currentPlayer as? AIPlayer {
             perform(#selector(tellAIToTakeGo), with: nil, afterDelay: 3)
         }
@@ -200,9 +262,9 @@ extension GameViewController: GameDelegate {
         
         if let player =  game.currentPlayer as? AIPlayer {
             player.makeMove()
-            self.update()
         }
     }
+    
     
     
 }
