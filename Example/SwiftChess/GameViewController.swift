@@ -247,6 +247,20 @@ extension GameViewController: GameDelegate {
         // do nothing
     }
     
+    func gameWonByPlayer(game: Game, player: Player) {
+        
+        let colorName = player.color.toString()
+        
+        let title = "Checkmate!"
+        let message = "\(colorName.capitalized) wins!"
+        
+        showAlert(title: title, message: message)
+    }
+    
+    func gameEndedInStaleMate(game: Game) {
+        showAlert(title: "Stalemate", message: "Player cannot move")
+    }
+    
     func gameDidChangeCurrentPlayer(game: Game) {
         
         // Deselect selected piece

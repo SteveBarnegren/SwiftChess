@@ -10,15 +10,13 @@ import Foundation
 
 open class Human : Player {
    
-    init(color: Color, game: Game){
+    public init(color: Color){
         super.init()
         self.color = color
-        self.game = game;
     }
     
     // MARK: - Public
     
-       
     public func movePiece(fromLocation: BoardLocation, toLocation: BoardLocation) throws {
         
         // Check that we're the current player

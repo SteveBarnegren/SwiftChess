@@ -13,13 +13,12 @@ open class AIPlayer : Player {
     
     let boardRaters : [BoardRater]!
    
-    init(color: Color, game: Game){
+    public init(color: Color){
         
         self.boardRaters = [BoardRaterCountPieces()]
         
         super.init()
         self.color = color
-        self.game = game;
     }
     
     public func makeMove() {
@@ -56,7 +55,7 @@ open class AIPlayer : Player {
         
         print("Found \(possibleMoves.count) possible moves")
         
-        // If there are no possible moves
+        // If there are no possible moves, we must be in stale mate
         if possibleMoves.count == 0 {
             print("There are no possible moves!!!!");
         }

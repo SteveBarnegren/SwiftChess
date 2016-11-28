@@ -309,6 +309,10 @@ public struct Board {
     
     public func isColorInCheckMate(color: Color) -> Bool {
         
+        if !isColorInCheck(color: color) {
+            return false
+        }
+        
         for pieceLocation in getLocationsOfColor( color ) {
             
             guard let piece = getPiece(at: pieceLocation) else {
@@ -332,6 +336,45 @@ public struct Board {
         }
         
         return true
+    }
+    
+    public func isColorInStalemate(color: Color) -> Bool {
+        
+        if !isColorAbleToMove(color: color) && !isColorInCheckMate(color: color) {
+            return true
+        }
+        else{
+            return false
+        }
+    }
+    
+    func isColorAbleToMove(color: Color) -> Bool {
+        
+        for pieceLocation in getLocationsOfColor(color) {
+            
+            guard let piece = getPiece(at: pieceLocation) else {
+                continue
+            }
+            
+            for targetLocation in BoardLocation.all {
+                
+                let canMove = piece.movement.canPieceMove(fromLocation: pieceLocation,
+                                                          toLocation: targetLocation,
+                                                          board: self)
+
+                guard canMove == true else {
+                    continue
+                }
+                
+                var resultBoard = self
+                resultBoard.movePiece(fromLocation: pieceLocation, toLocation: targetLocation)
+                if resultBoard.isColorInCheck(color: color) == false {
+                    return true
+                }
+            }
+        }
+        
+        return false
     }
     
     // MARK: - Print

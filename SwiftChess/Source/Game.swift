@@ -18,17 +18,23 @@ open class Game {
     
     open weak var delegate: GameDelegate?
 
-    public init(){
+    public init(firstPlayer: Player, secondPlayer: Player){
+        
+        // Assign to correct colors
+        if firstPlayer.color == secondPlayer.color {
+            fatalError("Both players cannot have the same color")
+        }
+        
+        self.whitePlayer = firstPlayer.color == .white ? firstPlayer : secondPlayer
+        self.blackPlayer = firstPlayer.color == .black ? firstPlayer : secondPlayer
         
         // Setup Players
-        self.whitePlayer = Human(color: .white, game: self)
         self.whitePlayer.delegate = self
-        self.blackPlayer = AIPlayer(color: .black, game: self)
         self.blackPlayer.delegate = self
+        self.whitePlayer.game = self
+        self.blackPlayer.game = self
         self.currentPlayer = self.whitePlayer
     }
-
-    
 }
 
 extension Game : PlayerDelegate {
@@ -40,6 +46,21 @@ extension Game : PlayerDelegate {
             print("Warning - Wrong player took turn")
         }
         
+        // Process board operations
+        processBoardOperations(boardOperations: boardOperations)
+        
+        // Check for game ended
+        if board.isColorInCheckMate(color: currentPlayer.color.opposite()) {
+            delegate?.gameWonByPlayer(game: self, player: currentPlayer)
+            return
+        }
+        
+        // Check for stalemate
+        if board.isColorInStalemate(color: currentPlayer.color.opposite()) {
+            delegate?.gameEndedInStaleMate(game: self)
+            return
+        }
+        
         // Switch to the other player
         if player === whitePlayer {
             currentPlayer = blackPlayer
@@ -48,10 +69,6 @@ extension Game : PlayerDelegate {
             currentPlayer = whitePlayer
         }
         
-        // Process board operations
-        processBoardOperations(boardOperations: boardOperations)
-        
-        // Inform the delegate
         self.delegate?.gameDidChangeCurrentPlayer(game: self)
     }
     
@@ -70,21 +87,18 @@ extension Game : PlayerDelegate {
             }
             
         }
-        
-        
-        
-        
+   
     }
     
-    
-
 }
 
 public protocol GameDelegate: class {
     func gameDidChangeCurrentPlayer(game: Game)
+    func gameWonByPlayer(game: Game, player: Player)
+    func gameEndedInStaleMate(game: Game)
     
     func gameWillBeginUpdates(game: Game) // Updates will begin
-    func gameDidAddPiece(game: Game) // A new piece was added to the board (do we catually need to include this functionality?)
+    func gameDidAddPiece(game: Game) // A new piece was added to the board (do we actually need to include this functionality?)
     func gameDidRemovePiece(game: Game, piece: Piece, location: BoardLocation) // A piece was removed from the board
     func gameDidMovePiece(game: Game, piece: Piece, toLocation: BoardLocation) // A piece was moved on the board
     func gameDidTransformPiece(game: Game) // A piece was transformed (eg. pawn was promoted to another piece)

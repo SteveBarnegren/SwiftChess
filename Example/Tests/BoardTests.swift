@@ -319,4 +319,43 @@ class BoardTests: XCTestCase {
         XCTAssert(board.board.isColorInCheck(color: .white) == true, "Expected white to not be in check - test may be set up incorrectly")
         XCTAssert(board.board.isColorInCheckMate(color: .white) == false, "Expected white to not be in check mate")
     }
+    
+    func testIsColorInCheckMateReturnsFalseWhenInStaleMate() {
+        
+        let board = ASCIIBoard(pieces:  "- - r - r - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "r - - - - - - -" +
+                                        "- - - G - - - -" )
+        
+        XCTAssert(board.board.isColorInCheck(color: .white) == false, "Expected white to not be in check - test may be set up incorrectly")
+        XCTAssert(board.board.isColorInCheckMate(color: .white) == false, "Expected white to not be in check mate")
+    }
+    
+    func testColorIsInStaleMateReturnsTrueWhenStaleMate() {
+        
+        let board = ASCIIBoard(pieces:  "- - r - r - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "q - - - - - - -" +
+                                        "- - - G - - - -" )
+        
+        XCTAssert(board.board.isColorInCheck(color: .white) == false, "Expected white to not be in check - test may be set up incorrectly")
+        XCTAssert(board.board.isColorInStalemate(color: .white) == true, "Expected white to be in stale mate")
+    }
+    
+    func testColorIsInStaleMateReturnsFalseWhenStaleMate() {
+        
+        let board = Board(state: .newGame)
+        
+        XCTAssert(board.isColorInCheckMate(color: .white) == false, "Expected white to not be in stale mate")
+    }
+
+
 }

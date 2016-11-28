@@ -17,7 +17,10 @@ class GameTests: XCTestCase {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
         
-        game = Game()
+        let firstPlayer = Human(color: .white)
+        let secondPlayer = Human(color: .black)
+        
+        game = Game(firstPlayer: firstPlayer, secondPlayer: secondPlayer)
     }
     
     override func tearDown() {

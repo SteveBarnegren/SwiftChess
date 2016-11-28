@@ -363,7 +363,9 @@ open class PieceMovementKing: PieceMovement {
             
             let offsetLocation = fromLocation.incrementedBy(x: offset.x, y: offset.y)
             
-            if toLocation == offsetLocation && canPieceOccupySquare(pieceLocation: fromLocation, xOffset: offset.x, yOffset: offset.y, board: board) {
+            if toLocation == offsetLocation
+                && offsetLocation.isInBounds()
+                && canPieceOccupySquare(pieceLocation: fromLocation, xOffset: offset.x, yOffset: offset.y, board: board) {
                 return true
             }
         }

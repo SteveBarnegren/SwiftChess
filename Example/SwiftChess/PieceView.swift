@@ -40,7 +40,7 @@ class PieceView: UIView {
         
         // Setup label
         self.label.textAlignment = .center
-        self.label.font = UIFont.systemFont(ofSize: 20)
+        self.label.font = UIFont.systemFont(ofSize: 20, weight: 10)
         self.label.text = "X"
         addSubview(self.label)
 
@@ -75,7 +75,7 @@ class PieceView: UIView {
         case .queen:
             string = "Q"
         case .king:
-            string = "K"
+            string = "G"
         case .pawn:
             string = "P"
         }

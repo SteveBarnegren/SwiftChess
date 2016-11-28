@@ -26,20 +26,31 @@ class MenuViewController: UIViewController {
     @IBAction func playerVsAIButtonPressed(_ sender: UIButton){
         print("Player vs AI button pressed")
         
+        let whitePlayer = Human(color: .white)
+        let blackPlayer = AIPlayer(color: .black)
+        
+        let game = Game(firstPlayer: whitePlayer, secondPlayer: blackPlayer)
+        startGame(game: game)
     }
     
     @IBAction func playerVsPlayerButtonPressed(_ sender: UIButton){
         print("Player vs Player button pressed")
         
-        let game = Game()
+        let whitePlayer = Human(color: .white)
+        let blackPlayer = Human(color: .black)
         
-        let gameViewController = GameViewController.gameViewController(game: game)
-        self.navigationController?.pushViewController(gameViewController, animated: true)
-        
+        let game = Game(firstPlayer: whitePlayer, secondPlayer: blackPlayer)
+        startGame(game: game)
     }
     
     @IBAction func AIvsAIButtonPressed(_ sender: UIButton){
         print("AI vs AI button pressed")
+    }
+    
+    func startGame(game: Game) {
+        
+        let gameViewController = GameViewController.gameViewController(game: game)
+        self.navigationController?.pushViewController(gameViewController, animated: true)
     }
 
 }

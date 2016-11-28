@@ -14,7 +14,7 @@ protocol PlayerDelegate: class {
 
 open class Player {
     
-    var color: Color!
+    public var color: Color!
     weak var game: Game!
     weak var delegate: PlayerDelegate?
     

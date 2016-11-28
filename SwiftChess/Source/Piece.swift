@@ -12,9 +12,14 @@ public enum Color {
     case white
     case black
     
-    func opposite() -> Color {
+    public func opposite() -> Color {
         return (self == .white) ? .black : .white
     }
+    
+    public func toString() -> String {
+        return (self == .white) ? "white" : "black"
+    }
+    
 }
 
 open class Piece {
