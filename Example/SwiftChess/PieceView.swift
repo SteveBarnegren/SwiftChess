@@ -19,7 +19,7 @@ class PieceView: UIView {
     
     public var location: BoardLocation
     
-    let label = UILabel()
+    let imageView = UIImageView()
     
     var selected = false {
         didSet{
@@ -38,11 +38,9 @@ class PieceView: UIView {
         // Super init
         super.init(frame: CGRect.zero)
         
-        // Setup label
-        self.label.textAlignment = .center
-        self.label.font = UIFont.systemFont(ofSize: 20, weight: 10)
-        self.label.text = "X"
-        addSubview(self.label)
+        // Setup image view
+        imageView.contentMode = .scaleAspectFit
+        addSubview(imageView)
 
         // Update
         update()
@@ -56,45 +54,65 @@ class PieceView: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        self.label.frame = self.bounds
+        
+        let margin = CGFloat(5)
+        imageView.frame = CGRect(x: margin,
+                                 y: margin,
+                                 width: bounds.size.width - margin*2,
+                                 height: bounds.size.height - margin*2)
+        
     }
     
     // MARK: - Update
     
     func update() {
         
-        var string = ""
+        let imageName: String!
         
-        switch piece.type {
-        case .rook:
-            string = "R"
-        case .knight:
-            string = "K"
-        case .bishop:
-            string = "B"
-        case .queen:
-            string = "Q"
-        case .king:
-            string = "G"
-        case .pawn:
-            string = "P"
+        switch (piece.type, piece.color) {
+        case (.rook, .white):
+            imageName = "WhiteRook"
+        case (.knight, .white):
+            imageName = "WhiteKnight"
+        case (.bishop, .white):
+            imageName = "WhiteBishop"
+        case (.queen, .white):
+            imageName = "WhiteQueen"
+        case (.king, .white):
+            imageName = "WhiteKing"
+        case (.pawn, .white):
+            imageName = "WhitePawn"
+        case (.rook, .black):
+            imageName = "BlackRook"
+        case (.knight, .black):
+            imageName = "BlackKnight"
+        case (.bishop, .black):
+            imageName = "BlackBishop"
+        case (.queen, .black):
+            imageName = "BlackQueen"
+        case (.king, .black):
+            imageName = "BlackKing"
+        case (.pawn, .black):
+            imageName = "BlackPawn"
         }
         
-        label.text = string
-        label.textColor = color()
-    }
-    
-    func color() -> UIColor {
-    
-        if selected {
-            return UIColor.red
-        }
-        else{
-            return piece.color == .white ? UIColor.white : UIColor.black
-        }
-    }
-    
-    
-    
+        let image = UIImage(named: imageName)
+        assert(image != nil, "Missing image!")
 
+        imageView.image = image
+        
+        backgroundColor = selected ? UIColor.red : UIColor.clear
+        
+        
+        /*
+        transform = CGAffineTransform.identity
+        
+        if selected {
+            let selectedScale = CGFloat(1.3)
+            transform = CGAffineTransform(scaleX: selectedScale, y: selectedScale)
+        }
+ */
+
+    }
+    
 }

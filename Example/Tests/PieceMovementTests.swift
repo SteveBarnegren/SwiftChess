@@ -708,7 +708,6 @@ class PieceMovementTests: XCTestCase {
                                         "- - - - - - - -" )
         
         testBoard(board: board, movingPiece: "P", movement: PieceMovementPawn())
-        
     }
     
     func testBlackPawnCanMoveAheadTwoSpaces() {
