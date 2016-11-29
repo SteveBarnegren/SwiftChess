@@ -20,6 +20,8 @@ class GameViewController: UIViewController {
         }
     }
     
+    var hasMadeInitialAppearance = false
+    
     // MARK: - Creation
     
     class func gameViewController(game: Game) -> GameViewController{
@@ -51,6 +53,17 @@ class GameViewController: UIViewController {
             addPieceView(at: location.x, y: location.y, piece: piece)
         }
         
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        // Take go if the first player is an AI player
+        if !self.hasMadeInitialAppearance {
+            if let player = game.currentPlayer as? AIPlayer {
+                player.makeMove()
+            }
+        }
     }
     
     // MARK: - Manage Piece Views
@@ -268,7 +281,7 @@ extension GameViewController: GameDelegate {
         
         // Tell AI to take go
         if let _ = game.currentPlayer as? AIPlayer {
-            perform(#selector(tellAIToTakeGo), with: nil, afterDelay: 3)
+            perform(#selector(tellAIToTakeGo), with: nil, afterDelay: 1)
         }
     }
     

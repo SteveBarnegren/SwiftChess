@@ -45,6 +45,12 @@ class MenuViewController: UIViewController {
     
     @IBAction func AIvsAIButtonPressed(_ sender: UIButton){
         print("AI vs AI button pressed")
+        
+        let whitePlayer = AIPlayer(color: .white)
+        let blackPlayer = AIPlayer(color: .black)
+        
+        let game = Game(firstPlayer: whitePlayer, secondPlayer: blackPlayer)
+        startGame(game: game)
     }
     
     func startGame(game: Game) {
