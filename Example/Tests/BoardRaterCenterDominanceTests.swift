@@ -11,43 +11,42 @@ import XCTest
 
 class BoardRaterCenterDominanceTests: XCTestCase {
     
+    var boardRater = BoardRaterCenterDominance()
+    
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
+        boardRater = BoardRaterCenterDominance()
     }
     
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
-    
-    func testCenterReturnsHigherValueThatSide() {
+
+    func testPiecesWithCenterVisibilityResultsInHigherValueThanPiecesWithoutCenterVisibility() {
         
-        let boardRater = BoardRaterCenterDominance()
+        let centerVisibleBoard = ASCIIBoard(pieces:  "- - - - - - - -" +
+                                                     "- - - - - - - -" +
+                                                     "- - - - - - - -" +
+                                                     "- - - - - - - Q" +
+                                                     "- - - - - - - R" +
+                                                     "- - - - - - - -" +
+                                                     "- - - - - - - -" +
+                                                     "- - - - - - - -" )
+        let centerVisibleRating = boardRater.ratingfor(board: centerVisibleBoard.board, color: .white)
         
-        let centerBoard = ASCIIBoard(pieces:  "- - - - - - - -" +
-                                              "- - - - - - - -" +
-                                              "- - - - - - - -" +
-                                              "- - - - P - - -" +
-                                              "- - - - - - - -" +
-                                              "- - - - - - - -" +
-                                              "- - - - - - - -" +
-                                              "- - - - - - - -" )
+        let centerObstructedBoard = ASCIIBoard(pieces:  "- - - - - - - -" +
+                                                        "- - - - - - - -" +
+                                                        "- - - - - - - -" +
+                                                        "- - - - - - - -" +
+                                                        "- - - - - - - -" +
+                                                        "- - - - - - - -" +
+                                                        "- - - - - - P -" +
+                                                        "- - - - - - - Q" )
+        let centerObstructedRating = boardRater.ratingfor(board: centerObstructedBoard.board, color: .white)
         
-        let centerRating = boardRater.ratingfor(board: centerBoard.board, color: .white);
-        
-        let sideBoard = ASCIIBoard(pieces:  "- - - - - - - -" +
-                                            "- - - - - - - -" +
-                                            "- - - - - - - -" +
-                                            "- - - - - - P -" +
-                                            "- - - - - - - -" +
-                                            "- - - - - - - -" +
-                                            "- - - - - - - -" +
-                                            "- - - - - - - -" )
-        
-        let sideRating = boardRater.ratingfor(board: sideBoard.board, color: .white);
-        
-        XCTAssertGreaterThan(centerRating, sideRating);
+        XCTAssertGreaterThan(centerVisibleRating, centerObstructedRating)
     }
     
 }

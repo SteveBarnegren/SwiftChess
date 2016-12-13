@@ -1,36 +1,32 @@
 //
-//  BoardRaterCenterDominance.swift
+//  File.swift
 //  SwiftChess
 //
-//  Created by Steve Barnegren on 13/12/2016.
+//  Created by Steve Barnegren on 27/11/2016.
 //  Copyright © 2016 Steve Barnegren. All rights reserved.
 //
 
 import Foundation
 
-struct BoardRaterCenterDominance : BoardRater {
+struct BoardRaterCenterOwnership : BoardRater {
     
     func ratingfor(board: Board, color: Color) -> Double {
         
         var rating = Double(0)
-        
-        for sourceLocation in BoardLocation.all {
+    
+        for location in BoardLocation.all {
             
-            guard let piece = board.getPiece(at: sourceLocation) else {
+            guard let piece = board.getPiece(at: location) else {
                 continue
             }
             
-            for targetLocation in BoardLocation.all {
-                
-                if sourceLocation == targetLocation || piece.movement.canPieceMove(fromLocation: sourceLocation, toLocation: targetLocation, board: board) {
-                    let value = dominanceValueFor(location: targetLocation)
-                    rating += (piece.color == color) ? value : -value
-                }
-                
-            }
+            let distance = dominanceValueFor(location: location)
+            
+            rating += (piece.color == color) ? distance : -distance
         }
         
         return rating
+    
     }
     
     func dominanceValueFor(location: BoardLocation) -> Double {
@@ -39,7 +35,7 @@ struct BoardRaterCenterDominance : BoardRater {
         
         let x = Double(location.x)
         let y = Double(location.y)
-        
+
         let xDiff = abs(axisMiddle - x)
         let yDiff = abs(axisMiddle - y)
         
@@ -47,5 +43,4 @@ struct BoardRaterCenterDominance : BoardRater {
         return axisMiddle - distance
     }
 
-    
 }
