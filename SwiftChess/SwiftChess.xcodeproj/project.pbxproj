@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		671989831DEB11900053EA3D /* BoardRaterCenterDominance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671989821DEB11900053EA3D /* BoardRaterCenterDominance.swift */; };
+		6719898B1DFFE0D80053EA3D /* BoardRaterBoardDominance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6719898A1DFFE0D80053EA3D /* BoardRaterBoardDominance.swift */; };
 		67A9C9E81DE64CD300510FB8 /* SwiftChess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67A9C9DE1DE64CD200510FB8 /* SwiftChess.framework */; };
 		67A9C9EF1DE64CD300510FB8 /* SwiftChess.h in Headers */ = {isa = PBXBuildFile; fileRef = 67A9C9E11DE64CD200510FB8 /* SwiftChess.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		67A9CA011DE64D2500510FB8 /* AIPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A9C9FA1DE64D2500510FB8 /* AIPlayer.swift */; };
@@ -33,6 +34,7 @@
 
 /* Begin PBXFileReference section */
 		671989821DEB11900053EA3D /* BoardRaterCenterDominance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardRaterCenterDominance.swift; sourceTree = "<group>"; };
+		6719898A1DFFE0D80053EA3D /* BoardRaterBoardDominance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardRaterBoardDominance.swift; sourceTree = "<group>"; };
 		67A9C9DE1DE64CD200510FB8 /* SwiftChess.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftChess.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		67A9C9E11DE64CD200510FB8 /* SwiftChess.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftChess.h; sourceTree = "<group>"; };
 		67A9C9E21DE64CD200510FB8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -141,6 +143,7 @@
 			children = (
 				67D54A4C1DE6DE1400C12258 /* BoardRaterCountPieces.swift */,
 				671989821DEB11900053EA3D /* BoardRaterCenterDominance.swift */,
+				6719898A1DFFE0D80053EA3D /* BoardRaterBoardDominance.swift */,
 			);
 			name = BoardRaters;
 			sourceTree = "<group>";
@@ -259,6 +262,7 @@
 				67A9CA021DE64D2500510FB8 /* Board.swift in Sources */,
 				67A9CA031DE64D2500510FB8 /* Game.swift in Sources */,
 				67A9CA051DE64D2500510FB8 /* PieceMovement.swift in Sources */,
+				6719898B1DFFE0D80053EA3D /* BoardRaterBoardDominance.swift in Sources */,
 				67D54A481DE6D34100C12258 /* Player.swift in Sources */,
 				671989831DEB11900053EA3D /* BoardRaterCenterDominance.swift in Sources */,
 				67A9CA061DE64D2500510FB8 /* Human.swift in Sources */,
