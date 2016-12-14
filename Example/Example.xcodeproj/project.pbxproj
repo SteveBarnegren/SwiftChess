@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		09A4C0291E013ECB000CFBF4 /* BoardRaterThreatenedPiecesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A4C0281E013ECB000CFBF4 /* BoardRaterThreatenedPiecesTests.swift */; };
 		671989891DFFE0410053EA3D /* BoardRaterCenterOwnershipTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671989881DFFE0410053EA3D /* BoardRaterCenterOwnershipTests.swift */; };
 		6719898D1DFFE0F40053EA3D /* BoardRaterBoardDominanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6719898C1DFFE0F40053EA3D /* BoardRaterBoardDominanceTests.swift */; };
 		671989911DFFE8650053EA3D /* BoardRaterCenterDominanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671989901DFFE8650053EA3D /* BoardRaterCenterDominanceTests.swift */; };
@@ -55,6 +56,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		09A4C0281E013ECB000CFBF4 /* BoardRaterThreatenedPiecesTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardRaterThreatenedPiecesTests.swift; sourceTree = "<group>"; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		607FACD71AFB9204008FA782 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
@@ -190,6 +192,7 @@
 				671989881DFFE0410053EA3D /* BoardRaterCenterOwnershipTests.swift */,
 				6719898C1DFFE0F40053EA3D /* BoardRaterBoardDominanceTests.swift */,
 				671989901DFFE8650053EA3D /* BoardRaterCenterDominanceTests.swift */,
+				09A4C0281E013ECB000CFBF4 /* BoardRaterThreatenedPiecesTests.swift */,
 			);
 			name = BoardRaters;
 			sourceTree = "<group>";
@@ -353,6 +356,7 @@
 				671989891DFFE0410053EA3D /* BoardRaterCenterOwnershipTests.swift in Sources */,
 				67D54A5C1DE7682900C12258 /* ASCIIBoard.swift in Sources */,
 				67D54A641DE976A900C12258 /* BoardRaterCountPiecesTests.swift in Sources */,
+				09A4C0291E013ECB000CFBF4 /* BoardRaterThreatenedPiecesTests.swift in Sources */,
 				67D54A5F1DE7683300C12258 /* PieceMovementTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
