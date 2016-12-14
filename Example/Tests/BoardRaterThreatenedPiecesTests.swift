@@ -89,8 +89,39 @@ class BoardRaterThreatenedPiecesTests: XCTestCase {
         XCTAssert(rating > 0);
     }
     
-    func testBoardRAterThreatenedPiecesReturnsHigherThreatValueForHigherValuePieces() {
-        XCTFail()
+    func testBoardRaterThreatenedPiecesReturnsHigherThreatValueForHigherValuePieces() {
+        
+        let queenBoard = ASCIIBoard(pieces: "- - - - - - - -" +
+                                            "- - - - - - - -" +
+                                            "- - - - - - - -" +
+                                            "- - - - - - - -" +
+                                            "q - - - - - Q -" +
+                                            "- - - - - - - -" +
+                                            "- - - - - - - -" +
+                                            "- - - - - - - -" )
+        
+        let queenIndex = queenBoard.indexOfCharacter("Q")
+        let queenLocation = BoardLocation(index: queenIndex)
+        let queenRating = boardRater.threatRatingForPiece(at: queenLocation,
+                                                          board: queenBoard.board)
+        
+        
+        
+        let knightBoard = ASCIIBoard(pieces: "- - - - - - - -" +
+                                             "- - - - - - - -" +
+                                             "- - - - - - - -" +
+                                             "- - - - - - - -" +
+                                             "q - - - - - K -" +
+                                             "- - - - - - - -" +
+                                             "- - - - - - - -" +
+                                             "- - - - - - - -" )
+        
+        let knightIndex = knightBoard.indexOfCharacter("K")
+        let knightLocation = BoardLocation(index: knightIndex)
+        let knightRating = boardRater.threatRatingForPiece(at: knightLocation,
+                                                           board: knightBoard.board)
+        
+        XCTAssert(queenRating > knightRating);
     }
     
     

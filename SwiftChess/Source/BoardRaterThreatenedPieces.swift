@@ -47,7 +47,7 @@ struct BoardRaterThreatenedPieces : BoardRater {
                 continue
             }
             
-            guard otherPiece.color == piece.color else{
+            guard otherPiece.color == piece.color.opposite() else{
                 continue
             }
             
