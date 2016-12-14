@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		09A4C0271E013950000CFBF4 /* BoardRaterThreatenedPieces.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A4C0261E013950000CFBF4 /* BoardRaterThreatenedPieces.swift */; };
 		671989831DEB11900053EA3D /* BoardRaterCenterOwnership.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671989821DEB11900053EA3D /* BoardRaterCenterOwnership.swift */; };
 		6719898B1DFFE0D80053EA3D /* BoardRaterBoardDominance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6719898A1DFFE0D80053EA3D /* BoardRaterBoardDominance.swift */; };
 		6719898F1DFFE7550053EA3D /* BoardRaterCenterDominance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6719898E1DFFE7550053EA3D /* BoardRaterCenterDominance.swift */; };
@@ -34,6 +35,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		09A4C0261E013950000CFBF4 /* BoardRaterThreatenedPieces.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardRaterThreatenedPieces.swift; sourceTree = "<group>"; };
 		671989821DEB11900053EA3D /* BoardRaterCenterOwnership.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardRaterCenterOwnership.swift; sourceTree = "<group>"; };
 		6719898A1DFFE0D80053EA3D /* BoardRaterBoardDominance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardRaterBoardDominance.swift; sourceTree = "<group>"; };
 		6719898E1DFFE7550053EA3D /* BoardRaterCenterDominance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardRaterCenterDominance.swift; sourceTree = "<group>"; };
@@ -147,6 +149,7 @@
 				6719898A1DFFE0D80053EA3D /* BoardRaterBoardDominance.swift */,
 				671989821DEB11900053EA3D /* BoardRaterCenterOwnership.swift */,
 				6719898E1DFFE7550053EA3D /* BoardRaterCenterDominance.swift */,
+				09A4C0261E013950000CFBF4 /* BoardRaterThreatenedPieces.swift */,
 			);
 			name = BoardRaters;
 			sourceTree = "<group>";
@@ -270,6 +273,7 @@
 				671989831DEB11900053EA3D /* BoardRaterCenterOwnership.swift in Sources */,
 				67A9CA061DE64D2500510FB8 /* Human.swift in Sources */,
 				67D54A4D1DE6DE1400C12258 /* BoardRaterCountPieces.swift in Sources */,
+				09A4C0271E013950000CFBF4 /* BoardRaterThreatenedPieces.swift in Sources */,
 				67D54A6B1DEAF16200C12258 /* BoardOperation.swift in Sources */,
 				67A9CA011DE64D2500510FB8 /* AIPlayer.swift in Sources */,
 				6719898F1DFFE7550053EA3D /* BoardRaterCenterDominance.swift in Sources */,

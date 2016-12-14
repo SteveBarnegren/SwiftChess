@@ -15,7 +15,13 @@ open class AIPlayer : Player {
    
     public init(color: Color){
         
-        self.boardRaters = [BoardRaterCountPieces(), BoardRaterCenterOwnership(), BoardRaterBoardDominance(), BoardRaterCenterDominance()]
+        self.boardRaters = [
+            BoardRaterCountPieces(),
+            BoardRaterCenterOwnership(),
+            BoardRaterBoardDominance(),
+            BoardRaterCenterDominance(),
+            BoardRaterThreatenedPieces()
+        ]
         
         super.init()
         self.color = color
