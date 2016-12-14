@@ -10,6 +10,8 @@ import Foundation
 
 struct BoardRaterThreatenedPieces : BoardRater {
     
+    var ownPiecesMultipler = Double(10)
+    
     func ratingfor(board: Board, color: Color) -> Double {
         
         var rating = Double(0)
@@ -21,6 +23,13 @@ struct BoardRaterThreatenedPieces : BoardRater {
             }
             
             let threatRating = threatRatingForPiece(at: location, board: board)
+            
+            if piece.color == color {
+                rating -= threatRating * ownPiecesMultipler
+            }
+            else{
+                rating += threatRating
+            }
             
             rating += (piece.color == color) ? -threatRating : threatRating;
         }

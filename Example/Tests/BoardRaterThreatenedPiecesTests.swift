@@ -124,5 +124,26 @@ class BoardRaterThreatenedPiecesTests: XCTestCase {
         XCTAssert(queenRating > knightRating);
     }
     
+    func testOwnPiecesMultiplerShouldIncreaceValueOfIncomingThreats() {
+        
+        let board = ASCIIBoard(pieces:  "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "q - - - - - Q -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" )
+        
+        boardRater.ownPiecesMultipler = 1
+        let expectedLowRating = boardRater.ratingfor(board: board.board, color: .white)
+        
+        boardRater.ownPiecesMultipler = 2
+        let expectedHighRating = boardRater.ratingfor(board: board.board, color: .white)
+        
+        // Higher threat levels result in negative ratings!
+        XCTAssert(expectedHighRating < expectedLowRating)
+    }
+    
     
 }
