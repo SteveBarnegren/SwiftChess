@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		09A4C0271E013950000CFBF4 /* BoardRaterThreatenedPieces.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A4C0261E013950000CFBF4 /* BoardRaterThreatenedPieces.swift */; };
+		09AE32531E03D6F300A149FE /* BoardRaterPawnProgression.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09AE32521E03D6F300A149FE /* BoardRaterPawnProgression.swift */; };
 		671989831DEB11900053EA3D /* BoardRaterCenterOwnership.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671989821DEB11900053EA3D /* BoardRaterCenterOwnership.swift */; };
 		6719898B1DFFE0D80053EA3D /* BoardRaterBoardDominance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6719898A1DFFE0D80053EA3D /* BoardRaterBoardDominance.swift */; };
 		6719898F1DFFE7550053EA3D /* BoardRaterCenterDominance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6719898E1DFFE7550053EA3D /* BoardRaterCenterDominance.swift */; };
@@ -36,6 +37,7 @@
 
 /* Begin PBXFileReference section */
 		09A4C0261E013950000CFBF4 /* BoardRaterThreatenedPieces.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardRaterThreatenedPieces.swift; sourceTree = "<group>"; };
+		09AE32521E03D6F300A149FE /* BoardRaterPawnProgression.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardRaterPawnProgression.swift; sourceTree = "<group>"; };
 		671989821DEB11900053EA3D /* BoardRaterCenterOwnership.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardRaterCenterOwnership.swift; sourceTree = "<group>"; };
 		6719898A1DFFE0D80053EA3D /* BoardRaterBoardDominance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardRaterBoardDominance.swift; sourceTree = "<group>"; };
 		6719898E1DFFE7550053EA3D /* BoardRaterCenterDominance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardRaterCenterDominance.swift; sourceTree = "<group>"; };
@@ -150,6 +152,7 @@
 				671989821DEB11900053EA3D /* BoardRaterCenterOwnership.swift */,
 				6719898E1DFFE7550053EA3D /* BoardRaterCenterDominance.swift */,
 				09A4C0261E013950000CFBF4 /* BoardRaterThreatenedPieces.swift */,
+				09AE32521E03D6F300A149FE /* BoardRaterPawnProgression.swift */,
 			);
 			name = BoardRaters;
 			sourceTree = "<group>";
@@ -265,6 +268,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				67A9CA041DE64D2500510FB8 /* Piece.swift in Sources */,
+				09AE32531E03D6F300A149FE /* BoardRaterPawnProgression.swift in Sources */,
 				67A9CA021DE64D2500510FB8 /* Board.swift in Sources */,
 				67A9CA031DE64D2500510FB8 /* Game.swift in Sources */,
 				67A9CA051DE64D2500510FB8 /* PieceMovement.swift in Sources */,
