@@ -81,7 +81,7 @@ struct BoardRaterThreatenedPieces : BoardRater {
         guard let protectedPiece = board.getPiece(at: location) else {
             fatalError("Expected board location to contain piece")
         }
-                
+        
         // Change the piece color to be opposite, to simulate if the piece was taken
         let oppositeColorPiece = Piece(type: protectedPiece.type, color: protectedPiece.color.opposite())
         board.setPiece(oppositeColorPiece, at: location)
@@ -127,7 +127,7 @@ struct BoardRaterThreatenedPieces : BoardRater {
             }
             
             if threateningPiece.movement.canPieceMove(fromLocation: sourceLocation, toLocation: location, board: board) {
-                pieces.append(location)
+                pieces.append(sourceLocation)
             }
         }
         

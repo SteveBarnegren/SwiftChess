@@ -145,6 +145,8 @@ class BoardRaterThreatenedPiecesTests: XCTestCase {
         XCTAssert(expectedHighRating < expectedLowRating)
     }
     
+    // MARK - Get protected pieces tests
+    
     func testGetProtectingPiecesReturnsProtectingPieces() {
         
         let board = ASCIIBoard(pieces:  "- - - - - - - -" +
@@ -232,8 +234,102 @@ class BoardRaterThreatenedPiecesTests: XCTestCase {
         let protectingLocations = boardRater.protectingPiecesLocationsforPiece(at: queenLocation,
                                                                                on: board.board)
         
-        // The black pieces cannot protect the whitequeen, so expect count to be zero
+        // The black pieces cannot protect the white queen, so expect count to be zero
         XCTAssertTrue(protectingLocations.count == 0)
     }
+    
+    // MARK - Get threatening pieces tests
 
+    func testGetThreateningPiecesReturnsThreateningPieces() {
+        
+        let board = ASCIIBoard(pieces:  "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - k - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - Q -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - r -" +
+                                        "- - - b - - - -" )
+        
+        
+        let expectedIndexes = [
+            board.indexOfCharacter("k"),
+            board.indexOfCharacter("r"),
+            board.indexOfCharacter("b"),
+            ]
+        
+        
+        let queenLocation = BoardLocation(index: board.indexOfCharacter("Q"))
+        
+        let threateningLocations = boardRater.threateningPiecesLocationsforPiece(at: queenLocation,
+                                                                                 on: board.board)
+        
+        // Check all of the expected locations appeared in the protecting locations array
+        for expectedIndex in expectedIndexes {
+            var foundIndex = false
+            
+            for location in threateningLocations {
+                if location == BoardLocation(index: expectedIndex) {
+                    foundIndex = true
+                }
+            }
+            
+            XCTAssertTrue(foundIndex, "Failed to find expected index \(expectedIndex)")
+        }
+        
+        // Check all of the protecting locations were expected
+        for location in threateningLocations {
+            var wasExpected = false
+            
+            for expectedIndex in expectedIndexes {
+                if location == BoardLocation(index: expectedIndex) {
+                    wasExpected = true
+                }
+            }
+            
+            XCTAssertTrue(wasExpected, "Found unexpected threatening location \(location)");
+        }
+    }
+    
+    func testGetThreateningPiecesDoesntReturnNonThreateningPiecesOfOppositeColor() {
+        
+        let board = ASCIIBoard(pieces:  "- - - - - - - -" +
+                                        "- - k - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - Q -" +
+                                        "- - - - - - - -" +
+                                        "r - - - - - - -" +
+                                        "- b - - - - - -" )
+        
+        let queenLocation = BoardLocation(index: board.indexOfCharacter("Q"))
+        
+        let threateningLocations = boardRater.threateningPiecesLocationsforPiece(at: queenLocation,
+                                                                                 on: board.board)
+        
+        // None of the pieces are threatening the queen, so expect count to be zero
+        XCTAssertTrue(threateningLocations.count == 0)
+    }
+    
+    func testGetThreateningPiecesDoesntReturnProtectingPiecesOfSameColor() {
+        
+        let board = ASCIIBoard(pieces:  "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - K - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - Q -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - R -" +
+                                        "- - - B - - - -" )
+        
+        let queenLocation = BoardLocation(index: board.indexOfCharacter("Q"))
+        
+        let threateningLocations = boardRater.threateningPiecesLocationsforPiece(at: queenLocation,
+                                                                                 on: board.board)
+        
+        // The white pieces cannot threaten the white queen, so expect count to be zero
+        XCTAssertTrue(threateningLocations.count == 0)
+    }
+    
+    
 }
