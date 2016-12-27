@@ -57,8 +57,4 @@ struct BoardRaterPawnProgression : BoardRater {
         
     }
     
-    
-    
-    
-    
 }

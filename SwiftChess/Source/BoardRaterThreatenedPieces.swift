@@ -24,9 +24,11 @@ struct BoardRaterThreatenedPieces : BoardRater {
             
             let threatRating = threatRatingForPiece(at: location, board: board)
             
+            // For a same color, subtract the threat rating (less preferrable move)
             if piece.color == color {
                 rating -= threatRating * ownPiecesMultipler
             }
+            // For opposite color, add the treat rating (more preferable move)
             else{
                 rating += threatRating
             }
@@ -38,6 +40,7 @@ struct BoardRaterThreatenedPieces : BoardRater {
     }
     
     
+    // Returns a more positive rating the more the piece is threatened
     func threatRatingForPiece(at location: BoardLocation, board: Board) -> Double {
         
         guard let piece = board.getPiece(at: location) else{
