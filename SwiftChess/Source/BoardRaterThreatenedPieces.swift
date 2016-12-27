@@ -10,7 +10,7 @@ import Foundation
 
 struct BoardRaterThreatenedPieces : BoardRater {
     
-    var ownPiecesMultipler = Double(10)
+    var ownPiecesMultipler = Double(4)
     
     func ratingfor(board: Board, color: Color) -> Double {
         
@@ -22,11 +22,11 @@ struct BoardRaterThreatenedPieces : BoardRater {
                 continue;
             }
             
-            let threatRating = threatRatingForPiece(at: location, board: board)
+            let threatRating = threatRatingForPiece(at: location, board: board, color: color)
             
             // For a same color, subtract the threat rating (less preferrable move)
             if piece.color == color {
-                rating -= threatRating * ownPiecesMultipler
+                rating -= threatRating
             }
             // For opposite color, add the treat rating (more preferable move)
             else{
@@ -41,7 +41,7 @@ struct BoardRaterThreatenedPieces : BoardRater {
     
     
     // Returns a more positive rating the more the piece is threatened
-    func threatRatingForPiece(at location: BoardLocation, board: Board) -> Double {
+    func threatRatingForPiece(at location: BoardLocation, board: Board, color: Color) -> Double {
         
         guard let piece = board.getPiece(at: location) else{
             fatalError()
@@ -49,24 +49,23 @@ struct BoardRaterThreatenedPieces : BoardRater {
         
         var rating = Double(0)
         
-        for otherPieceLocation in BoardLocation.all {
+        let threateningPieceLocations = threateningPiecesLocationsforPiece(at: location, on: board)
+        let isBeingThreatened = threateningPieceLocations.isEmpty ? false : true
+
+        let protectingPieceLocations = protectingPiecesLocationsforPiece(at: location, on: board)
+        let isBeingProtected = protectingPieceLocations.isEmpty ? false : true
+        
+        for threateningPieceLocation in threateningPieceLocations {
             
-            if otherPieceLocation == location {
+            guard let threateningPiece = board.getPiece(at: threateningPieceLocation) else {
                 continue
             }
             
-            guard let otherPiece = board.getPiece(at: otherPieceLocation) else {
-                continue
-            }
+            let pieceIsProtected = (isBeingProtected && piece.value() < threateningPiece.value())
             
-            guard otherPiece.color == piece.color.opposite() else{
-                continue
+            if !pieceIsProtected {
+                rating += piece.color == color ? piece.value() * 5 : piece.value()
             }
-            
-            if otherPiece.movement.canPieceMove(fromLocation: otherPieceLocation, toLocation: location, board: board){
-                rating += piece.value()
-            }
-            
         }
         
         return rating

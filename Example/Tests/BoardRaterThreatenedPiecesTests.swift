@@ -25,7 +25,7 @@ class BoardRaterThreatenedPiecesTests: XCTestCase {
         super.tearDown()
     }
     
-    func testBoardRaterThreatededPiecesReturnsNoThreatIfNoOpponants() {
+    func testBoardRaterThreatededPiecesReturnsNoThreatIfNoOtherPieces() {
         
         let board = ASCIIBoard(pieces:  "- - - - - - - -" +
                                         "- - - - - - - -" +
@@ -38,22 +38,6 @@ class BoardRaterThreatenedPiecesTests: XCTestCase {
         
         let rating = boardRater.ratingfor(board: board.board, color: .white)
 
-        XCTAssertEqualWithAccuracy(rating, 0, accuracy: 0.01)
-    }
-    
-    func testBoardRaterThreatenedPiecesReturnsNoThreatIfOnlySameColorPieces() {
-        
-        let board = ASCIIBoard(pieces:  "- R - - - - - -" +
-                                        "- - - - - K - -" +
-                                        "- - - - - - - -" +
-                                        "- - - G - - - P" +
-                                        "- - Q - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- P - - - B - -" +
-                                        "- - - - - - - -" )
-        
-        let rating = boardRater.ratingfor(board: board.board, color: .white)
-        
         XCTAssertEqualWithAccuracy(rating, 0, accuracy: 0.01)
     }
     
@@ -143,6 +127,37 @@ class BoardRaterThreatenedPiecesTests: XCTestCase {
         
         // Higher threat levels result in negative ratings!
         XCTAssert(expectedHighRating < expectedLowRating)
+    }
+    
+    func testBoardRaterThreatenedPiecesReturnsMoreNegativeThreatValueForFavourableTrade() {
+        
+        // Good trade (White rook can be taken by the black queen, but the white pawn will then take the queen)
+        let goodTradeBoard = ASCIIBoard(pieces: "- - - - - - - -" +
+                                                "- - - - - - - -" +
+                                                "- - - - - - - -" +
+                                                "- - - - R - - -" +
+                                                "- - - P - - - -" +
+                                                "- - - - - - - -" +
+                                                "- - - - - - - q" +
+                                                "- - - - - - - -" )
+        
+        // Bad trade (White rook can be taken by the black pawn, then the white pawn will take the black pawn)
+        let badTradeBoard = ASCIIBoard(pieces:  "- - - - - - - -" +
+                                                "- - - - - - - -" +
+                                                "- - - - - p - -" +
+                                                "- - - - R - - -" +
+                                                "- - - P - - - -" +
+                                                "- - - - - - - -" +
+                                                "- - - - - - - -" +
+                                                "- - - - - - - -" )
+        
+        
+        let rookLocation = BoardLocation(index: goodTradeBoard.indexOfCharacter("R"))
+        
+        let goodTradeRating = boardRater.threatRatingForPiece(at: rookLocation, board: goodTradeBoard.board)
+        let badTradeRating = boardRater.threatRatingForPiece(at: rookLocation, board: badTradeBoard.board)
+        
+        XCTAssert(goodTradeRating < badTradeRating);
     }
     
     // MARK - Get protected pieces tests
