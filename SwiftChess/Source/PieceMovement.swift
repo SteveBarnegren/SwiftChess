@@ -265,44 +265,46 @@ open class PieceMovementPawn: PieceMovement {
         
         let color = movingPiece.color
 
-
         // ****** Test forward locations ******
         var forwardStrides = [BoardStride]()
         
-        // Add one ahead offset
-        if color == .white {
-            forwardStrides.append( BoardStride(x: 0, y: 1) )
-        }
-        else{
-            forwardStrides.append( BoardStride(x: 0, y: -1) )
-        }
         
-        // Add the two ahead offset
-        if color == .white && fromLocation.y == 1 {
-            
-            forwardStrides.append( BoardStride(x: 0, y: 2) )
-        }
-        else if color == .black && fromLocation.y == 6 {
-            
-            forwardStrides.append( BoardStride(x: 0, y: -2) )
-        }
+        // Test one ahead offset
+        let oneAheadStride = (color == .white ? BoardStride(x: 0, y: 1) : BoardStride(x: 0, y: -1))
         
-        for stride in forwardStrides {
+        ONE_AHEAD: if fromLocation.canIncrementBy(stride: oneAheadStride) {
             
-            guard fromLocation.canIncrementBy(stride: stride) else {
-                continue
-            }
+            let location = fromLocation.incrementedBy(stride: oneAheadStride)
             
-            let location = fromLocation.incrementedBy(stride: stride)
-            
-            if let piece = board.getPiece(at: location) {
-                continue
+            if let _ = board.getPiece(at: toLocation) {
+                break ONE_AHEAD
             }
             
             if location == toLocation {
                 return true
             }
         }
+        
+        
+        // Test two ahead offset
+        var twoAheadStride: BoardStride?
+        
+        if color == .white && fromLocation.y == 1 {
+            twoAheadStride = BoardStride(x: 0, y: 2)
+        }
+        else if color == .black && fromLocation.y == 6 {
+            twoAheadStride = BoardStride(x: 0, y: -2)
+        }
+        
+        if let twoAheadStride = twoAheadStride {
+            
+            let twoAheadLocation = fromLocation.incrementedBy(stride: twoAheadStride)
+
+            if canPieceMove(fromLocation: fromLocation, toLocation: twoAheadLocation, board: board, stride: oneAheadStride) {
+                return true
+            }
+        }
+        
         
         // ****** Test Diagonal locations ******
         var diagonalStrides = [BoardStride]()

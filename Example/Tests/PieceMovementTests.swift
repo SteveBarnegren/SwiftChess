@@ -725,6 +725,34 @@ class PieceMovementTests: XCTestCase {
         
     }
     
+    func testStartingWhitePawnCannotJumpOverPiece() {
+        
+        let board = ASCIIBoard(pieces:  "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - ! - - - -" +
+                                        "- - - K - - - -" +
+                                        "- - - P - - - -" +
+                                        "- - - - - - - -" )
+        
+        testBoard(board: board, movingPiece: "P", movement: PieceMovementPawn())
+    }
+    
+    func testStartingBlackPawnCannotJumpOverPiece() {
+
+        let board = ASCIIBoard(pieces:  "- - - - - - - -" +
+                                        "- - - p - - - -" +
+                                        "- - - k - - - -" +
+                                        "- - - ! - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" )
+        
+        testBoard(board: board, movingPiece: "p", movement: PieceMovementPawn())
+    }
+    
     func testNonStartingRowWhitePawnCannotMoveAheadTwoSpaces() {
         
         let board = ASCIIBoard(colors:  "- - - - - - - -" +
