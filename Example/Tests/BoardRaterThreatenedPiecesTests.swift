@@ -256,6 +256,44 @@ class BoardRaterThreatenedPiecesTests: XCTestCase {
         XCTAssertTrue(protectingLocations.count == 0)
     }
     
+    func testGetProtectingPiecesDoesntReturnPawnsMovingStraightAhead() {
+        
+        let board = ASCIIBoard(pieces:  "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - Q -" +
+                                        "- - - - - - P -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" )
+        
+        let queenLocation = BoardLocation(index: board.indexOfCharacter("Q"))
+        
+        let protectingLocations = boardRater.protectingPiecesLocationsforPiece(at: queenLocation,
+                                                                               on: board.board)
+        
+        XCTAssertTrue(protectingLocations.count == 0)
+    }
+    
+    func testGetProtectingPiecesReturnsPawnsMovingDiagonally() {
+        
+        let board = ASCIIBoard(pieces:  "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - Q -" +
+                                        "- - - - - P - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" )
+        
+        let queenLocation = BoardLocation(index: board.indexOfCharacter("Q"))
+        
+        let protectingLocations = boardRater.protectingPiecesLocationsforPiece(at: queenLocation,
+                                                                               on: board.board)
+        
+        XCTAssertTrue(protectingLocations.count == 1)
+    }
+    
     // MARK - Get threatening pieces tests
 
     func testGetThreateningPiecesReturnsThreateningPieces() {
@@ -348,6 +386,45 @@ class BoardRaterThreatenedPiecesTests: XCTestCase {
         // The white pieces cannot threaten the white queen, so expect count to be zero
         XCTAssertTrue(threateningLocations.count == 0)
     }
+    
+    func testGetThreateningPiecesDoesntReturnPawnsMovingStraightAhead() {
+        
+        let board = ASCIIBoard(pieces:  "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - q -" +
+                                        "- - - - - - P -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" )
+        
+        let queenLocation = BoardLocation(index: board.indexOfCharacter("q"))
+        
+        let threateningLocations = boardRater.threateningPiecesLocationsforPiece(at: queenLocation,
+                                                                                 on: board.board)
+        
+        XCTAssertTrue(threateningLocations.count == 0)
+    }
+    
+    func testGetThreateningPiecesReturnsPawnsMovingDiagonally() {
+        
+        let board = ASCIIBoard(pieces:  "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - q -" +
+                                        "- - - - - P - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" )
+        
+        let queenLocation = BoardLocation(index: board.indexOfCharacter("q"))
+        
+        let threateningLocations = boardRater.threateningPiecesLocationsforPiece(at: queenLocation,
+                                                                                 on: board.board)
+        
+        XCTAssertTrue(threateningLocations.count == 1)
+    }
+    
     
     
 }
