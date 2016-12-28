@@ -226,6 +226,45 @@ class PieceMovementTests: XCTestCase {
 
      }
     
+    func testStraightLineMovementCanTakeOpponent() {
+        
+        let board = ASCIIBoard(colors:  "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "W - - - B - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" )
+        
+        let whiteIndex = board.indexOfCharacter("W")
+        let blackIndex = board.indexOfCharacter("B")
+        
+        let movement = PieceMovementStraightLine()
+        XCTAssertTrue(movement.canPieceMove(fromLocation: BoardLocation(index: whiteIndex), toLocation: BoardLocation(index: blackIndex), board: board.board))
+    }
+    
+    func testStraightLineMovementCannotTakeKing() {
+        
+        let board = ASCIIBoard(pieces:  "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "Q - - - g - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" )
+        
+        let pieceIndex = board.indexOfCharacter("Q")
+        let kingIndex = board.indexOfCharacter("g")
+        
+        let movement = PieceMovementStraightLine()
+        XCTAssertFalse(movement.canPieceMove(fromLocation: BoardLocation(index: pieceIndex), toLocation: BoardLocation(index: kingIndex), board: board.board))
+    }
+
+    
+    // MARK: - Diagonal Movement
+    
     func testDiagonalMovementCanMoveNE() {
         
         let board = ASCIIBoard(colors:  "- - - - - - - *" +
@@ -360,6 +399,43 @@ class PieceMovementTests: XCTestCase {
         testBoard(board: board, movingPiece: "W", movement: PieceMovementDiagonal())
         
     }
+    
+    func testDiagonalMovementCanTakeOpponent() {
+        
+        let board = ASCIIBoard(colors:  "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - B - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - W" )
+        
+        let whiteIndex = board.indexOfCharacter("W")
+        let blackIndex = board.indexOfCharacter("B")
+        
+        let movement = PieceMovementDiagonal()
+        XCTAssertTrue(movement.canPieceMove(fromLocation: BoardLocation(index: whiteIndex), toLocation: BoardLocation(index: blackIndex), board: board.board))
+    }
+    
+    func testDiagonalMovementCannotTakeKing() {
+        
+        let board = ASCIIBoard(pieces:  "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - g - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - Q" )
+        
+        let pieceIndex = board.indexOfCharacter("Q")
+        let kingIndex = board.indexOfCharacter("g")
+        
+        let movement = PieceMovementDiagonal()
+        XCTAssertFalse(movement.canPieceMove(fromLocation: BoardLocation(index: pieceIndex), toLocation: BoardLocation(index: kingIndex), board: board.board))
+    }
+
 
     // MARK: - Knight Movement
     
@@ -572,6 +648,43 @@ class PieceMovementTests: XCTestCase {
         
     }
     
+    func testKnightMovementCanTakeOpponent() {
+        
+        let board = ASCIIBoard(colors:  "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - B - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - W - - - -" +
+                                        "- - - - - - - -" )
+        
+        let whiteIndex = board.indexOfCharacter("W")
+        let blackIndex = board.indexOfCharacter("B")
+        
+        let movement = PieceMovementKnight()
+        XCTAssertTrue(movement.canPieceMove(fromLocation: BoardLocation(index: whiteIndex), toLocation: BoardLocation(index: blackIndex), board: board.board))
+    }
+    
+    func testKnightMovementCannotTakeKing() {
+        
+        let board = ASCIIBoard(pieces:  "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - g - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - K - - - -" +
+                                        "- - - - - - - -" )
+        
+        let pieceIndex = board.indexOfCharacter("K")
+        let kingIndex = board.indexOfCharacter("g")
+        
+        let movement = PieceMovementKnight()
+        XCTAssertFalse(movement.canPieceMove(fromLocation: BoardLocation(index: pieceIndex), toLocation: BoardLocation(index: kingIndex), board: board.board))
+    }
+
+    
     // MARK: - King Movement
     
     func testKingMovementCannotMoveToInvalidPositionFromCenter() {
@@ -662,6 +775,43 @@ class PieceMovementTests: XCTestCase {
                   "Expected piece could not move to its current position")
         
     }
+    
+    func testKingMovementCanTakeOpponent() {
+        
+        let board = ASCIIBoard(colors:  "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - B - - -" +
+                                        "- - - W - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" )
+        
+        let whiteIndex = board.indexOfCharacter("W")
+        let blackIndex = board.indexOfCharacter("B")
+        
+        let movement = PieceMovementKing()
+        XCTAssertTrue(movement.canPieceMove(fromLocation: BoardLocation(index: whiteIndex), toLocation: BoardLocation(index: blackIndex), board: board.board))
+    }
+    
+    func testKingMovementCannotTakeKing() {
+        
+        let board = ASCIIBoard(pieces:  "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - g - - -" +
+                                        "- - - G - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" )
+        
+        let pieceIndex = board.indexOfCharacter("G")
+        let kingIndex = board.indexOfCharacter("g")
+        
+        let movement = PieceMovementKing()
+        XCTAssertFalse(movement.canPieceMove(fromLocation: BoardLocation(index: pieceIndex), toLocation: BoardLocation(index: kingIndex), board: board.board))
+    }
+
     
     // MARK: - Pawn Movement
     
@@ -978,8 +1128,24 @@ class PieceMovementTests: XCTestCase {
         XCTAssert(canMakeMove(board: board, from: "p", to: "P", movement: PieceMovementPawn()))
         
     }
-
-
+    
+    func testPawnMovementCannotTakeKing() {
+        
+        let board = ASCIIBoard(pieces:  "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - g - - -" +
+                                        "- - - P - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" )
+        
+        let pieceIndex = board.indexOfCharacter("P")
+        let kingIndex = board.indexOfCharacter("g")
+        
+        let movement = PieceMovementPawn()
+        XCTAssertFalse(movement.canPieceMove(fromLocation: BoardLocation(index: pieceIndex), toLocation: BoardLocation(index: kingIndex), board: board.board))
+    }
     
     // MARK: - Queen movement
     
@@ -1071,7 +1237,42 @@ class PieceMovementTests: XCTestCase {
                   "Expected piece could not move to its current position")
         
     }
-
+    
+    func testQueenMovementCanTakeOpponent() {
+        
+        let board = ASCIIBoard(colors:  "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "W - - - B - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" )
+        
+        let whiteIndex = board.indexOfCharacter("W")
+        let blackIndex = board.indexOfCharacter("B")
+        
+        let movement = PieceMovementQueen()
+        XCTAssertTrue(movement.canPieceMove(fromLocation: BoardLocation(index: whiteIndex), toLocation: BoardLocation(index: blackIndex), board: board.board))
+    }
+    
+    func testQueenMovementCannotTakeKing() {
+        
+        let board = ASCIIBoard(pieces:  "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "Q - - - g - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" )
+        
+        let pieceIndex = board.indexOfCharacter("Q")
+        let kingIndex = board.indexOfCharacter("g")
+        
+        let movement = PieceMovementQueen()
+        XCTAssertFalse(movement.canPieceMove(fromLocation: BoardLocation(index: pieceIndex), toLocation: BoardLocation(index: kingIndex), board: board.board))
+    }
     
     // MARK: - Rook Movement
     
@@ -1163,6 +1364,43 @@ class PieceMovementTests: XCTestCase {
                   "Expected piece could not move to its current position")
         
     }
+    
+    func testRookMovementCanTakeOpponent() {
+        
+        let board = ASCIIBoard(colors:  "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "W - - - B - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" )
+        
+        let whiteIndex = board.indexOfCharacter("W")
+        let blackIndex = board.indexOfCharacter("B")
+        
+        let movement = PieceMovementRook()
+        XCTAssertTrue(movement.canPieceMove(fromLocation: BoardLocation(index: whiteIndex), toLocation: BoardLocation(index: blackIndex), board: board.board))
+    }
+    
+    func testRookMovementCannotTakeKing() {
+        
+        let board = ASCIIBoard(pieces:  "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "R - - - g - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" )
+        
+        let pieceIndex = board.indexOfCharacter("R")
+        let kingIndex = board.indexOfCharacter("g")
+        
+        let movement = PieceMovementRook()
+        XCTAssertFalse(movement.canPieceMove(fromLocation: BoardLocation(index: pieceIndex), toLocation: BoardLocation(index: kingIndex), board: board.board))
+    }
+
 
     
     // MARK: - Bishop movement
@@ -1255,6 +1493,43 @@ class PieceMovementTests: XCTestCase {
                   "Expected piece could not move to its current position")
         
     }
+    
+    func testBishopMovementCanTakeOpponent() {
+        
+        let board = ASCIIBoard(colors:  "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - B - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- W - - - - - -" )
+        
+        let whiteIndex = board.indexOfCharacter("W")
+        let blackIndex = board.indexOfCharacter("B")
+        
+        let movement = PieceMovementBishop()
+        XCTAssertTrue(movement.canPieceMove(fromLocation: BoardLocation(index: whiteIndex), toLocation: BoardLocation(index: blackIndex), board: board.board))
+    }
+    
+    func testBishopMovementCannotTakeKing() {
+        
+        let board = ASCIIBoard(pieces:  "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - g - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- B - - - - - -" )
+        
+        let pieceIndex = board.indexOfCharacter("B")
+        let kingIndex = board.indexOfCharacter("g")
+        
+        let movement = PieceMovementBishop()
+        XCTAssertFalse(movement.canPieceMove(fromLocation: BoardLocation(index: pieceIndex), toLocation: BoardLocation(index: kingIndex), board: board.board))
+    }
+
 
 
 }

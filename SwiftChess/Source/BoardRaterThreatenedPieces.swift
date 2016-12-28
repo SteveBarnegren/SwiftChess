@@ -132,11 +132,5 @@ struct BoardRaterThreatenedPieces : BoardRater {
         
         return pieces
     }
-
-    
-    
-    
-    
-    
     
 }

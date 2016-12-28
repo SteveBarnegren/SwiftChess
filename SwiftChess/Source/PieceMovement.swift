@@ -40,6 +40,13 @@ open class PieceMovement {
     
     func canPieceMove(fromLocation: BoardLocation, toLocation: BoardLocation, board: Board, stride: BoardStride) -> Bool {
         
+        // Make sure cannot take king
+        if let piece = board.getPiece(at: toLocation) {
+            if piece.type == .king {
+                return false
+            }
+        }
+        
         // Get the moving piece
         var movingPiece = board.getPiece(at: fromLocation)
         
@@ -151,7 +158,6 @@ open class PieceMovementDiagonal: PieceMovement {
     
     override open func canPieceMove(fromLocation: BoardLocation, toLocation: BoardLocation, board: Board) -> Bool {
         
-        
         let strides = [
             BoardStride(x: 1, y: -1 ), // South East
             BoardStride(x: -1, y: -1 ), // South West
@@ -227,6 +233,13 @@ open class PieceMovementKnight: PieceMovement {
     
     override open func canPieceMove(fromLocation: BoardLocation, toLocation: BoardLocation, board: Board) -> Bool {
         
+        // Make sure cannot take king
+        if let piece = board.getPiece(at: toLocation) {
+            if piece.type == .king {
+                return false
+            }
+        }
+        
         let offsets: [(x: Int, y: Int)] = [
             (1,2),
             (2,1),
@@ -257,6 +270,13 @@ open class PieceMovementKnight: PieceMovement {
 open class PieceMovementPawn: PieceMovement {
     
     override open func canPieceMove(fromLocation: BoardLocation, toLocation: BoardLocation, board: Board) -> Bool {
+        
+        // Make sure cannot take king
+        if let piece = board.getPiece(at: toLocation) {
+            if piece.type == .king {
+                return false
+            }
+        }
         
         // Get the moving piece
         guard let movingPiece = board.getPiece(at: fromLocation) else{
@@ -349,6 +369,12 @@ open class PieceMovementKing: PieceMovement {
     
     override open func canPieceMove(fromLocation: BoardLocation, toLocation: BoardLocation, board: Board) -> Bool {
         
+        // Make sure cannot take king
+        if let piece = board.getPiece(at: toLocation) {
+            if piece.type == .king {
+                return false
+            }
+        }
         
         let offsets: [(x: Int, y: Int)] = [
             (0,1), // North
