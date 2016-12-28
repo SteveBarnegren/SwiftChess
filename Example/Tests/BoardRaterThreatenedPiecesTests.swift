@@ -87,7 +87,8 @@ class BoardRaterThreatenedPiecesTests: XCTestCase {
         let queenIndex = queenBoard.indexOfCharacter("Q")
         let queenLocation = BoardLocation(index: queenIndex)
         let queenRating = boardRater.threatRatingForPiece(at: queenLocation,
-                                                          board: queenBoard.board)
+                                                          board: queenBoard.board,
+                                                          color: .white)
         
         
         
@@ -103,7 +104,9 @@ class BoardRaterThreatenedPiecesTests: XCTestCase {
         let knightIndex = knightBoard.indexOfCharacter("K")
         let knightLocation = BoardLocation(index: knightIndex)
         let knightRating = boardRater.threatRatingForPiece(at: knightLocation,
-                                                           board: knightBoard.board)
+                                                           board: knightBoard.board,
+                                                           color: .white)
+        
         
         XCTAssert(queenRating > knightRating);
     }
@@ -154,8 +157,8 @@ class BoardRaterThreatenedPiecesTests: XCTestCase {
         
         let rookLocation = BoardLocation(index: goodTradeBoard.indexOfCharacter("R"))
         
-        let goodTradeRating = boardRater.threatRatingForPiece(at: rookLocation, board: goodTradeBoard.board)
-        let badTradeRating = boardRater.threatRatingForPiece(at: rookLocation, board: badTradeBoard.board)
+        let goodTradeRating = boardRater.threatRatingForPiece(at: rookLocation, board: goodTradeBoard.board, color: .white)
+        let badTradeRating = boardRater.threatRatingForPiece(at: rookLocation, board: badTradeBoard.board, color: .white)
         
         XCTAssert(goodTradeRating < badTradeRating);
     }

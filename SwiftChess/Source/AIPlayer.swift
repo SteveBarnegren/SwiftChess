@@ -17,11 +17,11 @@ open class AIPlayer : Player {
         
         self.boardRaters = [
             BoardRaterCountPieces(),
-            //BoardRaterCenterOwnership(),
-            //BoardRaterBoardDominance(),
-            //BoardRaterCenterDominance(),
+            BoardRaterCenterOwnership(),
+            BoardRaterBoardDominance(),
+            BoardRaterCenterDominance(),
             BoardRaterThreatenedPieces(),
-            //BoardRaterPawnProgression(),
+            BoardRaterPawnProgression(),
         ]
         
         super.init()

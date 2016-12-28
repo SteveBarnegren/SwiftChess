@@ -64,7 +64,7 @@ struct BoardRaterThreatenedPieces : BoardRater {
             let pieceIsProtected = (isBeingProtected && piece.value() < threateningPiece.value())
             
             if !pieceIsProtected {
-                rating += piece.color == color ? piece.value() * 5 : piece.value()
+                rating += piece.color == color ? piece.value() * ownPiecesMultipler : piece.value()
             }
         }
         
