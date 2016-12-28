@@ -288,7 +288,6 @@ open class PieceMovementPawn: PieceMovement {
         // ****** Test forward locations ******
         var forwardStrides = [BoardStride]()
         
-        
         // Test one ahead offset
         let oneAheadStride = (color == .white ? BoardStride(x: 0, y: 1) : BoardStride(x: 0, y: -1))
         
@@ -316,11 +315,17 @@ open class PieceMovementPawn: PieceMovement {
             twoAheadStride = BoardStride(x: 0, y: -2)
         }
         
-        if let twoAheadStride = twoAheadStride {
+        TWO_AHEAD: if let twoAheadStride = twoAheadStride {
             
             let twoAheadLocation = fromLocation.incrementedBy(stride: twoAheadStride)
 
-            if canPieceMove(fromLocation: fromLocation, toLocation: twoAheadLocation, board: board, stride: oneAheadStride) {
+            if toLocation != twoAheadLocation {
+                break TWO_AHEAD
+            }
+            
+            let oneAheadLocation = fromLocation.incrementedBy(stride: oneAheadStride)
+            
+            if board.getPiece(at: oneAheadLocation) == nil && board.getPiece(at: twoAheadLocation) == nil {
                 return true
             }
         }

@@ -293,13 +293,17 @@ public struct Board {
         let kingLocation = getKingLocation(color: color)
         let oppositionLocations = getLocationsOfColor( color.opposite() )
         
+        // Pieces will not move to take the king, so remove it
+        var noKingBoard = self
+        noKingBoard.squares[kingLocation.index].piece = nil
+        
         for location in oppositionLocations {
             
             guard let piece = getPiece(at: location) else {
                 continue
             }
 
-            if piece.movement.canPieceMove(fromLocation: location, toLocation: kingLocation, board: self) {
+            if piece.movement.canPieceMove(fromLocation: location, toLocation: kingLocation, board: noKingBoard) {
                 return true
             }
         }
