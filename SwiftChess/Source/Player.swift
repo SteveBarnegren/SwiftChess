@@ -70,6 +70,12 @@ open class Player {
         
         var board = self.game.board
         board.movePiece(fromLocation: fromLocation, toLocation: toLocation)
+        
+        
+        
+        
+        
+        
         let inCheckAfterMove = board.isColorInCheck(color: self.color)
         
         if inCheckBeforeMove && inCheckAfterMove {

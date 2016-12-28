@@ -286,6 +286,28 @@ public struct Board {
         
     }
     
+    public func getLocationsOfPromotablePawns(color: Color) -> [BoardLocation] {
+        
+        var promotablePawnLocations = [BoardLocation]()
+        
+        let y: Int = (color == .white ? 7 : 0)
+        
+        for x in 0...7 {
+        
+            let location = BoardLocation(x: x, y: y)
+            
+            guard let piece = self.getPiece(at: location) else {
+                continue
+            }
+            
+            if piece.color == color && piece.type == .pawn {
+                promotablePawnLocations.append(location)
+            }
+        }
+        
+        return promotablePawnLocations
+    }
+    
     // MARK: - Check / Check mate state
     
     public func isColorInCheck(color: Color) -> Bool {

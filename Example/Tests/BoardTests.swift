@@ -356,6 +356,140 @@ class BoardTests: XCTestCase {
         
         XCTAssert(board.isColorInCheckMate(color: .white) == false, "Expected white to not be in stale mate")
     }
+    
+    // Get Promotable pawns
+    
+    func testGetWhitePromotablePawnsReturnsLastAllWhiteFinalRowPawns() {
+        
+        let board = ASCIIBoard(pieces:  "P P P P P P P P" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" )
+
+        let promotable = board.board.getLocationsOfPromotablePawns(color: .white)
+        
+        XCTAssert(promotable.count == 8)
+    }
+    
+    func testGetWhitePromotablePawnsReturnsDoesntReturnWhiteNonPawns() {
+        
+        let board = ASCIIBoard(pieces:  "B K G R R R Q B" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" )
+        
+        let promotable = board.board.getLocationsOfPromotablePawns(color: .white)
+        
+        XCTAssert(promotable.count == 0)
+    }
+    
+    func testGetWhitePromotablePawnsDoesntReturnBlackPawns() {
+        
+        let board = ASCIIBoard(pieces:  "p p p p p p p p" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" )
+        
+        let promotable = board.board.getLocationsOfPromotablePawns(color: .white)
+        
+        XCTAssert(promotable.count == 0)
+    }
+    
+    func testGetWhitePromotablePawnsDoesntReturnNonPromotableWhitePawns() {
+        
+        let board = ASCIIBoard(pieces:  "- - - - - - - -" +
+                                        "P - - - - P - -" +
+                                        "- - - P - - - -" +
+                                        "- - - - - P - -" +
+                                        "- - - - - - - -" +
+                                        "- - - P - - - -" +
+                                        "- - - - - - - P" +
+                                        "- - - - - - - -" )
+        
+        let promotable = board.board.getLocationsOfPromotablePawns(color: .white)
+        
+        XCTAssert(promotable.count == 0)
+    }
+    
+    func testGetBlackPromotablePawnsReturnsLastAllBlackFinalRowPawns() {
+        
+        let board = ASCIIBoard(pieces:  "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "p p p p p p p p" )
+        
+        let promotable = board.board.getLocationsOfPromotablePawns(color: .black)
+        
+        XCTAssert(promotable.count == 8)
+    }
+    
+    func testGetBlackPromotablePawnsReturnsDoesntReturnBlackNonPawns() {
+        
+        let board = ASCIIBoard(pieces:  "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "b k g r r r q b" )
+        
+        let promotable = board.board.getLocationsOfPromotablePawns(color: .black)
+        
+        XCTAssert(promotable.count == 0)
+    }
+    
+    func testGetBlackPromotablePawnsDoesntReturnWhitePawns() {
+        
+        let board = ASCIIBoard(pieces:  "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "P P P P P P P P" )
+        
+        let promotable = board.board.getLocationsOfPromotablePawns(color: .black)
+        
+        XCTAssert(promotable.count == 0)
+    }
+    
+    func testGetBlackPromotablePawnsDoesntReturnNonPromotableBlackPawns() {
+        
+        let board = ASCIIBoard(pieces:  "- - - - - - - -" +
+                                        "p - - - - p - -" +
+                                        "- - - p - - - -" +
+                                        "- - - - - p - -" +
+                                        "- - - - - - - -" +
+                                        "- - - p - - - -" +
+                                        "- - - - - - - p" +
+                                        "- - - - - - - -" )
+        
+        let promotable = board.board.getLocationsOfPromotablePawns(color: .black)
+        
+        XCTAssert(promotable.count == 0)
+    }
+
+
+
+
 
 
 }
