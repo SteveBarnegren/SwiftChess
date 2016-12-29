@@ -65,9 +65,28 @@ open class AIPlayer : Player {
                 
                 // Rate
                 let rating = ratingForBoard(resultBoard)
-                let move = Move(sourceLocation: sourceLocation, targetLocation: targetLocation, rating: rating)
+                let move = Move(type: .singlePiece(sourceLocation: sourceLocation, targetLocation: targetLocation),
+                                rating: rating)
                 possibleMoves.append(move)
             }
+        }
+        
+        // Add castling moves
+        let castleSides: [CastleSide] = [.kingSide, .queenSide]
+        for side in castleSides {
+            
+            guard game.board.canColorCastle(color: color, side: side) else {
+                continue
+            }
+           
+            // Perform the castling move
+            var resultBoard = board
+            resultBoard.performCastle(color: color, side: side)
+            
+            // Rate
+            let rating = ratingForBoard(resultBoard)
+            let move = Move(type: .castle(color: color, side: side), rating: rating)
+            possibleMoves.append(move)
         }
         
         print("Found \(possibleMoves.count) possible moves")
@@ -94,7 +113,14 @@ open class AIPlayer : Player {
         print("HIGHEST MOVE RATING: \(highestRating)")
         
         // Make move
-        var operations = game.board.movePiece(fromLocation: highestRatedMove.sourceLocation, toLocation: highestRatedMove.targetLocation)
+        var operations = [BoardOperation]()
+        
+        switch highestRatedMove.type {
+        case .singlePiece(let sourceLocation, let targetLocation):
+            operations = game.board.movePiece(fromLocation: sourceLocation, toLocation: targetLocation)
+        case .castle(let color, let side):
+            operations = game.board.performCastle(color: color, side: side)
+        }
         
         // Promote pawns
         let pawnsToPromoteLocations = game.board.getLocationsOfPromotablePawns(color: color)
@@ -172,8 +198,13 @@ open class AIPlayer : Player {
 }
 
 struct Move {
-    let sourceLocation: BoardLocation
-    let targetLocation: BoardLocation
+    
+    enum MoveType {
+        case singlePiece(sourceLocation: BoardLocation, targetLocation: BoardLocation)
+        case castle(color: Color, side: CastleSide)
+    }
+    
+    let type: MoveType
     let rating: Double
 }
 
