@@ -217,6 +217,13 @@ public struct Board {
         squares[toLocation.index].piece = self.squares[fromLocation.index].piece
         squares[toLocation.index].piece?.hasMoved = true
         squares[fromLocation.index].piece = nil
+    
+        //!!! Check to see if the piece moved was a white rook
+        if squares[toLocation.index].piece?.type == .rook && squares[toLocation.index].piece?.color == .white {
+            print("Moving the rook")
+        }
+        /////////////////////////////////////
+        
         
         return operations
     }
@@ -498,7 +505,7 @@ public struct Board {
         }
         
         // Check that there are no pieces between the king and the rook
-        for xPos in castleMove.kingStartXPos..<castleMove.rookStartXPos {
+        for xPos in min(castleMove.kingStartXPos, castleMove.rookStartXPos)..<max(castleMove.kingStartXPos, castleMove.rookStartXPos) {
             
             if xPos == castleMove.kingStartXPos || xPos == castleMove.rookStartXPos {
                 continue

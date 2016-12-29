@@ -12,6 +12,11 @@ import SwiftChess
 class GameViewController: UIViewController {
     
     @IBOutlet weak var boardView: BoardView!
+    @IBOutlet weak var whiteKingSideCastleButton: UIButton!
+    @IBOutlet weak var whiteQueenSideCastleButton: UIButton!
+    @IBOutlet weak var blackKingSideCastleButton: UIButton!
+    @IBOutlet weak var blackQueenSideCastleButton: UIButton!
+
     var pieceViews = [PieceView]()
     var game: Game!
     var selectedIndex: Int? {
@@ -54,6 +59,9 @@ class GameViewController: UIViewController {
             
             addPieceView(at: location.x, y: location.y, piece: piece)
         }
+        
+        // Update castle buttons visibility
+        updateCastleButtonsVisibility()
         
     }
     
@@ -159,6 +167,50 @@ class GameViewController: UIViewController {
         alertController.addAction(cancelAction)
         
         present(alertController, animated: true, completion: nil)
+    }
+    
+    // MARK: - Castle buttons visibility
+    
+    func updateCastleButtonsVisibility() {
+        
+        let player = game.currentPlayer
+        
+        var isHuman = true
+        if let _ = player as? AIPlayer {
+            isHuman = false
+        }
+        
+        // White king side button
+        if isHuman && player?.color == .white && game.board.canColorCastle(color: .white, side: .kingSide){
+            whiteKingSideCastleButton.isHidden = false
+        }
+        else{
+            whiteKingSideCastleButton.isHidden = true
+        }
+        
+        // White queen side button
+        if isHuman && player?.color == .white && game.board.canColorCastle(color: .white, side: .queenSide){
+            whiteQueenSideCastleButton.isHidden = false
+        }
+        else{
+            whiteQueenSideCastleButton.isHidden = true
+        }
+        
+        // Black king side button
+        if isHuman && player?.color == .black && game.board.canColorCastle(color: .black, side: .kingSide){
+            blackKingSideCastleButton.isHidden = false
+        }
+        else{
+            blackKingSideCastleButton.isHidden = true
+        }
+        
+        // Black queen side button
+        if isHuman && player?.color == .black && game.board.canColorCastle(color: .black, side: .queenSide){
+            blackQueenSideCastleButton.isHidden = false
+        }
+        else{
+            blackQueenSideCastleButton.isHidden = true
+        }
     }
     
 }
@@ -301,6 +353,9 @@ extension GameViewController: GameDelegate {
         if let _ = game.currentPlayer as? AIPlayer {
             perform(#selector(tellAIToTakeGo), with: nil, afterDelay: 1)
         }
+        
+        // Update castle buttons visibility
+        updateCastleButtonsVisibility()
     }
     
     func tellAIToTakeGo() {
