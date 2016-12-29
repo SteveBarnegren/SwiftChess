@@ -863,15 +863,124 @@ class BoardTests: XCTestCase {
         XCTAssertFalse(areAnyPiecesHasMovedFlagsSet(on: board))
     }
     
+    // MARK: - Test canColorMoveAnyPieceToLocation method
     
+    func testCanColorMoveAnyPieceToLocationReturnsYesIfCanMakeMove() {
+        
+        let board = ASCIIBoard(pieces:  "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "R - - - - - - *" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" )
+        
+        let targetLocation = board.locationOfCharacter("*")
+        XCTAssertTrue(board.board.canColorMoveAnyPieceToLocation(color: .white, location: targetLocation))
+    }
     
+    func testCanColorMoveAnyPieceToLocationReturnsFalseIfCannotMakeMove() {
+        
+        let board = ASCIIBoard(pieces:  "B - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "R - - - - - - -" +
+                                        "- - - - - - - *" +
+                                        "R - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - Q - - - -" )
+        
+        let targetLocation = board.locationOfCharacter("*")
+        XCTAssertFalse(board.board.canColorMoveAnyPieceToLocation(color: .white, location: targetLocation))
+    }
     
+    func testCanColorMoveAnyPieceToLocationReturnsFalseIfCannotMakeMoveButOpponentCan() {
+        
+        let board = ASCIIBoard(pieces:  "B - - - - - - q" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "R - - - - - - -" +
+                                        "- - - - - - - *" +
+                                        "R - - - - - - -" +
+                                        "- - - - - - k -" +
+                                        "- - - Q - - - r" )
+        
+        let targetLocation = board.locationOfCharacter("*")
+        XCTAssertFalse(board.board.canColorMoveAnyPieceToLocation(color: .white, location: targetLocation))
+    }
     
-
-
-
-
-
-
+    // MARK: - Test doesColorOccupyLocation method
     
+    func testDoesColorOccupyLocationReturnsTrueForWhiteOccupation() {
+        
+        let board = ASCIIBoard(pieces:  "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - Q - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" )
+        
+        let location = board.locationOfCharacter("Q")
+        XCTAssertTrue(board.board.doesColorOccupyLocation(color: .white, location: location))
+    }
+    
+    func testDoesColorOccupyLocationReturnsTrueForBlackOccupation() {
+        
+        let board = ASCIIBoard(pieces:  "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - q - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" )
+        
+        let location = board.locationOfCharacter("q")
+        XCTAssertTrue(board.board.doesColorOccupyLocation(color: .black, location: location))
+    }
+    
+    func testDoesColorOccupyLocationReturnsFalseForWhiteOpponentOccupation() {
+        
+        let board = ASCIIBoard(pieces:  "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - q - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" )
+        
+        let location = board.locationOfCharacter("q")
+        XCTAssertFalse(board.board.doesColorOccupyLocation(color: .white, location: location))
+    }
+    
+    func testDoesColorOccupyLocationReturnsFalseForBlackOpponentOccupation() {
+        
+        let board = ASCIIBoard(pieces:  "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - Q - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" )
+        
+        let location = board.locationOfCharacter("Q")
+        XCTAssertFalse(board.board.doesColorOccupyLocation(color: .black, location: location))
+    }
+    
+    func testDoesColorOccupyLocationReturnsFalseForNonOccupation() {
+        
+        let board = Board(state: .empty)
+        
+        let location = BoardLocation(x: 4, y: 4)
+        XCTAssertFalse(board.doesColorOccupyLocation(color: .white, location: location))
+        XCTAssertFalse(board.doesColorOccupyLocation(color: .black, location: location))
+    }
+
+
+ 
 }

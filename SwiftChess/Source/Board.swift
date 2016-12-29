@@ -413,6 +413,37 @@ public struct Board {
         return false
     }
     
+    // MARK: - Possession
+    
+    func canColorMoveAnyPieceToLocation(color: Color, location: BoardLocation) -> Bool {
+        
+        for (index, square) in squares.enumerated() {
+            
+            guard let piece = square.piece else {
+                continue
+            }
+
+            if piece.color != color {
+                continue
+            }
+            
+            if piece.movement.canPieceMove(fromLocation: BoardLocation(index: index), toLocation: location, board: self) {
+                return true
+            }
+        }
+ 
+        return false
+    }
+    
+    func doesColorOccupyLocation(color: Color, location: BoardLocation) -> Bool {
+        
+        guard let piece = getPiece(at: location) else {
+            return false
+        }
+
+        return (piece.color == color ? true : false)
+    }
+    
     // MARK: - Castling
     
     struct CastleMove{

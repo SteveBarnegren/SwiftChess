@@ -130,6 +130,12 @@ public struct ASCIIBoard {
         return index!
     }
     
+    public func locationOfCharacter(_ character: Character) -> BoardLocation {
+        
+        let index = indexOfCharacter(character)
+        return BoardLocation(index: index)
+    }
+    
     public func indexesWithCharacter(_ character: Character) -> [Int]{
         
         var indexes = [Int]()
@@ -145,5 +151,19 @@ public struct ASCIIBoard {
         return indexes
     }
 
+    public func locationsWithCharacter(_ character: Character) -> [BoardLocation] {
+        
+        let indexes = indexesWithCharacter(character)
+        
+        var locations = [BoardLocation]()
+        
+        for index in indexes {
+            
+            let location = BoardLocation(index: index)
+            locations.append(location)
+        }
+        
+        return locations
+    }
 
 }

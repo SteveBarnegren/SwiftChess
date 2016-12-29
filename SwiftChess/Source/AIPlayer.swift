@@ -22,6 +22,7 @@ open class AIPlayer : Player {
             BoardRaterCenterDominance(),
             BoardRaterThreatenedPieces(),
             BoardRaterPawnProgression(),
+            BoardRaterKingSurroundingPossession()
         ]
         
         super.init()
