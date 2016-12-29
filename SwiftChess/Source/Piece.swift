@@ -42,6 +42,7 @@ open class Piece {
     open let type: PieceType
     open let color: Color
     open var tag: Int!
+    public var hasMoved = false
     
     lazy var movement : PieceMovement = PieceMovement.pieceMovementForPieceType(pieceType: self.type)
 

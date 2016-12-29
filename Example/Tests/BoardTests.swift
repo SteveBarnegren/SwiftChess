@@ -137,6 +137,47 @@ class BoardTests: XCTestCase {
 
     }
     
+    func testPieceHasMovedPropertyIsFalseForNewBoard() {
+        
+        let board = Board(state: .newGame)
+        
+        let whitePieces = board.getPieces(color: .white)
+        let blackPieces = board.getPieces(color: .black)
+        let allPieces = whitePieces + blackPieces
+        
+        for piece in allPieces {
+            XCTAssertFalse(piece.hasMoved)
+        }
+    }
+    
+    func testMovePieceChangesPieceHasMovedProperty() {
+        
+        
+        let board = ASCIIBoard(colors:  "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "W - - - - - - -" +
+                                        "- - - - - - - -" )
+        
+        let fromLocation = BoardLocation(index: board.indexOfCharacter("W") )
+        let toLocation = BoardLocation(x: 4, y: 4)
+        
+        var gameBoard = board.board
+        
+        gameBoard.movePiece(fromLocation: fromLocation, toLocation: toLocation)
+        
+        guard let piece = gameBoard.getPiece(at: toLocation) else{
+            XCTFail("Couldn't find piece at new position")
+            return
+        }
+        
+        XCTAssertTrue(piece.hasMoved, "Expected piece hasMoved property to be true")
+
+    }
+    
     func testGetPiecesReturnsCorrectPieces() {
         
         let board = ASCIIBoard(pieces:  "- - - - - - - -" +

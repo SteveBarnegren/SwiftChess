@@ -191,7 +191,7 @@ public struct Board {
         return squares[location.index].piece
     }
     
-    internal mutating func movePiece(fromLocation: BoardLocation, toLocation: BoardLocation) -> [BoardOperation] {
+    @discardableResult internal mutating func movePiece(fromLocation: BoardLocation, toLocation: BoardLocation) -> [BoardOperation] {
     
         var operations = [BoardOperation]()
         
@@ -206,6 +206,7 @@ public struct Board {
         }
         
         squares[toLocation.index].piece = self.squares[fromLocation.index].piece
+        squares[toLocation.index].piece?.hasMoved = true
         squares[fromLocation.index].piece = nil
         
         return operations
