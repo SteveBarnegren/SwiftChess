@@ -75,7 +75,7 @@ struct BoardRaterThreatenedPieces : BoardRater {
     
     func protectingPiecesLocationsforPiece(at location: BoardLocation, on board: Board) -> [BoardLocation] {
         
-        var board = board
+        var newBoard = board
         
         guard let protectedPiece = board.getPiece(at: location) else {
             fatalError("Expected board location to contain piece")
@@ -83,13 +83,13 @@ struct BoardRaterThreatenedPieces : BoardRater {
         
         // Change the piece color to be opposite, to simulate if the piece was taken
         let oppositeColorPiece = Piece(type: protectedPiece.type, color: protectedPiece.color.opposite())
-        board.setPiece(oppositeColorPiece, at: location)
+        newBoard.setPiece(oppositeColorPiece, at: location)
         
         var pieces = [BoardLocation]()
         
         for sourceLocation in BoardLocation.all {
             
-            guard let protectingPiece = board.getPiece(at: sourceLocation) else{
+            guard let protectingPiece = newBoard.getPiece(at: sourceLocation) else{
                 continue
             }
             
@@ -97,7 +97,7 @@ struct BoardRaterThreatenedPieces : BoardRater {
                 continue
             }
             
-            if protectingPiece.movement.canPieceMove(fromLocation: sourceLocation, toLocation: location, board: board) {
+            if protectingPiece.movement.canPieceMove(fromLocation: sourceLocation, toLocation: location, board: newBoard) {
                 pieces.append(sourceLocation)
             }
         }

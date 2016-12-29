@@ -23,7 +23,7 @@ public struct BoardRaterCountPieces : BoardRater {
             rating += piece.color == color ? piece.value() : -piece.value()
         }
         
-        return rating * 2
+        return rating * 3
     }
     
 }
