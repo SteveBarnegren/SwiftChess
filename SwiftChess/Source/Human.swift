@@ -66,6 +66,22 @@ open class Human : Player {
         
     }
     
+    public func performCastleMove(side: CastleSide) {
+
+        // Check that we're the current player
+        guard game.currentPlayer === self else {
+            return
+        }
+        
+        // Check that the castling move can be performed
+        if game.board.canColorCastle(color: color, side: side) == false {
+            return
+        }
+        
+        // Make the move
+    
+    }
+    
    
 }
 

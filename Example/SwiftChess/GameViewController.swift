@@ -213,6 +213,34 @@ class GameViewController: UIViewController {
         }
     }
     
+    // MARK: - Actions
+    
+    @IBAction func whiteKingSideCastleButtonPressed(sender: UIButton) {
+        print("White king side castle button pressed");
+        
+        
+    }
+    
+    @IBAction func whiteQueenSideCastleButtonPressed(sender: UIButton) {
+        print("White queen side castle button pressed");
+        
+        
+    }
+    
+    @IBAction func blackKingSideCastleButtonPressed(sender: UIButton) {
+        print("Black king side castle button pressed");
+        
+        
+        
+        
+        
+    }
+    
+    @IBAction func blackQueenSideCastleButtonPressed(sender: UIButton) {
+        print("Black queen side castle button pressed");
+        
+        
+    }
 }
 
 // MARK: - Board view delegate

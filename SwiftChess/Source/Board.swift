@@ -218,13 +218,6 @@ public struct Board {
         squares[toLocation.index].piece?.hasMoved = true
         squares[fromLocation.index].piece = nil
     
-        //!!! Check to see if the piece moved was a white rook
-        if squares[toLocation.index].piece?.type == .rook && squares[toLocation.index].piece?.color == .white {
-            print("Moving the rook")
-        }
-        /////////////////////////////////////
-        
-        
         return operations
     }
     
@@ -420,7 +413,7 @@ public struct Board {
         return false
     }
     
-    // MARK: - Check ability to castle
+    // MARK: - Castling
     
     struct CastleMove{
         let yPos: Int
@@ -464,8 +457,8 @@ public struct Board {
                 yPos = 7
                 kingStartXPos = 3
                 rookStartXPos = 0
-                kingEndXPos = 2
-                rookEndXPos = 3
+                kingEndXPos = 1
+                rookEndXPos = 2
             case (.black, .queenSide):
                 yPos = 7
                 kingStartXPos = 3
@@ -540,6 +533,18 @@ public struct Board {
         }
         
         return true
+    }
+    
+    @discardableResult internal mutating func performCastle(color: Color, side: CastleSide) -> [BoardOperation] {
+        
+        assert(canColorCastle(color: color, side: side) == true, "\(color) is unable to castle on side \(side). Call canColorCastle(color: side:) first")
+        
+        let castleMove = CastleMove(color: color, side: side)
+    
+        let moveKingOperations = self.movePiece(fromLocation: castleMove.kingStartLocation, toLocation: castleMove.kingEndLocation)
+        let moveRookOperations = self.movePiece(fromLocation: castleMove.rookStartLocation, toLocation: castleMove.rookEndLocation)
+        
+        return moveKingOperations + moveRookOperations
     }
     
     // MARK: - Print

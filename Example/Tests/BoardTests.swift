@@ -528,7 +528,7 @@ class BoardTests: XCTestCase {
         XCTAssert(promotable.count == 0)
     }
     
-    // MARK: - Castling
+    // MARK: - Can Castle? Logic
     
     func assertKingAndRookStartLocationsAndColor(kingLocation: BoardLocation, rookLocation: BoardLocation, color: Color) {
         
@@ -732,6 +732,55 @@ class BoardTests: XCTestCase {
                                         "- - - - G - - R" )
         
         XCTAssertTrue(board.board.canColorCastle(color: .white, side: .kingSide))
+    }
+    
+    // MARK: - Perform Castle
+    
+    func createPerformCastleBoard() -> Board {
+        
+        let board = ASCIIBoard(pieces:  "r - - g - - - r" +
+                                        "p p p p p p p p" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "P P P P P P P P" +
+                                        "R - - - G - - R" )
+
+        
+        return board.board
+    }
+    
+    func testWhiteKingSideCastleUpdatesPiecePositions() {
+        
+        var board = createPerformCastleBoard()
+        board.performCastle(color: .white, side: .kingSide)
+        XCTAssert(board.getPiece(at: BoardLocation(x: 6, y: 0))?.type == .king)
+        XCTAssert(board.getPiece(at: BoardLocation(x: 5, y: 0))?.type == .rook)
+    }
+    
+    func testWhiteQueenSideCastleUpdatesPiecePositions() {
+        
+        var board = createPerformCastleBoard()
+        board.performCastle(color: .white, side: .queenSide)
+        XCTAssert(board.getPiece(at: BoardLocation(x: 2, y: 0))?.type == .king)
+        XCTAssert(board.getPiece(at: BoardLocation(x: 3, y: 0))?.type == .rook)
+    }
+    
+    func testBlackKingSideCastleUpdatesPiecePositions() {
+        
+        var board = createPerformCastleBoard()
+        board.performCastle(color: .black, side: .kingSide)
+        XCTAssert(board.getPiece(at: BoardLocation(x: 1, y: 7))?.type == .king)
+        XCTAssert(board.getPiece(at: BoardLocation(x: 2, y: 7))?.type == .rook)
+    }
+    
+    func testBlackQueenSideCastleUpdatesPiecePositions() {
+        
+        var board = createPerformCastleBoard()
+        board.performCastle(color: .black, side: .queenSide)
+        XCTAssert(board.getPiece(at: BoardLocation(x: 5, y: 7))?.type == .king)
+        XCTAssert(board.getPiece(at: BoardLocation(x: 4, y: 7))?.type == .rook)
     }
     
     // MARK: - Check hasMoved flag isn't accidentally set
