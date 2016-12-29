@@ -22,7 +22,7 @@ public enum Color {
     
 }
 
-open class Piece {
+public struct Piece {
     
     static private var lastAssignedTag = 0
     
@@ -39,12 +39,14 @@ open class Piece {
         }
     }
     
-    open let type: PieceType
-    open let color: Color
-    open var tag: Int!
+    public let type: PieceType
+    public let color: Color
+    public var tag: Int!
     public var hasMoved = false
     
-    lazy var movement : PieceMovement = PieceMovement.pieceMovementForPieceType(pieceType: self.type)
+    var movement : PieceMovement {
+        return PieceMovement.pieceMovementForPieceType(pieceType: self.type)
+    }
 
     public init(type: PieceType, color: Color){
         self.type = type
@@ -55,6 +57,12 @@ open class Piece {
         self.tag = Piece.lastAssignedTag
     }
     
+    public init(type: PieceType, color: Color, tag: Int){
+        self.type = type
+        self.color = color
+        self.tag = tag
+    }
+
     func value() -> Double {
         
         switch type {
@@ -69,8 +77,7 @@ open class Piece {
     
     func byChangingType(newType: PieceType) -> Piece {
         
-        let piece = Piece(type: newType, color: color)
-        piece.tag = tag
+        let piece = Piece(type: newType, color: color, tag: tag)
         return piece
     }
 }
