@@ -33,11 +33,15 @@ open class Piece {
         case bishop
         case queen
         case king
+        
+        static func possiblePawnPromotionResultingTypes() -> [PieceType] {
+            return [.queen, .knight, .rook, .bishop]
+        }
     }
     
     open let type: PieceType
     open let color: Color
-    open let tag: Int!
+    open var tag: Int!
     
     lazy var movement : PieceMovement = PieceMovement.pieceMovementForPieceType(pieceType: self.type)
 
@@ -60,6 +64,13 @@ open class Piece {
         case .queen: return 9
         case .king: return 0 // King is always treated as a unique case
         }
+    }
+    
+    func byChangingType(newType: PieceType) -> Piece {
+        
+        let piece = Piece(type: newType, color: color)
+        piece.tag = tag
+        return piece
     }
 }
 

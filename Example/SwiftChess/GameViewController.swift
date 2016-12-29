@@ -20,6 +20,8 @@ class GameViewController: UIViewController {
         }
     }
     
+    var promotionSelectionViewController: PromotionSelectionViewController?
+    
     var hasMadeInitialAppearance = false
     
     // MARK: - Creation
@@ -118,6 +120,7 @@ class GameViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         
+        // Layout pieces
         for pieceView in pieceViews {
             
             let gridX = pieceView.location.x
@@ -130,6 +133,16 @@ class GameViewController: UIViewController {
                                      y: CGFloat(gridY) * height,
                                      width: width,
                                      height: height)
+        }
+        
+        // Layout promotion selection view controller
+        if let promotionSelectionViewController = promotionSelectionViewController {
+            
+            let margin = CGFloat(40)
+            promotionSelectionViewController.view.frame = CGRect(x: margin,
+                                                                 y: margin,
+                                                                 width: view.bounds.size.width - (margin*2),
+                                                                 height: view.bounds.size.height - (margin*2))
         }
     }
     
@@ -252,8 +265,13 @@ extension GameViewController: GameDelegate {
         
     }
     
-    func gameDidTransformPiece(game: Game) {
-        // do nothing
+    func gameDidTransformPiece(game: Game, piece: Piece, location: BoardLocation) {
+        
+        guard let pieceView = pieceViewWithTag(piece.tag) else {
+            return
+        }
+        
+        pieceView.piece = piece
     }
     
     func gameDidEndUpdates(game: Game) {
@@ -292,8 +310,23 @@ extension GameViewController: GameDelegate {
         }
     }
     
-    
-    
+    func promotedTypeForPawn(location: BoardLocation, player: Human, possiblePromotions: [Piece.PieceType], callback: @escaping (Piece.PieceType) -> Void) {
+        
+        boardView.isUserInteractionEnabled = false
+        
+        let viewController = PromotionSelectionViewController.promotionSelectionViewController(pawnLocation: location, possibleTypes: possiblePromotions) {
+            
+            self.promotionSelectionViewController?.view.removeFromSuperview()
+            self.promotionSelectionViewController?.removeFromParentViewController()
+            self.boardView.isUserInteractionEnabled = true
+            callback($0)
+        }
+        
+        view.addSubview(viewController.view)
+        addChildViewController(viewController)
+        promotionSelectionViewController = viewController
+    }
+
 }
 
 

@@ -82,8 +82,7 @@ extension Game : PlayerDelegate {
             case .removePiece:
                 self.delegate?.gameDidRemovePiece(game: self, piece: boardOperation.piece, location: boardOperation.location)
             case .transformPiece:
-                fatalError()
-                //self.delegate?.gameDidMovePiece(game: self, piece: boardOperation.piece, toLocation: boardOperation.location)
+                self.delegate?.gameDidTransformPiece(game: self, piece: boardOperation.piece, location: boardOperation.location)
             }
             
         }
@@ -93,14 +92,20 @@ extension Game : PlayerDelegate {
 }
 
 public protocol GameDelegate: class {
+    
+    // State changes
     func gameDidChangeCurrentPlayer(game: Game)
     func gameWonByPlayer(game: Game, player: Player)
     func gameEndedInStaleMate(game: Game)
     
+    // Piece adding / removing / modifying
     func gameWillBeginUpdates(game: Game) // Updates will begin
     func gameDidAddPiece(game: Game) // A new piece was added to the board (do we actually need to include this functionality?)
     func gameDidRemovePiece(game: Game, piece: Piece, location: BoardLocation) // A piece was removed from the board
     func gameDidMovePiece(game: Game, piece: Piece, toLocation: BoardLocation) // A piece was moved on the board
-    func gameDidTransformPiece(game: Game) // A piece was transformed (eg. pawn was promoted to another piece)
+    func gameDidTransformPiece(game: Game, piece: Piece, location: BoardLocation) // A piece was transformed (eg. pawn was promoted to another piece)
     func gameDidEndUpdates(game: Game) // Updates will end
+    
+    // Callbacks from player
+    func promotedTypeForPawn(location: BoardLocation, player: Human, possiblePromotions: [Piece.PieceType], callback: @escaping (Piece.PieceType) -> Void )
 }

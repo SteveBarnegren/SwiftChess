@@ -21,6 +21,7 @@
 		67A9CA3A1DE64E0E00510FB8 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		67A9CA3C1DE64E2B00510FB8 /* SwiftChess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67A9CA0D1DE64D6500510FB8 /* SwiftChess.framework */; };
 		67A9CA3D1DE64E7100510FB8 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 607FACEA1AFB9204008FA782 /* Info.plist */; };
+		67B73A9B1E15351900C19176 /* PromotionSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67B73A9A1E15351900C19176 /* PromotionSelectionViewController.swift */; };
 		67D54A5C1DE7682900C12258 /* ASCIIBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67D54A501DE7680E00C12258 /* ASCIIBoard.swift */; };
 		67D54A5D1DE7682D00C12258 /* BoardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67D54A511DE7680E00C12258 /* BoardTests.swift */; };
 		67D54A5E1DE7683000C12258 /* GameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67D54A521DE7680E00C12258 /* GameTests.swift */; };
@@ -74,6 +75,7 @@
 		67A9CA271DE64DAA00510FB8 /* SwiftChessExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftChessExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		67AD33A61D7C67BF002730DF /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		67AD33A81D7C67DF002730DF /* BoardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardView.swift; sourceTree = "<group>"; };
+		67B73A9A1E15351900C19176 /* PromotionSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PromotionSelectionViewController.swift; sourceTree = "<group>"; };
 		67D54A501DE7680E00C12258 /* ASCIIBoard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCIIBoard.swift; sourceTree = "<group>"; };
 		67D54A511DE7680E00C12258 /* BoardTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardTests.swift; sourceTree = "<group>"; };
 		67D54A521DE7680E00C12258 /* GameTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameTests.swift; sourceTree = "<group>"; };
@@ -206,6 +208,7 @@
 				67AD33A61D7C67BF002730DF /* GameViewController.swift */,
 				67AD33A81D7C67DF002730DF /* BoardView.swift */,
 				67D54A671DE9A2DD00C12258 /* PieceView.swift */,
+				67B73A9A1E15351900C19176 /* PromotionSelectionViewController.swift */,
 			);
 			name = Game;
 			sourceTree = "<group>";
@@ -340,6 +343,7 @@
 				67D54A681DE9A2DD00C12258 /* PieceView.swift in Sources */,
 				67A9CA361DE64DDA00510FB8 /* GameViewController.swift in Sources */,
 				67A9CA341DE64DD600510FB8 /* AppDelegate.swift in Sources */,
+				67B73A9B1E15351900C19176 /* PromotionSelectionViewController.swift in Sources */,
 				67A9CA371DE64DDD00510FB8 /* BoardView.swift in Sources */,
 				67A9CA351DE64DD800510FB8 /* MenuViewController.swift in Sources */,
 			);

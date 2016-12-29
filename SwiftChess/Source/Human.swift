@@ -31,14 +31,42 @@ open class Human : Player {
         }
         
         // Move the piece
-        let operations = game.board.movePiece(fromLocation: fromLocation, toLocation: toLocation)
+        var operations = game.board.movePiece(fromLocation: fromLocation, toLocation: toLocation)
         
-        // Inform the delegate that we made a move
-        delegate?.playerDidMakeMove(player: self, boardOperations: operations)
+        // Make pawn promotions
+        let promotablePawnLocations = game.board.getLocationsOfPromotablePawns(color: color)
+        assert(promotablePawnLocations.count < 2, "There should only be one pawn available for promotion at a time")
+        if promotablePawnLocations.count > 0 {
+            
+            let pawnLocation = promotablePawnLocations.first!
+            
+            self.game.delegate?.promotedTypeForPawn(location: pawnLocation,
+                                                    player: self,
+                                                    possiblePromotions: Piece.PieceType.possiblePawnPromotionResultingTypes(),
+                                                    callback: {
+                            
+                                                        // Change the piece
+                                                        let newPiece = self.game.board.squares[pawnLocation.index].piece?.byChangingType(newType: $0)
+                                                        self.game.board.squares[pawnLocation.index].piece = newPiece
+                                                        
+                                                        // Add a transform piece operation
+                                                        let modifyOperation = BoardOperation(type: .transformPiece, piece: newPiece!, location: pawnLocation)
+                                                        operations.append(modifyOperation)
+                                                        
+                                                        // Inform the delegate that we've finished
+                                                        self.delegate?.playerDidMakeMove(player: self, boardOperations: operations)
+            })
+        }
+        // ... Or if no pawn promotions, end move
+        else{
+            // Inform the delegate that we made a move
+            delegate?.playerDidMakeMove(player: self, boardOperations: operations)
+
+        }
+        
     }
     
    
-    
 }
 
 

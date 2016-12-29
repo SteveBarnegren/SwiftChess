@@ -65,19 +65,13 @@ open class Player {
             return (false, .pieceUnableToMoveToLocation)
         }
         
-        // Make sure we are not leaving the board state in check
+        // Move the piece
         let inCheckBeforeMove = self.game.board.isColorInCheck(color: self.color)
-        
         var board = self.game.board
         board.movePiece(fromLocation: fromLocation, toLocation: toLocation)
+        var inCheckAfterMove = board.isColorInCheck(color: self.color)
         
-        
-        
-        
-        
-        
-        let inCheckAfterMove = board.isColorInCheck(color: self.color)
-        
+        // Return
         if inCheckBeforeMove && inCheckAfterMove {
             return (false, .playerMustMoveOutOfCheck)
         }
