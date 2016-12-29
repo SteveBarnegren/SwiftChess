@@ -527,10 +527,217 @@ class BoardTests: XCTestCase {
         
         XCTAssert(promotable.count == 0)
     }
+    
+    // MARK: - Castling
+    
+    func assertKingAndRookStartLocationsAndColor(kingLocation: BoardLocation, rookLocation: BoardLocation, color: Color) {
+        
+        let board = Board(state: .newGame)
+        
+        guard let king = board.getPiece(at: kingLocation) else {
+            XCTFail("Could not find king")
+            return
+        }
+        
+        guard let rook = board.getPiece(at: rookLocation) else {
+            XCTFail("Could not find king")
+            return
+        }
+        
+        // Assert king color and type
+        XCTAssert(king.color == color)
+        XCTAssert(king.type == .king)
+        
+        // Assert rook color and type
+        XCTAssert(rook.color == color)
+        XCTAssert(rook.type == .rook)
+    }
+    
+    func testCastleMoveWhiteKingSideKingAndRookStartLocationsAreCorrect() {
+        
+        let castleMove = Board.CastleMove(color: .white, side: .kingSide)
+        assertKingAndRookStartLocationsAndColor(kingLocation: castleMove.kingStartLocation, rookLocation: castleMove.rookStartLocation, color: .white)
+    }
+    
+    func testCastleMoveWhiteQueenSideKingAndRookStartLocationsAreCorrect() {
+        
+        let castleMove = Board.CastleMove(color: .white, side: .queenSide)
+        assertKingAndRookStartLocationsAndColor(kingLocation: castleMove.kingStartLocation, rookLocation: castleMove.rookStartLocation, color: .white)
+    }
+    
+    func testCastleMoveBlackKingSideKingAndRookStartLocationsAreCorrect() {
+        
+        let castleMove = Board.CastleMove(color: .black, side: .kingSide)
+        assertKingAndRookStartLocationsAndColor(kingLocation: castleMove.kingStartLocation, rookLocation: castleMove.rookStartLocation, color: .black)
+    }
+    
+    func testCastleMoveBlackQueenSideKingAndRookStartLocationsAreCorrect() {
+        
+        let castleMove = Board.CastleMove(color: .black, side: .queenSide)
+        assertKingAndRookStartLocationsAndColor(kingLocation: castleMove.kingStartLocation, rookLocation: castleMove.rookStartLocation, color: .black)
+    }
+    
+    func testCanCastle() {
+        
+        let board = ASCIIBoard(pieces:  "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - G - - R" )
+        let gameBoard = board.board
+
+        XCTAssertTrue(board.board.canColorCastle(color: .white, side: .kingSide))
+    }
+    
+    func testCannotCastleIfKingInIncorrectPostion() {
+        
+        let board = ASCIIBoard(pieces:  "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - G - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - R" )
+        
+        XCTAssertFalse(board.board.canColorCastle(color: .white, side: .kingSide))
+    }
+    
+    func testCannotCastleIfRookInIncorrectPostion() {
+        
+        let board = ASCIIBoard(pieces:  "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - R" +
+                                        "- - - - G - - -" )
+        
+        XCTAssertFalse(board.board.canColorCastle(color: .white, side: .kingSide))
+    }
+
+    func testCannotCastleIfKingHasPreviouslyMoved() {
+
+        let board = ASCIIBoard(pieces:  "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - --" +
+                                        "- - - - G - - R" )
+        
+        let startLocation = BoardLocation(index: board.indexOfCharacter("G") )
+        let newLocation = BoardLocation(index: 0)
+        var gameBoard = board.board
+        
+        // move then back
+        gameBoard.movePiece(fromLocation: startLocation, toLocation: newLocation)
+        gameBoard.movePiece(fromLocation: newLocation, toLocation: startLocation)
+        
+        XCTAssertFalse(gameBoard.canColorCastle(color: .white, side: .kingSide))
+    }
+    
+    func testCannotCastleIfRookHasPreviouslyMoved() {
+        
+        let board = ASCIIBoard(pieces:  "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - --" +
+                                        "- - - - G - - R" )
+        
+        let startLocation = BoardLocation(index: board.indexOfCharacter("R") )
+        let newLocation = BoardLocation(index: 0)
+        var gameBoard = board.board
+        
+        // move then back
+        gameBoard.movePiece(fromLocation: startLocation, toLocation: newLocation)
+        gameBoard.movePiece(fromLocation: newLocation, toLocation: startLocation)
+        
+        XCTAssertFalse(gameBoard.canColorCastle(color: .white, side: .kingSide))
+    }
+    
+    func testCannotCastleIfPiecesAreBetweenKingAndRook() {
+        
+        let board = ASCIIBoard(pieces:  "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - --" +
+                                        "- - - - G - P R" )
+        
+        XCTAssertFalse(board.board.canColorCastle(color: .white, side: .kingSide))
+    }
+    
+    func testCannotCastleIfKingIsInCheck() {
+        
+        let board = ASCIIBoard(pieces:  "- - - - q - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - --" +
+                                        "- - - - G - - R" )
+        
+        XCTAssertFalse(board.board.canColorCastle(color: .white, side: .kingSide))
+    }
+    
+    func testCannotCastleIfKingWillMoveThroughCheck() {
+        
+        let board = ASCIIBoard(pieces:  "- - - - - q - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - --" +
+                                        "- - - - G - - R" )
+        
+        XCTAssertFalse(board.board.canColorCastle(color: .white, side: .kingSide))
+    }
+    
+    func testCannotCastleIfKingWillMoveEndUpInCheck() {
+        
+        let board = ASCIIBoard(pieces:  "- - - - - - q -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - --" +
+                                        "- - - - G - - R" )
+        
+        XCTAssertFalse(board.board.canColorCastle(color: .white, side: .kingSide))
+    }
+    
+    func testCanStillCastleIfRookUnderAttack() {
+        
+        let board = ASCIIBoard(pieces:  "- - - - - - - r" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - --" +
+                                        "- - - - G - - R" )
+        
+        XCTAssertTrue(board.board.canColorCastle(color: .white, side: .kingSide))
+    }
 
 
 
 
 
 
+    
 }

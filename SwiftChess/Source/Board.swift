@@ -8,6 +8,11 @@
 
 import Foundation
 
+public enum CastleSide {
+    case kingSide
+    case queenSide
+}
+
 // MARK: - ****** BoardStride ******
 
 public struct BoardStride {
@@ -192,6 +197,10 @@ public struct Board {
     }
     
     @discardableResult internal mutating func movePiece(fromLocation: BoardLocation, toLocation: BoardLocation) -> [BoardOperation] {
+        
+        if toLocation == fromLocation {
+            return []
+        }
     
         var operations = [BoardOperation]()
         
@@ -402,6 +411,128 @@ public struct Board {
         }
         
         return false
+    }
+    
+    // MARK: - Check ability to castle
+    
+    struct CastleMove{
+        let yPos: Int
+        let kingStartXPos: Int
+        let rookStartXPos: Int
+        let kingEndXPos: Int
+        let rookEndXPos: Int
+        
+        var kingStartLocation: BoardLocation {
+            return BoardLocation(x: kingStartXPos, y: yPos)
+        }
+        
+        var kingEndLocation: BoardLocation {
+            return BoardLocation(x: kingEndXPos, y: yPos)
+        }
+        
+        var rookStartLocation: BoardLocation {
+            return BoardLocation(x: rookStartXPos, y: yPos)
+        }
+        
+        var rookEndLocation: BoardLocation {
+            return BoardLocation(x: rookEndXPos, y: yPos)
+        }
+        
+        init(color: Color, side: CastleSide) {
+            
+            switch (color, side) {
+            case (.white, .kingSide):
+                yPos = 0
+                kingStartXPos = 4
+                rookStartXPos = 7
+                kingEndXPos = 6
+                rookEndXPos = 5
+            case (.white, .queenSide):
+                yPos = 0
+                kingStartXPos = 4
+                rookStartXPos = 0
+                kingEndXPos = 2
+                rookEndXPos = 3
+            case (.black, .kingSide):
+                yPos = 7
+                kingStartXPos = 3
+                rookStartXPos = 0
+                kingEndXPos = 2
+                rookEndXPos = 3
+            case (.black, .queenSide):
+                yPos = 7
+                kingStartXPos = 3
+                rookStartXPos = 7
+                kingEndXPos = 5
+                rookEndXPos = 4
+            }
+        }
+    }
+
+    public func canColorCastle(color: Color, side: CastleSide) -> Bool {
+        
+       // Get the correct castle move
+        let castleMove = CastleMove(color: color, side: side)
+        
+        // Get the pieces
+        guard let kingPiece = getPiece(at: castleMove.kingStartLocation) else {
+            return false
+        }
+
+        guard let rookPiece = getPiece(at: castleMove.rookStartLocation) else {
+            return false
+        }
+        
+        // Check that the pieces are of the correct types
+        guard kingPiece.type == .king else {
+            return false
+        }
+        
+        guard rookPiece.type == .rook else {
+            return false
+        }
+        
+        // Check that neither of the pieces have moved yet
+        if kingPiece.hasMoved == true || rookPiece.hasMoved == true {
+            return false
+        }
+        
+        // Check that there are no pieces between the king and the rook
+        for xPos in castleMove.kingStartXPos..<castleMove.rookStartXPos {
+            
+            if xPos == castleMove.kingStartXPos || xPos == castleMove.rookStartXPos {
+                continue
+            }
+            
+            let location = BoardLocation(x: xPos, y: castleMove.yPos)
+            
+            if let piece = getPiece(at: location) {
+                return false
+            }
+            
+        }
+        
+        // Check that king is not currently in check
+        if isColorInCheck(color: color) {
+            return false
+        }    
+  
+        // Check that the king will not end up in, or move through check
+        for xPos in min(castleMove.kingEndXPos, castleMove.kingStartXPos)...max(castleMove.kingEndXPos, castleMove.kingStartXPos) {
+            
+            if xPos == castleMove.kingStartXPos {
+                continue
+            }
+            
+            var newBoard = self
+            let newLocation = BoardLocation(x: xPos, y: castleMove.yPos)
+            newBoard.movePiece(fromLocation: castleMove.kingStartLocation, toLocation: newLocation)
+            if newBoard.isColorInCheck(color: color) {
+                return false
+            }
+        }
+        
+        return true
     }
     
     // MARK: - Print
