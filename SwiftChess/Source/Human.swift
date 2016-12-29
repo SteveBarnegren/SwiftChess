@@ -79,7 +79,10 @@ open class Human : Player {
         }
         
         // Make the move
-    
+        let operations = game.board.performCastle(color: color, side: side)
+        
+        // Inform the delegate that we made a move
+        delegate?.playerDidMakeMove(player: self, boardOperations: operations)
     }
     
    

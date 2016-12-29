@@ -218,28 +218,33 @@ class GameViewController: UIViewController {
     @IBAction func whiteKingSideCastleButtonPressed(sender: UIButton) {
         print("White king side castle button pressed");
         
-        
+        if let player = game.currentPlayer as? Human {
+            player.performCastleMove(side: .kingSide)
+        }
     }
     
     @IBAction func whiteQueenSideCastleButtonPressed(sender: UIButton) {
         print("White queen side castle button pressed");
         
-        
+        if let player = game.currentPlayer as? Human {
+            player.performCastleMove(side: .queenSide)
+        }
     }
     
     @IBAction func blackKingSideCastleButtonPressed(sender: UIButton) {
         print("Black king side castle button pressed");
         
-        
-        
-        
-        
+        if let player = game.currentPlayer as? Human {
+            player.performCastleMove(side: .kingSide)
+        }
     }
     
     @IBAction func blackQueenSideCastleButtonPressed(sender: UIButton) {
         print("Black queen side castle button pressed");
         
-        
+        if let player = game.currentPlayer as? Human {
+            player.performCastleMove(side: .queenSide)
+        }
     }
 }
 
