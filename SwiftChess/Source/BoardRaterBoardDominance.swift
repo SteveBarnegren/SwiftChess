@@ -12,7 +12,7 @@ class BoardRaterBoardDominance : BoardRater {
     
     override func ratingfor(board: Board, color: Color) -> Double {
 
-        let squareValue = 1.0;
+        let squareValue = Double(1);
         
         var rating = Double(0)
         
@@ -31,7 +31,7 @@ class BoardRaterBoardDominance : BoardRater {
             
         }
         
-        return rating;
+        return rating * configuration.boardRaterBoardDominanceWeighting;
     }
 
 }

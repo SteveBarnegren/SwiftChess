@@ -12,18 +12,19 @@ import Foundation
 open class AIPlayer : Player {
     
     let boardRaters : [BoardRater]!
-   
+    let configuration = AIConfiguration() // <-- We should pass this in eventually
+    
     public init(color: Color){
         
         self.boardRaters = [
-            BoardRaterCountPieces(),
-            BoardRaterCenterOwnership(),
-            BoardRaterBoardDominance(),
-            BoardRaterCenterDominance(),
-            BoardRaterThreatenedPieces(),
-            BoardRaterPawnProgression(),
-            BoardRaterKingSurroundingPossession(),
-            BoardRaterCheckMateOpportunity()
+            BoardRaterCountPieces(configuration: configuration),
+            BoardRaterCenterOwnership(configuration: configuration),
+            BoardRaterBoardDominance(configuration: configuration),
+            BoardRaterCenterDominance(configuration: configuration),
+            BoardRaterThreatenedPieces(configuration: configuration),
+            BoardRaterPawnProgression(configuration: configuration),
+            BoardRaterKingSurroundingPossession(configuration: configuration),
+            BoardRaterCheckMateOpportunity(configuration: configuration)
         ]
         
         super.init()
@@ -217,6 +218,13 @@ struct Move {
 // MARK - BoardRater
 
 internal class BoardRater {
+    
+    let configuration: AIConfiguration
+    
+    init(configuration: AIConfiguration) {
+        self.configuration = configuration
+    }
+
     func ratingfor(board: Board, color: Color) -> Double{
         fatalError("Override ratingFor method in subclasses")
         return 0

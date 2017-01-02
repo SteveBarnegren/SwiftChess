@@ -10,8 +10,6 @@ import Foundation
 
 class BoardRaterThreatenedPieces : BoardRater {
     
-    var ownPiecesMultipler = Double(4)
-    
     override func ratingfor(board: Board, color: Color) -> Double {
         
         var rating = Double(0)
@@ -36,7 +34,7 @@ class BoardRaterThreatenedPieces : BoardRater {
             rating += (piece.color == color) ? -threatRating : threatRating;
         }
         
-        return rating
+        return rating * configuration.boardRaterThreatenedPiecesWeighting
     }
     
     
@@ -64,7 +62,7 @@ class BoardRaterThreatenedPieces : BoardRater {
             let pieceIsProtected = (isBeingProtected && piece.value() < threateningPiece.value())
             
             if !pieceIsProtected {
-                rating += piece.color == color ? piece.value() * ownPiecesMultipler : piece.value()
+                rating += piece.color == color ? piece.value() * configuration.boardRaterThreatenedPiecesOwnPiecesMultiplier : piece.value()
             }
         }
         

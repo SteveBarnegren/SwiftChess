@@ -11,9 +11,12 @@ import XCTest
 
 class BoardRaterCenterOwnershipTests: XCTestCase {
     
+    var boardRater: BoardRaterCenterOwnership!
+    
     override func setUp() {
         super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        
+        boardRater = BoardRaterCenterOwnership(configuration: AIConfiguration())
     }
     
     override func tearDown() {
@@ -22,9 +25,7 @@ class BoardRaterCenterOwnershipTests: XCTestCase {
     }
     
     func testCenterReturnsHigherValueThatSide() {
-        
-        let boardRater = BoardRaterCenterOwnership()
-        
+                
         let centerBoard = ASCIIBoard(pieces:  "- - - - - - - -" +
                                               "- - - - - - - -" +
                                               "- - - - - - - -" +

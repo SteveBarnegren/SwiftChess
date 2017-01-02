@@ -11,13 +11,13 @@ import XCTest
 
 class BoardRaterBoardDominanceTests: XCTestCase {
     
-    var boardRater = BoardRaterBoardDominance()
+    var boardRater: BoardRaterBoardDominance!
     
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
         
-        self.boardRater = BoardRaterBoardDominance();
+        self.boardRater = BoardRaterBoardDominance(configuration: AIConfiguration());
     }
     
     override func tearDown() {

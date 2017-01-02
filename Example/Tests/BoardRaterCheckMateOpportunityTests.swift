@@ -9,17 +9,6 @@
 import XCTest
 @testable import SwiftChess
 
-/*
- TESTS:
- 
- - Check that board with no check mate opportunities return zero rating
- - Check that white with black check mate opportunity results is positive rating
- - Check that black with wi
- - Check that more check mate opportunities results is
- 
- 
- */
-
 class BoardRaterCheckMateOpportunityTests: XCTestCase {
     
     var boardRater: BoardRaterCheckMateOpportunity!
@@ -27,7 +16,7 @@ class BoardRaterCheckMateOpportunityTests: XCTestCase {
     override func setUp() {
         super.setUp()
         
-        boardRater = BoardRaterCheckMateOpportunity()
+        boardRater = BoardRaterCheckMateOpportunity(configuration: AIConfiguration())
     }
     
     override func tearDown() {

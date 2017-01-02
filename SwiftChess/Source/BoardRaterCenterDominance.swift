@@ -8,6 +8,10 @@
 
 import Foundation
 
+/*
+ Rates the board according to which player's pieces are able to move to the squares at the center of the board
+ */
+
 class BoardRaterCenterDominance : BoardRater {
     
     override func ratingfor(board: Board, color: Color) -> Double {
@@ -30,7 +34,7 @@ class BoardRaterCenterDominance : BoardRater {
             }
         }
         
-        return rating
+        return rating * configuration.boardRaterCenterDominanceWeighting
     }
     
     func dominanceValueFor(location: BoardLocation) -> Double {

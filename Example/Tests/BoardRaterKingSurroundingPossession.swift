@@ -11,12 +11,12 @@ import XCTest
 
 class BoardRaterKingSurroundingPossessionTests: XCTestCase {
     
-    var boardRater = BoardRaterKingSurroundingPossession()
+    var boardRater: BoardRaterKingSurroundingPossession!
     
     override func setUp() {
         super.setUp()
         
-        boardRater = BoardRaterKingSurroundingPossession()
+        boardRater = BoardRaterKingSurroundingPossession(configuration: AIConfiguration())
     }
     
     override func tearDown() {

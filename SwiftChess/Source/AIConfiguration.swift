@@ -10,10 +10,30 @@ import Foundation
 
 class AIConfiguration {
 
-    // Board Rater count pieces
-    //let boardRaterCountPiecesPieceValueMultiplier
+    // BoardRater -  Count Pieces
+    let boardRaterCountPiecesWeighting = Double(1)
     
+    // BoardRater - Board Dominance
+    let boardRaterBoardDominanceWeighting = Double(1)
     
+    // BoardRater - Center Ownership
+    let boardRaterCenterOwnershipWeighting = Double(1)
+    
+    // BoardRater - Center Dominance
+    let boardRaterCenterDominanceWeighting = Double(1)
+    
+    // BoardRater - Threatened Pieces
+    let boardRaterThreatenedPiecesWeighting = Double(1)
+    let boardRaterThreatenedPiecesOwnPiecesMultiplier = Double(2)
+
+    // BoardRater - Pawn Progression
+    let boardRaterPawnProgressionWeighting = Double(1)
+    
+    // BoardRater - King Surrounding Possession
+    let boardRaterKingSurroundingPossessionRating = Double(1)
+    
+    // BoardRater - Check Mate Opportunity
+    let boardRaterCheckMateOpportunityRating = Double(2)
     
     
 }

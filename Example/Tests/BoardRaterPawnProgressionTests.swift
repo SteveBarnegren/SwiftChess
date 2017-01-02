@@ -11,13 +11,13 @@ import XCTest
 
 class BoardRaterPawnProgressionTests: XCTestCase {
 
-    var boardRater = BoardRaterPawnProgression()
+    var boardRater: BoardRaterPawnProgression!
     
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
         
-        boardRater = BoardRaterPawnProgression()
+        boardRater = BoardRaterPawnProgression(configuration: AIConfiguration())
         
     }
     

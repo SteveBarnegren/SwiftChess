@@ -18,7 +18,7 @@ class BoardRaterCheckMateOpportunity : BoardRater {
     
     override func ratingfor(board: Board, color: Color) -> Double {
         
-        let value = Double(20)
+        let value = Double(1)
         var rating = Double(0)
         
         for (index, square) in board.squares.enumerated() {
@@ -46,7 +46,7 @@ class BoardRaterCheckMateOpportunity : BoardRater {
             }
         }
         
-        return rating
+        return rating * configuration.boardRaterCheckMateOpportunityRating
     }
 
 }
