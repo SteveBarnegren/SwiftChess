@@ -146,6 +146,11 @@ open class AIPlayer : Player {
             rating += boardRater.ratingfor(board: board, color: color)
         }
         
+        // If opponent is in check mate, set the maximum rating
+        if board.isColorInCheckMate(color: color.opposite()) {
+            rating = Double.greatestFiniteMagnitude
+        }
+        
         return rating
     }
     
@@ -170,7 +175,6 @@ open class AIPlayer : Player {
         var bestType = Piece.PieceType.possiblePawnPromotionResultingTypes().first
         var bestRating = -Double.greatestFiniteMagnitude
         var promotedBoard: Board!
-        
         
         for pieceType in Piece.PieceType.possiblePawnPromotionResultingTypes() {
             
