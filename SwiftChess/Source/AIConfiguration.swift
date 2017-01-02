@@ -8,7 +8,7 @@
 
 import Foundation
 
-class AIConfiguration {
+struct AIConfiguration {
 
     // BoardRater -  Count Pieces
     let boardRaterCountPiecesWeighting = Double(1)
