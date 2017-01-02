@@ -16,7 +16,7 @@ import Foundation
 
 class BoardRaterCheckMateOpportunity : BoardRater {
     
-    func ratingfor(board: Board, color: Color) -> Double {
+    override func ratingfor(board: Board, color: Color) -> Double {
         
         let value = Double(20)
         var rating = Double(0)

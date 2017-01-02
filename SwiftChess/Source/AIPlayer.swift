@@ -216,13 +216,10 @@ struct Move {
 
 // MARK - BoardRater
 
-internal protocol BoardRater {
-    func ratingfor(board: Board, color: Color) -> Double;
-}
-
-extension BoardRater {
-    func ratingfor(board: Board, color: Color) -> Double {
-        return 0;
+internal class BoardRater {
+    func ratingfor(board: Board, color: Color) -> Double{
+        fatalError("Override ratingFor method in subclasses")
+        return 0
     }
 }
  

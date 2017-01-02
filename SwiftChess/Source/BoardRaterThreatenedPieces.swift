@@ -8,11 +8,11 @@
 
 import Foundation
 
-struct BoardRaterThreatenedPieces : BoardRater {
+class BoardRaterThreatenedPieces : BoardRater {
     
     var ownPiecesMultipler = Double(4)
     
-    func ratingfor(board: Board, color: Color) -> Double {
+    override func ratingfor(board: Board, color: Color) -> Double {
         
         var rating = Double(0)
      

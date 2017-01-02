@@ -8,9 +8,9 @@
 
 import Foundation
 
-struct BoardRaterBoardDominance : BoardRater {
+class BoardRaterBoardDominance : BoardRater {
     
-    func ratingfor(board: Board, color: Color) -> Double {
+    override func ratingfor(board: Board, color: Color) -> Double {
 
         let squareValue = 1.0;
         

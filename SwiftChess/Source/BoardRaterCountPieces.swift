@@ -8,9 +8,9 @@
 
 import Foundation
 
-public struct BoardRaterCountPieces : BoardRater {
+class BoardRaterCountPieces : BoardRater {
         
-    func ratingfor(board: Board, color: Color) -> Double {
+    override func ratingfor(board: Board, color: Color) -> Double {
         
         var rating : Double = 0
         
