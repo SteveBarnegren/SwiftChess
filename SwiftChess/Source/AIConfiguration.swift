@@ -11,29 +11,44 @@ import Foundation
 struct AIConfiguration {
 
     // BoardRater -  Count Pieces
-    let boardRaterCountPiecesWeighting = Double(1)
+    var boardRaterCountPiecesWeighting : Double!
     
     // BoardRater - Board Dominance
-    let boardRaterBoardDominanceWeighting = Double(1)
+    var boardRaterBoardDominanceWeighting : Double!
     
     // BoardRater - Center Ownership
-    let boardRaterCenterOwnershipWeighting = Double(1)
+    var boardRaterCenterOwnershipWeighting : Double!
     
     // BoardRater - Center Dominance
-    let boardRaterCenterDominanceWeighting = Double(1)
+    var boardRaterCenterDominanceWeighting : Double!
     
     // BoardRater - Threatened Pieces
-    let boardRaterThreatenedPiecesWeighting = Double(1)
-    let boardRaterThreatenedPiecesOwnPiecesMultiplier = Double(2)
+    var boardRaterThreatenedPiecesWeighting : Double!
+    var boardRaterThreatenedPiecesOwnPiecesMultiplier : Double!
 
     // BoardRater - Pawn Progression
-    let boardRaterPawnProgressionWeighting = Double(1)
+    var boardRaterPawnProgressionWeighting : Double!
     
     // BoardRater - King Surrounding Possession
-    let boardRaterKingSurroundingPossessionRating = Double(1)
+    var boardRaterKingSurroundingPossessionWeighting : Double!
     
     // BoardRater - Check Mate Opportunity
-    let boardRaterCheckMateOpportunityRating = Double(2)
+    var boardRaterCheckMateOpportunityWeighting : Double!
     
+    init() {
+        setDefualtValues()
+    }
+    
+    mutating func setDefualtValues() {
+        boardRaterCountPiecesWeighting = 1
+        boardRaterBoardDominanceWeighting = 1
+        boardRaterCenterOwnershipWeighting = 1
+        boardRaterCenterDominanceWeighting = 1
+        boardRaterThreatenedPiecesWeighting = 1
+        boardRaterThreatenedPiecesOwnPiecesMultiplier = 2
+        boardRaterPawnProgressionWeighting = 1
+        boardRaterKingSurroundingPossessionWeighting = 1
+        boardRaterCheckMateOpportunityWeighting = 2
+    }
     
 }

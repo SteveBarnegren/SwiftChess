@@ -33,6 +33,7 @@
 		67D54A641DE976A900C12258 /* BoardRaterCountPiecesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67D54A631DE976A900C12258 /* BoardRaterCountPiecesTests.swift */; };
 		67D54A661DE986F700C12258 /* PieceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67D54A651DE986F700C12258 /* PieceTests.swift */; };
 		67D54A681DE9A2DD00C12258 /* PieceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67D54A671DE9A2DD00C12258 /* PieceView.swift */; };
+		67F779201E1B923B00885B89 /* AIConfigurationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F7791F1E1B923B00885B89 /* AIConfigurationTests.swift */; };
 		67F9DB6E1E1AC8DC00C7EC5A /* BoardRaterCheckMateOpportunityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F9DB6D1E1AC8DC00C7EC5A /* BoardRaterCheckMateOpportunityTests.swift */; };
 		67F9DB751E1AD3BB00C7EC5A /* AIBehaviourTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F9DB741E1AD3BB00C7EC5A /* AIBehaviourTests.swift */; };
 /* End PBXBuildFile section */
@@ -91,6 +92,7 @@
 		67D54A631DE976A900C12258 /* BoardRaterCountPiecesTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardRaterCountPiecesTests.swift; sourceTree = "<group>"; };
 		67D54A651DE986F700C12258 /* PieceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PieceTests.swift; sourceTree = "<group>"; };
 		67D54A671DE9A2DD00C12258 /* PieceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PieceView.swift; sourceTree = "<group>"; };
+		67F7791F1E1B923B00885B89 /* AIConfigurationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIConfigurationTests.swift; sourceTree = "<group>"; };
 		67F9DB6D1E1AC8DC00C7EC5A /* BoardRaterCheckMateOpportunityTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardRaterCheckMateOpportunityTests.swift; sourceTree = "<group>"; };
 		67F9DB741E1AD3BB00C7EC5A /* AIBehaviourTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIBehaviourTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -174,6 +176,7 @@
 				67D54A531DE7680E00C12258 /* PieceMovementTests.swift */,
 				67D54A541DE7680E00C12258 /* PlayerTests.swift */,
 				67B73A9E1E154C1E00C19176 /* AIPlayerTests.swift */,
+				67F7791F1E1B923B00885B89 /* AIConfigurationTests.swift */,
 				67F9DB741E1AD3BB00C7EC5A /* AIBehaviourTests.swift */,
 				67D54A621DE9768200C12258 /* BoardRaters */,
 				67D54A551DE7680E00C12258 /* Tests.swift */,
@@ -377,6 +380,7 @@
 				671989891DFFE0410053EA3D /* BoardRaterCenterOwnershipTests.swift in Sources */,
 				67B73A9F1E154C1E00C19176 /* AIPlayerTests.swift in Sources */,
 				67D54A5C1DE7682900C12258 /* ASCIIBoard.swift in Sources */,
+				67F779201E1B923B00885B89 /* AIConfigurationTests.swift in Sources */,
 				67D54A641DE976A900C12258 /* BoardRaterCountPiecesTests.swift in Sources */,
 				09AE32551E03D71D00A149FE /* BoardRaterPawnProgressionTests.swift in Sources */,
 				09A4C0291E013ECB000CFBF4 /* BoardRaterThreatenedPiecesTests.swift in Sources */,
