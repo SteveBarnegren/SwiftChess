@@ -179,6 +179,89 @@ class AIConfigurationTests: XCTestCase {
         XCTAssertLessThan(highValueRating, lowValueRating)
     }
     
-    // TODO: Continue from pawn progression
+    // MARK: - Board Rater - Pawn Progression
     
+    func testPawnProgressionWeightingAffectsRating() {
+        
+        let board = ASCIIBoard(pieces:  "- - - - g - - -" +
+                                        "p p p p p p p p" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "P P P P P P P P" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - G - - -" )
+        
+        var lowValueConfig = AIConfiguration()
+        lowValueConfig.boardRaterPawnProgressionWeighting = 1
+        let lowValueRater = BoardRaterPawnProgression(configuration: lowValueConfig)
+        let lowValueRating = lowValueRater.ratingfor(board: board.board, color: .white)
+        
+        var highValueConfig = AIConfiguration()
+        highValueConfig.boardRaterPawnProgressionWeighting = 2
+        let highValueRater = BoardRaterPawnProgression(configuration: highValueConfig)
+        let highValueRating = highValueRater.ratingfor(board: board.board, color: .white)
+        
+        XCTAssertGreaterThan(highValueRating, lowValueRating)
+    }
+    
+    // MARK: - Board Rater - King Surrounding Possession
+    
+    func testKingSurroundingPossessionWeightingAffectsRating() {
+    
+        let board = ASCIIBoard(pieces:  "- - - - g - - -" +
+                                        "- - - p p p - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - P P P - -" +
+                                        "- - - P G P - -" )
+        
+        var lowValueConfig = AIConfiguration()
+        lowValueConfig.boardRaterKingSurroundingPossessionWeighting = 1
+        let lowValueRater = BoardRaterKingSurroundingPossession(configuration: lowValueConfig)
+        let lowValueRating = lowValueRater.ratingfor(board: board.board, color: .white)
+        
+        var highValueConfig = AIConfiguration()
+        highValueConfig.boardRaterKingSurroundingPossessionWeighting = 2
+        let highValueRater = BoardRaterKingSurroundingPossession(configuration: highValueConfig)
+        let highValueRating = highValueRater.ratingfor(board: board.board, color: .white)
+        
+        XCTAssertGreaterThan(highValueRating, lowValueRating)
+    }
+    
+    // MARK: - Board RAter - Check Mate Opportunity
+    
+    func testCheckMateOpportunityWeightingAffectsRating() {
+        
+        // White can move Rook at (0,0) to (0,7) to check mate black
+        let board = ASCIIBoard(pieces:  "- - - - g p - -" +
+                                        "- - - p p p - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - P P P - -" +
+                                        "R - - P G P - -" )
+        
+        var lowValueConfig = AIConfiguration()
+        lowValueConfig.boardRaterCheckMateOpportunityWeighting = 1
+        let lowValueRater = BoardRaterCheckMateOpportunity(configuration: lowValueConfig)
+        let lowValueRating = lowValueRater.ratingfor(board: board.board, color: .white)
+        
+        var highValueConfig = AIConfiguration()
+        highValueConfig.boardRaterCheckMateOpportunityWeighting = 2
+        let highValueRater = BoardRaterCheckMateOpportunity(configuration: highValueConfig)
+        let highValueRating = highValueRater.ratingfor(board: board.board, color: .white)
+        
+        XCTAssertGreaterThan(highValueRating, lowValueRating)
+        
+    }
+    
+    
+
+
 }
+
+

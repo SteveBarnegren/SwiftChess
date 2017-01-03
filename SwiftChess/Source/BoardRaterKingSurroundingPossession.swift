@@ -39,7 +39,7 @@ class BoardRaterKingSurroundingPossession : BoardRater {
                 rating += squareValue
             }
             
-            if noKingsBoard.canColorMoveAnyPieceToLocation(color: color.opposite(), location: location) {
+            else if noKingsBoard.canColorMoveAnyPieceToLocation(color: color.opposite(), location: location) {
                 rating -= squareValue
             }
 
@@ -61,7 +61,7 @@ class BoardRaterKingSurroundingPossession : BoardRater {
                 rating += squareValue
             }
             
-            if noKingsBoard.canColorMoveAnyPieceToLocation(color: color.opposite(), location: location) {
+            else if noKingsBoard.canColorMoveAnyPieceToLocation(color: color.opposite(), location: location) {
                 rating -= squareValue
             }
         }
