@@ -231,7 +231,7 @@ class AIConfigurationTests: XCTestCase {
         XCTAssertGreaterThan(highValueRating, lowValueRating)
     }
     
-    // MARK: - Board RAter - Check Mate Opportunity
+    // MARK: - Board Rater - Check Mate Opportunity
     
     func testCheckMateOpportunityWeightingAffectsRating() {
         
@@ -259,9 +259,31 @@ class AIConfigurationTests: XCTestCase {
         
     }
     
+    // MARK: - Board Rater - Center Four Occupation
     
-
-
+    func testCenterFourOccupationWeightingAffectsRating() {
+        
+        let board = ASCIIBoard(pieces:  "- - - p g p - -" +
+                                        "- - - p p p - -" +
+                                        "- - - - - - - -" +
+                                        "- - - K R - - -" +
+                                        "- - - Q R - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - P P P - -" +
+                                        "- - - P G P - -" )
+        
+        var lowValueConfig = AIConfiguration()
+        lowValueConfig.boardRaterCenterFourOccupationWeighting = 1
+        let lowValueRater = BoardRaterCenterFourOccupation(configuration: lowValueConfig)
+        let lowValueRating = lowValueRater.ratingfor(board: board.board, color: .white)
+        
+        var highValueConfig = AIConfiguration()
+        highValueConfig.boardRaterCenterFourOccupationWeighting = 2
+        let highValueRater = BoardRaterCenterFourOccupation(configuration: highValueConfig)
+        let highValueRating = highValueRater.ratingfor(board: board.board, color: .white)
+        
+        XCTAssertGreaterThan(highValueRating, lowValueRating)
+    }
 }
 
 

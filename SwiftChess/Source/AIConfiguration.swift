@@ -11,29 +11,32 @@ import Foundation
 struct AIConfiguration {
 
     // BoardRater -  Count Pieces
-    var boardRaterCountPiecesWeighting : Double!
+    var boardRaterCountPiecesWeighting: Double!
     
     // BoardRater - Board Dominance
-    var boardRaterBoardDominanceWeighting : Double!
+    var boardRaterBoardDominanceWeighting: Double!
     
     // BoardRater - Center Ownership
-    var boardRaterCenterOwnershipWeighting : Double!
+    var boardRaterCenterOwnershipWeighting: Double!
     
     // BoardRater - Center Dominance
-    var boardRaterCenterDominanceWeighting : Double!
+    var boardRaterCenterDominanceWeighting: Double!
     
     // BoardRater - Threatened Pieces
-    var boardRaterThreatenedPiecesWeighting : Double!
-    var boardRaterThreatenedPiecesOwnPiecesMultiplier : Double!
+    var boardRaterThreatenedPiecesWeighting: Double!
+    var boardRaterThreatenedPiecesOwnPiecesMultiplier: Double!
 
     // BoardRater - Pawn Progression
-    var boardRaterPawnProgressionWeighting : Double!
+    var boardRaterPawnProgressionWeighting: Double!
     
     // BoardRater - King Surrounding Possession
-    var boardRaterKingSurroundingPossessionWeighting : Double!
+    var boardRaterKingSurroundingPossessionWeighting: Double!
     
     // BoardRater - Check Mate Opportunity
-    var boardRaterCheckMateOpportunityWeighting : Double!
+    var boardRaterCheckMateOpportunityWeighting: Double!
+    
+    // BoardRater - Center Four Occupation
+    var boardRaterCenterFourOccupationWeighting: Double!
     
     init() {
         setDefualtValues()
@@ -49,6 +52,7 @@ struct AIConfiguration {
         boardRaterPawnProgressionWeighting = 1
         boardRaterKingSurroundingPossessionWeighting = 1
         boardRaterCheckMateOpportunityWeighting = 2
+        boardRaterCenterFourOccupationWeighting = 1
     }
     
 }

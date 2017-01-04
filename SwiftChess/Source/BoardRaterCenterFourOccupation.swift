@@ -32,8 +32,6 @@ class BoardRaterCenterFourOccupation: BoardRater {
             rating += piece.color == color ? value : -value
         }
         
-        return rating
+        return rating * configuration.boardRaterCenterFourOccupationWeighting
     }
-    
-    
 }
