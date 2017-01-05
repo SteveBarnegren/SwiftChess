@@ -8,6 +8,8 @@
 
 import Foundation
 
+// Tendancy to protect own pieces
+
 class BoardRaterThreatenedPieces : BoardRater {
     
     override func ratingfor(board: Board, color: Color) -> Double {
@@ -24,7 +26,7 @@ class BoardRaterThreatenedPieces : BoardRater {
             
             // For a same color, subtract the threat rating (less preferrable move)
             if piece.color == color {
-                rating -= threatRating
+                rating -= threatRating * configuration.boardRaterThreatenedPiecesOwnPiecesMultiplier
             }
             // For opposite color, add the treat rating (more preferable move)
             else{
@@ -62,7 +64,8 @@ class BoardRaterThreatenedPieces : BoardRater {
             let pieceIsProtected = (isBeingProtected && piece.value() < threateningPiece.value())
             
             if !pieceIsProtected {
-                rating += piece.color == color ? piece.value() * configuration.boardRaterThreatenedPiecesOwnPiecesMultiplier : piece.value()
+                
+                rating += piece.value()
             }
         }
         
