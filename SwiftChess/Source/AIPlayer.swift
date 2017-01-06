@@ -24,7 +24,8 @@ open class AIPlayer : Player {
             BoardRaterThreatenedPieces(configuration: configuration),
             BoardRaterPawnProgression(configuration: configuration),
             BoardRaterKingSurroundingPossession(configuration: configuration),
-            BoardRaterCheckMateOpportunity(configuration: configuration)
+            BoardRaterCheckMateOpportunity(configuration: configuration),
+            BoardRaterCenterFourOccupation(configuration: configuration)
         ]
         
         super.init()
@@ -32,6 +33,8 @@ open class AIPlayer : Player {
     }
     
     public func makeMove() {
+        
+        print("\n\n****** Make Move ******");
         
         let board = game.board
         
@@ -67,10 +70,12 @@ open class AIPlayer : Player {
                 }
                 
                 // Rate
+                print("(\(sourceLocation.x),\(sourceLocation.y)) -> (\(targetLocation.x),\(targetLocation.y))")
                 let rating = ratingForBoard(resultBoard)
                 let move = Move(type: .singlePiece(sourceLocation: sourceLocation, targetLocation: targetLocation),
                                 rating: rating)
                 possibleMoves.append(move)
+                print("Rrting: \(rating)")
             }
         }
         
@@ -110,10 +115,8 @@ open class AIPlayer : Player {
                 highestRatedMove = move;
             }
             
-            print("rating: \(move.rating)")
+            //print("rating: \(move.rating)")
         }
-        
-        print("HIGHEST MOVE RATING: \(highestRating)")
         
         // Make move
         var operations = [BoardOperation]()
@@ -121,8 +124,10 @@ open class AIPlayer : Player {
         switch highestRatedMove.type {
         case .singlePiece(let sourceLocation, let targetLocation):
             operations = game.board.movePiece(fromLocation: sourceLocation, toLocation: targetLocation)
+            print("Chose move (\(sourceLocation.x),\(sourceLocation.y)) -> (\(targetLocation.x),\(targetLocation.y))");
         case .castle(let color, let side):
             operations = game.board.performCastle(color: color, side: side)
+            print("Chose Castling move");
         }
         
         // Promote pawns
@@ -144,7 +149,12 @@ open class AIPlayer : Player {
         var rating: Double = 0;
         
         for boardRater in boardRaters {
-            rating += boardRater.ratingfor(board: board, color: color)
+            
+            let result = boardRater.ratingfor(board: board, color: color)
+            
+            let className = "\(boardRater)"
+            print("\t\(className): \(result)")
+            rating += result
         }
         
         // If opponent is in check mate, set the maximum rating

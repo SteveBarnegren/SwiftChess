@@ -44,15 +44,15 @@ struct AIConfiguration {
     
     mutating func setDefualtValues() {
         boardRaterCountPiecesWeighting = 1
-        boardRaterBoardDominanceWeighting = 1
-        boardRaterCenterOwnershipWeighting = 1
-        boardRaterCenterDominanceWeighting = 1
-        boardRaterThreatenedPiecesWeighting = 1
+        boardRaterBoardDominanceWeighting = 0.1
+        boardRaterCenterOwnershipWeighting = 0.3
+        boardRaterCenterDominanceWeighting = 0.3
+        boardRaterCenterFourOccupationWeighting = 0.3
+        boardRaterThreatenedPiecesWeighting = 1.5
         boardRaterThreatenedPiecesOwnPiecesMultiplier = 2
         boardRaterPawnProgressionWeighting = 1
         boardRaterKingSurroundingPossessionWeighting = 1
         boardRaterCheckMateOpportunityWeighting = 2
-        boardRaterCenterFourOccupationWeighting = 1
     }
     
 }
