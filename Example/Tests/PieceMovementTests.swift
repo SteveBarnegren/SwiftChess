@@ -1147,6 +1147,261 @@ class PieceMovementTests: XCTestCase {
         XCTAssertFalse(movement.canPieceMove(fromLocation: BoardLocation(index: pieceIndex), toLocation: BoardLocation(index: kingIndex), board: board.board))
     }
     
+    // MARK: - Test pawn En Passant
+    
+    func makeGame(board: Board, colorToMove: Color) -> Game {
+        
+        let whitePlayer = Human(color: .white)
+        let blackPlayer = Human(color: .black)
+        
+        let game = Game(firstPlayer: whitePlayer, secondPlayer: blackPlayer, board: board, colorToMove: colorToMove)
+        return game
+    }
+    
+    func testPawnEnPassantFlagIsTrueAfterMoveTwoSpaces() {
+        
+        let board = Board(state: .newGame)
+        
+        let startLocation = BoardLocation(x: 0, y: 1)
+        let targetLocation = BoardLocation(x: 0, y: 3)
+        
+        let game = makeGame(board: board, colorToMove: .white)
+        
+        guard let whitePlayer = game.currentPlayer as? Human else {
+            fatalError()
+        }
+        
+        do {
+            try whitePlayer.movePiece(fromLocation: startLocation, toLocation: targetLocation)
+        } catch {
+            fatalError()
+        }
+        
+        guard let piece = game.board.getPiece(at: targetLocation) else {
+            fatalError()
+        }
+        
+        XCTAssertTrue(piece.color == .white)
+        XCTAssertTrue(piece.type == .pawn)
+        XCTAssertTrue(piece.canBeTakenByEnPassant == true)
+    }
+    
+    func testPawnEnPassantFlagIsFalseAfterMoveOneSpace() {
+        
+        let board = Board(state: .newGame)
+        
+        let startLocation = BoardLocation(x: 0, y: 1)
+        let targetLocation = BoardLocation(x: 0, y: 2)
+        
+        let game = makeGame(board: board, colorToMove: .white)
+        
+        guard let whitePlayer = game.currentPlayer as? Human else {
+            fatalError()
+        }
+        
+        do {
+            try whitePlayer.movePiece(fromLocation: startLocation, toLocation: targetLocation)
+        } catch {
+            fatalError()
+        }
+        
+        guard let piece = game.board.getPiece(at: targetLocation) else {
+            fatalError()
+        }
+        
+        XCTAssertTrue(piece.color == .white)
+        XCTAssertTrue(piece.type == .pawn)
+        XCTAssertTrue(piece.canBeTakenByEnPassant == false)
+    }
+    
+    func testPawnEnPassantFlagIsResetAfterSubsequentMove() {
+        
+        // White moves pawn
+        let board = Board(state: .newGame)
+        
+        let startLocation = BoardLocation(x: 0, y: 1)
+        let targetLocation = BoardLocation(x: 0, y: 2)
+        
+        let game = makeGame(board: board, colorToMove: .white)
+        
+        guard let whitePlayer = game.currentPlayer as? Human else {
+            fatalError()
+        }
+        
+        do {
+            try whitePlayer.movePiece(fromLocation: startLocation, toLocation: targetLocation)
+        } catch {
+            fatalError()
+        }
+        
+        // Black moves pawn
+        guard let blackPlayer = game.currentPlayer as? Human else {
+            fatalError()
+        }
+        
+        guard blackPlayer.color == .black else {
+            fatalError()
+        }
+        
+        do {
+            try blackPlayer.movePiece(fromLocation: BoardLocation(x: 0, y: 6), toLocation: BoardLocation(x: 0, y: 5))
+        } catch  {
+            fatalError()
+        }
+        
+        // Check white pawn flag is false
+        guard let piece = game.board.getPiece(at: targetLocation) else {
+            fatalError()
+        }
+        
+        XCTAssertTrue(piece.color == .white)
+        XCTAssertTrue(piece.type == .pawn)
+        XCTAssertTrue(piece.canBeTakenByEnPassant == false)
+    }
+    
+    func testWhitePawnCanTakeOpponentUsingEnPassant() {
+        
+        let board = ASCIIBoard(pieces:  "- - - - - - - g" +
+                                        "p - - - - - - -" +
+                                        "+ - - - - - - -" +
+                                        "* P - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - G" )
+        
+        let game = makeGame(board: board.board, colorToMove: .black)
+        
+        // Black move two spaces
+        guard let blackPlayer = game.currentPlayer as? Human else {
+            fatalError()
+        }
+        
+        do {
+            try blackPlayer.movePiece(fromLocation: board.locationOfCharacter("p"), toLocation: board.locationOfCharacter("*"))
+        } catch  {
+            fatalError()
+        }
+        
+        // Whiteshould be able to take the black pawn using the en passant rule
+        let pieceMovement = PieceMovementPawn()
+        XCTAssertTrue(pieceMovement.canPieceMove(fromLocation: board.locationOfCharacter("P"), toLocation: board.locationOfCharacter("+"), board: game.board))
+
+    }
+    
+    func testBlackPawnCanTakeOpponentUsingEnPassant() {
+        
+        let board = ASCIIBoard(pieces:  "- - - - - - - g" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "* p - - - - - -" +
+                                        "+ - - - - - - -" +
+                                        "P - - - - - - -" +
+                                        "- - - - - - - G" )
+        
+        let game = makeGame(board: board.board, colorToMove: .white)
+        
+        // White move two spaces
+        guard let whitePlayer = game.currentPlayer as? Human else {
+            fatalError()
+        }
+        
+        do {
+            try whitePlayer.movePiece(fromLocation: board.locationOfCharacter("P"), toLocation: board.locationOfCharacter("*"))
+        } catch  {
+            fatalError()
+        }
+        
+        // Black should be able to take the white pawn using the en passant rule
+        let pieceMovement = PieceMovementPawn()
+        XCTAssertTrue(pieceMovement.canPieceMove(fromLocation: board.locationOfCharacter("p"), toLocation: board.locationOfCharacter("+"), board: game.board))
+
+    }
+    
+    func testWhitePawnCannotTakeOpponentUsingEnPassantIfMoveNotMadeImmediately() {
+        
+        let board = ASCIIBoard(pieces:  "- - - - - - - g" +
+                                        "p - - - - - - %" +
+                                        "+ - - - - - - -" +
+                                        "* P - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - &" +
+                                        "- - - - - - - G" )
+        
+        let game = makeGame(board: board.board, colorToMove: .black)
+        let whitePlayer = game.whitePlayer as! Human
+        let blackPlayer = game.blackPlayer as! Human
+        
+        // Black move two spaces
+        do {
+            try blackPlayer.movePiece(fromLocation: board.locationOfCharacter("p"), toLocation: board.locationOfCharacter("*"))
+        } catch  {
+            fatalError()
+        }
+        
+        // White moves king
+        do {
+            try whitePlayer.movePiece(fromLocation: board.locationOfCharacter("G"), toLocation: board.locationOfCharacter("&"))
+        } catch  {
+            fatalError()
+        }
+        
+        // Black moves king
+        do {
+            try blackPlayer.movePiece(fromLocation: board.locationOfCharacter("g"), toLocation: board.locationOfCharacter("%"))
+        } catch  {
+            fatalError()
+        }
+        
+        // White should not be able to take the black pawn using the en passant rule
+        let pieceMovement = PieceMovementPawn()
+        XCTAssertFalse(pieceMovement.canPieceMove(fromLocation: board.locationOfCharacter("P"), toLocation: board.locationOfCharacter("+"), board: game.board))
+
+    }
+    
+    func testBlackPawnCannotTakeOpponentUsingEnPassantIfMoveNotMadeImmediately() {
+        
+        let board = ASCIIBoard(pieces:  "- - - - - - - g" +
+                                        "- - - - - - - %" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "* p - - - - - -" +
+                                        "- + - - - - - -" +
+                                        "P - - - - - - &" +
+                                        "- - - - - - - G" )
+        
+        let game = makeGame(board: board.board, colorToMove: .white)
+        let whitePlayer = game.whitePlayer as! Human
+        let blackPlayer = game.blackPlayer as! Human
+        
+        // White moves pawn two spaces
+        do {
+            try whitePlayer.movePiece(fromLocation: board.locationOfCharacter("P"), toLocation: board.locationOfCharacter("*"))
+        } catch {
+            fatalError()
+        }
+        
+        // Black moves king
+        do {
+            try blackPlayer.movePiece(fromLocation: board.locationOfCharacter("g"), toLocation: board.locationOfCharacter("%"))
+        } catch {
+            fatalError()
+        }
+        
+        // White moves king
+        do {
+            try whitePlayer.movePiece(fromLocation: board.locationOfCharacter("G"), toLocation: board.locationOfCharacter("&"))
+        } catch {
+            fatalError()
+        }
+        
+        // Black should not be able to take the white pawn using the en passant rule
+        let pieceMovement = PieceMovementPawn()
+        XCTAssertFalse(pieceMovement.canPieceMove(fromLocation: board.locationOfCharacter("p"), toLocation: board.locationOfCharacter("+"), board: game.board))
+    }
+    
     // MARK: - Queen movement
     
     func testQueenCannotMoveToInvalidPositionFromCentre(){

@@ -43,6 +43,7 @@ public struct Piece {
     public let color: Color
     public var tag: Int!
     public var hasMoved = false
+    public var canBeTakenByEnPassant = false
     
     var movement : PieceMovement {
         return PieceMovement.pieceMovementForPieceType(pieceType: self.type)
