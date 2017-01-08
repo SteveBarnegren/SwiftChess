@@ -32,4 +32,161 @@ class AIPlayerTests: XCTestCase {
         }
     }
     
+    // MARK: - Test Cannot move in the check
+    
+    func makeTestGame(board: Board, colorToMove: Color) -> Game {
+        
+        let whitePlayer = AIPlayer(color: .white)
+        let blackPlayer = AIPlayer(color: .black)
+        
+        let game = Game(firstPlayer: whitePlayer, secondPlayer: blackPlayer, board: board, colorToMove: colorToMove)
+        return game
+    }
+    
+    func testKnightCannotPutOwnKingInToCheck() {
+        
+        let board = ASCIIBoard(pieces:  "r - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - * - - - - -" +
+                                        "K - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "G - - - - - - -" )
+        
+        let knightLocation = board.locationOfCharacter("K")
+        let testLocation = board.locationOfCharacter("*")
+        
+        let game = makeTestGame(board: board.board, colorToMove: .white)
+        
+        guard let player = game.currentPlayer as? AIPlayer else {
+            fatalError()
+        }
+        
+        XCTAssertFalse(player.canAIMovePiece(fromLocation: knightLocation, toLocation: testLocation))
+    }
+    
+    func testKingCannotMoveInToCheck() {
+        
+        // This is a complex scenario because it was one that I observed from an actual game
+        
+        let board = ASCIIBoard(pieces:  "r k - - q b - r" +
+                                        "p p p g k - - p" +
+                                        "- - * p b p - -" +
+                                        "P P - - p - p P" +
+                                        "- - P - P - - -" +
+                                        "- B - - Q P - -" +
+                                        "- B - P K G P -" +
+                                        "R K - - - - - R" )
+        
+        let kingLocation = board.locationOfCharacter("g")
+        let testLocation = board.locationOfCharacter("*")
+        
+        let game = makeTestGame(board: board.board, colorToMove: .black)
+        
+        guard let player = game.currentPlayer as? AIPlayer else {
+            fatalError()
+        }
+        
+        XCTAssertFalse(player.canAIMovePiece(fromLocation: kingLocation, toLocation: testLocation))
+    }
+    
+    func testPawnCannotPutOwnKingInToCheck() {
+        
+        let board = ASCIIBoard(pieces:  "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - * - - - -" +
+                                        "G - - P - - - r" +
+                                        "- - - - - - - -" )
+        
+        let pawnLocation = board.locationOfCharacter("P")
+        let testLocation = board.locationOfCharacter("*")
+        
+        let game = makeTestGame(board: board.board, colorToMove: .white)
+        
+        guard let player = game.currentPlayer as? AIPlayer else {
+            fatalError()
+        }
+        
+        XCTAssertFalse(player.canAIMovePiece(fromLocation: pawnLocation, toLocation: testLocation))
+
+    }
+    
+    func testQueenCannotPutOwnKingInToCheck() {
+        
+        let board = ASCIIBoard(pieces:  "- - - * - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "G - - Q - - - r" +
+                                        "- - - - - - - -" )
+        
+        let queenLocation = board.locationOfCharacter("Q")
+        let testLocation = board.locationOfCharacter("*")
+        
+        let game = makeTestGame(board: board.board, colorToMove: .white)
+        
+        guard let player = game.currentPlayer as? AIPlayer else {
+            fatalError()
+        }
+        
+        XCTAssertFalse(player.canAIMovePiece(fromLocation: queenLocation, toLocation: testLocation))
+    }
+    
+    func testRookCannotPutOwnKingInToCheck() {
+        
+        let board = ASCIIBoard(pieces:  "- - - * - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "G - - R - - - r" +
+                                        "- - - - - - - -" )
+        
+        let rookLocation = board.locationOfCharacter("R")
+        let testLocation = board.locationOfCharacter("*")
+        
+        let game = makeTestGame(board: board.board, colorToMove: .white)
+        
+        guard let player = game.currentPlayer as? AIPlayer else {
+            fatalError()
+        }
+        
+        XCTAssertFalse(player.canAIMovePiece(fromLocation: rookLocation, toLocation: testLocation))
+    }
+    
+    func testBishopCannotPutOwnKingInToCheck() {
+        
+        let board = ASCIIBoard(pieces:  "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - *" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "G - - B - - - r" +
+                                        "- - - - - - - -" )
+        
+        let bishopLocation = board.locationOfCharacter("B")
+        let testLocation = board.locationOfCharacter("*")
+        
+        let game = makeTestGame(board: board.board, colorToMove: .white)
+        
+        guard let player = game.currentPlayer as? AIPlayer else {
+            fatalError()
+        }
+        
+        XCTAssertFalse(player.canAIMovePiece(fromLocation: bishopLocation, toLocation: testLocation))
+    }
+
+
+
+
+
+    
 }

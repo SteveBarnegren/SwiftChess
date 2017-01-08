@@ -55,6 +55,160 @@ class PlayerTests: XCTestCase {
         XCTAssert(game.whitePlayer.canMovePiece(fromLocation: location, toLocation: location) == false)
     }
     
-    // TODO: Add tests for move error throw values
+    // MARK: - Move Errors
+    
+    func gameForTestingCallbacks(board: Board, color: Color) -> Game {
+        
+        let whitePlayer = Human(color: .white)
+        let blackPlayer = Human(color: .black)
+        
+        let game = Game(firstPlayer: whitePlayer, secondPlayer: blackPlayer, board: board, colorToMove: color)
+        
+        return game
+    }
+    
+    func testMoveInToCheckErrorIsThrownByMovingQueen() {
+        
+        let board = ASCIIBoard(pieces:  "- - - - * - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "G - - - Q - - r" +
+                                        "- - - - - - - -" )
+
+        let queenLocation = board.locationOfCharacter("Q")
+        let targetLocation = board.locationOfCharacter("*")
+        
+        let game = gameForTestingCallbacks(board: board.board, color: .white)
+        
+        guard let player = game.currentPlayer as? Human else {
+            fatalError()
+        }
+        
+        // Assert that the correct error is thrown
+        XCTAssertTrue(player.canMovePieceWithError(fromLocation: queenLocation, toLocation: targetLocation).error == .cannotMoveInToCheck)
+    }
+    
+    func testMoveInToCheckErrorIsThrownByMovingPawn() {
+        
+        let board = ASCIIBoard(pieces:  "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - * - - -" +
+                                        "G - - - P - - r" +
+                                        "- - - - - - - -" )
+        
+        let pieceLocation = board.locationOfCharacter("P")
+        let targetLocation = board.locationOfCharacter("*")
+        
+        let game = gameForTestingCallbacks(board: board.board, color: .white)
+        
+        guard let player = game.currentPlayer as? Human else {
+            fatalError()
+        }
+        
+        // Assert that the correct error is thrown
+        XCTAssertTrue(player.canMovePieceWithError(fromLocation: pieceLocation, toLocation: targetLocation).error == .cannotMoveInToCheck)
+    }
+    
+    func testMoveInToCheckErrorIsThrownByMovingKnight() {
+        
+        let board = ASCIIBoard(pieces:  "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - * - - - -" +
+                                        "- - - - - - - -" +
+                                        "G - - - K - - r" +
+                                        "- - - - - - - -" )
+        
+        let pieceLocation = board.locationOfCharacter("K")
+        let targetLocation = board.locationOfCharacter("*")
+        
+        let game = gameForTestingCallbacks(board: board.board, color: .white)
+        
+        guard let player = game.currentPlayer as? Human else {
+            fatalError()
+        }
+        
+        // Assert that the correct error is thrown
+        XCTAssertTrue(player.canMovePieceWithError(fromLocation: pieceLocation, toLocation: targetLocation).error == .cannotMoveInToCheck)
+    }
+    
+    func testMoveInToCheckErrorIsThrownByMovingBishop() {
+        
+        let board = ASCIIBoard(pieces:  "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - * - - - - -" +
+                                        "- - - - - - - -" +
+                                        "G - - - B - - r" +
+                                        "- - - - - - - -" )
+        
+        let pieceLocation = board.locationOfCharacter("B")
+        let targetLocation = board.locationOfCharacter("*")
+        
+        let game = gameForTestingCallbacks(board: board.board, color: .white)
+        
+        guard let player = game.currentPlayer as? Human else {
+            fatalError()
+        }
+        
+        // Assert that the correct error is thrown
+        XCTAssertTrue(player.canMovePieceWithError(fromLocation: pieceLocation, toLocation: targetLocation).error == .cannotMoveInToCheck)
+    }
+    
+    func testMoveInToCheckErrorIsThrownByMovingRook() {
+        
+        let board = ASCIIBoard(pieces:  "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - * - - -" +
+                                        "- - - - - - - -" +
+                                        "G - - - R - - r" +
+                                        "- - - - - - - -" )
+        
+        let pieceLocation = board.locationOfCharacter("R")
+        let targetLocation = board.locationOfCharacter("*")
+        
+        let game = gameForTestingCallbacks(board: board.board, color: .white)
+        
+        guard let player = game.currentPlayer as? Human else {
+            fatalError()
+        }
+        
+        // Assert that the correct error is thrown
+        XCTAssertTrue(player.canMovePieceWithError(fromLocation: pieceLocation, toLocation: targetLocation).error == .cannotMoveInToCheck)
+    }
+    
+    func testMoveInToCheckErrorIsThrownByMovingKing() {
+        
+        let board = ASCIIBoard(pieces:  "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "- - - - - - - -" +
+                                        "* - - - - - - r" +
+                                        "G - - - - - - -" )
+        
+        let pieceLocation = board.locationOfCharacter("G")
+        let targetLocation = board.locationOfCharacter("*")
+        
+        let game = gameForTestingCallbacks(board: board.board, color: .white)
+        
+        guard let player = game.currentPlayer as? Human else {
+            fatalError()
+        }
+        
+        // Assert that the correct error is thrown
+        XCTAssertTrue(player.canMovePieceWithError(fromLocation: pieceLocation, toLocation: targetLocation).error == .cannotMoveInToCheck)
+    }   
     
 }

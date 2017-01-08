@@ -27,6 +27,8 @@ class AIBehaviourTests: XCTestCase {
         super.tearDown()
     }
     
+    // MARK: - Helpers
+    
     func makeGameWithBoard(board: Board, colorToMove: Color) -> Game {
         
         let whitePlayer = AIPlayer(color: .white)
@@ -36,6 +38,42 @@ class AIBehaviourTests: XCTestCase {
         
         return game
     }
+    
+    func findMovedPieceLocation(startBoard: Board, endBoard: Board, color: Color) -> BoardLocation {
+        
+        for location in BoardLocation.all {
+            
+            let startBoardPiece = startBoard.getPiece(at: location)
+            let endBoardPiece = endBoard.getPiece(at: location)
+            
+            // If there is no end board piece, this is not the location
+            if endBoardPiece == nil {
+                continue
+            }
+            
+            // If the end piece exists, but start doesn't, it's the moved piece
+            if endBoardPiece != nil && startBoardPiece == nil {
+                return location
+            }
+            
+            // If both pieces exist, and are not the same, then it's the location
+            if endBoardPiece != nil && startBoardPiece != nil {
+                
+                if endBoardPiece!.color != startBoardPiece!.color
+                && endBoardPiece!.type != startBoardPiece!.type{
+                    return location
+                }
+            }
+           
+            // Else continue - this isn't the location
+            continue
+        }
+        
+        fatalError("Failed to find moved location")
+        
+    }
+    
+    // MARK: - Scenario Tests
     
     func test_ScenarioOne_BlackShouldNotGiveAwayBishop() {
         
@@ -80,7 +118,57 @@ class AIBehaviourTests: XCTestCase {
         XCTFail("Black moved bishop")
     }
     
-       
+    func test_ScenarioTwo_BlackShouldTradeKnight() {
+        
+        // In this example, the black knight at (2, 1) can either take the white rook at (0,0), or trade itself for the white queen at (0,2)
+        // Both of these are good moves
+        
+        let board = ASCIIBoard(pieces:  "- r - - q b k r" +
+                                        "p - - g - - p p" +
+                                        "- - - - b p - -" +
+                                        "- - - - p - - -" +
+                                        "- - - p P - - -" +
+                                        "Q - - - - - - -" +
+                                        "P P k P K P P P" +
+                                        "R K B G - - - R" )
+
+        let queenLocation = BoardLocation(x: 0, y: 2)
+        let rookLocation = BoardLocation(x: 0, y: 0)
+        
+        let game = makeGameWithBoard(board: board.board, colorToMove: .black)
+
+        guard let player = game.currentPlayer as? AIPlayer else {
+            XCTFail("Expected an AI Player")
+            return
+        }
+        
+        player.makeMove()
+        
+        if let queenLocationPiece = game.board.getPiece(at: queenLocation) {
+            
+            if queenLocationPiece.color == .black && queenLocationPiece.type == .knight {
+                print("PASSED - Black took queen")
+                return
+            }
+        }
+        
+        if let rookLocationPiece = game.board.getPiece(at: rookLocation) {
+            
+            if rookLocationPiece.color == .black && rookLocationPiece.type == .knight {
+                print("PASSED - black took rook")
+                return
+            }
+        }
+        
+        let location = findMovedPieceLocation(startBoard: board.board, endBoard: game.board, color: .black)
+        
+        guard let piece = game.board.getPiece(at: location) else {
+            XCTFail("Couldn't find moved piece")
+            return
+        }
+        
+        XCTFail("FAILED - Black moved \(piece.type) to (\(location.x),\(location.y))")
+    }
     
     
     

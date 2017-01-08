@@ -322,20 +322,39 @@ public struct Board {
     
     public func isColorInCheck(color: Color) -> Bool {
         
-        let kingLocation = getKingLocation(color: color)
+        // Get the King location
+        var kingLocation: BoardLocation?
+        for location in BoardLocation.all {
+            
+            guard let piece = getPiece(at: location) else {
+                continue
+            }
+
+            if piece.color == color && piece.type == .king {
+                kingLocation = location
+                break
+            }
+        }
+        
+        // If there is no king, then return false (some tests will be run without a king)
+        if kingLocation == nil {
+            return false
+        }
+        
+        // Work out if we're in check
         let oppositionLocations = getLocationsOfColor( color.opposite() )
         
-        // Pieces will not move to take the king, so remove it
+        // Pieces will not move to take the king, so change it for a pawn of the same color
         var noKingBoard = self
-        noKingBoard.squares[kingLocation.index].piece = nil
+        noKingBoard.squares[kingLocation!.index].piece = Piece(type: .pawn, color: color)
         
         for location in oppositionLocations {
             
             guard let piece = getPiece(at: location) else {
                 continue
             }
-
-            if piece.movement.canPieceMove(fromLocation: location, toLocation: kingLocation, board: noKingBoard) {
+            
+            if piece.movement.canPieceMove(fromLocation: location, toLocation: kingLocation!, board: noKingBoard) {
                 return true
             }
         }

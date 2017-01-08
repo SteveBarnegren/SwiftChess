@@ -683,7 +683,6 @@ class PieceMovementTests: XCTestCase {
         let movement = PieceMovementKnight()
         XCTAssertFalse(movement.canPieceMove(fromLocation: BoardLocation(index: pieceIndex), toLocation: BoardLocation(index: kingIndex), board: board.board))
     }
-
     
     // MARK: - King Movement
     
@@ -811,7 +810,8 @@ class PieceMovementTests: XCTestCase {
         let movement = PieceMovementKing()
         XCTAssertFalse(movement.canPieceMove(fromLocation: BoardLocation(index: pieceIndex), toLocation: BoardLocation(index: kingIndex), board: board.board))
     }
-
+    
+   
     
     // MARK: - Pawn Movement
     
@@ -1274,6 +1274,8 @@ class PieceMovementTests: XCTestCase {
         XCTAssertFalse(movement.canPieceMove(fromLocation: BoardLocation(index: pieceIndex), toLocation: BoardLocation(index: kingIndex), board: board.board))
     }
     
+   
+    
     // MARK: - Rook Movement
     
     func testRookCannotMoveToInvalidPositionFromCentre(){
@@ -1400,7 +1402,8 @@ class PieceMovementTests: XCTestCase {
         let movement = PieceMovementRook()
         XCTAssertFalse(movement.canPieceMove(fromLocation: BoardLocation(index: pieceIndex), toLocation: BoardLocation(index: kingIndex), board: board.board))
     }
-
+    
+   
 
     
     // MARK: - Bishop movement
@@ -1529,6 +1532,8 @@ class PieceMovementTests: XCTestCase {
         let movement = PieceMovementBishop()
         XCTAssertFalse(movement.canPieceMove(fromLocation: BoardLocation(index: pieceIndex), toLocation: BoardLocation(index: kingIndex), board: board.board))
     }
+    
+    
 
 
 

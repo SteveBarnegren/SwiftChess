@@ -54,7 +54,7 @@ open class AIPlayer : Player {
             
             for targetLocation in BoardLocation.all {
                 
-                guard canMovePiece(fromLocation: sourceLocation, toLocation: targetLocation) else {
+                guard canAIMovePiece(fromLocation: sourceLocation, toLocation: targetLocation) else {
                     continue
                 }
                 
@@ -75,7 +75,7 @@ open class AIPlayer : Player {
                 let move = Move(type: .singlePiece(sourceLocation: sourceLocation, targetLocation: targetLocation),
                                 rating: rating)
                 possibleMoves.append(move)
-                print("Rrting: \(rating)")
+                print("Rating: \(rating)")
             }
         }
         
@@ -144,6 +144,19 @@ open class AIPlayer : Player {
         self.game.playerDidMakeMove(player: self, boardOperations: operations)
     }
     
+    func canAIMovePiece(fromLocation: BoardLocation, toLocation: BoardLocation) -> Bool {
+        
+        // This is a stricter version of the canMove function, used by the AI, that returns false for errors
+        
+        let canMove = canMovePieceWithError(fromLocation: fromLocation, toLocation: toLocation)
+        if canMove.error != nil {
+            return false
+        }
+        
+        return canMove.result
+    }
+
+    
     func ratingForBoard(_ board: Board) -> Double {
         
         var rating: Double = 0;
@@ -210,8 +223,6 @@ open class AIPlayer : Player {
         
         return promotedBoard
     }
-    
-    
 }
 
 struct Move {
