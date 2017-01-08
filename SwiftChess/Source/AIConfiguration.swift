@@ -49,7 +49,7 @@ struct AIConfiguration {
         boardRaterCenterDominanceWeighting = 0.3
         boardRaterCenterFourOccupationWeighting = 0.3
         boardRaterThreatenedPiecesWeighting = 1.5
-        boardRaterThreatenedPiecesOwnPiecesMultiplier = 2
+        boardRaterThreatenedPiecesOwnPiecesMultiplier = 3 // 2 // Higher values will be more defensive
         boardRaterPawnProgressionWeighting = 1
         boardRaterKingSurroundingPossessionWeighting = 1
         boardRaterCheckMateOpportunityWeighting = 2

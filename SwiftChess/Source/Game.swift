@@ -18,7 +18,9 @@ open class Game {
     
     open weak var delegate: GameDelegate?
 
-    public init(firstPlayer: Player, secondPlayer: Player){
+    public init(firstPlayer: Player, secondPlayer: Player, board: Board = Board(state: .newGame), colorToMove: Color = .white){
+        
+        self.board = board
         
         // Assign to correct colors
         if firstPlayer.color == secondPlayer.color {
@@ -33,7 +35,7 @@ open class Game {
         self.blackPlayer.delegate = self
         self.whitePlayer.game = self
         self.blackPlayer.game = self
-        self.currentPlayer = self.whitePlayer
+        self.currentPlayer = (colorToMove == .white ? self.whitePlayer : self.blackPlayer)
     }
 }
 
