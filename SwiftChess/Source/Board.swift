@@ -204,10 +204,12 @@ public struct Board {
     
         var operations = [BoardOperation]()
         
-        if let piece = getPiece(at: fromLocation) {
-            let operation = BoardOperation(type: .movePiece, piece: piece, location: toLocation)
-            operations.append(operation)
+        guard var movingPiece = getPiece(at: fromLocation) else {
+            fatalError("There is no piece on at (\(fromLocation.x),\(fromLocation.y))")
         }
+        
+        let operation = BoardOperation(type: .movePiece, piece: movingPiece, location: toLocation)
+        operations.append(operation)
 
         if let piece = getPiece(at: toLocation) {
             let operation = BoardOperation(type: .removePiece, piece: piece, location: toLocation)
@@ -217,8 +219,31 @@ public struct Board {
         squares[toLocation.index].piece = self.squares[fromLocation.index].piece
         squares[toLocation.index].piece?.hasMoved = true
         squares[fromLocation.index].piece = nil
-    
+        
+        // Reset en passant flags
+        resetEnPassantFlags()
+        
+        // If pawn has moved two squares, then need up update the en passant flag
+        if movingPiece.type == .pawn {
+            
+            let startingRow = (movingPiece.color == .white ? 1 : 6)
+            let twoAheadRow = (movingPiece.color == .white ? 3 : 4)
+            
+            if fromLocation.y == startingRow && toLocation.y == twoAheadRow {
+                movingPiece.canBeTakenByEnPassant = true
+            }
+            
+            squares[toLocation.index].piece = movingPiece
+        }
+        
         return operations
+    }
+    
+    mutating func resetEnPassantFlags() {
+        
+        for i in 0..<squares.count {
+            squares[i].piece?.canBeTakenByEnPassant = false
+        }
     }
     
     // MARK: - Get Specific pieces
