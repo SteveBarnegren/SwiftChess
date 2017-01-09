@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import XCTest
 import SwiftChess
 
 func transformASCIIBoardInput(_ input: String) -> String{
@@ -33,7 +32,7 @@ public struct ASCIIBoard {
     let artString: String
     var stringContainsColors: Bool!
     
-    init(pieces artString: String) {
+    public init(pieces artString: String) {
 
         var artString = artString
         
@@ -41,20 +40,20 @@ public struct ASCIIBoard {
         artString = transformASCIIBoardInput(artString)
         
         // Check string format
-        XCTAssertEqual(artString.characters.count, 64, "ASCII board art must be 128 characters long")
+        assert(artString.characters.count == 64, "ASCII board art must be 128 characters long")
         
         self.artString = artString
         self.stringContainsColors = false
         
     }
     
-    init(colors artString: String) {
+    public init(colors artString: String) {
         
         self.init(pieces: artString)
         self.stringContainsColors = true
     }
     
-    var board: Board {
+    public var board: Board {
         
         var boardArt = artString
         
@@ -126,7 +125,7 @@ public struct ASCIIBoard {
             index = artString.characters.distance(from: artString.startIndex, to: idx)
         }
         
-        XCTAssert(index != nil, "Unable to find index of character: \(character)")
+        assert(index != nil, "Unable to find index of character: \(character)")
         return index!
     }
     
