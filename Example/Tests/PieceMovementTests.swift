@@ -1271,21 +1271,28 @@ class PieceMovementTests: XCTestCase {
                                         "- - - - - - - G" )
         
         let game = makeGame(board: board.board, colorToMove: .black)
+        let blackPlayer = game.blackPlayer as! Human
+        let whitePlayer = game.whitePlayer as! Human
         
         // Black move two spaces
-        guard let blackPlayer = game.currentPlayer as? Human else {
-            fatalError()
-        }
-        
         do {
             try blackPlayer.movePiece(fromLocation: board.locationOfCharacter("p"), toLocation: board.locationOfCharacter("*"))
         } catch  {
             fatalError()
         }
         
-        // Whiteshould be able to take the black pawn using the en passant rule
+        // White should be able to take the black pawn using the en passant rule
         let pieceMovement = PieceMovementPawn()
-        XCTAssertTrue(pieceMovement.canPieceMove(fromLocation: board.locationOfCharacter("P"), toLocation: board.locationOfCharacter("+"), board: game.board))
+        XCTAssertTrue(pieceMovement.canPieceMove(fromLocation: board.locationOfCharacter("P"), toLocation: board.locationOfCharacter("+"), board: game.board),
+                      "Expected white to be able to make en passant move")
+        
+        do {
+            try whitePlayer.movePiece(fromLocation: board.locationOfCharacter("P"), toLocation: board.locationOfCharacter("+"))
+        } catch {
+            XCTFail("Expected white to be able to execute en passant move")
+        }
+    
+        XCTAssertTrue(game.board.getPiece(at: board.locationOfCharacter("*")) == nil, "Expected black pawn to be removed from board")
 
     }
     
@@ -1301,12 +1308,10 @@ class PieceMovementTests: XCTestCase {
                                         "- - - - - - - G" )
         
         let game = makeGame(board: board.board, colorToMove: .white)
+        let whitePlayer = game.whitePlayer as! Human
+        let blackPlayer = game.blackPlayer as! Human
         
         // White move two spaces
-        guard let whitePlayer = game.currentPlayer as? Human else {
-            fatalError()
-        }
-        
         do {
             try whitePlayer.movePiece(fromLocation: board.locationOfCharacter("P"), toLocation: board.locationOfCharacter("*"))
         } catch  {
@@ -1315,7 +1320,16 @@ class PieceMovementTests: XCTestCase {
         
         // Black should be able to take the white pawn using the en passant rule
         let pieceMovement = PieceMovementPawn()
-        XCTAssertTrue(pieceMovement.canPieceMove(fromLocation: board.locationOfCharacter("p"), toLocation: board.locationOfCharacter("+"), board: game.board))
+        XCTAssertTrue(pieceMovement.canPieceMove(fromLocation: board.locationOfCharacter("p"), toLocation: board.locationOfCharacter("+"), board: game.board),
+                      "Expected black to be able to make en passant move")
+        
+        do {
+            try blackPlayer.movePiece(fromLocation: board.locationOfCharacter("p"), toLocation: board.locationOfCharacter("+"))
+        } catch  {
+            XCTFail("Expected black to be able to execute en passant move")
+        }
+        
+        XCTAssertTrue(game.board.getPiece(at: board.locationOfCharacter("*")) == nil, "Expected white pawn to be removed from board")
 
     }
     
@@ -1368,7 +1382,7 @@ class PieceMovementTests: XCTestCase {
                                         "- - - - - - - -" +
                                         "- - - - - - - -" +
                                         "* p - - - - - -" +
-                                        "- + - - - - - -" +
+                                        "+ - - - - - - -" +
                                         "P - - - - - - &" +
                                         "- - - - - - - G" )
         

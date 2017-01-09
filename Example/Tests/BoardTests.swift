@@ -96,6 +96,29 @@ class BoardTests: XCTestCase {
         }
     }
     
+    // MARK: - Board Location
+    
+    func testBoardLocationStrideToReturnsExpectedStride() {
+    
+        let fromLocation = BoardLocation(x: 1, y: 1)
+        let toLocation = BoardLocation(x: 3, y: 4)
+        
+        let stride = fromLocation.strideTo(location: toLocation)
+        XCTAssertEqual(stride.x, 2)
+        XCTAssertEqual(stride.y, 3)
+    }
+    
+    func testBoardLocationStrideFromReturnsExpectedStride() {
+        
+        let fromLocation = BoardLocation(x: 1, y: 1)
+        let toLocation = BoardLocation(x: 3, y: 4)
+        
+        let stride = toLocation.strideFrom(location: fromLocation)
+        XCTAssertEqual(stride.x, 2)
+        XCTAssertEqual(stride.y, 3)
+    }
+
+    
     // MARK: - Piece Manipulation
     
     func testSetAndGetPiece() {
@@ -158,12 +181,12 @@ class BoardTests: XCTestCase {
                                         "- - - - - - - -" +
                                         "- - - - - - - -" +
                                         "- - - - - - - -" +
-                                        "- - - - - - - -" +
+                                        "* - - - - - - -" +
                                         "W - - - - - - -" +
                                         "- - - - - - - -" )
         
-        let fromLocation = BoardLocation(index: board.indexOfCharacter("W") )
-        let toLocation = BoardLocation(x: 4, y: 4)
+        let fromLocation = board.locationOfCharacter("W")
+        let toLocation = board.locationOfCharacter("*")
         
         var gameBoard = board.board
         

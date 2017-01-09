@@ -24,7 +24,6 @@ public struct BoardStride {
         self.x = x;
         self.y = y;
     }
-
 }
 
 // MARK: - ****** BoardLocation ******
@@ -107,6 +106,18 @@ public struct BoardLocation : Equatable {
         }
         
         return true
+    }
+    
+    func strideTo(location: BoardLocation) -> BoardStride {
+        
+        return BoardStride(x: location.x - x,
+                           y: location.y - y)
+    }
+    
+    func strideFrom(location: BoardLocation) -> BoardStride {
+        
+        return BoardStride(x: x - location.x,
+                           y: y - location.y)
     }
 }
 
@@ -211,8 +222,8 @@ public struct Board {
         let operation = BoardOperation(type: .movePiece, piece: movingPiece, location: toLocation)
         operations.append(operation)
 
-        if let piece = getPiece(at: toLocation) {
-            let operation = BoardOperation(type: .removePiece, piece: piece, location: toLocation)
+        if let targetPiece = getPiece(at: toLocation) {
+            let operation = BoardOperation(type: .removePiece, piece: targetPiece, location: toLocation)
             operations.append(operation)
         }
         
@@ -220,20 +231,34 @@ public struct Board {
         squares[toLocation.index].piece?.hasMoved = true
         squares[fromLocation.index].piece = nil
         
+        // If the moving piece is a pawn, check whether it just made an en passent move, and remove the passed piece
+        IF_EN_PASSANT: if movingPiece.type == .pawn {
+        
+            let stride = fromLocation.strideTo(location: toLocation)
+            let enPassentStride = BoardStride(x: stride.x, y: 0)
+            let enPassentLocation = fromLocation.incrementedBy(stride: enPassentStride)
+            
+            guard let enPassentPiece = getPiece(at: enPassentLocation) else {
+                break IF_EN_PASSANT
+            }
+            
+            if enPassentPiece.canBeTakenByEnPassant && enPassentPiece.color == movingPiece.color.opposite() {
+                squares[enPassentLocation.index].piece = nil;
+            }
+        }
+        
         // Reset en passant flags
         resetEnPassantFlags()
         
-        // If pawn has moved two squares, then need up update the en passant flag
+        // If pawn has moved two squares, then need to update the en passant flag
         if movingPiece.type == .pawn {
             
             let startingRow = (movingPiece.color == .white ? 1 : 6)
             let twoAheadRow = (movingPiece.color == .white ? 3 : 4)
             
             if fromLocation.y == startingRow && toLocation.y == twoAheadRow {
-                movingPiece.canBeTakenByEnPassant = true
+                squares[toLocation.index].piece?.canBeTakenByEnPassant = true
             }
-            
-            squares[toLocation.index].piece = movingPiece
         }
         
         return operations

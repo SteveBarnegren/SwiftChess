@@ -355,11 +355,30 @@ open class PieceMovementPawn: PieceMovement {
                 continue
             }
             
+            // If the target square has an opponent piece
             if let piece = board.getPiece(at: location) {
                 if piece.color == color.opposite() {
                     return true
                 }
             }
+            
+            // If can make en passent move
+            let enPassentStride = BoardStride(x: stride.x, y: 0)
+            
+            guard fromLocation.canIncrementBy(stride: enPassentStride) else {
+                break
+            }
+            
+            let enPassentLocation = fromLocation.incrementedBy(stride: enPassentStride)
+            
+            guard let passingPiece = board.getPiece(at: enPassentLocation) else {
+                break
+            }
+            
+            if passingPiece.canBeTakenByEnPassant && passingPiece.color == color.opposite() {
+                return true
+            }
+            
         }
         
         return false
