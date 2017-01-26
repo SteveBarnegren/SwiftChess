@@ -10,14 +10,35 @@ import Foundation
 
 open class Game {
     
+    // MARK: Types
+    public enum State: Equatable {
+        case inProgress
+        case staleMate(color: Color)
+        case won(color: Color)
+        
+        public static func ==(lhs: State, rhs: State) -> Bool {
+            switch (lhs, rhs) {
+            case (.inProgress, .inProgress):
+                return true
+            case (let .staleMate(color1), let staleMate(color2)):
+                return color1 == color2
+            case (let .won(color1), let won(color2)):
+                return color1 == color2
+            default:
+                return false
+            }
+        }
+    }
+
+    // MARK: Properties
     open var board = Board(state: .newGame)
-    
     open var whitePlayer: Player!
     open var blackPlayer: Player!
     open var currentPlayer: Player!
-    
+    open var state = Game.State.inProgress
     open weak var delegate: GameDelegate?
-
+    
+    // MARK: Init
     public init(firstPlayer: Player, secondPlayer: Player, board: Board = Board(state: .newGame), colorToMove: Color = .white){
         
         self.board = board
@@ -37,8 +58,11 @@ open class Game {
         self.blackPlayer.game = self
         self.currentPlayer = (colorToMove == .white ? self.whitePlayer : self.blackPlayer)
     }
+    
+    
 }
 
+// MARK: - Game : PlayerDelegate
 extension Game : PlayerDelegate {
 
     func playerDidMakeMove(player: Player, boardOperations: [BoardOperation]) {
@@ -53,12 +77,14 @@ extension Game : PlayerDelegate {
         
         // Check for game ended
         if board.isColorInCheckMate(color: currentPlayer.color.opposite()) {
+            state = .won(color: currentPlayer.color)
             delegate?.gameWonByPlayer(game: self, player: currentPlayer)
             return
         }
         
         // Check for stalemate
         if board.isColorInStalemate(color: currentPlayer.color.opposite()) {
+            state = .staleMate(color: currentPlayer.color.opposite())
             delegate?.gameEndedInStaleMate(game: self)
             return
         }
@@ -93,6 +119,7 @@ extension Game : PlayerDelegate {
     
 }
 
+// MARK: - GameDelegate
 public protocol GameDelegate: class {
     
     // State changes

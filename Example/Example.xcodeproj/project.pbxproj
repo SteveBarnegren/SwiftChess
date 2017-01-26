@@ -13,6 +13,7 @@
 		6719898D1DFFE0F40053EA3D /* BoardRaterBoardDominanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6719898C1DFFE0F40053EA3D /* BoardRaterBoardDominanceTests.swift */; };
 		671989911DFFE8650053EA3D /* BoardRaterCenterDominanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671989901DFFE8650053EA3D /* BoardRaterCenterDominanceTests.swift */; };
 		676EF7C51E15AC1700E275B4 /* BoardRaterKingSurroundingPossession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676EF7C41E15AC1700E275B4 /* BoardRaterKingSurroundingPossession.swift */; };
+		67A3EB161E3A926C00F6F01B /* BoardScenarios.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A3EB121E3A826800F6F01B /* BoardScenarios.swift */; };
 		67A9CA341DE64DD600510FB8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		67A9CA351DE64DD800510FB8 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* MenuViewController.swift */; };
 		67A9CA361DE64DDA00510FB8 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AD33A61D7C67BF002730DF /* GameViewController.swift */; };
@@ -76,6 +77,7 @@
 		6719898C1DFFE0F40053EA3D /* BoardRaterBoardDominanceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardRaterBoardDominanceTests.swift; sourceTree = "<group>"; };
 		671989901DFFE8650053EA3D /* BoardRaterCenterDominanceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardRaterCenterDominanceTests.swift; sourceTree = "<group>"; };
 		676EF7C41E15AC1700E275B4 /* BoardRaterKingSurroundingPossession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardRaterKingSurroundingPossession.swift; sourceTree = "<group>"; };
+		67A3EB121E3A826800F6F01B /* BoardScenarios.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardScenarios.swift; sourceTree = "<group>"; };
 		67A9CA071DE64D6500510FB8 /* SwiftChess.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SwiftChess.xcodeproj; path = ../SwiftChess/SwiftChess.xcodeproj; sourceTree = "<group>"; };
 		67A9CA141DE64DAA00510FB8 /* SwiftChessExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftChessExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		67A9CA271DE64DAA00510FB8 /* SwiftChessExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftChessExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -188,6 +190,7 @@
 			isa = PBXGroup;
 			children = (
 				607FACEA1AFB9204008FA782 /* Info.plist */,
+				67A3EB121E3A826800F6F01B /* BoardScenarios.swift */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -381,6 +384,7 @@
 				67B73A9F1E154C1E00C19176 /* AIPlayerTests.swift in Sources */,
 				67F779201E1B923B00885B89 /* AIConfigurationTests.swift in Sources */,
 				67D54A641DE976A900C12258 /* BoardRaterCountPiecesTests.swift in Sources */,
+				67A3EB161E3A926C00F6F01B /* BoardScenarios.swift in Sources */,
 				09AE32551E03D71D00A149FE /* BoardRaterPawnProgressionTests.swift in Sources */,
 				09A4C0291E013ECB000CFBF4 /* BoardRaterThreatenedPiecesTests.swift in Sources */,
 				67D54A5F1DE7683300C12258 /* PieceMovementTests.swift in Sources */,
