@@ -29,10 +29,9 @@ class BoardTests: XCTestCase {
         
         let board = Board(state: .empty)
         
-        for index in 0..<64 {
-            
-            let piece = board.getPiece(at: BoardLocation(index: index))
-            XCTAssert(piece == nil, "Expected piece at index \(index) to be nil")
+        (0..<64).forEach {
+            let piece = board.getPiece(at: BoardLocation(index: $0))
+            XCTAssert(piece == nil, "Expected piece at index \($0) to be nil")
         }
     }
     
@@ -168,8 +167,8 @@ class BoardTests: XCTestCase {
         let blackPieces = board.getPieces(color: .black)
         let allPieces = whitePieces + blackPieces
         
-        for piece in allPieces {
-            XCTAssertFalse(piece.hasMoved)
+        allPieces.forEach{
+            XCTAssertFalse($0.hasMoved)
         }
     }
     
@@ -273,44 +272,27 @@ class BoardTests: XCTestCase {
 
         var board = Board(state: .empty)
         
-        for location in whiteLocations {
-            board.setPiece(Piece(type: .pawn, color: .white), at: location)
+        whiteLocations.forEach{
+            board.setPiece(Piece(type: .pawn, color: .white), at: $0)
         }
         
-        for location in blackLocations {
-            board.setPiece(Piece(type: .pawn, color: .black), at: location)
+        blackLocations.forEach{
+            board.setPiece(Piece(type: .pawn, color: .black), at: $0)
         }
         
         let returnedWhitelocations = board.getLocationsOfColor(.white)
-        XCTAssert(returnedWhitelocations.count == whiteLocations.count,
-                  "Expected white count to be \(whiteLocations.count), was \(returnedWhitelocations.count)")
+        XCTAssertEqual(whiteLocations.count, returnedWhitelocations.count);
         
         let returnedBlacklocations = board.getLocationsOfColor(.black)
-        XCTAssert(returnedBlacklocations.count == blackLocations.count,
-                  "Expected white count to be \(blackLocations.count), was \(returnedBlacklocations.count)")
+        XCTAssertEqual(blackLocations.count, returnedBlacklocations.count);
         
-        
-        for location in whiteLocations {
-            
-            XCTAssert(
-                returnedWhitelocations.filter({ (returnedLocation: BoardLocation) -> Bool in
-                    return location == returnedLocation
-                }).count == 1,
-                "Expected only one location to exist"
-            )
+        whiteLocations.forEach { (location) in
+            XCTAssertEqual(returnedWhitelocations.filter{ location == $0 }.count, 1)
         }
         
-        
-        for location in blackLocations {
-            
-            XCTAssert(
-                returnedBlacklocations.filter({ (returnedLocation: BoardLocation) -> Bool in
-                    return location == returnedLocation
-                }).count == 1,
-                "Expected only one location to exist"
-            )
+        blackLocations.forEach { (location) in
+            XCTAssertEqual(returnedBlacklocations.filter{ location == $0 }.count, 1)
         }
-        
     }
     
     func testIsColorInCheckReturnsTrueWhenInCheck() {

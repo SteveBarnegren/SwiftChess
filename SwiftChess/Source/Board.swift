@@ -37,8 +37,8 @@ public struct BoardLocation : Equatable {
         // TODO: using a computed property could be expensive, can we store this so it doesn't need to be computed each time?
         var locations = [BoardLocation]()
         
-        for i in 0..<64 {
-            locations.append(BoardLocation(index: i))
+        (0..<64).forEach{
+            locations.append(BoardLocation(index: $0))
         }
         
         return locations
@@ -152,7 +152,7 @@ public struct Board {
     public init(state: InitialState) {
         
         // Setup squares
-        for i in 0..<64 {
+        for _ in 0..<64 {
             squares.append(Square())
         }
         

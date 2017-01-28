@@ -66,15 +66,14 @@ public struct ASCIIBoard {
         var board = Board(state: .empty)
         
         // Clear all pieces on the board
-        for i in 0..<64 {
-            board.squares[i].piece = nil;
+        (0..<64).forEach{
+            board.squares[$0].piece = nil;
         }
         
         // Setup pieces from ascii art
-        for i in 0..<64 {
-            
-            let character = boardArt[boardArt.characters.index(boardArt.startIndex, offsetBy: i)]
-            board.squares[i].piece = pieceFromCharacter(character)
+        (0..<64).forEach{
+            let character = boardArt[boardArt.characters.index(boardArt.startIndex, offsetBy: $0)]
+            board.squares[$0].piece = pieceFromCharacter(character)
         }
         
         return board
@@ -139,11 +138,10 @@ public struct ASCIIBoard {
         
         var indexes = [Int]()
         
-        for i in 0..<64 {
-            
-            let aCharacter = artString[artString.characters.index(artString.startIndex, offsetBy: i)]
+        (0..<64).forEach{
+            let aCharacter = artString[artString.characters.index(artString.startIndex, offsetBy: $0)]
             if character == aCharacter {
-                indexes.append(i)
+                indexes.append($0)
             }
         }
         
@@ -156,9 +154,8 @@ public struct ASCIIBoard {
         
         var locations = [BoardLocation]()
         
-        for index in indexes {
-            
-            let location = BoardLocation(index: index)
+        indexes.forEach{
+            let location = BoardLocation(index: $0)
             locations.append(location)
         }
         
