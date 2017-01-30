@@ -513,6 +513,23 @@ public struct Board {
         return (piece.color == color ? true : false)
     }
     
+    public func possibleMoveLocationsForPiece(atLocation location: BoardLocation) -> [BoardLocation] {
+        
+        guard let piece = squares[location.index].piece else{
+            return []
+        }
+        
+        var locations = [BoardLocation]()
+        
+        BoardLocation.all.forEach{
+            if piece.movement.canPieceMove(fromLocation: location, toLocation: $0, board: self){
+                locations.append($0)
+            }
+        }
+        
+        return locations
+    }
+    
     // MARK: - Castling
     
     struct CastleMove{

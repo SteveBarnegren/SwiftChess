@@ -985,7 +985,32 @@ class BoardTests: XCTestCase {
         XCTAssertFalse(board.doesColorOccupyLocation(color: .white, location: location))
         XCTAssertFalse(board.doesColorOccupyLocation(color: .black, location: location))
     }
+    
+    // MARK: Test Possible Move Locations
+    
+    func testPossibleMoveLocationsReturnsExpectedLocations(){
+        
+        let asciiBoard = ASCIIBoard(pieces: "- - - - - - - -" +
+                                            "- - * - * - - -" +
+                                            "- * - - - * - -" +
+                                            "- - - K - - - -" +
+                                            "- * - - - * - -" +
+                                            "- - * - * - - -" +
+                                            "- - - - - - - -" +
+                                            "- - - - - - - -" );
+        
+        let board = asciiBoard.board;
+        
+        let sourceLocation = asciiBoard.locationOfCharacter("K")
+        let locations = board.possibleMoveLocationsForPiece(atLocation: sourceLocation)
+        XCTAssertEqual(locations.count, 8)
+        
+        let expectedLocations = asciiBoard.locationsWithCharacter("*")
+        
+        expectedLocations.forEach{ expectedLocation in
+            XCTAssertEqual(locations.filter( { $0 == expectedLocation} ).count, 1)
+        }
+    }
 
 
- 
 }
