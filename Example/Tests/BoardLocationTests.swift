@@ -1,0 +1,109 @@
+//
+//  BoardLocationTests.swift
+//  Example
+//
+//  Created by Steve Barnegren on 31/01/2017.
+//  Copyright © 2017 CocoaPods. All rights reserved.
+//
+
+import XCTest
+@testable import SwiftChess
+
+class BoardLocationTests: XCTestCase {
+    
+    override func setUp() {
+        super.setUp()
+        // Put setup code here. This method is called before the invocation of each test method in the class.
+    }
+    
+    override func tearDown() {
+        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        super.tearDown()
+    }
+    
+    func testBoardLocationFromGridPositionResultsInCorrectIndex() {
+        
+        let testCases = [
+            // row 1
+            (BoardLocation.GridPosition.a1, 0),
+            (BoardLocation.GridPosition.b1, 1),
+            (BoardLocation.GridPosition.c1, 2),
+            (BoardLocation.GridPosition.d1, 3),
+            (BoardLocation.GridPosition.e1, 4),
+            (BoardLocation.GridPosition.f1, 5),
+            (BoardLocation.GridPosition.g1, 6),
+            (BoardLocation.GridPosition.h1, 7),
+            // row 2
+            (BoardLocation.GridPosition.a2, 8),
+            (BoardLocation.GridPosition.b2, 9),
+            (BoardLocation.GridPosition.c2, 10),
+            (BoardLocation.GridPosition.d2, 11),
+            (BoardLocation.GridPosition.e2, 12),
+            (BoardLocation.GridPosition.f2, 13),
+            (BoardLocation.GridPosition.g2, 14),
+            (BoardLocation.GridPosition.h2, 15),
+            // row 3
+            (BoardLocation.GridPosition.a3, 16),
+            (BoardLocation.GridPosition.b3, 17),
+            (BoardLocation.GridPosition.c3, 18),
+            (BoardLocation.GridPosition.d3, 19),
+            (BoardLocation.GridPosition.e3, 20),
+            (BoardLocation.GridPosition.f3, 21),
+            (BoardLocation.GridPosition.g3, 22),
+            (BoardLocation.GridPosition.h3, 23),
+            // row 4
+            (BoardLocation.GridPosition.a4, 24),
+            (BoardLocation.GridPosition.b4, 25),
+            (BoardLocation.GridPosition.c4, 26),
+            (BoardLocation.GridPosition.d4, 27),
+            (BoardLocation.GridPosition.e4, 28),
+            (BoardLocation.GridPosition.f4, 29),
+            (BoardLocation.GridPosition.g4, 30),
+            (BoardLocation.GridPosition.h4, 31),
+            // row 5
+            (BoardLocation.GridPosition.a5, 32),
+            (BoardLocation.GridPosition.b5, 33),
+            (BoardLocation.GridPosition.c5, 34),
+            (BoardLocation.GridPosition.d5, 35),
+            (BoardLocation.GridPosition.e5, 36),
+            (BoardLocation.GridPosition.f5, 37),
+            (BoardLocation.GridPosition.g5, 38),
+            (BoardLocation.GridPosition.h5, 39),
+            // row 6
+            (BoardLocation.GridPosition.a6, 40),
+            (BoardLocation.GridPosition.b6, 41),
+            (BoardLocation.GridPosition.c6, 42),
+            (BoardLocation.GridPosition.d6, 43),
+            (BoardLocation.GridPosition.e6, 44),
+            (BoardLocation.GridPosition.f6, 45),
+            (BoardLocation.GridPosition.g6, 46),
+            (BoardLocation.GridPosition.h6, 47),
+            // row 7
+            (BoardLocation.GridPosition.a7, 48),
+            (BoardLocation.GridPosition.b7, 49),
+            (BoardLocation.GridPosition.c7, 50),
+            (BoardLocation.GridPosition.d7, 51),
+            (BoardLocation.GridPosition.e7, 52),
+            (BoardLocation.GridPosition.f7, 53),
+            (BoardLocation.GridPosition.g7, 54),
+            (BoardLocation.GridPosition.h7, 55),
+            // row 8
+            (BoardLocation.GridPosition.a8, 56),
+            (BoardLocation.GridPosition.b8, 57),
+            (BoardLocation.GridPosition.c8, 58),
+            (BoardLocation.GridPosition.d8, 59),
+            (BoardLocation.GridPosition.e8, 60),
+            (BoardLocation.GridPosition.f8, 61),
+            (BoardLocation.GridPosition.g8, 62),
+            (BoardLocation.GridPosition.h8, 63),
+        ]
+        
+        
+        for (grid, index) in testCases {
+            XCTAssertEqual(BoardLocation(gridPosition: grid).index, index)
+            XCTAssertEqual(BoardLocation(index: index).gridPosition, grid)
+        }
+        
+    }
+
+}

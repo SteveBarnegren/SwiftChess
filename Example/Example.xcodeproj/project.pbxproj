@@ -37,6 +37,7 @@
 		67F779261E1C32A400885B89 /* BoardRaterCenterFourOccupationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F779251E1C32A400885B89 /* BoardRaterCenterFourOccupationTests.swift */; };
 		67F9DB6E1E1AC8DC00C7EC5A /* BoardRaterCheckMateOpportunityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F9DB6D1E1AC8DC00C7EC5A /* BoardRaterCheckMateOpportunityTests.swift */; };
 		67F9DB751E1AD3BB00C7EC5A /* AIBehaviourTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F9DB741E1AD3BB00C7EC5A /* AIBehaviourTests.swift */; };
+		67FD868D1E41099B0023335C /* BoardLocationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67FD868C1E41099B0023335C /* BoardLocationTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,6 +98,7 @@
 		67F779251E1C32A400885B89 /* BoardRaterCenterFourOccupationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardRaterCenterFourOccupationTests.swift; sourceTree = "<group>"; };
 		67F9DB6D1E1AC8DC00C7EC5A /* BoardRaterCheckMateOpportunityTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardRaterCheckMateOpportunityTests.swift; sourceTree = "<group>"; };
 		67F9DB741E1AD3BB00C7EC5A /* AIBehaviourTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIBehaviourTests.swift; sourceTree = "<group>"; };
+		67FD868C1E41099B0023335C /* BoardLocationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardLocationTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,6 +175,7 @@
 			children = (
 				607FACE91AFB9204008FA782 /* Supporting Files */,
 				67D54A651DE986F700C12258 /* PieceTests.swift */,
+				67FD868C1E41099B0023335C /* BoardLocationTests.swift */,
 				67D54A511DE7680E00C12258 /* BoardTests.swift */,
 				67D54A521DE7680E00C12258 /* GameTests.swift */,
 				67D54A531DE7680E00C12258 /* PieceMovementTests.swift */,
@@ -374,6 +377,7 @@
 				67D54A601DE7683800C12258 /* PlayerTests.swift in Sources */,
 				67D54A611DE7683A00C12258 /* Tests.swift in Sources */,
 				676EF7C51E15AC1700E275B4 /* BoardRaterKingSurroundingPossession.swift in Sources */,
+				67FD868D1E41099B0023335C /* BoardLocationTests.swift in Sources */,
 				67D54A5D1DE7682D00C12258 /* BoardTests.swift in Sources */,
 				67F9DB751E1AD3BB00C7EC5A /* AIBehaviourTests.swift in Sources */,
 				671989911DFFE8650053EA3D /* BoardRaterCenterDominanceTests.swift in Sources */,
