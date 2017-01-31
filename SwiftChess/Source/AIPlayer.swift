@@ -13,7 +13,7 @@ open class AIPlayer : Player {
     
     let boardRaters : [BoardRater]!
     let configuration = AIConfiguration() // <-- We should pass this in eventually
-    let openingMoves = [OpeningMove]()
+    var openingMoves = [OpeningMove]()
     
     public init(color: Color){
         
@@ -29,6 +29,8 @@ open class AIPlayer : Player {
             BoardRaterCenterFourOccupation(configuration: configuration)
         ]
         
+        openingMoves = Opening.allOpeningMoves(forColor: color)
+        
         super.init()
         self.color = color
     }
@@ -39,7 +41,62 @@ open class AIPlayer : Player {
         
         let board = game.board
         
-        // Build list of possible moves with ratings
+        var move: Move!
+        
+        // Get an opening move
+        if let openingMove = openingMoveForBoard(board){
+            print("Playing opening move")
+            move = openingMove
+        }
+        // Or, get the Highest rated move
+        else{
+            move = highestRatedMoveOnBoard(board)
+        }
+        
+        // Make move
+        var operations = [BoardOperation]()
+        
+        switch move.type {
+        case .singlePiece(let sourceLocation, let targetLocation):
+            operations = game.board.movePiece(fromLocation: sourceLocation, toLocation: targetLocation)
+            print("Chose move (\(sourceLocation.x),\(sourceLocation.y)) -> (\(targetLocation.x),\(targetLocation.y))");
+        case .castle(let color, let side):
+            operations = game.board.performCastle(color: color, side: side)
+            print("Chose Castling move");
+        }
+        
+        // Promote pawns
+        let pawnsToPromoteLocations = game.board.getLocationsOfPromotablePawns(color: color)
+        assert(pawnsToPromoteLocations.count < 2, "There should only ever be one pawn to promote at any time")
+        if pawnsToPromoteLocations.count > 0 {
+            game.board = promotePawnsOnBoard(game.board)
+            
+            let location = pawnsToPromoteLocations.first!
+            let transformOperation = BoardOperation(type: .transformPiece, piece: game.board.getPiece(at: location)!, location: location)
+            operations.append(transformOperation)
+        }
+        
+        self.game.playerDidMakeMove(player: self, boardOperations: operations)
+    }
+    
+    func openingMoveForBoard(_ board: Board) -> Move? {
+        
+        let possibleMoves = openingMoves.filter{
+            $0.board == board
+        }
+        
+        guard possibleMoves.count > 0 else{
+            return nil
+        }
+        
+        let openingMove = possibleMoves[Int(arc4random()) % possibleMoves.count]
+        
+        return Move(type: .singlePiece(sourceLocation: openingMove.fromLocation,
+                                       targetLocation: openingMove.toLocation),
+                                       rating: 0)
+    }
+    
+    func highestRatedMoveOnBoard(_ board: Board) -> Move {
         
         var possibleMoves = [Move]()
         
@@ -87,7 +144,7 @@ open class AIPlayer : Player {
             guard game.board.canColorCastle(color: color, side: side) else {
                 continue
             }
-           
+            
             // Perform the castling move
             var resultBoard = board
             resultBoard.performCastle(color: color, side: side)
@@ -104,7 +161,7 @@ open class AIPlayer : Player {
         if possibleMoves.count == 0 {
             print("There are no possible moves!!!!");
         }
-    
+        
         // Choose move with highest rating
         var highestRating = possibleMoves.first!.rating
         var highestRatedMove = possibleMoves.first!
@@ -119,30 +176,7 @@ open class AIPlayer : Player {
             //print("rating: \(move.rating)")
         }
         
-        // Make move
-        var operations = [BoardOperation]()
-        
-        switch highestRatedMove.type {
-        case .singlePiece(let sourceLocation, let targetLocation):
-            operations = game.board.movePiece(fromLocation: sourceLocation, toLocation: targetLocation)
-            print("Chose move (\(sourceLocation.x),\(sourceLocation.y)) -> (\(targetLocation.x),\(targetLocation.y))");
-        case .castle(let color, let side):
-            operations = game.board.performCastle(color: color, side: side)
-            print("Chose Castling move");
-        }
-        
-        // Promote pawns
-        let pawnsToPromoteLocations = game.board.getLocationsOfPromotablePawns(color: color)
-        assert(pawnsToPromoteLocations.count < 2, "There should only ever be one pawn to promote at any time")
-        if pawnsToPromoteLocations.count > 0 {
-            game.board = promotePawnsOnBoard(game.board)
-            
-            let location = pawnsToPromoteLocations.first!
-            let transformOperation = BoardOperation(type: .transformPiece, piece: game.board.getPiece(at: location)!, location: location)
-            operations.append(transformOperation)
-        }
-        
-        self.game.playerDidMakeMove(player: self, boardOperations: operations)
+        return highestRatedMove;
     }
     
     func canAIMovePiece(fromLocation: BoardLocation, toLocation: BoardLocation) -> Bool {

@@ -15,10 +15,24 @@ public enum CastleSide {
 
 // MARK: - ****** Square ******
 
-public struct Square {
+public struct Square : Equatable {
     
     public var piece: Piece?
+
+}
+
+public func ==(lhs: Square, rhs: Square) -> Bool {
     
+    switch (lhs.piece, rhs.piece) {
+    case (.none, .none):
+        return true
+    case (.some, .none):
+        return true
+    case (.none, .some):
+        return true
+    case (.some(let rp), .some(let lp)):
+        return rp == lp
+    }
 }
 
 // MARK: - ****** Board ******
@@ -633,6 +647,8 @@ public struct Board {
         
         print(printString)
     }
-    
-    
+}
+
+public func ==(lhs: Board, rhs: Board) -> Bool {
+    return lhs.squares == rhs.squares
 }

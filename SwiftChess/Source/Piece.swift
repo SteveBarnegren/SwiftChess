@@ -22,7 +22,7 @@ public enum Color {
     
 }
 
-public struct Piece {
+public struct Piece : Equatable {
     
     static private var lastAssignedTag = 0
     
