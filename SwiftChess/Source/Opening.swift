@@ -8,8 +8,14 @@
 
 import Foundation
 
+struct OpeningMove {
+    let board: Board
+    let fromLocation: BoardLocation
+    let toLocation: BoardLocation
+}
+
 class Opening {
-    
+
     static func allOpenings() -> [Opening] {
         return [
             RuyLopez(),
@@ -20,17 +26,64 @@ class Opening {
         ]
     }
     
-    func moves() -> [(fromPosition: BoardLocation.GridPosition, toPosition: BoardLocation.GridPosition)] {
-        fatalError("Must override")
+    static func allOpeningMoves(forColor color: Color) -> [OpeningMove] {
+        
+        var openingMoves = [OpeningMove]()
+        
+        allOpenings().forEach{
+            openingMoves += $0.moves(forColor: color)
+        }
+        
+        return openingMoves
     }
     
+    public func moves(forColor color: Color) -> [OpeningMove] {
+    
+        var moves = [OpeningMove]()
+        
+        var board = Board(state: .newGame)
+        for locations in moveLocations(){
+            
+            let move = OpeningMove(board: board,
+                                   fromLocation: locations.fromLocation,
+                                   toLocation: locations.toLocation)
+            moves.append(move)
+            
+            board.movePiece(fromLocation: locations.fromLocation,
+                            toLocation: locations.toLocation)
+        }
+        
+        // Filter for color
+        return moves.enumerated().flatMap{ (index, value) in
+            index % 2 == (color == .white ? 0 : 1) ? value : nil
+        }
+    }
+/*
+    public func moveLocations(forColor color: Color) -> [(fromLocation: BoardLocation, toLocation: BoardLocation)] {
+        
+        return moveLocations().enumerated().flatMap{ (index, value) in
+            index % 2 == (color == .white ? 0 : 1) ? value : nil
+        }
+    }
+    */
+    func moveLocations() -> [(fromLocation: BoardLocation, toLocation: BoardLocation)] {
+        
+        return moveGridPositions().map{
+            (BoardLocation(gridPosition: $0), BoardLocation(gridPosition: $1))
+        }
+    }
+    
+    func moveGridPositions() -> [(fromPosition: BoardLocation.GridPosition, toPosition: BoardLocation.GridPosition)] {
+        fatalError("Must override")
+    }
+
 }
 
 // MARK: - Ruy Lopez
 
 class RuyLopez: Opening {
     
-    override func moves() -> [(fromPosition: BoardLocation.GridPosition, toPosition: BoardLocation.GridPosition)] {
+    override func moveGridPositions() -> [(fromPosition: BoardLocation.GridPosition, toPosition: BoardLocation.GridPosition)] {
         
         let moves: [(BoardLocation.GridPosition, BoardLocation.GridPosition)] = [
             (.e2, .e4), // white moves pawn to e4
@@ -48,7 +101,7 @@ class RuyLopez: Opening {
 
 class ItalianGame: Opening {
     
-    override func moves() -> [(fromPosition: BoardLocation.GridPosition, toPosition: BoardLocation.GridPosition)] {
+    override func moveGridPositions() -> [(fromPosition: BoardLocation.GridPosition, toPosition: BoardLocation.GridPosition)] {
         
         let moves: [(BoardLocation.GridPosition, BoardLocation.GridPosition)] = [
             (.e2, .e4), // white moves pawn to e4
@@ -66,11 +119,11 @@ class ItalianGame: Opening {
 
 class SicilianDefense: Opening {
     
-    override func moves() -> [(fromPosition: BoardLocation.GridPosition, toPosition: BoardLocation.GridPosition)] {
+    override func moveGridPositions() -> [(fromPosition: BoardLocation.GridPosition, toPosition: BoardLocation.GridPosition)] {
         
         let moves: [(BoardLocation.GridPosition, BoardLocation.GridPosition)] = [
             (.e2, .e4), // white moves pawn to e4
-            (.e7, .c5), // black moves pawn to c5
+            (.c7, .c5), // black moves pawn to c5
         ]
         
         return moves
@@ -81,7 +134,7 @@ class SicilianDefense: Opening {
 
 class QueensGambit: Opening {
     
-    override func moves() -> [(fromPosition: BoardLocation.GridPosition, toPosition: BoardLocation.GridPosition)] {
+    override func moveGridPositions() -> [(fromPosition: BoardLocation.GridPosition, toPosition: BoardLocation.GridPosition)] {
         
         let moves: [(BoardLocation.GridPosition, BoardLocation.GridPosition)] = [
             (.d2, .d4), // white moves pawn to d4
@@ -97,7 +150,7 @@ class QueensGambit: Opening {
 
 class KingsGambit: Opening {
     
-    override func moves() -> [(fromPosition: BoardLocation.GridPosition, toPosition: BoardLocation.GridPosition)] {
+    override func moveGridPositions() -> [(fromPosition: BoardLocation.GridPosition, toPosition: BoardLocation.GridPosition)] {
         
         let moves: [(BoardLocation.GridPosition, BoardLocation.GridPosition)] = [
             (.e2, .e4), // white moves pawn to e4

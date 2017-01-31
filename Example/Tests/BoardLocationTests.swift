@@ -105,5 +105,57 @@ class BoardLocationTests: XCTestCase {
         }
         
     }
+    
+    func testMoveLocationsForColorReturnsCorrectLocations() {
+        
+        class FakeOpening : Opening {
+            override func moveGridPositions() -> [(fromPosition: BoardLocation.GridPosition, toPosition: BoardLocation.GridPosition)] {
+                let moves: [(BoardLocation.GridPosition, BoardLocation.GridPosition)] = [
+                    (.e2, .e4), // white moves pawn to e4
+                    (.e7, .e5), // black moves pawn to e5
+                    (.g1, .f3), // white moves knight to f3
+                    (.b8, .c6), // black moves knight to c6
+                    (.f1, .b5), // white moves bishop to b5
+                ]
+                return moves
+            }
+        }
+        
+        let expectedWhiteLocations: [(fromLocation: BoardLocation, toLocation: BoardLocation)] = [
+            (BoardLocation(gridPosition: .e2), BoardLocation(gridPosition: .e4)),
+            (BoardLocation(gridPosition: .g1), BoardLocation(gridPosition: .f3)),
+            (BoardLocation(gridPosition: .f1), BoardLocation(gridPosition: .b5)),
+            ]
+        
+        let expectedBlackLocations: [(fromLocation: BoardLocation, toLocation: BoardLocation)] = [
+            (BoardLocation(gridPosition: .e7), BoardLocation(gridPosition: .e5)),
+            (BoardLocation(gridPosition: .b8), BoardLocation(gridPosition: .c6)),
+            ]
+        
+        let opening = FakeOpening()
+        
+        let whiteMoves = opening.moves(forColor: .white)
+        XCTAssertEqual(whiteMoves.count, expectedWhiteLocations.count)
+        
+        let blackMoves = opening.moves(forColor: .black)
+        XCTAssertEqual(blackMoves.count, expectedBlackLocations.count)
+        
+        for i in 0..<whiteMoves.count {
+            let expected = expectedWhiteLocations[i]
+            let actual = whiteMoves[i]
+            
+            XCTAssertEqual(expected.fromLocation, actual.fromLocation)
+            XCTAssertEqual(expected.toLocation, actual.toLocation)
+        }
+        
+        for i in 0..<blackMoves.count {
+            let expected = expectedBlackLocations[i]
+            let actual = blackMoves[i]
+            
+            XCTAssertEqual(expected.fromLocation, actual.fromLocation)
+            XCTAssertEqual(expected.toLocation, actual.toLocation)
+        }
+        
+    }
 
 }

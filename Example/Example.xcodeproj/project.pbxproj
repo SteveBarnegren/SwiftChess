@@ -38,6 +38,7 @@
 		67F9DB6E1E1AC8DC00C7EC5A /* BoardRaterCheckMateOpportunityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F9DB6D1E1AC8DC00C7EC5A /* BoardRaterCheckMateOpportunityTests.swift */; };
 		67F9DB751E1AD3BB00C7EC5A /* AIBehaviourTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F9DB741E1AD3BB00C7EC5A /* AIBehaviourTests.swift */; };
 		67FD868D1E41099B0023335C /* BoardLocationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67FD868C1E41099B0023335C /* BoardLocationTests.swift */; };
+		67FD86911E4128F00023335C /* OpeningsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67FD86901E4128F00023335C /* OpeningsTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,6 +100,7 @@
 		67F9DB6D1E1AC8DC00C7EC5A /* BoardRaterCheckMateOpportunityTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardRaterCheckMateOpportunityTests.swift; sourceTree = "<group>"; };
 		67F9DB741E1AD3BB00C7EC5A /* AIBehaviourTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIBehaviourTests.swift; sourceTree = "<group>"; };
 		67FD868C1E41099B0023335C /* BoardLocationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardLocationTests.swift; sourceTree = "<group>"; };
+		67FD86901E4128F00023335C /* OpeningsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpeningsTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,6 +185,7 @@
 				67B73A9E1E154C1E00C19176 /* AIPlayerTests.swift */,
 				67F7791F1E1B923B00885B89 /* AIConfigurationTests.swift */,
 				67F9DB741E1AD3BB00C7EC5A /* AIBehaviourTests.swift */,
+				67FD86901E4128F00023335C /* OpeningsTests.swift */,
 				67D54A621DE9768200C12258 /* BoardRaters */,
 				67D54A551DE7680E00C12258 /* Tests.swift */,
 			);
@@ -375,6 +378,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				67D54A601DE7683800C12258 /* PlayerTests.swift in Sources */,
+				67FD86911E4128F00023335C /* OpeningsTests.swift in Sources */,
 				67D54A611DE7683A00C12258 /* Tests.swift in Sources */,
 				676EF7C51E15AC1700E275B4 /* BoardRaterKingSurroundingPossession.swift in Sources */,
 				67FD868D1E41099B0023335C /* BoardLocationTests.swift in Sources */,

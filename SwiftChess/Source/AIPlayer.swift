@@ -13,6 +13,7 @@ open class AIPlayer : Player {
     
     let boardRaters : [BoardRater]!
     let configuration = AIConfiguration() // <-- We should pass this in eventually
+    let openingMoves = [OpeningMove]()
     
     public init(color: Color){
         
