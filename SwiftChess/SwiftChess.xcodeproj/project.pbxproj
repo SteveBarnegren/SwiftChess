@@ -28,6 +28,9 @@
 		67F9DB6C1E1AC59600C7EC5A /* BoardRaterCheckMateOpportunity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F9DB6B1E1AC59600C7EC5A /* BoardRaterCheckMateOpportunity.swift */; };
 		67F9DB771E1AD46000C7EC5A /* AIConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F9DB761E1AD46000C7EC5A /* AIConfiguration.swift */; };
 		67F9DB7A1E2438EC00C7EC5A /* ASCIIBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F9DB791E2438EC00C7EC5A /* ASCIIBoard.swift */; };
+		67FD86871E41021E0023335C /* Opening.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67FD86861E41021E0023335C /* Opening.swift */; };
+		67FD86891E4105B80023335C /* BoardStride.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67FD86881E4105B80023335C /* BoardStride.swift */; };
+		67FD868B1E4105D40023335C /* BoardLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67FD868A1E4105D40023335C /* BoardLocation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +68,9 @@
 		67F9DB6B1E1AC59600C7EC5A /* BoardRaterCheckMateOpportunity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardRaterCheckMateOpportunity.swift; sourceTree = "<group>"; };
 		67F9DB761E1AD46000C7EC5A /* AIConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIConfiguration.swift; sourceTree = "<group>"; };
 		67F9DB791E2438EC00C7EC5A /* ASCIIBoard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCIIBoard.swift; sourceTree = "<group>"; };
+		67FD86861E41021E0023335C /* Opening.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Opening.swift; sourceTree = "<group>"; };
+		67FD86881E4105B80023335C /* BoardStride.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardStride.swift; sourceTree = "<group>"; };
+		67FD868A1E4105D40023335C /* BoardLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardLocation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +132,8 @@
 			isa = PBXGroup;
 			children = (
 				67F9DB791E2438EC00C7EC5A /* ASCIIBoard.swift */,
+				67FD86881E4105B80023335C /* BoardStride.swift */,
+				67FD868A1E4105D40023335C /* BoardLocation.swift */,
 				67A9C9FB1DE64D2500510FB8 /* Board.swift */,
 				67A9C9FD1DE64D2500510FB8 /* Piece.swift */,
 				67A9C9FE1DE64D2500510FB8 /* PieceMovement.swift */,
@@ -151,6 +159,7 @@
 			children = (
 				67A9C9FA1DE64D2500510FB8 /* AIPlayer.swift */,
 				67F9DB761E1AD46000C7EC5A /* AIConfiguration.swift */,
+				67FD86851E4101DD0023335C /* Openings */,
 				67D54A4B1DE6D8D200C12258 /* BoardRaters */,
 			);
 			name = AIPlayer;
@@ -170,6 +179,14 @@
 				67F779231E1C326D00885B89 /* BoardRaterCenterFourOccupation.swift */,
 			);
 			name = BoardRaters;
+			sourceTree = "<group>";
+		};
+		67FD86851E4101DD0023335C /* Openings */ = {
+			isa = PBXGroup;
+			children = (
+				67FD86861E41021E0023335C /* Opening.swift */,
+			);
+			name = Openings;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -291,10 +308,13 @@
 				67D54A481DE6D34100C12258 /* Player.swift in Sources */,
 				67F9DB7A1E2438EC00C7EC5A /* ASCIIBoard.swift in Sources */,
 				67F9DB6C1E1AC59600C7EC5A /* BoardRaterCheckMateOpportunity.swift in Sources */,
+				67FD86891E4105B80023335C /* BoardStride.swift in Sources */,
 				671989831DEB11900053EA3D /* BoardRaterCenterOwnership.swift in Sources */,
 				67A9CA061DE64D2500510FB8 /* Human.swift in Sources */,
 				676EF7C31E15A8A500E275B4 /* BoardRaterKingSurroundingPossession.swift in Sources */,
+				67FD86871E41021E0023335C /* Opening.swift in Sources */,
 				67F9DB771E1AD46000C7EC5A /* AIConfiguration.swift in Sources */,
+				67FD868B1E4105D40023335C /* BoardLocation.swift in Sources */,
 				67D54A4D1DE6DE1400C12258 /* BoardRaterCountPieces.swift in Sources */,
 				09A4C0271E013950000CFBF4 /* BoardRaterThreatenedPieces.swift in Sources */,
 				67D54A6B1DEAF16200C12258 /* BoardOperation.swift in Sources */,
