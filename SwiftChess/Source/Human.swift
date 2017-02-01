@@ -19,6 +19,11 @@ open class Human : Player {
     
     public func movePiece(fromLocation: BoardLocation, toLocation: BoardLocation) throws {
         
+        // Check that the game is in progress
+        guard game.state == .inProgress else {
+            throw MoveError.gameIsNotInProgress
+        }
+        
         // Check that we're the current player
         guard game.currentPlayer === self else {
             throw MoveError.notThisPlayersTurn

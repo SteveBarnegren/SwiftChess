@@ -107,8 +107,4 @@ class GameTests: XCTestCase {
         XCTAssertTrue(game.state == Game.State.won(color: .black))
     }
     
-   
-    
-    
-    
 }

@@ -46,8 +46,13 @@ open class AIPlayer : Player {
         
         //print("\n\n****** Make Move ******");
         
-        let board = game.board
+        // Check that the game is in progress
+        guard game.state == .inProgress else {
+            return
+        }
         
+        let board = game.board
+                
         var move: Move!
         
         // Get an opening move

@@ -41,6 +41,7 @@ open class Player {
         case pieceUnableToMoveToLocation
         case playerMustMoveOutOfCheck
         case cannotMoveInToCheck
+        case gameIsNotInProgress
     }
 
     public func canMovePieceWithError(fromLocation: BoardLocation, toLocation: BoardLocation) -> (result: Bool, error: MoveError?) {
