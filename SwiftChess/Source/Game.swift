@@ -72,6 +72,9 @@ extension Game : PlayerDelegate {
             print("Warning - Wrong player took turn")
         }
         
+        // Tell delegate we will begin updates
+        delegate?.gameWillBeginUpdates(game: self)
+        
         // Process board operations
         processBoardOperations(boardOperations: boardOperations)
         
@@ -89,6 +92,9 @@ extension Game : PlayerDelegate {
             return
         }
         
+        // Tell the delegate that we've ended updates
+        delegate?.gameDidEndUpdates(game: self)
+        
         // Switch to the other player
         if player === whitePlayer {
             currentPlayer = blackPlayer
@@ -98,6 +104,7 @@ extension Game : PlayerDelegate {
         }
         
         self.delegate?.gameDidChangeCurrentPlayer(game: self)
+        
     }
     
     func processBoardOperations(boardOperations: [BoardOperation]) {

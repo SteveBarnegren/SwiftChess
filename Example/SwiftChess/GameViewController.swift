@@ -16,6 +16,7 @@ class GameViewController: UIViewController {
     @IBOutlet weak var whiteQueenSideCastleButton: UIButton!
     @IBOutlet weak var blackKingSideCastleButton: UIButton!
     @IBOutlet weak var blackQueenSideCastleButton: UIButton!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
 
     var pieceViews = [PieceView]()
     var game: Game!
@@ -60,6 +61,9 @@ class GameViewController: UIViewController {
             addPieceView(at: location.x, y: location.y, piece: piece)
         }
         
+        // Activity Indicator
+        activityIndicator.hidesWhenStopped = true
+        
         // Update castle buttons visibility
         updateCastleButtonsVisibility()
         
@@ -71,7 +75,7 @@ class GameViewController: UIViewController {
         // Take go if the first player is an AI player
         if !self.hasMadeInitialAppearance {
             if let player = game.currentPlayer as? AIPlayer {
-                player.makeMove()
+                player.makeMoveAsync()
             }
         }
     }
@@ -360,7 +364,7 @@ extension GameViewController: GameDelegate {
     }
     
     func gameDidEndUpdates(game: Game) {
-        // do nothing
+        activityIndicator.stopAnimating()
     }
     
     func gameWonByPlayer(game: Game, player: Player) {
@@ -394,7 +398,8 @@ extension GameViewController: GameDelegate {
     func tellAIToTakeGo() {
         
         if let player =  game.currentPlayer as? AIPlayer {
-            player.makeMove()
+            activityIndicator.startAnimating();
+            player.makeMoveAsync()
         }
     }
     

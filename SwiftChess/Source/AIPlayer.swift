@@ -35,7 +35,14 @@ open class AIPlayer : Player {
         self.color = color
     }
     
-    public func makeMove() {
+    public func makeMoveAsync() {
+        
+        DispatchQueue.global(qos: .background).async {
+            self.makeMoveSync()
+        }
+    }
+    
+    public func makeMoveSync() {
         
         //print("\n\n****** Make Move ******");
         
@@ -76,7 +83,11 @@ open class AIPlayer : Player {
             operations.append(transformOperation)
         }
         
-        self.game.playerDidMakeMove(player: self, boardOperations: operations)
+        
+        let strongGame = self.game!
+        DispatchQueue.main.async {
+            strongGame.playerDidMakeMove(player: self, boardOperations: operations)
+        }
     }
     
     func openingMoveForBoard(_ board: Board) -> Move? {

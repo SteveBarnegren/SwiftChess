@@ -102,7 +102,7 @@ class AIBehaviourTests: XCTestCase {
             return
         }
         
-        player.makeMove()
+        player.makeMoveSync()
         
         // If there is not piece at the location, then test has passed
         guard let piece = game.board.getPiece(at: location) else {
@@ -142,7 +142,7 @@ class AIBehaviourTests: XCTestCase {
             return
         }
         
-        player.makeMove()
+        player.makeMoveSync()
         
         if let queenLocationPiece = game.board.getPiece(at: queenLocation) {
             

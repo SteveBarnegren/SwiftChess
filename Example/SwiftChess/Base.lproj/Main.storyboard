@@ -1,8 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1212" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="o9i-0S-2Up">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="o9i-0S-2Up">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -39,20 +42,24 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KRf-s7-H9a">
+                                <rect key="frame" x="133.5" y="264.5" width="108" height="138"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fGu-y2-Qxm">
+                                        <rect key="frame" x="0.0" y="92" width="108" height="30"/>
                                         <state key="normal" title="AI vs AI"/>
                                         <connections>
                                             <action selector="AIvsAIButtonPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="mrX-sU-WvD"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kEX-Ea-5Xq">
+                                        <rect key="frame" x="0.0" y="46" width="108" height="30"/>
                                         <state key="normal" title="Player vs Player"/>
                                         <connections>
                                             <action selector="playerVsPlayerButtonPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="xIZ-0U-CNW"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gcM-Gf-hHc">
+                                        <rect key="frame" x="0.0" y="0.0" width="108" height="30"/>
                                         <state key="normal" title="Player vs AI"/>
                                         <connections>
                                             <action selector="playerVsAIButtonPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="QvL-y5-tdf"/>
@@ -99,41 +106,50 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NnZ-Ew-a2B" customClass="BoardView" customModule="SwiftChessExample" customModuleProvider="target">
+                                <rect key="frame" x="8" y="154" width="359" height="359"/>
                                 <color key="backgroundColor" red="0.46274509800000002" green="0.71372549019999998" blue="0.97254901959999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="NnZ-Ew-a2B" secondAttribute="height" multiplier="1:1" id="GNF-YV-5Vh"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZZ0-mR-VXd">
+                                <rect key="frame" x="8" y="116" width="44" height="30"/>
                                 <state key="normal" title="Castle"/>
                                 <connections>
                                     <action selector="blackKingSideCastleButtonPressedWithSender:" destination="M5V-oM-g1K" eventType="touchUpInside" id="rLk-f9-Sot"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eZD-P8-Hr3">
+                                <rect key="frame" x="323" y="116" width="44" height="30"/>
                                 <state key="normal" title="Castle"/>
                                 <connections>
                                     <action selector="blackQueenSideCastleButtonPressedWithSender:" destination="M5V-oM-g1K" eventType="touchUpInside" id="04c-Bn-Bkt"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yxk-YT-5FA">
+                                <rect key="frame" x="8" y="521" width="44" height="30"/>
                                 <state key="normal" title="Castle"/>
                                 <connections>
                                     <action selector="whiteQueenSideCastleButtonPressedWithSender:" destination="M5V-oM-g1K" eventType="touchUpInside" id="3el-xi-NUE"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FwI-ZC-g1Z">
+                                <rect key="frame" x="323" y="521" width="44" height="30"/>
                                 <state key="normal" title="Castle"/>
                                 <connections>
                                     <action selector="whiteKingSideCastleButtonPressedWithSender:" destination="M5V-oM-g1K" eventType="touchUpInside" id="geO-9J-0qc"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="JEV-Ul-qRP">
+                                <rect key="frame" x="177" y="121" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="NnZ-Ew-a2B" firstAttribute="top" secondItem="eZD-P8-Hr3" secondAttribute="bottom" constant="8" id="8gI-BZ-sfM"/>
                             <constraint firstItem="Yxk-YT-5FA" firstAttribute="leading" secondItem="NnZ-Ew-a2B" secondAttribute="leading" id="BxL-mm-tSn"/>
                             <constraint firstItem="NnZ-Ew-a2B" firstAttribute="centerY" secondItem="0i2-vi-BZ9" secondAttribute="centerY" id="DzP-fd-RxD"/>
+                            <constraint firstItem="JEV-Ul-qRP" firstAttribute="centerY" secondItem="ZZ0-mR-VXd" secondAttribute="centerY" id="LLa-vl-Dcs"/>
                             <constraint firstItem="Yxk-YT-5FA" firstAttribute="top" secondItem="NnZ-Ew-a2B" secondAttribute="bottom" constant="8" id="N2S-Kg-2L0"/>
                             <constraint firstItem="ZZ0-mR-VXd" firstAttribute="leading" secondItem="NnZ-Ew-a2B" secondAttribute="leading" id="NAg-kl-feP"/>
                             <constraint firstItem="eZD-P8-Hr3" firstAttribute="trailing" secondItem="NnZ-Ew-a2B" secondAttribute="trailing" id="NYh-P9-I1j"/>
@@ -141,10 +157,12 @@
                             <constraint firstItem="NnZ-Ew-a2B" firstAttribute="top" secondItem="ZZ0-mR-VXd" secondAttribute="bottom" constant="8" id="TgY-3v-zy1"/>
                             <constraint firstItem="NnZ-Ew-a2B" firstAttribute="leading" secondItem="0i2-vi-BZ9" secondAttribute="leading" constant="8" id="Ve9-Wz-Mmx"/>
                             <constraint firstItem="FwI-ZC-g1Z" firstAttribute="top" secondItem="NnZ-Ew-a2B" secondAttribute="bottom" constant="8" id="YnW-Zf-aL2"/>
+                            <constraint firstItem="JEV-Ul-qRP" firstAttribute="centerX" secondItem="0i2-vi-BZ9" secondAttribute="centerX" id="dOc-ve-oSq"/>
                             <constraint firstItem="FwI-ZC-g1Z" firstAttribute="trailing" secondItem="NnZ-Ew-a2B" secondAttribute="trailing" id="rx5-mS-bp0"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="JEV-Ul-qRP" id="93U-eY-Z18"/>
                         <outlet property="blackKingSideCastleButton" destination="ZZ0-mR-VXd" id="jhh-iW-CTM"/>
                         <outlet property="blackQueenSideCastleButton" destination="eZD-P8-Hr3" id="yY5-WP-Yvk"/>
                         <outlet property="boardView" destination="NnZ-Ew-a2B" id="qeo-BV-9YO"/>
