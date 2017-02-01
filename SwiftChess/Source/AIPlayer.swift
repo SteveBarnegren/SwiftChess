@@ -37,7 +37,7 @@ open class AIPlayer : Player {
     
     public func makeMove() {
         
-        print("\n\n****** Make Move ******");
+        //print("\n\n****** Make Move ******");
         
         let board = game.board
         
@@ -45,7 +45,7 @@ open class AIPlayer : Player {
         
         // Get an opening move
         if let openingMove = openingMoveForBoard(board){
-            print("Playing opening move")
+            //print("Playing opening move")
             move = openingMove
         }
         // Or, get the Highest rated move
@@ -59,10 +59,10 @@ open class AIPlayer : Player {
         switch move.type {
         case .singlePiece(let sourceLocation, let targetLocation):
             operations = game.board.movePiece(fromLocation: sourceLocation, toLocation: targetLocation)
-            print("Chose move (\(sourceLocation.x),\(sourceLocation.y)) -> (\(targetLocation.x),\(targetLocation.y))");
+            //print("Chose move (\(sourceLocation.x),\(sourceLocation.y)) -> (\(targetLocation.x),\(targetLocation.y))");
         case .castle(let color, let side):
             operations = game.board.performCastle(color: color, side: side)
-            print("Chose Castling move");
+            //print("Chose Castling move");
         }
         
         // Promote pawns
@@ -85,7 +85,7 @@ open class AIPlayer : Player {
             $0.board == board
         }
         
-        print("Num opening moves`; \(possibleMoves.count)")
+        //print("Num opening moves`; \(possibleMoves.count)")
         
         guard possibleMoves.count > 0 else{
             return nil
@@ -132,12 +132,12 @@ open class AIPlayer : Player {
                 }
                 
                 // Rate
-                print("(\(sourceLocation.x),\(sourceLocation.y)) -> (\(targetLocation.x),\(targetLocation.y))")
+                //print("(\(sourceLocation.x),\(sourceLocation.y)) -> (\(targetLocation.x),\(targetLocation.y))")
                 let rating = ratingForBoard(resultBoard)
                 let move = Move(type: .singlePiece(sourceLocation: sourceLocation, targetLocation: targetLocation),
                                 rating: rating)
                 possibleMoves.append(move)
-                print("Rating: \(rating)")
+               // print("Rating: \(rating)")
             }
         }
         
@@ -159,7 +159,7 @@ open class AIPlayer : Player {
             possibleMoves.append(move)
         }
         
-        print("Found \(possibleMoves.count) possible moves")
+        //print("Found \(possibleMoves.count) possible moves")
         
         // If there are no possible moves, we must be in stale mate
         if possibleMoves.count == 0 {
@@ -204,8 +204,8 @@ open class AIPlayer : Player {
             
             let result = boardRater.ratingfor(board: board, color: color)
             
-            let className = "\(boardRater)"
-            print("\t\(className): \(result)")
+            //let className = "\(boardRater)"
+            //print("\t\(className): \(result)")
             rating += result
         }
         

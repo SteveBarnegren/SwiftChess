@@ -52,7 +52,7 @@ class Opening {
             board.movePiece(fromLocation: locations.fromLocation,
                             toLocation: locations.toLocation)
             
-            move.board.printBoardPieces()
+            //move.board.printBoardPieces()
             
         }
         
