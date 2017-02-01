@@ -27,9 +27,9 @@ public func ==(lhs: Square, rhs: Square) -> Bool {
     case (.none, .none):
         return true
     case (.some, .none):
-        return true
+        return false
     case (.none, .some):
-        return true
+        return false
     case (.some(let rp), .some(let lp)):
         return rp == lp
     }

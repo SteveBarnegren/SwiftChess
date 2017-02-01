@@ -1036,7 +1036,7 @@ class BoardTests: XCTestCase {
         
         let board2 = Board(state: .newGame)
         
-        XCTAssertNotEqual(board1, board2)        
+        XCTAssertNotEqual(board1, board2)
     }
 
 
