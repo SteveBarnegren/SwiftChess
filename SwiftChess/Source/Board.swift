@@ -37,7 +37,7 @@ public func ==(lhs: Square, rhs: Square) -> Bool {
 
 // MARK: - ****** Board ******
 
-public struct Board {
+public struct Board : Equatable {
         
     public enum InitialState {
         case empty

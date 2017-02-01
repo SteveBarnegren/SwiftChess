@@ -92,7 +92,7 @@ open class AIPlayer : Player {
         }
         
         //let index = Int(arc4random()) % possibleMoves.count;
-        let index = 0
+        let index = 0;
         let openingMove = possibleMoves[index]
         
         return Move(type: .singlePiece(sourceLocation: openingMove.fromLocation,

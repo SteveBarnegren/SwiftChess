@@ -1025,7 +1025,7 @@ class BoardTests: XCTestCase {
         board1.movePiece(fromLocation: sourceLocation, toLocation: targetLocation)
         board2.movePiece(fromLocation: sourceLocation, toLocation: targetLocation)
         
-        XCTAssertTrue(board1 == board2)
+        XCTAssertEqual(board1, board2)
     }
     
     func testNonEqualBoardsAreNotEqual() {
@@ -1036,7 +1036,7 @@ class BoardTests: XCTestCase {
         
         let board2 = Board(state: .newGame)
         
-        XCTAssertFalse(board1 == board2)
+        XCTAssertNotEqual(board1, board2)        
     }
 
 
