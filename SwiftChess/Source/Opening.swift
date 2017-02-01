@@ -51,6 +51,9 @@ class Opening {
             
             board.movePiece(fromLocation: locations.fromLocation,
                             toLocation: locations.toLocation)
+            
+            move.board.printBoardPieces()
+            
         }
         
         // Filter for color

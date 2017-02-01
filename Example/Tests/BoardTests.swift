@@ -1011,6 +1011,43 @@ class BoardTests: XCTestCase {
             XCTAssertEqual(locations.filter( { $0 == expectedLocation} ).count, 1)
         }
     }
+    
+    // MARK: - Test Board Equality
+    
+    func testEqualBoardsAreEqual() {
+        
+        var board1 = Board(state: .newGame)
+        var board2 = Board(state: .newGame)
+        
+        let sourceLocation = BoardLocation(x: 0, y: 1)
+        let targetLocation = BoardLocation(x: 0, y: 3)
+        
+        board1.movePiece(fromLocation: sourceLocation, toLocation: targetLocation)
+        board2.movePiece(fromLocation: sourceLocation, toLocation: targetLocation)
+        
+        XCTAssertTrue(board1 == board2)
+    }
+    
+    func testNonEqualBoardsAreNotEqual() {
+        
+        var board1 = Board(state: .newGame)
+        board1.movePiece(fromLocation: BoardLocation(x: 0, y: 1),
+                         toLocation: BoardLocation(x: 0, y: 3))
+        
+        let board2 = Board(state: .newGame)
+        
+        XCTAssertFalse(board1 == board2)
+    }
 
 
 }
+
+
+
+
+
+
+
+
+
+

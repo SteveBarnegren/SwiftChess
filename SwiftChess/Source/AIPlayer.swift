@@ -85,11 +85,15 @@ open class AIPlayer : Player {
             $0.board == board
         }
         
+        print("Num opening moves`; \(possibleMoves.count)")
+        
         guard possibleMoves.count > 0 else{
             return nil
         }
         
-        let openingMove = possibleMoves[Int(arc4random()) % possibleMoves.count]
+        //let index = Int(arc4random()) % possibleMoves.count;
+        let index = 0
+        let openingMove = possibleMoves[index]
         
         return Move(type: .singlePiece(sourceLocation: openingMove.fromLocation,
                                        targetLocation: openingMove.toLocation),
@@ -240,6 +244,7 @@ open class AIPlayer : Player {
             var newBoard = board
             
             guard let piece = newBoard.getPiece(at: location) else {
+  
                 return board
             }
             
