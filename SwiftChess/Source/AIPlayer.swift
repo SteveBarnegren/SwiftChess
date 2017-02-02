@@ -107,8 +107,8 @@ open class AIPlayer : Player {
             return nil
         }
         
-        //let index = Int(arc4random()) % possibleMoves.count;
-        let index = 0;
+        //let index = Int(    ()) % possibleMoves.count;
+        let index = Int(arc4random_uniform(UInt32(possibleMoves.count)))
         let openingMove = possibleMoves[index]
         
         return Move(type: .singlePiece(sourceLocation: openingMove.fromLocation,
