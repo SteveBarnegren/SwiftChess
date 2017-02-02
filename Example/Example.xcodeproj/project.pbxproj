@@ -12,6 +12,7 @@
 		671989891DFFE0410053EA3D /* BoardRaterCenterOwnershipTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671989881DFFE0410053EA3D /* BoardRaterCenterOwnershipTests.swift */; };
 		6719898D1DFFE0F40053EA3D /* BoardRaterBoardDominanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6719898C1DFFE0F40053EA3D /* BoardRaterBoardDominanceTests.swift */; };
 		671989911DFFE8650053EA3D /* BoardRaterCenterDominanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671989901DFFE8650053EA3D /* BoardRaterCenterDominanceTests.swift */; };
+		676902581E432380007C76D7 /* PerformanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676902571E432380007C76D7 /* PerformanceTests.swift */; };
 		676EF7C51E15AC1700E275B4 /* BoardRaterKingSurroundingPossession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676EF7C41E15AC1700E275B4 /* BoardRaterKingSurroundingPossession.swift */; };
 		67A3EB161E3A926C00F6F01B /* BoardScenarios.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A3EB121E3A826800F6F01B /* BoardScenarios.swift */; };
 		67A9CA341DE64DD600510FB8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
@@ -78,6 +79,7 @@
 		671989881DFFE0410053EA3D /* BoardRaterCenterOwnershipTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardRaterCenterOwnershipTests.swift; sourceTree = "<group>"; };
 		6719898C1DFFE0F40053EA3D /* BoardRaterBoardDominanceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardRaterBoardDominanceTests.swift; sourceTree = "<group>"; };
 		671989901DFFE8650053EA3D /* BoardRaterCenterDominanceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardRaterCenterDominanceTests.swift; sourceTree = "<group>"; };
+		676902571E432380007C76D7 /* PerformanceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PerformanceTests.swift; sourceTree = "<group>"; };
 		676EF7C41E15AC1700E275B4 /* BoardRaterKingSurroundingPossession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardRaterKingSurroundingPossession.swift; sourceTree = "<group>"; };
 		67A3EB121E3A826800F6F01B /* BoardScenarios.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardScenarios.swift; sourceTree = "<group>"; };
 		67A9CA071DE64D6500510FB8 /* SwiftChess.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SwiftChess.xcodeproj; path = ../SwiftChess/SwiftChess.xcodeproj; sourceTree = "<group>"; };
@@ -185,6 +187,7 @@
 				67B73A9E1E154C1E00C19176 /* AIPlayerTests.swift */,
 				67F7791F1E1B923B00885B89 /* AIConfigurationTests.swift */,
 				67F9DB741E1AD3BB00C7EC5A /* AIBehaviourTests.swift */,
+				676902571E432380007C76D7 /* PerformanceTests.swift */,
 				67FD86901E4128F00023335C /* OpeningsTests.swift */,
 				67D54A621DE9768200C12258 /* BoardRaters */,
 				67D54A551DE7680E00C12258 /* Tests.swift */,
@@ -391,6 +394,7 @@
 				671989891DFFE0410053EA3D /* BoardRaterCenterOwnershipTests.swift in Sources */,
 				67B73A9F1E154C1E00C19176 /* AIPlayerTests.swift in Sources */,
 				67F779201E1B923B00885B89 /* AIConfigurationTests.swift in Sources */,
+				676902581E432380007C76D7 /* PerformanceTests.swift in Sources */,
 				67D54A641DE976A900C12258 /* BoardRaterCountPiecesTests.swift in Sources */,
 				67A3EB161E3A926C00F6F01B /* BoardScenarios.swift in Sources */,
 				09AE32551E03D71D00A149FE /* BoardRaterPawnProgressionTests.swift in Sources */,

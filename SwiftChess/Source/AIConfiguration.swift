@@ -9,6 +9,8 @@
 import Foundation
 
 struct AIConfiguration {
+    
+    var suicideMultipler: Double!
 
     // BoardRater -  Count Pieces
     var boardRaterCountPiecesWeighting: Double!
@@ -43,13 +45,15 @@ struct AIConfiguration {
     }
     
     mutating func setDefualtValues() {
+        
+        suicideMultipler = 1;
         boardRaterCountPiecesWeighting = 3 //1
         boardRaterBoardDominanceWeighting = 0.1
         boardRaterCenterOwnershipWeighting = 0.3
         boardRaterCenterDominanceWeighting = 0.3
         boardRaterCenterFourOccupationWeighting = 0.3
         boardRaterThreatenedPiecesWeighting = 1 // 1.5
-        boardRaterThreatenedPiecesOwnPiecesMultiplier = 3 //20// Higher values will be more defensive
+        boardRaterThreatenedPiecesOwnPiecesMultiplier = 20 // Higher values will be more defensive
         boardRaterPawnProgressionWeighting = 1
         boardRaterKingSurroundingPossessionWeighting = 0.3
         boardRaterCheckMateOpportunityWeighting = 2

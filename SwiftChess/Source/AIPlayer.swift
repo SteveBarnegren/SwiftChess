@@ -107,7 +107,6 @@ open class AIPlayer : Player {
             return nil
         }
         
-        //let index = Int(    ()) % possibleMoves.count;
         let index = Int(arc4random_uniform(UInt32(possibleMoves.count)))
         let openingMove = possibleMoves[index]
         
@@ -148,8 +147,13 @@ open class AIPlayer : Player {
                 }
                 
                 // Rate
-                //print("(\(sourceLocation.x),\(sourceLocation.y)) -> (\(targetLocation.x),\(targetLocation.y))")
-                let rating = ratingForBoard(resultBoard)
+                var rating = ratingForBoard(resultBoard)
+                
+                // reduce rating if suicide
+                if resultBoard.canColorMoveAnyPieceToLocation(color: color.opposite(), location: targetLocation) {
+                    rating -= (abs(rating) * configuration.suicideMultipler);
+                }
+                
                 let move = Move(type: .singlePiece(sourceLocation: sourceLocation, targetLocation: targetLocation),
                                 rating: rating)
                 possibleMoves.append(move)
