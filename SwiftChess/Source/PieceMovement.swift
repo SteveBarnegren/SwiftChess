@@ -48,9 +48,7 @@ open class PieceMovement {
         }
         
         // Get the moving piece
-        var movingPiece = board.getPiece(at: fromLocation)
-        
-        if movingPiece == nil {
+        guard let movingPiece = board.getPiece(at: fromLocation) else {
             print("Cannot from an index that does not contain a piece")
             return false
         }
@@ -66,15 +64,15 @@ open class PieceMovement {
             // If there is a piece on the square
             if let piece = board.getPiece(at: testLocation) {
                 
-                if piece.color == movingPiece!.color {
+                if piece.color == movingPiece.color {
                     return false
                 }
                 
-                if piece.color == movingPiece!.color.opposite() && testLocation == toLocation {
+                if piece.color == movingPiece.color.opposite() && testLocation == toLocation {
                     return true
                 }
                 
-                if piece.color == movingPiece!.color.opposite() && testLocation != toLocation {
+                if piece.color == movingPiece.color.opposite() && testLocation != toLocation {
                     return false
                 }
             }
@@ -109,16 +107,14 @@ open class PieceMovement {
         }
         
         // Check if space is occupied
-        var movingPiece = board.getPiece(at: pieceLocation)
-        
-        if movingPiece == nil {
-            print("Cannot from an index that does not contain a piece")
+        guard let movingPiece = board.getPiece(at: pieceLocation) else {
+            print("Cannot move from an index that does not contain a piece")
             return false
         }
         
         if let otherPiece = board.getPiece(at: targetLocation) {
             
-            if otherPiece.color == movingPiece!.color {
+            if otherPiece.color == movingPiece.color {
                 return false
             }
         }
@@ -271,16 +267,24 @@ open class PieceMovementPawn: PieceMovement {
     
     override open func canPieceMove(fromLocation: BoardLocation, toLocation: BoardLocation, board: Board) -> Bool {
         
+        // Get the moving piece
+        guard let movingPiece = board.getPiece(at: fromLocation) else{
+            return false
+        }
+        
+        if movingPiece.color == .white && toLocation.y == 0 {
+            return false
+        }
+        
+        if movingPiece.color == .black && toLocation.y == 7 {
+            return false
+        }
+        
         // Make sure cannot take king
         if let piece = board.getPiece(at: toLocation) {
             if piece.type == .king {
                 return false
             }
-        }
-        
-        // Get the moving piece
-        guard let movingPiece = board.getPiece(at: fromLocation) else{
-            return false
         }
         
         let color = movingPiece.color
@@ -290,12 +294,14 @@ open class PieceMovementPawn: PieceMovement {
         
         // Test one ahead offset
         let oneAheadStride = (color == .white ? BoardStride(x: 0, y: 1) : BoardStride(x: 0, y: -1))
+        var canMoveOneAhead = true
         
         ONE_AHEAD: if fromLocation.canIncrementBy(stride: oneAheadStride) {
             
             let location = fromLocation.incrementedBy(stride: oneAheadStride)
             
-            if let _ = board.getPiece(at: toLocation) {
+            if let _ = board.getPiece(at: location) {
+                canMoveOneAhead = false
                 break ONE_AHEAD
             }
             
@@ -306,30 +312,30 @@ open class PieceMovementPawn: PieceMovement {
         
         
         // Test two ahead offset
-        var twoAheadStride: BoardStride?
-        
-        if color == .white && fromLocation.y == 1 {
-            twoAheadStride = BoardStride(x: 0, y: 2)
-        }
-        else if color == .black && fromLocation.y == 6 {
-            twoAheadStride = BoardStride(x: 0, y: -2)
-        }
-        
-        TWO_AHEAD: if let twoAheadStride = twoAheadStride {
+        if canMoveOneAhead {
             
-            let twoAheadLocation = fromLocation.incrementedBy(stride: twoAheadStride)
-
-            if toLocation != twoAheadLocation {
-                break TWO_AHEAD
+            var twoAheadStride: BoardStride?
+            
+            if color == .white && fromLocation.y == 1 {
+                twoAheadStride = BoardStride(x: 0, y: 2)
+            }
+            else if color == .black && fromLocation.y == 6 {
+                twoAheadStride = BoardStride(x: 0, y: -2)
             }
             
-            let oneAheadLocation = fromLocation.incrementedBy(stride: oneAheadStride)
-            
-            if board.getPiece(at: oneAheadLocation) == nil && board.getPiece(at: twoAheadLocation) == nil {
-                return true
+            TWO_AHEAD: if let twoAheadStride = twoAheadStride {
+                
+                let twoAheadLocation = fromLocation.incrementedBy(stride: twoAheadStride)
+                
+                if toLocation != twoAheadLocation {
+                    break TWO_AHEAD
+                }
+                
+                if board.getPiece(at: twoAheadLocation) == nil {
+                    return true
+                }
             }
         }
-        
         
         // ****** Test Diagonal locations ******
         var diagonalStrides = [BoardStride]()

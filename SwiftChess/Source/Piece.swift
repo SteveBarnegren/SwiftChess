@@ -19,7 +19,6 @@ public enum Color {
     public func toString() -> String {
         return (self == .white) ? "white" : "black"
     }
-    
 }
 
 public struct Piece : Equatable {
