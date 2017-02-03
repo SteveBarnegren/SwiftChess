@@ -132,14 +132,14 @@ open class PieceMovement {
 
 open class PieceMovementStraightLine: PieceMovement {
     
+    let strides = [
+        BoardStride(x: 0, y: -1 ), // Down
+        BoardStride(x: 0, y: 1 ), // Up
+        BoardStride(x: -1, y: 0 ), // Left
+        BoardStride(x: 1, y: 0 )  // Right
+    ]
+    
     override open func canPieceMove(fromLocation: BoardLocation, toLocation: BoardLocation, board: Board) -> Bool {
-        
-        let strides = [
-            BoardStride(x: 0, y: -1 ), // Down
-            BoardStride(x: 0, y: 1 ), // Up
-            BoardStride(x: -1, y: 0 ), // Left
-            BoardStride(x: 1, y: 0 )  // Right
-        ]
         
         for stride in strides {
             if canPieceMove(fromLocation: fromLocation, toLocation: toLocation, board: board, stride: stride) {
@@ -156,14 +156,14 @@ open class PieceMovementStraightLine: PieceMovement {
 
 open class PieceMovementDiagonal: PieceMovement {
     
+    let strides = [
+        BoardStride(x: 1, y: -1 ), // South East
+        BoardStride(x: -1, y: -1 ), // South West
+        BoardStride(x: 1, y: 1 ), // North East
+        BoardStride(x: -1, y: 1 )  // North West
+    ]
+    
     override open func canPieceMove(fromLocation: BoardLocation, toLocation: BoardLocation, board: Board) -> Bool {
-        
-        let strides = [
-            BoardStride(x: 1, y: -1 ), // South East
-            BoardStride(x: -1, y: -1 ), // South West
-            BoardStride(x: 1, y: 1 ), // North East
-            BoardStride(x: -1, y: 1 )  // North West
-        ]
         
         for stride in strides {
             if canPieceMove(fromLocation: fromLocation, toLocation: toLocation, board: board, stride: stride) {
@@ -231,6 +231,17 @@ open class PieceMovementBishop: PieceMovement {
 
 open class PieceMovementKnight: PieceMovement {
     
+    let offsets: [(x: Int, y: Int)] = [
+        (1,2),
+        (2,1),
+        (2,-1),
+        (-2,1),
+        (-1,-2),
+        (-2,-1),
+        (1,-2),
+        (-1,2)
+    ]
+    
     override open func canPieceMove(fromLocation: BoardLocation, toLocation: BoardLocation, board: Board) -> Bool {
         
         // Make sure cannot take king
@@ -239,17 +250,6 @@ open class PieceMovementKnight: PieceMovement {
                 return false
             }
         }
-        
-        let offsets: [(x: Int, y: Int)] = [
-            (1,2),
-            (2,1),
-            (2,-1),
-            (-2,1),
-            (-1,-2),
-            (-2,-1),
-            (1,-2),
-            (-1,2)
-        ]
         
         for offset in offsets {
             
@@ -391,6 +391,17 @@ open class PieceMovementPawn: PieceMovement {
 
 open class PieceMovementKing: PieceMovement {
     
+    let offsets: [(x: Int, y: Int)] = [
+        (0,1), // North
+        (1,1), // North-East
+        (1,0), // East
+        (1,-1), // South-East
+        (0,-1), // South
+        (-1,-1), // South-West
+        (-1,0), // West
+        (-1,1) // North- West
+    ]
+    
     override open func canPieceMove(fromLocation: BoardLocation, toLocation: BoardLocation, board: Board) -> Bool {
         
         // Make sure cannot take king
@@ -399,17 +410,6 @@ open class PieceMovementKing: PieceMovement {
                 return false
             }
         }
-        
-        let offsets: [(x: Int, y: Int)] = [
-            (0,1), // North
-            (1,1), // North-East
-            (1,0), // East
-            (1,-1), // South-East
-            (0,-1), // South
-            (-1,-1), // South-West
-            (-1,0), // West
-            (-1,1) // North- West
-        ]
         
         for offset in offsets {
             

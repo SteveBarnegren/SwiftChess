@@ -23,16 +23,22 @@ public struct BoardLocation : Equatable {
     
     public var index: Int
     
+    private static var allLocationsBacking: [BoardLocation]?
     public static var all: [BoardLocation] {
         
-        // TODO: using a computed property could be expensive, can we store this so it doesn't need to be computed each time?
-        var locations = [BoardLocation]()
-        
-        (0..<64).forEach{
-            locations.append(BoardLocation(index: $0))
+        if let all = allLocationsBacking {
+            return all
         }
-        
-        return locations
+        else{
+            var locations = [BoardLocation]()
+            
+            (0..<64).forEach{
+                locations.append(BoardLocation(index: $0))
+            }
+            
+            allLocationsBacking = locations
+            return allLocationsBacking!
+        }
     }
     
     public var x: Int {

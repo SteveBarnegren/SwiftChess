@@ -45,7 +45,7 @@ public struct Piece : Equatable {
     public var hasMoved = false
     public var canBeTakenByEnPassant = false
     
-    var movement : PieceMovement {
+    var movement : PieceMovement! {
         return PieceMovement.pieceMovementForPieceType(pieceType: self.type)
     }
 
