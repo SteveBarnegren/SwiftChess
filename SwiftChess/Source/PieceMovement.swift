@@ -10,23 +10,30 @@ import Foundation
 
 // MARK: - PieceMovement (Base Class)
 
+let pawnMovement = PieceMovementPawn()
+let rookMovement = PieceMovementRook()
+let knightMovement = PieceMovementKnight()
+let bishopMovement = PieceMovementBishop()
+let queenMovement = PieceMovementQueen()
+let kingMovement = PieceMovementKing()
+
 open class PieceMovement {
     
     public class func pieceMovementForPieceType(pieceType: Piece.PieceType) -> PieceMovement {
         
         switch pieceType {
         case .pawn:
-            return PieceMovementPawn()
+            return pawnMovement
         case .rook:
-            return PieceMovementRook()
+            return rookMovement
         case .knight:
-            return PieceMovementKnight()
+            return knightMovement
         case .bishop:
-            return PieceMovementBishop()
+            return bishopMovement
         case .queen:
-            return PieceMovementQueen()
+            return queenMovement
         case .king:
-            return PieceMovementKing()
+            return kingMovement
         }   
     }
     
@@ -243,9 +250,6 @@ open class PieceMovementRook: PieceMovement {
     override open func canPieceMove(fromLocation: BoardLocation, toLocation: BoardLocation, board: Board) -> Bool {
         
         return straightLineMovement.canPieceMove(fromLocation: fromLocation, toLocation: toLocation, board: board)
-        
-        return false
-        
     }
 }
 
@@ -258,9 +262,6 @@ open class PieceMovementBishop: PieceMovement {
     override open func canPieceMove(fromLocation: BoardLocation, toLocation: BoardLocation, board: Board) -> Bool {
         
         return diagonalMovement.canPieceMove(fromLocation: fromLocation, toLocation: toLocation, board: board)
-        
-        return false
-        
     }
 }
 
@@ -292,7 +293,8 @@ open class PieceMovementKnight: PieceMovement {
             
             let offsetLocation = fromLocation.incrementedBy(x: offset.x, y: offset.y)
             
-            if toLocation == offsetLocation && canPieceOccupySquare(pieceLocation: fromLocation, xOffset: offset.x, yOffset: offset.y, board: board) {
+            if toLocation == offsetLocation
+                && canPieceOccupySquare(pieceLocation: fromLocation, xOffset: offset.x, yOffset: offset.y, board: board) {
                 return true
             }
         }
