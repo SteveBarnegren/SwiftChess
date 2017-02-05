@@ -40,6 +40,36 @@ open class PieceMovement {
     
     func canPieceMove(fromLocation: BoardLocation, toLocation: BoardLocation, board: Board, stride: BoardStride) -> Bool {
         
+        enum Direction: Int{
+            case increasing
+            case decresing
+            case none
+        }
+        
+        var strideDirectionX = Direction.none
+        if stride.x < 0 { strideDirectionX = .decresing }
+        if stride.x > 0 { strideDirectionX = .increasing }
+        
+        var locationDirectionX = Direction.none
+        if toLocation.x - fromLocation.x < 0 { locationDirectionX = .decresing }
+        if toLocation.x - fromLocation.x > 0 { locationDirectionX = .increasing }
+        
+        if strideDirectionX != locationDirectionX {
+            return false
+        }
+        
+        var strideDirectionY = Direction.none
+        if stride.y < 0 { strideDirectionY = .decresing }
+        if stride.y > 0 { strideDirectionY = .increasing }
+        
+        var locationDirectionY = Direction.none
+        if toLocation.y - fromLocation.y < 0 { locationDirectionY = .decresing }
+        if toLocation.y - fromLocation.y > 0 { locationDirectionY = .increasing }
+        
+        if strideDirectionY != locationDirectionY {
+            return false
+        }
+        
         // Make sure cannot take king
         if let piece = board.getPiece(at: toLocation) {
             if piece.type == .king {
@@ -136,6 +166,13 @@ open class PieceMovementStraightLine: PieceMovement {
     ]
     
     override open func canPieceMove(fromLocation: BoardLocation, toLocation: BoardLocation, board: Board) -> Bool {
+        
+        let sameX = fromLocation.x == toLocation.x
+        let sameY = fromLocation.y == toLocation.y
+        
+        if !(sameX || sameY) {
+            return false
+        }
         
         for stride in strides {
             if canPieceMove(fromLocation: fromLocation, toLocation: toLocation, board: board, stride: stride) {
