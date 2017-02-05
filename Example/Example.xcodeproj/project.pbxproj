@@ -13,6 +13,8 @@
 		6719898D1DFFE0F40053EA3D /* BoardRaterBoardDominanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6719898C1DFFE0F40053EA3D /* BoardRaterBoardDominanceTests.swift */; };
 		671989911DFFE8650053EA3D /* BoardRaterCenterDominanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671989901DFFE8650053EA3D /* BoardRaterCenterDominanceTests.swift */; };
 		676902581E432380007C76D7 /* PerformanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676902571E432380007C76D7 /* PerformanceTests.swift */; };
+		676C911B1E478A3A00985A4F /* SwiftChess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67A9CA0D1DE64D6500510FB8 /* SwiftChess.framework */; };
+		676C911C1E478A3A00985A4F /* SwiftChess.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 67A9CA0D1DE64D6500510FB8 /* SwiftChess.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		676EF7C51E15AC1700E275B4 /* BoardRaterKingSurroundingPossession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676EF7C41E15AC1700E275B4 /* BoardRaterKingSurroundingPossession.swift */; };
 		67A3EB161E3A926C00F6F01B /* BoardScenarios.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A3EB121E3A826800F6F01B /* BoardScenarios.swift */; };
 		67A9CA341DE64DD600510FB8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
@@ -43,6 +45,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		676C911D1E478A3A00985A4F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 67A9CA071DE64D6500510FB8 /* SwiftChess.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 67A9C9DD1DE64CD200510FB8;
+			remoteInfo = SwiftChess;
+		};
 		67A9CA0C1DE64D6500510FB8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 67A9CA071DE64D6500510FB8 /* SwiftChess.xcodeproj */;
@@ -65,6 +74,20 @@
 			remoteInfo = SwiftChessExample;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		676C911F1E478A3A00985A4F /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				676C911C1E478A3A00985A4F /* SwiftChess.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		09A4C0281E013ECB000CFBF4 /* BoardRaterThreatenedPiecesTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardRaterThreatenedPiecesTests.swift; sourceTree = "<group>"; };
@@ -111,6 +134,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				67A9CA3C1DE64E2B00510FB8 /* SwiftChess.framework in Frameworks */,
+				676C911B1E478A3A00985A4F /* SwiftChess.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -250,10 +274,12 @@
 				67A9CA101DE64DAA00510FB8 /* Sources */,
 				67A9CA111DE64DAA00510FB8 /* Frameworks */,
 				67A9CA121DE64DAA00510FB8 /* Resources */,
+				676C911F1E478A3A00985A4F /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				676C911E1E478A3A00985A4F /* PBXTargetDependency */,
 			);
 			name = SwiftChessExample;
 			productName = SwiftChessExample;
@@ -290,6 +316,7 @@
 				TargetAttributes = {
 					67A9CA131DE64DAA00510FB8 = {
 						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = VAA3W4LPY2;
 						ProvisioningStyle = Automatic;
 					};
 					67A9CA261DE64DAA00510FB8 = {
@@ -408,6 +435,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		676C911E1E478A3A00985A4F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SwiftChess;
+			targetProxy = 676C911D1E478A3A00985A4F /* PBXContainerItemProxy */;
+		};
 		67A9CA291DE64DAA00510FB8 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 67A9CA131DE64DAA00510FB8 /* SwiftChessExample */;
@@ -525,11 +557,13 @@
 		67A9CA2F1DE64DAA00510FB8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = VAA3W4LPY2;
 				INFOPLIST_FILE = SwiftChess/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -544,10 +578,12 @@
 		67A9CA301DE64DAA00510FB8 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				DEVELOPMENT_TEAM = VAA3W4LPY2;
 				INFOPLIST_FILE = SwiftChess/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
