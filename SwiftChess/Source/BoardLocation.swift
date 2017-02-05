@@ -41,6 +41,10 @@ public struct BoardLocation : Equatable {
         }
     }
     
+    public var isDarkSquare: Bool {
+        return (index + y) % 2 == 0
+    }
+    
     public var x: Int {
         return index % 8
     }

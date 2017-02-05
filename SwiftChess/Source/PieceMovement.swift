@@ -161,6 +161,10 @@ open class PieceMovementDiagonal: PieceMovement {
     
     override open func canPieceMove(fromLocation: BoardLocation, toLocation: BoardLocation, board: Board) -> Bool {
         
+        if fromLocation.isDarkSquare != toLocation.isDarkSquare {
+            return false
+        }
+        
         for stride in strides {
             if canPieceMove(fromLocation: fromLocation, toLocation: toLocation, board: board, stride: stride) {
                 return true

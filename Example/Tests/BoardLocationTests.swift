@@ -157,5 +157,32 @@ class BoardLocationTests: XCTestCase {
         }
         
     }
+    
+    func testIsDarkSquareReturnsExpectedValue() {
+        
+        let board = ASCIIBoard(colors:  "! * ! * ! * ! *" +
+                                        "* ! * ! * ! * !" +
+                                        "! * ! * ! * ! *" +
+                                        "* ! * ! * ! * !" +
+                                        "! * ! * ! * ! *" +
+                                        "* ! * ! * ! * !" +
+                                        "! * ! * ! * ! *" +
+                                        "* ! * ! * ! * !" )
+        
+        let darkLocatons = board.locationsWithCharacter("*")
+        let lightLocations = board.locationsWithCharacter("!")
+        
+        darkLocatons.forEach{
+            XCTAssertTrue($0.isDarkSquare, "Expected \($0) to be dark")
+        }
+        
+        lightLocations.forEach{
+            XCTAssertFalse($0.isDarkSquare, "Expected \($0) to be light")
+        }
+
+        
+        
+        
+    }
 
 }
