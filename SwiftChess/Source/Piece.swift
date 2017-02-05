@@ -43,6 +43,7 @@ public struct Piece : Equatable {
     public var tag: Int!
     public var hasMoved = false
     public var canBeTakenByEnPassant = false
+    public internal(set) var location = BoardLocation(index: 0)
     
     var movement : PieceMovement! {
         return PieceMovement.pieceMovementForPieceType(pieceType: self.type)

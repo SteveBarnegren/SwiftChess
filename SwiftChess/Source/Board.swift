@@ -63,42 +63,46 @@ public struct Board : Equatable {
     
     mutating func setupForNewGame() {
         
-        // Setup white bottom row
-        squares[0].piece = Piece(type: .rook, color: .white)
-        squares[1].piece = Piece(type: .knight, color: .white)
-        squares[2].piece = Piece(type: .bishop, color: .white)
-        squares[3].piece = Piece(type: .queen, color: .white)
-        squares[4].piece = Piece(type: .king, color: .white)
-        squares[5].piece = Piece(type: .bishop, color: .white)
-        squares[6].piece = Piece(type: .knight, color: .white)
-        squares[7].piece = Piece(type: .rook, color: .white)
+        func setPieceAtIndex(_ piece: Piece, _ index: Int){
+            setPiece(piece, at: BoardLocation(index: index))
+        }
         
+        // Setup white bottom row
+        setPieceAtIndex(Piece(type: .rook, color: .white), 0)
+        setPieceAtIndex(Piece(type: .knight, color: .white), 1)
+        setPieceAtIndex(Piece(type: .bishop, color: .white), 2)
+        setPieceAtIndex(Piece(type: .queen, color: .white), 3)
+        setPieceAtIndex(Piece(type: .king, color: .white), 4)
+        setPieceAtIndex(Piece(type: .bishop, color: .white), 5)
+        setPieceAtIndex(Piece(type: .knight, color: .white), 6)
+        setPieceAtIndex(Piece(type: .rook, color: .white), 7)
+
         // Setup white pawn row
         for i in 8...15 {
-            squares[i].piece = Piece(type: .pawn, color: .white)
+            setPieceAtIndex(Piece(type: .pawn, color: .white), i)
         }
         
         // Setup black bottom row
-        squares[63].piece = Piece(type: .rook, color: .black)
-        squares[62].piece = Piece(type: .knight, color: .black)
-        squares[61].piece = Piece(type: .bishop, color: .black)
-        squares[60].piece = Piece(type: .queen, color: .black)
-        squares[59].piece = Piece(type: .king, color: .black)
-        squares[58].piece = Piece(type: .bishop, color: .black)
-        squares[57].piece = Piece(type: .knight, color: .black)
-        squares[56].piece = Piece(type: .rook, color: .black)
+        setPieceAtIndex(Piece(type: .rook, color: .black), 63)
+        setPieceAtIndex(Piece(type: .knight, color: .black), 62)
+        setPieceAtIndex(Piece(type: .bishop, color: .black), 61)
+        setPieceAtIndex(Piece(type: .queen, color: .black), 60)
+        setPieceAtIndex(Piece(type: .king, color: .black), 59)
+        setPieceAtIndex(Piece(type: .bishop, color: .black), 58)
+        setPieceAtIndex(Piece(type: .knight, color: .black), 57)
+        setPieceAtIndex(Piece(type: .rook, color: .black), 56)
         
         // Setup black pawn row
         for i in 48...55 {
-            squares[i].piece = Piece(type: .pawn, color: .black)
+            setPieceAtIndex(Piece(type: .pawn, color: .black), i)
         }
-
     }
     
     // MARK: - Manipulate Pieces
     
     public mutating func setPiece(_ piece: Piece, at location: BoardLocation) {
         squares[location.index].piece = piece
+        squares[location.index].piece?.location = location
     }
     
     public func getPiece(at location: BoardLocation) -> Piece? {
@@ -113,7 +117,7 @@ public struct Board : Equatable {
     
         var operations = [BoardOperation]()
         
-        guard var movingPiece = getPiece(at: fromLocation) else {
+        guard let movingPiece = getPiece(at: fromLocation) else {
             fatalError("There is no piece on at (\(fromLocation.x),\(fromLocation.y))")
         }
         
@@ -126,6 +130,7 @@ public struct Board : Equatable {
         }
         
         squares[toLocation.index].piece = self.squares[fromLocation.index].piece
+        squares[toLocation.index].piece?.location = toLocation;
         squares[toLocation.index].piece?.hasMoved = true
         squares[fromLocation.index].piece = nil
         

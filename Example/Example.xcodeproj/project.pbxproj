@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		09A4C0291E013ECB000CFBF4 /* BoardRaterThreatenedPiecesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A4C0281E013ECB000CFBF4 /* BoardRaterThreatenedPiecesTests.swift */; };
 		09AE32551E03D71D00A149FE /* BoardRaterPawnProgressionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09AE32541E03D71D00A149FE /* BoardRaterPawnProgressionTests.swift */; };
 		671989891DFFE0410053EA3D /* BoardRaterCenterOwnershipTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671989881DFFE0410053EA3D /* BoardRaterCenterOwnershipTests.swift */; };
 		6719898D1DFFE0F40053EA3D /* BoardRaterBoardDominanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6719898C1DFFE0F40053EA3D /* BoardRaterBoardDominanceTests.swift */; };
@@ -425,7 +424,6 @@
 				67D54A641DE976A900C12258 /* BoardRaterCountPiecesTests.swift in Sources */,
 				67A3EB161E3A926C00F6F01B /* BoardScenarios.swift in Sources */,
 				09AE32551E03D71D00A149FE /* BoardRaterPawnProgressionTests.swift in Sources */,
-				09A4C0291E013ECB000CFBF4 /* BoardRaterThreatenedPiecesTests.swift in Sources */,
 				67D54A5F1DE7683300C12258 /* PieceMovementTests.swift in Sources */,
 				67F779261E1C32A400885B89 /* BoardRaterCenterFourOccupationTests.swift in Sources */,
 				67F9DB6E1E1AC8DC00C7EC5A /* BoardRaterCheckMateOpportunityTests.swift in Sources */,

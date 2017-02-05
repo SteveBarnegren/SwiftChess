@@ -1038,6 +1038,44 @@ class BoardTests: XCTestCase {
         
         XCTAssertNotEqual(board1, board2)
     }
+    
+    // MARK: - Piece Location tests
+    
+    func testPieceLocationsAreCorrectForNewBoard() {
+        
+        let board = Board(state: .newGame)
+        
+        for location in BoardLocation.all {
+            
+            guard let piece = board.getPiece(at: location) else {
+                continue
+            }
+            
+            XCTAssertEqual(piece.location, location)
+        }
+    }
+    
+    func testPieceLocationsAreCorrectAfterMoves() {
+        
+        var board = Board(state: .newGame)
+        board.movePiece(fromLocation: BoardLocation(gridPosition: .e2),
+                        toLocation: BoardLocation(gridPosition: .e4))
+        
+        board.movePiece(fromLocation: BoardLocation(gridPosition: .d7),
+                        toLocation: BoardLocation(gridPosition: .d5))
+
+        for location in BoardLocation.all {
+            
+            guard let piece = board.getPiece(at: location) else {
+                continue
+            }
+            
+            XCTAssertEqual(piece.location, location)
+        }
+    }
+
+    
+    
 
 
 }
