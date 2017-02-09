@@ -12,56 +12,241 @@ import Foundation
 
 class BoardRaterThreatenedPieces : BoardRater {
     
+    /*
     override func ratingfor(board: Board, color: Color) -> Double {
         
-        return 0;
+        var rating = Double(0)
         
-        let allPieceLocations = board.squares.enumerated().flatMap{ (index, square) -> BoardLocation? in
-            if square.piece != nil {
-                return BoardLocation(index: index)
+        let allPieces = board.squares.flatMap{
+            $0.piece
+        }
+        
+        for piece in allPieces {
+            
+            var value = Double(0)
+            
+            let threatenedByPieces = getPieces(threatening: piece, onBoard: board)
+            let protectedByPieces = getPieces(protecting: piece, onBoard: board)
+            let isThreatened = threatenedByPieces.count > 0
+            let isProtected = protectedByPieces.count > 0
+            
+            switch (isThreatened, isProtected) {
+            case (false, true):
+                value = piece.value()
+            case (true, false):
+                value = -piece.value()
+            case (true, true):
+                let lowestValueThreat = threatenedByPieces.dropFirst().reduce(threatenedByPieces[0].value(), { (value: Double, piece) -> Double in
+                    return min(value, piece.value())
+                })
+                
+                if lowestValueThreat < piece.value() {
+                    value = -piece.value()
+                }
+            case (false, false):
+                break
+            }
+            
+            if piece.color == color.opposite() {
+                value = -value
+            }
+            
+            rating += value
+        }
+        
+        return rating * configuration.boardRaterThreatenedPiecesWeighting
+    }
+ */
+    
+    override func ratingfor(board: Board, color: Color) -> Double {
+        
+        return board.getPieces(color: color)
+            .map{ threatValue(forPiece: $0, onBoard: board) }
+            .reduce(0,+)
+            * configuration.boardRaterThreatenedPiecesOwnPiecesMultiplier
+    }
+    
+    func threatValue(forPiece piece: Piece, onBoard board: Board) -> Double {
+        
+        let threatenedByPieces = getPieces(threatening: piece, onBoard: board)
+        let protectedByPieces = getPieces(protecting: piece, onBoard: board)
+        let isThreatened = threatenedByPieces.count > 0
+        let isProtected = protectedByPieces.count > 0
+        
+        // Threatened but not protected
+        if isThreatened && !isProtected {
+            return -piece.value() * 3
+        }
+        
+        // Threatened, but protected (only return if the trade is not preferable)
+        if isThreatened && isProtected {
+            
+            let lowestValueThreat = threatenedByPieces.lowestPieceValue()
+            
+            if lowestValueThreat < piece.value() {
+                return -piece.value()
+            }
+            
+            // Here we could bump the value to encourage a good trade?
+        }
+        
+        let targetPieces = getPieces(threatenedBy: piece, onBoard: board)
+        for targetPiece in targetPieces {
+            
+            let isTargetProtected = isPieceProtected(targetPiece, onBoard: board)
+            
+            // If it's protected, is it a good trade
+            if isTargetProtected && targetPiece.value() < piece.value() {
+                return 0
             }
             else{
-                return nil
+                return targetPiece.value()
             }
         }
         
-        for pieceLocation in allPieceLocations {
-            
-            var rating = 0;
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-        }
-        
+        // Nothing much interesting
+        return 0
     }
     
     // MARK: - Helpers
-    /*
-    func piecesProtectingPiece(atLocation location: BoardLocation) -> [Piece] {
+    
+    func getPieces(protecting piece: Piece, onBoard board: Board) -> [Piece] {
         
+        var alteredBoard = board
+        alteredBoard.setPiece(piece.withOppositeColor(), at: piece.location)
         
-        
-        
-        
-        
-        
-        
-        
+        return alteredBoard.getPieces(color: piece.color).filter{
+            $0.movement.canPieceMove(fromLocation: $0.location, toLocation: piece.location, board: alteredBoard)
+        }
     }
- */
- 
     
+    func getPieces(protectedBy piece: Piece, onBoard board: Board) -> [Piece] {
+        
+        return board.getPieces(color: piece.color).filter{
+            piece.movement.canPieceMove(fromLocation: piece.location, toLocation: $0.location, board: board)
+        }
+    }
     
+    func isPieceProtected(_ piece: Piece, onBoard board: Board) -> Bool {
+        
+        var alteredBoard = board
+        alteredBoard.setPiece(piece.withOppositeColor(), at: piece.location)
+        
+        for square in alteredBoard.squares {
+            
+            guard let squarePiece = square.piece else {
+                continue
+            }
+            
+            guard squarePiece.color == piece.color else {
+                continue
+            }
+            
+            if squarePiece.movement.canPieceMove(fromLocation: squarePiece.location,
+                                                 toLocation: piece.location,
+                                                 board: alteredBoard,
+                                                 accountForCheckState: true) {
+                return true
+            }
+        }
+        
+        return false
+    }
     
-    
-    
+    func isPieceThreatened(_ piece: Piece, onBoard board: Board) -> Bool {
+        
+        for square in board.squares {
+            
+            guard let squarePiece = square.piece else {
+                continue
+            }
+            
+            guard squarePiece.color == piece.color.opposite() else {
+                continue
+            }
+            
+            if squarePiece.movement.canPieceMove(fromLocation: squarePiece.location, toLocation: piece.location, board: board, accountForCheckState: true) {
+                return true
+            }
+        }
+        
+        return false
+    }
 
     
+    func getPieces(threatening piece: Piece, onBoard board: Board) -> [Piece] {
+        
+        return board.getPieces(color: piece.color.opposite()).filter{
+            $0.movement.canPieceMove(fromLocation: $0.location, toLocation: piece.location, board: board)
+        }
+    }
+    
+    func getPieces(threatenedBy piece: Piece, onBoard board: Board) -> [Piece] {
+        
+        return board.getPieces(color: piece.color.opposite()).filter{
+            piece.movement.canPieceMove(fromLocation: piece.location, toLocation: $0.location, board: board)
+        }
+    }
+    
+    func canPieceMoveToSafety(_ piece: Piece, onBoard board: Board) -> Bool {
+        
+        for location in BoardLocation.all {
+            
+            if piece.movement.canPieceMove(fromLocation: piece.location, toLocation: location, board: board, accountForCheckState: true) {
+                
+                var boardCopy = board
+                boardCopy.movePiece(fromLocation: piece.location, toLocation: location)
+                let movedPiece = boardCopy.getPiece(at: location)!
+                if !isPieceThreatened(movedPiece, onBoard: boardCopy) {
+                    return true
+                }
+            }
+        }
+        
+        return false
+    }
+}
+
+extension Collection where Iterator.Element == Piece{
+    
+    func lowestPieceValue() -> Double {
+        
+        if self.count == 0 {
+            return 0
+        }
+        
+        var result = self.first!.value()
+        
+        for piece in self {
+            
+            let pieceValue = piece.value()
+            
+            if pieceValue < result {
+                result = pieceValue
+            }
+        }
+        
+        return result
+    }
+    
+    func highestPieceValue() -> Double {
+        
+        if self.count == 0 {
+            return 0
+        }
+        
+        var result = self.first!.value()
+        
+        for piece in self {
+            
+            let pieceValue = piece.value()
+            
+            if pieceValue > result {
+                result = pieceValue
+            }
+        }
+        
+        return result
+    }
+
 }

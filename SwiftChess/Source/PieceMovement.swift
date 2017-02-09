@@ -41,7 +41,28 @@ open class PieceMovement {
         
     }
    
-    open func canPieceMove(fromLocation: BoardLocation, toLocation: BoardLocation, board: Board) -> Bool {
+    func canPieceMove(fromLocation: BoardLocation, toLocation: BoardLocation, board: Board, accountForCheckState: Bool = false) -> Bool {
+        
+        if fromLocation == toLocation {
+            return false
+        }
+        
+        let canMove = isMovementPossible(fromLocation: fromLocation, toLocation: toLocation, board: board)
+        
+        if canMove && accountForCheckState {
+            
+            let color = board.getPiece(at: fromLocation)!.color
+
+            var boardCopy = board
+            boardCopy.movePiece(fromLocation: fromLocation, toLocation: toLocation)
+            return boardCopy.isColorInCheck(color: color) ? false : true
+        }
+        else{
+            return canMove
+        }
+    }
+    
+    func isMovementPossible(fromLocation: BoardLocation, toLocation: BoardLocation, board: Board) -> Bool {
         return false
     }
     
@@ -172,7 +193,7 @@ open class PieceMovementStraightLine: PieceMovement {
         BoardStride(x: 1, y: 0 )  // Right
     ]
     
-    override open func canPieceMove(fromLocation: BoardLocation, toLocation: BoardLocation, board: Board) -> Bool {
+    override func isMovementPossible(fromLocation: BoardLocation, toLocation: BoardLocation, board: Board) -> Bool {
         
         let sameX = fromLocation.x == toLocation.x
         let sameY = fromLocation.y == toLocation.y
@@ -203,7 +224,7 @@ open class PieceMovementDiagonal: PieceMovement {
         BoardStride(x: -1, y: 1 )  // North West
     ]
     
-    override open func canPieceMove(fromLocation: BoardLocation, toLocation: BoardLocation, board: Board) -> Bool {
+    override func isMovementPossible(fromLocation: BoardLocation, toLocation: BoardLocation, board: Board) -> Bool {
         
         if fromLocation.isDarkSquare != toLocation.isDarkSquare {
             return false
@@ -227,7 +248,7 @@ open class PieceMovementQueen: PieceMovement {
     
     let movements : [PieceMovement] = [PieceMovementStraightLine(), PieceMovementDiagonal()]
 
-    override open func canPieceMove(fromLocation: BoardLocation, toLocation: BoardLocation, board: Board) -> Bool {
+    override func isMovementPossible(fromLocation: BoardLocation, toLocation: BoardLocation, board: Board) -> Bool {
         
         for pieceMovement in movements {
             
@@ -247,7 +268,7 @@ open class PieceMovementRook: PieceMovement {
     
     let straightLineMovement = PieceMovementStraightLine()
     
-    override open func canPieceMove(fromLocation: BoardLocation, toLocation: BoardLocation, board: Board) -> Bool {
+    override func isMovementPossible(fromLocation: BoardLocation, toLocation: BoardLocation, board: Board) -> Bool {
         
         return straightLineMovement.canPieceMove(fromLocation: fromLocation, toLocation: toLocation, board: board)
     }
@@ -259,7 +280,7 @@ open class PieceMovementBishop: PieceMovement {
     
     let diagonalMovement = PieceMovementDiagonal()
     
-    override open func canPieceMove(fromLocation: BoardLocation, toLocation: BoardLocation, board: Board) -> Bool {
+    override func isMovementPossible(fromLocation: BoardLocation, toLocation: BoardLocation, board: Board) -> Bool {
         
         return diagonalMovement.canPieceMove(fromLocation: fromLocation, toLocation: toLocation, board: board)
     }
@@ -280,7 +301,7 @@ open class PieceMovementKnight: PieceMovement {
         (-1,2)
     ]
     
-    override open func canPieceMove(fromLocation: BoardLocation, toLocation: BoardLocation, board: Board) -> Bool {
+    override func isMovementPossible(fromLocation: BoardLocation, toLocation: BoardLocation, board: Board) -> Bool {
         
         // Make sure cannot take king
         if let piece = board.getPiece(at: toLocation) {
@@ -308,7 +329,7 @@ open class PieceMovementKnight: PieceMovement {
 
 open class PieceMovementPawn: PieceMovement {
     
-    override open func canPieceMove(fromLocation: BoardLocation, toLocation: BoardLocation, board: Board) -> Bool {
+    override func isMovementPossible(fromLocation: BoardLocation, toLocation: BoardLocation, board: Board) -> Bool {
         
         // Get the moving piece
         guard let movingPiece = board.getPiece(at: fromLocation) else{
@@ -451,7 +472,7 @@ open class PieceMovementKing: PieceMovement {
         (-1,1) // North- West
     ]
     
-    override open func canPieceMove(fromLocation: BoardLocation, toLocation: BoardLocation, board: Board) -> Bool {
+    override func isMovementPossible(fromLocation: BoardLocation, toLocation: BoardLocation, board: Board) -> Bool {
         
         // Make sure cannot take king
         if let piece = board.getPiece(at: toLocation) {

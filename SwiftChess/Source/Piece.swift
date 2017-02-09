@@ -81,6 +81,10 @@ public struct Piece : Equatable {
         let piece = Piece(type: newType, color: color, tag: tag)
         return piece
     }
+    
+    func withOppositeColor() -> Piece {
+        return Piece(type: type, color: color.opposite())
+    }
 }
 
 public func == (left: Piece, right: Piece) -> Bool {
