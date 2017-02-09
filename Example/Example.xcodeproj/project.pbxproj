@@ -11,6 +11,7 @@
 		671989891DFFE0410053EA3D /* BoardRaterCenterOwnershipTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671989881DFFE0410053EA3D /* BoardRaterCenterOwnershipTests.swift */; };
 		6719898D1DFFE0F40053EA3D /* BoardRaterBoardDominanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6719898C1DFFE0F40053EA3D /* BoardRaterBoardDominanceTests.swift */; };
 		671989911DFFE8650053EA3D /* BoardRaterCenterDominanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671989901DFFE8650053EA3D /* BoardRaterCenterDominanceTests.swift */; };
+		673B95191E4CE5880086CA97 /* BoardRaterThreatenedPiecesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A4C0281E013ECB000CFBF4 /* BoardRaterThreatenedPiecesTests.swift */; };
 		676902581E432380007C76D7 /* PerformanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676902571E432380007C76D7 /* PerformanceTests.swift */; };
 		676C911B1E478A3A00985A4F /* SwiftChess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67A9CA0D1DE64D6500510FB8 /* SwiftChess.framework */; };
 		676C911C1E478A3A00985A4F /* SwiftChess.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 67A9CA0D1DE64D6500510FB8 /* SwiftChess.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -35,7 +36,6 @@
 		67D54A641DE976A900C12258 /* BoardRaterCountPiecesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67D54A631DE976A900C12258 /* BoardRaterCountPiecesTests.swift */; };
 		67D54A661DE986F700C12258 /* PieceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67D54A651DE986F700C12258 /* PieceTests.swift */; };
 		67D54A681DE9A2DD00C12258 /* PieceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67D54A671DE9A2DD00C12258 /* PieceView.swift */; };
-		67F779201E1B923B00885B89 /* AIConfigurationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F7791F1E1B923B00885B89 /* AIConfigurationTests.swift */; };
 		67F779261E1C32A400885B89 /* BoardRaterCenterFourOccupationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F779251E1C32A400885B89 /* BoardRaterCenterFourOccupationTests.swift */; };
 		67F9DB6E1E1AC8DC00C7EC5A /* BoardRaterCheckMateOpportunityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F9DB6D1E1AC8DC00C7EC5A /* BoardRaterCheckMateOpportunityTests.swift */; };
 		67F9DB751E1AD3BB00C7EC5A /* AIBehaviourTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F9DB741E1AD3BB00C7EC5A /* AIBehaviourTests.swift */; };
@@ -416,10 +416,10 @@
 				671989911DFFE8650053EA3D /* BoardRaterCenterDominanceTests.swift in Sources */,
 				6719898D1DFFE0F40053EA3D /* BoardRaterBoardDominanceTests.swift in Sources */,
 				67D54A5E1DE7683000C12258 /* GameTests.swift in Sources */,
+				673B95191E4CE5880086CA97 /* BoardRaterThreatenedPiecesTests.swift in Sources */,
 				67D54A661DE986F700C12258 /* PieceTests.swift in Sources */,
 				671989891DFFE0410053EA3D /* BoardRaterCenterOwnershipTests.swift in Sources */,
 				67B73A9F1E154C1E00C19176 /* AIPlayerTests.swift in Sources */,
-				67F779201E1B923B00885B89 /* AIConfigurationTests.swift in Sources */,
 				676902581E432380007C76D7 /* PerformanceTests.swift in Sources */,
 				67D54A641DE976A900C12258 /* BoardRaterCountPiecesTests.swift in Sources */,
 				67A3EB161E3A926C00F6F01B /* BoardScenarios.swift in Sources */,

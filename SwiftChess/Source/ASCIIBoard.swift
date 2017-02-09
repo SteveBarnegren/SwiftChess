@@ -73,7 +73,10 @@ public struct ASCIIBoard {
         // Setup pieces from ascii art
         (0..<64).forEach{
             let character = boardArt[boardArt.characters.index(boardArt.startIndex, offsetBy: $0)]
-            board.squares[$0].piece = pieceFromCharacter(character)
+            
+            if let piece = pieceFromCharacter(character) {
+                board.setPiece(piece, at: BoardLocation(index: $0))
+            }
         }
         
         return board
