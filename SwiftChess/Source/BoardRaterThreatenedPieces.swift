@@ -116,14 +116,14 @@ class BoardRaterThreatenedPieces : BoardRater {
         alteredBoard.setPiece(piece.withOppositeColor(), at: piece.location)
         
         return alteredBoard.getPieces(color: piece.color).filter{
-            $0.movement.canPieceMove(fromLocation: $0.location, toLocation: piece.location, board: alteredBoard)
+            $0.movement.canPieceMove(fromLocation: $0.location, toLocation: piece.location, board: alteredBoard, accountForCheckState: true)
         }
     }
     
     func getPieces(protectedBy piece: Piece, onBoard board: Board) -> [Piece] {
         
         return board.getPieces(color: piece.color).filter{
-            piece.movement.canPieceMove(fromLocation: piece.location, toLocation: $0.location, board: board)
+            piece.movement.canPieceMove(fromLocation: piece.location, toLocation: $0.location, board: board, accountForCheckState: true)
         }
     }
     
@@ -177,14 +177,14 @@ class BoardRaterThreatenedPieces : BoardRater {
     func getPieces(threatening piece: Piece, onBoard board: Board) -> [Piece] {
         
         return board.getPieces(color: piece.color.opposite()).filter{
-            $0.movement.canPieceMove(fromLocation: $0.location, toLocation: piece.location, board: board)
+            $0.movement.canPieceMove(fromLocation: $0.location, toLocation: piece.location, board: board, accountForCheckState: true)
         }
     }
     
     func getPieces(threatenedBy piece: Piece, onBoard board: Board) -> [Piece] {
         
         return board.getPieces(color: piece.color.opposite()).filter{
-            piece.movement.canPieceMove(fromLocation: piece.location, toLocation: $0.location, board: board)
+            piece.movement.canPieceMove(fromLocation: piece.location, toLocation: $0.location, board: board, accountForCheckState: true)
         }
     }
     

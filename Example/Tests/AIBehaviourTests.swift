@@ -118,63 +118,28 @@ class AIBehaviourTests: XCTestCase {
         XCTFail("Black moved bishop")
     }
     
-    func test_ScenarioTwo_BlackShouldTradeKnight() {
+    func testBlackShouldTradePawnFroQueen() {
         
-        // In this example, the black knight at (2, 1) can either take the white rook at (0,0), or trade itself for the white queen at (0,2)
-        // Both of these are good moves
-        
-        let board = ASCIIBoard(pieces:  "- r - - q b k r" +
-                                        "p - - g - - p p" +
-                                        "- - - - b p - -" +
+        let board = ASCIIBoard(pieces:  "g p - - - - - -" +
+                                        "p p - - - - - -" +
                                         "- - - - p - - -" +
-                                        "- - - p P - - -" +
-                                        "Q - - - - - - -" +
-                                        "P P k P K P P P" +
-                                        "R K B G - - - R" )
+                                        "- - - - - Q - -" +
+                                        "- - - - B - - -" +
+                                        "- - - - - - - -" +
+                                        "P P - - - - - -" +
+                                        "G P - - - - - -" )
 
-        let queenLocation = BoardLocation(x: 0, y: 2)
-        let rookLocation = BoardLocation(x: 0, y: 0)
-        
+        let queenLocation = board.locationOfCharacter("Q")
         let game = makeGameWithBoard(board: board.board, colorToMove: .black)
-
-        guard let player = game.currentPlayer as? AIPlayer else {
-            XCTFail("Expected an AI Player")
+        
+        guard let player = game.blackPlayer as? AIPlayer else {
+            XCTFail()
             return
         }
         
         player.makeMoveSync()
         
-        if let queenLocationPiece = game.board.getPiece(at: queenLocation) {
-            
-            if queenLocationPiece.color == .black && queenLocationPiece.type == .knight {
-                print("PASSED - Black took queen")
-                return
-            }
-        }
-        
-        if let rookLocationPiece = game.board.getPiece(at: rookLocation) {
-            
-            if rookLocationPiece.color == .black && rookLocationPiece.type == .knight {
-                print("PASSED - black took rook")
-                return
-            }
-        }
-        
-        let location = findMovedPieceLocation(startBoard: board.board, endBoard: game.board, color: .black)
-        
-        guard let piece = game.board.getPiece(at: location) else {
-            XCTFail("Couldn't find moved piece")
-            return
-        }
-        
-        XCTFail("FAILED - Black moved \(piece.type) to (\(location.x),\(location.y))")
+        XCTAssertEqual(game.board.getPiece(at: queenLocation)?.type, .pawn)
     }
-    
-    
-    
-    
-    
-    
-    
     
 }

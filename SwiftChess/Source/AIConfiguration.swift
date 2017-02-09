@@ -47,12 +47,12 @@ struct AIConfiguration {
     mutating func setDefualtValues() {
         
         suicideMultipler = 1;
-        boardRaterCountPiecesWeighting = 3 //1
+        boardRaterCountPiecesWeighting = 20 //1
         boardRaterBoardDominanceWeighting = 0.1
         boardRaterCenterOwnershipWeighting = 0.3
         boardRaterCenterDominanceWeighting = 0.3
         boardRaterCenterFourOccupationWeighting = 0.3
-        boardRaterThreatenedPiecesWeighting = 3 // 1.5
+        boardRaterThreatenedPiecesWeighting = 1.5 // 1.5
         boardRaterThreatenedPiecesOwnPiecesMultiplier = 20 // Higher values will be more defensive
         boardRaterPawnProgressionWeighting = 1
         boardRaterKingSurroundingPossessionWeighting = 0.3

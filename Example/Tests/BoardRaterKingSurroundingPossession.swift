@@ -357,34 +357,57 @@ class BoardRaterKingSurroundingPossessionTests: XCTestCase {
         XCTAssertGreaterThan(rating, 0)
     }
     
-    func testThatPiecesSurroundingOpponentKingResultsInNegativeRatingForWhite() {
+    func testThatPiecesSurroundingOpponentKingResultsInMoreNegativeRatingForWhite() {
         
-        let board = ASCIIBoard(pieces:  "- - - p g p - -" +
-                                        "- - - p p p - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - G - - -" )
+        let openKingBoard = ASCIIBoard(pieces:  "- - - - g - - -" +
+                                                "- - - - - - - -" +
+                                                "- - - - - - - -" +
+                                                "- - - - - - - -" +
+                                                "- - - - - - - -" +
+                                                "- - - - - - - -" +
+                                                "- - - - - - - -" +
+                                                "- - - - G - - -" )
         
-        let rating = boardRater.ratingfor(board: board.board, color: .white)
-        XCTAssertLessThan(rating, 0)
+        let surroundedKingBoard = ASCIIBoard(pieces:    "- - - p g p - -" +
+                                                        "- - - p p p - -" +
+                                                        "- - - - - - - -" +
+                                                        "- - - - - - - -" +
+                                                        "- - - - - - - -" +
+                                                        "- - - - - - - -" +
+                                                        "- - - - - - - -" +
+                                                        "- - - - G - - -" )
+
+        
+        let openKingRating = boardRater.ratingfor(board: openKingBoard.board, color: .white)
+        let surroundedKingRating = boardRater.ratingfor(board: surroundedKingBoard.board, color: .white)
+
+        XCTAssertLessThan(surroundedKingRating, openKingRating)
     }
     
-    func testThatPiecesSurroundingOpponentKingResultsInNegativeRatingForBlack() {
+    func testThatPiecesSurroundingOpponentKingResultsInMoreNegativeRatingForBlack() {
         
-        let board = ASCIIBoard(pieces:  "- - - - g - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - P P P - -" +
-                                        "- - - P G P - -" )
+        let openKingBoard = ASCIIBoard(pieces:  "- - - - g - - -" +
+                                                "- - - - - - - -" +
+                                                "- - - - - - - -" +
+                                                "- - - - - - - -" +
+                                                "- - - - - - - -" +
+                                                "- - - - - - - -" +
+                                                "- - - - - - - -" +
+                                                "- - - - G - - -" )
         
-        let rating = boardRater.ratingfor(board: board.board, color: .black)
-        XCTAssertLessThan(rating, 0)
+        let surroundedKingBoard = ASCIIBoard(pieces:    "- - - - g - - -" +
+                                                        "- - - - - - - -" +
+                                                        "- - - - - - - -" +
+                                                        "- - - - - - - -" +
+                                                        "- - - - - - - -" +
+                                                        "- - - - - - - -" +
+                                                        "- - - P P P - -" +
+                                                        "- - - P G P - -" )
+
+        
+        let openKingRating = boardRater.ratingfor(board: openKingBoard.board, color: .black)
+        let surroundedKingRating = boardRater.ratingfor(board: surroundedKingBoard.board, color: .black)
+        XCTAssertLessThan(surroundedKingRating, openKingRating)
     }
 
 
