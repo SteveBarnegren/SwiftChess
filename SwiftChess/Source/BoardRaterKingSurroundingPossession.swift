@@ -22,6 +22,9 @@ class BoardRaterKingSurroundingPossession : BoardRater {
         var noKingsBoard = board
         noKingsBoard.squares[noKingsBoard.getKingLocation(color: .white).index].piece = nil
         noKingsBoard.squares[noKingsBoard.getKingLocation(color: .black).index].piece = nil
+        
+        // we don't want to encourage the king to move out in to the open
+        rating += Double(8 - ownKingLocations.count) * squareValue * 3
 
         for location in ownKingLocations {
             
