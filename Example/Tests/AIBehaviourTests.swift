@@ -118,7 +118,7 @@ class AIBehaviourTests: XCTestCase {
         XCTFail("Black moved bishop")
     }
     
-    func testBlackShouldTradePawnFroQueen() {
+    func testBlackShouldTradePawnForQueen() {
         
         let board = ASCIIBoard(pieces:  "g p - - - - - -" +
                                         "p p - - - - - -" +
