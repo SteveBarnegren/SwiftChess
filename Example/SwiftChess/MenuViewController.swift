@@ -47,7 +47,7 @@ class MenuViewController: UIViewController {
         print("AI vs AI button pressed")
         
         let whitePlayer = AIPlayer(color: .white, configuration: AIConfiguration(difficulty: .hard))
-        let blackPlayer = AIPlayer(color: .black, configuration: AIConfiguration(difficulty: .hard))
+        let blackPlayer = AIPlayer(color: .black, configuration: AIConfiguration(difficulty: .easy))
         
         let game = Game(firstPlayer: whitePlayer, secondPlayer: blackPlayer)
         startGame(game: game)

@@ -53,14 +53,14 @@ public struct AIConfiguration {
         
         suicideMultipler = makeValue(0, 0)
         boardRaterCountPiecesWeighting = makeValue(3, 3)
-        boardRaterBoardDominanceWeighting = makeValue(0.1, 0.1)
-        boardRaterCenterOwnershipWeighting = makeValue(0.3, 0.3)
-        boardRaterCenterDominanceWeighting = makeValue(0.3, 0.3)
-        boardRaterThreatenedPiecesWeighting = makeValue(1.5, 1.5)
-        boardRaterPawnProgressionWeighting = makeValue(1, 1)
-        boardRaterKingSurroundingPossessionWeighting = makeValue(0.3, 0.3)
-        boardRaterCheckMateOpportunityWeighting = makeValue(2, 2)
-        boardRaterCenterFourOccupationWeighting = makeValue(0.3, 0.3)
+        boardRaterBoardDominanceWeighting = makeValue(0, 0.1)
+        boardRaterCenterOwnershipWeighting = makeValue(0.1, 0.3)
+        boardRaterCenterDominanceWeighting = makeValue(0, 0.3)
+        boardRaterThreatenedPiecesWeighting = makeValue(0, 1.5)
+        boardRaterPawnProgressionWeighting = makeValue(0.1, 1)
+        boardRaterKingSurroundingPossessionWeighting = makeValue(0, 0.3)
+        boardRaterCheckMateOpportunityWeighting = makeValue(0, 2)
+        boardRaterCenterFourOccupationWeighting = makeValue(0.1, 0.3)
     }
     
 }
