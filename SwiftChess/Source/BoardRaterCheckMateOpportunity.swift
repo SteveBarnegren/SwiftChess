@@ -46,7 +46,7 @@ class BoardRaterCheckMateOpportunity : BoardRater {
             }
         }
         
-        return rating * configuration.boardRaterCheckMateOpportunityWeighting
+        return rating * configuration.boardRaterCheckMateOpportunityWeighting.value
     }
 
 }

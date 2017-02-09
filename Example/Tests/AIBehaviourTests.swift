@@ -31,8 +31,8 @@ class AIBehaviourTests: XCTestCase {
     
     func makeGameWithBoard(board: Board, colorToMove: Color) -> Game {
         
-        let whitePlayer = AIPlayer(color: .white)
-        let blackPlayer = AIPlayer(color: .black)
+        let whitePlayer = AIPlayer(color: .white, configuration: AIConfiguration(difficulty: .hard))
+        let blackPlayer = AIPlayer(color: .black, configuration: AIConfiguration(difficulty: .hard))
         
         let game = Game(firstPlayer: whitePlayer, secondPlayer: blackPlayer, board: board, colorToMove: colorToMove)
         
@@ -141,5 +141,30 @@ class AIBehaviourTests: XCTestCase {
         
         XCTAssertEqual(game.board.getPiece(at: queenLocation)?.type, .pawn)
     }
+    
+    func testBlackShouldTakeWhiteQueenWithPawn() {
+        
+        let board = ASCIIBoard(pieces:  "- - - - - - p g" +
+                                        "- - - b - - p p" +
+                                        "- - - - q - - -" +
+                                        "- B p k P p - -" +
+                                        "- - - P Q - - -" +
+                                        "- - - - - - - -" +
+                                        "P P - - - - - -" +
+                                        "G P - - - - - -" )
+        
+        let queenLocation = board.locationOfCharacter("Q")
+        let game = makeGameWithBoard(board: board.board, colorToMove: .black)
+        
+        guard let player = game.blackPlayer as? AIPlayer else {
+            XCTFail()
+            return
+        }
+        
+        player.makeMoveSync()
+        
+        XCTAssertEqual(game.board.getPiece(at: queenLocation)?.type, .pawn)
+    }
+
     
 }

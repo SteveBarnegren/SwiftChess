@@ -11,22 +11,24 @@ import Foundation
 
 open class AIPlayer : Player {
     
-    let boardRaters : [BoardRater]!
-    let configuration = AIConfiguration() // <-- We should pass this in eventually
+    let boardRaters: [BoardRater]!
+    var configuration: AIConfiguration!
     var openingMoves = [OpeningMove]()
     
-    public init(color: Color){
+    public init(color: Color, configuration: AIConfiguration){
+        
+        self.configuration = configuration
         
         self.boardRaters = [
             BoardRaterCountPieces(configuration: configuration),
-            BoardRaterCenterOwnership(configuration: configuration),
-            BoardRaterBoardDominance(configuration: configuration),
-            BoardRaterCenterDominance(configuration: configuration),
+            //BoardRaterCenterOwnership(configuration: configuration),
+            //BoardRaterBoardDominance(configuration: configuration),
+            //BoardRaterCenterDominance(configuration: configuration),
             BoardRaterThreatenedPieces(configuration: configuration),
-            BoardRaterPawnProgression(configuration: configuration),
-            BoardRaterKingSurroundingPossession(configuration: configuration),
-            BoardRaterCheckMateOpportunity(configuration: configuration),
-            BoardRaterCenterFourOccupation(configuration: configuration)
+            //BoardRaterPawnProgression(configuration: configuration),
+            //BoardRaterKingSurroundingPossession(configuration: configuration),
+            //BoardRaterCheckMateOpportunity(configuration: configuration),
+            //BoardRaterCenterFourOccupation(configuration: configuration)
         ]
         
         openingMoves = Opening.allOpeningMoves(forColor: color)
@@ -151,7 +153,7 @@ open class AIPlayer : Player {
                 
                 // reduce rating if suicide
                 if resultBoard.canColorMoveAnyPieceToLocation(color: color.opposite(), location: targetLocation) {
-                    rating -= (abs(rating) * configuration.suicideMultipler);
+                    rating -= (abs(rating) * configuration.suicideMultipler.value);
                 }
                 
                 let move = Move(type: .singlePiece(sourceLocation: sourceLocation, targetLocation: targetLocation),

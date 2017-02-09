@@ -16,7 +16,7 @@ class BoardRaterKingSurroundingPossessionTests: XCTestCase {
     override func setUp() {
         super.setUp()
         
-        boardRater = BoardRaterKingSurroundingPossession(configuration: AIConfiguration())
+        boardRater = BoardRaterKingSurroundingPossession(configuration: AIConfiguration(difficulty: .hard))
     }
     
     override func tearDown() {

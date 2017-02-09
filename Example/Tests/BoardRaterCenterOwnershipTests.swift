@@ -16,7 +16,7 @@ class BoardRaterCenterOwnershipTests: XCTestCase {
     override func setUp() {
         super.setUp()
         
-        boardRater = BoardRaterCenterOwnership(configuration: AIConfiguration())
+        boardRater = BoardRaterCenterOwnership(configuration: AIConfiguration(difficulty: .hard))
     }
     
     override func tearDown() {

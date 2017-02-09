@@ -24,7 +24,7 @@ class BoardRaterCenterFourOccupationTests: XCTestCase {
     
     func defaultBoardRater() -> BoardRaterCenterFourOccupation {
         
-        let configuration = AIConfiguration()
+        let configuration = AIConfiguration(difficulty: .hard)
         let boardRater = BoardRaterCenterFourOccupation(configuration: configuration)
         return boardRater
     }

@@ -29,7 +29,7 @@ class BoardRaterCenterOwnership : BoardRater {
             rating += (piece.color == color) ? distance : -distance
         }
         
-        return rating * configuration.boardRaterCenterOwnershipWeighting
+        return rating * configuration.boardRaterCenterOwnershipWeighting.value
     
     }
     

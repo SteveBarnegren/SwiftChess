@@ -52,7 +52,7 @@ class BoardRaterPawnProgression : BoardRater {
             squaresAdvanced = 7 - (location.y + 2)
         }
         
-        return Double(squaresAdvanced) * configuration.boardRaterPawnProgressionWeighting // <- should probably add some sort of curve
+        return Double(squaresAdvanced) * configuration.boardRaterPawnProgressionWeighting.value // <- should probably add some sort of curve
     }
     
 }

@@ -17,7 +17,7 @@ class BoardRaterCountPiecesTests: XCTestCase {
         super.setUp()
         
         // Initiailise a new board rater for each test
-        boardRater = BoardRaterCountPieces(configuration: AIConfiguration());
+        boardRater = BoardRaterCountPieces(configuration: AIConfiguration(difficulty: .hard));
     }
     
     override func tearDown() {

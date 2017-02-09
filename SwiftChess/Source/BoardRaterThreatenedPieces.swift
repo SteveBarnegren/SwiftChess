@@ -60,10 +60,12 @@ class BoardRaterThreatenedPieces : BoardRater {
     
     override func ratingfor(board: Board, color: Color) -> Double {
         
-        return board.getPieces(color: color)
+        let rating =  board.getPieces(color: color)
             .map{ threatValue(forPiece: $0, onBoard: board) }
             .reduce(0,+)
-            * configuration.boardRaterThreatenedPiecesOwnPiecesMultiplier
+            * configuration.boardRaterThreatenedPiecesWeighting.value
+                
+        return rating
     }
     
     func threatValue(forPiece piece: Piece, onBoard board: Board) -> Double {

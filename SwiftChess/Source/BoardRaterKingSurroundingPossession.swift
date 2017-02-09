@@ -69,7 +69,7 @@ class BoardRaterKingSurroundingPossession : BoardRater {
             }
         }
 
-        return rating * configuration.boardRaterKingSurroundingPossessionWeighting
+        return rating * configuration.boardRaterKingSurroundingPossessionWeighting.value
     }
     
     func locationsSurroundingKing(color: Color, board: Board) -> [BoardLocation] {

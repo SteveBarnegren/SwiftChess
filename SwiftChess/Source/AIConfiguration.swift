@@ -8,55 +8,59 @@
 
 import Foundation
 
-struct AIConfiguration {
+public struct AIConfiguration {
     
-    var suicideMultipler: Double!
-
-    // BoardRater -  Count Pieces
-    var boardRaterCountPiecesWeighting: Double!
-    
-    // BoardRater - Board Dominance
-    var boardRaterBoardDominanceWeighting: Double!
-    
-    // BoardRater - Center Ownership
-    var boardRaterCenterOwnershipWeighting: Double!
-    
-    // BoardRater - Center Dominance
-    var boardRaterCenterDominanceWeighting: Double!
-    
-    // BoardRater - Threatened Pieces
-    var boardRaterThreatenedPiecesWeighting: Double!
-    var boardRaterThreatenedPiecesOwnPiecesMultiplier: Double!
-
-    // BoardRater - Pawn Progression
-    var boardRaterPawnProgressionWeighting: Double!
-    
-    // BoardRater - King Surrounding Possession
-    var boardRaterKingSurroundingPossessionWeighting: Double!
-    
-    // BoardRater - Check Mate Opportunity
-    var boardRaterCheckMateOpportunityWeighting: Double!
-    
-    // BoardRater - Center Four Occupation
-    var boardRaterCenterFourOccupationWeighting: Double!
-    
-    init() {
-        setDefualtValues()
+    public enum Difficulty {
+        case easy
+        case medium
+        case hard
     }
     
-    mutating func setDefualtValues() {
+    struct ConfigurationValue {
+        let easyValue: Double
+        let difficultValue: Double
+        let multiplier: Double
         
-        suicideMultipler = 0;
-        boardRaterCountPiecesWeighting = 1.5 //1
-        boardRaterBoardDominanceWeighting = 0.1
-        boardRaterCenterOwnershipWeighting = 0.3
-        boardRaterCenterDominanceWeighting = 0.3
-        boardRaterCenterFourOccupationWeighting = 0.3
-        boardRaterThreatenedPiecesWeighting = 1.5 // 1.5
-        boardRaterThreatenedPiecesOwnPiecesMultiplier = 20 // Higher values will be more defensive
-        boardRaterPawnProgressionWeighting = 1
-        boardRaterKingSurroundingPossessionWeighting = 0.3
-        boardRaterCheckMateOpportunityWeighting = 2
+        var value: Double {
+            return easyValue + ((difficultValue - easyValue) * multiplier)
+        }
+    }
+    
+    var suicideMultipler: ConfigurationValue!
+    var boardRaterCountPiecesWeighting: ConfigurationValue!
+    var boardRaterBoardDominanceWeighting: ConfigurationValue!
+    var boardRaterCenterOwnershipWeighting: ConfigurationValue!
+    var boardRaterCenterDominanceWeighting: ConfigurationValue!
+    var boardRaterThreatenedPiecesWeighting: ConfigurationValue!
+    var boardRaterPawnProgressionWeighting: ConfigurationValue!
+    var boardRaterKingSurroundingPossessionWeighting: ConfigurationValue!
+    var boardRaterCheckMateOpportunityWeighting: ConfigurationValue!
+    var boardRaterCenterFourOccupationWeighting: ConfigurationValue!
+    
+    public init(difficulty: Difficulty) {
+        
+        let multiplier: Double
+
+        switch difficulty {
+        case .easy: multiplier = 0
+        case .medium: multiplier = 0.5
+        case .hard: multiplier = 1
+        }
+        
+        func makeValue(_ easyValue: Double, _ hardValue: Double) -> ConfigurationValue {
+            return ConfigurationValue(easyValue: easyValue, difficultValue: hardValue, multiplier: multiplier)
+        }
+        
+        suicideMultipler = makeValue(0, 0)
+        boardRaterCountPiecesWeighting = makeValue(3, 3)
+        boardRaterBoardDominanceWeighting = makeValue(0.1, 0.1)
+        boardRaterCenterOwnershipWeighting = makeValue(0.3, 0.3)
+        boardRaterCenterDominanceWeighting = makeValue(0.3, 0.3)
+        boardRaterThreatenedPiecesWeighting = makeValue(1.5, 1.5)
+        boardRaterPawnProgressionWeighting = makeValue(1, 1)
+        boardRaterKingSurroundingPossessionWeighting = makeValue(0.3, 0.3)
+        boardRaterCheckMateOpportunityWeighting = makeValue(2, 2)
+        boardRaterCenterFourOccupationWeighting = makeValue(0.3, 0.3)
     }
     
 }

@@ -16,7 +16,7 @@ class BoardRaterCenterDominanceTests: XCTestCase {
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
-        boardRater = BoardRaterCenterDominance(configuration: AIConfiguration())
+        boardRater = BoardRaterCenterDominance(configuration: AIConfiguration(difficulty: .hard))
     }
     
     override func tearDown() {

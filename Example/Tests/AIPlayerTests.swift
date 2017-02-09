@@ -36,8 +36,8 @@ class AIPlayerTests: XCTestCase {
     
     func makeTestGame(board: Board, colorToMove: Color) -> Game {
         
-        let whitePlayer = AIPlayer(color: .white)
-        let blackPlayer = AIPlayer(color: .black)
+        let whitePlayer = AIPlayer(color: .white, configuration: AIConfiguration(difficulty: .hard))
+        let blackPlayer = AIPlayer(color: .black, configuration: AIConfiguration(difficulty: .hard))
         
         let game = Game(firstPlayer: whitePlayer, secondPlayer: blackPlayer, board: board, colorToMove: colorToMove)
         return game

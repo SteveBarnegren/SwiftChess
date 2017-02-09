@@ -31,7 +31,7 @@ class BoardRaterBoardDominance : BoardRater {
             
         }
         
-        return rating * configuration.boardRaterBoardDominanceWeighting;
+        return rating * configuration.boardRaterBoardDominanceWeighting.value;
     }
 
 }

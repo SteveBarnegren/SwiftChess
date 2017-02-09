@@ -23,7 +23,7 @@ class BoardRaterCountPieces : BoardRater {
             rating += piece.color == color ? piece.value() : -piece.value()
         }
         
-        return rating * configuration.boardRaterCountPiecesWeighting
+        return rating * configuration.boardRaterCountPiecesWeighting.value
     }
     
 }

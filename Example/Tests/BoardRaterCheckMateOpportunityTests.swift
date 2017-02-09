@@ -16,7 +16,7 @@ class BoardRaterCheckMateOpportunityTests: XCTestCase {
     override func setUp() {
         super.setUp()
         
-        boardRater = BoardRaterCheckMateOpportunity(configuration: AIConfiguration())
+        boardRater = BoardRaterCheckMateOpportunity(configuration: AIConfiguration(difficulty: .hard))
     }
     
     override func tearDown() {

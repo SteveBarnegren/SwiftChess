@@ -34,7 +34,7 @@ class BoardRaterCenterDominance : BoardRater {
             }
         }
         
-        return rating * configuration.boardRaterCenterDominanceWeighting
+        return rating * configuration.boardRaterCenterDominanceWeighting.value
     }
     
     func dominanceValueFor(location: BoardLocation) -> Double {
