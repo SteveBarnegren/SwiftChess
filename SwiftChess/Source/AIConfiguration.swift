@@ -10,7 +10,7 @@ import Foundation
 
 public struct AIConfiguration {
     
-    public enum Difficulty {
+    public enum Difficulty: Int {
         case easy
         case medium
         case hard
@@ -26,6 +26,7 @@ public struct AIConfiguration {
         }
     }
     
+    public let difficulty: Difficulty!
     var suicideMultipler: ConfigurationValue!
     var boardRaterCountPiecesWeighting: ConfigurationValue!
     var boardRaterBoardDominanceWeighting: ConfigurationValue!
@@ -38,6 +39,8 @@ public struct AIConfiguration {
     var boardRaterCenterFourOccupationWeighting: ConfigurationValue!
     
     public init(difficulty: Difficulty) {
+        
+        self.difficulty = difficulty
         
         let multiplier: Double
 

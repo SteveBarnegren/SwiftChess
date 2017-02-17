@@ -8,7 +8,7 @@
 
 import Foundation
 
-public enum Color {
+public enum Color: Int {
     case white
     case black
     
@@ -25,7 +25,7 @@ public struct Piece : Equatable {
     
     static private var lastAssignedTag = 0
     
-    public enum PieceType {
+    public enum PieceType: Int {
         case pawn
         case rook
         case knight

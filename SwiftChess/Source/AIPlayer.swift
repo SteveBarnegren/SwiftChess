@@ -12,7 +12,7 @@ import Foundation
 open class AIPlayer : Player {
     
     let boardRaters: [BoardRater]!
-    var configuration: AIConfiguration!
+    public var configuration: AIConfiguration!
     var openingMoves = [OpeningMove]()
     
     public init(color: Color, configuration: AIConfiguration){
