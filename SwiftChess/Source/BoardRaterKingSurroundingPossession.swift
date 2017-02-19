@@ -20,9 +20,9 @@ class BoardRaterKingSurroundingPossession : BoardRater {
         
         // The kings will be able to move to their surrounding locations, so remove them from the board
         var noKingsBoard = board
-        noKingsBoard.squares[noKingsBoard.getKingLocation(color: .white).index].piece = nil
-        noKingsBoard.squares[noKingsBoard.getKingLocation(color: .black).index].piece = nil
-        
+        noKingsBoard.removePiece(atLocation: noKingsBoard.getKingLocation(color: .white))
+        noKingsBoard.removePiece(atLocation: noKingsBoard.getKingLocation(color: .black))
+
         // we don't want to encourage the king to move out in to the open
         rating += Double(8 - ownKingLocations.count) * squareValue * 3
 

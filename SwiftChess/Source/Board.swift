@@ -44,7 +44,7 @@ public struct Board : Equatable {
         case newGame
     }
 
-    public var squares = [Square]()
+    public private(set) var squares = [Square]()
     
     // MARK: - Init
     public init(state: InitialState) {
@@ -107,6 +107,10 @@ public struct Board : Equatable {
     
     public func getPiece(at location: BoardLocation) -> Piece? {
         return squares[location.index].piece
+    }
+    
+    public mutating func removePiece(atLocation location: BoardLocation) {
+        squares[location.index].piece = nil
     }
     
     @discardableResult internal mutating func movePiece(fromLocation: BoardLocation, toLocation: BoardLocation) -> [BoardOperation] {

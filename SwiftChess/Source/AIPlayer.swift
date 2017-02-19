@@ -21,14 +21,14 @@ open class AIPlayer : Player {
         
         self.boardRaters = [
             BoardRaterCountPieces(configuration: configuration),
-            //BoardRaterCenterOwnership(configuration: configuration),
-            //BoardRaterBoardDominance(configuration: configuration),
-            //BoardRaterCenterDominance(configuration: configuration),
+            BoardRaterCenterOwnership(configuration: configuration),
+            BoardRaterBoardDominance(configuration: configuration),
+            BoardRaterCenterDominance(configuration: configuration),
             BoardRaterThreatenedPieces(configuration: configuration),
-            //BoardRaterPawnProgression(configuration: configuration),
-            //BoardRaterKingSurroundingPossession(configuration: configuration),
-            //BoardRaterCheckMateOpportunity(configuration: configuration),
-            //BoardRaterCenterFourOccupation(configuration: configuration)
+            BoardRaterPawnProgression(configuration: configuration),
+            BoardRaterKingSurroundingPossession(configuration: configuration),
+            BoardRaterCheckMateOpportunity(configuration: configuration),
+            BoardRaterCenterFourOccupation(configuration: configuration)
         ]
         
         openingMoves = Opening.allOpeningMoves(forColor: color)
@@ -271,8 +271,8 @@ open class AIPlayer : Player {
             }
             
             let newPiece = newBoard.getPiece(at: location)?.byChangingType(newType: pieceType)
-            newBoard.squares[location.index].piece = newPiece
-            
+            newBoard.setPiece(newPiece!, at: location)
+
             let rating = ratingForBoard(newBoard)
             
             if rating > bestRating {

@@ -52,7 +52,7 @@ open class Human : Player {
                             
                                                         // Change the piece
                                                         let newPiece = self.game.board.squares[pawnLocation.index].piece?.byChangingType(newType: $0)
-                                                        self.game.board.squares[pawnLocation.index].piece = newPiece
+                                                        self.game.board.setPiece(newPiece!, at: pawnLocation)
                                                         
                                                         // Add a transform piece operation
                                                         let modifyOperation = BoardOperation(type: .transformPiece, piece: newPiece!, location: pawnLocation)

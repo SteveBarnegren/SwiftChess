@@ -138,6 +138,17 @@ class BoardTests: XCTestCase {
         
     }
     
+    func testRemovePieceRemovesPiece() {
+        
+        var board = Board(state: .newGame)
+        let location = BoardLocation(index: 10)
+        board.setPiece(Piece(type: .pawn, color: .white),
+                             at: location)
+        board.removePiece(atLocation: location)
+        
+        XCTAssertNil(board.getPiece(at: location))
+    }
+    
     func testMovePieceResultsInPieceMoved() {
         
         var board = Board(state: .empty);

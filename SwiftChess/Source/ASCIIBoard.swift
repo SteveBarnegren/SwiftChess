@@ -66,8 +66,8 @@ public struct ASCIIBoard {
         var board = Board(state: .empty)
         
         // Clear all pieces on the board
-        (0..<64).forEach{
-            board.squares[$0].piece = nil;
+        BoardLocation.all.forEach{
+            board.removePiece(atLocation: $0)
         }
         
         // Setup pieces from ascii art
