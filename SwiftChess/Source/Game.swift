@@ -29,6 +29,12 @@ open class Game {
             }
         }
     }
+    
+    public enum GameType {
+        case humanVsHuman
+        case humanVsComputer
+        case computerVsComputer
+    }
 
     // MARK: Properties
     open var board = Board(state: .newGame)
@@ -37,6 +43,18 @@ open class Game {
     open var currentPlayer: Player!
     open var state = Game.State.inProgress
     open weak var delegate: GameDelegate?
+    
+    public var gameType: GameType {
+    
+        switch (self.whitePlayer, self.blackPlayer) {
+        case (is Human, is Human):
+            return .humanVsHuman
+        case (is AIPlayer, is AIPlayer):
+            return .computerVsComputer
+        default:
+            return .humanVsComputer
+        }
+    }
     
     // MARK: Init
     public init(firstPlayer: Player, secondPlayer: Player, board: Board = Board(state: .newGame), colorToMove: Color = .white){
