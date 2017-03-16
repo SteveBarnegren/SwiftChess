@@ -2,13 +2,15 @@
 
 SwiftChess is a chess engine written in Swift.
 
-Rather than a library that you can call to assist in making valid chess moves, SwiftChess aims to be a complete chess game, minus the UI.
+Rather than a library that you can call to assist in making valid chess moves, SwiftChess is a complete chess game, minus the UI.
 
-SwiftChess also includes a complete AI implementation.
+## Features
 
-There's no documentation for now, as the public api is still in flux, but there is a complete example project for iOS.
-
-SwiftChess also has a reasonably comprehensive set of unit tests.
+- Move validation
+- AI with three difficulty levels
+- Checks for check, check mate and stale mate
+- Supports castling
+- Supports En Passent
 
 ## Example
 
@@ -16,11 +18,14 @@ Run `Example/Example.xcodeproj`
 
 The example app can run *player vs player*, *player vs AI*, *AI vs AI* matches
 
+## Example
+
+
+
+
 ## Author
 
-Steve Barnegren
-
-[Follow me on Twitter](https://twitter.com/stevebarnegren)
+[@SteveBarnegren](https://twitter.com/stevebarnegren)
 
 ## License
 
