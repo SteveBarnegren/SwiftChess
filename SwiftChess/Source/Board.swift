@@ -479,16 +479,16 @@ public struct Board : Equatable {
                 rookEndXPos = 3
             case (.black, .kingSide):
                 yPos = 7
-                kingStartXPos = 3
-                rookStartXPos = 0
-                kingEndXPos = 1
-                rookEndXPos = 2
+                kingStartXPos = 4
+                rookStartXPos = 7
+                kingEndXPos = 6
+                rookEndXPos = 5
             case (.black, .queenSide):
                 yPos = 7
-                kingStartXPos = 3
-                rookStartXPos = 7
-                kingEndXPos = 5
-                rookEndXPos = 4
+                kingStartXPos = 4
+                rookStartXPos = 0
+                kingEndXPos = 2
+                rookEndXPos = 3
             }
         }
     }

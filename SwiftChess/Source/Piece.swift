@@ -19,6 +19,10 @@ public enum Color: Int {
     public func toString() -> String {
         return (self == .white) ? "white" : "black"
     }
+    
+    public func toStringWithCapital() -> String {
+        return (self == .white) ? "White" : "Black"
+    }
 }
 
 public struct Piece : Equatable {
