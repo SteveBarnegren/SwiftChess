@@ -151,6 +151,8 @@ public struct Board : Equatable {
             
             if enPassentPiece.canBeTakenByEnPassant && enPassentPiece.color == movingPiece.color.opposite() {
                 squares[enPassentLocation.index].piece = nil;
+                let operation = BoardOperation(type: .removePiece, piece: enPassentPiece, location: enPassentLocation)
+                operations.append(operation)
             }
         }
         
