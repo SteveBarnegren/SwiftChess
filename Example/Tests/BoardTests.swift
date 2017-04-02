@@ -63,8 +63,8 @@ class BoardTests: XCTestCase {
             (56, .rook, .black),
             (57, .knight, .black),
             (58, .bishop, .black),
-            (59, .king, .black),
-            (60, .queen, .black),
+            (59, .queen, .black),
+            (60, .king, .black),
             (61, .bishop, .black),
             (62, .knight, .black),
             (63, .rook, .black),
@@ -754,7 +754,7 @@ class BoardTests: XCTestCase {
     
     func createPerformCastleBoard() -> Board {
         
-        let board = ASCIIBoard(pieces:  "r - - g - - - r" +
+        let board = ASCIIBoard(pieces:  "r - - - g - - r" +
                                         "p p p p p p p p" +
                                         "- - - - - - - -" +
                                         "- - - - - - - -" +
@@ -787,16 +787,16 @@ class BoardTests: XCTestCase {
         
         var board = createPerformCastleBoard()
         board.performCastle(color: .black, side: .kingSide)
-        XCTAssert(board.getPiece(at: BoardLocation(x: 1, y: 7))?.type == .king)
-        XCTAssert(board.getPiece(at: BoardLocation(x: 2, y: 7))?.type == .rook)
+        XCTAssert(board.getPiece(at: BoardLocation(x: 6, y: 7))?.type == .king)
+        XCTAssert(board.getPiece(at: BoardLocation(x: 5, y: 7))?.type == .rook)
     }
     
     func testBlackQueenSideCastleUpdatesPiecePositions() {
         
         var board = createPerformCastleBoard()
         board.performCastle(color: .black, side: .queenSide)
-        XCTAssert(board.getPiece(at: BoardLocation(x: 5, y: 7))?.type == .king)
-        XCTAssert(board.getPiece(at: BoardLocation(x: 4, y: 7))?.type == .rook)
+        XCTAssert(board.getPiece(at: BoardLocation(x: 2, y: 7))?.type == .king)
+        XCTAssert(board.getPiece(at: BoardLocation(x: 3, y: 7))?.type == .rook)
     }
     
     // MARK: - Check hasMoved flag isn't accidentally set
