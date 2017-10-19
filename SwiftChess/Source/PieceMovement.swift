@@ -354,7 +354,6 @@ open class PieceMovementPawn: PieceMovement {
         let color = movingPiece.color
 
         // ****** Test forward locations ******
-        var forwardStrides = [BoardStride]()
         
         // Test one ahead offset
         let oneAheadStride = (color == .white ? BoardStride(x: 0, y: 1) : BoardStride(x: 0, y: -1))

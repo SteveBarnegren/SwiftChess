@@ -532,7 +532,7 @@ public struct Board : Equatable {
             
             let location = BoardLocation(x: xPos, y: castleMove.yPos)
             
-            if let piece = getPiece(at: location) {
+            if getPiece(at: location) != nil {
                 return false
             }
             

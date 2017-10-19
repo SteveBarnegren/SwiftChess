@@ -15,7 +15,6 @@ class BoardRaterCenterFourOccupation: BoardRater {
         let value = Double(1);
         var rating = Double(0)
         
-        BoardLocation(x: 3, y: 3)
         let locations = [
             BoardLocation(x: 4, y: 4), // NE
             BoardLocation(x: 4, y: 3), // SE

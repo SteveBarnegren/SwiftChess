@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import SwiftChess
 
 func transformASCIIBoardInput(_ input: String) -> String{
     

@@ -252,21 +252,19 @@ open class AIPlayer : Player {
         
         let location = pawnsToPromoteLocations.first!
         
-        guard let piece = board.getPiece(at: location) else {
+        guard board.getPiece(at: location) != nil else {
             return board
         }
         
         // Get the ratings
-        var bestType = Piece.PieceType.possiblePawnPromotionResultingTypes().first
-        var bestRating = -Double.greatestFiniteMagnitude
+        var highestRating = -Double.greatestFiniteMagnitude
         var promotedBoard: Board!
         
         for pieceType in Piece.PieceType.possiblePawnPromotionResultingTypes() {
             
             var newBoard = board
             
-            guard let piece = newBoard.getPiece(at: location) else {
-  
+            guard newBoard.getPiece(at: location) != nil else {
                 return board
             }
             
@@ -275,9 +273,8 @@ open class AIPlayer : Player {
 
             let rating = ratingForBoard(newBoard)
             
-            if rating > bestRating {
-                bestRating = rating
-                bestType = pieceType
+            if rating > highestRating {
+                highestRating = rating
                 promotedBoard = newBoard
             }
             
@@ -310,7 +307,6 @@ internal class BoardRater {
 
     func ratingfor(board: Board, color: Color) -> Double{
         fatalError("Override ratingFor method in subclasses")
-        return 0
     }
 }
  
