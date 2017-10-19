@@ -395,7 +395,7 @@ extension GameViewController: GameDelegate {
         updateCastleButtonsVisibility()
     }
     
-    func tellAIToTakeGo() {
+    @objc func tellAIToTakeGo() {
         
         if let player =  game.currentPlayer as? AIPlayer {
             activityIndicator.startAnimating();
