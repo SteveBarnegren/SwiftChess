@@ -101,7 +101,7 @@ class BoardRaterCenterFourOccupationTests: XCTestCase {
                                         "P P P P P P P P" )
         
         let rating = defaultBoardRater().ratingfor(board: board.board, color: .white)
-        XCTAssertEqualWithAccuracy(rating, 0, accuracy: 0.01)
+        XCTAssertEqual(rating, 0, accuracy: 0.01)
     }
     
     func testOpponentOccupationResultsInNegativeRating() {

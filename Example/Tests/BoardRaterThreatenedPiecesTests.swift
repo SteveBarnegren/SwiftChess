@@ -38,7 +38,7 @@ class BoardRaterThreatenedPiecesTests: XCTestCase {
         
         let rating = boardRater.ratingfor(board: board.board, color: .white)
 
-        XCTAssertEqualWithAccuracy(rating, 0, accuracy: 0.01)
+        XCTAssertEqual(rating, 0, accuracy: 0.01)
     }
     
     func testBoardRaterThreatenedPiecesReturnsNegativeValueIfThreatened() {

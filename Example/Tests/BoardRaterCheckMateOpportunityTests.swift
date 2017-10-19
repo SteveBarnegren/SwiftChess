@@ -31,8 +31,8 @@ class BoardRaterCheckMateOpportunityTests: XCTestCase {
         let blackRating = boardRater.ratingfor(board: board, color: .black)
         
         let accuracy = Double(0.1)
-        XCTAssertEqualWithAccuracy(whiteRating, 0, accuracy: accuracy)
-        XCTAssertEqualWithAccuracy(blackRating, 0, accuracy: accuracy)
+        XCTAssertEqual(whiteRating, 0, accuracy: accuracy)
+        XCTAssertEqual(blackRating, 0, accuracy: accuracy)
     }
     
     func testThatOpponentKingCheckMateOpportunityResultsInPositiveRating() {

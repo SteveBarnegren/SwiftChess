@@ -91,7 +91,7 @@ class BoardRaterPawnProgressionTests: XCTestCase {
         
         let rating = boardRater.ratingfor(board: board.board, color: .white)
         
-        XCTAssertEqualWithAccuracy(rating, 0, accuracy: 0.0001)
+        XCTAssertEqual(rating, 0, accuracy: 0.0001)
     }
     
     func testBlackPawnsOnStartingRowResultInZeroRating() {
@@ -107,7 +107,7 @@ class BoardRaterPawnProgressionTests: XCTestCase {
         
         let rating = boardRater.ratingfor(board: board.board, color: .black)
         
-        XCTAssertEqualWithAccuracy(rating, 0, accuracy: 0.0001)
+        XCTAssertEqual(rating, 0, accuracy: 0.0001)
     }
     
     func testWhiteAndBlackPawnRelativeSquaresResultInTheSameValue() {
@@ -124,7 +124,7 @@ class BoardRaterPawnProgressionTests: XCTestCase {
         let whiteRating = boardRater.ratingfor(board: board.board, color: .white)
         let blackRating = boardRater.ratingfor(board: board.board, color: .black)
         
-        XCTAssertEqualWithAccuracy(whiteRating, blackRating, accuracy: 0.0001)
+        XCTAssertEqual(whiteRating, blackRating, accuracy: 0.0001)
     }
     
     func testTotalWhiteAndBlackRowsValueAreEqual() {
@@ -141,7 +141,7 @@ class BoardRaterPawnProgressionTests: XCTestCase {
         let whiteRating = boardRater.ratingfor(board: board.board, color: .white)
         let blackRating = boardRater.ratingfor(board: board.board, color: .black)
         
-        XCTAssertEqualWithAccuracy(whiteRating, blackRating, accuracy: 0.0001)
+        XCTAssertEqual(whiteRating, blackRating, accuracy: 0.0001)
     }
 
     

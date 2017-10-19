@@ -38,9 +38,9 @@ class PerformanceTests: XCTestCase {
         self.measure {
             
             BoardLocation.all.forEach{
-                pawn.movement.canPieceMove(fromLocation: pawnLocation,
-                                           toLocation: $0,
-                                           board: board)
+                _ = pawn.movement.canPieceMove(fromLocation: pawnLocation,
+                                               toLocation: $0,
+                                               board: board)
             }
         }
     }
@@ -69,9 +69,9 @@ class PerformanceTests: XCTestCase {
         self.measure {
             
             BoardLocation.all.forEach{
-                queen.movement.canPieceMove(fromLocation: queenLocation,
-                                            toLocation: $0,
-                                            board: board)
+                _ = queen.movement.canPieceMove(fromLocation: queenLocation,
+                                                toLocation: $0,
+                                                board: board)
             }
         }
     }
@@ -100,9 +100,9 @@ class PerformanceTests: XCTestCase {
         self.measure {
             
             BoardLocation.all.forEach{
-                king.movement.canPieceMove(fromLocation: kingLocation,
-                                            toLocation: $0,
-                                            board: board)
+                _ = king.movement.canPieceMove(fromLocation: kingLocation,
+                                               toLocation: $0,
+                                               board: board)
             }
         }
     }
@@ -131,9 +131,9 @@ class PerformanceTests: XCTestCase {
         self.measure {
             
             BoardLocation.all.forEach{
-                knight.movement.canPieceMove(fromLocation: knightLocation,
-                                             toLocation: $0,
-                                             board: board)
+                _ = knight.movement.canPieceMove(fromLocation: knightLocation,
+                                                 toLocation: $0,
+                                                 board: board)
             }
         }
     }
@@ -162,9 +162,9 @@ class PerformanceTests: XCTestCase {
         self.measure {
             
             BoardLocation.all.forEach{
-                bishop.movement.canPieceMove(fromLocation: bishopLocation,
-                                             toLocation: $0,
-                                             board: board)
+                _ = bishop.movement.canPieceMove(fromLocation: bishopLocation,
+                                                 toLocation: $0,
+                                                 board: board)
             }
         }
     }
@@ -193,9 +193,9 @@ class PerformanceTests: XCTestCase {
         self.measure {
             
             BoardLocation.all.forEach{
-                rook.movement.canPieceMove(fromLocation: rookLocation,
-                                           toLocation: $0,
-                                           board: board)
+                _ = rook.movement.canPieceMove(fromLocation: rookLocation,
+                                               toLocation: $0,
+                                               board: board)
             }
         }
     }
@@ -216,8 +216,8 @@ class PerformanceTests: XCTestCase {
         self.measure {
             
             BoardLocation.all.forEach{
-                board.canColorMoveAnyPieceToLocation(color: .white, location: $0)
-                board.canColorMoveAnyPieceToLocation(color: .black, location: $0)
+                _ = board.canColorMoveAnyPieceToLocation(color: .white, location: $0)
+                _ = board.canColorMoveAnyPieceToLocation(color: .black, location: $0)
             }
         }
         

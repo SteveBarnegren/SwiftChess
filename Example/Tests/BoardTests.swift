@@ -603,7 +603,6 @@ class BoardTests: XCTestCase {
                                         "- - - - - - - -" +
                                         "- - - - - - - -" +
                                         "- - - - G - - R" )
-        let gameBoard = board.board
 
         XCTAssertTrue(board.board.canColorCastle(color: .white, side: .kingSide))
     }
@@ -835,8 +834,8 @@ class BoardTests: XCTestCase {
     func testCheckingForCheckDoesntResultInHasMovedFlagChange() {
         
         let board = createHasMovedTestBoard()
-        board.isColorInCheck(color: .white)
-        board.isColorInCheck(color: .black)
+        _ = board.isColorInCheck(color: .white)
+        _ = board.isColorInCheck(color: .black)
         
         XCTAssertFalse(areAnyPiecesHasMovedFlagsSet(on: board))
     }
@@ -844,8 +843,8 @@ class BoardTests: XCTestCase {
     func testCheckingForCheckMateDoesntResultInHasMovedFlagChange() {
         
         let board = createHasMovedTestBoard()
-        board.isColorInCheckMate(color: .white)
-        board.isColorInCheckMate(color: .black)
+        _ = board.isColorInCheckMate(color: .white)
+        _ = board.isColorInCheckMate(color: .black)
         
         XCTAssertFalse(areAnyPiecesHasMovedFlagsSet(on: board))
     }
@@ -853,8 +852,8 @@ class BoardTests: XCTestCase {
     func testCheckingForStaleMateDoesntResultInHasMovedFlagChange() {
         
         let board = createHasMovedTestBoard()
-        board.isColorInStalemate(color: .white)
-        board.isColorInStalemate(color: .black)
+        _ = board.isColorInStalemate(color: .white)
+        _ = board.isColorInStalemate(color: .black)
         
         XCTAssertFalse(areAnyPiecesHasMovedFlagsSet(on: board))
     }
@@ -862,8 +861,8 @@ class BoardTests: XCTestCase {
     func testCheckingForAbilityToMoveDoesntResultInHasMovedFlagChange() {
         
         let board = createHasMovedTestBoard()
-        board.isColorAbleToMove(color: .white)
-        board.isColorAbleToMove(color: .black)
+        _ = board.isColorAbleToMove(color: .white)
+        _ = board.isColorAbleToMove(color: .black)
         
         XCTAssertFalse(areAnyPiecesHasMovedFlagsSet(on: board))
     }
@@ -871,10 +870,10 @@ class BoardTests: XCTestCase {
     func testCheckingForAbilityToCastleDoesntResultInHasMovedFlagChange() {
         
         let board = createHasMovedTestBoard()
-        board.canColorCastle(color: .white, side: .kingSide)
-        board.canColorCastle(color: .white, side: .queenSide)
-        board.canColorCastle(color: .black, side: .kingSide)
-        board.canColorCastle(color: .black, side: .queenSide)
+        _ = board.canColorCastle(color: .white, side: .kingSide)
+        _ = board.canColorCastle(color: .white, side: .queenSide)
+        _ = board.canColorCastle(color: .black, side: .kingSide)
+        _ = board.canColorCastle(color: .black, side: .queenSide)
 
         XCTAssertFalse(areAnyPiecesHasMovedFlagsSet(on: board))
     }

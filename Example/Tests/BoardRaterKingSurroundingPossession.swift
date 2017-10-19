@@ -324,7 +324,7 @@ class BoardRaterKingSurroundingPossessionTests: XCTestCase {
         let rating = boardRater.ratingfor(board: board.board, color: .white)
         let invertedRating = boardRater.ratingfor(board: invertedBoard.board, color: .black)
         
-        XCTAssertEqualWithAccuracy(rating, invertedRating, accuracy: 0.01)
+        XCTAssertEqual(rating, invertedRating, accuracy: 0.01)
     }
     
     func testThatPiecesSurroundingOwnKingResultsInPositiveRatingForWhite() {
