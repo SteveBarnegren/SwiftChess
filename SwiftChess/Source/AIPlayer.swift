@@ -6,16 +6,16 @@
 //
 //
 
-
+// swiftlint:disable for_where
 import Foundation
 
-open class AIPlayer : Player {
+open class AIPlayer: Player {
     
     let boardRaters: [BoardRater]!
     public var configuration: AIConfiguration!
     var openingMoves = [OpeningMove]()
     
-    public init(color: Color, configuration: AIConfiguration){
+    public init(color: Color, configuration: AIConfiguration) {
         
         self.configuration = configuration
         
@@ -58,12 +58,12 @@ open class AIPlayer : Player {
         var move: Move!
         
         // Get an opening move
-        if let openingMove = openingMoveForBoard(board){
+        if let openingMove = openingMoveForBoard(board) {
             //print("Playing opening move")
             move = openingMove
         }
         // Or, get the Highest rated move
-        else{
+        else {
             move = highestRatedMoveOnBoard(board)
         }
         
@@ -73,10 +73,8 @@ open class AIPlayer : Player {
         switch move.type {
         case .singlePiece(let sourceLocation, let targetLocation):
             operations = game.board.movePiece(fromLocation: sourceLocation, toLocation: targetLocation)
-            //print("Chose move (\(sourceLocation.x),\(sourceLocation.y)) -> (\(targetLocation.x),\(targetLocation.y))");
         case .castle(let color, let side):
             operations = game.board.performCastle(color: color, side: side)
-            //print("Chose Castling move");
         }
         
         // Promote pawns
@@ -86,10 +84,11 @@ open class AIPlayer : Player {
             game.board = promotePawnsOnBoard(game.board)
             
             let location = pawnsToPromoteLocations.first!
-            let transformOperation = BoardOperation(type: .transformPiece, piece: game.board.getPiece(at: location)!, location: location)
+            let transformOperation = BoardOperation(type: .transformPiece,
+                                                    piece: game.board.getPiece(at: location)!,
+                                                    location: location)
             operations.append(transformOperation)
         }
-        
         
         let strongGame = self.game!
         DispatchQueue.main.async {
@@ -99,13 +98,11 @@ open class AIPlayer : Player {
     
     func openingMoveForBoard(_ board: Board) -> Move? {
         
-        let possibleMoves = openingMoves.filter{
+        let possibleMoves = openingMoves.filter {
             $0.board == board
         }
         
-        //print("Num opening moves`; \(possibleMoves.count)")
-        
-        guard possibleMoves.count > 0 else{
+        guard possibleMoves.count > 0 else {
             return nil
         }
         
@@ -153,7 +150,7 @@ open class AIPlayer : Player {
                 
                 // reduce rating if suicide
                 if resultBoard.canColorMoveAnyPieceToLocation(color: color.opposite(), location: targetLocation) {
-                    rating -= (abs(rating) * configuration.suicideMultipler.value);
+                    rating -= (abs(rating) * configuration.suicideMultipler.value)
                 }
                 
                 let move = Move(type: .singlePiece(sourceLocation: sourceLocation, targetLocation: targetLocation),
@@ -185,7 +182,7 @@ open class AIPlayer : Player {
         
         // If there are no possible moves, we must be in stale mate
         if possibleMoves.count == 0 {
-            print("There are no possible moves!!!!");
+            print("There are no possible moves!!!!")
         }
         
         // Choose move with highest rating
@@ -196,13 +193,13 @@ open class AIPlayer : Player {
             
             if move.rating > highestRating {
                 highestRating = move.rating
-                highestRatedMove = move;
+                highestRatedMove = move
             }
             
             //print("rating: \(move.rating)")
         }
         
-        return highestRatedMove;
+        return highestRatedMove
     }
     
     func canAIMovePiece(fromLocation: BoardLocation, toLocation: BoardLocation) -> Bool {
@@ -217,10 +214,9 @@ open class AIPlayer : Player {
         return canMove.result
     }
 
-    
     func ratingForBoard(_ board: Board) -> Double {
         
-        var rating: Double = 0;
+        var rating: Double = 0
         
         for boardRater in boardRaters {
             
@@ -239,7 +235,6 @@ open class AIPlayer : Player {
         return rating
     }
     
- 
     func promotePawnsOnBoard(_ board: Board) -> Board {
         
         let pawnsToPromoteLocations = board.getLocationsOfPromotablePawns(color: color)
@@ -295,7 +290,7 @@ struct Move {
     let rating: Double
 }
 
-// MARK - BoardRater
+// MARK: - BoardRater
 
 internal class BoardRater {
     
@@ -305,10 +300,7 @@ internal class BoardRater {
         self.configuration = configuration
     }
 
-    func ratingfor(board: Board, color: Color) -> Double{
+    func ratingfor(board: Board, color: Color) -> Double {
         fatalError("Override ratingFor method in subclasses")
     }
 }
- 
-
-

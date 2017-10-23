@@ -25,7 +25,7 @@ public enum Color: Int {
     }
 }
 
-public struct Piece : Equatable {
+public struct Piece: Equatable {
     
     static private var lastAssignedTag = 0
     
@@ -49,11 +49,11 @@ public struct Piece : Equatable {
     public var canBeTakenByEnPassant = false
     public internal(set) var location = BoardLocation(index: 0)
     
-    var movement : PieceMovement! {
+    var movement: PieceMovement! {
         return PieceMovement.pieceMovementForPieceType(pieceType: self.type)
     }
 
-    public init(type: PieceType, color: Color){
+    public init(type: PieceType, color: Color) {
         self.type = type
         self.color = color
         
@@ -62,7 +62,7 @@ public struct Piece : Equatable {
         self.tag = Piece.lastAssignedTag
     }
     
-    public init(type: PieceType, color: Color, tag: Int){
+    public init(type: PieceType, color: Color, tag: Int) {
         self.type = type
         self.color = color
         self.tag = tag
@@ -95,8 +95,7 @@ public func == (left: Piece, right: Piece) -> Bool {
     
     if left.type == right.type && left.color == right.color {
         return true
-    }
-    else{
+    } else {
         return false
     }
 }

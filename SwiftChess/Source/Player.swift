@@ -18,9 +18,9 @@ open class Player {
     weak var game: Game!
     weak var delegate: PlayerDelegate?
     
-    public func occupiesSquareAt(location: BoardLocation) -> Bool{
+    public func occupiesSquareAt(location: BoardLocation) -> Bool {
         
-        if let piece = self.game.board.getPiece(at: location){
+        if let piece = self.game.board.getPiece(at: location) {
             if piece.color == self.color {
                 return true
             }
@@ -33,7 +33,7 @@ open class Player {
         return canMovePieceWithError(fromLocation: fromLocation, toLocation: toLocation).result
     }
     
-    public enum MoveError : Error {
+    public enum MoveError: Error {
         case notThisPlayersTurn
         case movingToSameLocation
         case noPieceToMove
@@ -44,7 +44,8 @@ open class Player {
         case gameIsNotInProgress
     }
 
-    public func canMovePieceWithError(fromLocation: BoardLocation, toLocation: BoardLocation) -> (result: Bool, error: MoveError?) {
+    public func canMovePieceWithError(fromLocation: BoardLocation, toLocation: BoardLocation) ->
+        (result: Bool, error: MoveError?) {
         
         // We can't move to our current location
         if fromLocation == toLocation {
@@ -83,7 +84,4 @@ open class Player {
         
         return (true, nil)
     }
-    
-    
-
 }

@@ -8,7 +8,7 @@
 
 import Foundation
 
-class BoardRaterKingSurroundingPossession : BoardRater {
+class BoardRaterKingSurroundingPossession: BoardRater {
     
     override func ratingfor(board: Board, color: Color) -> Double {
         
@@ -30,7 +30,7 @@ class BoardRaterKingSurroundingPossession : BoardRater {
             
             if noKingsBoard.doesColorOccupyLocation(color: color, location: location) {
                 rating += squareValue
-                continue;
+                continue
             }
             
             if noKingsBoard.doesColorOccupyLocation(color: color.opposite(), location: location) {
@@ -40,9 +40,7 @@ class BoardRaterKingSurroundingPossession : BoardRater {
             
             if  noKingsBoard.canColorMoveAnyPieceToLocation(color: color, location: location) {
                 rating += squareValue
-            }
-            
-            else if noKingsBoard.canColorMoveAnyPieceToLocation(color: color.opposite(), location: location) {
+            } else if noKingsBoard.canColorMoveAnyPieceToLocation(color: color.opposite(), location: location) {
                 rating -= squareValue
             }
 
@@ -52,7 +50,7 @@ class BoardRaterKingSurroundingPossession : BoardRater {
             
             if noKingsBoard.doesColorOccupyLocation(color: color, location: location) {
                 rating += squareValue
-                continue;
+                continue
             }
             
             if noKingsBoard.doesColorOccupyLocation(color: color.opposite(), location: location) {
@@ -62,9 +60,7 @@ class BoardRaterKingSurroundingPossession : BoardRater {
             
             if noKingsBoard.canColorMoveAnyPieceToLocation(color: color, location: location) {
                 rating += squareValue
-            }
-            
-            else if noKingsBoard.canColorMoveAnyPieceToLocation(color: color.opposite(), location: location) {
+            } else if noKingsBoard.canColorMoveAnyPieceToLocation(color: color.opposite(), location: location) {
                 rating -= squareValue
             }
         }
@@ -77,14 +73,14 @@ class BoardRaterKingSurroundingPossession : BoardRater {
         let kingLocation = board.getKingLocation(color: color)
         
         let strides = [
-            BoardStride(x: 0, y: 1), // N
-            BoardStride(x: 1, y: 1), // NE
-            BoardStride(x: 1, y: 0), // E
-            BoardStride(x: 1, y: -1), // SE
-            BoardStride(x: 0, y: -1), // S
+            BoardStride(x: 0, y: 1),   // N
+            BoardStride(x: 1, y: 1),   // NE
+            BoardStride(x: 1, y: 0),   // E
+            BoardStride(x: 1, y: -1),  // SE
+            BoardStride(x: 0, y: -1),  // S
             BoardStride(x: -1, y: -1), // SW
-            BoardStride(x: -1, y: 0), // W
-            BoardStride(x: -1, y: 1), // NW
+            BoardStride(x: -1, y: 0),  // W
+            BoardStride(x: -1, y: 1)   // NW
         ]
         
         var surroundingLocations = [BoardLocation]()

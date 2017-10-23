@@ -8,7 +8,7 @@
 
 import Foundation
 
-class BoardRaterPawnProgression : BoardRater {
+class BoardRaterPawnProgression: BoardRater {
     
     override func ratingfor(board: Board, color: Color) -> Double {
         
@@ -38,12 +38,11 @@ class BoardRaterPawnProgression : BoardRater {
         if color == .white {
             
             if location.y < 2 {
-                return 0;
+                return 0
             }
             
             squaresAdvanced = location.y - 2
-        }
-        else{
+        } else {
             
             if location.y > 5 {
                 return 0
@@ -52,7 +51,7 @@ class BoardRaterPawnProgression : BoardRater {
             squaresAdvanced = 7 - (location.y + 2)
         }
         
-        return Double(squaresAdvanced) * configuration.boardRaterPawnProgressionWeighting.value // <- should probably add some sort of curve
+        return Double(squaresAdvanced) * configuration.boardRaterPawnProgressionWeighting.value
     }
     
 }
