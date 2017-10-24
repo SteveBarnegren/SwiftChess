@@ -20,7 +20,10 @@ class PromotionSelectionViewController: UIViewController {
     var buttons = [UIButton]()
 
     // MARK: - Creation
-    public static func promotionSelectionViewController(pawnLocation: BoardLocation, possibleTypes: [Piece.PieceType], callback: @escaping (Piece.PieceType) -> Void) -> PromotionSelectionViewController {
+    public static func promotionSelectionViewController(pawnLocation: BoardLocation,
+                                                        possibleTypes: [Piece.PieceType],
+                                                        callback: @escaping (Piece.PieceType) -> Void)
+        -> PromotionSelectionViewController {
         
         let viewController = PromotionSelectionViewController()
         viewController.pawnLocation = pawnLocation
@@ -90,6 +93,5 @@ class PromotionSelectionViewController: UIViewController {
         case .king: return "King"
         }
     }
-    
     
 }

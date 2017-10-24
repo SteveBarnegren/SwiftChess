@@ -10,13 +10,6 @@ import XCTest
 @testable import SwiftChess
 
 class PerformanceTests: XCTestCase {
-
-    override func setUp() {
-        super.setUp()
-        
-        
-        
-    }
     
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
@@ -29,7 +22,7 @@ class PerformanceTests: XCTestCase {
         let pawnLocation = BoardLocation(x: 0, y: 1)
         
         guard let pawn = board.getPiece(at: pawnLocation) else {
-            XCTFail()
+            XCTFail("Expected to be able to get piece")
             return
         }
         
@@ -37,7 +30,7 @@ class PerformanceTests: XCTestCase {
         
         self.measure {
             
-            BoardLocation.all.forEach{
+            BoardLocation.all.forEach {
                 _ = pawn.movement.canPieceMove(fromLocation: pawnLocation,
                                                toLocation: $0,
                                                board: board)
@@ -60,7 +53,7 @@ class PerformanceTests: XCTestCase {
         let board = asciiBoard.board
         
         guard let queen = board.getPiece(at: queenLocation) else {
-            XCTFail()
+            XCTFail("Expected to be able to get piece")
             return
         }
         
@@ -68,7 +61,7 @@ class PerformanceTests: XCTestCase {
         
         self.measure {
             
-            BoardLocation.all.forEach{
+            BoardLocation.all.forEach {
                 _ = queen.movement.canPieceMove(fromLocation: queenLocation,
                                                 toLocation: $0,
                                                 board: board)
@@ -91,7 +84,7 @@ class PerformanceTests: XCTestCase {
         let board = asciiBoard.board
         
         guard let king = board.getPiece(at: kingLocation) else {
-            XCTFail()
+            XCTFail("Expected to be able tp get piece")
             return
         }
         
@@ -99,7 +92,7 @@ class PerformanceTests: XCTestCase {
         
         self.measure {
             
-            BoardLocation.all.forEach{
+            BoardLocation.all.forEach {
                 _ = king.movement.canPieceMove(fromLocation: kingLocation,
                                                toLocation: $0,
                                                board: board)
@@ -122,7 +115,7 @@ class PerformanceTests: XCTestCase {
         let board = asciiBoard.board
         
         guard let knight = board.getPiece(at: knightLocation) else {
-            XCTFail()
+            XCTFail("Exected to be able to get piece")
             return
         }
         
@@ -130,7 +123,7 @@ class PerformanceTests: XCTestCase {
         
         self.measure {
             
-            BoardLocation.all.forEach{
+            BoardLocation.all.forEach {
                 _ = knight.movement.canPieceMove(fromLocation: knightLocation,
                                                  toLocation: $0,
                                                  board: board)
@@ -153,7 +146,7 @@ class PerformanceTests: XCTestCase {
         let board = asciiBoard.board
         
         guard let bishop = board.getPiece(at: bishopLocation) else {
-            XCTFail()
+            XCTFail("Expected to be able to get piece")
             return
         }
         
@@ -161,7 +154,7 @@ class PerformanceTests: XCTestCase {
         
         self.measure {
             
-            BoardLocation.all.forEach{
+            BoardLocation.all.forEach {
                 _ = bishop.movement.canPieceMove(fromLocation: bishopLocation,
                                                  toLocation: $0,
                                                  board: board)
@@ -184,7 +177,7 @@ class PerformanceTests: XCTestCase {
         let board = asciiBoard.board
         
         guard let rook = board.getPiece(at: rookLocation) else {
-            XCTFail()
+            XCTFail("Expected to be able to get piece")
             return
         }
         
@@ -192,7 +185,7 @@ class PerformanceTests: XCTestCase {
         
         self.measure {
             
-            BoardLocation.all.forEach{
+            BoardLocation.all.forEach {
                 _ = rook.movement.canPieceMove(fromLocation: rookLocation,
                                                toLocation: $0,
                                                board: board)
@@ -211,16 +204,15 @@ class PerformanceTests: XCTestCase {
                                             "P P P - - P P -" +
                                             "R - B Q G B K R" )
         
-        let board = asciiBoard.board;
+        let board = asciiBoard.board
         
         self.measure {
             
-            BoardLocation.all.forEach{
+            BoardLocation.all.forEach {
                 _ = board.canColorMoveAnyPieceToLocation(color: .white, location: $0)
                 _ = board.canColorMoveAnyPieceToLocation(color: .black, location: $0)
             }
         }
-        
         
     }
 }

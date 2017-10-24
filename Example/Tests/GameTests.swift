@@ -67,7 +67,7 @@ class GameTests: XCTestCase {
             try whitePlayer.movePiece(fromLocation: BoardLocation(x: 0, y: 1),
                                       toLocation: BoardLocation(x: 0, y: 2))
         } catch {
-            XCTFail()
+            XCTFail("Expected to be able to move piece")
             return
         }
         
@@ -76,7 +76,7 @@ class GameTests: XCTestCase {
             try blackPlayer.movePiece(fromLocation: BoardLocation(x: 7, y: 6),
                                       toLocation: BoardLocation(x: 7, y: 5))
         } catch {
-            XCTFail()
+            XCTFail("Expected to be able to move piece")
             return
         }
 

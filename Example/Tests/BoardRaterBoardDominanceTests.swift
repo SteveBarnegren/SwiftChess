@@ -17,7 +17,7 @@ class BoardRaterBoardDominanceTests: XCTestCase {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
         
-        self.boardRater = BoardRaterBoardDominance(configuration: AIConfiguration(difficulty: .hard));
+        self.boardRater = BoardRaterBoardDominance(configuration: AIConfiguration(difficulty: .hard))
     }
     
     override func tearDown() {
@@ -27,24 +27,24 @@ class BoardRaterBoardDominanceTests: XCTestCase {
     
     func testSingleQueenResultsInHigherValueThanSinglePawn() {
         
-        let queenBoard = ASCIIBoard(pieces:  "- - - - - - - -" +
-                                             "- - - - - - - -" +
-                                             "- - - - - - - -" +
-                                             "- - - - Q - - -" +
-                                             "- - - - - - - -" +
-                                             "- - - - - - - -" +
-                                             "- - - - - - - -" +
-                                             "- - - - - - - -" )
-        let queenRating = boardRater.ratingfor(board: queenBoard.board, color: .white)
-
-        let pawnBoard = ASCIIBoard(pieces:  "- - - - - - - -" +
+        let queenBoard = ASCIIBoard(pieces: "- - - - - - - -" +
                                             "- - - - - - - -" +
                                             "- - - - - - - -" +
-                                            "- - - - P - - -" +
+                                            "- - - - Q - - -" +
                                             "- - - - - - - -" +
                                             "- - - - - - - -" +
                                             "- - - - - - - -" +
                                             "- - - - - - - -" )
+        let queenRating = boardRater.ratingfor(board: queenBoard.board, color: .white)
+
+        let pawnBoard = ASCIIBoard(pieces: "- - - - - - - -" +
+                                           "- - - - - - - -" +
+                                           "- - - - - - - -" +
+                                           "- - - - P - - -" +
+                                           "- - - - - - - -" +
+                                           "- - - - - - - -" +
+                                           "- - - - - - - -" +
+                                           "- - - - - - - -" )
         let pawnRating = boardRater.ratingfor(board: pawnBoard.board, color: .white)
 
         XCTAssertGreaterThan(queenRating, pawnRating)
@@ -52,24 +52,24 @@ class BoardRaterBoardDominanceTests: XCTestCase {
     
     func testOwnPieceBlockingPathResultsInLowerValue() {
         
-        let blockedBoard = ASCIIBoard(pieces:  "- - - - - - - -" +
-                                               "- - - - - - - -" +
-                                               "- - - - - - - -" +
-                                               "- - - - - - - -" +
-                                               "- - - - - - - -" +
-                                               "- - - - - - - -" +
-                                               "P - - - - - - -" +
-                                               "Q P - - - - - -" )
+        let blockedBoard = ASCIIBoard(pieces: "- - - - - - - -" +
+                                              "- - - - - - - -" +
+                                              "- - - - - - - -" +
+                                              "- - - - - - - -" +
+                                              "- - - - - - - -" +
+                                              "- - - - - - - -" +
+                                              "P - - - - - - -" +
+                                              "Q P - - - - - -" )
         let blockedRating = boardRater.ratingfor(board: blockedBoard.board, color: .white)
         
-        let nonBockedBoard = ASCIIBoard(pieces:  "- - - - - - - -" +
-                                                 "- - - - - - - -" +
-                                                 "- - - - - - - -" +
-                                                 "- - - - - - - -" +
-                                                 "- - - - - - - -" +
-                                                 "- - - - - - - -" +
-                                                 "- - - - - - - -" +
-                                                 "Q - - - - - - -" )
+        let nonBockedBoard = ASCIIBoard(pieces: "- - - - - - - -" +
+                                                "- - - - - - - -" +
+                                                "- - - - - - - -" +
+                                                "- - - - - - - -" +
+                                                "- - - - - - - -" +
+                                                "- - - - - - - -" +
+                                                "- - - - - - - -" +
+                                                "Q - - - - - - -" )
         let nonBockedRating = boardRater.ratingfor(board: nonBockedBoard.board, color: .white)
         
         XCTAssertGreaterThan(nonBockedRating, blockedRating)
@@ -78,24 +78,24 @@ class BoardRaterBoardDominanceTests: XCTestCase {
     
     func testOpponantDominanceResultsInLowerValue() {
         
-        let whiteDominantBoard = ASCIIBoard(pieces:  "R - - - - - - -" +
-                                                     "- - - - - - - -" +
-                                                     "- - - - - - - -" +
-                                                     "- - - - - - - -" +
-                                                     "- - - - - - - -" +
-                                                     "- - - - - - - k" +
-                                                     "- - - - - - - p" +
-                                                     "Q - - - - - - -" )
+        let whiteDominantBoard = ASCIIBoard(pieces: "R - - - - - - -" +
+                                                    "- - - - - - - -" +
+                                                    "- - - - - - - -" +
+                                                    "- - - - - - - -" +
+                                                    "- - - - - - - -" +
+                                                    "- - - - - - - k" +
+                                                    "- - - - - - - p" +
+                                                    "Q - - - - - - -" )
         let whiteRating = boardRater.ratingfor(board: whiteDominantBoard.board, color: .white)
         
-        let blackDominantBoard = ASCIIBoard(pieces:  "r - - - - - - -" +
-                                                     "- - - - - - - -" +
-                                                     "- - - - - - - -" +
-                                                     "- - - - - - - -" +
-                                                     "- - - - - - - -" +
-                                                     "- - - - - - - K" +
-                                                     "- - - - - - - P" +
-                                                     "q - - - - - - -" )
+        let blackDominantBoard = ASCIIBoard(pieces: "r - - - - - - -" +
+                                                    "- - - - - - - -" +
+                                                    "- - - - - - - -" +
+                                                    "- - - - - - - -" +
+                                                    "- - - - - - - -" +
+                                                    "- - - - - - - K" +
+                                                    "- - - - - - - P" +
+                                                    "q - - - - - - -" )
         let blackRating = boardRater.ratingfor(board: blackDominantBoard.board, color: .white)
         
         XCTAssertGreaterThan(whiteRating, blackRating)
@@ -103,30 +103,26 @@ class BoardRaterBoardDominanceTests: XCTestCase {
     
     func testQueenInCornerResultsInLowerValueThanQueenInCenter() {
         
-        let queenInCornerBoard = ASCIIBoard(pieces:  "- - - - - - - -" +
-                                                     "- - - - - - - -" +
-                                                     "- - - - - - - -" +
-                                                     "- - - - - - - -" +
-                                                     "- - - - - - - -" +
-                                                     "- - - - - - - -" +
-                                                     "- - - - - - - -" +
-                                                     "Q - - - - - - -" )
+        let queenInCornerBoard = ASCIIBoard(pieces: "- - - - - - - -" +
+                                                    "- - - - - - - -" +
+                                                    "- - - - - - - -" +
+                                                    "- - - - - - - -" +
+                                                    "- - - - - - - -" +
+                                                    "- - - - - - - -" +
+                                                    "- - - - - - - -" +
+                                                    "Q - - - - - - -" )
         let queenInCornerRating = boardRater.ratingfor(board: queenInCornerBoard.board, color: .white)
         
-        let queenInCenterBoard = ASCIIBoard(pieces:  "- - - - - - - -" +
-                                                     "- - - - - - - -" +
-                                                     "- - - - - - - -" +
-                                                     "- - - Q - - - -" +
-                                                     "- - - - - - - -" +
-                                                     "- - - - - - - -" +
-                                                     "- - - - - - - -" +
-                                                     "- - - - - - - -" )
+        let queenInCenterBoard = ASCIIBoard(pieces: "- - - - - - - -" +
+                                                    "- - - - - - - -" +
+                                                    "- - - - - - - -" +
+                                                    "- - - Q - - - -" +
+                                                    "- - - - - - - -" +
+                                                    "- - - - - - - -" +
+                                                    "- - - - - - - -" +
+                                                    "- - - - - - - -" )
         let queenInCenterRating = boardRater.ratingfor(board: queenInCenterBoard.board, color: .white)
         
         XCTAssertGreaterThan(queenInCenterRating, queenInCornerRating)
     }
-    
-    
-    
-    
 }

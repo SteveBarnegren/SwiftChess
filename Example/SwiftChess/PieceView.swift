@@ -12,7 +12,7 @@ import SwiftChess
 class PieceView: UIView {
 
     public var piece: Piece {
-        didSet{
+        didSet {
             update()
         }
     }
@@ -22,7 +22,7 @@ class PieceView: UIView {
     let imageView = UIImageView()
     
     var selected = false {
-        didSet{
+        didSet {
             update()
         }
     }
@@ -102,7 +102,6 @@ class PieceView: UIView {
         imageView.image = image
         
         backgroundColor = selected ? UIColor.red : UIColor.clear
-        
         
         /*
         transform = CGAffineTransform.identity

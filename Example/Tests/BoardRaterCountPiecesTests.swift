@@ -17,7 +17,7 @@ class BoardRaterCountPiecesTests: XCTestCase {
         super.setUp()
         
         // Initiailise a new board rater for each test
-        boardRater = BoardRaterCountPieces(configuration: AIConfiguration(difficulty: .hard));
+        boardRater = BoardRaterCountPieces(configuration: AIConfiguration(difficulty: .hard))
     }
     
     override func tearDown() {
@@ -27,14 +27,14 @@ class BoardRaterCountPiecesTests: XCTestCase {
     
     func testWhiteWinningResultsInPositiveValue() {
         
-        let board = ASCIIBoard(pieces:  "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "P P P P P P P P" +
-                                        "R K B Q G B K R" )
+        let board = ASCIIBoard(pieces: "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "P P P P P P P P" +
+                                       "R K B Q G B K R" )
         
         let rating = boardRater.ratingfor(board: board.board, color: .white)
         XCTAssert(rating > 0, "Expected rating to be positive")
@@ -42,14 +42,14 @@ class BoardRaterCountPiecesTests: XCTestCase {
     
     func testWhiteLosingResultsInNegativeValue() {
         
-        let board = ASCIIBoard(pieces:  "r k b q g b k r" +
-                                        "p p p p p p p p" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" )
+        let board = ASCIIBoard(pieces: "r k b q g b k r" +
+                                       "p p p p p p p p" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" )
         
         let rating = boardRater.ratingfor(board: board.board, color: .white)
         XCTAssert(rating < 0, "Expected rating to be negative")
@@ -57,23 +57,23 @@ class BoardRaterCountPiecesTests: XCTestCase {
     
     func testGreaterNumberOfPiecesResultsInHigherValue() {
         
-        let fewerPiecesBoard = ASCIIBoard(pieces:  "- - - - - - - -" +
-                                                   "- - - - - - - -" +
-                                                   "- - - - - - - -" +
-                                                   "- - - - - - - -" +
-                                                   "- - - - - - - -" +
-                                                   "- - - - - - - -" +
-                                                   "- - - - - - - -" +
-                                                   "P P P P P P P P" )
-        
-        let morePiecesBoard = ASCIIBoard(pieces:  "- - - - - - - -" +
+        let fewerPiecesBoard = ASCIIBoard(pieces: "- - - - - - - -" +
                                                   "- - - - - - - -" +
                                                   "- - - - - - - -" +
                                                   "- - - - - - - -" +
                                                   "- - - - - - - -" +
                                                   "- - - - - - - -" +
-                                                  "P P P P P P P P" +
+                                                  "- - - - - - - -" +
                                                   "P P P P P P P P" )
+        
+        let morePiecesBoard = ASCIIBoard(pieces: "- - - - - - - -" +
+                                                 "- - - - - - - -" +
+                                                 "- - - - - - - -" +
+                                                 "- - - - - - - -" +
+                                                 "- - - - - - - -" +
+                                                 "- - - - - - - -" +
+                                                 "P P P P P P P P" +
+                                                 "P P P P P P P P" )
         
         let fewerPiecesRating = boardRater.ratingfor(board: fewerPiecesBoard.board, color: .white)
         let morePiecesRating = boardRater.ratingfor(board: morePiecesBoard.board, color: .white)
@@ -82,16 +82,16 @@ class BoardRaterCountPiecesTests: XCTestCase {
     
     func testHigherValuePiecesResultsInHigherRating() {
         
-        let lowerValuePiecesBoard = ASCIIBoard(pieces:  "- - - - - - - -" +
-                                                        "- - - - - - - -" +
-                                                        "- - - - - - - -" +
-                                                        "- - - - - - - -" +
-                                                        "- - - - - - - -" +
-                                                        "- - - - - - - -" +
-                                                        "- - - - - - - -" +
-                                                        "P P P - - - - -" )
+        let lowerValuePiecesBoard = ASCIIBoard(pieces: "- - - - - - - -" +
+                                                       "- - - - - - - -" +
+                                                       "- - - - - - - -" +
+                                                       "- - - - - - - -" +
+                                                       "- - - - - - - -" +
+                                                       "- - - - - - - -" +
+                                                       "- - - - - - - -" +
+                                                       "P P P - - - - -" )
         
-        let higherValuePiecesBoard = ASCIIBoard(pieces:  "- - - - - - - -" +
+        let higherValuePiecesBoard = ASCIIBoard(pieces: "- - - - - - - -" +
                                                         "- - - - - - - -" +
                                                         "- - - - - - - -" +
                                                         "- - - - - - - -" +
@@ -102,21 +102,19 @@ class BoardRaterCountPiecesTests: XCTestCase {
         
         let lowerValuePiecesRating = boardRater.ratingfor(board: lowerValuePiecesBoard.board, color: .white)
         let higherValuePiecesRating = boardRater.ratingfor(board: higherValuePiecesBoard.board, color: .white)
-        XCTAssert(higherValuePiecesRating > lowerValuePiecesRating, "Expected higher value pieces to produce higher rating")
+        XCTAssert(higherValuePiecesRating > lowerValuePiecesRating,
+                  "Expected higher value pieces to produce higher rating")
     }
-
-
-
     
-    // MARK - Perfomance
+    // MARK: - Perfomance
     
     func testRatingPerformance() {
         
         let board = Board(state: .newGame)
     
         self.measure {
-            for _ in 0..<1000{
-                let _ = self.boardRater.ratingfor(board: board, color: .white)
+            for _ in 0..<1000 {
+                _ = self.boardRater.ratingfor(board: board, color: .white)
             }
         }
     }

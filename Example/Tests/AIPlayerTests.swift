@@ -45,14 +45,14 @@ class AIPlayerTests: XCTestCase {
     
     func testKnightCannotPutOwnKingInToCheck() {
         
-        let board = ASCIIBoard(pieces:  "r - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - * - - - - -" +
-                                        "K - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "G - - - - - - -" )
+        let board = ASCIIBoard(pieces: "r - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - * - - - - -" +
+                                       "K - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "G - - - - - - -" )
         
         let knightLocation = board.locationOfCharacter("K")
         let testLocation = board.locationOfCharacter("*")
@@ -70,14 +70,14 @@ class AIPlayerTests: XCTestCase {
         
         // This is a complex scenario because it was one that I observed from an actual game
         
-        let board = ASCIIBoard(pieces:  "r k - - q b - r" +
-                                        "p p p g k - - p" +
-                                        "- - * p b p - -" +
-                                        "P P - - p - p P" +
-                                        "- - P - P - - -" +
-                                        "- B - - Q P - -" +
-                                        "- B - P K G P -" +
-                                        "R K - - - - - R" )
+        let board = ASCIIBoard(pieces: "r k - - q b - r" +
+                                       "p p p g k - - p" +
+                                       "- - * p b p - -" +
+                                       "P P - - p - p P" +
+                                       "- - P - P - - -" +
+                                       "- B - - Q P - -" +
+                                       "- B - P K G P -" +
+                                       "R K - - - - - R" )
         
         let kingLocation = board.locationOfCharacter("g")
         let testLocation = board.locationOfCharacter("*")
@@ -93,14 +93,14 @@ class AIPlayerTests: XCTestCase {
     
     func testPawnCannotPutOwnKingInToCheck() {
         
-        let board = ASCIIBoard(pieces:  "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - * - - - -" +
-                                        "G - - P - - - r" +
-                                        "- - - - - - - -" )
+        let board = ASCIIBoard(pieces: "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - * - - - -" +
+                                       "G - - P - - - r" +
+                                       "- - - - - - - -" )
         
         let pawnLocation = board.locationOfCharacter("P")
         let testLocation = board.locationOfCharacter("*")
@@ -117,14 +117,14 @@ class AIPlayerTests: XCTestCase {
     
     func testQueenCannotPutOwnKingInToCheck() {
         
-        let board = ASCIIBoard(pieces:  "- - - * - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "G - - Q - - - r" +
-                                        "- - - - - - - -" )
+        let board = ASCIIBoard(pieces: "- - - * - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "G - - Q - - - r" +
+                                       "- - - - - - - -" )
         
         let queenLocation = board.locationOfCharacter("Q")
         let testLocation = board.locationOfCharacter("*")
@@ -140,14 +140,14 @@ class AIPlayerTests: XCTestCase {
     
     func testRookCannotPutOwnKingInToCheck() {
         
-        let board = ASCIIBoard(pieces:  "- - - * - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "G - - R - - - r" +
-                                        "- - - - - - - -" )
+        let board = ASCIIBoard(pieces: "- - - * - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "G - - R - - - r" +
+                                       "- - - - - - - -" )
         
         let rookLocation = board.locationOfCharacter("R")
         let testLocation = board.locationOfCharacter("*")
@@ -163,14 +163,14 @@ class AIPlayerTests: XCTestCase {
     
     func testBishopCannotPutOwnKingInToCheck() {
         
-        let board = ASCIIBoard(pieces:  "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - *" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "G - - B - - - r" +
-                                        "- - - - - - - -" )
+        let board = ASCIIBoard(pieces: "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - *" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "G - - B - - - r" +
+                                       "- - - - - - - -" )
         
         let bishopLocation = board.locationOfCharacter("B")
         let testLocation = board.locationOfCharacter("*")
@@ -183,10 +183,4 @@ class AIPlayerTests: XCTestCase {
         
         XCTAssertFalse(player.canAIMovePiece(fromLocation: bishopLocation, toLocation: testLocation))
     }
-
-
-
-
-
-    
 }

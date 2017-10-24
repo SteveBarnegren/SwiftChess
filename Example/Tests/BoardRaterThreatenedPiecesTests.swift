@@ -6,6 +6,8 @@
 //  Copyright © 2016 CocoaPods. All rights reserved.
 //
 
+// swiftlint:disable type_body_length
+
 import XCTest
 @testable import SwiftChess
 
@@ -27,14 +29,14 @@ class BoardRaterThreatenedPiecesTests: XCTestCase {
     
     func testBoardRaterThreatededPiecesReturnsNoThreatIfNoOtherPieces() {
         
-        let board = ASCIIBoard(pieces:  "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - Q - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" )
+        let board = ASCIIBoard(pieces: "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - Q - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" )
         
         let rating = boardRater.ratingfor(board: board.board, color: .white)
 
@@ -43,14 +45,14 @@ class BoardRaterThreatenedPiecesTests: XCTestCase {
     
     func testBoardRaterThreatenedPiecesReturnsNegativeValueIfThreatened() {
         
-        let board = ASCIIBoard(pieces:  "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "q - - - - - K -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" )
+        let board = ASCIIBoard(pieces: "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "q - - - - - K -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" )
         
         let rating = boardRater.ratingfor(board: board.board, color: .white)
         
@@ -59,121 +61,43 @@ class BoardRaterThreatenedPiecesTests: XCTestCase {
 
     func testBoardRaterThreatenedPiecesReturnsPositiveValueIfThreateningOpponant() {
 
-        let board = ASCIIBoard(pieces:  "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "Q - - - - - k -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" )
+        let board = ASCIIBoard(pieces: "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "Q - - - - - k -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" )
         
         let rating = boardRater.ratingfor(board: board.board, color: .white)
         
         XCTAssertGreaterThan(rating, 0)
     }
     
-    func testBoardRaterThreatenedPiecesReturnsHigherThreatValueForHigherValuePieces() {
-        
-        /*
-        
-        let queenBoard = ASCIIBoard(pieces: "- - - - - - - -" +
-                                            "- - - - - - - -" +
-                                            "- - - - - - - -" +
-                                            "- - - - - - - -" +
-                                            "q - - - - - Q -" +
-                                            "- - - - - - - -" +
-                                            "- - - - - - - -" +
-                                            "- - - - - - - -" )
-        
-        let queenIndex = queenBoard.indexOfCharacter("Q")
-        let queenLocation = BoardLocation(index: queenIndex)
-        let queenRating = boardRater.threatRatingForPiece(at: queenLocation,
-                                                          board: queenBoard.board,
-                                                          color: .white)
-        
-        
-        
-        let knightBoard = ASCIIBoard(pieces: "- - - - - - - -" +
-                                             "- - - - - - - -" +
-                                             "- - - - - - - -" +
-                                             "- - - - - - - -" +
-                                             "q - - - - - K -" +
-                                             "- - - - - - - -" +
-                                             "- - - - - - - -" +
-                                             "- - - - - - - -" )
-        
-        let knightIndex = knightBoard.indexOfCharacter("K")
-        let knightLocation = BoardLocation(index: knightIndex)
-        let knightRating = boardRater.threatRatingForPiece(at: knightLocation,
-                                                           board: knightBoard.board,
-                                                           color: .white)
-        
-        
-        XCTAssert(queenRating > knightRating);
- */
-    }
-    
-    func testBoardRaterThreatenedPiecesReturnsMoreNegativeThreatValueForFavourableTrade() {
-        
-        /*
-        
-        // Good trade (White rook can be taken by the black queen, but the white pawn will then take the queen)
-        let goodTradeBoard = ASCIIBoard(pieces: "- - - - - - - -" +
-                                                "- - - - - - - -" +
-                                                "- - - - - - - -" +
-                                                "- - - - R - - -" +
-                                                "- - - P - - - -" +
-                                                "- - - - - - - -" +
-                                                "- - - - - - - q" +
-                                                "- - - - - - - -" )
-        
-        // Bad trade (White rook can be taken by the black pawn, then the white pawn will take the black pawn)
-        let badTradeBoard = ASCIIBoard(pieces:  "- - - - - - - -" +
-                                                "- - - - - - - -" +
-                                                "- - - - - p - -" +
-                                                "- - - - R - - -" +
-                                                "- - - P - - - -" +
-                                                "- - - - - - - -" +
-                                                "- - - - - - - -" +
-                                                "- - - - - - - -" )
-        
-        
-        let rookLocation = BoardLocation(index: goodTradeBoard.indexOfCharacter("R"))
-        
-        let goodTradeRating = boardRater.threatRatingForPiece(at: rookLocation, board: goodTradeBoard.board, color: .white)
-        let badTradeRating = boardRater.threatRatingForPiece(at: rookLocation, board: badTradeBoard.board, color: .white)
-        
-        XCTAssert(goodTradeRating < badTradeRating);
- 
- */
-    }
-    
-    // MARK - Get protected pieces tests
+    // MARK: - Get protected pieces tests
     
     func testGetProtectingPiecesReturnsProtectingPieces() {
         
-        let board = ASCIIBoard(pieces:  "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - K - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - Q -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - R -" +
-                                        "- - - B - - - -" )
-        
+        let board = ASCIIBoard(pieces: "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - K - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - Q -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - R -" +
+                                       "- - - B - - - -" )
        
         let expectedIndexes = [
             board.indexOfCharacter("K"),
             board.indexOfCharacter("R"),
-            board.indexOfCharacter("B"),
+            board.indexOfCharacter("B")
         ]
-        
         
         let queenLocation = BoardLocation(index: board.indexOfCharacter("Q"))
         let gameBoard = board.board
         let protectingLocations = boardRater.getPieces(protecting: gameBoard.getPiece(at: queenLocation)!,
-                                                       onBoard: board.board).map{ $0.location }
+                                                       onBoard: board.board).map { $0.location }
         
         // Check all of the expected locations appeared in the protecting locations array
         for expectedIndex in expectedIndexes {
@@ -198,20 +122,20 @@ class BoardRaterThreatenedPiecesTests: XCTestCase {
                 }
             }
             
-            XCTAssertTrue(wasExpected, "Found unexpected protecting location \(location)");
+            XCTAssertTrue(wasExpected, "Found unexpected protecting location \(location)")
         }
     }
     
     func testGetProtectingPiecesDoesntReturnNonProtectingPiecesOfSameColor() {
         
-        let board = ASCIIBoard(pieces:  "- - - - - - - -" +
-                                        "- - K - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - Q -" +
-                                        "- - - - - - - -" +
-                                        "R - - - - - - -" +
-                                        "- B - - - - - -" )
+        let board = ASCIIBoard(pieces: "- - - - - - - -" +
+                                       "- - K - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - Q -" +
+                                       "- - - - - - - -" +
+                                       "R - - - - - - -" +
+                                       "- B - - - - - -" )
         
         let queenLocation = BoardLocation(index: board.indexOfCharacter("Q"))
         let gameBoard = board.board
@@ -225,14 +149,14 @@ class BoardRaterThreatenedPiecesTests: XCTestCase {
     
     func testGetProtectingPiecesDoesntReturnThreateningPiecesOfOppositeColor() {
         
-        let board = ASCIIBoard(pieces:  "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - k - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - Q -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - r -" +
-                                        "- - - b - - - -" )
+        let board = ASCIIBoard(pieces: "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - k - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - Q -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - r -" +
+                                       "- - - b - - - -" )
         
         let queenLocation = BoardLocation(index: board.indexOfCharacter("Q"))
         let gameBoard = board.board
@@ -246,14 +170,14 @@ class BoardRaterThreatenedPiecesTests: XCTestCase {
     
     func testGetProtectingPiecesDoesntReturnPawnsMovingStraightAhead() {
         
-        let board = ASCIIBoard(pieces:  "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - Q -" +
-                                        "- - - - - - P -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" )
+        let board = ASCIIBoard(pieces: "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - Q -" +
+                                       "- - - - - - P -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" )
         
         let queenLocation = BoardLocation(index: board.indexOfCharacter("Q"))
         let gameBoard = board.board
@@ -267,14 +191,14 @@ class BoardRaterThreatenedPiecesTests: XCTestCase {
     
     func testGetProtectingPiecesReturnsPawnsMovingDiagonally() {
         
-        let board = ASCIIBoard(pieces:  "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - Q -" +
-                                        "- - - - - P - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" )
+        let board = ASCIIBoard(pieces: "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - Q -" +
+                                       "- - - - - P - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" )
         
         let queenLocation = BoardLocation(index: board.indexOfCharacter("Q"))
         let gameBoard = board.board
@@ -285,32 +209,30 @@ class BoardRaterThreatenedPiecesTests: XCTestCase {
         XCTAssertTrue(protectingPieces.count == 1)
     }
     
-    // MARK - Get threatening pieces tests
-
+    // MARK: - Get threatening pieces tests
+    
     func testGetThreateningPiecesReturnsThreateningPieces() {
         
-        let board = ASCIIBoard(pieces:  "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - k - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - Q -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - r -" +
-                                        "- - - b - - - -" )
-        
+        let board = ASCIIBoard(pieces: "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - k - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - Q -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - r -" +
+                                       "- - - b - - - -" )
         
         let expectedIndexes = [
             board.indexOfCharacter("k"),
             board.indexOfCharacter("r"),
-            board.indexOfCharacter("b"),
+            board.indexOfCharacter("b")
             ]
-        
         
         let queenLocation = BoardLocation(index: board.indexOfCharacter("Q"))
         let gameBoard = board.board
 
         let threateningLocations = boardRater.getPieces(threatening: gameBoard.getPiece(at: queenLocation)!,
-                                                        onBoard: gameBoard).map{ $0.location }
+                                                        onBoard: gameBoard).map { $0.location }
         
         // Check all of the expected locations appeared in the protecting locations array
         for expectedIndex in expectedIndexes {
@@ -335,20 +257,20 @@ class BoardRaterThreatenedPiecesTests: XCTestCase {
                 }
             }
             
-            XCTAssertTrue(wasExpected, "Found unexpected threatening location \(location)");
+            XCTAssertTrue(wasExpected, "Found unexpected threatening location \(location)")
         }
     }
     
     func testGetThreateningPiecesDoesntReturnNonThreateningPiecesOfOppositeColor() {
         
-        let board = ASCIIBoard(pieces:  "- - - - - - - -" +
-                                        "- - k - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - Q -" +
-                                        "- - - - - - - -" +
-                                        "r - - - - - - -" +
-                                        "- b - - - - - -" )
+        let board = ASCIIBoard(pieces: "- - - - - - - -" +
+                                       "- - k - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - Q -" +
+                                       "- - - - - - - -" +
+                                       "r - - - - - - -" +
+                                       "- b - - - - - -" )
         
         let queenLocation = BoardLocation(index: board.indexOfCharacter("Q"))
         let gameBoard = board.board
@@ -362,14 +284,14 @@ class BoardRaterThreatenedPiecesTests: XCTestCase {
     
     func testGetThreateningPiecesDoesntReturnProtectingPiecesOfSameColor() {
         
-        let board = ASCIIBoard(pieces:  "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - K - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - Q -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - R -" +
-                                        "- - - B - - - -" )
+        let board = ASCIIBoard(pieces: "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - K - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - Q -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - R -" +
+                                       "- - - B - - - -" )
         
         let queenLocation = BoardLocation(index: board.indexOfCharacter("Q"))
         let gameBoard = board.board
@@ -383,14 +305,14 @@ class BoardRaterThreatenedPiecesTests: XCTestCase {
     
     func testGetThreateningPiecesDoesntReturnPawnsMovingStraightAhead() {
         
-        let board = ASCIIBoard(pieces:  "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - q -" +
-                                        "- - - - - - P -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" )
+        let board = ASCIIBoard(pieces: "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - q -" +
+                                       "- - - - - - P -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" )
         
         let queenLocation = BoardLocation(index: board.indexOfCharacter("q"))
         let gameBoard = board.board
@@ -403,14 +325,14 @@ class BoardRaterThreatenedPiecesTests: XCTestCase {
     
     func testGetThreateningPiecesReturnsPawnsMovingDiagonally() {
         
-        let board = ASCIIBoard(pieces:  "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - q -" +
-                                        "- - - - - P - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" )
+        let board = ASCIIBoard(pieces: "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - q -" +
+                                       "- - - - - P - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" )
         
         let queenLocation = BoardLocation(index: board.indexOfCharacter("q"))
         let gameBoard = board.board
@@ -420,7 +342,5 @@ class BoardRaterThreatenedPiecesTests: XCTestCase {
         
         XCTAssertTrue(threateningPieces.count == 1)
     }
-    
-    
     
 }

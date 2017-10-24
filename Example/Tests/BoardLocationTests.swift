@@ -6,6 +6,8 @@
 //  Copyright © 2017 CocoaPods. All rights reserved.
 //
 
+//swiftlint:disable function_body_length
+
 import XCTest
 @testable import SwiftChess
 
@@ -95,9 +97,8 @@ class BoardLocationTests: XCTestCase {
             (BoardLocation.GridPosition.e8, 60),
             (BoardLocation.GridPosition.f8, 61),
             (BoardLocation.GridPosition.g8, 62),
-            (BoardLocation.GridPosition.h8, 63),
+            (BoardLocation.GridPosition.h8, 63)
         ]
-        
         
         for (grid, index) in testCases {
             XCTAssertEqual(BoardLocation(gridPosition: grid).index, index)
@@ -108,14 +109,15 @@ class BoardLocationTests: XCTestCase {
     
     func testMoveLocationsForColorReturnsCorrectLocations() {
         
-        class FakeOpening : Opening {
-            override func moveGridPositions() -> [(fromPosition: BoardLocation.GridPosition, toPosition: BoardLocation.GridPosition)] {
+        class FakeOpening: Opening {
+            override func moveGridPositions()
+                -> [(fromPosition: BoardLocation.GridPosition, toPosition: BoardLocation.GridPosition)] {
                 let moves: [(BoardLocation.GridPosition, BoardLocation.GridPosition)] = [
                     (.e2, .e4), // white moves pawn to e4
                     (.e7, .e5), // black moves pawn to e5
                     (.g1, .f3), // white moves knight to f3
                     (.b8, .c6), // black moves knight to c6
-                    (.f1, .b5), // white moves bishop to b5
+                    (.f1, .b5)  // white moves bishop to b5
                 ]
                 return moves
             }
@@ -124,12 +126,12 @@ class BoardLocationTests: XCTestCase {
         let expectedWhiteLocations: [(fromLocation: BoardLocation, toLocation: BoardLocation)] = [
             (BoardLocation(gridPosition: .e2), BoardLocation(gridPosition: .e4)),
             (BoardLocation(gridPosition: .g1), BoardLocation(gridPosition: .f3)),
-            (BoardLocation(gridPosition: .f1), BoardLocation(gridPosition: .b5)),
+            (BoardLocation(gridPosition: .f1), BoardLocation(gridPosition: .b5))
             ]
         
         let expectedBlackLocations: [(fromLocation: BoardLocation, toLocation: BoardLocation)] = [
             (BoardLocation(gridPosition: .e7), BoardLocation(gridPosition: .e5)),
-            (BoardLocation(gridPosition: .b8), BoardLocation(gridPosition: .c6)),
+            (BoardLocation(gridPosition: .b8), BoardLocation(gridPosition: .c6))
             ]
         
         let opening = FakeOpening()
@@ -160,29 +162,25 @@ class BoardLocationTests: XCTestCase {
     
     func testIsDarkSquareReturnsExpectedValue() {
         
-        let board = ASCIIBoard(colors:  "! * ! * ! * ! *" +
-                                        "* ! * ! * ! * !" +
-                                        "! * ! * ! * ! *" +
-                                        "* ! * ! * ! * !" +
-                                        "! * ! * ! * ! *" +
-                                        "* ! * ! * ! * !" +
-                                        "! * ! * ! * ! *" +
-                                        "* ! * ! * ! * !" )
+        let board = ASCIIBoard(colors: "! * ! * ! * ! *" +
+                                       "* ! * ! * ! * !" +
+                                       "! * ! * ! * ! *" +
+                                       "* ! * ! * ! * !" +
+                                       "! * ! * ! * ! *" +
+                                       "* ! * ! * ! * !" +
+                                       "! * ! * ! * ! *" +
+                                       "* ! * ! * ! * !" )
         
         let darkLocatons = board.locationsWithCharacter("*")
         let lightLocations = board.locationsWithCharacter("!")
         
-        darkLocatons.forEach{
+        darkLocatons.forEach {
             XCTAssertTrue($0.isDarkSquare, "Expected \($0) to be dark")
         }
         
-        lightLocations.forEach{
+        lightLocations.forEach {
             XCTAssertFalse($0.isDarkSquare, "Expected \($0) to be light")
         }
-
-        
-        
-        
     }
 
 }

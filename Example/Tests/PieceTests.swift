@@ -30,7 +30,7 @@ class PieceTests: XCTestCase {
         for square in board.squares {
             
             guard let piece = square.piece else {
-                continue;
+                continue
             }
             
             XCTAssertFalse(foundTags.contains(piece.tag), "Expected all pieces to have unique tags")

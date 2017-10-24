@@ -6,6 +6,8 @@
 //  Copyright © 2017 CocoaPods. All rights reserved.
 //
 
+//swiftlint:disable xctfail_message
+
 /*
  
  AI behaviour tests are tests that try to avoid or encourage certain behaviours in the AI.
@@ -60,7 +62,7 @@ class AIBehaviourTests: XCTestCase {
             if endBoardPiece != nil && startBoardPiece != nil {
                 
                 if endBoardPiece!.color != startBoardPiece!.color
-                && endBoardPiece!.type != startBoardPiece!.type{
+                && endBoardPiece!.type != startBoardPiece!.type {
                     return location
                 }
             }
@@ -77,21 +79,20 @@ class AIBehaviourTests: XCTestCase {
     
     func test_ScenarioOne_BlackShouldNotGiveAwayBishop() {
         
-        
         // In the following example, the black player can move the bishop at (5,7) to the * location (2,4).
         // The can look like a good move because the bishop will then threaten the white queen at (3,3).
-        // The white queen will also be threatening the black bishop, but because this is a lower value piece black can think that it is in a more preferrable position.
+        // The white queen will also be threatening the black bishop,
+        // but because this is a lower value piece black can think that it is in a more preferrable position.
         // In reality, because the black bishop is unprotected, the white queen will take it.
         
-        let board = ASCIIBoard(pieces:  "r - b - q b - r" +
-                                        "p p g - - p p p" +
-                                        "- - - - - k - -" +
-                                        "- - * - - - - -" +
-                                        "- - p Q P - - -" +
-                                        "- - - - - - - -" +
-                                        "P P G - - P P P" +
-                                        "R K B - - B K R" )
-        
+        let board = ASCIIBoard(pieces: "r - b - q b - r" +
+                                       "p p g - - p p p" +
+                                       "- - - - - k - -" +
+                                       "- - * - - - - -" +
+                                       "- - p Q P - - -" +
+                                       "- - - - - - - -" +
+                                       "P P G - - P P P" +
+                                       "R K B - - B K R" )
         
         let location = board .locationOfCharacter("*")
         
@@ -120,14 +121,14 @@ class AIBehaviourTests: XCTestCase {
     
     func testBlackShouldTradePawnForQueen() {
         
-        let board = ASCIIBoard(pieces:  "g p - - - - - -" +
-                                        "p p - - - - - -" +
-                                        "- - - - p - - -" +
-                                        "- - - - - Q - -" +
-                                        "- - - - B - - -" +
-                                        "- - - - - - - -" +
-                                        "P P - - - - - -" +
-                                        "G P - - - - - -" )
+        let board = ASCIIBoard(pieces: "g p - - - - - -" +
+                                       "p p - - - - - -" +
+                                       "- - - - p - - -" +
+                                       "- - - - - Q - -" +
+                                       "- - - - B - - -" +
+                                       "- - - - - - - -" +
+                                       "P P - - - - - -" +
+                                       "G P - - - - - -" )
 
         let queenLocation = board.locationOfCharacter("Q")
         let game = makeGameWithBoard(board: board.board, colorToMove: .black)
@@ -144,14 +145,14 @@ class AIBehaviourTests: XCTestCase {
     
     func testBlackShouldTakeWhiteQueenWithPawn() {
         
-        let board = ASCIIBoard(pieces:  "- - - - - - p g" +
-                                        "- - - b - - p p" +
-                                        "- - - - q - - -" +
-                                        "- B p k P p - -" +
-                                        "- - - P Q - - -" +
-                                        "- - - - - - - -" +
-                                        "P P - - - - - -" +
-                                        "G P - - - - - -" )
+        let board = ASCIIBoard(pieces: "- - - - - - p g" +
+                                       "- - - b - - p p" +
+                                       "- - - - q - - -" +
+                                       "- B p k P p - -" +
+                                       "- - - P Q - - -" +
+                                       "- - - - - - - -" +
+                                       "P P - - - - - -" +
+                                       "G P - - - - - -" )
         
         let queenLocation = board.locationOfCharacter("Q")
         let game = makeGameWithBoard(board: board.board, colorToMove: .black)
@@ -166,5 +167,4 @@ class AIBehaviourTests: XCTestCase {
         XCTAssertEqual(game.board.getPiece(at: queenLocation)?.type, .pawn)
     }
 
-    
 }
