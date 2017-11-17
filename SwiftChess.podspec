@@ -18,7 +18,7 @@ Pod::Spec.new do |s|
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
-Chess engine written in Swift
+Chess engine written in Swift, support player vs player, and player vs AI games.
                        DESC
 
   s.homepage         = 'https://github.com/SteveBarnegren/SwiftChess'
