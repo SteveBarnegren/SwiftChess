@@ -12,7 +12,7 @@ import Foundation
 Rates the board according to which player's pieces are occupying the center of the board
  */
 
-class BoardRaterCenterOwnership : BoardRater {
+class BoardRaterCenterOwnership: BoardRater {
     
     override func ratingfor(board: Board, color: Color) -> Double {
         
@@ -35,7 +35,7 @@ class BoardRaterCenterOwnership : BoardRater {
     
     func dominanceValueFor(location: BoardLocation) -> Double {
         
-        let axisMiddle = 3.5;
+        let axisMiddle = 3.5
         
         let x = Double(location.x)
         let y = Double(location.y)

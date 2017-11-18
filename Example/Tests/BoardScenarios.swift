@@ -13,52 +13,50 @@ extension Board {
     
     public static func whiteInStaleMateScenario() -> Board {
         
-        return ASCIIBoard(pieces:   "- - r - r - - g" +
-                                    "- - - - - - - -" +
-                                    "- - - - - - - -" +
-                                    "- - - - - - - -" +
-                                    "- - - - - - - -" +
-                                    "- - - - - - - -" +
-                                    "q - - - - - - -" +
-                                    "- - - G - - - -" ).board
+        return ASCIIBoard(pieces: "- - r - r - - g" +
+                                  "- - - - - - - -" +
+                                  "- - - - - - - -" +
+                                  "- - - - - - - -" +
+                                  "- - - - - - - -" +
+                                  "- - - - - - - -" +
+                                  "q - - - - - - -" +
+                                  "- - - G - - - -" ).board
     }
     
     public static func blackInStaleMateScenario() -> Board {
         
-        return ASCIIBoard(pieces:   "- - R - R - - G" +
-                                    "- - - - - - - -" +
-                                    "- - - - - - - -" +
-                                    "- - - - - - - -" +
-                                    "- - - - - - - -" +
-                                    "- - - - - - - -" +
-                                    "Q - - - - - - -" +
-                                    "- - - g - - - -" ).board
+        return ASCIIBoard(pieces: "- - R - R - - G" +
+                                  "- - - - - - - -" +
+                                  "- - - - - - - -" +
+                                  "- - - - - - - -" +
+                                  "- - - - - - - -" +
+                                  "- - - - - - - -" +
+                                  "Q - - - - - - -" +
+                                  "- - - g - - - -" ).board
     }
     
     public static func whiteInCheckMateScenario() -> Board {
         
-        return ASCIIBoard(pieces:   "- p g - - - - K" +
-                                    "- - - - - P - -" +
-                                    "- - - - - - - -" +
-                                    "- - - - - - - -" +
-                                    "- - - - - - - -" +
-                                    "- - - - - - - -" +
-                                    "r - - - - - - -" +
-                                    "r - - G - - - -" ).board
+        return ASCIIBoard(pieces: "- p g - - - - K" +
+                                  "- - - - - P - -" +
+                                  "- - - - - - - -" +
+                                  "- - - - - - - -" +
+                                  "- - - - - - - -" +
+                                  "- - - - - - - -" +
+                                  "r - - - - - - -" +
+                                  "r - - G - - - -" ).board
     }
     
     public static func blackInCheckMateScenario() -> Board {
         
-        return ASCIIBoard(pieces:   "- - - g - - - R" +
-                                    "- - - - - - - R" +
-                                    "- - - - - - - -" +
-                                    "- - - - - - - -" +
-                                    "- - - - - - - -" +
-                                    "- - - - - - - -" +
-                                    "- - - - - - - -" +
-                                    "- G - - - - - -" ).board
+        return ASCIIBoard(pieces: "- - - g - - - R" +
+                                  "- - - - - - - R" +
+                                  "- - - - - - - -" +
+                                  "- - - - - - - -" +
+                                  "- - - - - - - -" +
+                                  "- - - - - - - -" +
+                                  "- - - - - - - -" +
+                                  "- G - - - - - -" ).board
     }
     
-    
 }
-

@@ -8,11 +8,11 @@
 
 import Foundation
 
-class BoardRaterCountPieces : BoardRater {
+class BoardRaterCountPieces: BoardRater {
         
     override func ratingfor(board: Board, color: Color) -> Double {
         
-        var rating : Double = 0
+        var rating: Double = 0
         
         for square in board.squares {
             

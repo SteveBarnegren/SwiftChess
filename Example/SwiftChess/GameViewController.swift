@@ -6,6 +6,8 @@
 //  Copyright © 2016 CocoaPods. All rights reserved.
 //
 
+//swiftlint:disable file_length
+
 import UIKit
 import SwiftChess
 
@@ -21,7 +23,7 @@ class GameViewController: UIViewController {
     var pieceViews = [PieceView]()
     var game: Game!
     var selectedIndex: Int? {
-        didSet{
+        didSet {
             updatePieceViewSelectedStates()
         }
     }
@@ -32,12 +34,13 @@ class GameViewController: UIViewController {
     
     // MARK: - Creation
     
-    class func gameViewController(game: Game) -> GameViewController{
+    class func gameViewController(game: Game) -> GameViewController {
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let className = "GameViewController"
-        let gameViewController: GameViewController = storyboard.instantiateViewController(withIdentifier: className) as! GameViewController
-        gameViewController.game = game;
+        let gameViewController: GameViewController =
+            storyboard.instantiateViewController(withIdentifier: className) as! GameViewController
+        gameViewController.game = game
         return gameViewController
     }
 
@@ -117,15 +120,7 @@ class GameViewController: UIViewController {
     }
     
     func pieceViewWithTag(_ tag: Int) -> PieceView? {
-        
-        for pieceView in pieceViews {
-            
-            if pieceView.piece.tag == tag {
-                return pieceView
-            }
-        }
-        
-        return nil;
+        return pieceViews.first { $0.piece.tag == tag }
     }
     
     // MARK: - Layout
@@ -180,39 +175,35 @@ class GameViewController: UIViewController {
         let player = game.currentPlayer
         
         var isHuman = true
-        if let _ = player as? AIPlayer {
+        if player is AIPlayer {
             isHuman = false
         }
         
         // White king side button
-        if isHuman && player?.color == .white && game.board.canColorCastle(color: .white, side: .kingSide){
+        if isHuman && player?.color == .white && game.board.canColorCastle(color: .white, side: .kingSide) {
             whiteKingSideCastleButton.isHidden = false
-        }
-        else{
+        } else {
             whiteKingSideCastleButton.isHidden = true
         }
         
         // White queen side button
-        if isHuman && player?.color == .white && game.board.canColorCastle(color: .white, side: .queenSide){
+        if isHuman && player?.color == .white && game.board.canColorCastle(color: .white, side: .queenSide) {
             whiteQueenSideCastleButton.isHidden = false
-        }
-        else{
+        } else {
             whiteQueenSideCastleButton.isHidden = true
         }
         
         // Black king side button
-        if isHuman && player?.color == .black && game.board.canColorCastle(color: .black, side: .kingSide){
+        if isHuman && player?.color == .black && game.board.canColorCastle(color: .black, side: .kingSide) {
             blackKingSideCastleButton.isHidden = false
-        }
-        else{
+        } else {
             blackKingSideCastleButton.isHidden = true
         }
         
         // Black queen side button
-        if isHuman && player?.color == .black && game.board.canColorCastle(color: .black, side: .queenSide){
+        if isHuman && player?.color == .black && game.board.canColorCastle(color: .black, side: .queenSide) {
             blackQueenSideCastleButton.isHidden = false
-        }
-        else{
+        } else {
             blackQueenSideCastleButton.isHidden = true
         }
     }
@@ -220,7 +211,7 @@ class GameViewController: UIViewController {
     // MARK: - Actions
     
     @IBAction func whiteKingSideCastleButtonPressed(sender: UIButton) {
-        print("White king side castle button pressed");
+        print("White king side castle button pressed")
         
         if let player = game.currentPlayer as? Human {
             player.performCastleMove(side: .kingSide)
@@ -228,7 +219,7 @@ class GameViewController: UIViewController {
     }
     
     @IBAction func whiteQueenSideCastleButtonPressed(sender: UIButton) {
-        print("White queen side castle button pressed");
+        print("White queen side castle button pressed")
         
         if let player = game.currentPlayer as? Human {
             player.performCastleMove(side: .queenSide)
@@ -236,7 +227,7 @@ class GameViewController: UIViewController {
     }
     
     @IBAction func blackKingSideCastleButtonPressed(sender: UIButton) {
-        print("Black king side castle button pressed");
+        print("Black king side castle button pressed")
         
         if let player = game.currentPlayer as? Human {
             player.performCastleMove(side: .kingSide)
@@ -244,7 +235,7 @@ class GameViewController: UIViewController {
     }
     
     @IBAction func blackQueenSideCastleButtonPressed(sender: UIButton) {
-        print("Black queen side castle button pressed");
+        print("Black queen side castle button pressed")
         
         if let player = game.currentPlayer as? Human {
             player.performCastleMove(side: .queenSide)
@@ -262,7 +253,7 @@ extension GameViewController: BoardViewDelegate {
         
         // Get the player (must be human)
         guard let player = game.currentPlayer as? Human else {
-            return;
+            return
         }
         
         let location = BoardLocation(index: index)
@@ -290,11 +281,11 @@ extension GameViewController: BoardViewDelegate {
             } catch Player.MoveError.pieceUnableToMoveToLocation {
                 print("Piece is unable to move to this location")
                 
-            } catch Player.MoveError.cannotMoveInToCheck{
+            } catch Player.MoveError.cannotMoveInToCheck {
                 print("Player cannot move in to check")
                 showAlert(title: "😜", message: "Player cannot move in to check")
                 
-            } catch Player.MoveError.playerMustMoveOutOfCheck{
+            } catch Player.MoveError.playerMustMoveOutOfCheck {
                 print("Player must move out of check")
                 showAlert(title: "🙃", message: "Player must move out of check")
                 
@@ -309,7 +300,7 @@ extension GameViewController: BoardViewDelegate {
     
 }
 
-// MARK - GameDelegate
+// MARK: - GameDelegate
 
 extension GameViewController: GameDelegate {
     
@@ -347,8 +338,7 @@ extension GameViewController: GameDelegate {
         // Fade out and remove
         UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut, animations: {
             pieceView.alpha = 0
-        }, completion: {
-            (finished: Bool) in
+        }, completion: { (finished: Bool) in
             self.removePieceView(withTag: piece.tag)
         })
         
@@ -384,10 +374,10 @@ extension GameViewController: GameDelegate {
     func gameDidChangeCurrentPlayer(game: Game) {
         
         // Deselect selected piece
-        self.selectedIndex = nil;
+        self.selectedIndex = nil
         
         // Tell AI to take go
-        if let _ = game.currentPlayer as? AIPlayer {
+        if game.currentPlayer is AIPlayer {
             perform(#selector(tellAIToTakeGo), with: nil, afterDelay: 1)
         }
         
@@ -395,19 +385,24 @@ extension GameViewController: GameDelegate {
         updateCastleButtonsVisibility()
     }
     
-    func tellAIToTakeGo() {
+    @objc func tellAIToTakeGo() {
         
         if let player =  game.currentPlayer as? AIPlayer {
-            activityIndicator.startAnimating();
+            activityIndicator.startAnimating()
             player.makeMoveAsync()
         }
     }
     
-    func promotedTypeForPawn(location: BoardLocation, player: Human, possiblePromotions: [Piece.PieceType], callback: @escaping (Piece.PieceType) -> Void) {
+    func promotedTypeForPawn(location: BoardLocation,
+                             player: Human,
+                             possiblePromotions: [Piece.PieceType],
+                             callback: @escaping (Piece.PieceType) -> Void) {
         
         boardView.isUserInteractionEnabled = false
         
-        let viewController = PromotionSelectionViewController.promotionSelectionViewController(pawnLocation: location, possibleTypes: possiblePromotions) {
+        let viewController =
+            PromotionSelectionViewController.promotionSelectionViewController(pawnLocation: location,
+                                                                              possibleTypes: possiblePromotions) {
             
             self.promotionSelectionViewController?.view.removeFromSuperview()
             self.promotionSelectionViewController?.removeFromParentViewController()
@@ -421,6 +416,3 @@ extension GameViewController: GameDelegate {
     }
 
 }
-
-
-

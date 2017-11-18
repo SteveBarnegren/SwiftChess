@@ -21,7 +21,6 @@ class BoardRaterCenterFourOccupationTests: XCTestCase {
         super.tearDown()
     }
     
-    
     func defaultBoardRater() -> BoardRaterCenterFourOccupation {
         
         let configuration = AIConfiguration(difficulty: .hard)
@@ -31,14 +30,14 @@ class BoardRaterCenterFourOccupationTests: XCTestCase {
     
     func testNorthEastCenterSquareResultsInHigherRating() {
         
-        let board = ASCIIBoard(pieces:  "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - P - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" )
+        let board = ASCIIBoard(pieces: "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - P - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" )
         
         let rating = defaultBoardRater().ratingfor(board: board.board, color: .white)
         XCTAssertGreaterThan(rating, 0)
@@ -46,14 +45,14 @@ class BoardRaterCenterFourOccupationTests: XCTestCase {
     
     func testSouthEastCenterSquareResultsInHigherRating() {
        
-        let board = ASCIIBoard(pieces:  "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - P - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" )
+        let board = ASCIIBoard(pieces: "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - P - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" )
         
         let rating = defaultBoardRater().ratingfor(board: board.board, color: .white)
         XCTAssertGreaterThan(rating, 0)
@@ -61,14 +60,14 @@ class BoardRaterCenterFourOccupationTests: XCTestCase {
     
     func testSouthWestCenterSquareResultsInHigherRating() {
         
-        let board = ASCIIBoard(pieces:  "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - P - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" )
+        let board = ASCIIBoard(pieces: "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - P - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" )
         
         let rating = defaultBoardRater().ratingfor(board: board.board, color: .white)
         XCTAssertGreaterThan(rating, 0)
@@ -76,14 +75,14 @@ class BoardRaterCenterFourOccupationTests: XCTestCase {
     
     func testNorthWestCenterSquareResultsInHigherRating() {
         
-        let board = ASCIIBoard(pieces:  "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - P - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" )
+        let board = ASCIIBoard(pieces: "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - P - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" )
         
         let rating = defaultBoardRater().ratingfor(board: board.board, color: .white)
         XCTAssertGreaterThan(rating, 0)
@@ -91,33 +90,32 @@ class BoardRaterCenterFourOccupationTests: XCTestCase {
     
     func testNonCenterSquaresResultInZeroRating() {
         
-        let board = ASCIIBoard(pieces:  "P P P P P P P P" +
-                                        "P P P P P P P P" +
-                                        "P P P P P P P P" +
-                                        "P P P - - P P P" +
-                                        "P P P - - P P P" +
-                                        "P P P P P P P P" +
-                                        "P P P P P P P P" +
-                                        "P P P P P P P P" )
+        let board = ASCIIBoard(pieces: "P P P P P P P P" +
+                                       "P P P P P P P P" +
+                                       "P P P P P P P P" +
+                                       "P P P - - P P P" +
+                                       "P P P - - P P P" +
+                                       "P P P P P P P P" +
+                                       "P P P P P P P P" +
+                                       "P P P P P P P P" )
         
         let rating = defaultBoardRater().ratingfor(board: board.board, color: .white)
-        XCTAssertEqualWithAccuracy(rating, 0, accuracy: 0.01)
+        XCTAssertEqual(rating, 0, accuracy: 0.01)
     }
     
     func testOpponentOccupationResultsInNegativeRating() {
         
-        let board = ASCIIBoard(pieces:  "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - p p - - -" +
-                                        "- - - p p - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" )
+        let board = ASCIIBoard(pieces: "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - p p - - -" +
+                                       "- - - p p - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" )
         
         let rating = defaultBoardRater().ratingfor(board: board.board, color: .white)
         XCTAssertLessThan(rating, 0)
     }
     
-   
 }

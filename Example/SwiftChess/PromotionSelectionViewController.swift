@@ -20,7 +20,10 @@ class PromotionSelectionViewController: UIViewController {
     var buttons = [UIButton]()
 
     // MARK: - Creation
-    public static func promotionSelectionViewController(pawnLocation: BoardLocation, possibleTypes: [Piece.PieceType], callback: @escaping (Piece.PieceType) -> Void) -> PromotionSelectionViewController {
+    public static func promotionSelectionViewController(pawnLocation: BoardLocation,
+                                                        possibleTypes: [Piece.PieceType],
+                                                        callback: @escaping (Piece.PieceType) -> Void)
+        -> PromotionSelectionViewController {
         
         let viewController = PromotionSelectionViewController()
         viewController.pawnLocation = pawnLocation
@@ -67,7 +70,7 @@ class PromotionSelectionViewController: UIViewController {
     
     // MARK: - Actions
     
-    func buttonPressed(sender: UIButton) {
+    @objc func buttonPressed(sender: UIButton) {
         
         let index = buttons.index(of: sender)!
         print("Button pressed at index: \(index)")
@@ -90,6 +93,5 @@ class PromotionSelectionViewController: UIViewController {
         case .king: return "King"
         }
     }
-    
     
 }

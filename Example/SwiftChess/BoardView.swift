@@ -8,14 +8,14 @@
 
 import UIKit
 
-protocol BoardViewDelegate {
+protocol BoardViewDelegate: class {
     func touchedSquareAtIndex(_ boardView: BoardView, index: Int)
 }
 
 class BoardView: UIView {
     
     // MARK: - Properties
-    internal var delegate: BoardViewDelegate?
+    internal weak var delegate: BoardViewDelegate?
     
     // MARK: - init
     
@@ -29,7 +29,7 @@ class BoardView: UIView {
         self.setupBoardView()
     }
     
-    func setupBoardView(){
+    func setupBoardView() {
         layer.borderColor = UIColor.black.cgColor
         layer.borderWidth = 1
     }
@@ -94,7 +94,7 @@ class BoardView: UIView {
         
     }
     
-    func boardIndexForLocation(_ location: CGPoint) -> Int{
+    func boardIndexForLocation(_ location: CGPoint) -> Int {
 
         // Flip y (0 at bottom)
         var location = location
@@ -110,5 +110,4 @@ class BoardView: UIView {
         return gridX + (gridY*8)
     }
  
-
 }

@@ -1,0 +1,8 @@
+disabled_rules:
+  - trailing_whitespace
+  - cyclomatic_complexity
+  - nesting
+  - type_name
+  - force_cast
+  - identifier_name
+  - unused_closure_parameter

@@ -6,6 +6,9 @@
 //
 //
 
+// swiftlint:disable file_length
+// swiftlint:disable type_body_length
+
 import Foundation
 
 public enum CastleSide {
@@ -15,13 +18,13 @@ public enum CastleSide {
 
 // MARK: - ****** Square ******
 
-public struct Square : Equatable {
+public struct Square: Equatable {
     
     public var piece: Piece?
 
 }
 
-public func ==(lhs: Square, rhs: Square) -> Bool {
+public func == (lhs: Square, rhs: Square) -> Bool {
     
     switch (lhs.piece, rhs.piece) {
     case (.none, .none):
@@ -37,7 +40,7 @@ public func ==(lhs: Square, rhs: Square) -> Bool {
 
 // MARK: - ****** Board ******
 
-public struct Board : Equatable {
+public struct Board: Equatable {
         
     public enum InitialState {
         case empty
@@ -63,7 +66,7 @@ public struct Board : Equatable {
     
     mutating func setupForNewGame() {
         
-        func setPieceAtIndex(_ piece: Piece, _ index: Int){
+        func setPieceAtIndex(_ piece: Piece, _ index: Int) {
             setPiece(piece, at: BoardLocation(index: index))
         }
         
@@ -113,7 +116,8 @@ public struct Board : Equatable {
         squares[location.index].piece = nil
     }
     
-    @discardableResult internal mutating func movePiece(fromLocation: BoardLocation, toLocation: BoardLocation) -> [BoardOperation] {
+    @discardableResult internal mutating func movePiece(fromLocation: BoardLocation,
+                                                        toLocation: BoardLocation) -> [BoardOperation] {
         
         if toLocation == fromLocation {
             return []
@@ -134,7 +138,7 @@ public struct Board : Equatable {
         }
         
         squares[toLocation.index].piece = self.squares[fromLocation.index].piece
-        squares[toLocation.index].piece?.location = toLocation;
+        squares[toLocation.index].piece?.location = toLocation
         squares[toLocation.index].piece?.hasMoved = true
         squares[fromLocation.index].piece = nil
         
@@ -150,7 +154,7 @@ public struct Board : Equatable {
             }
             
             if enPassentPiece.canBeTakenByEnPassant && enPassentPiece.color == movingPiece.color.opposite() {
-                squares[enPassentLocation.index].piece = nil;
+                squares[enPassentLocation.index].piece = nil
                 let operation = BoardOperation(type: .removePiece, piece: enPassentPiece, location: enPassentLocation)
                 operations.append(operation)
             }
@@ -188,7 +192,7 @@ public struct Board : Equatable {
     
         for square in squares {
             
-            guard let piece = square.piece else{
+            guard let piece = square.piece else {
                 continue
             }
             
@@ -198,7 +202,8 @@ public struct Board : Equatable {
             }
         }
         
-        // We'll implicitly unwrap this, because there should always be a king for each color on the board. If there isn't, it's an error
+        // We'll implicitly unwrap this, because there should always be a king for each color on the board.
+        // If there isn't, it's an error
         return king!
     }
     
@@ -206,7 +211,7 @@ public struct Board : Equatable {
         
         for (index, square) in squares.enumerated() {
             
-            guard let piece = square.piece else{
+            guard let piece = square.piece else {
                 continue
             }
             
@@ -242,7 +247,7 @@ public struct Board : Equatable {
         
         for square in squares {
             
-            guard let piece = square.piece else{
+            guard let piece = square.piece else {
                 continue
             }
             
@@ -356,8 +361,7 @@ public struct Board : Equatable {
         
         if !isColorAbleToMove(color: color) && !isColorInCheckMate(color: color) {
             return true
-        }
-        else{
+        } else {
             return false
         }
     }
@@ -405,7 +409,8 @@ public struct Board : Equatable {
                 continue
             }
             
-            if piece.movement.canPieceMove(fromLocation: BoardLocation(index: index), toLocation: location, board: self) {
+            if piece.movement.canPieceMove(fromLocation: BoardLocation(index: index),
+                                           toLocation: location, board: self) {
                 return true
             }
         }
@@ -424,14 +429,14 @@ public struct Board : Equatable {
     
     public func possibleMoveLocationsForPiece(atLocation location: BoardLocation) -> [BoardLocation] {
         
-        guard let piece = squares[location.index].piece else{
+        guard let piece = squares[location.index].piece else {
             return []
         }
         
         var locations = [BoardLocation]()
         
-        BoardLocation.all.forEach{
-            if piece.movement.canPieceMove(fromLocation: location, toLocation: $0, board: self){
+        BoardLocation.all.forEach {
+            if piece.movement.canPieceMove(fromLocation: location, toLocation: $0, board: self) {
                 locations.append($0)
             }
         }
@@ -441,7 +446,7 @@ public struct Board : Equatable {
     
     // MARK: - Castling
     
-    struct CastleMove{
+    struct CastleMove {
         let yPos: Int
         let kingStartXPos: Int
         let rookStartXPos: Int
@@ -524,7 +529,9 @@ public struct Board : Equatable {
         }
         
         // Check that there are no pieces between the king and the rook
-        for xPos in min(castleMove.kingStartXPos, castleMove.rookStartXPos)..<max(castleMove.kingStartXPos, castleMove.rookStartXPos) {
+        let rStart = min(castleMove.kingStartXPos, castleMove.rookStartXPos)
+        let rEnd = max(castleMove.kingStartXPos, castleMove.rookStartXPos)
+        for xPos in rStart..<rEnd {
             
             if xPos == castleMove.kingStartXPos || xPos == castleMove.rookStartXPos {
                 continue
@@ -532,7 +539,7 @@ public struct Board : Equatable {
             
             let location = BoardLocation(x: xPos, y: castleMove.yPos)
             
-            if let piece = getPiece(at: location) {
+            if getPiece(at: location) != nil {
                 return false
             }
             
@@ -544,7 +551,9 @@ public struct Board : Equatable {
         }    
   
         // Check that the king will not end up in, or move through check
-        for xPos in min(castleMove.kingEndXPos, castleMove.kingStartXPos)...max(castleMove.kingEndXPos, castleMove.kingStartXPos) {
+        let kStart = min(castleMove.kingEndXPos, castleMove.kingStartXPos)
+        let kEnd = max(castleMove.kingEndXPos, castleMove.kingStartXPos)
+        for xPos in kStart...kEnd {
             
             if xPos == castleMove.kingStartXPos {
                 continue
@@ -563,12 +572,15 @@ public struct Board : Equatable {
     
     @discardableResult internal mutating func performCastle(color: Color, side: CastleSide) -> [BoardOperation] {
         
-        assert(canColorCastle(color: color, side: side) == true, "\(color) is unable to castle on side \(side). Call canColorCastle(color: side:) first")
+        assert(canColorCastle(color: color, side: side) == true,
+               "\(color) is unable to castle on side \(side). Call canColorCastle(color: side:) first")
         
         let castleMove = CastleMove(color: color, side: side)
     
-        let moveKingOperations = self.movePiece(fromLocation: castleMove.kingStartLocation, toLocation: castleMove.kingEndLocation)
-        let moveRookOperations = self.movePiece(fromLocation: castleMove.rookStartLocation, toLocation: castleMove.rookEndLocation)
+        let moveKingOperations = self.movePiece(fromLocation: castleMove.kingStartLocation,
+                                                toLocation: castleMove.kingEndLocation)
+        let moveRookOperations = self.movePiece(fromLocation: castleMove.rookStartLocation,
+                                                toLocation: castleMove.rookEndLocation)
         
         return moveKingOperations + moveRookOperations
     }
@@ -578,10 +590,10 @@ public struct Board : Equatable {
     public func printBoardColors() {
         printBoard { (square: Square) -> Character? in
             
-            if let piece = square.piece{
+            if let piece = square.piece {
                 return piece.color == .white ? "W" : "B"
             }
-            return nil;
+            return nil
         }
     }
     
@@ -590,9 +602,9 @@ public struct Board : Equatable {
             
             var character: Character?
             
-            if let piece = square.piece{
+            if let piece = square.piece {
                 
-                switch (piece.type){
+                switch piece.type {
                 case .rook:
                     character = "R"
                 case .knight:
@@ -608,7 +620,7 @@ public struct Board : Equatable {
 
                 }
             }
-            return character;
+            return character
         }
     }
     
@@ -617,9 +629,9 @@ public struct Board : Equatable {
             
             var character: Character?
             
-            if let piece = square.piece{
+            if let piece = square.piece {
                 
-                switch (piece.type){
+                switch piece.type {
                 case .rook:
                     character = piece.color == .white ? "R" : "r"
                 case .knight:
@@ -635,17 +647,15 @@ public struct Board : Equatable {
                 }
                 
             }
-            return character;
+            return character
         }
     }
-
-
     
-    func printBoard( _ squarePrinter: (Square) -> Character? ){
+    func printBoard( _ squarePrinter: (Square) -> Character? ) {
         
         var printString = String()
         
-        for y in  (0...7).reversed(){
+        for y in  (0...7).reversed() {
             for x in 0...7 {
                 
                 let index = y*8 + x
@@ -660,6 +670,6 @@ public struct Board : Equatable {
     }
 }
 
-public func ==(lhs: Board, rhs: Board) -> Bool {
+public func == (lhs: Board, rhs: Board) -> Bool {
     return lhs.squares == rhs.squares
 }

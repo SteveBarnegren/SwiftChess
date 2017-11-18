@@ -30,7 +30,7 @@ class OpeningsTests: XCTestCase {
             print("Testing \(opening)")
             
             var board = Board(state: .newGame)
-            for (source, target) in opening.moveLocations(){
+            for (source, target) in opening.moveLocations() {
                 
                 // Assert that the piece exists
                 guard let piece = board.getPiece(at: source) else {
@@ -41,8 +41,7 @@ class OpeningsTests: XCTestCase {
                 // Assert the piece can move
                 if piece.movement.canPieceMove(fromLocation: source, toLocation: target, board: board) {
                     board.movePiece(fromLocation: source, toLocation: target)
-                }
-                else{
+                } else {
                     XCTFail("Cannot move piece from \(source) to \(target)")
                 }
             }

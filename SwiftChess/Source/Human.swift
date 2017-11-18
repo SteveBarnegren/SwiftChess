@@ -6,11 +6,13 @@
 //
 //
 
+//swiftlint:disable line_length
+
 import Foundation
 
-open class Human : Player {
+open class Human: Player {
    
-    public init(color: Color){
+    public init(color: Color) {
         super.init()
         self.color = color
     }
@@ -49,7 +51,7 @@ open class Human : Player {
                                                     player: self,
                                                     possiblePromotions: Piece.PieceType.possiblePawnPromotionResultingTypes(),
                                                     callback: {
-                            
+                                                        
                                                         // Change the piece
                                                         let newPiece = self.game.board.squares[pawnLocation.index].piece?.byChangingType(newType: $0)
                                                         self.game.board.setPiece(newPiece!, at: pawnLocation)
@@ -63,7 +65,7 @@ open class Human : Player {
             })
         }
         // ... Or if no pawn promotions, end move
-        else{
+        else {
             // Inform the delegate that we made a move
             delegate?.playerDidMakeMove(player: self, boardOperations: operations)
 
@@ -90,7 +92,4 @@ open class Human : Player {
         delegate?.playerDidMakeMove(player: self, boardOperations: operations)
     }
     
-   
 }
-
-

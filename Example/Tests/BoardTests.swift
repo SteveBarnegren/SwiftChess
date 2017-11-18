@@ -6,6 +6,10 @@
 //  Copyright © 2016 CocoaPods. All rights reserved.
 //
 
+// swiftlint:disable type_body_length
+// swiftlint:disable file_length
+// swiftlint:disable function_body_length
+
 import XCTest
 @testable import SwiftChess
 
@@ -77,11 +81,11 @@ class BoardTests: XCTestCase {
             (52, .pawn, .black),
             (53, .pawn, .black),
             (54, .pawn, .black),
-            (55, .pawn, .black),
+            (55, .pawn, .black)
             
         ]
         
-        let board = Board(state: .newGame);
+        let board = Board(state: .newGame)
 
         for expectedPiece in expectedPieces {
             
@@ -90,8 +94,10 @@ class BoardTests: XCTestCase {
                 return
             }
             
-            XCTAssert(piece.type == expectedPiece.type, "Expected piece at index \(expectedPiece.index) to be type \(expectedPiece.type), but was type \(piece.type)")
-            XCTAssert(piece.color == expectedPiece.color, "Expected piece at index \(expectedPiece.index) to be color \(expectedPiece.color), but was color \(piece.color)")
+            XCTAssert(piece.type == expectedPiece.type,
+                      "Expected idx \(expectedPiece.index) to be type \(expectedPiece.type), but was \(piece.type)")
+            XCTAssert(piece.color == expectedPiece.color,
+                      "Expected idx \(expectedPiece.index) to be color \(expectedPiece.color), but was \(piece.color)")
         }
     }
     
@@ -117,7 +123,6 @@ class BoardTests: XCTestCase {
         XCTAssertEqual(stride.y, 3)
     }
 
-    
     // MARK: - Piece Manipulation
     
     func testSetAndGetPiece() {
@@ -134,7 +139,7 @@ class BoardTests: XCTestCase {
             return
         }
         
-        XCTAssert(returnedPiece == piece, "Expected pieces to be the same");
+        XCTAssert(returnedPiece == piece, "Expected pieces to be the same")
         
     }
     
@@ -151,7 +156,7 @@ class BoardTests: XCTestCase {
     
     func testMovePieceResultsInPieceMoved() {
         
-        var board = Board(state: .empty);
+        var board = Board(state: .empty)
         
         let piece = Piece(type: .king, color: .black)
         
@@ -178,22 +183,21 @@ class BoardTests: XCTestCase {
         let blackPieces = board.getPieces(color: .black)
         let allPieces = whitePieces + blackPieces
         
-        allPieces.forEach{
+        allPieces.forEach {
             XCTAssertFalse($0.hasMoved)
         }
     }
     
     func testMovePieceChangesPieceHasMovedProperty() {
         
-        
-        let board = ASCIIBoard(colors:  "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "* - - - - - - -" +
-                                        "W - - - - - - -" +
-                                        "- - - - - - - -" )
+        let board = ASCIIBoard(colors: "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "* - - - - - - -" +
+                                       "W - - - - - - -" +
+                                       "- - - - - - - -" )
         
         let fromLocation = board.locationOfCharacter("W")
         let toLocation = board.locationOfCharacter("*")
@@ -202,7 +206,7 @@ class BoardTests: XCTestCase {
         
         gameBoard.movePiece(fromLocation: fromLocation, toLocation: toLocation)
         
-        guard let piece = gameBoard.getPiece(at: toLocation) else{
+        guard let piece = gameBoard.getPiece(at: toLocation) else {
             XCTFail("Couldn't find piece at new position")
             return
         }
@@ -213,27 +217,29 @@ class BoardTests: XCTestCase {
     
     func testGetPiecesReturnsCorrectPieces() {
         
-        let board = ASCIIBoard(pieces:  "- - - - - - - -" +
-                                        "- R P Q G B K -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" )
+        let board = ASCIIBoard(pieces: "- - - - - - - -" +
+                                       "- R P Q G B K -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" )
 
         let pieces = board.board.getPieces(color: .white)
         
         board.board.printBoardPieces()
         
-        func verifyPieceExistance(piece: Piece) -> () {
+        func verifyPieceExistance(piece: Piece) {
             
-            let matchingPieces = pieces.filter{
+            let matchingPieces = pieces.filter {
                 return $0 == piece
             }
             
-            XCTAssert(matchingPieces.count != 0, "No instances of piece with type \(piece.type) and color \(piece.color) found")
-            XCTAssert(matchingPieces.count == 1, "Multiple instances of piece with type \(piece.type) and color \(piece.color) found")
+            XCTAssert(matchingPieces.count != 0,
+                      "No instances of piece with type \(piece.type) and color \(piece.color) found")
+            XCTAssert(matchingPieces.count == 1,
+                      "Multiple instances of piece with type \(piece.type) and color \(piece.color) found")
         }
         
         verifyPieceExistance(piece: Piece(type: .king, color: .white))
@@ -283,128 +289,134 @@ class BoardTests: XCTestCase {
 
         var board = Board(state: .empty)
         
-        whiteLocations.forEach{
+        whiteLocations.forEach {
             board.setPiece(Piece(type: .pawn, color: .white), at: $0)
         }
         
-        blackLocations.forEach{
+        blackLocations.forEach {
             board.setPiece(Piece(type: .pawn, color: .black), at: $0)
         }
         
         let returnedWhitelocations = board.getLocationsOfColor(.white)
-        XCTAssertEqual(whiteLocations.count, returnedWhitelocations.count);
+        XCTAssertEqual(whiteLocations.count, returnedWhitelocations.count)
         
         let returnedBlacklocations = board.getLocationsOfColor(.black)
-        XCTAssertEqual(blackLocations.count, returnedBlacklocations.count);
+        XCTAssertEqual(blackLocations.count, returnedBlacklocations.count)
         
         whiteLocations.forEach { (location) in
-            XCTAssertEqual(returnedWhitelocations.filter{ location == $0 }.count, 1)
+            XCTAssertEqual(returnedWhitelocations.filter { location == $0 }.count, 1)
         }
         
         blackLocations.forEach { (location) in
-            XCTAssertEqual(returnedBlacklocations.filter{ location == $0 }.count, 1)
+            XCTAssertEqual(returnedBlacklocations.filter { location == $0 }.count, 1)
         }
     }
     
     func testIsColorInCheckReturnsTrueWhenInCheck() {
         
-        let board = ASCIIBoard(pieces:  "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- Q - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - g - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" )
+        let board = ASCIIBoard(pieces: "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- Q - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - g - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" )
 
         XCTAssert(board.board.isColorInCheck(color: .black), "Expected king to be in check")
     }
     
     func testIsColorInCheckReturnsFalseWhenNotInCheck() {
         
-        let board = ASCIIBoard(pieces:  "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - Q - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - g - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" )
+        let board = ASCIIBoard(pieces: "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - Q - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - g - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" )
         
         XCTAssert(board.board.isColorInCheck(color: .black) == false, "Expected king to not be in check")
     }
     
     func testIsColorInCheckMateReturnsTrueWhenInCheckMate() {
         
-        let board = ASCIIBoard(pieces:  "- p - - - - - K" +
-                                        "- - - - - P - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "r - - - - - - -" +
-                                        "r - - G - - - -" )
+        let board = ASCIIBoard(pieces: "- p - - - - - K" +
+                                       "- - - - - P - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "r - - - - - - -" +
+                                       "r - - G - - - -" )
                                     
         XCTAssert(board.board.isColorInCheckMate(color: .white) == true, "Expected white to be in check mate")
     }
     
     func testIsColorInCheckMateReturnsFalseWhenNotInCheckMate() {
         
-        let board = ASCIIBoard(pieces:  "- p - - - - - K" +
-                                        "- - - - - P - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - G - - - -" )
+        let board = ASCIIBoard(pieces: "- p - - - - - K" +
+                                       "- - - - - P - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - G - - - -" )
         
         XCTAssert(board.board.isColorInCheckMate(color: .white) == false, "Expected white to not be in check mate")
     }
     
     func testIsColorInCheckMateReturnsFalseWhenInCheckButNotCheckMate() {
         
-        let board = ASCIIBoard(pieces:  "- p - - - - - K" +
-                                        "- - - - - P - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "r - - G - - - -" )
+        let board = ASCIIBoard(pieces: "- p - - - - - K" +
+                                       "- - - - - P - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "r - - G - - - -" )
         
-        XCTAssert(board.board.isColorInCheck(color: .white) == true, "Expected white to not be in check - test may be set up incorrectly")
-        XCTAssert(board.board.isColorInCheckMate(color: .white) == false, "Expected white to not be in check mate")
+        XCTAssert(board.board.isColorInCheck(color: .white) == true,
+                  "Expected white to not be in check - test may be set up incorrectly")
+        XCTAssert(board.board.isColorInCheckMate(color: .white) == false,
+                  "Expected white to not be in check mate")
     }
     
     func testIsColorInCheckMateReturnsFalseWhenInStaleMate() {
         
-        let board = ASCIIBoard(pieces:  "- - r - r - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "r - - - - - - -" +
-                                        "- - - G - - - -" )
+        let board = ASCIIBoard(pieces: "- - r - r - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "r - - - - - - -" +
+                                       "- - - G - - - -" )
         
-        XCTAssert(board.board.isColorInCheck(color: .white) == false, "Expected white to not be in check - test may be set up incorrectly")
-        XCTAssert(board.board.isColorInCheckMate(color: .white) == false, "Expected white to not be in check mate")
+        XCTAssert(board.board.isColorInCheck(color: .white) == false,
+                  "Expected white to not be in check - test may be set up incorrectly")
+        XCTAssert(board.board.isColorInCheckMate(color: .white) == false,
+                  "Expected white to not be in check mate")
     }
     
     func testColorIsInStaleMateReturnsTrueWhenStaleMate() {
         
-        let board = ASCIIBoard(pieces:  "- - r - r - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "q - - - - - - -" +
-                                        "- - - G - - - -" )
+        let board = ASCIIBoard(pieces: "- - r - r - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "q - - - - - - -" +
+                                       "- - - G - - - -" )
         
-        XCTAssert(board.board.isColorInCheck(color: .white) == false, "Expected white to not be in check - test may be set up incorrectly")
-        XCTAssert(board.board.isColorInStalemate(color: .white) == true, "Expected white to be in stale mate")
+        XCTAssert(board.board.isColorInCheck(color: .white) == false,
+                  "Expected white to not be in check - test may be set up incorrectly")
+        XCTAssert(board.board.isColorInStalemate(color: .white) == true,
+                  "Expected white to be in stale mate")
     }
     
     func testColorIsInStaleMateReturnsFalseWhenStaleMate() {
@@ -418,14 +430,14 @@ class BoardTests: XCTestCase {
     
     func testGetWhitePromotablePawnsReturnsLastAllWhiteFinalRowPawns() {
         
-        let board = ASCIIBoard(pieces:  "P P P P P P P P" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" )
+        let board = ASCIIBoard(pieces: "P P P P P P P P" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" )
 
         let promotable = board.board.getLocationsOfPromotablePawns(color: .white)
         
@@ -434,14 +446,14 @@ class BoardTests: XCTestCase {
     
     func testGetWhitePromotablePawnsReturnsDoesntReturnWhiteNonPawns() {
         
-        let board = ASCIIBoard(pieces:  "B K G R R R Q B" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" )
+        let board = ASCIIBoard(pieces: "B K G R R R Q B" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" )
         
         let promotable = board.board.getLocationsOfPromotablePawns(color: .white)
         
@@ -450,14 +462,14 @@ class BoardTests: XCTestCase {
     
     func testGetWhitePromotablePawnsDoesntReturnBlackPawns() {
         
-        let board = ASCIIBoard(pieces:  "p p p p p p p p" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" )
+        let board = ASCIIBoard(pieces: "p p p p p p p p" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" )
         
         let promotable = board.board.getLocationsOfPromotablePawns(color: .white)
         
@@ -466,14 +478,14 @@ class BoardTests: XCTestCase {
     
     func testGetWhitePromotablePawnsDoesntReturnNonPromotableWhitePawns() {
         
-        let board = ASCIIBoard(pieces:  "- - - - - - - -" +
-                                        "P - - - - P - -" +
-                                        "- - - P - - - -" +
-                                        "- - - - - P - -" +
-                                        "- - - - - - - -" +
-                                        "- - - P - - - -" +
-                                        "- - - - - - - P" +
-                                        "- - - - - - - -" )
+        let board = ASCIIBoard(pieces: "- - - - - - - -" +
+                                       "P - - - - P - -" +
+                                       "- - - P - - - -" +
+                                       "- - - - - P - -" +
+                                       "- - - - - - - -" +
+                                       "- - - P - - - -" +
+                                       "- - - - - - - P" +
+                                       "- - - - - - - -" )
         
         let promotable = board.board.getLocationsOfPromotablePawns(color: .white)
         
@@ -482,14 +494,14 @@ class BoardTests: XCTestCase {
     
     func testGetBlackPromotablePawnsReturnsLastAllBlackFinalRowPawns() {
         
-        let board = ASCIIBoard(pieces:  "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "p p p p p p p p" )
+        let board = ASCIIBoard(pieces: "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "p p p p p p p p" )
         
         let promotable = board.board.getLocationsOfPromotablePawns(color: .black)
         
@@ -498,14 +510,14 @@ class BoardTests: XCTestCase {
     
     func testGetBlackPromotablePawnsReturnsDoesntReturnBlackNonPawns() {
         
-        let board = ASCIIBoard(pieces:  "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "b k g r r r q b" )
+        let board = ASCIIBoard(pieces: "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "b k g r r r q b" )
         
         let promotable = board.board.getLocationsOfPromotablePawns(color: .black)
         
@@ -514,14 +526,14 @@ class BoardTests: XCTestCase {
     
     func testGetBlackPromotablePawnsDoesntReturnWhitePawns() {
         
-        let board = ASCIIBoard(pieces:  "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "P P P P P P P P" )
+        let board = ASCIIBoard(pieces: "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "P P P P P P P P" )
         
         let promotable = board.board.getLocationsOfPromotablePawns(color: .black)
         
@@ -530,14 +542,14 @@ class BoardTests: XCTestCase {
     
     func testGetBlackPromotablePawnsDoesntReturnNonPromotableBlackPawns() {
         
-        let board = ASCIIBoard(pieces:  "- - - - - - - -" +
-                                        "p - - - - p - -" +
-                                        "- - - p - - - -" +
-                                        "- - - - - p - -" +
-                                        "- - - - - - - -" +
-                                        "- - - p - - - -" +
-                                        "- - - - - - - p" +
-                                        "- - - - - - - -" )
+        let board = ASCIIBoard(pieces: "- - - - - - - -" +
+                                       "p - - - - p - -" +
+                                       "- - - p - - - -" +
+                                       "- - - - - p - -" +
+                                       "- - - - - - - -" +
+                                       "- - - p - - - -" +
+                                       "- - - - - - - p" +
+                                       "- - - - - - - -" )
         
         let promotable = board.board.getLocationsOfPromotablePawns(color: .black)
         
@@ -546,7 +558,9 @@ class BoardTests: XCTestCase {
     
     // MARK: - Can Castle? Logic
     
-    func assertKingAndRookStartLocationsAndColor(kingLocation: BoardLocation, rookLocation: BoardLocation, color: Color) {
+    func assertKingAndRookStartLocationsAndColor(kingLocation: BoardLocation,
+                                                 rookLocation: BoardLocation,
+                                                 color: Color) {
         
         let board = Board(state: .newGame)
         
@@ -572,80 +586,87 @@ class BoardTests: XCTestCase {
     func testCastleMoveWhiteKingSideKingAndRookStartLocationsAreCorrect() {
         
         let castleMove = Board.CastleMove(color: .white, side: .kingSide)
-        assertKingAndRookStartLocationsAndColor(kingLocation: castleMove.kingStartLocation, rookLocation: castleMove.rookStartLocation, color: .white)
+        assertKingAndRookStartLocationsAndColor(kingLocation: castleMove.kingStartLocation,
+                                                rookLocation: castleMove.rookStartLocation,
+                                                color: .white)
     }
     
     func testCastleMoveWhiteQueenSideKingAndRookStartLocationsAreCorrect() {
         
         let castleMove = Board.CastleMove(color: .white, side: .queenSide)
-        assertKingAndRookStartLocationsAndColor(kingLocation: castleMove.kingStartLocation, rookLocation: castleMove.rookStartLocation, color: .white)
+        assertKingAndRookStartLocationsAndColor(kingLocation: castleMove.kingStartLocation,
+                                                rookLocation: castleMove.rookStartLocation,
+                                                color: .white)
     }
     
     func testCastleMoveBlackKingSideKingAndRookStartLocationsAreCorrect() {
         
         let castleMove = Board.CastleMove(color: .black, side: .kingSide)
-        assertKingAndRookStartLocationsAndColor(kingLocation: castleMove.kingStartLocation, rookLocation: castleMove.rookStartLocation, color: .black)
+        assertKingAndRookStartLocationsAndColor(kingLocation: castleMove.kingStartLocation,
+                                                rookLocation: castleMove.rookStartLocation,
+                                                color: .black)
     }
     
     func testCastleMoveBlackQueenSideKingAndRookStartLocationsAreCorrect() {
         
         let castleMove = Board.CastleMove(color: .black, side: .queenSide)
-        assertKingAndRookStartLocationsAndColor(kingLocation: castleMove.kingStartLocation, rookLocation: castleMove.rookStartLocation, color: .black)
+        assertKingAndRookStartLocationsAndColor(kingLocation: castleMove.kingStartLocation,
+                                                rookLocation: castleMove.rookStartLocation,
+                                                color: .black)
     }
     
     func testCanCastle() {
         
-        let board = ASCIIBoard(pieces:  "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - G - - R" )
-        let gameBoard = board.board
+        let board = ASCIIBoard(pieces: "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - G - - R" )
 
         XCTAssertTrue(board.board.canColorCastle(color: .white, side: .kingSide))
     }
     
     func testCannotCastleIfKingInIncorrectPostion() {
         
-        let board = ASCIIBoard(pieces:  "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - G - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - R" )
+        let board = ASCIIBoard(pieces: "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - G - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - R" )
         
         XCTAssertFalse(board.board.canColorCastle(color: .white, side: .kingSide))
     }
     
     func testCannotCastleIfRookInIncorrectPostion() {
         
-        let board = ASCIIBoard(pieces:  "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - R" +
-                                        "- - - - G - - -" )
+        let board = ASCIIBoard(pieces: "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - R" +
+                                       "- - - - G - - -" )
         
         XCTAssertFalse(board.board.canColorCastle(color: .white, side: .kingSide))
     }
 
     func testCannotCastleIfKingHasPreviouslyMoved() {
 
-        let board = ASCIIBoard(pieces:  "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - --" +
-                                        "- - - - G - - R" )
+        let board = ASCIIBoard(pieces: "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - --" +
+                                       "- - - - G - - R" )
         
         let startLocation = BoardLocation(index: board.indexOfCharacter("G") )
         let newLocation = BoardLocation(index: 0)
@@ -660,14 +681,14 @@ class BoardTests: XCTestCase {
     
     func testCannotCastleIfRookHasPreviouslyMoved() {
         
-        let board = ASCIIBoard(pieces:  "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - --" +
-                                        "- - - - G - - R" )
+        let board = ASCIIBoard(pieces: "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - --" +
+                                       "- - - - G - - R" )
         
         let startLocation = BoardLocation(index: board.indexOfCharacter("R") )
         let newLocation = BoardLocation(index: 0)
@@ -682,70 +703,70 @@ class BoardTests: XCTestCase {
     
     func testCannotCastleIfPiecesAreBetweenKingAndRook() {
         
-        let board = ASCIIBoard(pieces:  "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - --" +
-                                        "- - - - G - P R" )
+        let board = ASCIIBoard(pieces: "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - --" +
+                                       "- - - - G - P R" )
         
         XCTAssertFalse(board.board.canColorCastle(color: .white, side: .kingSide))
     }
     
     func testCannotCastleIfKingIsInCheck() {
         
-        let board = ASCIIBoard(pieces:  "- - - - q - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - --" +
-                                        "- - - - G - - R" )
+        let board = ASCIIBoard(pieces: "- - - - q - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - --" +
+                                       "- - - - G - - R" )
         
         XCTAssertFalse(board.board.canColorCastle(color: .white, side: .kingSide))
     }
     
     func testCannotCastleIfKingWillMoveThroughCheck() {
         
-        let board = ASCIIBoard(pieces:  "- - - - - q - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - --" +
-                                        "- - - - G - - R" )
+        let board = ASCIIBoard(pieces: "- - - - - q - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - --" +
+                                       "- - - - G - - R" )
         
         XCTAssertFalse(board.board.canColorCastle(color: .white, side: .kingSide))
     }
     
     func testCannotCastleIfKingWillMoveEndUpInCheck() {
         
-        let board = ASCIIBoard(pieces:  "- - - - - - q -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - --" +
-                                        "- - - - G - - R" )
+        let board = ASCIIBoard(pieces: "- - - - - - q -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - --" +
+                                       "- - - - G - - R" )
         
         XCTAssertFalse(board.board.canColorCastle(color: .white, side: .kingSide))
     }
     
     func testCanStillCastleIfRookUnderAttack() {
         
-        let board = ASCIIBoard(pieces:  "- - - - - - - r" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - --" +
-                                        "- - - - G - - R" )
+        let board = ASCIIBoard(pieces: "- - - - - - - r" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - --" +
+                                       "- - - - G - - R" )
         
         XCTAssertTrue(board.board.canColorCastle(color: .white, side: .kingSide))
     }
@@ -754,15 +775,14 @@ class BoardTests: XCTestCase {
     
     func createPerformCastleBoard() -> Board {
         
-        let board = ASCIIBoard(pieces:  "r - - - g - - r" +
-                                        "p p p p p p p p" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "P P P P P P P P" +
-                                        "R - - - G - - R" )
-
+        let board = ASCIIBoard(pieces: "r - - - g - - r" +
+                                       "p p p p p p p p" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "P P P P P P P P" +
+                                       "R - - - G - - R" )
         
         return board.board
     }
@@ -803,14 +823,14 @@ class BoardTests: XCTestCase {
     
     func createHasMovedTestBoard() -> Board {
         
-        let board = ASCIIBoard(pieces:  "r - - g - - - r" +
-                                        "- - p p p - - -" +
-                                        "- - - - - q - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- Q - - - - - -" +
-                                        "- - - P P P --" +
-                                        "R - - - G - - R" )
+        let board = ASCIIBoard(pieces: "r - - g - - - r" +
+                                       "- - p p p - - -" +
+                                       "- - - - - q - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- Q - - - - - -" +
+                                       "- - - P P P --" +
+                                       "R - - - G - - R" )
 
         return board.board
     }
@@ -835,8 +855,8 @@ class BoardTests: XCTestCase {
     func testCheckingForCheckDoesntResultInHasMovedFlagChange() {
         
         let board = createHasMovedTestBoard()
-        board.isColorInCheck(color: .white)
-        board.isColorInCheck(color: .black)
+        _ = board.isColorInCheck(color: .white)
+        _ = board.isColorInCheck(color: .black)
         
         XCTAssertFalse(areAnyPiecesHasMovedFlagsSet(on: board))
     }
@@ -844,8 +864,8 @@ class BoardTests: XCTestCase {
     func testCheckingForCheckMateDoesntResultInHasMovedFlagChange() {
         
         let board = createHasMovedTestBoard()
-        board.isColorInCheckMate(color: .white)
-        board.isColorInCheckMate(color: .black)
+        _ = board.isColorInCheckMate(color: .white)
+        _ = board.isColorInCheckMate(color: .black)
         
         XCTAssertFalse(areAnyPiecesHasMovedFlagsSet(on: board))
     }
@@ -853,8 +873,8 @@ class BoardTests: XCTestCase {
     func testCheckingForStaleMateDoesntResultInHasMovedFlagChange() {
         
         let board = createHasMovedTestBoard()
-        board.isColorInStalemate(color: .white)
-        board.isColorInStalemate(color: .black)
+        _ = board.isColorInStalemate(color: .white)
+        _ = board.isColorInStalemate(color: .black)
         
         XCTAssertFalse(areAnyPiecesHasMovedFlagsSet(on: board))
     }
@@ -862,8 +882,8 @@ class BoardTests: XCTestCase {
     func testCheckingForAbilityToMoveDoesntResultInHasMovedFlagChange() {
         
         let board = createHasMovedTestBoard()
-        board.isColorAbleToMove(color: .white)
-        board.isColorAbleToMove(color: .black)
+        _ = board.isColorAbleToMove(color: .white)
+        _ = board.isColorAbleToMove(color: .black)
         
         XCTAssertFalse(areAnyPiecesHasMovedFlagsSet(on: board))
     }
@@ -871,10 +891,10 @@ class BoardTests: XCTestCase {
     func testCheckingForAbilityToCastleDoesntResultInHasMovedFlagChange() {
         
         let board = createHasMovedTestBoard()
-        board.canColorCastle(color: .white, side: .kingSide)
-        board.canColorCastle(color: .white, side: .queenSide)
-        board.canColorCastle(color: .black, side: .kingSide)
-        board.canColorCastle(color: .black, side: .queenSide)
+        _ = board.canColorCastle(color: .white, side: .kingSide)
+        _ = board.canColorCastle(color: .white, side: .queenSide)
+        _ = board.canColorCastle(color: .black, side: .kingSide)
+        _ = board.canColorCastle(color: .black, side: .queenSide)
 
         XCTAssertFalse(areAnyPiecesHasMovedFlagsSet(on: board))
     }
@@ -883,14 +903,14 @@ class BoardTests: XCTestCase {
     
     func testCanColorMoveAnyPieceToLocationReturnsYesIfCanMakeMove() {
         
-        let board = ASCIIBoard(pieces:  "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "R - - - - - - *" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" )
+        let board = ASCIIBoard(pieces: "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "R - - - - - - *" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" )
         
         let targetLocation = board.locationOfCharacter("*")
         XCTAssertTrue(board.board.canColorMoveAnyPieceToLocation(color: .white, location: targetLocation))
@@ -898,14 +918,14 @@ class BoardTests: XCTestCase {
     
     func testCanColorMoveAnyPieceToLocationReturnsFalseIfCannotMakeMove() {
         
-        let board = ASCIIBoard(pieces:  "B - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "R - - - - - - -" +
-                                        "- - - - - - - *" +
-                                        "R - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - Q - - - -" )
+        let board = ASCIIBoard(pieces: "B - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "R - - - - - - -" +
+                                       "- - - - - - - *" +
+                                       "R - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - Q - - - -" )
         
         let targetLocation = board.locationOfCharacter("*")
         XCTAssertFalse(board.board.canColorMoveAnyPieceToLocation(color: .white, location: targetLocation))
@@ -913,14 +933,14 @@ class BoardTests: XCTestCase {
     
     func testCanColorMoveAnyPieceToLocationReturnsFalseIfCannotMakeMoveButOpponentCan() {
         
-        let board = ASCIIBoard(pieces:  "B - - - - - - q" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "R - - - - - - -" +
-                                        "- - - - - - - *" +
-                                        "R - - - - - - -" +
-                                        "- - - - - - k -" +
-                                        "- - - Q - - - r" )
+        let board = ASCIIBoard(pieces: "B - - - - - - q" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "R - - - - - - -" +
+                                       "- - - - - - - *" +
+                                       "R - - - - - - -" +
+                                       "- - - - - - k -" +
+                                       "- - - Q - - - r" )
         
         let targetLocation = board.locationOfCharacter("*")
         XCTAssertFalse(board.board.canColorMoveAnyPieceToLocation(color: .white, location: targetLocation))
@@ -930,14 +950,14 @@ class BoardTests: XCTestCase {
     
     func testDoesColorOccupyLocationReturnsTrueForWhiteOccupation() {
         
-        let board = ASCIIBoard(pieces:  "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - Q - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" )
+        let board = ASCIIBoard(pieces: "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - Q - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" )
         
         let location = board.locationOfCharacter("Q")
         XCTAssertTrue(board.board.doesColorOccupyLocation(color: .white, location: location))
@@ -945,14 +965,14 @@ class BoardTests: XCTestCase {
     
     func testDoesColorOccupyLocationReturnsTrueForBlackOccupation() {
         
-        let board = ASCIIBoard(pieces:  "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - q - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" )
+        let board = ASCIIBoard(pieces: "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - q - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" )
         
         let location = board.locationOfCharacter("q")
         XCTAssertTrue(board.board.doesColorOccupyLocation(color: .black, location: location))
@@ -960,14 +980,14 @@ class BoardTests: XCTestCase {
     
     func testDoesColorOccupyLocationReturnsFalseForWhiteOpponentOccupation() {
         
-        let board = ASCIIBoard(pieces:  "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - q - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" )
+        let board = ASCIIBoard(pieces: "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - q - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" )
         
         let location = board.locationOfCharacter("q")
         XCTAssertFalse(board.board.doesColorOccupyLocation(color: .white, location: location))
@@ -975,14 +995,14 @@ class BoardTests: XCTestCase {
     
     func testDoesColorOccupyLocationReturnsFalseForBlackOpponentOccupation() {
         
-        let board = ASCIIBoard(pieces:  "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - Q - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" )
+        let board = ASCIIBoard(pieces: "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - Q - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" )
         
         let location = board.locationOfCharacter("Q")
         XCTAssertFalse(board.board.doesColorOccupyLocation(color: .black, location: location))
@@ -999,7 +1019,7 @@ class BoardTests: XCTestCase {
     
     // MARK: Test Possible Move Locations
     
-    func testPossibleMoveLocationsReturnsExpectedLocations(){
+    func testPossibleMoveLocationsReturnsExpectedLocations() {
         
         let asciiBoard = ASCIIBoard(pieces: "- - - - - - - -" +
                                             "- - * - * - - -" +
@@ -1008,9 +1028,9 @@ class BoardTests: XCTestCase {
                                             "- * - - - * - -" +
                                             "- - * - * - - -" +
                                             "- - - - - - - -" +
-                                            "- - - - - - - -" );
+                                            "- - - - - - - -" )
         
-        let board = asciiBoard.board;
+        let board = asciiBoard.board
         
         let sourceLocation = asciiBoard.locationOfCharacter("K")
         let locations = board.possibleMoveLocationsForPiece(atLocation: sourceLocation)
@@ -1018,8 +1038,8 @@ class BoardTests: XCTestCase {
         
         let expectedLocations = asciiBoard.locationsWithCharacter("*")
         
-        expectedLocations.forEach{ expectedLocation in
-            XCTAssertEqual(locations.filter( { $0 == expectedLocation} ).count, 1)
+        expectedLocations.forEach { expectedLocation in
+            XCTAssertEqual(locations.filter {$0 == expectedLocation}.count, 1)
         }
     }
     
@@ -1085,18 +1105,4 @@ class BoardTests: XCTestCase {
         }
     }
 
-    
-    
-
-
 }
-
-
-
-
-
-
-
-
-
-

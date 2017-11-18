@@ -26,24 +26,24 @@ class BoardRaterCenterDominanceTests: XCTestCase {
 
     func testPiecesWithCenterVisibilityResultsInHigherValueThanPiecesWithoutCenterVisibility() {
         
-        let centerVisibleBoard = ASCIIBoard(pieces:  "- - - - - - - -" +
-                                                     "- - - - - - - -" +
-                                                     "- - - - - - - -" +
-                                                     "- - - - - - - Q" +
-                                                     "- - - - - - - R" +
-                                                     "- - - - - - - -" +
-                                                     "- - - - - - - -" +
-                                                     "- - - - - - - -" )
+        let centerVisibleBoard = ASCIIBoard(pieces: "- - - - - - - -" +
+                                                    "- - - - - - - -" +
+                                                    "- - - - - - - -" +
+                                                    "- - - - - - - Q" +
+                                                    "- - - - - - - R" +
+                                                    "- - - - - - - -" +
+                                                    "- - - - - - - -" +
+                                                    "- - - - - - - -" )
         let centerVisibleRating = boardRater.ratingfor(board: centerVisibleBoard.board, color: .white)
         
-        let centerObstructedBoard = ASCIIBoard(pieces:  "- - - - - - - -" +
-                                                        "- - - - - - - -" +
-                                                        "- - - - - - - -" +
-                                                        "- - - - - - - -" +
-                                                        "- - - - - - - -" +
-                                                        "- - - - - - - -" +
-                                                        "- - - - - - P -" +
-                                                        "- - - - - - - Q" )
+        let centerObstructedBoard = ASCIIBoard(pieces: "- - - - - - - -" +
+                                                       "- - - - - - - -" +
+                                                       "- - - - - - - -" +
+                                                       "- - - - - - - -" +
+                                                       "- - - - - - - -" +
+                                                       "- - - - - - - -" +
+                                                       "- - - - - - P -" +
+                                                       "- - - - - - - Q" )
         let centerObstructedRating = boardRater.ratingfor(board: centerObstructedBoard.board, color: .white)
         
         XCTAssertGreaterThan(centerVisibleRating, centerObstructedRating)

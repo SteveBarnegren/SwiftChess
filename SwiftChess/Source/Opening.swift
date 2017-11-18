@@ -22,7 +22,7 @@ class Opening {
             ItalianGame(),
             SicilianDefense(),
             QueensGambit(),
-            KingsGambit(),
+            KingsGambit()
         ]
     }
     
@@ -30,7 +30,7 @@ class Opening {
         
         var openingMoves = [OpeningMove]()
         
-        allOpenings().forEach{
+        allOpenings().forEach {
             openingMoves += $0.moves(forColor: color)
         }
         
@@ -42,7 +42,7 @@ class Opening {
         var moves = [OpeningMove]()
         
         var board = Board(state: .newGame)
-        for locations in moveLocations(){
+        for locations in moveLocations() {
             
             let move = OpeningMove(board: board,
                                    fromLocation: locations.fromLocation,
@@ -57,7 +57,7 @@ class Opening {
         }
         
         // Filter for color
-        return moves.enumerated().flatMap{ (index, value) in
+        return moves.enumerated().flatMap { (index, value) in
             index % 2 == (color == .white ? 0 : 1) ? value : nil
         }
     }
@@ -71,7 +71,7 @@ class Opening {
     */
     func moveLocations() -> [(fromLocation: BoardLocation, toLocation: BoardLocation)] {
         
-        return moveGridPositions().map{
+        return moveGridPositions().map {
             (BoardLocation(gridPosition: $0), BoardLocation(gridPosition: $1))
         }
     }
@@ -86,14 +86,15 @@ class Opening {
 
 class RuyLopez: Opening {
     
-    override func moveGridPositions() -> [(fromPosition: BoardLocation.GridPosition, toPosition: BoardLocation.GridPosition)] {
+    override func moveGridPositions() ->
+        [(fromPosition: BoardLocation.GridPosition, toPosition: BoardLocation.GridPosition)] {
         
         let moves: [(BoardLocation.GridPosition, BoardLocation.GridPosition)] = [
             (.e2, .e4), // white moves pawn to e4
             (.e7, .e5), // black moves pawn to e5
             (.g1, .f3), // white moves knight to f3
             (.b8, .c6), // black moves knight to c6
-            (.f1, .b5), // white moves bishop to b5
+            (.f1, .b5)  // white moves bishop to b5
         ]
         
         return moves
@@ -104,14 +105,15 @@ class RuyLopez: Opening {
 
 class ItalianGame: Opening {
     
-    override func moveGridPositions() -> [(fromPosition: BoardLocation.GridPosition, toPosition: BoardLocation.GridPosition)] {
+    override func moveGridPositions() ->
+        [(fromPosition: BoardLocation.GridPosition, toPosition: BoardLocation.GridPosition)] {
         
         let moves: [(BoardLocation.GridPosition, BoardLocation.GridPosition)] = [
             (.e2, .e4), // white moves pawn to e4
             (.e7, .e5), // black moves pawn to e5
             (.g1, .f3), // white moves knight to f3
             (.b8, .c6), // black moves knight to c6
-            (.f1, .c4), // white moves bishop to c4
+            (.f1, .c4)  // white moves bishop to c4
         ]
         
         return moves
@@ -122,11 +124,12 @@ class ItalianGame: Opening {
 
 class SicilianDefense: Opening {
     
-    override func moveGridPositions() -> [(fromPosition: BoardLocation.GridPosition, toPosition: BoardLocation.GridPosition)] {
+    override func moveGridPositions() ->
+        [(fromPosition: BoardLocation.GridPosition, toPosition: BoardLocation.GridPosition)] {
         
         let moves: [(BoardLocation.GridPosition, BoardLocation.GridPosition)] = [
             (.e2, .e4), // white moves pawn to e4
-            (.c7, .c5), // black moves pawn to c5
+            (.c7, .c5)  // black moves pawn to c5
         ]
         
         return moves
@@ -137,12 +140,13 @@ class SicilianDefense: Opening {
 
 class QueensGambit: Opening {
     
-    override func moveGridPositions() -> [(fromPosition: BoardLocation.GridPosition, toPosition: BoardLocation.GridPosition)] {
+    override func moveGridPositions() ->
+        [(fromPosition: BoardLocation.GridPosition, toPosition: BoardLocation.GridPosition)] {
         
         let moves: [(BoardLocation.GridPosition, BoardLocation.GridPosition)] = [
             (.d2, .d4), // white moves pawn to d4
             (.d7, .d5), // black moves pawn to d5
-            (.c2, .c4), // white moves pawn to c4
+            (.c2, .c4)  // white moves pawn to c4
         ]
         
         return moves
@@ -153,18 +157,15 @@ class QueensGambit: Opening {
 
 class KingsGambit: Opening {
     
-    override func moveGridPositions() -> [(fromPosition: BoardLocation.GridPosition, toPosition: BoardLocation.GridPosition)] {
+    override func moveGridPositions() ->
+        [(fromPosition: BoardLocation.GridPosition, toPosition: BoardLocation.GridPosition)] {
         
         let moves: [(BoardLocation.GridPosition, BoardLocation.GridPosition)] = [
             (.e2, .e4), // white moves pawn to e4
             (.e7, .e5), // black moves pawn to e5
-            (.f2, .f4), // white moves pawn to f4
+            (.f2, .f4)  // white moves pawn to f4
         ]
         
         return moves
     }
 }
-
-
-
-

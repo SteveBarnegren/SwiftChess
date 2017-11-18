@@ -12,7 +12,7 @@ import Foundation
  Rates the board according to which player's pieces are able to move to the squares at the center of the board
  */
 
-class BoardRaterCenterDominance : BoardRater {
+class BoardRaterCenterDominance: BoardRater {
     
     override func ratingfor(board: Board, color: Color) -> Double {
         
@@ -26,7 +26,11 @@ class BoardRaterCenterDominance : BoardRater {
             
             for targetLocation in BoardLocation.all {
                 
-                if sourceLocation == targetLocation || piece.movement.canPieceMove(fromLocation: sourceLocation, toLocation: targetLocation, board: board) {
+                if sourceLocation == targetLocation ||
+                    piece.movement.canPieceMove(fromLocation: sourceLocation,
+                                                toLocation: targetLocation,
+                                                board: board) {
+                    
                     let value = dominanceValueFor(location: targetLocation)
                     rating += (piece.color == color) ? value : -value
                 }
@@ -39,7 +43,7 @@ class BoardRaterCenterDominance : BoardRater {
     
     func dominanceValueFor(location: BoardLocation) -> Double {
         
-        let axisMiddle = 3.5;
+        let axisMiddle = 3.5
         
         let x = Double(location.x)
         let y = Double(location.y)
@@ -51,5 +55,4 @@ class BoardRaterCenterDominance : BoardRater {
         return axisMiddle - distance
     }
 
-    
 }

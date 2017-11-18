@@ -12,15 +12,14 @@ class BoardRaterCenterFourOccupation: BoardRater {
     
     override func ratingfor(board: Board, color: Color) -> Double {
         
-        let value = Double(1);
+        let value = Double(1)
         var rating = Double(0)
         
-        BoardLocation(x: 3, y: 3)
         let locations = [
             BoardLocation(x: 4, y: 4), // NE
             BoardLocation(x: 4, y: 3), // SE
             BoardLocation(x: 3, y: 3), // SW
-            BoardLocation(x: 3, y: 4), // NW
+            BoardLocation(x: 3, y: 4)  // NW
                          ]
         
         for location in locations {

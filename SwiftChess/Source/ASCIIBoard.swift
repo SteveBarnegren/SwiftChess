@@ -7,15 +7,14 @@
 //
 
 import Foundation
-import SwiftChess
 
-func transformASCIIBoardInput(_ input: String) -> String{
+func transformASCIIBoardInput(_ input: String) -> String {
     
     let boardArt = input.replacingOccurrences(of: " ", with: "")
     
     var transformedArt = String()
     
-    for y in  (0...7).reversed(){
+    for y in  (0...7).reversed() {
         for x in 0...7 {
             
             let index = y*8 + x
@@ -66,12 +65,12 @@ public struct ASCIIBoard {
         var board = Board(state: .empty)
         
         // Clear all pieces on the board
-        BoardLocation.all.forEach{
+        BoardLocation.all.forEach {
             board.removePiece(atLocation: $0)
         }
         
         // Setup pieces from ascii art
-        (0..<64).forEach{
+        (0..<64).forEach {
             let character = boardArt[boardArt.characters.index(boardArt.startIndex, offsetBy: $0)]
             
             if let piece = pieceFromCharacter(character) {
@@ -82,7 +81,6 @@ public struct ASCIIBoard {
         return board
     }
 
-    
     func pieceFromCharacter(_ character: Character) -> Piece? {
         
         var piece: Piece?
@@ -119,7 +117,7 @@ public struct ASCIIBoard {
         return piece
     }
     
-    public func indexOfCharacter(_ character: Character) -> Int{
+    public func indexOfCharacter(_ character: Character) -> Int {
         
         var index: Int?
         
@@ -137,11 +135,11 @@ public struct ASCIIBoard {
         return BoardLocation(index: index)
     }
     
-    public func indexesWithCharacter(_ character: Character) -> [Int]{
+    public func indexesWithCharacter(_ character: Character) -> [Int] {
         
         var indexes = [Int]()
         
-        (0..<64).forEach{
+        (0..<64).forEach {
             let aCharacter = artString[artString.characters.index(artString.startIndex, offsetBy: $0)]
             if character == aCharacter {
                 indexes.append($0)
@@ -157,7 +155,7 @@ public struct ASCIIBoard {
         
         var locations = [BoardLocation]()
         
-        indexes.forEach{
+        indexes.forEach {
             let location = BoardLocation(index: $0)
             locations.append(location)
         }

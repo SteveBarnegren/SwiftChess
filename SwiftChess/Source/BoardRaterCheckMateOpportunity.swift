@@ -14,7 +14,7 @@ import Foundation
  Iterates over all possible moves, makes them, and checks if the resulting state is check mate
  */
 
-class BoardRaterCheckMateOpportunity : BoardRater {
+class BoardRaterCheckMateOpportunity: BoardRater {
     
     override func ratingfor(board: Board, color: Color) -> Double {
         
@@ -23,7 +23,7 @@ class BoardRaterCheckMateOpportunity : BoardRater {
         
         for (index, square) in board.squares.enumerated() {
         
-            guard let piece = square.piece else{
+            guard let piece = square.piece else {
                 continue
             }
             
@@ -36,10 +36,9 @@ class BoardRaterCheckMateOpportunity : BoardRater {
                     var movedBoard = board
                     movedBoard.movePiece(fromLocation: sourceLocation, toLocation: location)
                     
-                    if piece.color == color && movedBoard.isColorInCheckMate(color: color.opposite()){
+                    if piece.color == color && movedBoard.isColorInCheckMate(color: color.opposite()) {
                         rating += value
-                    }
-                    else if piece.color == color.opposite() && movedBoard.isColorInCheckMate(color: color){
+                    } else if piece.color == color.opposite() && movedBoard.isColorInCheckMate(color: color) {
                         rating -= value
                     }
                 }

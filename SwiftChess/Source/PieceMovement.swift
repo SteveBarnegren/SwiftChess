@@ -6,6 +6,8 @@
 //
 //
 
+//swiftlint:disable file_length
+
 import Foundation
 
 // MARK: - PieceMovement (Base Class)
@@ -37,11 +39,13 @@ open class PieceMovement {
         }   
     }
     
-    public init(){
-        
+    public init() {
     }
    
-    func canPieceMove(fromLocation: BoardLocation, toLocation: BoardLocation, board: Board, accountForCheckState: Bool = false) -> Bool {
+    func canPieceMove(fromLocation: BoardLocation,
+                      toLocation: BoardLocation,
+                      board: Board,
+                      accountForCheckState: Bool = false) -> Bool {
         
         if fromLocation == toLocation {
             return false
@@ -56,8 +60,7 @@ open class PieceMovement {
             var boardCopy = board
             boardCopy.movePiece(fromLocation: fromLocation, toLocation: toLocation)
             return boardCopy.isColorInCheck(color: color) ? false : true
-        }
-        else{
+        } else {
             return canMove
         }
     }
@@ -66,9 +69,13 @@ open class PieceMovement {
         return false
     }
     
-    func canPieceMove(fromLocation: BoardLocation, toLocation: BoardLocation, board: Board, stride: BoardStride) -> Bool {
+    // swiftlint:disable function_body_length
+    func canPieceMove(fromLocation: BoardLocation,
+                      toLocation: BoardLocation,
+                      board: Board,
+                      stride: BoardStride) -> Bool {
         
-        enum Direction: Int{
+        enum Direction: Int {
             case increasing
             case decresing
             case none
@@ -150,12 +157,12 @@ open class PieceMovement {
         return false
     }
     
-    func canPieceOccupySquare(pieceLocation: BoardLocation, xOffset: Int, yOffset: Int, board: Board) -> Bool{
+    func canPieceOccupySquare(pieceLocation: BoardLocation, xOffset: Int, yOffset: Int, board: Board) -> Bool {
         
         let targetLocation = pieceLocation.incrementedBy(x: xOffset, y: yOffset)
         
         // Check if in bounds
-        guard targetLocation.isInBounds() else{
+        guard targetLocation.isInBounds() else {
             return false
         }
         
@@ -246,7 +253,7 @@ open class PieceMovementDiagonal: PieceMovement {
 
 open class PieceMovementQueen: PieceMovement {
     
-    let movements : [PieceMovement] = [PieceMovementStraightLine(), PieceMovementDiagonal()]
+    let movements: [PieceMovement] = [PieceMovementStraightLine(), PieceMovementDiagonal()]
 
     override func isMovementPossible(fromLocation: BoardLocation, toLocation: BoardLocation, board: Board) -> Bool {
         
@@ -291,14 +298,14 @@ open class PieceMovementBishop: PieceMovement {
 open class PieceMovementKnight: PieceMovement {
     
     let offsets: [(x: Int, y: Int)] = [
-        (1,2),
-        (2,1),
-        (2,-1),
-        (-2,1),
-        (-1,-2),
-        (-2,-1),
-        (1,-2),
-        (-1,2)
+        (1, 2),
+        (2, 1),
+        (2, -1),
+        (-2, 1),
+        (-1, -2),
+        (-2, -1),
+        (1, -2),
+        (-1, 2)
     ]
     
     override func isMovementPossible(fromLocation: BoardLocation, toLocation: BoardLocation, board: Board) -> Bool {
@@ -315,7 +322,10 @@ open class PieceMovementKnight: PieceMovement {
             let offsetLocation = fromLocation.incrementedBy(x: offset.x, y: offset.y)
             
             if toLocation == offsetLocation
-                && canPieceOccupySquare(pieceLocation: fromLocation, xOffset: offset.x, yOffset: offset.y, board: board) {
+                && canPieceOccupySquare(pieceLocation: fromLocation,
+                                        xOffset: offset.x,
+                                        yOffset: offset.y,
+                                        board: board) {
                 return true
             }
         }
@@ -327,12 +337,13 @@ open class PieceMovementKnight: PieceMovement {
 
 // MARK: - PieceMovementPawn
 
+// swiftlint:disable function_body_length
 open class PieceMovementPawn: PieceMovement {
     
     override func isMovementPossible(fromLocation: BoardLocation, toLocation: BoardLocation, board: Board) -> Bool {
         
         // Get the moving piece
-        guard let movingPiece = board.getPiece(at: fromLocation) else{
+        guard let movingPiece = board.getPiece(at: fromLocation) else {
             return false
         }
         
@@ -354,7 +365,6 @@ open class PieceMovementPawn: PieceMovement {
         let color = movingPiece.color
 
         // ****** Test forward locations ******
-        var forwardStrides = [BoardStride]()
         
         // Test one ahead offset
         let oneAheadStride = (color == .white ? BoardStride(x: 0, y: 1) : BoardStride(x: 0, y: -1))
@@ -364,7 +374,7 @@ open class PieceMovementPawn: PieceMovement {
             
             let location = fromLocation.incrementedBy(stride: oneAheadStride)
             
-            if let _ = board.getPiece(at: location) {
+            if board.getPiece(at: location) != nil {
                 canMoveOneAhead = false
                 break ONE_AHEAD
             }
@@ -374,7 +384,6 @@ open class PieceMovementPawn: PieceMovement {
             }
         }
         
-        
         // Test two ahead offset
         if canMoveOneAhead {
             
@@ -382,8 +391,7 @@ open class PieceMovementPawn: PieceMovement {
             
             if color == .white && fromLocation.y == 1 {
                 twoAheadStride = BoardStride(x: 0, y: 2)
-            }
-            else if color == .black && fromLocation.y == 6 {
+            } else if color == .black && fromLocation.y == 6 {
                 twoAheadStride = BoardStride(x: 0, y: -2)
             }
             
@@ -407,8 +415,7 @@ open class PieceMovementPawn: PieceMovement {
         if color == .white {
             diagonalStrides.append( BoardStride(x: -1, y: 1) )
             diagonalStrides.append( BoardStride(x: 1, y: 1) )
-        }
-        else{
+        } else {
             diagonalStrides.append( BoardStride(x: -1, y: -1) )
             diagonalStrides.append( BoardStride(x: 1, y: -1) )
         }
@@ -456,20 +463,19 @@ open class PieceMovementPawn: PieceMovement {
     }
 }
 
-
 // MARK: - PieceMovementKing
 
 open class PieceMovementKing: PieceMovement {
     
     let offsets: [(x: Int, y: Int)] = [
-        (0,1), // North
-        (1,1), // North-East
-        (1,0), // East
-        (1,-1), // South-East
-        (0,-1), // South
-        (-1,-1), // South-West
-        (-1,0), // West
-        (-1,1) // North- West
+        (0, 1),   // North
+        (1, 1),   // North-East
+        (1, 0),   // East
+        (1, -1),  // South-East
+        (0, -1),  // South
+        (-1, -1), // South-West
+        (-1, 0),  // West
+        (-1, 1)   // North- West
     ]
     
     override func isMovementPossible(fromLocation: BoardLocation, toLocation: BoardLocation, board: Board) -> Bool {
@@ -487,7 +493,10 @@ open class PieceMovementKing: PieceMovement {
             
             if toLocation == offsetLocation
                 && offsetLocation.isInBounds()
-                && canPieceOccupySquare(pieceLocation: fromLocation, xOffset: offset.x, yOffset: offset.y, board: board) {
+                && canPieceOccupySquare(pieceLocation: fromLocation,
+                                        xOffset: offset.x,
+                                        yOffset: offset.y,
+                                        board: board) {
                 return true
             }
         }

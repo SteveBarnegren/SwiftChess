@@ -28,14 +28,14 @@ class BoardRaterPawnProgressionTests: XCTestCase {
     
     func testProgressedPawnResultsInHigherRatingForWhitePlayer() {
 
-        let progressedBoard = ASCIIBoard(pieces:  "- - - - - - - -" +
-                                                  "- P - - - - - -" +
-                                                  "- - - - - - - -" +
-                                                  "- - - - - - - -" +
-                                                  "- - - - - - - -" +
-                                                  "- - - - - - - -" +
-                                                  "- - - - - - - -" +
-                                                  "- - - - - - - -" )
+        let progressedBoard = ASCIIBoard(pieces: "- - - - - - - -" +
+                                                 "- P - - - - - -" +
+                                                 "- - - - - - - -" +
+                                                 "- - - - - - - -" +
+                                                 "- - - - - - - -" +
+                                                 "- - - - - - - -" +
+                                                 "- - - - - - - -" +
+                                                 "- - - - - - - -" )
         
         let lessProgressedBoard = ASCIIBoard(pieces: "- - - - - - - -" +
                                                      "- - - - - - - -" +
@@ -80,69 +80,68 @@ class BoardRaterPawnProgressionTests: XCTestCase {
     
     func testWhitePawnsOnStartingRowResultInZeroRating() {
         
-        let board = ASCIIBoard(pieces:  "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- P - P - - P -" +
-                                        "- - - - - - - -" )
+        let board = ASCIIBoard(pieces: "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- P - P - - P -" +
+                                       "- - - - - - - -" )
         
         let rating = boardRater.ratingfor(board: board.board, color: .white)
         
-        XCTAssertEqualWithAccuracy(rating, 0, accuracy: 0.0001)
+        XCTAssertEqual(rating, 0, accuracy: 0.0001)
     }
     
     func testBlackPawnsOnStartingRowResultInZeroRating() {
         
-        let board = ASCIIBoard(pieces:  "- - - - - - - -" +
-                                        "- p - p - - p -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" )
+        let board = ASCIIBoard(pieces: "- - - - - - - -" +
+                                       "- p - p - - p -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" )
         
         let rating = boardRater.ratingfor(board: board.board, color: .black)
         
-        XCTAssertEqualWithAccuracy(rating, 0, accuracy: 0.0001)
+        XCTAssertEqual(rating, 0, accuracy: 0.0001)
     }
     
     func testWhiteAndBlackPawnRelativeSquaresResultInTheSameValue() {
         
-        let board = ASCIIBoard(pieces:  "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - p" +
-                                        "P - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" +
-                                        "- - - - - - - -" )
+        let board = ASCIIBoard(pieces: "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - p" +
+                                       "P - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" )
         
         let whiteRating = boardRater.ratingfor(board: board.board, color: .white)
         let blackRating = boardRater.ratingfor(board: board.board, color: .black)
         
-        XCTAssertEqualWithAccuracy(whiteRating, blackRating, accuracy: 0.0001)
+        XCTAssertEqual(whiteRating, blackRating, accuracy: 0.0001)
     }
     
     func testTotalWhiteAndBlackRowsValueAreEqual() {
         
-        let board = ASCIIBoard(pieces:  "P - - - - - - p" +
-                                        "P - - - - - - p" +
-                                        "P - - - - - - p" +
-                                        "P - - - - - - p" +
-                                        "P - - - - - - p" +
-                                        "P - - - - - - p" +
-                                        "P - - - - - - p" +
-                                        "P - - - - - - p" )
+        let board = ASCIIBoard(pieces: "P - - - - - - p" +
+                                       "P - - - - - - p" +
+                                       "P - - - - - - p" +
+                                       "P - - - - - - p" +
+                                       "P - - - - - - p" +
+                                       "P - - - - - - p" +
+                                       "P - - - - - - p" +
+                                       "P - - - - - - p" )
         
         let whiteRating = boardRater.ratingfor(board: board.board, color: .white)
         let blackRating = boardRater.ratingfor(board: board.board, color: .black)
         
-        XCTAssertEqualWithAccuracy(whiteRating, blackRating, accuracy: 0.0001)
+        XCTAssertEqual(whiteRating, blackRating, accuracy: 0.0001)
     }
-
     
 }

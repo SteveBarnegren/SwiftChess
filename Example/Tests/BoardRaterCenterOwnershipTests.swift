@@ -26,29 +26,29 @@ class BoardRaterCenterOwnershipTests: XCTestCase {
     
     func testCenterReturnsHigherValueThatSide() {
                 
-        let centerBoard = ASCIIBoard(pieces:  "- - - - - - - -" +
-                                              "- - - - - - - -" +
-                                              "- - - - - - - -" +
-                                              "- - - - P - - -" +
-                                              "- - - - - - - -" +
-                                              "- - - - - - - -" +
-                                              "- - - - - - - -" +
-                                              "- - - - - - - -" )
+        let centerBoard = ASCIIBoard(pieces: "- - - - - - - -" +
+                                             "- - - - - - - -" +
+                                             "- - - - - - - -" +
+                                             "- - - - P - - -" +
+                                             "- - - - - - - -" +
+                                             "- - - - - - - -" +
+                                             "- - - - - - - -" +
+                                             "- - - - - - - -" )
         
-        let centerRating = boardRater.ratingfor(board: centerBoard.board, color: .white);
+        let centerRating = boardRater.ratingfor(board: centerBoard.board, color: .white)
         
-        let sideBoard = ASCIIBoard(pieces:  "- - - - - - - -" +
-                                            "- - - - - - - -" +
-                                            "- - - - - - - -" +
-                                            "- - - - - - P -" +
-                                            "- - - - - - - -" +
-                                            "- - - - - - - -" +
-                                            "- - - - - - - -" +
-                                            "- - - - - - - -" )
+        let sideBoard = ASCIIBoard(pieces: "- - - - - - - -" +
+                                           "- - - - - - - -" +
+                                           "- - - - - - - -" +
+                                           "- - - - - - P -" +
+                                           "- - - - - - - -" +
+                                           "- - - - - - - -" +
+                                           "- - - - - - - -" +
+                                           "- - - - - - - -" )
         
-        let sideRating = boardRater.ratingfor(board: sideBoard.board, color: .white);
+        let sideRating = boardRater.ratingfor(board: sideBoard.board, color: .white)
         
-        XCTAssertGreaterThan(centerRating, sideRating);
+        XCTAssertGreaterThan(centerRating, sideRating)
     }
     
 }
