@@ -36,7 +36,7 @@ class BoardRaterCountPiecesTests: XCTestCase {
                                        "P P P P P P P P" +
                                        "R K B Q G B K R" )
         
-        let rating = boardRater.ratingfor(board: board.board, color: .white)
+        let rating = boardRater.ratingFor(board: board.board, color: .white)
         XCTAssert(rating > 0, "Expected rating to be positive")
     }
     
@@ -51,7 +51,7 @@ class BoardRaterCountPiecesTests: XCTestCase {
                                        "- - - - - - - -" +
                                        "- - - - - - - -" )
         
-        let rating = boardRater.ratingfor(board: board.board, color: .white)
+        let rating = boardRater.ratingFor(board: board.board, color: .white)
         XCTAssert(rating < 0, "Expected rating to be negative")
     }
     
@@ -75,8 +75,8 @@ class BoardRaterCountPiecesTests: XCTestCase {
                                                  "P P P P P P P P" +
                                                  "P P P P P P P P" )
         
-        let fewerPiecesRating = boardRater.ratingfor(board: fewerPiecesBoard.board, color: .white)
-        let morePiecesRating = boardRater.ratingfor(board: morePiecesBoard.board, color: .white)
+        let fewerPiecesRating = boardRater.ratingFor(board: fewerPiecesBoard.board, color: .white)
+        let morePiecesRating = boardRater.ratingFor(board: morePiecesBoard.board, color: .white)
         XCTAssert(morePiecesRating > fewerPiecesRating, "Expected more pieces to produce higher rating")
     }
     
@@ -100,8 +100,8 @@ class BoardRaterCountPiecesTests: XCTestCase {
                                                         "- - - - - - - -" +
                                                         "R R R - - - - -" )
         
-        let lowerValuePiecesRating = boardRater.ratingfor(board: lowerValuePiecesBoard.board, color: .white)
-        let higherValuePiecesRating = boardRater.ratingfor(board: higherValuePiecesBoard.board, color: .white)
+        let lowerValuePiecesRating = boardRater.ratingFor(board: lowerValuePiecesBoard.board, color: .white)
+        let higherValuePiecesRating = boardRater.ratingFor(board: higherValuePiecesBoard.board, color: .white)
         XCTAssert(higherValuePiecesRating > lowerValuePiecesRating,
                   "Expected higher value pieces to produce higher rating")
     }
@@ -114,7 +114,7 @@ class BoardRaterCountPiecesTests: XCTestCase {
     
         self.measure {
             for _ in 0..<1000 {
-                _ = self.boardRater.ratingfor(board: board, color: .white)
+                _ = self.boardRater.ratingFor(board: board, color: .white)
             }
         }
     }

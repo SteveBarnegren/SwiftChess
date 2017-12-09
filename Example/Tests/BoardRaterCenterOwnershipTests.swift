@@ -35,7 +35,7 @@ class BoardRaterCenterOwnershipTests: XCTestCase {
                                              "- - - - - - - -" +
                                              "- - - - - - - -" )
         
-        let centerRating = boardRater.ratingfor(board: centerBoard.board, color: .white)
+        let centerRating = boardRater.ratingFor(board: centerBoard.board, color: .white)
         
         let sideBoard = ASCIIBoard(pieces: "- - - - - - - -" +
                                            "- - - - - - - -" +
@@ -46,7 +46,7 @@ class BoardRaterCenterOwnershipTests: XCTestCase {
                                            "- - - - - - - -" +
                                            "- - - - - - - -" )
         
-        let sideRating = boardRater.ratingfor(board: sideBoard.board, color: .white)
+        let sideRating = boardRater.ratingFor(board: sideBoard.board, color: .white)
         
         XCTAssertGreaterThan(centerRating, sideRating)
     }

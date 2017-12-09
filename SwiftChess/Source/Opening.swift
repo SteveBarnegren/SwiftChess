@@ -12,6 +12,12 @@ struct OpeningMove {
     let board: Board
     let fromLocation: BoardLocation
     let toLocation: BoardLocation
+    
+    init(board: Board, from fromLocation: BoardLocation, to toLocation: BoardLocation) {
+        self.board = board
+        self.fromLocation = fromLocation
+        self.toLocation = toLocation
+    }
 }
 
 class Opening {
@@ -26,18 +32,18 @@ class Opening {
         ]
     }
     
-    static func allOpeningMoves(forColor color: Color) -> [OpeningMove] {
+    static func allOpeningMoves(for color: Color) -> [OpeningMove] {
         
         var openingMoves = [OpeningMove]()
         
         allOpenings().forEach {
-            openingMoves += $0.moves(forColor: color)
+            openingMoves += $0.moves(for: color)
         }
         
         return openingMoves
     }
     
-    public func moves(forColor color: Color) -> [OpeningMove] {
+    public func moves(for color: Color) -> [OpeningMove] {
     
         var moves = [OpeningMove]()
         
@@ -45,12 +51,11 @@ class Opening {
         for locations in moveLocations() {
             
             let move = OpeningMove(board: board,
-                                   fromLocation: locations.fromLocation,
-                                   toLocation: locations.toLocation)
+                                   from: locations.fromLocation,
+                                   to: locations.toLocation)
             moves.append(move)
             
-            board.movePiece(fromLocation: locations.fromLocation,
-                            toLocation: locations.toLocation)
+            board.movePiece(from: locations.fromLocation, to: locations.toLocation)
             
             //move.board.printBoardPieces()
             
@@ -62,7 +67,7 @@ class Opening {
         }
     }
 /*
-    public func moveLocations(forColor color: Color) -> [(fromLocation: BoardLocation, toLocation: BoardLocation)] {
+    public func moveLocations(for color: Color) -> [(from fromLocation: BoardLocation, to toLocation: BoardLocation)] {
         
         return moveLocations().enumerated().flatMap{ (index, value) in
             index % 2 == (color == .white ? 0 : 1) ? value : nil

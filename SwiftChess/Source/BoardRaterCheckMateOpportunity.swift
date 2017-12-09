@@ -16,7 +16,7 @@ import Foundation
 
 class BoardRaterCheckMateOpportunity: BoardRater {
     
-    override func ratingfor(board: Board, color: Color) -> Double {
+    override func ratingFor(board: Board, color: Color) -> Double {
         
         let value = Double(1)
         var rating = Double(0)
@@ -31,14 +31,14 @@ class BoardRaterCheckMateOpportunity: BoardRater {
                 
                 let sourceLocation = BoardLocation(index: index)
                 
-                if piece.movement.canPieceMove(fromLocation: sourceLocation, toLocation: location, board: board) {
+                if piece.movement.canPieceMove(from: sourceLocation, to: location, board: board) {
                     
                     var movedBoard = board
-                    movedBoard.movePiece(fromLocation: sourceLocation, toLocation: location)
+                    movedBoard.movePiece(from: sourceLocation, to: location)
                     
-                    if piece.color == color && movedBoard.isColorInCheckMate(color: color.opposite()) {
+                    if piece.color == color && movedBoard.isColorInCheckMate(color: color.opposite) {
                         rating += value
-                    } else if piece.color == color.opposite() && movedBoard.isColorInCheckMate(color: color) {
+                    } else if piece.color == color.opposite && movedBoard.isColorInCheckMate(color: color) {
                         rating -= value
                     }
                 }

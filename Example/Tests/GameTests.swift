@@ -64,8 +64,8 @@ class GameTests: XCTestCase {
         
         // White player moves pawn
         do {
-            try whitePlayer.movePiece(fromLocation: BoardLocation(x: 0, y: 1),
-                                      toLocation: BoardLocation(x: 0, y: 2))
+            try whitePlayer.movePiece(from: BoardLocation(x: 0, y: 1),
+                                      to: BoardLocation(x: 0, y: 2))
         } catch {
             XCTFail("Expected to be able to move piece")
             return
@@ -73,8 +73,8 @@ class GameTests: XCTestCase {
         
         // Black player moves pawn
         do {
-            try blackPlayer.movePiece(fromLocation: BoardLocation(x: 7, y: 6),
-                                      toLocation: BoardLocation(x: 7, y: 5))
+            try blackPlayer.movePiece(from: BoardLocation(x: 7, y: 6),
+                                      to: BoardLocation(x: 7, y: 5))
         } catch {
             XCTFail("Expected to be able to move piece")
             return

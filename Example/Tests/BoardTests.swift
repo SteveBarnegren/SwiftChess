@@ -149,7 +149,7 @@ class BoardTests: XCTestCase {
         let location = BoardLocation(index: 10)
         board.setPiece(Piece(type: .pawn, color: .white),
                              at: location)
-        board.removePiece(atLocation: location)
+        board.removePiece(at: location)
         
         XCTAssertNil(board.getPiece(at: location))
     }
@@ -164,7 +164,7 @@ class BoardTests: XCTestCase {
         let endLocation = BoardLocation(index: 20)
         
         board.setPiece(piece, at: startLocation)
-        board.movePiece(fromLocation: startLocation, toLocation: endLocation)
+        board.movePiece(from: startLocation, to: endLocation)
         
         guard let returnedPiece = board.getPiece(at: endLocation) else {
             XCTFail("Expected piece to exist at location")
@@ -204,7 +204,7 @@ class BoardTests: XCTestCase {
         
         var gameBoard = board.board
         
-        gameBoard.movePiece(fromLocation: fromLocation, toLocation: toLocation)
+        gameBoard.movePiece(from: fromLocation, to: toLocation)
         
         guard let piece = gameBoard.getPiece(at: toLocation) else {
             XCTFail("Couldn't find piece at new position")
@@ -297,10 +297,10 @@ class BoardTests: XCTestCase {
             board.setPiece(Piece(type: .pawn, color: .black), at: $0)
         }
         
-        let returnedWhitelocations = board.getLocationsOfColor(.white)
+        let returnedWhitelocations = board.getLocations(of: .white)
         XCTAssertEqual(whiteLocations.count, returnedWhitelocations.count)
         
-        let returnedBlacklocations = board.getLocationsOfColor(.black)
+        let returnedBlacklocations = board.getLocations(of: .black)
         XCTAssertEqual(blackLocations.count, returnedBlacklocations.count)
         
         whiteLocations.forEach { (location) in
@@ -673,8 +673,8 @@ class BoardTests: XCTestCase {
         var gameBoard = board.board
         
         // move then back
-        gameBoard.movePiece(fromLocation: startLocation, toLocation: newLocation)
-        gameBoard.movePiece(fromLocation: newLocation, toLocation: startLocation)
+        gameBoard.movePiece(from: startLocation, to: newLocation)
+        gameBoard.movePiece(from: newLocation, to: startLocation)
         
         XCTAssertFalse(gameBoard.canColorCastle(color: .white, side: .kingSide))
     }
@@ -695,8 +695,8 @@ class BoardTests: XCTestCase {
         var gameBoard = board.board
         
         // move then back
-        gameBoard.movePiece(fromLocation: startLocation, toLocation: newLocation)
-        gameBoard.movePiece(fromLocation: newLocation, toLocation: startLocation)
+        gameBoard.movePiece(from: startLocation, to: newLocation)
+        gameBoard.movePiece(from: newLocation, to: startLocation)
         
         XCTAssertFalse(gameBoard.canColorCastle(color: .white, side: .kingSide))
     }
@@ -1053,8 +1053,8 @@ class BoardTests: XCTestCase {
         let sourceLocation = BoardLocation(x: 0, y: 1)
         let targetLocation = BoardLocation(x: 0, y: 3)
         
-        board1.movePiece(fromLocation: sourceLocation, toLocation: targetLocation)
-        board2.movePiece(fromLocation: sourceLocation, toLocation: targetLocation)
+        board1.movePiece(from: sourceLocation, to: targetLocation)
+        board2.movePiece(from: sourceLocation, to: targetLocation)
         
         XCTAssertEqual(board1, board2)
     }
@@ -1062,8 +1062,8 @@ class BoardTests: XCTestCase {
     func testNonEqualBoardsAreNotEqual() {
         
         var board1 = Board(state: .newGame)
-        board1.movePiece(fromLocation: BoardLocation(x: 0, y: 1),
-                         toLocation: BoardLocation(x: 0, y: 3))
+        board1.movePiece(from: BoardLocation(x: 0, y: 1),
+                         to: BoardLocation(x: 0, y: 3))
         
         let board2 = Board(state: .newGame)
         
@@ -1089,11 +1089,11 @@ class BoardTests: XCTestCase {
     func testPieceLocationsAreCorrectAfterMoves() {
         
         var board = Board(state: .newGame)
-        board.movePiece(fromLocation: BoardLocation(gridPosition: .e2),
-                        toLocation: BoardLocation(gridPosition: .e4))
+        board.movePiece(from: BoardLocation(gridPosition: .e2),
+                        to: BoardLocation(gridPosition: .e4))
         
-        board.movePiece(fromLocation: BoardLocation(gridPosition: .d7),
-                        toLocation: BoardLocation(gridPosition: .d5))
+        board.movePiece(from: BoardLocation(gridPosition: .d7),
+                        to: BoardLocation(gridPosition: .d5))
 
         for location in BoardLocation.all {
             

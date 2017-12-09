@@ -29,12 +29,10 @@ public func == (lhs: Square, rhs: Square) -> Bool {
     switch (lhs.piece, rhs.piece) {
     case (.none, .none):
         return true
-    case (.some, .none):
-        return false
-    case (.none, .some):
-        return false
     case (.some(let rp), .some(let lp)):
         return rp == lp
+    default:
+        return false
     }
 }
 
@@ -66,38 +64,26 @@ public struct Board: Equatable {
     
     mutating func setupForNewGame() {
         
-        func setPieceAtIndex(_ piece: Piece, _ index: Int) {
-            setPiece(piece, at: BoardLocation(index: index))
-        }
-        
+        let pieces: [Piece.PieceType] = [.rook, .knight, .bishop, .queen, .king, .bishop, .knight, .rook]
+
         // Setup white bottom row
-        setPieceAtIndex(Piece(type: .rook, color: .white), 0)
-        setPieceAtIndex(Piece(type: .knight, color: .white), 1)
-        setPieceAtIndex(Piece(type: .bishop, color: .white), 2)
-        setPieceAtIndex(Piece(type: .queen, color: .white), 3)
-        setPieceAtIndex(Piece(type: .king, color: .white), 4)
-        setPieceAtIndex(Piece(type: .bishop, color: .white), 5)
-        setPieceAtIndex(Piece(type: .knight, color: .white), 6)
-        setPieceAtIndex(Piece(type: .rook, color: .white), 7)
+        for i in 0...7 {
+            setPiece(Piece(type: pieces[i], color: .white), at: BoardLocation(index: i))
+        }
 
         // Setup white pawn row
         for i in 8...15 {
-            setPieceAtIndex(Piece(type: .pawn, color: .white), i)
+            setPiece(Piece(type: .pawn, color: .white), at: BoardLocation(index: i))
         }
         
         // Setup black bottom row
-        setPieceAtIndex(Piece(type: .rook, color: .black), 63)
-        setPieceAtIndex(Piece(type: .knight, color: .black), 62)
-        setPieceAtIndex(Piece(type: .bishop, color: .black), 61)
-        setPieceAtIndex(Piece(type: .king, color: .black), 60)
-        setPieceAtIndex(Piece(type: .queen, color: .black), 59)
-        setPieceAtIndex(Piece(type: .bishop, color: .black), 58)
-        setPieceAtIndex(Piece(type: .knight, color: .black), 57)
-        setPieceAtIndex(Piece(type: .rook, color: .black), 56)
+        for i in 56...63 {
+            setPiece(Piece(type: pieces[i-56], color: .black), at: BoardLocation(index: i))
+        }
         
         // Setup black pawn row
         for i in 48...55 {
-            setPieceAtIndex(Piece(type: .pawn, color: .black), i)
+            setPiece(Piece(type: .pawn, color: .black), at: BoardLocation(index: i))
         }
     }
     
@@ -112,12 +98,12 @@ public struct Board: Equatable {
         return squares[location.index].piece
     }
     
-    public mutating func removePiece(atLocation location: BoardLocation) {
+    public mutating func removePiece(at location: BoardLocation) {
         squares[location.index].piece = nil
     }
     
-    @discardableResult internal mutating func movePiece(fromLocation: BoardLocation,
-                                                        toLocation: BoardLocation) -> [BoardOperation] {
+    @discardableResult internal mutating func movePiece(from fromLocation: BoardLocation,
+                                                        to toLocation: BoardLocation) -> [BoardOperation] {
         
         if toLocation == fromLocation {
             return []
@@ -147,13 +133,13 @@ public struct Board: Equatable {
         
             let stride = fromLocation.strideTo(location: toLocation)
             let enPassentStride = BoardStride(x: stride.x, y: 0)
-            let enPassentLocation = fromLocation.incrementedBy(stride: enPassentStride)
+            let enPassentLocation = fromLocation.incremented(by: enPassentStride)
             
             guard let enPassentPiece = getPiece(at: enPassentLocation) else {
                 break IF_EN_PASSANT
             }
             
-            if enPassentPiece.canBeTakenByEnPassant && enPassentPiece.color == movingPiece.color.opposite() {
+            if enPassentPiece.canBeTakenByEnPassant && enPassentPiece.color == movingPiece.color.opposite {
                 squares[enPassentLocation.index].piece = nil
                 let operation = BoardOperation(type: .removePiece, piece: enPassentPiece, location: enPassentLocation)
                 operations.append(operation)
@@ -223,7 +209,7 @@ public struct Board: Equatable {
         fatalError("Couldn't find \(color) king. Kings should always exist")
     }
     
-    public func getLocationsOfColor(_ color: Color) -> [BoardLocation] {
+    public func getLocations(of color: Color) -> [BoardLocation] {
         
         var locations = [BoardLocation]()
         
@@ -306,7 +292,7 @@ public struct Board: Equatable {
         }
         
         // Work out if we're in check
-        let oppositionLocations = getLocationsOfColor( color.opposite() )
+        let oppositionLocations = getLocations(of: color.opposite)
         
         // Pieces will not move to take the king, so change it for a pawn of the same color
         var noKingBoard = self
@@ -318,7 +304,7 @@ public struct Board: Equatable {
                 continue
             }
             
-            if piece.movement.canPieceMove(fromLocation: location, toLocation: kingLocation!, board: noKingBoard) {
+            if piece.movement.canPieceMove(from: location, to: kingLocation!, board: noKingBoard) {
                 return true
             }
         }
@@ -332,7 +318,7 @@ public struct Board: Equatable {
             return false
         }
         
-        for pieceLocation in getLocationsOfColor( color ) {
+        for pieceLocation in getLocations(of: color) {
             
             guard let piece = getPiece(at: pieceLocation) else {
                 continue
@@ -340,13 +326,11 @@ public struct Board: Equatable {
             
             for targetLocation in BoardLocation.all {
                 
-                let canMove = piece.movement.canPieceMove(fromLocation: pieceLocation,
-                                                          toLocation: targetLocation,
-                                                          board: self)
+                let canMove = piece.movement.canPieceMove(from: pieceLocation, to: targetLocation, board: self)
                 
                 if canMove {
                     var resultBoard = self
-                    resultBoard.movePiece(fromLocation: pieceLocation, toLocation: targetLocation)
+                    resultBoard.movePiece(from: pieceLocation, to: targetLocation)
                     if resultBoard.isColorInCheck(color: color) == false {
                         return false
                     }
@@ -368,7 +352,7 @@ public struct Board: Equatable {
     
     func isColorAbleToMove(color: Color) -> Bool {
         
-        for pieceLocation in getLocationsOfColor(color) {
+        for pieceLocation in getLocations(of: color) {
             
             guard let piece = getPiece(at: pieceLocation) else {
                 continue
@@ -376,16 +360,14 @@ public struct Board: Equatable {
             
             for targetLocation in BoardLocation.all {
                 
-                let canMove = piece.movement.canPieceMove(fromLocation: pieceLocation,
-                                                          toLocation: targetLocation,
-                                                          board: self)
+                let canMove = piece.movement.canPieceMove(from: pieceLocation, to: targetLocation, board: self)
 
                 guard canMove == true else {
                     continue
                 }
                 
                 var resultBoard = self
-                resultBoard.movePiece(fromLocation: pieceLocation, toLocation: targetLocation)
+                resultBoard.movePiece(from: pieceLocation, to: targetLocation)
                 if resultBoard.isColorInCheck(color: color) == false {
                     return true
                 }
@@ -409,8 +391,7 @@ public struct Board: Equatable {
                 continue
             }
             
-            if piece.movement.canPieceMove(fromLocation: BoardLocation(index: index),
-                                           toLocation: location, board: self) {
+            if piece.movement.canPieceMove(from: BoardLocation(index: index), to: location, board: self) {
                 return true
             }
         }
@@ -436,7 +417,7 @@ public struct Board: Equatable {
         var locations = [BoardLocation]()
         
         BoardLocation.all.forEach {
-            if piece.movement.canPieceMove(fromLocation: location, toLocation: $0, board: self) {
+            if piece.movement.canPieceMove(from: location, to: $0, board: self) {
                 locations.append($0)
             }
         }
@@ -561,7 +542,7 @@ public struct Board: Equatable {
             
             var newBoard = self
             let newLocation = BoardLocation(x: xPos, y: castleMove.yPos)
-            newBoard.movePiece(fromLocation: castleMove.kingStartLocation, toLocation: newLocation)
+            newBoard.movePiece(from: castleMove.kingStartLocation, to: newLocation)
             if newBoard.isColorInCheck(color: color) {
                 return false
             }
@@ -577,10 +558,10 @@ public struct Board: Equatable {
         
         let castleMove = CastleMove(color: color, side: side)
     
-        let moveKingOperations = self.movePiece(fromLocation: castleMove.kingStartLocation,
-                                                toLocation: castleMove.kingEndLocation)
-        let moveRookOperations = self.movePiece(fromLocation: castleMove.rookStartLocation,
-                                                toLocation: castleMove.rookEndLocation)
+        let moveKingOperations = self.movePiece(from: castleMove.kingStartLocation,
+                                                to: castleMove.kingEndLocation)
+        let moveRookOperations = self.movePiece(from: castleMove.rookStartLocation,
+                                                to: castleMove.rookEndLocation)
         
         return moveKingOperations + moveRookOperations
     }

@@ -37,11 +37,11 @@ open class Game {
     }
 
     // MARK: Properties
-    open var board = Board(state: .newGame)
-    open var whitePlayer: Player!
-    open var blackPlayer: Player!
-    open var currentPlayer: Player!
-    open var state = Game.State.inProgress
+    open internal(set) var board: Board
+    open let whitePlayer: Player!
+    open let blackPlayer: Player!
+    open internal(set) var currentPlayer: Player!
+    open internal(set) var state = Game.State.inProgress
     open weak var delegate: GameDelegate?
     
     public var gameType: GameType {
@@ -99,15 +99,15 @@ extension Game: PlayerDelegate {
         processBoardOperations(boardOperations: boardOperations)
         
         // Check for game ended
-        if board.isColorInCheckMate(color: currentPlayer.color.opposite()) {
+        if board.isColorInCheckMate(color: currentPlayer.color.opposite) {
             state = .won(color: currentPlayer.color)
             delegate?.gameWonByPlayer(game: self, player: currentPlayer)
             return
         }
         
         // Check for stalemate
-        if board.isColorInStalemate(color: currentPlayer.color.opposite()) {
-            state = .staleMate(color: currentPlayer.color.opposite())
+        if board.isColorInStalemate(color: currentPlayer.color.opposite) {
+            state = .staleMate(color: currentPlayer.color.opposite)
             delegate?.gameEndedInStaleMate(game: self)
             return
         }

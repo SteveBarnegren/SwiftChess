@@ -12,7 +12,7 @@ import Foundation
 open class AIPlayer: Player {
     
     let boardRaters: [BoardRater]!
-    public var configuration: AIConfiguration!
+    public let configuration: AIConfiguration!
     var openingMoves = [OpeningMove]()
     
     public init(color: Color, configuration: AIConfiguration) {
@@ -31,7 +31,7 @@ open class AIPlayer: Player {
             BoardRaterCenterFourOccupation(configuration: configuration)
         ]
         
-        openingMoves = Opening.allOpeningMoves(forColor: color)
+        openingMoves = Opening.allOpeningMoves(for: color)
         
         super.init()
         self.color = color
@@ -58,13 +58,13 @@ open class AIPlayer: Player {
         var move: Move!
         
         // Get an opening move
-        if let openingMove = openingMoveForBoard(board) {
+        if let openingMove = openingMove(for: board) {
             //print("Playing opening move")
             move = openingMove
         }
         // Or, get the Highest rated move
         else {
-            move = highestRatedMoveOnBoard(board)
+            move = highestRatedMove(on: board)
         }
         
         // Make move
@@ -72,7 +72,7 @@ open class AIPlayer: Player {
         
         switch move.type {
         case .singlePiece(let sourceLocation, let targetLocation):
-            operations = game.board.movePiece(fromLocation: sourceLocation, toLocation: targetLocation)
+            operations = game.board.movePiece(from: sourceLocation, to: targetLocation)
         case .castle(let color, let side):
             operations = game.board.performCastle(color: color, side: side)
         }
@@ -81,7 +81,7 @@ open class AIPlayer: Player {
         let pawnsToPromoteLocations = game.board.getLocationsOfPromotablePawns(color: color)
         assert(pawnsToPromoteLocations.count < 2, "There should only ever be one pawn to promote at any time")
         if pawnsToPromoteLocations.count > 0 {
-            game.board = promotePawnsOnBoard(game.board)
+            game.board = promotePawns(on: game.board)
             
             let location = pawnsToPromoteLocations.first!
             let transformOperation = BoardOperation(type: .transformPiece,
@@ -96,7 +96,7 @@ open class AIPlayer: Player {
         }
     }
     
-    func openingMoveForBoard(_ board: Board) -> Move? {
+    func openingMove(for board: Board) -> Move? {
         
         let possibleMoves = openingMoves.filter {
             $0.board == board
@@ -109,12 +109,12 @@ open class AIPlayer: Player {
         let index = Int(arc4random_uniform(UInt32(possibleMoves.count)))
         let openingMove = possibleMoves[index]
         
-        return Move(type: .singlePiece(sourceLocation: openingMove.fromLocation,
-                                       targetLocation: openingMove.toLocation),
+        return Move(type: .singlePiece(from: openingMove.fromLocation,
+                                       to: openingMove.toLocation),
                                        rating: 0)
     }
     
-    func highestRatedMoveOnBoard(_ board: Board) -> Move {
+    func highestRatedMove(on board: Board) -> Move {
         
         var possibleMoves = [Move]()
         
@@ -130,30 +130,30 @@ open class AIPlayer: Player {
             
             for targetLocation in BoardLocation.all {
                 
-                guard canAIMovePiece(fromLocation: sourceLocation, toLocation: targetLocation) else {
+                guard canAIMovePiece(from: sourceLocation, to: targetLocation) else {
                     continue
                 }
                 
                 // Make move
                 var resultBoard = board
-                resultBoard.movePiece(fromLocation: sourceLocation, toLocation: targetLocation)
+                resultBoard.movePiece(from: sourceLocation, to: targetLocation)
                 
                 // Promote pawns
                 let pawnsToPromoteLocations = resultBoard.getLocationsOfPromotablePawns(color: color)
                 assert(pawnsToPromoteLocations.count < 2, "There should only ever be one pawn to promote at any time")
                 if pawnsToPromoteLocations.count > 0 {
-                    resultBoard = promotePawnsOnBoard(resultBoard)
+                    resultBoard = promotePawns(on: resultBoard)
                 }
                 
                 // Rate
                 var rating = ratingForBoard(resultBoard)
                 
                 // reduce rating if suicide
-                if resultBoard.canColorMoveAnyPieceToLocation(color: color.opposite(), location: targetLocation) {
+                if resultBoard.canColorMoveAnyPieceToLocation(color: color.opposite, location: targetLocation) {
                     rating -= (abs(rating) * configuration.suicideMultipler.value)
                 }
                 
-                let move = Move(type: .singlePiece(sourceLocation: sourceLocation, targetLocation: targetLocation),
+                let move = Move(type: .singlePiece(from: sourceLocation, to: targetLocation),
                                 rating: rating)
                 possibleMoves.append(move)
                // print("Rating: \(rating)")
@@ -202,16 +202,15 @@ open class AIPlayer: Player {
         return highestRatedMove
     }
     
-    func canAIMovePiece(fromLocation: BoardLocation, toLocation: BoardLocation) -> Bool {
+    func canAIMovePiece(from fromLocation: BoardLocation, to toLocation: BoardLocation) -> Bool {
         
         // This is a stricter version of the canMove function, used by the AI, that returns false for errors
         
-        let canMove = canMovePieceWithError(fromLocation: fromLocation, toLocation: toLocation)
-        if canMove.error != nil {
+        do {
+            return try canMovePiece(from: fromLocation, to: toLocation)
+        } catch {
             return false
         }
-        
-        return canMove.result
     }
 
     func ratingForBoard(_ board: Board) -> Double {
@@ -220,7 +219,7 @@ open class AIPlayer: Player {
         
         for boardRater in boardRaters {
             
-            let result = boardRater.ratingfor(board: board, color: color)
+            let result = boardRater.ratingFor(board: board, color: color)
             
             //let className = "\(boardRater)"
             //print("\t\(className): \(result)")
@@ -228,14 +227,14 @@ open class AIPlayer: Player {
         }
         
         // If opponent is in check mate, set the maximum rating
-        if board.isColorInCheckMate(color: color.opposite()) {
+        if board.isColorInCheckMate(color: color.opposite) {
             rating = Double.greatestFiniteMagnitude
         }
         
         return rating
     }
     
-    func promotePawnsOnBoard(_ board: Board) -> Board {
+    func promotePawns(on board: Board) -> Board {
         
         let pawnsToPromoteLocations = board.getLocationsOfPromotablePawns(color: color)
 
@@ -282,7 +281,7 @@ open class AIPlayer: Player {
 struct Move {
     
     enum MoveType {
-        case singlePiece(sourceLocation: BoardLocation, targetLocation: BoardLocation)
+        case singlePiece(from: BoardLocation, to: BoardLocation)
         case castle(color: Color, side: CastleSide)
     }
     
@@ -300,7 +299,7 @@ internal class BoardRater {
         self.configuration = configuration
     }
 
-    func ratingfor(board: Board, color: Color) -> Double {
+    func ratingFor(board: Board, color: Color) -> Double {
         fatalError("Override ratingFor method in subclasses")
     }
 }

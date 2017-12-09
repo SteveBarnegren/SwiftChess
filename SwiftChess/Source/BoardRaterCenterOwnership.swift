@@ -14,7 +14,7 @@ Rates the board according to which player's pieces are occupying the center of t
 
 class BoardRaterCenterOwnership: BoardRater {
     
-    override func ratingfor(board: Board, color: Color) -> Double {
+    override func ratingFor(board: Board, color: Color) -> Double {
         
         var rating = Double(0)
     

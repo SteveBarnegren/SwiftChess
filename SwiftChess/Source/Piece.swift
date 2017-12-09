@@ -8,20 +8,20 @@
 
 import Foundation
 
-public enum Color: Int {
-    case white
-    case black
+public enum Color: String {
+    case white = "White"
+    case black = "Black"
     
-    public func opposite() -> Color {
+    public var opposite: Color {
         return (self == .white) ? .black : .white
     }
     
-    public func toString() -> String {
-        return (self == .white) ? "white" : "black"
+    public var string: String {
+        return rawValue.lowercased()
     }
     
-    public func toStringWithCapital() -> String {
-        return (self == .white) ? "White" : "Black"
+    public var stringWithCapital: String {
+        return rawValue
     }
 }
 
@@ -37,6 +37,17 @@ public struct Piece: Equatable {
         case queen
         case king
         
+        var value: Double {
+            switch self {
+            case .pawn: return 1
+            case .rook: return 5
+            case .knight: return 3
+            case .bishop: return 3
+            case .queen: return 9
+            case .king: return 0 // King is always treated as a unique case
+            }
+        }
+        
         static func possiblePawnPromotionResultingTypes() -> [PieceType] {
             return [.queen, .knight, .rook, .bishop]
         }
@@ -44,13 +55,21 @@ public struct Piece: Equatable {
     
     public let type: PieceType
     public let color: Color
-    public var tag: Int!
-    public var hasMoved = false
-    public var canBeTakenByEnPassant = false
+    public internal(set) var tag: Int!
+    public internal(set) var hasMoved = false
+    public internal(set) var canBeTakenByEnPassant = false
     public internal(set) var location = BoardLocation(index: 0)
     
     var movement: PieceMovement! {
-        return PieceMovement.pieceMovementForPieceType(pieceType: self.type)
+        return PieceMovement.pieceMovement(for: self.type)
+    }
+    
+    var withOppositeColor: Piece {
+        return Piece(type: type, color: color.opposite)
+    }
+    
+    var value: Double {
+        return type.value
     }
 
     public init(type: PieceType, color: Color) {
@@ -67,27 +86,11 @@ public struct Piece: Equatable {
         self.color = color
         self.tag = tag
     }
-
-    func value() -> Double {
-        
-        switch type {
-        case .pawn: return 1
-        case .rook: return 5
-        case .knight: return 3
-        case .bishop: return 3
-        case .queen: return 9
-        case .king: return 0 // King is always treated as a unique case
-        }
-    }
     
     func byChangingType(newType: PieceType) -> Piece {
         
         let piece = Piece(type: newType, color: color, tag: tag)
         return piece
-    }
-    
-    func withOppositeColor() -> Piece {
-        return Piece(type: type, color: color.opposite())
     }
 }
 

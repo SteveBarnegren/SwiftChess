@@ -209,8 +209,8 @@ class BoardRaterKingSurroundingPossessionTests: XCTestCase {
                                                  "- - - - - - - -" +
                                                  "- - - - G - - -" )
         
-        let lowRating = boardRater.ratingfor(board: lowRatingBoard.board, color: .white)
-        let highRating = boardRater.ratingfor(board: highRatingBoard.board, color: .white)
+        let lowRating = boardRater.ratingFor(board: lowRatingBoard.board, color: .white)
+        let highRating = boardRater.ratingFor(board: highRatingBoard.board, color: .white)
         
         XCTAssertGreaterThan(highRating, lowRating)
     }
@@ -235,8 +235,8 @@ class BoardRaterKingSurroundingPossessionTests: XCTestCase {
                                                  "R - - - - - - -" +
                                                  "- - - - G - - -" )
         
-        let lowRating = boardRater.ratingfor(board: lowRatingBoard.board, color: .white)
-        let highRating = boardRater.ratingfor(board: highRatingBoard.board, color: .white)
+        let lowRating = boardRater.ratingFor(board: lowRatingBoard.board, color: .white)
+        let highRating = boardRater.ratingFor(board: highRatingBoard.board, color: .white)
         
         XCTAssertGreaterThan(highRating, lowRating)
     }
@@ -261,8 +261,8 @@ class BoardRaterKingSurroundingPossessionTests: XCTestCase {
                                                  "- - - - - - - -" +
                                                  "- - - - G - - -" )
         
-        let lowRating = boardRater.ratingfor(board: lowRatingBoard.board, color: .white)
-        let highRating = boardRater.ratingfor(board: highRatingBoard.board, color: .white)
+        let lowRating = boardRater.ratingFor(board: lowRatingBoard.board, color: .white)
+        let highRating = boardRater.ratingFor(board: highRatingBoard.board, color: .white)
         
         XCTAssertGreaterThan(highRating, lowRating)
     }
@@ -287,8 +287,8 @@ class BoardRaterKingSurroundingPossessionTests: XCTestCase {
                                                  "- - - - - - - -" +
                                                  "- - - - G - - -" )
         
-        let lowRating = boardRater.ratingfor(board: lowRatingBoard.board, color: .white)
-        let highRating = boardRater.ratingfor(board: highRatingBoard.board, color: .white)
+        let lowRating = boardRater.ratingFor(board: lowRatingBoard.board, color: .white)
+        let highRating = boardRater.ratingFor(board: highRatingBoard.board, color: .white)
         
         XCTAssertGreaterThan(highRating, lowRating)
     }
@@ -313,8 +313,8 @@ class BoardRaterKingSurroundingPossessionTests: XCTestCase {
                                                "r - - - P - - Q" +
                                                "- K - - g - k -" )
         
-        let rating = boardRater.ratingfor(board: board.board, color: .white)
-        let invertedRating = boardRater.ratingfor(board: invertedBoard.board, color: .black)
+        let rating = boardRater.ratingFor(board: board.board, color: .white)
+        let invertedRating = boardRater.ratingFor(board: invertedBoard.board, color: .black)
         
         XCTAssertEqual(rating, invertedRating, accuracy: 0.01)
     }
@@ -330,7 +330,7 @@ class BoardRaterKingSurroundingPossessionTests: XCTestCase {
                                        "- - - P P P - -" +
                                        "- - - P G P - -" )
 
-        let rating = boardRater.ratingfor(board: board.board, color: .white)
+        let rating = boardRater.ratingFor(board: board.board, color: .white)
         XCTAssertGreaterThan(rating, 0)
     }
     
@@ -345,7 +345,7 @@ class BoardRaterKingSurroundingPossessionTests: XCTestCase {
                                        "- - - - - - - -" +
                                        "- - - - G - - -" )
         
-        let rating = boardRater.ratingfor(board: board.board, color: .black)
+        let rating = boardRater.ratingFor(board: board.board, color: .black)
         XCTAssertGreaterThan(rating, 0)
     }
     
@@ -369,8 +369,8 @@ class BoardRaterKingSurroundingPossessionTests: XCTestCase {
                                                      "- - - - - - - -" +
                                                      "- - - - G - - -" )
         
-        let openKingRating = boardRater.ratingfor(board: openKingBoard.board, color: .white)
-        let surroundedKingRating = boardRater.ratingfor(board: surroundedKingBoard.board, color: .white)
+        let openKingRating = boardRater.ratingFor(board: openKingBoard.board, color: .white)
+        let surroundedKingRating = boardRater.ratingFor(board: surroundedKingBoard.board, color: .white)
 
         XCTAssertLessThan(surroundedKingRating, openKingRating)
     }
@@ -395,8 +395,8 @@ class BoardRaterKingSurroundingPossessionTests: XCTestCase {
                                                      "- - - P P P - -" +
                                                      "- - - P G P - -" )
 
-        let openKingRating = boardRater.ratingfor(board: openKingBoard.board, color: .black)
-        let surroundedKingRating = boardRater.ratingfor(board: surroundedKingBoard.board, color: .black)
+        let openKingRating = boardRater.ratingFor(board: openKingBoard.board, color: .black)
+        let surroundedKingRating = boardRater.ratingFor(board: surroundedKingBoard.board, color: .black)
         XCTAssertLessThan(surroundedKingRating, openKingRating)
     }
 

@@ -18,7 +18,7 @@ open class Player {
     weak var game: Game!
     weak var delegate: PlayerDelegate?
     
-    public func occupiesSquareAt(location: BoardLocation) -> Bool {
+    public func occupiesSquare(at location: BoardLocation) -> Bool {
         
         if let piece = self.game.board.getPiece(at: location) {
             if piece.color == self.color {
@@ -29,11 +29,7 @@ open class Player {
         return false
     }
     
-    public func canMovePiece(fromLocation: BoardLocation, toLocation: BoardLocation) -> Bool {
-        return canMovePieceWithError(fromLocation: fromLocation, toLocation: toLocation).result
-    }
-    
-    public enum MoveError: Error {
+    public enum MoveError: Int, Error, Equatable {
         case notThisPlayersTurn
         case movingToSameLocation
         case noPieceToMove
@@ -42,46 +38,49 @@ open class Player {
         case playerMustMoveOutOfCheck
         case cannotMoveInToCheck
         case gameIsNotInProgress
+        
+        public static func == (lhs: MoveError, rhs: MoveError) -> Bool {
+            return lhs.rawValue == rhs.rawValue
+        }
     }
 
-    public func canMovePieceWithError(fromLocation: BoardLocation, toLocation: BoardLocation) ->
-        (result: Bool, error: MoveError?) {
+    func canMovePiece(from fromLocation: BoardLocation, to toLocation: BoardLocation) throws -> Bool {
         
         // We can't move to our current location
         if fromLocation == toLocation {
-            return (false, .movingToSameLocation)
+            throw MoveError.movingToSameLocation
         }
         
         // Get the piece
         guard let piece = self.game.board.getPiece(at: fromLocation) else {
-            return (false, .noPieceToMove)
+            throw MoveError.noPieceToMove
         }
         
         // Check that the piece color matches the player color
         if piece.color != self.color {
-            return (false, .pieceColorDoesNotMatchPlayerColor)
+            throw MoveError.pieceColorDoesNotMatchPlayerColor
         }
         
         // Make sure the piece can move to the location
-        if !piece.movement.canPieceMove(fromLocation: fromLocation, toLocation: toLocation, board: game.board) {
-            return (false, .pieceUnableToMoveToLocation)
+        if !piece.movement.canPieceMove(from: fromLocation, to: toLocation, board: game.board) {
+            throw MoveError.pieceUnableToMoveToLocation
         }
         
         // Move the piece
         let inCheckBeforeMove = self.game.board.isColorInCheck(color: self.color)
         var board = self.game.board
-        board.movePiece(fromLocation: fromLocation, toLocation: toLocation)
+        board.movePiece(from: fromLocation, to: toLocation)
         let inCheckAfterMove = board.isColorInCheck(color: self.color)
         
         // Return
         if inCheckBeforeMove && inCheckAfterMove {
-            return (false, .playerMustMoveOutOfCheck)
+            throw MoveError.playerMustMoveOutOfCheck
         }
         
         if !inCheckBeforeMove && inCheckAfterMove {
-            return (false, .cannotMoveInToCheck)
+            throw MoveError.cannotMoveInToCheck
         }
         
-        return (true, nil)
+        return true
     }
 }

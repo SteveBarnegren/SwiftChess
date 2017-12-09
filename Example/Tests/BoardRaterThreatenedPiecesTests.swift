@@ -38,7 +38,7 @@ class BoardRaterThreatenedPiecesTests: XCTestCase {
                                        "- - - - - - - -" +
                                        "- - - - - - - -" )
         
-        let rating = boardRater.ratingfor(board: board.board, color: .white)
+        let rating = boardRater.ratingFor(board: board.board, color: .white)
 
         XCTAssertEqual(rating, 0, accuracy: 0.01)
     }
@@ -54,7 +54,7 @@ class BoardRaterThreatenedPiecesTests: XCTestCase {
                                        "- - - - - - - -" +
                                        "- - - - - - - -" )
         
-        let rating = boardRater.ratingfor(board: board.board, color: .white)
+        let rating = boardRater.ratingFor(board: board.board, color: .white)
         
         XCTAssertLessThan(rating, 0)        
     }
@@ -70,7 +70,7 @@ class BoardRaterThreatenedPiecesTests: XCTestCase {
                                        "- - - - - - - -" +
                                        "- - - - - - - -" )
         
-        let rating = boardRater.ratingfor(board: board.board, color: .white)
+        let rating = boardRater.ratingFor(board: board.board, color: .white)
         
         XCTAssertGreaterThan(rating, 0)
     }
@@ -97,7 +97,7 @@ class BoardRaterThreatenedPiecesTests: XCTestCase {
         let queenLocation = BoardLocation(index: board.indexOfCharacter("Q"))
         let gameBoard = board.board
         let protectingLocations = boardRater.getPieces(protecting: gameBoard.getPiece(at: queenLocation)!,
-                                                       onBoard: board.board).map { $0.location }
+                                                       on: board.board).map { $0.location }
         
         // Check all of the expected locations appeared in the protecting locations array
         for expectedIndex in expectedIndexes {
@@ -141,7 +141,7 @@ class BoardRaterThreatenedPiecesTests: XCTestCase {
         let gameBoard = board.board
         
         let protectingPieces = boardRater.getPieces(protecting: gameBoard.getPiece(at: queenLocation)!,
-                                                    onBoard: gameBoard)
+                                                    on: gameBoard)
         
         // None of the pieces are protecting the queen, so expect count to be zero
         XCTAssertTrue(protectingPieces.count == 0)
@@ -162,7 +162,7 @@ class BoardRaterThreatenedPiecesTests: XCTestCase {
         let gameBoard = board.board
         
         let protectingPieces = boardRater.getPieces(protecting: gameBoard.getPiece(at: queenLocation)!,
-                                                    onBoard: gameBoard)
+                                                    on: gameBoard)
         
         // The black pieces cannot protect the white queen, so expect count to be zero
         XCTAssertTrue(protectingPieces.count == 0)
@@ -183,7 +183,7 @@ class BoardRaterThreatenedPiecesTests: XCTestCase {
         let gameBoard = board.board
         
         let protectingPieces = boardRater.getPieces(protecting: gameBoard.getPiece(at: queenLocation)!,
-                                                    onBoard: gameBoard)
+                                                    on: gameBoard)
         
         XCTAssertTrue(protectingPieces.count == 0)
 
@@ -204,7 +204,7 @@ class BoardRaterThreatenedPiecesTests: XCTestCase {
         let gameBoard = board.board
         
         let protectingPieces = boardRater.getPieces(protecting: gameBoard.getPiece(at: queenLocation)!,
-                                                    onBoard: gameBoard)
+                                                    on: gameBoard)
         
         XCTAssertTrue(protectingPieces.count == 1)
     }
@@ -232,7 +232,7 @@ class BoardRaterThreatenedPiecesTests: XCTestCase {
         let gameBoard = board.board
 
         let threateningLocations = boardRater.getPieces(threatening: gameBoard.getPiece(at: queenLocation)!,
-                                                        onBoard: gameBoard).map { $0.location }
+                                                        on: gameBoard).map { $0.location }
         
         // Check all of the expected locations appeared in the protecting locations array
         for expectedIndex in expectedIndexes {
@@ -276,7 +276,7 @@ class BoardRaterThreatenedPiecesTests: XCTestCase {
         let gameBoard = board.board
         
         let threateningPieces = boardRater.getPieces(threatening: gameBoard.getPiece(at: queenLocation)!,
-                                                     onBoard: gameBoard)
+                                                     on: gameBoard)
         
         // None of the pieces are threatening the queen, so expect count to be zero
         XCTAssertTrue(threateningPieces.count == 0)
@@ -297,7 +297,7 @@ class BoardRaterThreatenedPiecesTests: XCTestCase {
         let gameBoard = board.board
         
         let threateningPieces = boardRater.getPieces(threatening: gameBoard.getPiece(at: queenLocation)!,
-                                                     onBoard: gameBoard)
+                                                     on: gameBoard)
         
         // The white pieces cannot threaten the white queen, so expect count to be zero
         XCTAssertTrue(threateningPieces.count == 0)
@@ -318,7 +318,7 @@ class BoardRaterThreatenedPiecesTests: XCTestCase {
         let gameBoard = board.board
         
         let threateningPieces = boardRater.getPieces(threatening: gameBoard.getPiece(at: queenLocation)!,
-                                                     onBoard: gameBoard)
+                                                     on: gameBoard)
         
         XCTAssertTrue(threateningPieces.count == 0)
     }
@@ -338,7 +338,7 @@ class BoardRaterThreatenedPiecesTests: XCTestCase {
         let gameBoard = board.board
         
         let threateningPieces = boardRater.getPieces(threatening: gameBoard.getPiece(at: queenLocation)!,
-                                                     onBoard: gameBoard)
+                                                     on: gameBoard)
         
         XCTAssertTrue(threateningPieces.count == 1)
     }

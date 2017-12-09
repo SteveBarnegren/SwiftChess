@@ -19,7 +19,7 @@ open class Human: Player {
     
     // MARK: - Public
     
-    public func movePiece(fromLocation: BoardLocation, toLocation: BoardLocation) throws {
+    public func movePiece(from fromLocation: BoardLocation, to toLocation: BoardLocation) throws {
         
         // Check that the game is in progress
         guard game.state == .inProgress else {
@@ -32,13 +32,14 @@ open class Human: Player {
         }
         
         // Check if move is allowed
-        let canMove = canMovePieceWithError(fromLocation: fromLocation, toLocation: toLocation)
-        if let error = canMove.error {
+        do {
+            _ = try canMovePiece(from: fromLocation, to: toLocation)
+        } catch let error {
             throw error
         }
         
         // Move the piece
-        var operations = game.board.movePiece(fromLocation: fromLocation, toLocation: toLocation)
+        var operations = game.board.movePiece(from: fromLocation, to: toLocation)
         
         // Make pawn promotions
         let promotablePawnLocations = game.board.getLocationsOfPromotablePawns(color: color)

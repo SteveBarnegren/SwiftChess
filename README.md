@@ -46,12 +46,12 @@ let game = Game(firstPlayer: whitePlayer, secondPlayer: blackPlayer)
 
 ```
 if let player = game.currentPlayer as? Human {
-	
+
 	let currentLocation = BoardLocation(x: 4, y: 1)
 	let newLocation = BoardLocation(x: 4, y: 2)
 
-	try! player.movePiece(fromLocation: currentLocation,
-                                     toLocation: newLocation)	
+	try! player.movePiece(from: currentLocation,
+                        to: newLocation)
 }
 ```
 

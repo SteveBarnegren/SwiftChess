@@ -10,7 +10,7 @@ import Foundation
 
 class BoardRaterCenterFourOccupation: BoardRater {
     
-    override func ratingfor(board: Board, color: Color) -> Double {
+    override func ratingFor(board: Board, color: Color) -> Double {
         
         let value = Double(1)
         var rating = Double(0)

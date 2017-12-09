@@ -136,10 +136,10 @@ class BoardLocationTests: XCTestCase {
         
         let opening = FakeOpening()
         
-        let whiteMoves = opening.moves(forColor: .white)
+        let whiteMoves = opening.moves(for: .white)
         XCTAssertEqual(whiteMoves.count, expectedWhiteLocations.count)
         
-        let blackMoves = opening.moves(forColor: .black)
+        let blackMoves = opening.moves(for: .black)
         XCTAssertEqual(blackMoves.count, expectedBlackLocations.count)
         
         for i in 0..<whiteMoves.count {

@@ -267,7 +267,7 @@ extension GameViewController: BoardViewDelegate {
         }
         
         // Select new piece if possible
-        if player.occupiesSquareAt(location: location) {
+        if player.occupiesSquare(at: location) {
             selectedIndex = index
         }
         
@@ -275,8 +275,8 @@ extension GameViewController: BoardViewDelegate {
         if let selectedIndex = selectedIndex {
             
             do {
-                try player.movePiece(fromLocation: BoardLocation(index: selectedIndex),
-                                     toLocation: location)
+                try player.movePiece(from: BoardLocation(index: selectedIndex),
+                                     to: location)
                 
             } catch Player.MoveError.pieceUnableToMoveToLocation {
                 print("Piece is unable to move to this location")
@@ -309,7 +309,7 @@ extension GameViewController: GameDelegate {
     }
     
     func gameDidAddPiece(game: Game) {
-        // do nothing
+        // Do nothing
     }
 
     func gameDidMovePiece(game: Game, piece: Piece, toLocation: BoardLocation) {
@@ -320,7 +320,7 @@ extension GameViewController: GameDelegate {
         
         pieceView.location = toLocation
         
-        // Animage
+        // Animate
         view.setNeedsLayout()
         
         UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseInOut, animations: {
@@ -359,7 +359,7 @@ extension GameViewController: GameDelegate {
     
     func gameWonByPlayer(game: Game, player: Player) {
         
-        let colorName = player.color.toString()
+        let colorName = player.color.string
         
         let title = "Checkmate!"
         let message = "\(colorName.capitalized) wins!"

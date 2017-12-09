@@ -18,7 +18,7 @@ func transformASCIIBoardInput(_ input: String) -> String {
         for x in 0...7 {
             
             let index = y*8 + x
-            transformedArt.append(boardArt[boardArt.characters.index(boardArt.startIndex, offsetBy: index)])
+            transformedArt.append(boardArt[boardArt.index(boardArt.startIndex, offsetBy: index)])
         }
     }
     
@@ -39,7 +39,11 @@ public struct ASCIIBoard {
         artString = transformASCIIBoardInput(artString)
         
         // Check string format
+        #if swift(>=3.2)
+        assert(artString.count == 64, "ASCII board art must be 128 characters long")
+        #else
         assert(artString.characters.count == 64, "ASCII board art must be 128 characters long")
+        #endif
         
         self.artString = artString
         self.stringContainsColors = false
@@ -66,14 +70,17 @@ public struct ASCIIBoard {
         
         // Clear all pieces on the board
         BoardLocation.all.forEach {
-            board.removePiece(atLocation: $0)
+            board.removePiece(at: $0)
         }
         
         // Setup pieces from ascii art
         (0..<64).forEach {
+            #if swift(>=3.2)
+            let character = boardArt[boardArt.index(boardArt.startIndex, offsetBy: $0)]
+            #else
             let character = boardArt[boardArt.characters.index(boardArt.startIndex, offsetBy: $0)]
-            
-            if let piece = pieceFromCharacter(character) {
+            #endif
+            if let piece = piece(from: character) {
                 board.setPiece(piece, at: BoardLocation(index: $0))
             }
         }
@@ -81,7 +88,7 @@ public struct ASCIIBoard {
         return board
     }
 
-    func pieceFromCharacter(_ character: Character) -> Piece? {
+    func piece(from character: Character) -> Piece? {
         
         var piece: Piece?
         
@@ -121,9 +128,15 @@ public struct ASCIIBoard {
         
         var index: Int?
         
+        #if swift(>=3.2)
+        if let idx = artString.index(of: character) {
+            index = artString.distance(from: artString.startIndex, to: idx)
+        }
+        #else
         if let idx = artString.characters.index(of: character) {
             index = artString.characters.distance(from: artString.startIndex, to: idx)
         }
+        #endif
         
         assert(index != nil, "Unable to find index of character: \(character)")
         return index!
@@ -140,7 +153,11 @@ public struct ASCIIBoard {
         var indexes = [Int]()
         
         (0..<64).forEach {
+            #if swift(>=3.2)
+            let aCharacter = artString[artString.index(artString.startIndex, offsetBy: $0)]
+            #else
             let aCharacter = artString[artString.characters.index(artString.startIndex, offsetBy: $0)]
+            #endif
             if character == aCharacter {
                 indexes.append($0)
             }
