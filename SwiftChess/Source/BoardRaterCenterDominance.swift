@@ -14,7 +14,7 @@ import Foundation
 
 class BoardRaterCenterDominance: BoardRater {
     
-    override func ratingfor(board: Board, color: Color) -> Double {
+    override func ratingFor(board: Board, color: Color) -> Double {
         
         var rating = Double(0)
         
@@ -27,8 +27,8 @@ class BoardRaterCenterDominance: BoardRater {
             for targetLocation in BoardLocation.all {
                 
                 if sourceLocation == targetLocation ||
-                    piece.movement.canPieceMove(fromLocation: sourceLocation,
-                                                toLocation: targetLocation,
+                    piece.movement.canPieceMove(from: sourceLocation,
+                                                to: targetLocation,
                                                 board: board) {
                     
                     let value = dominanceValueFor(location: targetLocation)

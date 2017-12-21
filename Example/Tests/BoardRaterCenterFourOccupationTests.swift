@@ -39,7 +39,7 @@ class BoardRaterCenterFourOccupationTests: XCTestCase {
                                        "- - - - - - - -" +
                                        "- - - - - - - -" )
         
-        let rating = defaultBoardRater().ratingfor(board: board.board, color: .white)
+        let rating = defaultBoardRater().ratingFor(board: board.board, color: .white)
         XCTAssertGreaterThan(rating, 0)
     }
     
@@ -54,7 +54,7 @@ class BoardRaterCenterFourOccupationTests: XCTestCase {
                                        "- - - - - - - -" +
                                        "- - - - - - - -" )
         
-        let rating = defaultBoardRater().ratingfor(board: board.board, color: .white)
+        let rating = defaultBoardRater().ratingFor(board: board.board, color: .white)
         XCTAssertGreaterThan(rating, 0)
     }
     
@@ -69,7 +69,7 @@ class BoardRaterCenterFourOccupationTests: XCTestCase {
                                        "- - - - - - - -" +
                                        "- - - - - - - -" )
         
-        let rating = defaultBoardRater().ratingfor(board: board.board, color: .white)
+        let rating = defaultBoardRater().ratingFor(board: board.board, color: .white)
         XCTAssertGreaterThan(rating, 0)
     }
     
@@ -84,7 +84,7 @@ class BoardRaterCenterFourOccupationTests: XCTestCase {
                                        "- - - - - - - -" +
                                        "- - - - - - - -" )
         
-        let rating = defaultBoardRater().ratingfor(board: board.board, color: .white)
+        let rating = defaultBoardRater().ratingFor(board: board.board, color: .white)
         XCTAssertGreaterThan(rating, 0)
     }
     
@@ -99,7 +99,7 @@ class BoardRaterCenterFourOccupationTests: XCTestCase {
                                        "P P P P P P P P" +
                                        "P P P P P P P P" )
         
-        let rating = defaultBoardRater().ratingfor(board: board.board, color: .white)
+        let rating = defaultBoardRater().ratingFor(board: board.board, color: .white)
         XCTAssertEqual(rating, 0, accuracy: 0.01)
     }
     
@@ -114,7 +114,7 @@ class BoardRaterCenterFourOccupationTests: XCTestCase {
                                        "- - - - - - - -" +
                                        "- - - - - - - -" )
         
-        let rating = defaultBoardRater().ratingfor(board: board.board, color: .white)
+        let rating = defaultBoardRater().ratingFor(board: board.board, color: .white)
         XCTAssertLessThan(rating, 0)
     }
     

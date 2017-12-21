@@ -63,7 +63,7 @@ class AIPlayerTests: XCTestCase {
             fatalError()
         }
         
-        XCTAssertFalse(player.canAIMovePiece(fromLocation: knightLocation, toLocation: testLocation))
+        XCTAssertFalse(player.canAIMovePiece(from: knightLocation, to: testLocation))
     }
     
     func testKingCannotMoveInToCheck() {
@@ -88,7 +88,7 @@ class AIPlayerTests: XCTestCase {
             fatalError()
         }
         
-        XCTAssertFalse(player.canAIMovePiece(fromLocation: kingLocation, toLocation: testLocation))
+        XCTAssertFalse(player.canAIMovePiece(from: kingLocation, to: testLocation))
     }
     
     func testPawnCannotPutOwnKingInToCheck() {
@@ -111,7 +111,7 @@ class AIPlayerTests: XCTestCase {
             fatalError()
         }
         
-        XCTAssertFalse(player.canAIMovePiece(fromLocation: pawnLocation, toLocation: testLocation))
+        XCTAssertFalse(player.canAIMovePiece(from: pawnLocation, to: testLocation))
 
     }
     
@@ -135,7 +135,7 @@ class AIPlayerTests: XCTestCase {
             fatalError()
         }
         
-        XCTAssertFalse(player.canAIMovePiece(fromLocation: queenLocation, toLocation: testLocation))
+        XCTAssertFalse(player.canAIMovePiece(from: queenLocation, to: testLocation))
     }
     
     func testRookCannotPutOwnKingInToCheck() {
@@ -158,7 +158,7 @@ class AIPlayerTests: XCTestCase {
             fatalError()
         }
         
-        XCTAssertFalse(player.canAIMovePiece(fromLocation: rookLocation, toLocation: testLocation))
+        XCTAssertFalse(player.canAIMovePiece(from: rookLocation, to: testLocation))
     }
     
     func testBishopCannotPutOwnKingInToCheck() {
@@ -181,6 +181,6 @@ class AIPlayerTests: XCTestCase {
             fatalError()
         }
         
-        XCTAssertFalse(player.canAIMovePiece(fromLocation: bishopLocation, toLocation: testLocation))
+        XCTAssertFalse(player.canAIMovePiece(from: bishopLocation, to: testLocation))
     }
 }

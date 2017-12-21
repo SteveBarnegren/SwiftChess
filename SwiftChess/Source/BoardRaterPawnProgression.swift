@@ -10,7 +10,7 @@ import Foundation
 
 class BoardRaterPawnProgression: BoardRater {
     
-    override func ratingfor(board: Board, color: Color) -> Double {
+    override func ratingFor(board: Board, color: Color) -> Double {
         
         var rating = Double(0)
      

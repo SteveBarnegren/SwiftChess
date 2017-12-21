@@ -39,10 +39,10 @@ class PieceMovementTests: XCTestCase {
             
             for allowedIndex in allowedIndexes {
                 XCTAssertTrue(
-                    movement.canPieceMove(fromLocation: BoardLocation(index: movingIndex),
-                                          toLocation: BoardLocation(index: allowedIndex),
+                    movement.canPieceMove(from: BoardLocation(index: movingIndex),
+                                          to: BoardLocation(index: allowedIndex),
                                           board: board.board),
-                    "Allowed Index was invalid: \(allowedIndex)")
+                    "Allowed index was invalid: \(allowedIndex)")
             }
         }
         
@@ -52,8 +52,8 @@ class PieceMovementTests: XCTestCase {
             
             for invalidIndex in invalidIndexes {
                 XCTAssertFalse(
-                    movement.canPieceMove(fromLocation: BoardLocation(index: movingIndex),
-                                          toLocation: BoardLocation(index: invalidIndex),
+                    movement.canPieceMove(from: BoardLocation(index: movingIndex),
+                                          to: BoardLocation(index: invalidIndex),
                                           board: board.board),
                     "Invalid index was valid: \(invalidIndex)")
             }
@@ -66,8 +66,8 @@ class PieceMovementTests: XCTestCase {
         let movingIndex = board.indexOfCharacter(from)
         let targetIndex = board.indexOfCharacter(to)
         
-        return movement.canPieceMove(fromLocation: BoardLocation(index: movingIndex),
-                                     toLocation: BoardLocation(index: targetIndex),
+        return movement.canPieceMove(from: BoardLocation(index: movingIndex),
+                                     to: BoardLocation(index: targetIndex),
                                      board: board.board)
     }
     
@@ -237,8 +237,8 @@ class PieceMovementTests: XCTestCase {
         let blackIndex = board.indexOfCharacter("B")
         
         let movement = PieceMovementStraightLine()
-        XCTAssertTrue(movement.canPieceMove(fromLocation: BoardLocation(index: whiteIndex),
-                                            toLocation: BoardLocation(index: blackIndex),
+        XCTAssertTrue(movement.canPieceMove(from: BoardLocation(index: whiteIndex),
+                                            to: BoardLocation(index: blackIndex),
                                             board: board.board))
     }
     
@@ -257,8 +257,8 @@ class PieceMovementTests: XCTestCase {
         let kingIndex = board.indexOfCharacter("g")
         
         let movement = PieceMovementStraightLine()
-        XCTAssertFalse(movement.canPieceMove(fromLocation: BoardLocation(index: pieceIndex),
-                                             toLocation: BoardLocation(index: kingIndex),
+        XCTAssertFalse(movement.canPieceMove(from: BoardLocation(index: pieceIndex),
+                                             to: BoardLocation(index: kingIndex),
                                              board: board.board))
     }
 
@@ -414,8 +414,8 @@ class PieceMovementTests: XCTestCase {
         let blackIndex = board.indexOfCharacter("B")
         
         let movement = PieceMovementDiagonal()
-        XCTAssertTrue(movement.canPieceMove(fromLocation: BoardLocation(index: whiteIndex),
-                                            toLocation: BoardLocation(index: blackIndex),
+        XCTAssertTrue(movement.canPieceMove(from: BoardLocation(index: whiteIndex),
+                                            to: BoardLocation(index: blackIndex),
                                             board: board.board))
     }
     
@@ -434,8 +434,8 @@ class PieceMovementTests: XCTestCase {
         let kingIndex = board.indexOfCharacter("g")
         
         let movement = PieceMovementDiagonal()
-        XCTAssertFalse(movement.canPieceMove(fromLocation: BoardLocation(index: pieceIndex),
-                                             toLocation: BoardLocation(index: kingIndex),
+        XCTAssertFalse(movement.canPieceMove(from: BoardLocation(index: pieceIndex),
+                                             to: BoardLocation(index: kingIndex),
                                              board: board.board))
     }
 
@@ -645,7 +645,7 @@ class PieceMovementTests: XCTestCase {
         
         let movement = PieceMovementKnight()
         
-        XCTAssert(movement.canPieceMove(fromLocation: location, toLocation: location, board: board) == false,
+        XCTAssert(movement.canPieceMove(from: location, to: location, board: board) == false,
                   "Expected piece could not move to its current position")
         
     }
@@ -665,8 +665,8 @@ class PieceMovementTests: XCTestCase {
         let blackIndex = board.indexOfCharacter("B")
         
         let movement = PieceMovementKnight()
-        XCTAssertTrue(movement.canPieceMove(fromLocation: BoardLocation(index: whiteIndex),
-                                            toLocation: BoardLocation(index: blackIndex),
+        XCTAssertTrue(movement.canPieceMove(from: BoardLocation(index: whiteIndex),
+                                            to: BoardLocation(index: blackIndex),
                                             board: board.board))
     }
     
@@ -685,8 +685,8 @@ class PieceMovementTests: XCTestCase {
         let kingIndex = board.indexOfCharacter("g")
         
         let movement = PieceMovementKnight()
-        XCTAssertFalse(movement.canPieceMove(fromLocation: BoardLocation(index: pieceIndex),
-                                             toLocation: BoardLocation(index: kingIndex),
+        XCTAssertFalse(movement.canPieceMove(from: BoardLocation(index: pieceIndex),
+                                             to: BoardLocation(index: kingIndex),
                                              board: board.board))
     }
     
@@ -776,7 +776,7 @@ class PieceMovementTests: XCTestCase {
         
         let movement = PieceMovementKing()
         
-        XCTAssert(movement.canPieceMove(fromLocation: location, toLocation: location, board: board) == false,
+        XCTAssert(movement.canPieceMove(from: location, to: location, board: board) == false,
                   "Expected piece could not move to its current position")
         
     }
@@ -796,8 +796,8 @@ class PieceMovementTests: XCTestCase {
         let blackIndex = board.indexOfCharacter("B")
         
         let movement = PieceMovementKing()
-        XCTAssertTrue(movement.canPieceMove(fromLocation: BoardLocation(index: whiteIndex),
-                                            toLocation: BoardLocation(index: blackIndex),
+        XCTAssertTrue(movement.canPieceMove(from: BoardLocation(index: whiteIndex),
+                                            to: BoardLocation(index: blackIndex),
                                             board: board.board))
     }
     
@@ -816,8 +816,8 @@ class PieceMovementTests: XCTestCase {
         let kingIndex = board.indexOfCharacter("g")
         
         let movement = PieceMovementKing()
-        XCTAssertFalse(movement.canPieceMove(fromLocation: BoardLocation(index: pieceIndex),
-                                             toLocation: BoardLocation(index: kingIndex),
+        XCTAssertFalse(movement.canPieceMove(from: BoardLocation(index: pieceIndex),
+                                             to: BoardLocation(index: kingIndex),
                                              board: board.board))
     }
     
@@ -979,7 +979,7 @@ class PieceMovementTests: XCTestCase {
         
         let movement = PieceMovementPawn()
         
-        XCTAssert(movement.canPieceMove(fromLocation: location, toLocation: location, board: board) == false,
+        XCTAssert(movement.canPieceMove(from: location, to: location, board: board) == false,
                   "Expected piece could not move to its current position")
         
     }
@@ -1149,8 +1149,8 @@ class PieceMovementTests: XCTestCase {
         let kingIndex = board.indexOfCharacter("g")
         
         let movement = PieceMovementPawn()
-        XCTAssertFalse(movement.canPieceMove(fromLocation: BoardLocation(index: pieceIndex),
-                                             toLocation: BoardLocation(index: kingIndex),
+        XCTAssertFalse(movement.canPieceMove(from: BoardLocation(index: pieceIndex),
+                                             to: BoardLocation(index: kingIndex),
                                              board: board.board))
     }
     
@@ -1179,7 +1179,7 @@ class PieceMovementTests: XCTestCase {
         }
         
         do {
-            try whitePlayer.movePiece(fromLocation: startLocation, toLocation: targetLocation)
+            try whitePlayer.movePiece(from: startLocation, to: targetLocation)
         } catch {
             fatalError()
         }
@@ -1207,7 +1207,7 @@ class PieceMovementTests: XCTestCase {
         }
         
         do {
-            try whitePlayer.movePiece(fromLocation: startLocation, toLocation: targetLocation)
+            try whitePlayer.movePiece(from: startLocation, to: targetLocation)
         } catch {
             fatalError()
         }
@@ -1236,7 +1236,7 @@ class PieceMovementTests: XCTestCase {
         }
         
         do {
-            try whitePlayer.movePiece(fromLocation: startLocation, toLocation: targetLocation)
+            try whitePlayer.movePiece(from: startLocation, to: targetLocation)
         } catch {
             fatalError()
         }
@@ -1251,7 +1251,7 @@ class PieceMovementTests: XCTestCase {
         }
         
         do {
-            try blackPlayer.movePiece(fromLocation: BoardLocation(x: 0, y: 6), toLocation: BoardLocation(x: 0, y: 5))
+            try blackPlayer.movePiece(from: BoardLocation(x: 0, y: 6), to: BoardLocation(x: 0, y: 5))
         } catch {
             fatalError()
         }
@@ -1283,22 +1283,22 @@ class PieceMovementTests: XCTestCase {
         
         // Black move two spaces
         do {
-            try blackPlayer.movePiece(fromLocation: board.locationOfCharacter("p"),
-                                      toLocation: board.locationOfCharacter("*"))
+            try blackPlayer.movePiece(from: board.locationOfCharacter("p"),
+                                      to: board.locationOfCharacter("*"))
         } catch {
             fatalError()
         }
         
         // White should be able to take the black pawn using the en passant rule
         let pieceMovement = PieceMovementPawn()
-        XCTAssertTrue(pieceMovement.canPieceMove(fromLocation: board.locationOfCharacter("P"),
-                                                 toLocation: board.locationOfCharacter("+"),
+        XCTAssertTrue(pieceMovement.canPieceMove(from: board.locationOfCharacter("P"),
+                                                 to: board.locationOfCharacter("+"),
                                                  board: game.board),
                       "Expected white to be able to make en passant move")
         
         do {
-            try whitePlayer.movePiece(fromLocation: board.locationOfCharacter("P"),
-                                      toLocation: board.locationOfCharacter("+"))
+            try whitePlayer.movePiece(from: board.locationOfCharacter("P"),
+                                      to: board.locationOfCharacter("+"))
         } catch {
             XCTFail("Expected white to be able to execute en passant move")
         }
@@ -1325,22 +1325,22 @@ class PieceMovementTests: XCTestCase {
         
         // White move two spaces
         do {
-            try whitePlayer.movePiece(fromLocation: board.locationOfCharacter("P"),
-                                      toLocation: board.locationOfCharacter("*"))
+            try whitePlayer.movePiece(from: board.locationOfCharacter("P"),
+                                      to: board.locationOfCharacter("*"))
         } catch {
             fatalError()
         }
         
         // Black should be able to take the white pawn using the en passant rule
         let pieceMovement = PieceMovementPawn()
-        XCTAssertTrue(pieceMovement.canPieceMove(fromLocation: board.locationOfCharacter("p"),
-                                                 toLocation: board.locationOfCharacter("+"),
+        XCTAssertTrue(pieceMovement.canPieceMove(from: board.locationOfCharacter("p"),
+                                                 to: board.locationOfCharacter("+"),
                                                  board: game.board),
                       "Expected black to be able to make en passant move")
         
         do {
-            try blackPlayer.movePiece(fromLocation: board.locationOfCharacter("p"),
-                                      toLocation: board.locationOfCharacter("+"))
+            try blackPlayer.movePiece(from: board.locationOfCharacter("p"),
+                                      to: board.locationOfCharacter("+"))
         } catch {
             XCTFail("Expected black to be able to execute en passant move")
         }
@@ -1367,32 +1367,32 @@ class PieceMovementTests: XCTestCase {
         
         // Black move two spaces
         do {
-            try blackPlayer.movePiece(fromLocation: board.locationOfCharacter("p"),
-                                      toLocation: board.locationOfCharacter("*"))
+            try blackPlayer.movePiece(from: board.locationOfCharacter("p"),
+                                      to: board.locationOfCharacter("*"))
         } catch {
             fatalError()
         }
         
         // White moves king
         do {
-            try whitePlayer.movePiece(fromLocation: board.locationOfCharacter("G"),
-                                      toLocation: board.locationOfCharacter("&"))
+            try whitePlayer.movePiece(from: board.locationOfCharacter("G"),
+                                      to: board.locationOfCharacter("&"))
         } catch {
             fatalError()
         }
         
         // Black moves king
         do {
-            try blackPlayer.movePiece(fromLocation: board.locationOfCharacter("g"),
-                                      toLocation: board.locationOfCharacter("%"))
+            try blackPlayer.movePiece(from: board.locationOfCharacter("g"),
+                                      to: board.locationOfCharacter("%"))
         } catch {
             fatalError()
         }
         
         // White should not be able to take the black pawn using the en passant rule
         let pieceMovement = PieceMovementPawn()
-        XCTAssertFalse(pieceMovement.canPieceMove(fromLocation: board.locationOfCharacter("P"),
-                                                  toLocation: board.locationOfCharacter("+"),
+        XCTAssertFalse(pieceMovement.canPieceMove(from: board.locationOfCharacter("P"),
+                                                  to: board.locationOfCharacter("+"),
                                                   board: game.board))
 
     }
@@ -1414,32 +1414,32 @@ class PieceMovementTests: XCTestCase {
         
         // White moves pawn two spaces
         do {
-            try whitePlayer.movePiece(fromLocation: board.locationOfCharacter("P"),
-                                      toLocation: board.locationOfCharacter("*"))
+            try whitePlayer.movePiece(from: board.locationOfCharacter("P"),
+                                      to: board.locationOfCharacter("*"))
         } catch {
             fatalError()
         }
         
         // Black moves king
         do {
-            try blackPlayer.movePiece(fromLocation: board.locationOfCharacter("g"),
-                                      toLocation: board.locationOfCharacter("%"))
+            try blackPlayer.movePiece(from: board.locationOfCharacter("g"),
+                                      to: board.locationOfCharacter("%"))
         } catch {
             fatalError()
         }
         
         // White moves king
         do {
-            try whitePlayer.movePiece(fromLocation: board.locationOfCharacter("G"),
-                                      toLocation: board.locationOfCharacter("&"))
+            try whitePlayer.movePiece(from: board.locationOfCharacter("G"),
+                                      to: board.locationOfCharacter("&"))
         } catch {
             fatalError()
         }
         
         // Black should not be able to take the white pawn using the en passant rule
         let pieceMovement = PieceMovementPawn()
-        XCTAssertFalse(pieceMovement.canPieceMove(fromLocation: board.locationOfCharacter("p"),
-                                                  toLocation: board.locationOfCharacter("+"),
+        XCTAssertFalse(pieceMovement.canPieceMove(from: board.locationOfCharacter("p"),
+                                                  to: board.locationOfCharacter("+"),
                                                   board: game.board))
     }
     
@@ -1529,7 +1529,7 @@ class PieceMovementTests: XCTestCase {
         
         let movement = PieceMovementQueen()
         
-        XCTAssert(movement.canPieceMove(fromLocation: location, toLocation: location, board: board) == false,
+        XCTAssert(movement.canPieceMove(from: location, to: location, board: board) == false,
                   "Expected piece could not move to its current position")
         
     }
@@ -1549,8 +1549,8 @@ class PieceMovementTests: XCTestCase {
         let blackIndex = board.indexOfCharacter("B")
         
         let movement = PieceMovementQueen()
-        XCTAssertTrue(movement.canPieceMove(fromLocation: BoardLocation(index: whiteIndex),
-                                            toLocation: BoardLocation(index: blackIndex),
+        XCTAssertTrue(movement.canPieceMove(from: BoardLocation(index: whiteIndex),
+                                            to: BoardLocation(index: blackIndex),
                                             board: board.board))
     }
     
@@ -1569,8 +1569,8 @@ class PieceMovementTests: XCTestCase {
         let kingIndex = board.indexOfCharacter("g")
         
         let movement = PieceMovementQueen()
-        XCTAssertFalse(movement.canPieceMove(fromLocation: BoardLocation(index: pieceIndex),
-                                             toLocation: BoardLocation(index: kingIndex),
+        XCTAssertFalse(movement.canPieceMove(from: BoardLocation(index: pieceIndex),
+                                             to: BoardLocation(index: kingIndex),
                                              board: board.board))
     }
     
@@ -1660,7 +1660,7 @@ class PieceMovementTests: XCTestCase {
         
         let movement = PieceMovementRook()
         
-        XCTAssert(movement.canPieceMove(fromLocation: location, toLocation: location, board: board) == false,
+        XCTAssert(movement.canPieceMove(from: location, to: location, board: board) == false,
                   "Expected piece could not move to its current position")
         
     }
@@ -1680,8 +1680,8 @@ class PieceMovementTests: XCTestCase {
         let blackIndex = board.indexOfCharacter("B")
         
         let movement = PieceMovementRook()
-        XCTAssertTrue(movement.canPieceMove(fromLocation: BoardLocation(index: whiteIndex),
-                                            toLocation: BoardLocation(index: blackIndex),
+        XCTAssertTrue(movement.canPieceMove(from: BoardLocation(index: whiteIndex),
+                                            to: BoardLocation(index: blackIndex),
                                             board: board.board))
     }
     
@@ -1700,8 +1700,8 @@ class PieceMovementTests: XCTestCase {
         let kingIndex = board.indexOfCharacter("g")
         
         let movement = PieceMovementRook()
-        XCTAssertFalse(movement.canPieceMove(fromLocation: BoardLocation(index: pieceIndex),
-                                             toLocation: BoardLocation(index: kingIndex),
+        XCTAssertFalse(movement.canPieceMove(from: BoardLocation(index: pieceIndex),
+                                             to: BoardLocation(index: kingIndex),
                                              board: board.board))
     }
     
@@ -1791,7 +1791,7 @@ class PieceMovementTests: XCTestCase {
         
         let movement = PieceMovementBishop()
         
-        XCTAssert(movement.canPieceMove(fromLocation: location, toLocation: location, board: board) == false,
+        XCTAssert(movement.canPieceMove(from: location, to: location, board: board) == false,
                   "Expected piece could not move to its current position")
         
     }
@@ -1811,8 +1811,8 @@ class PieceMovementTests: XCTestCase {
         let blackIndex = board.indexOfCharacter("B")
         
         let movement = PieceMovementBishop()
-        XCTAssertTrue(movement.canPieceMove(fromLocation: BoardLocation(index: whiteIndex),
-                                            toLocation: BoardLocation(index: blackIndex),
+        XCTAssertTrue(movement.canPieceMove(from: BoardLocation(index: whiteIndex),
+                                            to: BoardLocation(index: blackIndex),
                                             board: board.board))
     }
     
@@ -1831,8 +1831,8 @@ class PieceMovementTests: XCTestCase {
         let kingIndex = board.indexOfCharacter("g")
         
         let movement = PieceMovementBishop()
-        XCTAssertFalse(movement.canPieceMove(fromLocation: BoardLocation(index: pieceIndex),
-                                             toLocation: BoardLocation(index: kingIndex),
+        XCTAssertFalse(movement.canPieceMove(from: BoardLocation(index: pieceIndex),
+                                             to: BoardLocation(index: kingIndex),
                                              board: board.board))
     }
 

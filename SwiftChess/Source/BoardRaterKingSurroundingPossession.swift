@@ -10,18 +10,18 @@ import Foundation
 
 class BoardRaterKingSurroundingPossession: BoardRater {
     
-    override func ratingfor(board: Board, color: Color) -> Double {
+    override func ratingFor(board: Board, color: Color) -> Double {
         
         let squareValue = Double(1)
         var rating = Double(0)
         
         let ownKingLocations = locationsSurroundingKing(color: color, board: board)
-        let opponentKingLocations = locationsSurroundingKing(color: color.opposite(), board: board)
+        let opponentKingLocations = locationsSurroundingKing(color: color.opposite, board: board)
         
         // The kings will be able to move to their surrounding locations, so remove them from the board
         var noKingsBoard = board
-        noKingsBoard.removePiece(atLocation: noKingsBoard.getKingLocation(color: .white))
-        noKingsBoard.removePiece(atLocation: noKingsBoard.getKingLocation(color: .black))
+        noKingsBoard.removePiece(at: noKingsBoard.getKingLocation(color: .white))
+        noKingsBoard.removePiece(at: noKingsBoard.getKingLocation(color: .black))
 
         // we don't want to encourage the king to move out in to the open
         rating += Double(8 - ownKingLocations.count) * squareValue * 3
@@ -33,14 +33,14 @@ class BoardRaterKingSurroundingPossession: BoardRater {
                 continue
             }
             
-            if noKingsBoard.doesColorOccupyLocation(color: color.opposite(), location: location) {
+            if noKingsBoard.doesColorOccupyLocation(color: color.opposite, location: location) {
                 rating -= squareValue
                 continue
             }
             
             if  noKingsBoard.canColorMoveAnyPieceToLocation(color: color, location: location) {
                 rating += squareValue
-            } else if noKingsBoard.canColorMoveAnyPieceToLocation(color: color.opposite(), location: location) {
+            } else if noKingsBoard.canColorMoveAnyPieceToLocation(color: color.opposite, location: location) {
                 rating -= squareValue
             }
 
@@ -53,14 +53,14 @@ class BoardRaterKingSurroundingPossession: BoardRater {
                 continue
             }
             
-            if noKingsBoard.doesColorOccupyLocation(color: color.opposite(), location: location) {
+            if noKingsBoard.doesColorOccupyLocation(color: color.opposite, location: location) {
                 rating -= squareValue
                 continue
             }
             
             if noKingsBoard.canColorMoveAnyPieceToLocation(color: color, location: location) {
                 rating += squareValue
-            } else if noKingsBoard.canColorMoveAnyPieceToLocation(color: color.opposite(), location: location) {
+            } else if noKingsBoard.canColorMoveAnyPieceToLocation(color: color.opposite, location: location) {
                 rating -= squareValue
             }
         }
@@ -87,8 +87,8 @@ class BoardRaterKingSurroundingPossession: BoardRater {
         
         for stride in strides {
             
-            if kingLocation.canIncrementBy(stride: stride) {
-                let location = kingLocation.incrementedBy(stride: stride)
+            if kingLocation.canIncrement(by: stride) {
+                let location = kingLocation.incremented(by: stride)
                 surroundingLocations.append(location)
             }
         }

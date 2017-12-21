@@ -12,50 +12,50 @@ import Foundation
 
 class BoardRaterThreatenedPieces: BoardRater {
     
-    override func ratingfor(board: Board, color: Color) -> Double {
+    override func ratingFor(board: Board, color: Color) -> Double {
         
         let rating =  board.getPieces(color: color)
-            .map { threatValue(forPiece: $0, onBoard: board) }
+            .map { threatValue(forPiece: $0, on: board) }
             .reduce(0, +)
             * configuration.boardRaterThreatenedPiecesWeighting.value
                 
         return rating
     }
     
-    func threatValue(forPiece piece: Piece, onBoard board: Board) -> Double {
+    func threatValue(forPiece piece: Piece, on board: Board) -> Double {
         
-        let threatenedByPieces = getPieces(threatening: piece, onBoard: board)
-        let protectedByPieces = getPieces(protecting: piece, onBoard: board)
+        let threatenedByPieces = getPieces(threatening: piece, on: board)
+        let protectedByPieces = getPieces(protecting: piece, on: board)
         let isThreatened = threatenedByPieces.count > 0
         let isProtected = protectedByPieces.count > 0
         
         // Threatened but not protected
         if isThreatened && !isProtected {
-            return -piece.value() * 3
+            return -piece.value * 3
         }
         
         // Threatened, but protected (only return if the trade is not preferable)
         if isThreatened && isProtected {
             
-            let lowestValueThreat = threatenedByPieces.lowestPieceValue()
+            let lowestValueThreat = threatenedByPieces.lowestPieceValue
             
-            if lowestValueThreat < piece.value() {
-                return -piece.value()
+            if lowestValueThreat < piece.value {
+                return -piece.value
             }
             
             // Here we could bump the value to encourage a good trade?
         }
         
-        let targetPieces = getPieces(threatenedBy: piece, onBoard: board)
+        let targetPieces = getPieces(threatenedBy: piece, on: board)
         for targetPiece in targetPieces {
             
-            let isTargetProtected = isPieceProtected(targetPiece, onBoard: board)
+            let isTargetProtected = isPieceProtected(targetPiece, on: board)
             
             // If it's protected, is it a good trade
-            if isTargetProtected && targetPiece.value() < piece.value() {
+            if isTargetProtected && targetPiece.value < piece.value {
                 return 0
             } else {
-                return targetPiece.value()
+                return targetPiece.value
             }
         }
         
@@ -65,33 +65,33 @@ class BoardRaterThreatenedPieces: BoardRater {
     
     // MARK: - Helpers
     
-    func getPieces(protecting piece: Piece, onBoard board: Board) -> [Piece] {
+    func getPieces(protecting piece: Piece, on board: Board) -> [Piece] {
         
         var alteredBoard = board
-        alteredBoard.setPiece(piece.withOppositeColor(), at: piece.location)
+        alteredBoard.setPiece(piece.withOppositeColor, at: piece.location)
         
         return alteredBoard.getPieces(color: piece.color).filter {
-            $0.movement.canPieceMove(fromLocation: $0.location,
-                                     toLocation: piece.location,
+            $0.movement.canPieceMove(from: $0.location,
+                                     to: piece.location,
                                      board: alteredBoard,
                                      accountForCheckState: true)
         }
     }
     
-    func getPieces(protectedBy piece: Piece, onBoard board: Board) -> [Piece] {
+    func getPieces(protectedBy piece: Piece, on board: Board) -> [Piece] {
         
         return board.getPieces(color: piece.color).filter {
-            piece.movement.canPieceMove(fromLocation: piece.location,
-                                        toLocation: $0.location,
+            piece.movement.canPieceMove(from: piece.location,
+                                        to: $0.location,
                                         board: board,
                                         accountForCheckState: true)
         }
     }
     
-    func isPieceProtected(_ piece: Piece, onBoard board: Board) -> Bool {
+    func isPieceProtected(_ piece: Piece, on board: Board) -> Bool {
         
         var alteredBoard = board
-        alteredBoard.setPiece(piece.withOppositeColor(), at: piece.location)
+        alteredBoard.setPiece(piece.withOppositeColor, at: piece.location)
         
         for square in alteredBoard.squares {
             
@@ -103,8 +103,8 @@ class BoardRaterThreatenedPieces: BoardRater {
                 continue
             }
             
-            if squarePiece.movement.canPieceMove(fromLocation: squarePiece.location,
-                                                 toLocation: piece.location,
+            if squarePiece.movement.canPieceMove(from: squarePiece.location,
+                                                 to: piece.location,
                                                  board: alteredBoard,
                                                  accountForCheckState: true) {
                 return true
@@ -114,7 +114,7 @@ class BoardRaterThreatenedPieces: BoardRater {
         return false
     }
     
-    func isPieceThreatened(_ piece: Piece, onBoard board: Board) -> Bool {
+    func isPieceThreatened(_ piece: Piece, on board: Board) -> Bool {
         
         for square in board.squares {
             
@@ -122,12 +122,12 @@ class BoardRaterThreatenedPieces: BoardRater {
                 continue
             }
             
-            guard squarePiece.color == piece.color.opposite() else {
+            guard squarePiece.color == piece.color.opposite else {
                 continue
             }
             
-            if squarePiece.movement.canPieceMove(fromLocation: squarePiece.location,
-                                                 toLocation: piece.location,
+            if squarePiece.movement.canPieceMove(from: squarePiece.location,
+                                                 to: piece.location,
                                                  board: board,
                                                  accountForCheckState: true) {
                 return true
@@ -137,39 +137,39 @@ class BoardRaterThreatenedPieces: BoardRater {
         return false
     }
 
-    func getPieces(threatening piece: Piece, onBoard board: Board) -> [Piece] {
+    func getPieces(threatening piece: Piece, on board: Board) -> [Piece] {
         
-        return board.getPieces(color: piece.color.opposite()).filter {
-            $0.movement.canPieceMove(fromLocation: $0.location,
-                                     toLocation: piece.location,
+        return board.getPieces(color: piece.color.opposite).filter {
+            $0.movement.canPieceMove(from: $0.location,
+                                     to: piece.location,
                                      board: board,
                                      accountForCheckState: true)
         }
     }
     
-    func getPieces(threatenedBy piece: Piece, onBoard board: Board) -> [Piece] {
+    func getPieces(threatenedBy piece: Piece, on board: Board) -> [Piece] {
         
-        return board.getPieces(color: piece.color.opposite()).filter {
-            piece.movement.canPieceMove(fromLocation: piece.location,
-                                        toLocation: $0.location,
+        return board.getPieces(color: piece.color.opposite).filter {
+            piece.movement.canPieceMove(from: piece.location,
+                                        to: $0.location,
                                         board: board,
                                         accountForCheckState: true)
         }
     }
     
-    func canPieceMoveToSafety(_ piece: Piece, onBoard board: Board) -> Bool {
+    func canPieceMoveToSafety(_ piece: Piece, on board: Board) -> Bool {
         
         for location in BoardLocation.all {
             
-            if piece.movement.canPieceMove(fromLocation: piece.location,
-                                           toLocation: location,
+            if piece.movement.canPieceMove(from: piece.location,
+                                           to: location,
                                            board: board,
                                            accountForCheckState: true) {
                 
                 var boardCopy = board
-                boardCopy.movePiece(fromLocation: piece.location, toLocation: location)
+                boardCopy.movePiece(from: piece.location, to: location)
                 let movedPiece = boardCopy.getPiece(at: location)!
-                if !isPieceThreatened(movedPiece, onBoard: boardCopy) {
+                if !isPieceThreatened(movedPiece, on: boardCopy) {
                     return true
                 }
             }
@@ -181,17 +181,17 @@ class BoardRaterThreatenedPieces: BoardRater {
 
 extension Collection where Iterator.Element == Piece {
     
-    func lowestPieceValue() -> Double {
+    var lowestPieceValue: Double {
         
         if self.count == 0 {
             return 0
         }
         
-        var result = self.first!.value()
+        var result = self.first!.value
         
         for piece in self {
             
-            let pieceValue = piece.value()
+            let pieceValue = piece.value
             
             if pieceValue < result {
                 result = pieceValue
@@ -201,17 +201,17 @@ extension Collection where Iterator.Element == Piece {
         return result
     }
     
-    func highestPieceValue() -> Double {
+    var highestPieceValue: Double {
         
         if self.count == 0 {
             return 0
         }
         
-        var result = self.first!.value()
+        var result = self.first!.value
         
         for piece in self {
             
-            let pieceValue = piece.value()
+            let pieceValue = piece.value
             
             if pieceValue > result {
                 result = pieceValue

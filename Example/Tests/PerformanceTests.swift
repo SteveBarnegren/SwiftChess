@@ -31,8 +31,8 @@ class PerformanceTests: XCTestCase {
         self.measure {
             
             BoardLocation.all.forEach {
-                _ = pawn.movement.canPieceMove(fromLocation: pawnLocation,
-                                               toLocation: $0,
+                _ = pawn.movement.canPieceMove(from: pawnLocation,
+                                               to: $0,
                                                board: board)
             }
         }
@@ -62,8 +62,8 @@ class PerformanceTests: XCTestCase {
         self.measure {
             
             BoardLocation.all.forEach {
-                _ = queen.movement.canPieceMove(fromLocation: queenLocation,
-                                                toLocation: $0,
+                _ = queen.movement.canPieceMove(from: queenLocation,
+                                                to: $0,
                                                 board: board)
             }
         }
@@ -93,8 +93,8 @@ class PerformanceTests: XCTestCase {
         self.measure {
             
             BoardLocation.all.forEach {
-                _ = king.movement.canPieceMove(fromLocation: kingLocation,
-                                               toLocation: $0,
+                _ = king.movement.canPieceMove(from: kingLocation,
+                                               to: $0,
                                                board: board)
             }
         }
@@ -124,8 +124,8 @@ class PerformanceTests: XCTestCase {
         self.measure {
             
             BoardLocation.all.forEach {
-                _ = knight.movement.canPieceMove(fromLocation: knightLocation,
-                                                 toLocation: $0,
+                _ = knight.movement.canPieceMove(from: knightLocation,
+                                                 to: $0,
                                                  board: board)
             }
         }
@@ -155,8 +155,8 @@ class PerformanceTests: XCTestCase {
         self.measure {
             
             BoardLocation.all.forEach {
-                _ = bishop.movement.canPieceMove(fromLocation: bishopLocation,
-                                                 toLocation: $0,
+                _ = bishop.movement.canPieceMove(from: bishopLocation,
+                                                 to: $0,
                                                  board: board)
             }
         }
@@ -186,8 +186,8 @@ class PerformanceTests: XCTestCase {
         self.measure {
             
             BoardLocation.all.forEach {
-                _ = rook.movement.canPieceMove(fromLocation: rookLocation,
-                                               toLocation: $0,
+                _ = rook.movement.canPieceMove(from: rookLocation,
+                                               to: $0,
                                                board: board)
             }
         }

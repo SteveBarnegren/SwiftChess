@@ -39,8 +39,8 @@ class OpeningsTests: XCTestCase {
                 }
                 
                 // Assert the piece can move
-                if piece.movement.canPieceMove(fromLocation: source, toLocation: target, board: board) {
-                    board.movePiece(fromLocation: source, toLocation: target)
+                if piece.movement.canPieceMove(from: source, to: target, board: board) {
+                    board.movePiece(from: source, to: target)
                 } else {
                     XCTFail("Cannot move piece from \(source) to \(target)")
                 }

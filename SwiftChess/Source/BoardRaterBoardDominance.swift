@@ -10,7 +10,7 @@ import Foundation
 
 class BoardRaterBoardDominance: BoardRater {
     
-    override func ratingfor(board: Board, color: Color) -> Double {
+    override func ratingFor(board: Board, color: Color) -> Double {
 
         let squareValue = Double(1)
         
@@ -24,7 +24,7 @@ class BoardRaterBoardDominance: BoardRater {
             }
             
             for targetLocation in BoardLocation.all {
-                if piece.movement.canPieceMove(fromLocation: sourcelocation, toLocation: targetLocation, board: board) {
+                if piece.movement.canPieceMove(from: sourcelocation, to: targetLocation, board: board) {
                     rating += (piece.color == color) ? squareValue : -squareValue
                 }
             }

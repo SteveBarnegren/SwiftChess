@@ -80,10 +80,10 @@ public struct BoardLocation: Equatable {
         return self + BoardLocation(x: x, y: y)
     }
     
-    func incrementedBy(stride: BoardStride) -> BoardLocation {
+    func incremented(by stride: BoardStride) -> BoardLocation {
         
         // TODO: Only call this in debug mode to increace performance!
-        if !canIncrementBy(stride: stride) {
+        if !canIncrement(by: stride) {
             // swiftlint:disable line_length
             print("WARNING! BoardLocation is being incremented by a stride that will result in wrapping! call canIncrementBy(stride: BoardStride) first")
             // swiftlint:enable line_length
@@ -93,7 +93,7 @@ public struct BoardLocation: Equatable {
                              y: y + stride.y)
     }
     
-    func canIncrementBy(stride: BoardStride) -> Bool {
+    func canIncrement(by stride: BoardStride) -> Bool {
         
         // Check will not wrap to right
         if x + stride.x > 7 {

@@ -10,7 +10,7 @@ import Foundation
 
 class BoardRaterCountPieces: BoardRater {
         
-    override func ratingfor(board: Board, color: Color) -> Double {
+    override func ratingFor(board: Board, color: Color) -> Double {
         
         var rating: Double = 0
         
@@ -20,7 +20,7 @@ class BoardRaterCountPieces: BoardRater {
                 continue
             }
             
-            rating += piece.color == color ? piece.value() : -piece.value()
+            rating += piece.color == color ? piece.value : -piece.value
         }
         
         return rating * configuration.boardRaterCountPiecesWeighting.value

@@ -35,7 +35,7 @@ class BoardRaterBoardDominanceTests: XCTestCase {
                                             "- - - - - - - -" +
                                             "- - - - - - - -" +
                                             "- - - - - - - -" )
-        let queenRating = boardRater.ratingfor(board: queenBoard.board, color: .white)
+        let queenRating = boardRater.ratingFor(board: queenBoard.board, color: .white)
 
         let pawnBoard = ASCIIBoard(pieces: "- - - - - - - -" +
                                            "- - - - - - - -" +
@@ -45,7 +45,7 @@ class BoardRaterBoardDominanceTests: XCTestCase {
                                            "- - - - - - - -" +
                                            "- - - - - - - -" +
                                            "- - - - - - - -" )
-        let pawnRating = boardRater.ratingfor(board: pawnBoard.board, color: .white)
+        let pawnRating = boardRater.ratingFor(board: pawnBoard.board, color: .white)
 
         XCTAssertGreaterThan(queenRating, pawnRating)
     }
@@ -60,7 +60,7 @@ class BoardRaterBoardDominanceTests: XCTestCase {
                                               "- - - - - - - -" +
                                               "P - - - - - - -" +
                                               "Q P - - - - - -" )
-        let blockedRating = boardRater.ratingfor(board: blockedBoard.board, color: .white)
+        let blockedRating = boardRater.ratingFor(board: blockedBoard.board, color: .white)
         
         let nonBockedBoard = ASCIIBoard(pieces: "- - - - - - - -" +
                                                 "- - - - - - - -" +
@@ -70,7 +70,7 @@ class BoardRaterBoardDominanceTests: XCTestCase {
                                                 "- - - - - - - -" +
                                                 "- - - - - - - -" +
                                                 "Q - - - - - - -" )
-        let nonBockedRating = boardRater.ratingfor(board: nonBockedBoard.board, color: .white)
+        let nonBockedRating = boardRater.ratingFor(board: nonBockedBoard.board, color: .white)
         
         XCTAssertGreaterThan(nonBockedRating, blockedRating)
 
@@ -86,7 +86,7 @@ class BoardRaterBoardDominanceTests: XCTestCase {
                                                     "- - - - - - - k" +
                                                     "- - - - - - - p" +
                                                     "Q - - - - - - -" )
-        let whiteRating = boardRater.ratingfor(board: whiteDominantBoard.board, color: .white)
+        let whiteRating = boardRater.ratingFor(board: whiteDominantBoard.board, color: .white)
         
         let blackDominantBoard = ASCIIBoard(pieces: "r - - - - - - -" +
                                                     "- - - - - - - -" +
@@ -96,7 +96,7 @@ class BoardRaterBoardDominanceTests: XCTestCase {
                                                     "- - - - - - - K" +
                                                     "- - - - - - - P" +
                                                     "q - - - - - - -" )
-        let blackRating = boardRater.ratingfor(board: blackDominantBoard.board, color: .white)
+        let blackRating = boardRater.ratingFor(board: blackDominantBoard.board, color: .white)
         
         XCTAssertGreaterThan(whiteRating, blackRating)
     }
@@ -111,7 +111,7 @@ class BoardRaterBoardDominanceTests: XCTestCase {
                                                     "- - - - - - - -" +
                                                     "- - - - - - - -" +
                                                     "Q - - - - - - -" )
-        let queenInCornerRating = boardRater.ratingfor(board: queenInCornerBoard.board, color: .white)
+        let queenInCornerRating = boardRater.ratingFor(board: queenInCornerBoard.board, color: .white)
         
         let queenInCenterBoard = ASCIIBoard(pieces: "- - - - - - - -" +
                                                     "- - - - - - - -" +
@@ -121,7 +121,7 @@ class BoardRaterBoardDominanceTests: XCTestCase {
                                                     "- - - - - - - -" +
                                                     "- - - - - - - -" +
                                                     "- - - - - - - -" )
-        let queenInCenterRating = boardRater.ratingfor(board: queenInCenterBoard.board, color: .white)
+        let queenInCenterRating = boardRater.ratingFor(board: queenInCenterBoard.board, color: .white)
         
         XCTAssertGreaterThan(queenInCenterRating, queenInCornerRating)
     }

@@ -46,8 +46,8 @@ class BoardRaterPawnProgressionTests: XCTestCase {
                                                      "- - - - - - - -" +
                                                      "- - - - - - - -" )
         
-        let progressedRating = boardRater.ratingfor(board: progressedBoard.board, color: .white)
-        let lessProgressedRating = boardRater.ratingfor(board: lessProgressedBoard.board, color: .white)
+        let progressedRating = boardRater.ratingFor(board: progressedBoard.board, color: .white)
+        let lessProgressedRating = boardRater.ratingFor(board: lessProgressedBoard.board, color: .white)
 
         XCTAssert(progressedRating > lessProgressedRating)
     }
@@ -72,8 +72,8 @@ class BoardRaterPawnProgressionTests: XCTestCase {
                                                      "- - - - - - - -" +
                                                      "- - - - - - - -" )
         
-        let progressedRating = boardRater.ratingfor(board: progressedBoard.board, color: .black)
-        let lessProgressedRating = boardRater.ratingfor(board: lessProgressedBoard.board, color: .black)
+        let progressedRating = boardRater.ratingFor(board: progressedBoard.board, color: .black)
+        let lessProgressedRating = boardRater.ratingFor(board: lessProgressedBoard.board, color: .black)
         
         XCTAssert(progressedRating > lessProgressedRating)
     }
@@ -89,7 +89,7 @@ class BoardRaterPawnProgressionTests: XCTestCase {
                                        "- P - P - - P -" +
                                        "- - - - - - - -" )
         
-        let rating = boardRater.ratingfor(board: board.board, color: .white)
+        let rating = boardRater.ratingFor(board: board.board, color: .white)
         
         XCTAssertEqual(rating, 0, accuracy: 0.0001)
     }
@@ -105,7 +105,7 @@ class BoardRaterPawnProgressionTests: XCTestCase {
                                        "- - - - - - - -" +
                                        "- - - - - - - -" )
         
-        let rating = boardRater.ratingfor(board: board.board, color: .black)
+        let rating = boardRater.ratingFor(board: board.board, color: .black)
         
         XCTAssertEqual(rating, 0, accuracy: 0.0001)
     }
@@ -121,8 +121,8 @@ class BoardRaterPawnProgressionTests: XCTestCase {
                                        "- - - - - - - -" +
                                        "- - - - - - - -" )
         
-        let whiteRating = boardRater.ratingfor(board: board.board, color: .white)
-        let blackRating = boardRater.ratingfor(board: board.board, color: .black)
+        let whiteRating = boardRater.ratingFor(board: board.board, color: .white)
+        let blackRating = boardRater.ratingFor(board: board.board, color: .black)
         
         XCTAssertEqual(whiteRating, blackRating, accuracy: 0.0001)
     }
@@ -138,8 +138,8 @@ class BoardRaterPawnProgressionTests: XCTestCase {
                                        "P - - - - - - p" +
                                        "P - - - - - - p" )
         
-        let whiteRating = boardRater.ratingfor(board: board.board, color: .white)
-        let blackRating = boardRater.ratingfor(board: board.board, color: .black)
+        let whiteRating = boardRater.ratingFor(board: board.board, color: .white)
+        let blackRating = boardRater.ratingFor(board: board.board, color: .black)
         
         XCTAssertEqual(whiteRating, blackRating, accuracy: 0.0001)
     }

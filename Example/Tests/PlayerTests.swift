@@ -33,21 +33,21 @@ class PlayerTests: XCTestCase {
     func testOccupliesSquareAtLocationReturnsTrueWhenOccupiedByPlayerPiece() {
         
         let location = BoardLocation(index: 0) // <-- should be occupied by white
-        XCTAssert(game.whitePlayer.occupiesSquareAt(location: location),
+        XCTAssert(game.whitePlayer.occupiesSquare(at: location),
                   "Expected square to be occupied by player color")
     }
     
     func testOccupliesSquareAtLocationReturnsFalseWhenSquareEmpty() {
 
         let location = BoardLocation(x: 0, y: 2) // <-- should be empty
-        XCTAssert(game.whitePlayer.occupiesSquareAt(location: location) == false,
+        XCTAssert(game.whitePlayer.occupiesSquare(at: location) == false,
                   "Expected square to not be occupied by player color")
     }
     
     func testOccupliesSquareAtLocationReturnsFalseWhenOccupiedByOppositeColor() {
         
         let location = BoardLocation(x: 0, y: 7) // <-- should be occupied by black
-        XCTAssert(game.whitePlayer.occupiesSquareAt(location: location) == false,
+        XCTAssert(game.whitePlayer.occupiesSquare(at: location) == false,
                   "Expected square to not be occupied by player color")
     }
 
@@ -55,7 +55,13 @@ class PlayerTests: XCTestCase {
     
     func testPlayerCannotMovePieceToSameLocation() {
         let location = BoardLocation(index: 0)
-        XCTAssert(game.whitePlayer.canMovePiece(fromLocation: location, toLocation: location) == false)
+        
+        do {
+            let canMove = try game.whitePlayer.canMovePiece(from: location, to: location)
+            XCTAssertNil(canMove)
+        } catch let error {
+            XCTAssert(error as! Player.MoveError == .movingToSameLocation)
+        }
     }
     
     // MARK: - Move Errors
@@ -91,8 +97,12 @@ class PlayerTests: XCTestCase {
         }
         
         // Assert that the correct error is thrown
-        XCTAssertTrue(player.canMovePieceWithError(fromLocation: queenLocation,
-                                                   toLocation: targetLocation).error == .cannotMoveInToCheck)
+        do {
+            let canMove = try player.canMovePiece(from: queenLocation, to: targetLocation)
+            XCTAssertNil(canMove)
+        } catch let error {
+            XCTAssert(error as! Player.MoveError == .cannotMoveInToCheck)
+        }
     }
     
     func testMoveInToCheckErrorIsThrownByMovingPawn() {
@@ -116,8 +126,12 @@ class PlayerTests: XCTestCase {
         }
         
         // Assert that the correct error is thrown
-        XCTAssertTrue(player.canMovePieceWithError(fromLocation: pieceLocation,
-                                                   toLocation: targetLocation).error == .cannotMoveInToCheck)
+        do {
+            let canMove = try player.canMovePiece(from: pieceLocation, to: targetLocation)
+            XCTAssertNil(canMove)
+        } catch let error {
+            XCTAssert(error as! Player.MoveError == .cannotMoveInToCheck)
+        }
     }
     
     func testMoveInToCheckErrorIsThrownByMovingKnight() {
@@ -141,8 +155,12 @@ class PlayerTests: XCTestCase {
         }
         
         // Assert that the correct error is thrown
-        XCTAssertTrue(player.canMovePieceWithError(fromLocation: pieceLocation,
-                                                   toLocation: targetLocation).error == .cannotMoveInToCheck)
+        do {
+            let canMove = try player.canMovePiece(from: pieceLocation, to: targetLocation)
+            XCTAssertNil(canMove)
+        } catch let error {
+            XCTAssert(error as! Player.MoveError == .cannotMoveInToCheck)
+        }
     }
     
     func testMoveInToCheckErrorIsThrownByMovingBishop() {
@@ -166,8 +184,12 @@ class PlayerTests: XCTestCase {
         }
         
         // Assert that the correct error is thrown
-        XCTAssertTrue(player.canMovePieceWithError(fromLocation: pieceLocation,
-                                                   toLocation: targetLocation).error == .cannotMoveInToCheck)
+        do {
+            let canMove = try player.canMovePiece(from: pieceLocation, to: targetLocation)
+            XCTAssertNil(canMove)
+        } catch let error {
+            XCTAssert(error as! Player.MoveError == .cannotMoveInToCheck)
+        }
     }
     
     func testMoveInToCheckErrorIsThrownByMovingRook() {
@@ -191,8 +213,12 @@ class PlayerTests: XCTestCase {
         }
         
         // Assert that the correct error is thrown
-        XCTAssertTrue(player.canMovePieceWithError(fromLocation: pieceLocation,
-                                                   toLocation: targetLocation).error == .cannotMoveInToCheck)
+        do {
+            let canMove = try player.canMovePiece(from: pieceLocation, to: targetLocation)
+            XCTAssertNil(canMove)
+        } catch let error {
+            XCTAssert(error as! Player.MoveError == .cannotMoveInToCheck)
+        }
     }
     
     func testMoveInToCheckErrorIsThrownByMovingKing() {
@@ -216,8 +242,12 @@ class PlayerTests: XCTestCase {
         }
         
         // Assert that the correct error is thrown
-        XCTAssertTrue(player.canMovePieceWithError(fromLocation: pieceLocation,
-                                                   toLocation: targetLocation).error == .cannotMoveInToCheck)
+        do {
+            let canMove = try player.canMovePiece(from: pieceLocation, to: targetLocation)
+            XCTAssertNil(canMove)
+        } catch let error {
+            XCTAssert(error as! Player.MoveError == .cannotMoveInToCheck)
+        }
     }   
     
 }

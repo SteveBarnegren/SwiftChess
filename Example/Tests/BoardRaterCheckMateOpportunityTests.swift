@@ -27,8 +27,8 @@ class BoardRaterCheckMateOpportunityTests: XCTestCase {
     func testBoardWithNoCheckMateOpportuniesResultsInZeroRating() {
         
         let board = Board(state: .newGame)
-        let whiteRating = boardRater.ratingfor(board: board, color: .white)
-        let blackRating = boardRater.ratingfor(board: board, color: .black)
+        let whiteRating = boardRater.ratingFor(board: board, color: .white)
+        let blackRating = boardRater.ratingFor(board: board, color: .black)
         
         let accuracy = Double(0.1)
         XCTAssertEqual(whiteRating, 0, accuracy: accuracy)
@@ -47,7 +47,7 @@ class BoardRaterCheckMateOpportunityTests: XCTestCase {
                                        "- - - - - - - -" +
                                        "R - - - G - - -" )
         
-        let rating = boardRater.ratingfor(board: board.board, color: .white)
+        let rating = boardRater.ratingFor(board: board.board, color: .white)
         XCTAssertGreaterThan(rating, 0)
     }
     
@@ -63,7 +63,7 @@ class BoardRaterCheckMateOpportunityTests: XCTestCase {
                                        "- r - - - - - -" +
                                        "- - - - G - - -" )
         
-        let rating = boardRater.ratingfor(board: board.board, color: .white)
+        let rating = boardRater.ratingFor(board: board.board, color: .white)
         XCTAssertLessThan(rating, 0)
     }
     
@@ -89,8 +89,8 @@ class BoardRaterCheckMateOpportunityTests: XCTestCase {
                                                         "- - - - - - - -" +
                                                         "R - - - G - - R" )
 
-        let singleRating = boardRater.ratingfor(board: singleCheckMateBoard.board, color: .white)
-        let multipleRating = boardRater.ratingfor(board: multipleCheckMateBoard.board, color: .white)
+        let singleRating = boardRater.ratingFor(board: singleCheckMateBoard.board, color: .white)
+        let multipleRating = boardRater.ratingFor(board: multipleCheckMateBoard.board, color: .white)
         
         XCTAssertGreaterThan(multipleRating, singleRating)
     }
