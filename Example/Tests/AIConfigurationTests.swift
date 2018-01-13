@@ -6,6 +6,8 @@
 //  Copyright © 2017 CocoaPods. All rights reserved.
 //
 
+//swiftlint:disable type_body_length
+
 import XCTest
 @testable import SwiftChess
 
@@ -35,12 +37,16 @@ class AIConfigurationTests: XCTestCase {
                                        "R K B Q G B K R" )
 
         var lowValueConfig = AIConfiguration()
-        lowValueConfig.boardRaterCountPiecesWeighting = 1
+        lowValueConfig.boardRaterCountPiecesWeighting = AIConfiguration.ConfigurationValue(easyValue: 1,
+                                                                                           difficultValue: 1,
+                                                                                           multiplier: 10)
         let lowValueRater = BoardRaterCountPieces(configuration: lowValueConfig)
         let lowValueRating = lowValueRater.ratingFor(board: board.board, color: .white)
         
         var highValueConfig = AIConfiguration()
-        highValueConfig.boardRaterCountPiecesWeighting = 2
+        highValueConfig.boardRaterCountPiecesWeighting = AIConfiguration.ConfigurationValue(easyValue: 2,
+                                                                                            difficultValue: 2,
+                                                                                            multiplier: 10)
         let highValueRater = BoardRaterCountPieces(configuration: highValueConfig)
         let highValueRating = highValueRater.ratingFor(board: board.board, color: .white)
         
@@ -61,12 +67,16 @@ class AIConfigurationTests: XCTestCase {
                                        "R K B Q G B K R" )
         
         var lowValueConfig = AIConfiguration()
-        lowValueConfig.boardRaterBoardDominanceWeighting = 1
+        lowValueConfig.boardRaterBoardDominanceWeighting = AIConfiguration.ConfigurationValue(easyValue: 1,
+                                                                                              difficultValue: 1,
+                                                                                              multiplier: 10)
         let lowValueRater = BoardRaterBoardDominance(configuration: lowValueConfig)
         let lowValueRating = lowValueRater.ratingFor(board: board.board, color: .white)
         
         var highValueConfig = AIConfiguration()
-        highValueConfig.boardRaterBoardDominanceWeighting = 2
+        highValueConfig.boardRaterBoardDominanceWeighting = AIConfiguration.ConfigurationValue(easyValue: 2,
+                                                                                               difficultValue: 2,
+                                                                                               multiplier: 10)
         let highValueRater = BoardRaterBoardDominance(configuration: highValueConfig)
         let highValueRating = highValueRater.ratingFor(board: board.board, color: .white)
         
@@ -87,12 +97,16 @@ class AIConfigurationTests: XCTestCase {
                                        "R K B Q G B K R" )
         
         var lowValueConfig = AIConfiguration()
-        lowValueConfig.boardRaterCenterOwnershipWeighting = 1
+        lowValueConfig.boardRaterCenterOwnershipWeighting = AIConfiguration.ConfigurationValue(easyValue: 1,
+                                                                                               difficultValue: 1,
+                                                                                               multiplier: 10)
         let lowValueRater = BoardRaterCenterOwnership(configuration: lowValueConfig)
         let lowValueRating = lowValueRater.ratingFor(board: board.board, color: .white)
         
         var highValueConfig = AIConfiguration()
-        highValueConfig.boardRaterCenterOwnershipWeighting = 2
+        highValueConfig.boardRaterCenterOwnershipWeighting = AIConfiguration.ConfigurationValue(easyValue: 2,
+                                                                                                difficultValue: 2,
+                                                                                                multiplier: 10)
         let highValueRater = BoardRaterCenterOwnership(configuration: highValueConfig)
         let highValueRating = highValueRater.ratingFor(board: board.board, color: .white)
         
@@ -113,12 +127,16 @@ class AIConfigurationTests: XCTestCase {
                                        "R K B Q G B K R" )
         
         var lowValueConfig = AIConfiguration()
-        lowValueConfig.boardRaterCenterDominanceWeighting = 1
+        lowValueConfig.boardRaterCenterDominanceWeighting = AIConfiguration.ConfigurationValue(easyValue: 1,
+                                                                                               difficultValue: 1,
+                                                                                               multiplier: 10)
         let lowValueRater = BoardRaterCenterDominance(configuration: lowValueConfig)
         let lowValueRating = lowValueRater.ratingFor(board: board.board, color: .white)
         
         var highValueConfig = AIConfiguration()
-        highValueConfig.boardRaterCenterDominanceWeighting = 2
+        highValueConfig.boardRaterCenterDominanceWeighting = AIConfiguration.ConfigurationValue(easyValue: 2,
+                                                                                                difficultValue: 2,
+                                                                                                multiplier: 10)
         let highValueRater = BoardRaterCenterDominance(configuration: highValueConfig)
         let highValueRating = highValueRater.ratingFor(board: board.board, color: .white)
         
@@ -140,19 +158,23 @@ class AIConfigurationTests: XCTestCase {
                                        "- - - - G - - B" )
         
         var lowValueConfig = AIConfiguration()
-        lowValueConfig.boardRaterThreatenedPiecesWeighting = 1
+        lowValueConfig.boardRaterThreatenedPiecesWeighting = AIConfiguration.ConfigurationValue(easyValue: 1,
+                                                                                                difficultValue: 1,
+                                                                                                multiplier: 10)
         let lowValueRater = BoardRaterThreatenedPieces(configuration: lowValueConfig)
         let lowValueRating = lowValueRater.ratingFor(board: board.board, color: .white)
         
         var highValueConfig = AIConfiguration()
-        highValueConfig.boardRaterThreatenedPiecesWeighting = 2
+        highValueConfig.boardRaterThreatenedPiecesWeighting = AIConfiguration.ConfigurationValue(easyValue: 2,
+                                                                                                 difficultValue: 2,
+                                                                                                 multiplier: 10)
         let highValueRater = BoardRaterThreatenedPieces(configuration: highValueConfig)
         let highValueRating = highValueRater.ratingFor(board: board.board, color: .white)
         
         XCTAssertGreaterThan(highValueRating, lowValueRating)
     }
     
-    func testBoardRaterThreatenedPiecesOwnPiecesMultiplierAffectsRating() {
+    func testBoardRaterThreatenedPiecesOwnPiecesWeightingAffectsRating() {
         
         // White and black rook are threatening each other, so advantage is neutral
         let board = ASCIIBoard(pieces: "- - - - g - - -" +
@@ -165,12 +187,16 @@ class AIConfigurationTests: XCTestCase {
                                        "- - - - G - - -" )
 
         var lowValueConfig = AIConfiguration()
-        lowValueConfig.boardRaterThreatenedPiecesOwnPiecesMultiplier = 1
+        lowValueConfig.boardRaterThreatenedPiecesWeighting = AIConfiguration.ConfigurationValue(easyValue: 1,
+                                                                                                difficultValue: 1,
+                                                                                                multiplier: 10)
         let lowValueRater = BoardRaterThreatenedPieces(configuration: lowValueConfig)
         let lowValueRating = lowValueRater.ratingFor(board: board.board, color: .white)
         
         var highValueConfig = AIConfiguration()
-        highValueConfig.boardRaterThreatenedPiecesOwnPiecesMultiplier = 2
+        highValueConfig.boardRaterThreatenedPiecesWeighting = AIConfiguration.ConfigurationValue(easyValue: 2,
+                                                                                                 difficultValue: 2,
+                                                                                                 multiplier: 10)
         let highValueRater = BoardRaterThreatenedPieces(configuration: highValueConfig)
         let highValueRating = highValueRater.ratingFor(board: board.board, color: .white)
         
@@ -192,12 +218,16 @@ class AIConfigurationTests: XCTestCase {
                                        "- - - - G - - -" )
         
         var lowValueConfig = AIConfiguration()
-        lowValueConfig.boardRaterPawnProgressionWeighting = 1
+        lowValueConfig.boardRaterPawnProgressionWeighting = AIConfiguration.ConfigurationValue(easyValue: 1,
+                                                                                               difficultValue: 1,
+                                                                                               multiplier: 10)
         let lowValueRater = BoardRaterPawnProgression(configuration: lowValueConfig)
         let lowValueRating = lowValueRater.ratingFor(board: board.board, color: .white)
         
         var highValueConfig = AIConfiguration()
-        highValueConfig.boardRaterPawnProgressionWeighting = 2
+        highValueConfig.boardRaterPawnProgressionWeighting = AIConfiguration.ConfigurationValue(easyValue: 2,
+                                                                                                difficultValue: 2,
+                                                                                                multiplier: 10)
         let highValueRater = BoardRaterPawnProgression(configuration: highValueConfig)
         let highValueRating = highValueRater.ratingFor(board: board.board, color: .white)
         
@@ -218,12 +248,18 @@ class AIConfigurationTests: XCTestCase {
                                        "- - - P G P - -" )
         
         var lowValueConfig = AIConfiguration()
-        lowValueConfig.boardRaterKingSurroundingPossessionWeighting = 1
+        lowValueConfig.boardRaterKingSurroundingPossessionWeighting =
+            AIConfiguration.ConfigurationValue(easyValue: 1,
+                                               difficultValue: 1,
+                                               multiplier: 10)
         let lowValueRater = BoardRaterKingSurroundingPossession(configuration: lowValueConfig)
         let lowValueRating = lowValueRater.ratingFor(board: board.board, color: .white)
         
         var highValueConfig = AIConfiguration()
-        highValueConfig.boardRaterKingSurroundingPossessionWeighting = 2
+        highValueConfig.boardRaterKingSurroundingPossessionWeighting =
+            AIConfiguration.ConfigurationValue(easyValue: 2,
+                                               difficultValue: 2,
+                                               multiplier: 10)
         let highValueRater = BoardRaterKingSurroundingPossession(configuration: highValueConfig)
         let highValueRating = highValueRater.ratingFor(board: board.board, color: .white)
         
@@ -245,12 +281,16 @@ class AIConfigurationTests: XCTestCase {
                                        "R - - P G P - -" )
         
         var lowValueConfig = AIConfiguration()
-        lowValueConfig.boardRaterCheckMateOpportunityWeighting = 1
+        lowValueConfig.boardRaterCheckMateOpportunityWeighting = AIConfiguration.ConfigurationValue(easyValue: 1,
+                                                                                                    difficultValue: 1,
+                                                                                                    multiplier: 1)
         let lowValueRater = BoardRaterCheckMateOpportunity(configuration: lowValueConfig)
         let lowValueRating = lowValueRater.ratingFor(board: board.board, color: .white)
         
         var highValueConfig = AIConfiguration()
-        highValueConfig.boardRaterCheckMateOpportunityWeighting = 2
+        highValueConfig.boardRaterCheckMateOpportunityWeighting = AIConfiguration.ConfigurationValue(easyValue: 2,
+                                                                                                     difficultValue: 2,
+                                                                                                     multiplier: 1)
         let highValueRater = BoardRaterCheckMateOpportunity(configuration: highValueConfig)
         let highValueRating = highValueRater.ratingFor(board: board.board, color: .white)
         
@@ -272,15 +312,33 @@ class AIConfigurationTests: XCTestCase {
                                        "- - - P G P - -" )
         
         var lowValueConfig = AIConfiguration()
-        lowValueConfig.boardRaterCenterFourOccupationWeighting = 1
+        lowValueConfig.boardRaterCenterFourOccupationWeighting = AIConfiguration.ConfigurationValue(easyValue: 1,
+                                                                                                    difficultValue: 1,
+                                                                                                    multiplier: 1)
         let lowValueRater = BoardRaterCenterFourOccupation(configuration: lowValueConfig)
         let lowValueRating = lowValueRater.ratingFor(board: board.board, color: .white)
         
         var highValueConfig = AIConfiguration()
-        highValueConfig.boardRaterCenterFourOccupationWeighting = 2
+        highValueConfig.boardRaterCenterFourOccupationWeighting = AIConfiguration.ConfigurationValue(easyValue: 2,
+                                                                                                     difficultValue: 2,
+                                                                                                     multiplier: 1)
         let highValueRater = BoardRaterCenterFourOccupation(configuration: highValueConfig)
         let highValueRating = highValueRater.ratingFor(board: board.board, color: .white)
         
         XCTAssertGreaterThan(highValueRating, lowValueRating)
+    }
+    
+    // MARK: - AIConfiguration Dictionary Representable
+    
+    func testDictionaryRepresentable() {
+        
+        let easy = AIConfiguration(difficulty: .easy)
+        XCTAssertEqual(easy, easy.toDictionaryAndBack)
+        
+        let medium = AIConfiguration(difficulty: .medium)
+        XCTAssertEqual(medium, medium.toDictionaryAndBack)
+        
+        let hard = AIConfiguration(difficulty: .hard)
+        XCTAssertEqual(hard, hard.toDictionaryAndBack)
     }
 }

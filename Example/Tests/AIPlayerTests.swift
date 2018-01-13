@@ -183,4 +183,17 @@ class AIPlayerTests: XCTestCase {
         
         XCTAssertFalse(player.canAIMovePiece(from: bishopLocation, to: testLocation))
     }
+    
+    // MARK: - Dictionary Representable
+    
+    func testDictionaryRepresentable() {
+        
+        let whiteEasy = AIPlayer(color: .white,
+                                 configuration: AIConfiguration(difficulty: .easy))
+        XCTAssertEqual(whiteEasy, whiteEasy.toDictionaryAndBack)
+        
+        let blackHard = AIPlayer(color: .black,
+                                 configuration: AIConfiguration(difficulty: .hard))
+        XCTAssertEqual(blackHard, blackHard.toDictionaryAndBack)
+    }
 }

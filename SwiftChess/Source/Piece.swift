@@ -92,13 +92,94 @@ public struct Piece: Equatable {
         let piece = Piece(type: newType, color: color, tag: tag)
         return piece
     }
+    
+    func isSameTypeAndColor(asPiece other: Piece) -> Bool {
+        
+        if self.type == other.type && self.color == other.color {
+            return true
+        } else {
+            return false
+        }
+    }
 }
 
 public func == (left: Piece, right: Piece) -> Bool {
     
-    if left.type == right.type && left.color == right.color {
+    if left.type == right.type
+        && left.color == right.color
+        && left.tag == right.tag
+        && left .hasMoved == right.hasMoved
+        && left.canBeTakenByEnPassant == right.canBeTakenByEnPassant
+        && left.location == right.location {
         return true
     } else {
         return false
+    }
+}
+
+extension Piece: DictionaryRepresentable {
+    
+    private struct Keys {
+        static let type = "type"
+        static let color = "color"
+        static let tag = "tag"
+        static let hasMoved = "hasMoved"
+        static let canBeTakenByEnPassant = "canBeTakenByEnPassant"
+        static let location = "location"
+    }
+    
+    init?(dictionary: [String: Any]) {
+        
+        // Type
+        if let raw = dictionary[Keys.type] as? Int, let type = PieceType(rawValue: raw) {
+            self.type = type
+        } else {
+            return nil
+        }
+        
+        // Color
+        if let raw = dictionary[Keys.color] as? String, let color = Color(rawValue: raw) {
+            self.color = color
+        } else {
+            return nil
+        }
+        
+        // Tag
+        if let tag = dictionary[Keys.tag] as? Int {
+            self.tag = tag
+        }
+        
+        // Has Moved
+        if let hasMoved = dictionary[Keys.hasMoved] as? Bool {
+            self.hasMoved = hasMoved
+        } else {
+            return nil
+        }
+        
+        // Can be taken by en passent
+        if let canBeTakenByEnPassent = dictionary[Keys.canBeTakenByEnPassant] as? Bool {
+            self.canBeTakenByEnPassant = canBeTakenByEnPassent
+        } else {
+            return nil
+        }
+        
+        // Location
+        if let dict = dictionary[Keys.location] as? [String: Any], let location = BoardLocation(dictionary: dict) {
+            self.location = location
+        } else {
+            return nil
+        }
+    }
+    
+    var dictionaryRepresentation: [String: Any] {
+        
+        var dictionary = [String: Any]()
+        dictionary[Keys.type] = type.rawValue
+        dictionary[Keys.color] = color.rawValue
+        if let tag = self.tag { dictionary[Keys.tag] = tag }
+        dictionary[Keys.hasMoved] = hasMoved
+        dictionary[Keys.canBeTakenByEnPassant] = canBeTakenByEnPassant
+        dictionary[Keys.location] = location.dictionaryRepresentation
+        return dictionary
     }
 }

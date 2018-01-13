@@ -7,7 +7,7 @@
 //
 
 import XCTest
-import SwiftChess
+@testable import SwiftChess
 
 class PieceTests: XCTestCase {
     
@@ -36,6 +36,25 @@ class PieceTests: XCTestCase {
             XCTAssertFalse(foundTags.contains(piece.tag), "Expected all pieces to have unique tags")
             foundTags.append(piece.tag)
         }
+    }
+    
+    // MARK: - DictionaryRepresentable
+    
+    func testPieceDictionaryRepresentable() {
+        
+        var piece1 = Piece(type: .pawn, color: .white)
+        piece1.tag = 0
+        piece1.hasMoved = false
+        piece1.canBeTakenByEnPassant = false
+        piece1.location = BoardLocation(index: 0)
+        XCTAssertEqual(piece1, piece1.toDictionaryAndBack)
+        
+        var piece2 = Piece(type: .bishop, color: .black)
+        piece2.tag = 15
+        piece2.hasMoved = true
+        piece2.canBeTakenByEnPassant = true
+        piece2.location = BoardLocation(index: 15)
+        XCTAssertEqual(piece2, piece2.toDictionaryAndBack)
     }
     
 }

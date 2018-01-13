@@ -139,7 +139,7 @@ class BoardTests: XCTestCase {
             return
         }
         
-        XCTAssert(returnedPiece == piece, "Expected pieces to be the same")
+        XCTAssert(returnedPiece.isSameTypeAndColor(asPiece: piece), "Expected pieces to be the same")
         
     }
     
@@ -171,7 +171,7 @@ class BoardTests: XCTestCase {
             return
         }
         
-        XCTAssert(returnedPiece == piece, "Expected pieces to be the same")
+        XCTAssert(returnedPiece.isSameTypeAndColor(asPiece: piece), "Expected pieces to be the same")
 
     }
     
@@ -233,7 +233,7 @@ class BoardTests: XCTestCase {
         func verifyPieceExistance(piece: Piece) {
             
             let matchingPieces = pieces.filter {
-                return $0 == piece
+                return $0.isSameTypeAndColor(asPiece: piece)
             }
             
             XCTAssert(matchingPieces.count != 0,
@@ -277,8 +277,8 @@ class BoardTests: XCTestCase {
         board.setPiece(whiteKing, at: BoardLocation(index: 0))
         board.setPiece(blackKing, at: BoardLocation(index: 1))
         
-        XCTAssert(board.getKing(color: .white) == whiteKing, "Unable to find white king")
-        XCTAssert(board.getKing(color: .black) == blackKing, "Unable to find black king")
+        XCTAssert(board.getKing(color: .white).isSameTypeAndColor(asPiece: whiteKing), "Unable to find white king")
+        XCTAssert(board.getKing(color: .black).isSameTypeAndColor(asPiece: blackKing), "Unable to find black king")
 
     }
     
@@ -1103,6 +1103,23 @@ class BoardTests: XCTestCase {
             
             XCTAssertEqual(piece.location, location)
         }
+    }
+    
+    // MARK: - Dictionary Representable
+    
+    func testDictionaryRepresentable() {
+        
+        let asciiBoard = ASCIIBoard(pieces: "r - - - g - - r" +
+                                            "p p p p p p p p" +
+                                            "- - - - - - - -" +
+                                            "- K - - - b - -" +
+                                            "- - B - - - k -" +
+                                            "- - - - - - - -" +
+                                            "P P P P P P P P" +
+                                            "R - - - G - - R" )
+    
+        let board = asciiBoard.board
+        XCTAssertEqual(board, board.toDictionaryAndBack)
     }
 
 }

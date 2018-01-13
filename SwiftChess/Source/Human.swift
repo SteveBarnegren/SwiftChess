@@ -10,7 +10,7 @@
 
 import Foundation
 
-open class Human: Player {
+public final class Human: Player {
    
     public init(color: Color) {
         super.init()
@@ -93,4 +93,34 @@ open class Human: Player {
         delegate?.playerDidMakeMove(player: self, boardOperations: operations)
     }
     
+}
+
+extension Human: Equatable {
+    public static func == (lhs: Human, rhs: Human) -> Bool {
+        return lhs.color == rhs.color
+    }
+}
+
+
+extension Human: DictionaryRepresentable {
+    
+    struct Keys {
+        static let color = "color"
+    }
+    
+    convenience init?(dictionary: [String: Any]) {
+
+        if let raw = dictionary[Keys.color] as? String, let color = Color(rawValue: raw) {
+            self.init(color: color)
+        } else {
+            return nil
+        }
+    }
+    
+    var dictionaryRepresentation: [String: Any] {
+        
+        var dictionary = [String: Any]()
+        dictionary[Keys.color] = color.rawValue
+        return dictionary
+    }
 }

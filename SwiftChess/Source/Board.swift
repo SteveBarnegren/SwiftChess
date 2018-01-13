@@ -30,9 +30,34 @@ public func == (lhs: Square, rhs: Square) -> Bool {
     case (.none, .none):
         return true
     case (.some(let rp), .some(let lp)):
-        return rp == lp
+        return rp.isSameTypeAndColor(asPiece: lp)
     default:
         return false
+    }
+}
+
+extension Square: DictionaryRepresentable {
+    
+    struct Keys {
+        static let piece = "piece"
+    }
+    
+    init?(dictionary: [String: Any]) {
+        
+        if let dict = dictionary[Keys.piece] as? [String: Any], let piece = Piece(dictionary: dict) {
+            self.piece = piece
+        }
+    }
+    
+    var dictionaryRepresentation: [String: Any] {
+        
+        var dictionary = [String: Any]()
+        
+        if let piece = self.piece {
+            dictionary[Keys.piece] = piece.dictionaryRepresentation
+        }
+        
+        return dictionary
     }
 }
 
@@ -182,7 +207,7 @@ public struct Board: Equatable {
                 continue
             }
             
-            if piece == Piece(type: .king, color: color) {
+            if piece.isSameTypeAndColor(asPiece: Piece(type: .king, color: color)) {
                 king = piece
                 break
             }
@@ -653,4 +678,34 @@ public struct Board: Equatable {
 
 public func == (lhs: Board, rhs: Board) -> Bool {
     return lhs.squares == rhs.squares
+}
+
+extension Board: DictionaryRepresentable {
+    
+    struct Keys {
+        static let squares = "squares"
+    }
+    
+    init?(dictionary: [String: Any]) {
+        
+        guard let squaresDicts = dictionary[Keys.squares] as? [[String: Any]] else {
+            return nil
+        }
+        
+        let squares = squaresDicts.flatMap { Square(dictionary: $0) }
+        if squares.count == 64 {
+            self.squares = squares
+        } else {
+            return nil
+        }
+    }
+    
+    var dictionaryRepresentation: [String: Any] {
+        
+        var dictionary = [String: Any]()
+        let squares = self.squares.map { $0.dictionaryRepresentation }
+        dictionary[Keys.squares] = squares
+        return dictionary
+    }
+    
 }

@@ -248,6 +248,14 @@ class PlayerTests: XCTestCase {
         } catch let error {
             XCTAssert(error as! Player.MoveError == .cannotMoveInToCheck)
         }
-    }   
+    }
+    
+    // MARK: - Human dictionary Representable
+    
+    func testHumanDictionaryRepresentable() {
+        
+        let whiteHuman = Human(color: .white)
+        XCTAssertEqual(whiteHuman, whiteHuman.toDictionaryAndBack)
+    }
     
 }

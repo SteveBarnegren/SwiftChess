@@ -107,4 +107,45 @@ class GameTests: XCTestCase {
         XCTAssertTrue(game.state == Game.State.won(color: .black))
     }
     
+    // MARK: - Game State Dictionary Representable
+    
+    func testGameStateDictionaryRepresentable() {
+        
+        let inProgress = Game.State.inProgress
+        XCTAssertEqual(inProgress, inProgress.toDictionaryAndBack)
+        
+        let whiteStalemate = Game.State.staleMate(color: .white)
+        XCTAssertEqual(whiteStalemate, whiteStalemate.toDictionaryAndBack)
+        
+        let blackStalemate = Game.State.staleMate(color: .black)
+        XCTAssertEqual(blackStalemate, blackStalemate.toDictionaryAndBack)
+        
+        let whiteWon = Game.State.won(color: .white)
+        XCTAssertEqual(whiteWon, whiteWon.toDictionaryAndBack)
+        
+        let blackWon = Game.State.won(color: .black)
+        XCTAssertEqual(blackWon, blackWon.toDictionaryAndBack)
+    }
+    
+    // MARK: - Game Dictionary Representable
+    
+    func testGameDictionaryRepresentable() {
+        
+        do {
+            let whitePlayer = Human(color: .white)
+            let blackPlayer = Human(color: .black)
+            let board = Board(state: .newGame)
+            let game = Game(firstPlayer: whitePlayer, secondPlayer: blackPlayer, board: board, colorToMove: .white)
+            XCTAssertEqual(game, game.toDictionaryAndBack)
+        }
+        
+        do {
+            let whitePlayer = Human(color: .white)
+            let blackPlayer = AIPlayer(color: .black, configuration: AIConfiguration(difficulty: .hard))
+            let board = Board(state: .newGame)
+            let game = Game(firstPlayer: whitePlayer, secondPlayer: blackPlayer, board: board, colorToMove: .black)
+            XCTAssertEqual(game, game.toDictionaryAndBack)
+        }
+    }
+    
 }

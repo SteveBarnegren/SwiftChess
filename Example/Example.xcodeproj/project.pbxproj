@@ -15,6 +15,9 @@
 		676902581E432380007C76D7 /* PerformanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676902571E432380007C76D7 /* PerformanceTests.swift */; };
 		676C911C1E478A3A00985A4F /* SwiftChess.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 67A9CA0D1DE64D6500510FB8 /* SwiftChess.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		676EF7C51E15AC1700E275B4 /* BoardRaterKingSurroundingPossession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676EF7C41E15AC1700E275B4 /* BoardRaterKingSurroundingPossession.swift */; };
+		677BE819200A3749004B27DB /* DictionaryRepresentableExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 677BE818200A3749004B27DB /* DictionaryRepresentableExtensions.swift */; };
+		677BE81C200A3BDE004B27DB /* SquareTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 677BE81B200A3BDE004B27DB /* SquareTests.swift */; };
+		677BE81D200A52D8004B27DB /* AIConfigurationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F7791F1E1B923B00885B89 /* AIConfigurationTests.swift */; };
 		67A3EB161E3A926C00F6F01B /* BoardScenarios.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A3EB121E3A826800F6F01B /* BoardScenarios.swift */; };
 		67A9CA341DE64DD600510FB8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		67A9CA351DE64DD800510FB8 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* MenuViewController.swift */; };
@@ -101,6 +104,8 @@
 		671989901DFFE8650053EA3D /* BoardRaterCenterDominanceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardRaterCenterDominanceTests.swift; sourceTree = "<group>"; };
 		676902571E432380007C76D7 /* PerformanceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PerformanceTests.swift; sourceTree = "<group>"; };
 		676EF7C41E15AC1700E275B4 /* BoardRaterKingSurroundingPossession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardRaterKingSurroundingPossession.swift; sourceTree = "<group>"; };
+		677BE818200A3749004B27DB /* DictionaryRepresentableExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryRepresentableExtensions.swift; sourceTree = "<group>"; };
+		677BE81B200A3BDE004B27DB /* SquareTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquareTests.swift; sourceTree = "<group>"; };
 		67A3EB121E3A826800F6F01B /* BoardScenarios.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardScenarios.swift; sourceTree = "<group>"; };
 		67A9CA071DE64D6500510FB8 /* SwiftChess.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SwiftChess.xcodeproj; path = ../SwiftChess/SwiftChess.xcodeproj; sourceTree = "<group>"; };
 		67A9CA141DE64DAA00510FB8 /* SwiftChessExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftChessExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -199,6 +204,7 @@
 			children = (
 				607FACE91AFB9204008FA782 /* Supporting Files */,
 				67D54A651DE986F700C12258 /* PieceTests.swift */,
+				677BE81B200A3BDE004B27DB /* SquareTests.swift */,
 				67FD868C1E41099B0023335C /* BoardLocationTests.swift */,
 				67D54A511DE7680E00C12258 /* BoardTests.swift */,
 				67D54A521DE7680E00C12258 /* GameTests.swift */,
@@ -220,6 +226,7 @@
 			children = (
 				607FACEA1AFB9204008FA782 /* Info.plist */,
 				67A3EB121E3A826800F6F01B /* BoardScenarios.swift */,
+				677BE818200A3749004B27DB /* DictionaryRepresentableExtensions.swift */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -441,11 +448,13 @@
 				67FD86911E4128F00023335C /* OpeningsTests.swift in Sources */,
 				67D54A611DE7683A00C12258 /* Tests.swift in Sources */,
 				676EF7C51E15AC1700E275B4 /* BoardRaterKingSurroundingPossession.swift in Sources */,
+				677BE81C200A3BDE004B27DB /* SquareTests.swift in Sources */,
 				67FD868D1E41099B0023335C /* BoardLocationTests.swift in Sources */,
 				67D54A5D1DE7682D00C12258 /* BoardTests.swift in Sources */,
 				67F9DB751E1AD3BB00C7EC5A /* AIBehaviourTests.swift in Sources */,
 				671989911DFFE8650053EA3D /* BoardRaterCenterDominanceTests.swift in Sources */,
 				6719898D1DFFE0F40053EA3D /* BoardRaterBoardDominanceTests.swift in Sources */,
+				677BE819200A3749004B27DB /* DictionaryRepresentableExtensions.swift in Sources */,
 				67D54A5E1DE7683000C12258 /* GameTests.swift in Sources */,
 				673B95191E4CE5880086CA97 /* BoardRaterThreatenedPiecesTests.swift in Sources */,
 				67D54A661DE986F700C12258 /* PieceTests.swift in Sources */,
@@ -453,6 +462,7 @@
 				67B73A9F1E154C1E00C19176 /* AIPlayerTests.swift in Sources */,
 				676902581E432380007C76D7 /* PerformanceTests.swift in Sources */,
 				67D54A641DE976A900C12258 /* BoardRaterCountPiecesTests.swift in Sources */,
+				677BE81D200A52D8004B27DB /* AIConfigurationTests.swift in Sources */,
 				67A3EB161E3A926C00F6F01B /* BoardScenarios.swift in Sources */,
 				09AE32551E03D71D00A149FE /* BoardRaterPawnProgressionTests.swift in Sources */,
 				67D54A5F1DE7683300C12258 /* PieceMovementTests.swift in Sources */,

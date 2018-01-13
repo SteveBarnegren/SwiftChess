@@ -182,5 +182,12 @@ class BoardLocationTests: XCTestCase {
             XCTAssertFalse($0.isDarkSquare, "Expected \($0) to be light")
         }
     }
-
+    
+    // MARK: - Dictionary Representable
+    
+    func testDictionaryRepresentable() {
+        
+        let location = BoardLocation(index: 14)
+        XCTAssertEqual(location, location.toDictionaryAndBack)
+    }
 }

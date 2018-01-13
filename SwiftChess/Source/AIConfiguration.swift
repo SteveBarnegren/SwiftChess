@@ -27,16 +27,16 @@ public struct AIConfiguration {
     }
     
     public let difficulty: Difficulty!
-    var suicideMultipler: ConfigurationValue!
-    var boardRaterCountPiecesWeighting: ConfigurationValue!
-    var boardRaterBoardDominanceWeighting: ConfigurationValue!
-    var boardRaterCenterOwnershipWeighting: ConfigurationValue!
-    var boardRaterCenterDominanceWeighting: ConfigurationValue!
-    var boardRaterThreatenedPiecesWeighting: ConfigurationValue!
-    var boardRaterPawnProgressionWeighting: ConfigurationValue!
-    var boardRaterKingSurroundingPossessionWeighting: ConfigurationValue!
-    var boardRaterCheckMateOpportunityWeighting: ConfigurationValue!
-    var boardRaterCenterFourOccupationWeighting: ConfigurationValue!
+    internal var suicideMultipler: ConfigurationValue
+    internal var boardRaterCountPiecesWeighting: ConfigurationValue
+    internal var boardRaterBoardDominanceWeighting: ConfigurationValue
+    internal var boardRaterCenterOwnershipWeighting: ConfigurationValue
+    internal var boardRaterCenterDominanceWeighting: ConfigurationValue
+    internal var boardRaterThreatenedPiecesWeighting: ConfigurationValue
+    internal var boardRaterPawnProgressionWeighting: ConfigurationValue
+    internal var boardRaterKingSurroundingPossessionWeighting: ConfigurationValue
+    internal var boardRaterCheckMateOpportunityWeighting: ConfigurationValue
+    internal var boardRaterCenterFourOccupationWeighting: ConfigurationValue
     
     public init(difficulty: Difficulty) {
         
@@ -66,4 +66,49 @@ public struct AIConfiguration {
         boardRaterCenterFourOccupationWeighting = makeValue(0.1, 0.3)
     }
     
+    internal init() {
+        
+        let zeroValue = ConfigurationValue(easyValue: 0, difficultValue: 0, multiplier: 0)
+        
+        difficulty = .easy
+        suicideMultipler = zeroValue
+        boardRaterCountPiecesWeighting = zeroValue
+        boardRaterBoardDominanceWeighting = zeroValue
+        boardRaterCenterOwnershipWeighting = zeroValue
+        boardRaterCenterDominanceWeighting = zeroValue
+        boardRaterThreatenedPiecesWeighting = zeroValue
+        boardRaterPawnProgressionWeighting = zeroValue
+        boardRaterKingSurroundingPossessionWeighting = zeroValue
+        boardRaterCheckMateOpportunityWeighting = zeroValue
+        boardRaterCenterFourOccupationWeighting = zeroValue
+    }
+}
+
+extension AIConfiguration: DictionaryRepresentable {
+    
+    struct Keys {
+        static let difficulty = "difficulty"
+    }
+    
+    init?(dictionary: [String: Any]) {
+        
+        if let raw = dictionary[Keys.difficulty] as? Int, let difficulty = Difficulty(rawValue: raw) {
+            self.init(difficulty: difficulty)
+        } else {
+            return nil
+        }
+    }
+    
+    var dictionaryRepresentation: [String: Any] {
+        
+        var dictionary = [String: Any]()
+        dictionary[Keys.difficulty] = difficulty.rawValue
+        return dictionary
+    }
+}
+
+extension AIConfiguration: Equatable {
+    public static func == (lhs: AIConfiguration, rhs: AIConfiguration) -> Bool {
+        return lhs.difficulty == rhs.difficulty
+    }
 }

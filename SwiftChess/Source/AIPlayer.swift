@@ -9,7 +9,7 @@
 // swiftlint:disable for_where
 import Foundation
 
-open class AIPlayer: Player {
+public final class AIPlayer: Player {
     
     let boardRaters: [BoardRater]!
     public let configuration: AIConfiguration!
@@ -275,6 +275,41 @@ open class AIPlayer: Player {
         }
         
         return promotedBoard
+    }
+}
+
+extension AIPlayer: Equatable {
+    public static func == (lhs: AIPlayer, rhs: AIPlayer) -> Bool {
+        return lhs.color == rhs.color && lhs.configuration == rhs.configuration
+    }
+}
+
+extension AIPlayer: DictionaryRepresentable {
+    
+    struct Keys {
+        static let color = "color"
+        static let configuration = "configuration"
+    }
+    
+    convenience init?(dictionary: [String: Any]) {
+        
+        guard
+            let colorRaw = dictionary[Keys.color] as? String,
+            let color = Color(rawValue: colorRaw),
+            let configurationDict = dictionary[Keys.configuration] as? [String: Any],
+            let configuration = AIConfiguration(dictionary: configurationDict) else {
+                return nil
+        }
+        
+        self.init(color: color, configuration: configuration)
+    }
+    
+    var dictionaryRepresentation: [String: Any] {
+        
+        var dictionary = [String: Any]()
+        dictionary[Keys.color] = color.rawValue
+        dictionary[Keys.configuration] = configuration.dictionaryRepresentation
+        return dictionary
     }
 }
 

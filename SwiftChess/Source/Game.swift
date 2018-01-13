@@ -8,7 +8,7 @@
 
 import Foundation
 
-open class Game {
+public final class Game {
     
     // MARK: Types
     public enum State: Equatable {
@@ -30,7 +30,7 @@ open class Game {
         }
     }
     
-    public enum GameType {
+    public enum GameType: Int {
         case humanVsHuman
         case humanVsComputer
         case computerVsComputer
@@ -149,6 +149,184 @@ extension Game: PlayerDelegate {
    
     }
     
+}
+
+// MARK: - DictionaryRepresentable
+
+extension Game.State: DictionaryRepresentable {
+    
+    struct Keys {
+        static let type = "type"
+        static let type_inProgress = "inProgress"
+        static let type_stalemate = "stalemate"
+        static let type_won = "won"
+        static let color = "color"
+    }
+    
+    init?(dictionary: [String : Any]) {
+        
+        guard let type = dictionary[Keys.type] as? String else {
+            return nil
+        }
+        
+        switch type {
+        case Keys.type_inProgress:
+            self = .inProgress
+        case Keys.type_stalemate:
+            guard let raw = dictionary[Keys.color] as? String, let color = Color(rawValue: raw) else {
+                return nil
+            }
+            self = .staleMate(color: color)
+        case Keys.type_won:
+            guard let raw = dictionary[Keys.color] as? String, let color = Color(rawValue: raw) else {
+                return nil
+            }
+            self = .won(color: color)
+        default:
+            return nil
+        }
+    }
+    
+    var dictionaryRepresentation: [String: Any] {
+        
+        var dictionary = [String: Any]()
+        
+        switch self {
+        case .inProgress:
+            dictionary[Keys.type] = Keys.type_inProgress
+        case .staleMate(let color):
+            dictionary[Keys.type] = Keys.type_stalemate
+            dictionary[Keys.color] = color.rawValue
+        case .won(let color):
+            dictionary[Keys.type] = Keys.type_won
+            dictionary[Keys.color] = color.rawValue
+        }
+        
+        return dictionary
+    }
+}
+
+extension Game: DictionaryRepresentable {
+    
+    struct Keys {
+        static let state = "state"
+        static let gameType = "gameType"
+        static let board = "board"
+        static let whitePlayerType = "whitePlayerType"
+        static let blackPlayerType = "blackPlayerType"
+        static let playerType_human = "playerType_human"
+        static let playerType_ai = "playerType_ai"
+        static let whitePlayer = "PlayerOne"
+        static let blackPlayer = "PlayerTwo"
+        static let currentPlayerColor = "currentPlayerColor"
+    }
+
+    convenience init?(dictionary: [String: Any]) {
+        
+        // State
+        guard let stateDict = dictionary[Keys.state] as? [String: Any],
+            let state = State(dictionary: stateDict),
+            let gameTypeRaw = dictionary[Keys.gameType] as? Int,
+            let gameType = GameType(rawValue: gameTypeRaw),
+            let boardDict = dictionary[Keys.board] as? [String: Any],
+            let board = Board(dictionary: boardDict),
+            let currentPlayerColorRaw = dictionary[Keys.currentPlayerColor] as? String,
+            let currentPlayerColor = Color(rawValue: currentPlayerColorRaw)
+            else {
+                print("Unable to recreate game, missing values")
+                return nil
+        }
+        
+        func makePlayer(type: String, dictionary: [String: Any]) -> Player? {
+            
+            switch type {
+            case Keys.playerType_human:
+                return Human(dictionary: dictionary)
+            case Keys.playerType_ai:
+                return AIPlayer(dictionary: dictionary)
+            default:
+                return nil
+            }
+        }
+        
+        // White Player
+        guard let whitePlayerType = dictionary[Keys.whitePlayerType] as? String,
+            let whitePlayerDict = dictionary[Keys.whitePlayer] as? [String: Any],
+            let whitePlayer = makePlayer(type: whitePlayerType, dictionary: whitePlayerDict) else {
+            return nil
+        }
+        
+        // Black Player
+        guard let blackPlayerType = dictionary[Keys.blackPlayerType] as? String,
+            let blackPlayerDict = dictionary[Keys.blackPlayer] as? [String: Any],
+            let blackPlayer = makePlayer(type: blackPlayerType, dictionary: blackPlayerDict) else {
+                return nil
+        }
+        
+        self.init(firstPlayer: whitePlayer,
+                  secondPlayer: blackPlayer,
+                  board: board,
+                  colorToMove: currentPlayerColor)
+    }
+    
+    var dictionaryRepresentation: [String: Any] {
+
+        var dictionary = [String: Any]()
+        dictionary[Keys.state] = state.dictionaryRepresentation
+        dictionary[Keys.gameType] = gameType.rawValue
+        dictionary[Keys.board] = board.dictionaryRepresentation
+        
+        // White Player
+        if let whiteHuman = self.whitePlayer as? Human {
+            dictionary[Keys.whitePlayerType] = Keys.playerType_human
+            dictionary[Keys.whitePlayer] = whiteHuman.dictionaryRepresentation
+        } else if let whiteAI = self.whitePlayer as? AIPlayer {
+            dictionary[Keys.whitePlayerType] = Keys.playerType_ai
+            dictionary[Keys.whitePlayer] = whiteAI.dictionaryRepresentation
+        } else {
+            fatalError("Cannot determine white player type")
+        }
+        
+        // Black Player
+        if let blackHuman = self.blackPlayer as? Human {
+            dictionary[Keys.blackPlayerType] = Keys.playerType_human
+            dictionary[Keys.blackPlayer] = blackHuman.dictionaryRepresentation
+        } else if let blackAI = self.blackPlayer as? AIPlayer {
+            dictionary[Keys.blackPlayerType] = Keys.playerType_ai
+            dictionary[Keys.blackPlayer] = blackAI.dictionaryRepresentation
+        } else {
+            fatalError("Cannot determine black player type")
+        }
+        
+        dictionary[Keys.currentPlayerColor] = currentPlayer.color.rawValue
+        return dictionary
+    }
+}
+
+extension Game: Equatable {
+    public static func == (lhs: Game, rhs: Game) -> Bool {
+        
+        func arePlayersEqual(p1: Player, p2: Player) -> Bool {
+            
+            if let h1 = p1 as? Human, let h2 = p2 as? Human {
+                return h1 == h2
+            } else if let ai1 = p1 as? AIPlayer, let ai2 = p2 as? AIPlayer {
+                return ai1 == ai2
+            } else {
+                return false
+            }
+        }
+        
+        if arePlayersEqual(p1: lhs.whitePlayer, p2: rhs.whitePlayer)
+            && arePlayersEqual(p1: lhs.blackPlayer, p2: rhs.blackPlayer)
+            && arePlayersEqual(p1: lhs.currentPlayer, p2: rhs.currentPlayer)
+            && lhs.board == rhs.board
+            && lhs.state == rhs.state {
+            return true
+        } else {
+            return false
+        }
+    }
 }
 
 // MARK: - GameDelegate

@@ -138,3 +138,26 @@ public func == (lhs: BoardLocation, rhs: BoardLocation) -> Bool {
 public func + (left: BoardLocation, right: BoardLocation) -> BoardLocation {
     return BoardLocation(index: left.index + right.index)
 }
+
+extension BoardLocation: DictionaryRepresentable {
+    
+    struct Keys {
+        static let index = "index"
+    }
+    
+    init?(dictionary: [String : Any]) {
+        
+        guard let index = dictionary[Keys.index] as? Int else {
+            return nil
+        }
+        
+        self.index = index
+    }
+    
+    var dictionaryRepresentation: [String : Any] {
+        
+        var dictionary = [String: Any]()
+        dictionary[Keys.index] = index
+        return dictionary
+    }
+}
