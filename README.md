@@ -23,7 +23,7 @@ SwiftChess doesn't provide any UI, just all of the logic required to create a ch
 
 ## Example
 
-The example application contains a complete implementation of swift chess.
+The example application contains a complete implementation of **SwiftChess**.
 
 Run `Example/Example.xcodeproj`
 
@@ -93,6 +93,27 @@ extension GameViewController: GameDelegate {
 }
 ```
 
+## Persistence
+
+The entire state of a **SwiftChess** game can be converted to and initialised from a `Dictionary`.
+
+Get a snapshot of the current state:
+
+```
+let dictionary: [String: Any] = game.dictionaryRepresentation
+```
+
+Initialise a game with a previous snapshot:
+
+```
+let game = Game(dictionary: dictionary)
+```
+
+The returned dictionary stores all the information required to create a 'save game' feature. The player colors, AI difficulty, piece positions etc.
+
+You can serialize this to JSON, save it to disk, send it over the network etc.
+
+
 ## Other stuff
 
 ##### Make a castling move
@@ -107,15 +128,16 @@ if game.board.canColorCastle(color: .white, side: .kingSide) {
 
 ```
 func promotedTypeForPawn(location: BoardLocation, 
-player: Human, 
-possiblePromotions: [Piece.PieceType], 
-callback: @escaping (Piece.PieceType) -> Void) {
+                         player: Human, 
+                         possiblePromotions: [Piece.PieceType], 
+                         callback: @escaping (Piece.PieceType) -> Void) {
 
 	// Show UI for the user to select one of the possible promotion types
 	// then call the handler
 	
 	// ...or some games just promote to a queen
 	callback(.queen)
+}
 ```
 
 ## Author
