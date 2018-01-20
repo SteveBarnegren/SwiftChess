@@ -221,7 +221,7 @@ extension Game: DictionaryRepresentable {
         static let currentPlayerColor = "currentPlayerColor"
     }
 
-    convenience init?(dictionary: [String: Any]) {
+    public convenience init?(dictionary: [String: Any]) {
         
         // State
         guard let stateDict = dictionary[Keys.state] as? [String: Any],
@@ -269,7 +269,7 @@ extension Game: DictionaryRepresentable {
                   colorToMove: currentPlayerColor)
     }
     
-    var dictionaryRepresentation: [String: Any] {
+    public var dictionaryRepresentation: [String: Any] {
 
         var dictionary = [String: Any]()
         dictionary[Keys.state] = state.dictionaryRepresentation

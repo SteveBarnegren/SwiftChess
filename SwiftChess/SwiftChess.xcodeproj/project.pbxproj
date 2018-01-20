@@ -105,7 +105,6 @@
 		67A9C9D41DE64CD200510FB8 = {
 			isa = PBXGroup;
 			children = (
-				677BE815200A2D54004B27DB /* Extensions */,
 				67A9C9F81DE64D2500510FB8 /* Source */,
 				67A9C9E01DE64CD200510FB8 /* SwiftChess */,
 				67A9C9EB1DE64CD300510FB8 /* SwiftChessTests */,
@@ -142,6 +141,7 @@
 		67A9C9F81DE64D2500510FB8 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				677BE815200A2D54004B27DB /* Extensions */,
 				67F9DB791E2438EC00C7EC5A /* ASCIIBoard.swift */,
 				67FD86881E4105B80023335C /* BoardStride.swift */,
 				67FD868A1E4105D40023335C /* BoardLocation.swift */,
