@@ -101,7 +101,6 @@ extension Human: Equatable {
     }
 }
 
-
 extension Human: DictionaryRepresentable {
     
     struct Keys {

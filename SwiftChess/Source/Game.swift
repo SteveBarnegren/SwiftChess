@@ -163,7 +163,7 @@ extension Game.State: DictionaryRepresentable {
         static let color = "color"
     }
     
-    init?(dictionary: [String : Any]) {
+    init?(dictionary: [String: Any]) {
         
         guard let type = dictionary[Keys.type] as? String else {
             return nil

@@ -82,12 +82,10 @@ public struct BoardLocation: Equatable {
     
     func incremented(by stride: BoardStride) -> BoardLocation {
         
-        // TODO: Only call this in debug mode to increace performance!
-        if !canIncrement(by: stride) {
-            // swiftlint:disable line_length
-            print("WARNING! BoardLocation is being incremented by a stride that will result in wrapping! call canIncrementBy(stride: BoardStride) first")
-            // swiftlint:enable line_length
-        }
+        // swiftlint:disable line_length
+        assert(canIncrement(by: stride),
+               "BoardLocation is being incremented by a stride that will result in wrapping! call canIncrementBy(stride: BoardStride) first")
+        // swiftlint:enable line_length
         
         return BoardLocation(x: x + stride.x,
                              y: y + stride.y)
@@ -145,7 +143,7 @@ extension BoardLocation: DictionaryRepresentable {
         static let index = "index"
     }
     
-    init?(dictionary: [String : Any]) {
+    init?(dictionary: [String: Any]) {
         
         guard let index = dictionary[Keys.index] as? Int else {
             return nil
@@ -154,7 +152,7 @@ extension BoardLocation: DictionaryRepresentable {
         self.index = index
     }
     
-    var dictionaryRepresentation: [String : Any] {
+    var dictionaryRepresentation: [String: Any] {
         
         var dictionary = [String: Any]()
         dictionary[Keys.index] = index
