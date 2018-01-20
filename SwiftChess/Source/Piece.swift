@@ -27,8 +27,6 @@ public enum Color: String {
 
 public struct Piece: Equatable {
     
-    static private var lastAssignedTag = 0
-    
     public enum PieceType: Int {
         case pawn
         case rook
@@ -71,17 +69,8 @@ public struct Piece: Equatable {
     var value: Double {
         return type.value
     }
-
-    public init(type: PieceType, color: Color) {
-        self.type = type
-        self.color = color
-        
-        // assign the next tag
-        Piece.lastAssignedTag += 1
-        self.tag = Piece.lastAssignedTag
-    }
     
-    public init(type: PieceType, color: Color, tag: Int) {
+    public init(type: PieceType, color: Color, tag: Int = 0) {
         self.type = type
         self.color = color
         self.tag = tag

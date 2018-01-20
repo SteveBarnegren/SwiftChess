@@ -71,6 +71,7 @@ public struct Board: Equatable {
     }
 
     public private(set) var squares = [Square]()
+    private var lastAssignedPieceTag = 0
     
     // MARK: - Init
     public init(state: InitialState) {
@@ -84,31 +85,35 @@ public struct Board: Equatable {
         if state == .newGame {
             setupForNewGame()
         }
-     
     }
     
     mutating func setupForNewGame() {
         
         let pieces: [Piece.PieceType] = [.rook, .knight, .bishop, .queen, .king, .bishop, .knight, .rook]
+        
+        func makePiece(type: Piece.PieceType, color: Color) -> Piece {
+            lastAssignedPieceTag += 1
+            return Piece(type: type, color: color, tag: lastAssignedPieceTag)
+        }
 
         // Setup white bottom row
         for i in 0...7 {
-            setPiece(Piece(type: pieces[i], color: .white), at: BoardLocation(index: i))
+            setPiece(makePiece(type: pieces[i], color: .white), at: BoardLocation(index: i))
         }
 
         // Setup white pawn row
         for i in 8...15 {
-            setPiece(Piece(type: .pawn, color: .white), at: BoardLocation(index: i))
+            setPiece(makePiece(type: .pawn, color: .white), at: BoardLocation(index: i))
         }
         
         // Setup black bottom row
         for i in 56...63 {
-            setPiece(Piece(type: pieces[i-56], color: .black), at: BoardLocation(index: i))
+            setPiece(makePiece(type: pieces[i-56], color: .black), at: BoardLocation(index: i))
         }
         
         // Setup black pawn row
         for i in 48...55 {
-            setPiece(Piece(type: .pawn, color: .black), at: BoardLocation(index: i))
+            setPiece(makePiece(type: .pawn, color: .black), at: BoardLocation(index: i))
         }
     }
     
@@ -698,6 +703,8 @@ extension Board: DictionaryRepresentable {
         } else {
             return nil
         }
+        
+        lastAssignedPieceTag = squares.flatMap { $0.piece }.map { $0.tag }.max() ?? 0
     }
     
     var dictionaryRepresentation: [String: Any] {
