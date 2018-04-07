@@ -652,7 +652,7 @@ public struct Board: Equatable {
                 case .queen:
                     character = piece.color == .white ? "Q" : "q"
                 case .king:
-                    character = piece.color == .white ? "K" : "k"
+                    character = piece.color == .white ? "G" : "g"
                 case .pawn:
                     character = piece.color == .white ? "P" : "p"
                 }
