@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'SwiftChess'
-  s.version          = '1.0'
+  s.version          = '1.1'
   s.summary          = 'Chess engine written in Swift'
 
 # This description is used to generate tags and improve search results.
@@ -26,6 +26,7 @@ Chess engine written in Swift, support player vs player, and player vs AI games.
   s.author           = { 'Steve Barnegren' => 'steve.barnegren@gmail.com' }
   s.source           = { :git => 'https://github.com/SteveBarnegren/SwiftChess.git', :tag => s.version.to_s }
   s.social_media_url = 'https://twitter.com/stevebarnegren'
+  s.swift_version = '5.0'
 
   s.ios.deployment_target = '8.0'
 
