@@ -103,7 +103,7 @@ class GameViewController: UIViewController {
     
     func removePieceView(pieceView: PieceView) {
         
-        if let index = pieceViews.index(of: pieceView) {
+        if let index = pieceViews.firstIndex(of: pieceView) {
             pieceViews.remove(at: index)
         }
         
@@ -405,13 +405,13 @@ extension GameViewController: GameDelegate {
                                                                               possibleTypes: possiblePromotions) {
             
             self.promotionSelectionViewController?.view.removeFromSuperview()
-            self.promotionSelectionViewController?.removeFromParentViewController()
+            self.promotionSelectionViewController?.removeFromParent()
             self.boardView.isUserInteractionEnabled = true
             callback($0)
         }
         
         view.addSubview(viewController.view)
-        addChildViewController(viewController)
+        addChild(viewController)
         promotionSelectionViewController = viewController
     }
 
