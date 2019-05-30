@@ -1,8 +1,8 @@
 # SwiftChess
 
-[![Version](https://img.shields.io/cocoapods/v/SBAutoLayout.svg?style=flat)](http://cocoapods.org/pods/SwiftChess)
-[![License](https://img.shields.io/cocoapods/l/SBAutoLayout.svg?style=flat)](http://cocoapods.org/pods/SwiftChess)
-[![Platform](https://img.shields.io/cocoapods/p/SBAutoLayout.svg?style=flat)](http://cocoapods.org/pods/SwiftChess)
+[![Version](https://img.shields.io/cocoapods/v/SwiftChess.svg?style=flat)](http://cocoapods.org/pods/SwiftChess)
+[![License](https://img.shields.io/cocoapods/l/SwiftChess.svg?style=flat)](http://cocoapods.org/pods/SwiftChess)
+[![Platform](https://img.shields.io/cocoapods/p/SwiftChess.svg?style=flat)](http://cocoapods.org/pods/SwiftChess)
 
 SwiftChess is a chess engine written in Swift.
 
