@@ -697,14 +697,14 @@ extension Board: DictionaryRepresentable {
             return nil
         }
         
-        let squares = squaresDicts.flatMap { Square(dictionary: $0) }
+        let squares = squaresDicts.compactMap { Square(dictionary: $0) }
         if squares.count == 64 {
             self.squares = squares
         } else {
             return nil
         }
         
-        lastAssignedPieceTag = squares.flatMap { $0.piece }.map { $0.tag }.max() ?? 0
+        lastAssignedPieceTag = squares.compactMap { $0.piece }.map { $0.tag }.max() ?? 0
     }
     
     var dictionaryRepresentation: [String: Any] {

@@ -62,18 +62,11 @@ class Opening {
         }
         
         // Filter for color
-        return moves.enumerated().flatMap { (index, value) in
+        return moves.enumerated().compactMap { (index, value) in
             index % 2 == (color == .white ? 0 : 1) ? value : nil
         }
     }
-/*
-    public func moveLocations(for color: Color) -> [(from fromLocation: BoardLocation, to toLocation: BoardLocation)] {
-        
-        return moveLocations().enumerated().flatMap{ (index, value) in
-            index % 2 == (color == .white ? 0 : 1) ? value : nil
-        }
-    }
-    */
+
     func moveLocations() -> [(fromLocation: BoardLocation, toLocation: BoardLocation)] {
         
         return moveGridPositions().map {

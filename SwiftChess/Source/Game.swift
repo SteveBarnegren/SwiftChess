@@ -37,12 +37,12 @@ public final class Game {
     }
 
     // MARK: Properties
-    open internal(set) var board: Board
-    open let whitePlayer: Player!
-    open let blackPlayer: Player!
-    open internal(set) var currentPlayer: Player!
-    open internal(set) var state = Game.State.inProgress
-    open weak var delegate: GameDelegate?
+    public internal(set) var board: Board
+    public let whitePlayer: Player!
+    public let blackPlayer: Player!
+    public internal(set) var currentPlayer: Player!
+    public internal(set) var state = Game.State.inProgress
+    public weak var delegate: GameDelegate?
     
     public var gameType: GameType {
     

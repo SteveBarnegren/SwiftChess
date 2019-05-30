@@ -129,7 +129,7 @@ public struct ASCIIBoard {
         var index: Int?
         
         #if swift(>=3.2)
-        if let idx = artString.index(of: character) {
+        if let idx = artString.firstIndex(of: character) {
             index = artString.distance(from: artString.startIndex, to: idx)
         }
         #else
