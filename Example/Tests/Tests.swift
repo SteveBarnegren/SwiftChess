@@ -1,6 +1,5 @@
 import UIKit
 import XCTest
-import SwiftChess
 
 class Tests: XCTestCase {
     
