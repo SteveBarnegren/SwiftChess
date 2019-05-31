@@ -1,6 +1,6 @@
 language: swift
 osx_image: xcode10.2
-xcode_workspace: Example/Example.xcodeproj
+xcode_project: Example/Example.xcodeproj
 xcode_scheme: SwiftChessExample
 xcode_destination: platform=iOS Simulator,OS=12.1,name=iPhone X
 
