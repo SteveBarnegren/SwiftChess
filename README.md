@@ -3,6 +3,8 @@
 [![Version](https://img.shields.io/cocoapods/v/SwiftChess.svg?style=flat)](http://cocoapods.org/pods/SwiftChess)
 [![License](https://img.shields.io/cocoapods/l/SwiftChess.svg?style=flat)](http://cocoapods.org/pods/SwiftChess)
 [![Platform](https://img.shields.io/cocoapods/p/SwiftChess.svg?style=flat)](http://cocoapods.org/pods/SwiftChess)
+[![CI Status](https://api.travis-ci.org/SteveBarnegren/SwiftChess.svg?branch=master)](https://travis-ci.org/SteveBarnegren/SwiftChess)
+[![Twitter](https://img.shields.io/badge/contact-@stevebarnegren-blue.svg?style=flat)](https://twitter.com/stevebarnegren)
 
 SwiftChess is a chess engine written in Swift.
 
