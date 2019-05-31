@@ -12,6 +12,29 @@
 		671989831DEB11900053EA3D /* BoardRaterCenterOwnership.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671989821DEB11900053EA3D /* BoardRaterCenterOwnership.swift */; };
 		6719898B1DFFE0D80053EA3D /* BoardRaterBoardDominance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6719898A1DFFE0D80053EA3D /* BoardRaterBoardDominance.swift */; };
 		6719898F1DFFE7550053EA3D /* BoardRaterCenterDominance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6719898E1DFFE7550053EA3D /* BoardRaterCenterDominance.swift */; };
+		673596B922A1B43A003086FF /* AIPlayerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673596AD22A1B43A003086FF /* AIPlayerTests.swift */; };
+		673596BA22A1B43A003086FF /* PerformanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673596AE22A1B43A003086FF /* PerformanceTests.swift */; };
+		673596BB22A1B43A003086FF /* AIBehaviourTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673596AF22A1B43A003086FF /* AIBehaviourTests.swift */; };
+		673596BC22A1B43A003086FF /* GameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673596B022A1B43A003086FF /* GameTests.swift */; };
+		673596BD22A1B43A003086FF /* BoardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673596B122A1B43A003086FF /* BoardTests.swift */; };
+		673596BE22A1B43A003086FF /* OpeningsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673596B222A1B43A003086FF /* OpeningsTests.swift */; };
+		673596BF22A1B43A003086FF /* PieceMovementTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673596B322A1B43A003086FF /* PieceMovementTests.swift */; };
+		673596C022A1B43A003086FF /* BoardLocationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673596B422A1B43A003086FF /* BoardLocationTests.swift */; };
+		673596C122A1B43A003086FF /* PlayerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673596B522A1B43A003086FF /* PlayerTests.swift */; };
+		673596C222A1B43A003086FF /* PieceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673596B622A1B43A003086FF /* PieceTests.swift */; };
+		673596C322A1B43A003086FF /* AIConfigurationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673596B722A1B43A003086FF /* AIConfigurationTests.swift */; };
+		673596C422A1B43A003086FF /* SquareTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673596B822A1B43A003086FF /* SquareTests.swift */; };
+		673596C822A1B448003086FF /* DictionaryRepresentableExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673596C622A1B448003086FF /* DictionaryRepresentableExtensions.swift */; };
+		673596C922A1B448003086FF /* BoardScenarios.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673596C722A1B448003086FF /* BoardScenarios.swift */; };
+		673596D422A1B45A003086FF /* BoardRaterCountPiecesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673596CB22A1B459003086FF /* BoardRaterCountPiecesTests.swift */; };
+		673596D522A1B45A003086FF /* BoardRaterCheckMateOpportunityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673596CC22A1B459003086FF /* BoardRaterCheckMateOpportunityTests.swift */; };
+		673596D622A1B45A003086FF /* BoardRaterCenterDominanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673596CD22A1B459003086FF /* BoardRaterCenterDominanceTests.swift */; };
+		673596D722A1B45A003086FF /* BoardRaterCenterOwnershipTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673596CE22A1B459003086FF /* BoardRaterCenterOwnershipTests.swift */; };
+		673596D822A1B45A003086FF /* BoardRaterKingSurroundingPossession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673596CF22A1B459003086FF /* BoardRaterKingSurroundingPossession.swift */; };
+		673596D922A1B45A003086FF /* BoardRaterCenterFourOccupationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673596D022A1B459003086FF /* BoardRaterCenterFourOccupationTests.swift */; };
+		673596DA22A1B45A003086FF /* BoardRaterBoardDominanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673596D122A1B45A003086FF /* BoardRaterBoardDominanceTests.swift */; };
+		673596DB22A1B45A003086FF /* BoardRaterThreatenedPiecesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673596D222A1B45A003086FF /* BoardRaterThreatenedPiecesTests.swift */; };
+		673596DC22A1B45A003086FF /* BoardRaterPawnProgressionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673596D322A1B45A003086FF /* BoardRaterPawnProgressionTests.swift */; };
 		676EF7C31E15A8A500E275B4 /* BoardRaterKingSurroundingPossession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676EF7C21E15A8A500E275B4 /* BoardRaterKingSurroundingPossession.swift */; };
 		677BE817200A2D78004B27DB /* DictionaryRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 677BE816200A2D78004B27DB /* DictionaryRepresentable.swift */; };
 		67A9C9E81DE64CD300510FB8 /* SwiftChess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67A9C9DE1DE64CD200510FB8 /* SwiftChess.framework */; };
@@ -50,6 +73,29 @@
 		671989821DEB11900053EA3D /* BoardRaterCenterOwnership.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardRaterCenterOwnership.swift; sourceTree = "<group>"; };
 		6719898A1DFFE0D80053EA3D /* BoardRaterBoardDominance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardRaterBoardDominance.swift; sourceTree = "<group>"; };
 		6719898E1DFFE7550053EA3D /* BoardRaterCenterDominance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardRaterCenterDominance.swift; sourceTree = "<group>"; };
+		673596AD22A1B43A003086FF /* AIPlayerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIPlayerTests.swift; sourceTree = "<group>"; };
+		673596AE22A1B43A003086FF /* PerformanceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PerformanceTests.swift; sourceTree = "<group>"; };
+		673596AF22A1B43A003086FF /* AIBehaviourTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIBehaviourTests.swift; sourceTree = "<group>"; };
+		673596B022A1B43A003086FF /* GameTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameTests.swift; sourceTree = "<group>"; };
+		673596B122A1B43A003086FF /* BoardTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardTests.swift; sourceTree = "<group>"; };
+		673596B222A1B43A003086FF /* OpeningsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpeningsTests.swift; sourceTree = "<group>"; };
+		673596B322A1B43A003086FF /* PieceMovementTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PieceMovementTests.swift; sourceTree = "<group>"; };
+		673596B422A1B43A003086FF /* BoardLocationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardLocationTests.swift; sourceTree = "<group>"; };
+		673596B522A1B43A003086FF /* PlayerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerTests.swift; sourceTree = "<group>"; };
+		673596B622A1B43A003086FF /* PieceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PieceTests.swift; sourceTree = "<group>"; };
+		673596B722A1B43A003086FF /* AIConfigurationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIConfigurationTests.swift; sourceTree = "<group>"; };
+		673596B822A1B43A003086FF /* SquareTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SquareTests.swift; sourceTree = "<group>"; };
+		673596C622A1B448003086FF /* DictionaryRepresentableExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictionaryRepresentableExtensions.swift; sourceTree = "<group>"; };
+		673596C722A1B448003086FF /* BoardScenarios.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardScenarios.swift; sourceTree = "<group>"; };
+		673596CB22A1B459003086FF /* BoardRaterCountPiecesTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardRaterCountPiecesTests.swift; sourceTree = "<group>"; };
+		673596CC22A1B459003086FF /* BoardRaterCheckMateOpportunityTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardRaterCheckMateOpportunityTests.swift; sourceTree = "<group>"; };
+		673596CD22A1B459003086FF /* BoardRaterCenterDominanceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardRaterCenterDominanceTests.swift; sourceTree = "<group>"; };
+		673596CE22A1B459003086FF /* BoardRaterCenterOwnershipTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardRaterCenterOwnershipTests.swift; sourceTree = "<group>"; };
+		673596CF22A1B459003086FF /* BoardRaterKingSurroundingPossession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardRaterKingSurroundingPossession.swift; sourceTree = "<group>"; };
+		673596D022A1B459003086FF /* BoardRaterCenterFourOccupationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardRaterCenterFourOccupationTests.swift; sourceTree = "<group>"; };
+		673596D122A1B45A003086FF /* BoardRaterBoardDominanceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardRaterBoardDominanceTests.swift; sourceTree = "<group>"; };
+		673596D222A1B45A003086FF /* BoardRaterThreatenedPiecesTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardRaterThreatenedPiecesTests.swift; sourceTree = "<group>"; };
+		673596D322A1B45A003086FF /* BoardRaterPawnProgressionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardRaterPawnProgressionTests.swift; sourceTree = "<group>"; };
 		676EF7C21E15A8A500E275B4 /* BoardRaterKingSurroundingPossession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardRaterKingSurroundingPossession.swift; sourceTree = "<group>"; };
 		677BE816200A2D78004B27DB /* DictionaryRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryRepresentable.swift; sourceTree = "<group>"; };
 		67A9C9DE1DE64CD200510FB8 /* SwiftChess.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftChess.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -94,6 +140,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		673596C522A1B43E003086FF /* Supporting */ = {
+			isa = PBXGroup;
+			children = (
+				673596C722A1B448003086FF /* BoardScenarios.swift */,
+				673596C622A1B448003086FF /* DictionaryRepresentableExtensions.swift */,
+			);
+			path = Supporting;
+			sourceTree = "<group>";
+		};
+		673596CA22A1B44B003086FF /* Board Raters */ = {
+			isa = PBXGroup;
+			children = (
+				673596D122A1B45A003086FF /* BoardRaterBoardDominanceTests.swift */,
+				673596CD22A1B459003086FF /* BoardRaterCenterDominanceTests.swift */,
+				673596D022A1B459003086FF /* BoardRaterCenterFourOccupationTests.swift */,
+				673596CE22A1B459003086FF /* BoardRaterCenterOwnershipTests.swift */,
+				673596CC22A1B459003086FF /* BoardRaterCheckMateOpportunityTests.swift */,
+				673596CB22A1B459003086FF /* BoardRaterCountPiecesTests.swift */,
+				673596CF22A1B459003086FF /* BoardRaterKingSurroundingPossession.swift */,
+				673596D322A1B45A003086FF /* BoardRaterPawnProgressionTests.swift */,
+				673596D222A1B45A003086FF /* BoardRaterThreatenedPiecesTests.swift */,
+			);
+			path = "Board Raters";
+			sourceTree = "<group>";
+		};
 		677BE815200A2D54004B27DB /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -133,6 +204,20 @@
 		67A9C9EB1DE64CD300510FB8 /* SwiftChessTests */ = {
 			isa = PBXGroup;
 			children = (
+				673596C522A1B43E003086FF /* Supporting */,
+				673596CA22A1B44B003086FF /* Board Raters */,
+				673596AF22A1B43A003086FF /* AIBehaviourTests.swift */,
+				673596B722A1B43A003086FF /* AIConfigurationTests.swift */,
+				673596AD22A1B43A003086FF /* AIPlayerTests.swift */,
+				673596B422A1B43A003086FF /* BoardLocationTests.swift */,
+				673596B122A1B43A003086FF /* BoardTests.swift */,
+				673596B022A1B43A003086FF /* GameTests.swift */,
+				673596B222A1B43A003086FF /* OpeningsTests.swift */,
+				673596AE22A1B43A003086FF /* PerformanceTests.swift */,
+				673596B322A1B43A003086FF /* PieceMovementTests.swift */,
+				673596B622A1B43A003086FF /* PieceTests.swift */,
+				673596B522A1B43A003086FF /* PlayerTests.swift */,
+				673596B822A1B43A003086FF /* SquareTests.swift */,
 				67A9C9EE1DE64CD300510FB8 /* Info.plist */,
 			);
 			path = SwiftChessTests;
@@ -268,7 +353,7 @@
 					};
 					67A9C9E61DE64CD300510FB8 = {
 						CreatedOnToolsVersion = 8.0;
-						LastSwiftMigration = 0900;
+						LastSwiftMigration = 1020;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -361,6 +446,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				673596D622A1B45A003086FF /* BoardRaterCenterDominanceTests.swift in Sources */,
+				673596C422A1B43A003086FF /* SquareTests.swift in Sources */,
+				673596DB22A1B45A003086FF /* BoardRaterThreatenedPiecesTests.swift in Sources */,
+				673596C222A1B43A003086FF /* PieceTests.swift in Sources */,
+				673596BA22A1B43A003086FF /* PerformanceTests.swift in Sources */,
+				673596BF22A1B43A003086FF /* PieceMovementTests.swift in Sources */,
+				673596D822A1B45A003086FF /* BoardRaterKingSurroundingPossession.swift in Sources */,
+				673596BD22A1B43A003086FF /* BoardTests.swift in Sources */,
+				673596D922A1B45A003086FF /* BoardRaterCenterFourOccupationTests.swift in Sources */,
+				673596DC22A1B45A003086FF /* BoardRaterPawnProgressionTests.swift in Sources */,
+				673596BB22A1B43A003086FF /* AIBehaviourTests.swift in Sources */,
+				673596C822A1B448003086FF /* DictionaryRepresentableExtensions.swift in Sources */,
+				673596C122A1B43A003086FF /* PlayerTests.swift in Sources */,
+				673596B922A1B43A003086FF /* AIPlayerTests.swift in Sources */,
+				673596C322A1B43A003086FF /* AIConfigurationTests.swift in Sources */,
+				673596BE22A1B43A003086FF /* OpeningsTests.swift in Sources */,
+				673596D422A1B45A003086FF /* BoardRaterCountPiecesTests.swift in Sources */,
+				673596BC22A1B43A003086FF /* GameTests.swift in Sources */,
+				673596C922A1B448003086FF /* BoardScenarios.swift in Sources */,
+				673596C022A1B43A003086FF /* BoardLocationTests.swift in Sources */,
+				673596DA22A1B45A003086FF /* BoardRaterBoardDominanceTests.swift in Sources */,
+				673596D722A1B45A003086FF /* BoardRaterCenterOwnershipTests.swift in Sources */,
+				673596D522A1B45A003086FF /* BoardRaterCheckMateOpportunityTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -534,10 +642,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = SwiftChessTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = SteveBarnegren.SwiftChessTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.0;
 			};
@@ -547,6 +657,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = SwiftChessTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = SteveBarnegren.SwiftChessTests;
