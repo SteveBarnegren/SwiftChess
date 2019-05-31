@@ -4,6 +4,6 @@ xcode_project: Example/Example.xcodeproj
 xcode_scheme: SwiftChessExample
 xcode_destination: platform=iOS Simulator,OS=12.1,name=iPhone X
 
-#branches:
-#  only:
-#  - master
+branches:
+  only:
+  - master
