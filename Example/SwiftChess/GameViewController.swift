@@ -171,41 +171,17 @@ class GameViewController: UIViewController {
     // MARK: - Castle buttons visibility
     
     func updateCastleButtonsVisibility() {
-        
-        let player = game.currentPlayer
-        
-        var isHuman = true
-        if player is AIPlayer {
-            isHuman = false
+        whiteKingSideCastleButton.isHidden = !canHumanPlayerCastle(color: .white, side: .kingSide)
+        whiteQueenSideCastleButton.isHidden = !canHumanPlayerCastle(color: .white, side: .queenSide)
+        blackKingSideCastleButton.isHidden = !canHumanPlayerCastle(color: .black, side: .kingSide)
+        blackQueenSideCastleButton.isHidden = !canHumanPlayerCastle(color: .black, side: .queenSide)
+    }
+    
+    func canHumanPlayerCastle(color: Color, side: CastleSide) -> Bool {
+        guard game.currentPlayer is Human, game.currentPlayer.color == color else {
+            return false
         }
-        
-        // White king side button
-        if isHuman && player?.color == .white && game.board.canColorCastle(color: .white, side: .kingSide) {
-            whiteKingSideCastleButton.isHidden = false
-        } else {
-            whiteKingSideCastleButton.isHidden = true
-        }
-        
-        // White queen side button
-        if isHuman && player?.color == .white && game.board.canColorCastle(color: .white, side: .queenSide) {
-            whiteQueenSideCastleButton.isHidden = false
-        } else {
-            whiteQueenSideCastleButton.isHidden = true
-        }
-        
-        // Black king side button
-        if isHuman && player?.color == .black && game.board.canColorCastle(color: .black, side: .kingSide) {
-            blackKingSideCastleButton.isHidden = false
-        } else {
-            blackKingSideCastleButton.isHidden = true
-        }
-        
-        // Black queen side button
-        if isHuman && player?.color == .black && game.board.canColorCastle(color: .black, side: .queenSide) {
-            blackQueenSideCastleButton.isHidden = false
-        } else {
-            blackQueenSideCastleButton.isHidden = true
-        }
+        return game.board.canColorCastle(color: color, side: side)
     }
     
     // MARK: - Actions
@@ -256,48 +232,65 @@ extension GameViewController: BoardViewDelegate {
             return
         }
         
-        let location = BoardLocation(index: index)
+        let destinationLocation = BoardLocation(index: index)
         
         // If has tapped the same piece again, deselect it
         if let selectedIndex = selectedIndex {
-            if location == BoardLocation(index: selectedIndex) {
+            if destinationLocation == BoardLocation(index: selectedIndex) {
                 self.selectedIndex = nil
                 return
             }
         }
         
         // Select new piece if possible
-        if player.occupiesSquare(at: location) {
+        if player.occupiesSquare(at: destinationLocation) {
             selectedIndex = index
         }
         
         // If there is a selected piece, see if it can move to the new location
-        if let selectedIndex = selectedIndex {
-            
-            do {
-                try player.movePiece(from: BoardLocation(index: selectedIndex),
-                                     to: location)
-                
-            } catch Player.MoveError.pieceUnableToMoveToLocation {
-                print("Piece is unable to move to this location")
-                
-            } catch Player.MoveError.cannotMoveInToCheck {
-                print("Player cannot move in to check")
-                showAlert(title: "😜", message: "Player cannot move in to check")
-                
-            } catch Player.MoveError.playerMustMoveOutOfCheck {
-                print("Player must move out of check")
-                showAlert(title: "🙃", message: "Player must move out of check")
-                
-            } catch {
-                print("Something went wrong!")
-                return
-            }
-            
+        guard let selectedIndex = selectedIndex else {
+            return
         }
-        
+        let sourceLocation = BoardLocation(index: selectedIndex)
+        if let castlingSide = detectCastlingMove(
+            sourceLocation: sourceLocation,
+            destinationLocation: destinationLocation) {
+            player.performCastleMove(side: castlingSide)
+            return
+        }
+        do {
+            try player.movePiece(from: sourceLocation,
+                                 to: destinationLocation)
+            
+        } catch Player.MoveError.pieceUnableToMoveToLocation {
+            print("Piece is unable to move to this location")
+            
+        } catch Player.MoveError.cannotMoveInToCheck {
+            print("Player cannot move in to check")
+            showAlert(title: "😜", message: "Player cannot move in to check")
+            
+        } catch Player.MoveError.playerMustMoveOutOfCheck {
+            print("Player must move out of check")
+            showAlert(title: "🙃", message: "Player must move out of check")
+            
+        } catch {
+            print("Something went wrong!")
+            return
+        }
     }
     
+    private func detectCastlingMove(
+        sourceLocation source: BoardLocation,
+        destinationLocation destination: BoardLocation) -> CastleSide? {
+        switch (source.gridPosition, destination.gridPosition) {
+        case (.e1, .g1), (.e8, .g8):
+            return .kingSide
+        case (.e1, .c1), (.e8, .c8):
+            return .queenSide
+        default:
+            return nil
+        }
+    }
 }
 
 // MARK: - GameDelegate
