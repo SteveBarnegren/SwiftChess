@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'SwiftChess'
-  s.version          = '1.1'
+  s.version          = '1.1.1'
   s.summary          = 'Chess engine written in Swift'
 
 # This description is used to generate tags and improve search results.
