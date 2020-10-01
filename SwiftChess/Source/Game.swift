@@ -210,7 +210,6 @@ extension Game: DictionaryRepresentable {
     
     struct Keys {
         static let state = "state"
-        static let gameType = "gameType"
         static let board = "board"
         static let whitePlayerType = "whitePlayerType"
         static let blackPlayerType = "blackPlayerType"
@@ -226,8 +225,6 @@ extension Game: DictionaryRepresentable {
         // State
         guard let stateDict = dictionary[Keys.state] as? [String: Any],
             let state = State(dictionary: stateDict),
-            let gameTypeRaw = dictionary[Keys.gameType] as? Int,
-            let gameType = GameType(rawValue: gameTypeRaw),
             let boardDict = dictionary[Keys.board] as? [String: Any],
             let board = Board(dictionary: boardDict),
             let currentPlayerColorRaw = dictionary[Keys.currentPlayerColor] as? String,
@@ -267,13 +264,13 @@ extension Game: DictionaryRepresentable {
                   secondPlayer: blackPlayer,
                   board: board,
                   colorToMove: currentPlayerColor)
+        self.state = state
     }
     
     public var dictionaryRepresentation: [String: Any] {
 
         var dictionary = [String: Any]()
         dictionary[Keys.state] = state.dictionaryRepresentation
-        dictionary[Keys.gameType] = gameType.rawValue
         dictionary[Keys.board] = board.dictionaryRepresentation
         
         // White Player
