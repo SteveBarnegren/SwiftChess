@@ -11,6 +11,11 @@ import SwiftChess
 
 class MenuViewController: UIViewController {
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.title = "SwiftChess"
+    }
+    
     // MARK: - Actions
     
     @IBAction func playerVsAIButtonPressed(_ sender: UIButton) {
@@ -19,7 +24,7 @@ class MenuViewController: UIViewController {
         let blackPlayer = AIPlayer(color: .black, configuration: AIConfiguration(difficulty: .hard))
         
         let game = Game(firstPlayer: whitePlayer, secondPlayer: blackPlayer)
-        startGame(game: game)
+        startGame(game: game, title: "Player vs AI")
     }
     
     @IBAction func playerVsPlayerButtonPressed(_ sender: UIButton) {
@@ -28,7 +33,7 @@ class MenuViewController: UIViewController {
         let blackPlayer = Human(color: .black)
         
         let game = Game(firstPlayer: whitePlayer, secondPlayer: blackPlayer)
-        startGame(game: game)
+        startGame(game: game, title: "Player vs Player")
     }
     
     @IBAction func AIvsAIButtonPressed(_ sender: UIButton) {
@@ -37,12 +42,13 @@ class MenuViewController: UIViewController {
         let blackPlayer = AIPlayer(color: .black, configuration: AIConfiguration(difficulty: .hard))
         
         let game = Game(firstPlayer: whitePlayer, secondPlayer: blackPlayer)
-        startGame(game: game)
+        startGame(game: game, title: "AI vs AI")
     }
     
-    func startGame(game: Game) {
+    func startGame(game: Game, title: String) {
         
         let gameViewController = GameViewController.gameViewController(game: game)
+        gameViewController.title = title
         self.navigationController?.pushViewController(gameViewController, animated: true)
     }
 
