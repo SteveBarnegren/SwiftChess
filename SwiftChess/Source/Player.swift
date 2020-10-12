@@ -15,12 +15,14 @@ protocol PlayerDelegate: class {
 open class Player {
     
     public var color: Color!
-    weak var game: Game!
+    weak var game: Game?
     weak var delegate: PlayerDelegate?
     
     public func occupiesSquare(at location: BoardLocation) -> Bool {
         
-        if let piece = self.game.board.getPiece(at: location) {
+        guard let game = game else { return false }
+        
+        if let piece = game.board.getPiece(at: location) {
             if piece.color == self.color {
                 return true
             }
@@ -46,13 +48,15 @@ open class Player {
 
     func canMovePiece(from fromLocation: BoardLocation, to toLocation: BoardLocation) throws -> Bool {
         
+        guard let game = self.game else { return false }
+        
         // We can't move to our current location
         if fromLocation == toLocation {
             throw MoveError.movingToSameLocation
         }
         
         // Get the piece
-        guard let piece = self.game.board.getPiece(at: fromLocation) else {
+        guard let piece = game.board.getPiece(at: fromLocation) else {
             throw MoveError.noPieceToMove
         }
         
@@ -67,8 +71,8 @@ open class Player {
         }
         
         // Move the piece
-        let inCheckBeforeMove = self.game.board.isColorInCheck(color: self.color)
-        var board = self.game.board
+        let inCheckBeforeMove = game.board.isColorInCheck(color: self.color)
+        var board = game.board
         board.movePiece(from: fromLocation, to: toLocation)
         let inCheckAfterMove = board.isColorInCheck(color: self.color)
         

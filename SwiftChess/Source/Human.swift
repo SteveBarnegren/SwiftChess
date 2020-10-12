@@ -21,6 +21,8 @@ public final class Human: Player {
     
     public func movePiece(from fromLocation: BoardLocation, to toLocation: BoardLocation) throws {
         
+        guard let game = self.game else { return }
+        
         // Check that the game is in progress
         guard game.state == .inProgress else {
             throw MoveError.gameIsNotInProgress
@@ -48,22 +50,24 @@ public final class Human: Player {
             
             let pawnLocation = promotablePawnLocations.first!
             
-            self.game.delegate?.promotedTypeForPawn(location: pawnLocation,
-                                                    player: self,
-                                                    possiblePromotions: Piece.PieceType.possiblePawnPromotionResultingTypes(),
-                                                    callback: {
-                                                        
-                                                        // Change the piece
-                                                        let newPiece = self.game.board.squares[pawnLocation.index].piece?.byChangingType(newType: $0)
-                                                        self.game.board.setPiece(newPiece!, at: pawnLocation)
-                                                        
-                                                        // Add a transform piece operation
-                                                        let modifyOperation = BoardOperation(type: .transformPiece, piece: newPiece!, location: pawnLocation)
-                                                        operations.append(modifyOperation)
-                                                        
-                                                        // Inform the delegate that we've finished
-                                                        self.delegate?.playerDidMakeMove(player: self, boardOperations: operations)
-            })
+            game.delegate?.promotedTypeForPawn(location: pawnLocation,
+                                               player: self,
+                                               possiblePromotions: Piece.PieceType.possiblePawnPromotionResultingTypes(),
+                                               callback: {
+                                                
+                                                guard let game = self.game else { return }
+                                                
+                                                // Change the piece
+                                                let newPiece = game.board.squares[pawnLocation.index].piece?.byChangingType(newType: $0)
+                                                game.board.setPiece(newPiece!, at: pawnLocation)
+                                                
+                                                // Add a transform piece operation
+                                                let modifyOperation = BoardOperation(type: .transformPiece, piece: newPiece!, location: pawnLocation)
+                                                operations.append(modifyOperation)
+                                                
+                                                // Inform the delegate that we've finished
+                                                self.delegate?.playerDidMakeMove(player: self, boardOperations: operations)
+                                               })
         }
         // ... Or if no pawn promotions, end move
         else {
@@ -75,6 +79,8 @@ public final class Human: Player {
     }
     
     public func performCastleMove(side: CastleSide) {
+        
+        guard let game = self.game else { return }
 
         // Check that we're the current player
         guard game.currentPlayer === self else {

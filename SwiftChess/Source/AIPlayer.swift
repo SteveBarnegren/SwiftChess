@@ -45,6 +45,8 @@ public final class AIPlayer: Player {
     }
     
     public func makeMoveSync() {
+        
+        guard let game = self.game else { return }
                 
         // Check that the game is in progress
         guard game.state == .inProgress else {
@@ -63,6 +65,9 @@ public final class AIPlayer: Player {
         else {
             move = highestRatedMove(on: board)
         }
+        
+        // Check that the game still exists
+        if self.game == nil { return }
         
         // Make move
         var operations = [BoardOperation]()
@@ -160,7 +165,7 @@ public final class AIPlayer: Player {
         let castleSides: [CastleSide] = [.kingSide, .queenSide]
         for side in castleSides {
             
-            guard game.board.canColorCastle(color: color, side: side) else {
+            guard game?.board.canColorCastle(color: color, side: side) ?? false else {
                 continue
             }
             
