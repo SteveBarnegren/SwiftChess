@@ -844,7 +844,6 @@ class BoardTests: XCTestCase {
             }
             
             if piece.hasMoved {
-                print("Has moved flag set at index \(index)")
                 return true
             }
         }

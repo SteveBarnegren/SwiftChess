@@ -45,9 +45,7 @@ public final class AIPlayer: Player {
     }
     
     public func makeMoveSync() {
-        
-        //print("\n\n****** Make Move ******");
-        
+                
         // Check that the game is in progress
         guard game.state == .inProgress else {
             return
@@ -59,7 +57,6 @@ public final class AIPlayer: Player {
         
         // Get an opening move
         if let openingMove = openingMove(for: board) {
-            //print("Playing opening move")
             move = openingMove
         }
         // Or, get the Highest rated move
@@ -156,7 +153,6 @@ public final class AIPlayer: Player {
                 let move = Move(type: .singlePiece(from: sourceLocation, to: targetLocation),
                                 rating: rating)
                 possibleMoves.append(move)
-               // print("Rating: \(rating)")
             }
         }
         
@@ -177,12 +173,10 @@ public final class AIPlayer: Player {
             let move = Move(type: .castle(color: color, side: side), rating: rating)
             possibleMoves.append(move)
         }
-        
-        //print("Found \(possibleMoves.count) possible moves")
-        
-        // If there are no possible moves, we must be in stale mate
+                
+        // If there are no possible moves, we must be in stale mate. This should never happen
         if possibleMoves.count == 0 {
-            print("There are no possible moves!!!!")
+            print("There are no possible moves!")
         }
         
         // Choose move with highest rating
@@ -195,8 +189,6 @@ public final class AIPlayer: Player {
                 highestRating = move.rating
                 highestRatedMove = move
             }
-            
-            //print("rating: \(move.rating)")
         }
         
         return highestRatedMove
@@ -220,9 +212,6 @@ public final class AIPlayer: Player {
         for boardRater in boardRaters {
             
             let result = boardRater.ratingFor(board: board, color: color)
-            
-            //let className = "\(boardRater)"
-            //print("\t\(className): \(result)")
             rating += result
         }
         

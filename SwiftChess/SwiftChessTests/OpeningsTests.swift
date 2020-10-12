@@ -26,9 +26,7 @@ class OpeningsTests: XCTestCase {
         let openings = Opening.allOpenings()
         
         for opening in openings {
-            
-            print("Testing \(opening)")
-            
+                        
             var board = Board(state: .newGame)
             for (source, target) in opening.moveLocations() {
                 

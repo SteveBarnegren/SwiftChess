@@ -211,7 +211,6 @@ class GameViewController: UIViewController {
     // MARK: - Actions
     
     @IBAction func whiteKingSideCastleButtonPressed(sender: UIButton) {
-        print("White king side castle button pressed")
         
         if let player = game.currentPlayer as? Human {
             player.performCastleMove(side: .kingSide)
@@ -219,7 +218,6 @@ class GameViewController: UIViewController {
     }
     
     @IBAction func whiteQueenSideCastleButtonPressed(sender: UIButton) {
-        print("White queen side castle button pressed")
         
         if let player = game.currentPlayer as? Human {
             player.performCastleMove(side: .queenSide)
@@ -227,7 +225,6 @@ class GameViewController: UIViewController {
     }
     
     @IBAction func blackKingSideCastleButtonPressed(sender: UIButton) {
-        print("Black king side castle button pressed")
         
         if let player = game.currentPlayer as? Human {
             player.performCastleMove(side: .kingSide)
@@ -235,7 +232,6 @@ class GameViewController: UIViewController {
     }
     
     @IBAction func blackQueenSideCastleButtonPressed(sender: UIButton) {
-        print("Black queen side castle button pressed")
         
         if let player = game.currentPlayer as? Human {
             player.performCastleMove(side: .queenSide)
@@ -248,9 +244,7 @@ class GameViewController: UIViewController {
 extension GameViewController: BoardViewDelegate {
     
     func touchedSquareAtIndex(_ boardView: BoardView, index: Int) {
-        
-        print("GVC touched square at index \(index)")
-        
+                
         // Get the player (must be human)
         guard let player = game.currentPlayer as? Human else {
             return

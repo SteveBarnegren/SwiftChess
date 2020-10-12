@@ -81,10 +81,7 @@ class BoardView: UIView {
         
         // Get touch location
         let location = touches.first!.location(in: self)
-        print("Touch at x: \(location.x) y: \(location.y)")
-        
         let boardIndex = boardIndexForLocation(location)
-        print("Board index: \(boardIndex)")
         
         delegate?.touchedSquareAtIndex(self, index: boardIndex)
         

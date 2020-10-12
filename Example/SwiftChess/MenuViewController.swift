@@ -14,7 +14,6 @@ class MenuViewController: UIViewController {
     // MARK: - Actions
     
     @IBAction func playerVsAIButtonPressed(_ sender: UIButton) {
-        print("Player vs AI button pressed")
         
         let whitePlayer = Human(color: .white)
         let blackPlayer = AIPlayer(color: .black, configuration: AIConfiguration(difficulty: .hard))
@@ -24,7 +23,6 @@ class MenuViewController: UIViewController {
     }
     
     @IBAction func playerVsPlayerButtonPressed(_ sender: UIButton) {
-        print("Player vs Player button pressed")
         
         let whitePlayer = Human(color: .white)
         let blackPlayer = Human(color: .black)
@@ -34,7 +32,6 @@ class MenuViewController: UIViewController {
     }
     
     @IBAction func AIvsAIButtonPressed(_ sender: UIButton) {
-        print("AI vs AI button pressed")
         
         let whitePlayer = AIPlayer(color: .white, configuration: AIConfiguration(difficulty: .hard))
         let blackPlayer = AIPlayer(color: .black, configuration: AIConfiguration(difficulty: .hard))

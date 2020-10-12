@@ -73,11 +73,7 @@ class PromotionSelectionViewController: UIViewController {
     @objc func buttonPressed(sender: UIButton) {
         
         let index = buttons.firstIndex(of: sender)!
-        print("Button pressed at index: \(index)")
-        
         let chosenType = possibleTypes![index]
-        print("Chose promotion type: \(chosenType)")
-        
         callback(chosenType)
     }
     
