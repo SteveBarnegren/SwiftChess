@@ -49,7 +49,7 @@ class BoardRaterThreatenedPiecesTests: XCTestCase {
                                        "- - - - - - - -" +
                                        "- - - - - - - -" +
                                        "- - - - - - - -" +
-                                       "q - - - - - K -" +
+                                       "q - - - - - N -" +
                                        "- - - - - - - -" +
                                        "- - - - - - - -" +
                                        "- - - - - - - -" )
@@ -65,7 +65,7 @@ class BoardRaterThreatenedPiecesTests: XCTestCase {
                                        "- - - - - - - -" +
                                        "- - - - - - - -" +
                                        "- - - - - - - -" +
-                                       "Q - - - - - k -" +
+                                       "Q - - - - - n -" +
                                        "- - - - - - - -" +
                                        "- - - - - - - -" +
                                        "- - - - - - - -" )
@@ -81,7 +81,7 @@ class BoardRaterThreatenedPiecesTests: XCTestCase {
         
         let board = ASCIIBoard(pieces: "- - - - - - - -" +
                                        "- - - - - - - -" +
-                                       "- - - - - K - -" +
+                                       "- - - - - N - -" +
                                        "- - - - - - - -" +
                                        "- - - - - - Q -" +
                                        "- - - - - - - -" +
@@ -89,7 +89,7 @@ class BoardRaterThreatenedPiecesTests: XCTestCase {
                                        "- - - B - - - -" )
        
         let expectedIndexes = [
-            board.indexOfCharacter("K"),
+            board.indexOfCharacter("N"),
             board.indexOfCharacter("R"),
             board.indexOfCharacter("B")
         ]
@@ -129,7 +129,7 @@ class BoardRaterThreatenedPiecesTests: XCTestCase {
     func testGetProtectingPiecesDoesntReturnNonProtectingPiecesOfSameColor() {
         
         let board = ASCIIBoard(pieces: "- - - - - - - -" +
-                                       "- - K - - - - -" +
+                                       "- - N - - - - -" +
                                        "- - - - - - - -" +
                                        "- - - - - - - -" +
                                        "- - - - - - Q -" +
@@ -151,7 +151,7 @@ class BoardRaterThreatenedPiecesTests: XCTestCase {
         
         let board = ASCIIBoard(pieces: "- - - - - - - -" +
                                        "- - - - - - - -" +
-                                       "- - - - - k - -" +
+                                       "- - - - - n - -" +
                                        "- - - - - - - -" +
                                        "- - - - - - Q -" +
                                        "- - - - - - - -" +
@@ -215,7 +215,7 @@ class BoardRaterThreatenedPiecesTests: XCTestCase {
         
         let board = ASCIIBoard(pieces: "- - - - - - - -" +
                                        "- - - - - - - -" +
-                                       "- - - - - k - -" +
+                                       "- - - - - n - -" +
                                        "- - - - - - - -" +
                                        "- - - - - - Q -" +
                                        "- - - - - - - -" +
@@ -223,7 +223,7 @@ class BoardRaterThreatenedPiecesTests: XCTestCase {
                                        "- - - b - - - -" )
         
         let expectedIndexes = [
-            board.indexOfCharacter("k"),
+            board.indexOfCharacter("n"),
             board.indexOfCharacter("r"),
             board.indexOfCharacter("b")
             ]
@@ -264,7 +264,7 @@ class BoardRaterThreatenedPiecesTests: XCTestCase {
     func testGetThreateningPiecesDoesntReturnNonThreateningPiecesOfOppositeColor() {
         
         let board = ASCIIBoard(pieces: "- - - - - - - -" +
-                                       "- - k - - - - -" +
+                                       "- - n - - - - -" +
                                        "- - - - - - - -" +
                                        "- - - - - - - -" +
                                        "- - - - - - Q -" +
@@ -286,7 +286,7 @@ class BoardRaterThreatenedPiecesTests: XCTestCase {
         
         let board = ASCIIBoard(pieces: "- - - - - - - -" +
                                        "- - - - - - - -" +
-                                       "- - - - - K - -" +
+                                       "- - - - - N - -" +
                                        "- - - - - - - -" +
                                        "- - - - - - Q -" +
                                        "- - - - - - - -" +

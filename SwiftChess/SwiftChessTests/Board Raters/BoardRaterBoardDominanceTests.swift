@@ -83,7 +83,7 @@ class BoardRaterBoardDominanceTests: XCTestCase {
                                                     "- - - - - - - -" +
                                                     "- - - - - - - -" +
                                                     "- - - - - - - -" +
-                                                    "- - - - - - - k" +
+                                                    "- - - - - - - n" +
                                                     "- - - - - - - p" +
                                                     "Q - - - - - - -" )
         let whiteRating = boardRater.ratingFor(board: whiteDominantBoard.board, color: .white)
@@ -93,7 +93,7 @@ class BoardRaterBoardDominanceTests: XCTestCase {
                                                     "- - - - - - - -" +
                                                     "- - - - - - - -" +
                                                     "- - - - - - - -" +
-                                                    "- - - - - - - K" +
+                                                    "- - - - - - - N" +
                                                     "- - - - - - - P" +
                                                     "q - - - - - - -" )
         let blackRating = boardRater.ratingFor(board: blackDominantBoard.board, color: .white)

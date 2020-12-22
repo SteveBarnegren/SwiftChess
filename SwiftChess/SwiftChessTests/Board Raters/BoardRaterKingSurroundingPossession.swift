@@ -53,7 +53,7 @@ class BoardRaterKingSurroundingPossessionTests: XCTestCase {
                                        "- - - - - - - -" +
                                        "- - - - - - - -" +
                                        "- - * * * - - -" +
-                                       "- - * G * - - -" +
+                                       "- - * K * - - -" +
                                        "- - * * * - - -" +
                                        "- - - - - - - -" +
                                        "- - - - - - - -" )
@@ -70,7 +70,7 @@ class BoardRaterKingSurroundingPossessionTests: XCTestCase {
                                        "- - - - - - - -" +
                                        "- - - - - - - -" +
                                        "* * - - - - - -" +
-                                       "G * - - - - - -" )
+                                       "K * - - - - - -" )
         
         assertSurroundingSpacesAreCorrect(color: .white, board: board)
     }
@@ -84,14 +84,14 @@ class BoardRaterKingSurroundingPossessionTests: XCTestCase {
                                        "- - - - - - - -" +
                                        "- - - - - - - -" +
                                        "- - - - - - * *" +
-                                       "- - - - - - * G" )
+                                       "- - - - - - * K" )
         
         assertSurroundingSpacesAreCorrect(color: .white, board: board)
     }
     
     func testWhiteKingSurroundingSpacesReturnsCorrectIndexesInTopLeft() {
         
-        let board = ASCIIBoard(pieces: "G * - - - - - -" +
+        let board = ASCIIBoard(pieces: "K * - - - - - -" +
                                        "* * - - - - - -" +
                                        "- - - - - - - -" +
                                        "- - - - - - - -" +
@@ -105,7 +105,7 @@ class BoardRaterKingSurroundingPossessionTests: XCTestCase {
     
     func testWhiteKingSurroundingSpacesReturnsCorrectIndexesInTopRight() {
         
-        let board = ASCIIBoard(pieces: "- - - - - - * G" +
+        let board = ASCIIBoard(pieces: "- - - - - - * K" +
                                        "- - - - - - * *" +
                                        "- - - - - - - -" +
                                        "- - - - - - - -" +
@@ -123,7 +123,7 @@ class BoardRaterKingSurroundingPossessionTests: XCTestCase {
                                        "- - - - - - - -" +
                                        "- - - - - - - -" +
                                        "- - * * * - - -" +
-                                       "- - * g * - - -" +
+                                       "- - * k * - - -" +
                                        "- - * * * - - -" +
                                        "- - - - - - - -" +
                                        "- - - - - - - -" )
@@ -140,7 +140,7 @@ class BoardRaterKingSurroundingPossessionTests: XCTestCase {
                                        "- - - - - - - -" +
                                        "- - - - - - - -" +
                                        "* * - - - - - -" +
-                                       "g * - - - - - -" )
+                                       "k * - - - - - -" )
         
         assertSurroundingSpacesAreCorrect(color: .black, board: board)
     }
@@ -154,14 +154,14 @@ class BoardRaterKingSurroundingPossessionTests: XCTestCase {
                                        "- - - - - - - -" +
                                        "- - - - - - - -" +
                                        "- - - - - - * *" +
-                                       "- - - - - - * g" )
+                                       "- - - - - - * k" )
         
         assertSurroundingSpacesAreCorrect(color: .black, board: board)
     }
     
     func testBlackKingSurroundingSpacesReturnsCorrectIndexesInTopLeft() {
         
-        let board = ASCIIBoard(pieces: "g * - - - - - -" +
+        let board = ASCIIBoard(pieces: "k * - - - - - -" +
                                        "* * - - - - - -" +
                                        "- - - - - - - -" +
                                        "- - - - - - - -" +
@@ -175,7 +175,7 @@ class BoardRaterKingSurroundingPossessionTests: XCTestCase {
     
     func testBlackKingSurroundingSpacesReturnsCorrectIndexesInTopRight() {
         
-        let board = ASCIIBoard(pieces: "- - - - - - * g" +
+        let board = ASCIIBoard(pieces: "- - - - - - * k" +
                                        "- - - - - - * *" +
                                        "- - - - - - - -" +
                                        "- - - - - - - -" +
@@ -191,23 +191,23 @@ class BoardRaterKingSurroundingPossessionTests: XCTestCase {
     
     func testThatGreaterOpponentPossessionOfOurKingSurroundingsResultsInLowerRating() {
         
-        let lowRatingBoard = ASCIIBoard(pieces: "- - - - g - - -" +
+        let lowRatingBoard = ASCIIBoard(pieces: "- - - - k - - -" +
                                                 "- - - - - - - -" +
                                                 "- - - - - - - -" +
                                                 "- - - - - - - -" +
                                                 "- - - - - - - -" +
                                                 "- - - - - - - -" +
                                                 "r - - - - - - -" +
-                                                "- - - - G - - -" )
+                                                "- - - - K - - -" )
 
-        let highRatingBoard = ASCIIBoard(pieces: "- - - - g - - -" +
+        let highRatingBoard = ASCIIBoard(pieces: "- - - - k - - -" +
                                                  "- - - - - - - -" +
                                                  "- - - - - - - -" +
                                                  "- - - - - - - -" +
                                                  "- - - - - - - -" +
                                                  "r - - - - - - -" +
                                                  "- - - - - - - -" +
-                                                 "- - - - G - - -" )
+                                                 "- - - - K - - -" )
         
         let lowRating = boardRater.ratingFor(board: lowRatingBoard.board, color: .white)
         let highRating = boardRater.ratingFor(board: highRatingBoard.board, color: .white)
@@ -217,23 +217,23 @@ class BoardRaterKingSurroundingPossessionTests: XCTestCase {
     
     func testThatGreaterPossessionOfOurKingSurroundingsResultsInHigherRating() {
         
-        let lowRatingBoard = ASCIIBoard(pieces: "- - - - g - - -" +
+        let lowRatingBoard = ASCIIBoard(pieces: "- - - - k - - -" +
                                                 "- - - - - - - -" +
                                                 "- - - - - - - -" +
                                                 "- - - - - - - -" +
                                                 "- - - - - - - -" +
                                                 "R - - - - - - -" +
                                                 "- - - - - - - -" +
-                                                "- - - - G - - -" )
+                                                "- - - - K - - -" )
         
         let highRatingBoard = ASCIIBoard(pieces: "- - - - - - - -" +
-                                                 "- - - - g - - -" +
+                                                 "- - - - k - - -" +
                                                  "- - - - - - - -" +
                                                  "- - - - - - - -" +
                                                  "- - - - - - - -" +
                                                  "- - - - - - - -" +
                                                  "R - - - - - - -" +
-                                                 "- - - - G - - -" )
+                                                 "- - - - K - - -" )
         
         let lowRating = boardRater.ratingFor(board: lowRatingBoard.board, color: .white)
         let highRating = boardRater.ratingFor(board: highRatingBoard.board, color: .white)
@@ -243,23 +243,23 @@ class BoardRaterKingSurroundingPossessionTests: XCTestCase {
     
     func testThatGreaterPossessionOfOpponentKingSurroundingsResultsInHigherRating() {
         
-        let lowRatingBoard = ASCIIBoard(pieces: "- - - - g - - -" +
+        let lowRatingBoard = ASCIIBoard(pieces: "- - - - k - - -" +
                                                 "- - - - - - - -" +
                                                 "R - - - - - - -" +
                                                 "- - - - - - - -" +
                                                 "- - - - - - - -" +
                                                 "- - - - - - - -" +
                                                 "- - - - - - - -" +
-                                                "- - - - G - - -" )
+                                                "- - - - K - - -" )
         
-        let highRatingBoard = ASCIIBoard(pieces: "- - - - g - - -" +
+        let highRatingBoard = ASCIIBoard(pieces: "- - - - k - - -" +
                                                  "R - - - - - - -" +
                                                  "- - - - - - - -" +
                                                  "- - - - - - - -" +
                                                  "- - - - - - - -" +
                                                  "- - - - - - - -" +
                                                  "- - - - - - - -" +
-                                                 "- - - - G - - -" )
+                                                 "- - - - K - - -" )
         
         let lowRating = boardRater.ratingFor(board: lowRatingBoard.board, color: .white)
         let highRating = boardRater.ratingFor(board: highRatingBoard.board, color: .white)
@@ -269,23 +269,23 @@ class BoardRaterKingSurroundingPossessionTests: XCTestCase {
     
     func testThatGreaterOpponentPossessionOfOpponentKingSurroundingsResultsInLowerRating() {
         
-        let lowRatingBoard = ASCIIBoard(pieces: "- - - - g - - -" +
+        let lowRatingBoard = ASCIIBoard(pieces: "- - - - k - - -" +
                                                 "r - - - - - - -" +
                                                 "- - - - - - - -" +
                                                 "- - - - - - - -" +
                                                 "- - - - - - - -" +
                                                 "- - - - - - - -" +
                                                 "- - - - - - - -" +
-                                                "- - - - G - - -" )
+                                                "- - - - K - - -" )
         
-        let highRatingBoard = ASCIIBoard(pieces: "- - - - g - - -" +
+        let highRatingBoard = ASCIIBoard(pieces: "- - - - k - - -" +
                                                  "- - - - - - - -" +
                                                  "r - - - - - - -" +
                                                  "- - - - - - - -" +
                                                  "- - - - - - - -" +
                                                  "- - - - - - - -" +
                                                  "- - - - - - - -" +
-                                                 "- - - - G - - -" )
+                                                 "- - - - K - - -" )
         
         let lowRating = boardRater.ratingFor(board: lowRatingBoard.board, color: .white)
         let highRating = boardRater.ratingFor(board: highRatingBoard.board, color: .white)
@@ -295,23 +295,23 @@ class BoardRaterKingSurroundingPossessionTests: XCTestCase {
     
     func testThatBlackandWhiteRatingsAreTheSame() {
         
-        let board = ASCIIBoard(pieces: "- - - - g - - -" +
+        let board = ASCIIBoard(pieces: "- - - - k - - -" +
                                        "- - - - - - - -" +
                                        "- - - - - - - -" +
                                        "- - - - - - - -" +
                                        "- - - - - - - -" +
                                        "Q - - - - - - b" +
                                        "R - - - p - - q" +
-                                       "- k - - G - K -" )
+                                       "- n - - K - N -" )
         
-        let invertedBoard = ASCIIBoard(pieces: "- - - - G - - -" +
+        let invertedBoard = ASCIIBoard(pieces: "- - - - K - - -" +
                                                "- - - - - - - -" +
                                                "- - - - - - - -" +
                                                "- - - - - - - -" +
                                                "- - - - - - - -" +
                                                "q - - - - - - B" +
                                                "r - - - P - - Q" +
-                                               "- K - - g - k -" )
+                                               "- N - - k - n -" )
         
         let rating = boardRater.ratingFor(board: board.board, color: .white)
         let invertedRating = boardRater.ratingFor(board: invertedBoard.board, color: .black)
@@ -321,14 +321,14 @@ class BoardRaterKingSurroundingPossessionTests: XCTestCase {
     
     func testThatPiecesSurroundingOwnKingResultsInPositiveRatingForWhite() {
         
-        let board = ASCIIBoard(pieces: "- - - - g - - -" +
+        let board = ASCIIBoard(pieces: "- - - - k - - -" +
                                        "- - - - - - - -" +
                                        "- - - - - - - -" +
                                        "- - - - - - - -" +
                                        "- - - - - - - -" +
                                        "- - - - - - - -" +
                                        "- - - P P P - -" +
-                                       "- - - P G P - -" )
+                                       "- - - P K P - -" )
 
         let rating = boardRater.ratingFor(board: board.board, color: .white)
         XCTAssertGreaterThan(rating, 0)
@@ -336,14 +336,14 @@ class BoardRaterKingSurroundingPossessionTests: XCTestCase {
     
     func testThatPiecesSurroundingOwnKingResultsInPositiveRatingForBlack() {
         
-        let board = ASCIIBoard(pieces: "- - - p g p - -" +
+        let board = ASCIIBoard(pieces: "- - - p k p - -" +
                                        "- - - p p p - -" +
                                        "- - - - - - - -" +
                                        "- - - - - - - -" +
                                        "- - - - - - - -" +
                                        "- - - - - - - -" +
                                        "- - - - - - - -" +
-                                       "- - - - G - - -" )
+                                       "- - - - K - - -" )
         
         let rating = boardRater.ratingFor(board: board.board, color: .black)
         XCTAssertGreaterThan(rating, 0)
@@ -351,23 +351,23 @@ class BoardRaterKingSurroundingPossessionTests: XCTestCase {
     
     func testThatPiecesSurroundingOpponentKingResultsInMoreNegativeRatingForWhite() {
         
-        let openKingBoard = ASCIIBoard(pieces: "- - - - g - - -" +
+        let openKingBoard = ASCIIBoard(pieces: "- - - - k - - -" +
                                                "- - - - - - - -" +
                                                "- - - - - - - -" +
                                                "- - - - - - - -" +
                                                "- - - - - - - -" +
                                                "- - - - - - - -" +
                                                "- - - - - - - -" +
-                                               "- - - - G - - -" )
+                                               "- - - - K - - -" )
         
-        let surroundedKingBoard = ASCIIBoard(pieces: "- - - p g p - -" +
+        let surroundedKingBoard = ASCIIBoard(pieces: "- - - p k p - -" +
                                                      "- - - p p p - -" +
                                                      "- - - - - - - -" +
                                                      "- - - - - - - -" +
                                                      "- - - - - - - -" +
                                                      "- - - - - - - -" +
                                                      "- - - - - - - -" +
-                                                     "- - - - G - - -" )
+                                                     "- - - - K - - -" )
         
         let openKingRating = boardRater.ratingFor(board: openKingBoard.board, color: .white)
         let surroundedKingRating = boardRater.ratingFor(board: surroundedKingBoard.board, color: .white)
@@ -377,23 +377,23 @@ class BoardRaterKingSurroundingPossessionTests: XCTestCase {
     
     func testThatPiecesSurroundingOpponentKingResultsInMoreNegativeRatingForBlack() {
         
-        let openKingBoard = ASCIIBoard(pieces: "- - - - g - - -" +
+        let openKingBoard = ASCIIBoard(pieces: "- - - - k - - -" +
                                                "- - - - - - - -" +
                                                "- - - - - - - -" +
                                                "- - - - - - - -" +
                                                "- - - - - - - -" +
                                                "- - - - - - - -" +
                                                "- - - - - - - -" +
-                                               "- - - - G - - -" )
+                                               "- - - - K - - -" )
         
-        let surroundedKingBoard = ASCIIBoard(pieces: "- - - - g - - -" +
+        let surroundedKingBoard = ASCIIBoard(pieces: "- - - - k - - -" +
                                                      "- - - - - - - -" +
                                                      "- - - - - - - -" +
                                                      "- - - - - - - -" +
                                                      "- - - - - - - -" +
                                                      "- - - - - - - -" +
                                                      "- - - P P P - -" +
-                                                     "- - - P G P - -" )
+                                                     "- - - P K P - -" )
 
         let openKingRating = boardRater.ratingFor(board: openKingBoard.board, color: .black)
         let surroundedKingRating = boardRater.ratingFor(board: surroundedKingBoard.board, color: .black)

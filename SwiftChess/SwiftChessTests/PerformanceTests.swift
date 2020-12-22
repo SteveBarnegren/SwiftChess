@@ -40,14 +40,14 @@ class PerformanceTests: XCTestCase {
     
     func testQueenMoveValidationPerformance() {
         
-        let asciiBoard = ASCIIBoard(pieces: "- - - - - - - g" +
+        let asciiBoard = ASCIIBoard(pieces: "- - - - - - - k" +
                                             "- - - R - - p -" +
                                             "- - - - - - - -" +
                                             "- - - - - - - -" +
                                             "- - - Q - - - r" +
                                             "- - - - - - - -" +
                                             "P P - - - - - -" +
-                                            "G - - - - - - -" )
+                                            "K - - - - - - -" )
 
         let queenLocation = asciiBoard.locationOfCharacter("Q")
         let board = asciiBoard.board
@@ -71,16 +71,16 @@ class PerformanceTests: XCTestCase {
     
     func testKingMoveValidationPerformance() {
         
-        let asciiBoard = ASCIIBoard(pieces: "- - - - - - - g" +
+        let asciiBoard = ASCIIBoard(pieces: "- - - - - - - k" +
                                             "- - - R - - p -" +
                                             "- - - - - - - -" +
                                             "- - - - - - - -" +
                                             "- - - Q - - - r" +
                                             "- - - - - - - -" +
                                             "- - - P - - - -" +
-                                            "- - - G - - - -" )
+                                            "- - - K - - - -" )
         
-        let kingLocation = asciiBoard.locationOfCharacter("G")
+        let kingLocation = asciiBoard.locationOfCharacter("K")
         let board = asciiBoard.board
         
         guard let king = board.getPiece(at: kingLocation) else {
@@ -102,16 +102,16 @@ class PerformanceTests: XCTestCase {
     
     func testKnightMoveValidationPerformance() {
         
-        let asciiBoard = ASCIIBoard(pieces: "- - - - - - - g" +
+        let asciiBoard = ASCIIBoard(pieces: "- - - - - - - k" +
                                             "- - - R - - p -" +
                                             "- - - - - - - -" +
                                             "- - - - - - - -" +
-                                            "- - - Q - K - r" +
+                                            "- - - Q - N - r" +
                                             "- - - - - - - -" +
                                             "- - - P - - - -" +
-                                            "- - - G - - - -" )
+                                            "- - - K - - - -" )
         
-        let knightLocation = asciiBoard.locationOfCharacter("K")
+        let knightLocation = asciiBoard.locationOfCharacter("N")
         let board = asciiBoard.board
         
         guard let knight = board.getPiece(at: knightLocation) else {
@@ -133,14 +133,14 @@ class PerformanceTests: XCTestCase {
     
     func testBishopMoveValidationPerformance() {
         
-        let asciiBoard = ASCIIBoard(pieces: "- - - - - - - g" +
+        let asciiBoard = ASCIIBoard(pieces: "- - - - - - - k" +
                                             "- - - R - - p -" +
                                             "- - - - - - - -" +
                                             "- - - - - - - -" +
-                                            "- - - Q - K - r" +
+                                            "- - - Q - N - r" +
                                             "- - - - - B - -" +
                                             "- - - P - - - -" +
-                                            "- - - G - - - -" )
+                                            "- - - K - - - -" )
         
         let bishopLocation = asciiBoard.locationOfCharacter("B")
         let board = asciiBoard.board
@@ -164,14 +164,14 @@ class PerformanceTests: XCTestCase {
     
     func testRookMoveValidationPerformance() {
         
-        let asciiBoard = ASCIIBoard(pieces: "- - - - - - - g" +
+        let asciiBoard = ASCIIBoard(pieces: "- - - - - - - k" +
                                             "- - - - - - p -" +
                                             "- - - - - - - -" +
                                             "- R - - - - - -" +
-                                            "- - - Q - K - r" +
+                                            "- - - Q - N - r" +
                                             "- - - - - B - -" +
                                             "- - - P - - - -" +
-                                            "- - - G - - - -" )
+                                            "- - - K - - - -" )
         
         let rookLocation = asciiBoard.locationOfCharacter("R")
         let board = asciiBoard.board
@@ -195,14 +195,14 @@ class PerformanceTests: XCTestCase {
     
     func testCanAnyPieceMovePerformance() {
         
-        let asciiBoard = ASCIIBoard(pieces: "r - b q g b - r" +
+        let asciiBoard = ASCIIBoard(pieces: "r - b q k b - r" +
                                             "p p p - - p - -" +
-                                            "k - - - p - - k" +
+                                            "n - - - p - - n" +
                                             "- - - p - - - -" +
                                             "- - - P - - - -" +
-                                            "K - - - P - - -" +
+                                            "N - - - P - - -" +
                                             "P P P - - P P -" +
-                                            "R - B Q G B K R" )
+                                            "R - B Q K B N R" )
         
         let board = asciiBoard.board
         

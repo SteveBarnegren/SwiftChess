@@ -86,13 +86,13 @@ class AIBehaviourTests: XCTestCase {
         // In reality, because the black bishop is unprotected, the white queen will take it.
         
         let board = ASCIIBoard(pieces: "r - b - q b - r" +
-                                       "p p g - - p p p" +
-                                       "- - - - - k - -" +
+                                       "p p k - - p p p" +
+                                       "- - - - - n - -" +
                                        "- - * - - - - -" +
                                        "- - p Q P - - -" +
                                        "- - - - - - - -" +
-                                       "P P G - - P P P" +
-                                       "R K B - - B K R" )
+                                       "P P K - - P P P" +
+                                       "R N B - - B N R" )
         
         let location = board .locationOfCharacter("*")
         
@@ -121,14 +121,14 @@ class AIBehaviourTests: XCTestCase {
     
     func testBlackShouldTradePawnForQueen() {
         
-        let board = ASCIIBoard(pieces: "g p - - - - - -" +
+        let board = ASCIIBoard(pieces: "k p - - - - - -" +
                                        "p p - - - - - -" +
                                        "- - - - p - - -" +
                                        "- - - - - Q - -" +
                                        "- - - - B - - -" +
                                        "- - - - - - - -" +
                                        "P P - - - - - -" +
-                                       "G P - - - - - -" )
+                                       "K P - - - - - -" )
 
         let queenLocation = board.locationOfCharacter("Q")
         let game = makeGameWithBoard(board: board.board, colorToMove: .black)
@@ -145,14 +145,14 @@ class AIBehaviourTests: XCTestCase {
     
     func testBlackShouldTakeWhiteQueenWithPawn() {
         
-        let board = ASCIIBoard(pieces: "- - - - - - p g" +
+        let board = ASCIIBoard(pieces: "- - - - - - p k" +
                                        "- - - b - - p p" +
                                        "- - - - q - - -" +
-                                       "- B p k P p - -" +
+                                       "- B p n P p - -" +
                                        "- - - P Q - - -" +
                                        "- - - - - - - -" +
                                        "P P - - - - - -" +
-                                       "G P - - - - - -" )
+                                       "K P - - - - - -" )
         
         let queenLocation = board.locationOfCharacter("Q")
         let game = makeGameWithBoard(board: board.board, colorToMove: .black)

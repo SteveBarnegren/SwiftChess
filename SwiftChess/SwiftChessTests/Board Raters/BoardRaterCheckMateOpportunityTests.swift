@@ -38,14 +38,14 @@ class BoardRaterCheckMateOpportunityTests: XCTestCase {
     func testThatOpponentKingCheckMateOpportunityResultsInPositiveRating() {
         
         // White can move the rook at (0, 0) to (0, 7) to put black in check mate
-        let board = ASCIIBoard(pieces: "- - - - g - - -" +
+        let board = ASCIIBoard(pieces: "- - - - k - - -" +
                                        "- R - - - - - -" +
                                        "- - - - - - - -" +
                                        "- - - - - - - -" +
                                        "- - - - - - - -" +
                                        "- - - - - - - -" +
                                        "- - - - - - - -" +
-                                       "R - - - G - - -" )
+                                       "R - - - K - - -" )
         
         let rating = boardRater.ratingFor(board: board.board, color: .white)
         XCTAssertGreaterThan(rating, 0)
@@ -54,14 +54,14 @@ class BoardRaterCheckMateOpportunityTests: XCTestCase {
     func testThatOwnKingCheckMateOpportunityResultsInNegativeRating() {
         
         // Black can move the rook at (0, 7) to (0, 0) to put white in check mate
-        let board = ASCIIBoard(pieces: "r - - - g - - -" +
+        let board = ASCIIBoard(pieces: "r - - - k - - -" +
                                        "- - - - - - - -" +
                                        "- - - - - - - -" +
                                        "- - - - - - - -" +
                                        "- - - - - - - -" +
                                        "- - - - - - - -" +
                                        "- r - - - - - -" +
-                                       "- - - - G - - -" )
+                                       "- - - - K - - -" )
         
         let rating = boardRater.ratingFor(board: board.board, color: .white)
         XCTAssertLessThan(rating, 0)
@@ -70,24 +70,24 @@ class BoardRaterCheckMateOpportunityTests: XCTestCase {
     func testThatMultipleCheckMateOpportunitiesResultInHigherRating() {
         
         // White can move the rook at (0, 0) to (0, 7) to put black in check mate
-        let singleCheckMateBoard = ASCIIBoard(pieces: "- - - - g - - -" +
+        let singleCheckMateBoard = ASCIIBoard(pieces: "- - - - k - - -" +
                                                       "- R - - - - - -" +
                                                       "- - - - - - - -" +
                                                       "- - - - - - - -" +
                                                       "- - - - - - - -" +
                                                       "- - - - - - - -" +
                                                       "- - - - - - - -" +
-                                                      "R - - - G - - -" )
+                                                      "R - - - K - - -" )
         
         // White can also move the rook at (7, 0) to (7, 7) to put black in check mate
-        let multipleCheckMateBoard = ASCIIBoard(pieces: "- - - - g - - -" +
+        let multipleCheckMateBoard = ASCIIBoard(pieces: "- - - - k - - -" +
                                                         "- R - - - - - -" +
                                                         "- - - - - - - -" +
                                                         "- - - - - - - -" +
                                                         "- - - - - - - -" +
                                                         "- - - - - - - -" +
                                                         "- - - - - - - -" +
-                                                        "R - - - G - - R" )
+                                                        "R - - - K - - R" )
 
         let singleRating = boardRater.ratingFor(board: singleCheckMateBoard.board, color: .white)
         let multipleRating = boardRater.ratingFor(board: multipleCheckMateBoard.board, color: .white)

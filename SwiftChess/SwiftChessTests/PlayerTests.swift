@@ -84,7 +84,7 @@ class PlayerTests: XCTestCase {
                                        "- - - - - - - -" +
                                        "- - - - - - - -" +
                                        "- - - - - - - -" +
-                                       "G - - - Q - - r" +
+                                       "K - - - Q - - r" +
                                        "- - - - - - - -" )
 
         let queenLocation = board.locationOfCharacter("Q")
@@ -113,7 +113,7 @@ class PlayerTests: XCTestCase {
                                        "- - - - - - - -" +
                                        "- - - - - - - -" +
                                        "- - - - * - - -" +
-                                       "G - - - P - - r" +
+                                       "K - - - P - - r" +
                                        "- - - - - - - -" )
         
         let pieceLocation = board.locationOfCharacter("P")
@@ -142,10 +142,10 @@ class PlayerTests: XCTestCase {
                                        "- - - - - - - -" +
                                        "- - - * - - - -" +
                                        "- - - - - - - -" +
-                                       "G - - - K - - r" +
+                                       "K - - - N - - r" +
                                        "- - - - - - - -" )
         
-        let pieceLocation = board.locationOfCharacter("K")
+        let pieceLocation = board.locationOfCharacter("N")
         let targetLocation = board.locationOfCharacter("*")
         
         let game = gameForTestingCallbacks(board: board.board, color: .white)
@@ -171,7 +171,7 @@ class PlayerTests: XCTestCase {
                                        "- - - - - - - -" +
                                        "- - * - - - - -" +
                                        "- - - - - - - -" +
-                                       "G - - - B - - r" +
+                                       "K - - - B - - r" +
                                        "- - - - - - - -" )
         
         let pieceLocation = board.locationOfCharacter("B")
@@ -200,7 +200,7 @@ class PlayerTests: XCTestCase {
                                        "- - - - - - - -" +
                                        "- - - - * - - -" +
                                        "- - - - - - - -" +
-                                       "G - - - R - - r" +
+                                       "K - - - R - - r" +
                                        "- - - - - - - -" )
         
         let pieceLocation = board.locationOfCharacter("R")
@@ -230,9 +230,9 @@ class PlayerTests: XCTestCase {
                                        "- - - - - - - -" +
                                        "- - - - - - - -" +
                                        "* - - - - - - r" +
-                                       "G - - - - - - -" )
+                                       "K - - - - - - -" )
         
-        let pieceLocation = board.locationOfCharacter("G")
+        let pieceLocation = board.locationOfCharacter("K")
         let targetLocation = board.locationOfCharacter("*")
         
         let game = gameForTestingCallbacks(board: board.board, color: .white)

@@ -34,7 +34,7 @@ class BoardRaterCountPiecesTests: XCTestCase {
                                        "- - - - - - - -" +
                                        "- - - - - - - -" +
                                        "P P P P P P P P" +
-                                       "R K B Q G B K R" )
+                                       "R N B Q K B N R" )
         
         let rating = boardRater.ratingFor(board: board.board, color: .white)
         XCTAssert(rating > 0, "Expected rating to be positive")
@@ -42,7 +42,7 @@ class BoardRaterCountPiecesTests: XCTestCase {
     
     func testWhiteLosingResultsInNegativeValue() {
         
-        let board = ASCIIBoard(pieces: "r k b q g b k r" +
+        let board = ASCIIBoard(pieces: "r n b q k b n r" +
                                        "p p p p p p p p" +
                                        "- - - - - - - -" +
                                        "- - - - - - - -" +
