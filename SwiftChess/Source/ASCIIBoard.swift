@@ -95,25 +95,25 @@ public struct ASCIIBoard {
         switch character {
         case "R":
             piece = Piece(type: .rook, color: .white)
-        case "K":
+        case "N":
             piece = Piece(type: .knight, color: .white)
         case "B":
             piece = Piece(type: .bishop, color: .white)
         case "Q":
             piece = Piece(type: .queen, color: .white)
-        case "G":
+        case "K":
             piece = Piece(type: .king, color: .white)
         case "P":
             piece = Piece(type: .pawn, color: .white)
         case "r":
             piece = Piece(type: .rook, color: .black)
-        case "k":
+        case "n":
             piece = Piece(type: .knight, color: .black)
         case "b":
             piece = Piece(type: .bishop, color: .black)
         case "q":
             piece = Piece(type: .queen, color: .black)
-        case "g":
+        case "k":
             piece = Piece(type: .king, color: .black)
         case "p":
             piece = Piece(type: .pawn, color: .black)

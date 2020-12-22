@@ -27,14 +27,14 @@ class AIConfigurationTests: XCTestCase {
     
     func testBoardRaterCountPiecesWeightingAffectsRating() {
         
-        let board = ASCIIBoard(pieces: "- - - - g - - -" +
+        let board = ASCIIBoard(pieces: "- - - - k - - -" +
                                        "- - - p p p - -" +
                                        "- - - - - - - -" +
                                        "- - - - - - - -" +
                                        "- - - - - - - -" +
                                        "- - - - - - - -" +
                                        "P P P P P P P P" +
-                                       "R K B Q G B K R" )
+                                       "R N B Q K B N R" )
 
         var lowValueConfig = AIConfiguration()
         lowValueConfig.boardRaterCountPiecesWeighting = AIConfiguration.ConfigurationValue(easyValue: 1,
@@ -57,14 +57,14 @@ class AIConfigurationTests: XCTestCase {
     
     func testBoardDominanceWeightingAffectsRating() {
         
-        let board = ASCIIBoard(pieces: "- - - - g - - -" +
+        let board = ASCIIBoard(pieces: "- - - - k - - -" +
                                        "- - - p p p - -" +
                                        "- - - - - - - -" +
                                        "- - - - - - - -" +
                                        "- - - - - - - -" +
                                        "- - - - - - - -" +
                                        "- P - - - P P -" +
-                                       "R K B Q G B K R" )
+                                       "R N B Q K B N R" )
         
         var lowValueConfig = AIConfiguration()
         lowValueConfig.boardRaterBoardDominanceWeighting = AIConfiguration.ConfigurationValue(easyValue: 1,
@@ -87,14 +87,14 @@ class AIConfigurationTests: XCTestCase {
     
     func testCenterOwnershipWeightingAffectsRating() {
         
-        let board = ASCIIBoard(pieces: "- - - r g r - -" +
+        let board = ASCIIBoard(pieces: "- - - r k r - -" +
                                        "- - - p p p - -" +
                                        "- - - - - - - -" +
                                        "- - - Q B - - -" +
-                                       "- - - K P - - -" +
+                                       "- - - N P - - -" +
                                        "- - - - - - - -" +
                                        "- P - - - P P -" +
-                                       "R K B Q G B K R" )
+                                       "R N B Q K B N R" )
         
         var lowValueConfig = AIConfiguration()
         lowValueConfig.boardRaterCenterOwnershipWeighting = AIConfiguration.ConfigurationValue(easyValue: 1,
@@ -117,14 +117,14 @@ class AIConfigurationTests: XCTestCase {
     
     func testCenterDominanceWeightingAffetsRating() {
         
-        let board = ASCIIBoard(pieces: "- - - r g r - -" +
+        let board = ASCIIBoard(pieces: "- - - r k r - -" +
                                        "- - - p p p - -" +
                                        "- - - - - - - -" +
                                        "- - - Q B - - -" +
-                                       "- - - K P - - -" +
+                                       "- - - N P - - -" +
                                        "- - - - - - - -" +
                                        "- P - - - P P -" +
-                                       "R K B Q G B K R" )
+                                       "R N B Q K B N R" )
         
         var lowValueConfig = AIConfiguration()
         lowValueConfig.boardRaterCenterDominanceWeighting = AIConfiguration.ConfigurationValue(easyValue: 1,
@@ -148,14 +148,14 @@ class AIConfigurationTests: XCTestCase {
     func testBoardRaterThreatenedPiecesWeightingAffectsRating() {
         
         // White is threatening the black rook with its bishop and knight
-        let board = ASCIIBoard(pieces: "r - - - g - - -" +
+        let board = ASCIIBoard(pieces: "r - - - k - - -" +
                                        "- - - - - - - -" +
-                                       "- K - - - - - -" +
-                                       "- - - - - - - -" +
-                                       "- - - - - - - -" +
+                                       "- N - - - - - -" +
                                        "- - - - - - - -" +
                                        "- - - - - - - -" +
-                                       "- - - - G - - B" )
+                                       "- - - - - - - -" +
+                                       "- - - - - - - -" +
+                                       "- - - - K - - B" )
         
         var lowValueConfig = AIConfiguration()
         lowValueConfig.boardRaterThreatenedPiecesWeighting = AIConfiguration.ConfigurationValue(easyValue: 1,
@@ -177,14 +177,14 @@ class AIConfigurationTests: XCTestCase {
     func testBoardRaterThreatenedPiecesOwnPiecesWeightingAffectsRating() {
         
         // White and black rook are threatening each other, so advantage is neutral
-        let board = ASCIIBoard(pieces: "- - - - g - - -" +
+        let board = ASCIIBoard(pieces: "- - - - k - - -" +
                                        "- - - - - - - -" +
                                        "- - - - - - - -" +
                                        "r - - - - - - R" +
                                        "- - - - - - - -" +
                                        "- - - - - - - -" +
                                        "- - - - - - - -" +
-                                       "- - - - G - - -" )
+                                       "- - - - K - - -" )
 
         var lowValueConfig = AIConfiguration()
         lowValueConfig.boardRaterThreatenedPiecesWeighting = AIConfiguration.ConfigurationValue(easyValue: 1,
@@ -208,14 +208,14 @@ class AIConfigurationTests: XCTestCase {
     
     func testPawnProgressionWeightingAffectsRating() {
         
-        let board = ASCIIBoard(pieces: "- - - - g - - -" +
+        let board = ASCIIBoard(pieces: "- - - - k - - -" +
                                        "p p p p p p p p" +
                                        "- - - - - - - -" +
                                        "- - - - - - - -" +
                                        "P P P P P P P P" +
                                        "- - - - - - - -" +
                                        "- - - - - - - -" +
-                                       "- - - - G - - -" )
+                                       "- - - - K - - -" )
         
         var lowValueConfig = AIConfiguration()
         lowValueConfig.boardRaterPawnProgressionWeighting = AIConfiguration.ConfigurationValue(easyValue: 1,
@@ -238,14 +238,14 @@ class AIConfigurationTests: XCTestCase {
     
     func testKingSurroundingPossessionWeightingAffectsRating() {
     
-        let board = ASCIIBoard(pieces: "- - - - g - - -" +
+        let board = ASCIIBoard(pieces: "- - - - k - - -" +
                                        "- - - p p p - -" +
                                        "- - - - - - - -" +
                                        "- - - - - - - -" +
                                        "- - - - - - - -" +
                                        "- - - - - - - -" +
                                        "- - - P P P - -" +
-                                       "- - - P G P - -" )
+                                       "- - - P K P - -" )
         
         var lowValueConfig = AIConfiguration()
         lowValueConfig.boardRaterKingSurroundingPossessionWeighting =
@@ -271,14 +271,14 @@ class AIConfigurationTests: XCTestCase {
     func testCheckMateOpportunityWeightingAffectsRating() {
         
         // White can move Rook at (0,0) to (0,7) to check mate black
-        let board = ASCIIBoard(pieces: "- - - - g p - -" +
+        let board = ASCIIBoard(pieces: "- - - - k p - -" +
                                        "- - - p p p - -" +
                                        "- - - - - - - -" +
                                        "- - - - - - - -" +
                                        "- - - - - - - -" +
                                        "- - - - - - - -" +
                                        "- - - P P P - -" +
-                                       "R - - P G P - -" )
+                                       "R - - P K P - -" )
         
         var lowValueConfig = AIConfiguration()
         lowValueConfig.boardRaterCheckMateOpportunityWeighting = AIConfiguration.ConfigurationValue(easyValue: 1,
@@ -302,14 +302,14 @@ class AIConfigurationTests: XCTestCase {
     
     func testCenterFourOccupationWeightingAffectsRating() {
         
-        let board = ASCIIBoard(pieces: "- - - p g p - -" +
+        let board = ASCIIBoard(pieces: "- - - p k p - -" +
                                        "- - - p p p - -" +
                                        "- - - - - - - -" +
-                                       "- - - K R - - -" +
+                                       "- - - N R - - -" +
                                        "- - - Q R - - -" +
                                        "- - - - - - - -" +
                                        "- - - P P P - -" +
-                                       "- - - P G P - -" )
+                                       "- - - P K P - -" )
         
         var lowValueConfig = AIConfiguration()
         lowValueConfig.boardRaterCenterFourOccupationWeighting = AIConfiguration.ConfigurationValue(easyValue: 1,

@@ -13,50 +13,50 @@ extension Board {
     
     public static func whiteInStaleMateScenario() -> Board {
         
-        return ASCIIBoard(pieces: "- - r - r - - g" +
+        return ASCIIBoard(pieces: "- - r - r - - k" +
                                   "- - - - - - - -" +
                                   "- - - - - - - -" +
                                   "- - - - - - - -" +
                                   "- - - - - - - -" +
                                   "- - - - - - - -" +
                                   "q - - - - - - -" +
-                                  "- - - G - - - -" ).board
+                                  "- - - K - - - -" ).board
     }
     
     public static func blackInStaleMateScenario() -> Board {
         
-        return ASCIIBoard(pieces: "- - R - R - - G" +
+        return ASCIIBoard(pieces: "- - R - R - - K" +
                                   "- - - - - - - -" +
                                   "- - - - - - - -" +
                                   "- - - - - - - -" +
                                   "- - - - - - - -" +
                                   "- - - - - - - -" +
                                   "Q - - - - - - -" +
-                                  "- - - g - - - -" ).board
+                                  "- - - k - - - -" ).board
     }
     
     public static func whiteInCheckMateScenario() -> Board {
         
-        return ASCIIBoard(pieces: "- p g - - - - K" +
+        return ASCIIBoard(pieces: "- p k - - - - N" +
                                   "- - - - - P - -" +
                                   "- - - - - - - -" +
                                   "- - - - - - - -" +
                                   "- - - - - - - -" +
                                   "- - - - - - - -" +
                                   "r - - - - - - -" +
-                                  "r - - G - - - -" ).board
+                                  "r - - K - - - -" ).board
     }
     
     public static func blackInCheckMateScenario() -> Board {
         
-        return ASCIIBoard(pieces: "- - - g - - - R" +
+        return ASCIIBoard(pieces: "- - - k - - - R" +
                                   "- - - - - - - R" +
                                   "- - - - - - - -" +
                                   "- - - - - - - -" +
                                   "- - - - - - - -" +
                                   "- - - - - - - -" +
                                   "- - - - - - - -" +
-                                  "- G - - - - - -" ).board
+                                  "- K - - - - - -" ).board
     }
     
 }

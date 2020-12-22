@@ -248,13 +248,13 @@ class PieceMovementTests: XCTestCase {
                                        "- - - - - - - -" +
                                        "- - - - - - - -" +
                                        "- - - - - - - -" +
-                                       "Q - - - g - - -" +
+                                       "Q - - - k - - -" +
                                        "- - - - - - - -" +
                                        "- - - - - - - -" +
                                        "- - - - - - - -" )
         
         let pieceIndex = board.indexOfCharacter("Q")
-        let kingIndex = board.indexOfCharacter("g")
+        let kingIndex = board.indexOfCharacter("k")
         
         let movement = PieceMovementStraightLine()
         XCTAssertFalse(movement.canPieceMove(from: BoardLocation(index: pieceIndex),
@@ -425,13 +425,13 @@ class PieceMovementTests: XCTestCase {
                                        "- - - - - - - -" +
                                        "- - - - - - - -" +
                                        "- - - - - - - -" +
-                                       "- - - - g - - -" +
+                                       "- - - - k - - -" +
                                        "- - - - - - - -" +
                                        "- - - - - - - -" +
                                        "- - - - - - - Q" )
         
         let pieceIndex = board.indexOfCharacter("Q")
-        let kingIndex = board.indexOfCharacter("g")
+        let kingIndex = board.indexOfCharacter("k")
         
         let movement = PieceMovementDiagonal()
         XCTAssertFalse(movement.canPieceMove(from: BoardLocation(index: pieceIndex),
@@ -676,13 +676,13 @@ class PieceMovementTests: XCTestCase {
                                        "- - - - - - - -" +
                                        "- - - - - - - -" +
                                        "- - - - - - - -" +
-                                       "- - - - g - - -" +
+                                       "- - - - k - - -" +
                                        "- - - - - - - -" +
-                                       "- - - K - - - -" +
+                                       "- - - N - - - -" +
                                        "- - - - - - - -" )
         
-        let pieceIndex = board.indexOfCharacter("K")
-        let kingIndex = board.indexOfCharacter("g")
+        let pieceIndex = board.indexOfCharacter("N")
+        let kingIndex = board.indexOfCharacter("k")
         
         let movement = PieceMovementKnight()
         XCTAssertFalse(movement.canPieceMove(from: BoardLocation(index: pieceIndex),
@@ -807,13 +807,13 @@ class PieceMovementTests: XCTestCase {
                                        "- - - - - - - -" +
                                        "- - - - - - - -" +
                                        "- - - - - - - -" +
-                                       "- - - - g - - -" +
-                                       "- - - G - - - -" +
+                                       "- - - - k - - -" +
+                                       "- - - K - - - -" +
                                        "- - - - - - - -" +
                                        "- - - - - - - -" )
         
-        let pieceIndex = board.indexOfCharacter("G")
-        let kingIndex = board.indexOfCharacter("g")
+        let pieceIndex = board.indexOfCharacter("K")
+        let kingIndex = board.indexOfCharacter("k")
         
         let movement = PieceMovementKing()
         XCTAssertFalse(movement.canPieceMove(from: BoardLocation(index: pieceIndex),
@@ -889,7 +889,7 @@ class PieceMovementTests: XCTestCase {
                                        "- - - - - - - -" +
                                        "- - - - - - - -" +
                                        "- - - ! - - - -" +
-                                       "- - - K - - - -" +
+                                       "- - - N - - - -" +
                                        "- - - P - - - -" +
                                        "- - - - - - - -" )
         
@@ -900,7 +900,7 @@ class PieceMovementTests: XCTestCase {
 
         let board = ASCIIBoard(pieces: "- - - - - - - -" +
                                        "- - - p - - - -" +
-                                       "- - - k - - - -" +
+                                       "- - - n - - - -" +
                                        "- - - ! - - - -" +
                                        "- - - - - - - -" +
                                        "- - - - - - - -" +
@@ -1140,13 +1140,13 @@ class PieceMovementTests: XCTestCase {
                                        "- - - - - - - -" +
                                        "- - - - - - - -" +
                                        "- - - - - - - -" +
-                                       "- - - - g - - -" +
+                                       "- - - - k - - -" +
                                        "- - - P - - - -" +
                                        "- - - - - - - -" +
                                        "- - - - - - - -" )
         
         let pieceIndex = board.indexOfCharacter("P")
-        let kingIndex = board.indexOfCharacter("g")
+        let kingIndex = board.indexOfCharacter("k")
         
         let movement = PieceMovementPawn()
         XCTAssertFalse(movement.canPieceMove(from: BoardLocation(index: pieceIndex),
@@ -1268,14 +1268,14 @@ class PieceMovementTests: XCTestCase {
     
     func testWhitePawnCanTakeOpponentUsingEnPassant() {
         
-        let board = ASCIIBoard(pieces: "- - - - - - - g" +
+        let board = ASCIIBoard(pieces: "- - - - - - - k" +
                                        "p - - - - - - -" +
                                        "+ - - - - - - -" +
                                        "* P - - - - - -" +
                                        "- - - - - - - -" +
                                        "- - - - - - - -" +
                                        "- - - - - - - -" +
-                                       "- - - - - - - G" )
+                                       "- - - - - - - K" )
         
         let game = makeGame(board: board.board, colorToMove: .black)
         let blackPlayer = game.blackPlayer as! Human
@@ -1310,14 +1310,14 @@ class PieceMovementTests: XCTestCase {
     
     func testBlackPawnCanTakeOpponentUsingEnPassant() {
         
-        let board = ASCIIBoard(pieces: "- - - - - - - g" +
+        let board = ASCIIBoard(pieces: "- - - - - - - k" +
                                        "- - - - - - - -" +
                                        "- - - - - - - -" +
                                        "- - - - - - - -" +
                                        "* p - - - - - -" +
                                        "+ - - - - - - -" +
                                        "P - - - - - - -" +
-                                       "- - - - - - - G" )
+                                       "- - - - - - - K" )
         
         let game = makeGame(board: board.board, colorToMove: .white)
         let whitePlayer = game.whitePlayer as! Human
@@ -1352,14 +1352,14 @@ class PieceMovementTests: XCTestCase {
     
     func testWhitePawnCannotTakeOpponentUsingEnPassantIfMoveNotMadeImmediately() {
         
-        let board = ASCIIBoard(pieces: "- - - - - - - g" +
+        let board = ASCIIBoard(pieces: "- - - - - - - k" +
                                        "p - - - - - - %" +
                                        "+ - - - - - - -" +
                                        "* P - - - - - -" +
                                        "- - - - - - - -" +
                                        "- - - - - - - -" +
                                        "- - - - - - - &" +
-                                       "- - - - - - - G" )
+                                       "- - - - - - - K" )
         
         let game = makeGame(board: board.board, colorToMove: .black)
         let whitePlayer = game.whitePlayer as! Human
@@ -1375,7 +1375,7 @@ class PieceMovementTests: XCTestCase {
         
         // White moves king
         do {
-            try whitePlayer.movePiece(from: board.locationOfCharacter("G"),
+            try whitePlayer.movePiece(from: board.locationOfCharacter("K"),
                                       to: board.locationOfCharacter("&"))
         } catch {
             fatalError()
@@ -1383,7 +1383,7 @@ class PieceMovementTests: XCTestCase {
         
         // Black moves king
         do {
-            try blackPlayer.movePiece(from: board.locationOfCharacter("g"),
+            try blackPlayer.movePiece(from: board.locationOfCharacter("k"),
                                       to: board.locationOfCharacter("%"))
         } catch {
             fatalError()
@@ -1399,14 +1399,14 @@ class PieceMovementTests: XCTestCase {
     
     func testBlackPawnCannotTakeOpponentUsingEnPassantIfMoveNotMadeImmediately() {
         
-        let board = ASCIIBoard(pieces: "- - - - - - - g" +
+        let board = ASCIIBoard(pieces: "- - - - - - - k" +
                                        "- - - - - - - %" +
                                        "- - - - - - - -" +
                                        "- - - - - - - -" +
                                        "* p - - - - - -" +
                                        "+ - - - - - - -" +
                                        "P - - - - - - &" +
-                                       "- - - - - - - G" )
+                                       "- - - - - - - K" )
         
         let game = makeGame(board: board.board, colorToMove: .white)
         let whitePlayer = game.whitePlayer as! Human
@@ -1422,7 +1422,7 @@ class PieceMovementTests: XCTestCase {
         
         // Black moves king
         do {
-            try blackPlayer.movePiece(from: board.locationOfCharacter("g"),
+            try blackPlayer.movePiece(from: board.locationOfCharacter("k"),
                                       to: board.locationOfCharacter("%"))
         } catch {
             fatalError()
@@ -1430,7 +1430,7 @@ class PieceMovementTests: XCTestCase {
         
         // White moves king
         do {
-            try whitePlayer.movePiece(from: board.locationOfCharacter("G"),
+            try whitePlayer.movePiece(from: board.locationOfCharacter("K"),
                                       to: board.locationOfCharacter("&"))
         } catch {
             fatalError()
@@ -1560,13 +1560,13 @@ class PieceMovementTests: XCTestCase {
                                        "- - - - - - - -" +
                                        "- - - - - - - -" +
                                        "- - - - - - - -" +
-                                       "Q - - - g - - -" +
+                                       "Q - - - k - - -" +
                                        "- - - - - - - -" +
                                        "- - - - - - - -" +
                                        "- - - - - - - -" )
         
         let pieceIndex = board.indexOfCharacter("Q")
-        let kingIndex = board.indexOfCharacter("g")
+        let kingIndex = board.indexOfCharacter("k")
         
         let movement = PieceMovementQueen()
         XCTAssertFalse(movement.canPieceMove(from: BoardLocation(index: pieceIndex),
@@ -1691,13 +1691,13 @@ class PieceMovementTests: XCTestCase {
                                        "- - - - - - - -" +
                                        "- - - - - - - -" +
                                        "- - - - - - - -" +
-                                       "R - - - g - - -" +
+                                       "R - - - k - - -" +
                                        "- - - - - - - -" +
                                        "- - - - - - - -" +
                                        "- - - - - - - -" )
         
         let pieceIndex = board.indexOfCharacter("R")
-        let kingIndex = board.indexOfCharacter("g")
+        let kingIndex = board.indexOfCharacter("k")
         
         let movement = PieceMovementRook()
         XCTAssertFalse(movement.canPieceMove(from: BoardLocation(index: pieceIndex),
@@ -1822,13 +1822,13 @@ class PieceMovementTests: XCTestCase {
                                        "- - - - - - - -" +
                                        "- - - - - - - -" +
                                        "- - - - - - - -" +
-                                       "- - - - g - - -" +
+                                       "- - - - k - - -" +
                                        "- - - - - - - -" +
                                        "- - - - - - - -" +
                                        "- B - - - - - -" )
         
         let pieceIndex = board.indexOfCharacter("B")
-        let kingIndex = board.indexOfCharacter("g")
+        let kingIndex = board.indexOfCharacter("k")
         
         let movement = PieceMovementBishop()
         XCTAssertFalse(movement.canPieceMove(from: BoardLocation(index: pieceIndex),

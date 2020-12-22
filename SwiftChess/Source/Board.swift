@@ -619,13 +619,13 @@ public struct Board: Equatable {
                 case .rook:
                     character = "R"
                 case .knight:
-                    character = "K"
+                    character = "N"
                 case .bishop:
                     character = "B"
                 case .queen:
                     character = "Q"
                 case .king:
-                    character = "G"
+                    character = "K"
                 case .pawn:
                     character = "P"
 
@@ -646,13 +646,13 @@ public struct Board: Equatable {
                 case .rook:
                     character = piece.color == .white ? "R" : "r"
                 case .knight:
-                    character = piece.color == .white ? "K" : "k"
+                    character = piece.color == .white ? "N" : "n"
                 case .bishop:
                     character = piece.color == .white ? "B" : "b"
                 case .queen:
                     character = piece.color == .white ? "Q" : "q"
                 case .king:
-                    character = piece.color == .white ? "G" : "g"
+                    character = piece.color == .white ? "K" : "k"
                 case .pawn:
                     character = piece.color == .white ? "P" : "p"
                 }

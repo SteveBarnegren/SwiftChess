@@ -49,12 +49,12 @@ class AIPlayerTests: XCTestCase {
                                        "- - - - - - - -" +
                                        "- - - - - - - -" +
                                        "- - * - - - - -" +
-                                       "K - - - - - - -" +
+                                       "N - - - - - - -" +
                                        "- - - - - - - -" +
                                        "- - - - - - - -" +
-                                       "G - - - - - - -" )
+                                       "K - - - - - - -" )
         
-        let knightLocation = board.locationOfCharacter("K")
+        let knightLocation = board.locationOfCharacter("N")
         let testLocation = board.locationOfCharacter("*")
         
         let game = makeTestGame(board: board.board, colorToMove: .white)
@@ -70,16 +70,16 @@ class AIPlayerTests: XCTestCase {
         
         // This is a complex scenario because it was one that I observed from an actual game
         
-        let board = ASCIIBoard(pieces: "r k - - q b - r" +
-                                       "p p p g k - - p" +
+        let board = ASCIIBoard(pieces: "r n - - q b - r" +
+                                       "p p p k n - - p" +
                                        "- - * p b p - -" +
                                        "P P - - p - p P" +
                                        "- - P - P - - -" +
                                        "- B - - Q P - -" +
-                                       "- B - P K G P -" +
-                                       "R K - - - - - R" )
+                                       "- B - P N K P -" +
+                                       "R N - - - - - R" )
         
-        let kingLocation = board.locationOfCharacter("g")
+        let kingLocation = board.locationOfCharacter("k")
         let testLocation = board.locationOfCharacter("*")
         
         let game = makeTestGame(board: board.board, colorToMove: .black)
@@ -99,7 +99,7 @@ class AIPlayerTests: XCTestCase {
                                        "- - - - - - - -" +
                                        "- - - - - - - -" +
                                        "- - - * - - - -" +
-                                       "G - - P - - - r" +
+                                       "K - - P - - - r" +
                                        "- - - - - - - -" )
         
         let pawnLocation = board.locationOfCharacter("P")
@@ -123,7 +123,7 @@ class AIPlayerTests: XCTestCase {
                                        "- - - - - - - -" +
                                        "- - - - - - - -" +
                                        "- - - - - - - -" +
-                                       "G - - Q - - - r" +
+                                       "K - - Q - - - r" +
                                        "- - - - - - - -" )
         
         let queenLocation = board.locationOfCharacter("Q")
@@ -146,7 +146,7 @@ class AIPlayerTests: XCTestCase {
                                        "- - - - - - - -" +
                                        "- - - - - - - -" +
                                        "- - - - - - - -" +
-                                       "G - - R - - - r" +
+                                       "K - - R - - - r" +
                                        "- - - - - - - -" )
         
         let rookLocation = board.locationOfCharacter("R")
@@ -169,7 +169,7 @@ class AIPlayerTests: XCTestCase {
                                        "- - - - - - - -" +
                                        "- - - - - - - -" +
                                        "- - - - - - - -" +
-                                       "G - - B - - - r" +
+                                       "K - - B - - - r" +
                                        "- - - - - - - -" )
         
         let bishopLocation = board.locationOfCharacter("B")
